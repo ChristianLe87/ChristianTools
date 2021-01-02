@@ -11,21 +11,18 @@ namespace Monogame_UI
         Texture2D mouseOverTexture;
         MouseState previousMouseState;
         bool isMouseOver;
-        string text;
-        SpriteFont spriteFont;
-        Color fontColor;
+        Label label;
 
         public delegate void DxOnClickAction();
 
         public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor)
         {
             this.rectangle = rectangle;
-            this.text = text;
             this.defaultTexture = defaultTexture;
             this.mouseOverTexture = mouseOverTexture;
             this.isMouseOver = false;
-            this.spriteFont = spriteFont;
-            this.fontColor = fontColor;
+
+            this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, fontColor);
         }
 
         public void Update(DxOnClickAction OnClickAction)
@@ -58,7 +55,7 @@ namespace Monogame_UI
             else
                 spriteBatch.Draw(defaultTexture, rectangle, Color.White);
 
-            spriteBatch.DrawString(spriteFont, text, new Vector2(rectangle.X, rectangle.Y), fontColor);
+            label.Draw(spriteBatch);
         }
     }
 }
