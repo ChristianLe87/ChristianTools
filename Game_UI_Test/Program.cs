@@ -58,7 +58,7 @@ namespace Game_UI_Test
             UIs = new Dictionary<string, object>()
             {
                 { WK.UI.Button, new Button(new Rectangle(10, 10, 100, 100), "Hello World", Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), Tools.GetFont("Arial_10", "Fonts")) },
-                { WK.UI.Label, new Label(new Vector2(10, 10),Tools.GetFont("Arial_10", "Fonts"), "Hello text", Tools.CreateColorTexture(Color.Green, 50, 50)) },
+                { WK.UI.Label, new Label(new Rectangle(10, 10, 100, 100),Tools.GetFont("Arial_10", "Fonts"), "Hello\nbla", Label.TextAlignment.Midle_Center, Tools.CreateColorTexture(Color.Green, 100, 100)) },
             };
             actualUI = WK.UI.Label;
 
@@ -94,7 +94,7 @@ namespace Game_UI_Test
                         (UIs[actualUI] as Button).Update(ButtonDelegate);
                         break;
                     case WK.UI.Label:
-                        (UIs[actualUI] as Label).Update(gameTime.TotalGameTime.Seconds.ToString());
+                        (UIs[actualUI] as Label).Update(/*gameTime.TotalGameTime.Seconds.ToString()*/);
                         break;
                     default:
                         break;
