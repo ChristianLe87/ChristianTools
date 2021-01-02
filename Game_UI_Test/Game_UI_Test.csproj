@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Monogame_UI\Content\Tree.png">
+      <Link>Content\Tree.png</Link>
+    </None>
+    <None Include="..\Monogame_UI\Content\Fonts\Arial_20.xnb">
+      <Link>Content\Fonts\Arial_20.xnb</Link>
+    </None>
+    <None Include="..\Monogame_UI\Content\Fonts\Arial_10.xnb">
+      <Link>Content\Fonts\Arial_10.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Monogame_UI\Content\Fonts\Arial_15.xnb">
+      <Link>Content\Fonts\Arial_15.xnb</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="..\Monogame_UI\Monogame_UI.projitems" Label="Shared" Condition="Exists('..\Monogame_UI\Monogame_UI.projitems')" />
+</Project>
