@@ -37,7 +37,6 @@ namespace Game_UI_Test
         public static ContentManager contentManager;
 
         List<object> UIs;
-        string actualUI;
 
         public Game1()
         {
@@ -58,26 +57,24 @@ namespace Game_UI_Test
 
             UIs = new List<object>()
             {
-                new Button(new Rectangle(10, 10, 100, 100), "Hello World", Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), Tools.GetFont("Arial_10", "Fonts")),
+                new Button(new Rectangle(360, 10, 100, 50), "Hello World", Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), Tools.GetFont("Arial_10", "Fonts"), Color.Black),
 
                 // Left
-                new Label(new Rectangle(10, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Left, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(10, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Left, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(10, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Left, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Left, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Left, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Left, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
 
                 // Center
-                new Label(new Rectangle(120, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Center, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(120, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Center, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(120, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Center, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Center, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Center, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Center, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
 
                 // Right
-                new Label(new Rectangle(230, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Right, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(230, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Right, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(230, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Right, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Right, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Right, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Right, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
             };
             
-            actualUI = WK.UI.Label;
-
             base.IsMouseVisible = true;
 
             base.Initialize();
@@ -102,20 +99,12 @@ namespace Game_UI_Test
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     Exit();
 
+                List<Button> buttons = UIs.OfType<Button>().ToList();
+                foreach (var button in buttons) button.Update(ButtonDelegate);
 
-                switch (actualUI)
-                {
-                    case WK.UI.Button:
-                        List<Button> buttons = UIs.OfType<Button>().ToList();
-                        foreach (var button in buttons) button.Update(ButtonDelegate);
-                        break;
-                    case WK.UI.Label:
-                        List<Label> labels = UIs.OfType<Label>().ToList();
-                        foreach (var label in labels) label.Update();
-                        break;
-                    default:
-                        break;
-                }
+                List<Label> labels = UIs.OfType<Label>().ToList();
+                foreach (var label in labels) label.Update();
+
 
                 base.Update(gameTime);
             }
@@ -133,20 +122,13 @@ namespace Game_UI_Test
 
             this.spriteBatch.Begin();
 
-            // TODO: Code
-            switch (actualUI)
-            {
-                case WK.UI.Button:
-                    List<Button> buttons = UIs.OfType<Button>().ToList();
-                    foreach (var button in buttons) button.Draw(spriteBatch);
-                    break;
-                case WK.UI.Label:
-                    List<Label> labels = UIs.OfType<Label>().ToList();
-                    foreach (var label in labels) label.Draw(spriteBatch);
-                    break;
-                default:
-                    break;
-            }
+
+            List<Button> buttons = UIs.OfType<Button>().ToList();
+            foreach (var button in buttons) button.Draw(spriteBatch);
+
+            List<Label> labels = UIs.OfType<Label>().ToList();
+            foreach (var label in labels) label.Draw(spriteBatch);
+
 
             this.spriteBatch.End();
 
