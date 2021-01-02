@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Monogame_UI;
+using System.Linq;
 
 namespace Game_UI_Test
 {
@@ -35,7 +36,8 @@ namespace Game_UI_Test
         SpriteBatch spriteBatch;
         public static ContentManager contentManager;
 
-        Dictionary<string, object> UIs;
+        List<object> UIs;
+        //Dictionary<string, object> UIs;
         string actualUI;
 
         public Game1()
@@ -55,11 +57,15 @@ namespace Game_UI_Test
             base.Content.RootDirectory = absolutePath;
             Game1.contentManager = base.Content;
 
-            UIs = new Dictionary<string, object>()
+            UIs = new List<object>()
             {
-                { WK.UI.Button, new Button(new Rectangle(10, 10, 100, 100), "Hello World", Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), Tools.GetFont("Arial_10", "Fonts")) },
-                { WK.UI.Label, new Label(new Rectangle(10, 10, 100, 100),Tools.GetFont("Arial_10", "Fonts"), "Hello\nbla", Label.TextAlignment.Midle_Center, Tools.CreateColorTexture(Color.Green, 100, 100)) },
+                new Button(new Rectangle(10, 10, 100, 100), "Hello World", Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), Tools.GetFont("Arial_10", "Fonts")),
+
+                new Label(new Rectangle(10, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "Hello", Label.TextAlignment.Top_Center, Tools.CreateColorTexture(Color.Green, 100, 30)),
+                new Label(new Rectangle(10, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "Hello", Label.TextAlignment.Midle_Center, Tools.CreateColorTexture(Color.Green, 100, 30)),
+                new Label(new Rectangle(10, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "Hello", Label.TextAlignment.Down_Center, Tools.CreateColorTexture(Color.Green, 100, 30)),
             };
+            
             actualUI = WK.UI.Label;
 
             base.IsMouseVisible = true;
@@ -91,10 +97,12 @@ namespace Game_UI_Test
                 switch (actualUI)
                 {
                     case WK.UI.Button:
-                        (UIs[actualUI] as Button).Update(ButtonDelegate);
+                        List<Button> buttons = UIs.OfType<Button>().ToList();
+                        foreach (var button in buttons) button.Update(ButtonDelegate);
                         break;
                     case WK.UI.Label:
-                        (UIs[actualUI] as Label).Update(/*gameTime.TotalGameTime.Seconds.ToString()*/);
+                        List<Label> labels = UIs.OfType<Label>().ToList();
+                        foreach (var label in labels) label.Update();
                         break;
                     default:
                         break;
@@ -120,10 +128,12 @@ namespace Game_UI_Test
             switch (actualUI)
             {
                 case WK.UI.Button:
-                    (UIs[actualUI] as Button).Draw(spriteBatch);
+                    List<Button> buttons = UIs.OfType<Button>().ToList();
+                    foreach (var button in buttons) button.Draw(spriteBatch);
                     break;
                 case WK.UI.Label:
-                    (UIs[actualUI] as Label).Draw(spriteBatch);
+                    List<Label> labels = UIs.OfType<Label>().ToList();
+                    foreach (var label in labels) label.Draw(spriteBatch);
                     break;
                 default:
                     break;
