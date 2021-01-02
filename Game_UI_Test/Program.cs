@@ -37,7 +37,6 @@ namespace Game_UI_Test
         public static ContentManager contentManager;
 
         List<object> UIs;
-        //Dictionary<string, object> UIs;
         string actualUI;
 
         public Game1()
@@ -61,9 +60,20 @@ namespace Game_UI_Test
             {
                 new Button(new Rectangle(10, 10, 100, 100), "Hello World", Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), Tools.GetFont("Arial_10", "Fonts")),
 
-                new Label(new Rectangle(10, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "Hello", Label.TextAlignment.Top_Center, Tools.CreateColorTexture(Color.Green, 100, 30)),
-                new Label(new Rectangle(10, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "Hello", Label.TextAlignment.Midle_Center, Tools.CreateColorTexture(Color.Green, 100, 30)),
-                new Label(new Rectangle(10, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "Hello", Label.TextAlignment.Down_Center, Tools.CreateColorTexture(Color.Green, 100, 30)),
+                // Left
+                new Label(new Rectangle(10, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Left, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Left, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Left, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+
+                // Center
+                new Label(new Rectangle(120, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Center, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Center, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Center, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+
+                // Right
+                new Label(new Rectangle(230, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Right, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Right, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Right, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
             };
             
             actualUI = WK.UI.Label;
@@ -93,7 +103,6 @@ namespace Game_UI_Test
                     Exit();
 
 
-                // TODO: Code
                 switch (actualUI)
                 {
                     case WK.UI.Button:

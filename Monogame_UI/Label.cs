@@ -34,41 +34,52 @@ namespace Monogame_UI
                 spriteBatch.Draw(texture2D, rectangle, Color.White);
 
 
+            int PosLeft_X = rectangle.X;
             int PosCenter_X = (rectangle.Width / 2) + (rectangle.X) - ((int)spriteFont.MeasureString(text).X / 2);
-            int PosCenter_Y = (rectangle.Center.Y - ((int)spriteFont.MeasureString(text).Y) / 2);
-            
+            int PosRight_X = rectangle.X + rectangle.Width - (int)spriteFont.MeasureString(text).X;
+
+            int PosTop_Y = rectangle.Y;
+            int PosMiddle_Y = rectangle.Center.Y - (((int)spriteFont.MeasureString(text).Y) / 2);
+            int PosDown_Y = rectangle.Y + rectangle.Height - ((int)spriteFont.MeasureString(text).Y);
+
+
 
 
             Vector2 textPosition;
 
             switch (textAlignment)
             {
-                case TextAlignment.Top_Center:
-                    textPosition = new Vector2(PosCenter_X, rectangle.Y);
-                    break;
-                case TextAlignment.Midle_Center:
-                    textPosition = new Vector2(PosCenter_X, PosCenter_Y);
-                    break;
-                case TextAlignment.Down_Center:
-                    textPosition = new Vector2();
-                    break;
+                // Left
                 case TextAlignment.Top_Left:
-                    textPosition = new Vector2();
+                    textPosition = new Vector2(PosLeft_X, PosTop_Y);
                     break;
                 case TextAlignment.Midle_Left:
-                    textPosition = new Vector2();
+                    textPosition = new Vector2(PosLeft_X, PosMiddle_Y);
                     break;
                 case TextAlignment.Down_Left:
-                    textPosition = new Vector2();
+                    textPosition = new Vector2(PosLeft_X, PosDown_Y);
                     break;
+
+                // Center
+                case TextAlignment.Top_Center:
+                    textPosition = new Vector2(PosCenter_X, PosTop_Y);
+                    break;
+                case TextAlignment.Midle_Center:
+                    textPosition = new Vector2(PosCenter_X, PosMiddle_Y);
+                    break;
+                case TextAlignment.Down_Center:
+                    textPosition = new Vector2(PosCenter_X, PosDown_Y);
+                    break;
+
+                // Right
                 case TextAlignment.Top_Right:
-                    textPosition = new Vector2();
+                    textPosition = new Vector2(PosRight_X, PosTop_Y);
                     break;
                 case TextAlignment.Midle_Right:
-                    textPosition = new Vector2();
+                    textPosition = new Vector2(PosRight_X, PosMiddle_Y);
                     break;
                 case TextAlignment.Down_Right:
-                    textPosition = new Vector2();
+                    textPosition = new Vector2(PosRight_X, PosDown_Y);
                     break;
                 default:
                     textPosition = new Vector2();
