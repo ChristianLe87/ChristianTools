@@ -1,32 +1,33 @@
 ﻿using System;
-using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Linq;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace Game_UI_Test
+namespace Monogame_Tools
 {
     public class Tools
     {
-        public static Texture2D GetTexture(string imageName, string folder = "")
+        public static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName, string folder = "")
         {
-            string absolutePath = new DirectoryInfo(Path.Combine(Path.Combine(Game1.contentManager.RootDirectory, folder), $"{imageName}.png")).ToString();
+            string absolutePath = new DirectoryInfo(Path.Combine(Path.Combine(contentManager.RootDirectory, folder), $"{imageName}.png")).ToString();
 
             FileStream fileStream = new FileStream(absolutePath, FileMode.Open);
 
-            var result = Texture2D.FromStream(Game1.graphicsDeviceManager.GraphicsDevice, fileStream);
+            var result = Texture2D.FromStream(graphicsDevice, fileStream);
             fileStream.Dispose();
 
             return result;
         }
 
 
-        public static SpriteFont GenerateFont(string imageName, string folder = "")
+        public static SpriteFont GenerateFont(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName, string folder = "")
         {
             // ===== Implementation =====
             {
-                Texture2D texture2D = Tools.GetTexture(imageName, folder);
+                Texture2D texture2D = Tools.GetTexture(graphicsDevice, contentManager, imageName, folder);
 
                 char[,] chars = new char[,]
                 {
@@ -96,9 +97,9 @@ namespace Game_UI_Test
         }
 
 
-        public static SpriteFont GetFont(string fontName, string folder = "")
+        public static SpriteFont GetFont(ContentManager contentManager, string fontName, string folder = "")
         {
-            return Game1.contentManager.Load<SpriteFont>(Path.Combine(folder, fontName));
+            return contentManager.Load<SpriteFont>(Path.Combine(folder, fontName));
         }
 
         /*public static Texture2D GetSubtextureFromAtlasTexture(Point imagePosition)
@@ -116,9 +117,9 @@ namespace Game_UI_Test
         }*/
 
 
-        public static Texture2D CreateColorTexture(Color color, int Width = 1, int Height = 1)
+        public static Texture2D CreateColorTexture(GraphicsDevice graphicsDevice, Color color, int Width = 1, int Height = 1)
         {
-            Texture2D texture2D = new Texture2D(Game1.graphicsDeviceManager.GraphicsDevice, Width, Height, false, SurfaceFormat.Color);
+            Texture2D texture2D = new Texture2D(graphicsDevice, Width, Height, false, SurfaceFormat.Color);
             Color[] colors = new Color[Width * Height];
 
             // Set each pixel to color

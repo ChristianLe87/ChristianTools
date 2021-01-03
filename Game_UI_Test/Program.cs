@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Monogame_Tools;
 using Monogame_UI;
 
 namespace Game_UI_Test
@@ -48,31 +49,31 @@ namespace Game_UI_Test
 
             UIs = new List<object>()
             {
-                new Button(new Rectangle(360, 10, 100, 50), "Hello World", Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), Tools.GetFont("Arial_10", "Fonts"), Color.Black),
+                new Button(new Rectangle(360, 10, 100, 50), "Hello World", Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red), Tools.GetFont(contentManager, "Arial_10", "Fonts"), Color.Black),
 
                 // Left
-                new Label(new Rectangle(10, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Left, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(10, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Left, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(10, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Left, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 10, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Left, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 50, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Left, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 90, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Left, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
 
                 // Center
-                new Label(new Rectangle(120, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Center, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(120, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Center, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(120, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Center, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 10, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Center, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 50, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Center, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 90, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Center, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
 
                 // Right
-                new Label(new Rectangle(230, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Right, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(230, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Right, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
-                new Label(new Rectangle(230, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Right, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 10, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Right, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 50, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Right, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 90, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Right, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
 
-                new HealthBar(Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), new Rectangle(10, 130, 50, 10), Direction.Right),
-                new HealthBar(Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), new Rectangle(10, 150, 50, 10), Direction.Left),
+                new HealthBar(Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 130, 50, 10), Direction.Right),
+                new HealthBar(Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 150, 50, 10), Direction.Left),
 
-                new HealthBar(Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), new Rectangle(10, 175, 10, 50), Direction.Up),
-                new HealthBar(Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), new Rectangle(30, 175, 10, 50), Direction.Down),
+                new HealthBar(Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 175, 10, 50), Direction.Up),
+                new HealthBar(Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(30, 175, 10, 50), Direction.Down),
 
                 // GenerateFont
-                new Label(new Rectangle(120, 150, 100, 30), Tools.GenerateFont("MyFont_PNG_130x28"), "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ\nabcdefghijklmnñopqrstuvwxyz\n1234567890\n,:;?.!", Label.TextAlignment.Midle_Center, Color.Black)
+                new Label(new Rectangle(120, 150, 100, 30), Tools.GenerateFont(graphicsDeviceManager.GraphicsDevice, contentManager, "MyFont_PNG_130x28"), "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ\nabcdefghijklmnñopqrstuvwxyz\n1234567890\n,:;?.!", Label.TextAlignment.Midle_Center, Color.Black)
             };
             
             base.IsMouseVisible = true;

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game_UI_Test", "Game_UI_Tes
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Monogame_UI", "Monogame_UI\Monogame_UI.shproj", "{5D212934-7594-4461-9329-9A7B10DE4B7F}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Monogame_Tools", "Monogame_Tools\Monogame_Tools.shproj", "{2924DECE-C176-45F3-8A0B-C604A4C2ECD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
