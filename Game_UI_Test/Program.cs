@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Monogame_UI;
-using System.Linq;
 
 namespace Game_UI_Test
 {
@@ -18,15 +18,6 @@ namespace Game_UI_Test
             {
                 game.Run();
             }
-        }
-    }
-
-    public class WK
-    {
-        public class UI
-        {
-            public const string Button = "button";
-            public const string Label = "label";
         }
     }
 
@@ -73,6 +64,15 @@ namespace Game_UI_Test
                 new Label(new Rectangle(230, 10, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Right, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
                 new Label(new Rectangle(230, 50, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Midle_Right, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
                 new Label(new Rectangle(230, 90, 100, 30),Tools.GetFont("Arial_10", "Fonts"), "My Text", Label.TextAlignment.Down_Right, Color.Black, Tools.CreateColorTexture(Color.Green, 100, 30), 11),
+
+                new HealthBar(Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), new Rectangle(10, 130, 50, 10), Direction.Right),
+                new HealthBar(Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), new Rectangle(10, 150, 50, 10), Direction.Left),
+
+                new HealthBar(Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), new Rectangle(10, 175, 10, 50), Direction.Up),
+                new HealthBar(Tools.CreateColorTexture(Color.Green), Tools.CreateColorTexture(Color.Red), new Rectangle(30, 175, 10, 50), Direction.Down),
+
+                // GenerateFont
+                new Label(new Rectangle(120, 150, 100, 30), Tools.GenerateFont("MyFont_PNG_130x28"), "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ\nabcdefghijklmnñopqrstuvwxyz\n1234567890\n,:;?.!", Label.TextAlignment.Midle_Center, Color.Black)
             };
             
             base.IsMouseVisible = true;
@@ -105,6 +105,14 @@ namespace Game_UI_Test
                 List<Label> labels = UIs.OfType<Label>().ToList();
                 foreach (var label in labels) label.Update();
 
+                List<HealthBar> healthBars = UIs.OfType<HealthBar>().ToList();
+                foreach (var healthBar in healthBars)
+                {
+                    if (healthBar.value > 0)
+                        healthBar.value--;
+                    else
+                        healthBar.value = 100;
+                }
 
                 base.Update(gameTime);
             }
@@ -129,6 +137,8 @@ namespace Game_UI_Test
             List<Label> labels = UIs.OfType<Label>().ToList();
             foreach (var label in labels) label.Draw(spriteBatch);
 
+            List<HealthBar> healthBars = UIs.OfType<HealthBar>().ToList();
+            foreach (var healthBar in healthBars) healthBar.Draw(spriteBatch);
 
             this.spriteBatch.End();
 
