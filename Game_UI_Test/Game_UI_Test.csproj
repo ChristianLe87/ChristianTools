@@ -9,11 +9,15 @@
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Monogame_UI\Content\MyFont_PNG_130x28.png">
+    <None Include="..\Content\MyAtlasTexture.png">
+      <Link>Content\MyAtlasTexture.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\MyFont_PNG_130x28.png">
       <Link>Content\MyFont_PNG_130x28.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\Monogame_UI\Content\Fonts\Arial_10.xnb">
+    <None Include="..\Content\Fonts\Arial_10.xnb">
       <Link>Content\Fonts\Arial_10.xnb</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

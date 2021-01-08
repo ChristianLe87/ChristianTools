@@ -29,6 +29,7 @@ namespace Game_UI_Test
         public static ContentManager contentManager;
 
         List<object> UIs;
+        Texture2D subAtlas_1;
 
         public Game1()
         {
@@ -75,7 +76,8 @@ namespace Game_UI_Test
                 // GenerateFont
                 new Label(new Rectangle(120, 150, 100, 30), Tools.GenerateFont(graphicsDeviceManager.GraphicsDevice, contentManager, "MyFont_PNG_130x28"), "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ\nabcdefghijklmnñopqrstuvwxyz\n1234567890\n,:;?.!", Label.TextAlignment.Midle_Center, Color.Black)
             };
-            
+
+            subAtlas_1 = Tools.GetSubtextureFromAtlasTexture(graphicsDeviceManager.GraphicsDevice, contentManager, "MyAtlasTexture", new Point(0, 0));
             base.IsMouseVisible = true;
 
             base.Initialize();
@@ -141,6 +143,7 @@ namespace Game_UI_Test
             List<HealthBar> healthBars = UIs.OfType<HealthBar>().ToList();
             foreach (var healthBar in healthBars) healthBar.Draw(spriteBatch);
 
+            spriteBatch.Draw(subAtlas_1, new Vector2(200, 200), Color.White);
             this.spriteBatch.End();
 
             base.Draw(gameTime);

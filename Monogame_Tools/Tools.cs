@@ -102,19 +102,20 @@ namespace Monogame_Tools
             return contentManager.Load<SpriteFont>(Path.Combine(folder, fontName));
         }
 
-        /*public static Texture2D GetSubtextureFromAtlasTexture(Point imagePosition)
-        {
-            Texture2D atlasTexture = GetTexture(WK.Content.Texture.GeneralCollection.TileCollection, "");
 
-            Texture2D subtexture = new Texture2D(Game1.graphicsDeviceManager.GraphicsDevice, WK.Default.Pixels_X, WK.Default.Pixels_Y);
-            int count = WK.Default.Pixels_X * WK.Default.Pixels_Y;
+        public static Texture2D GetSubtextureFromAtlasTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName, Point imagePosition)
+        {
+            Texture2D atlasTexture = GetTexture(graphicsDevice, contentManager, imageName, "");
+
+            Texture2D subtexture = new Texture2D(graphicsDevice, 100, 100);
+            int count = 100 * 100;
             Color[] data = new Color[count];
 
-            atlasTexture.GetData(0, new Rectangle(imagePosition.X * WK.Default.Pixels_X, imagePosition.Y * WK.Default.Pixels_Y, WK.Default.Pixels_X, WK.Default.Pixels_Y), data, 0, count);
+            atlasTexture.GetData(0, new Rectangle(imagePosition.X * 100, imagePosition.Y * 100, 100, 100), data, 0, count);
             subtexture.SetData(data);
 
             return subtexture;
-        }*/
+        }
 
 
         public static Texture2D CreateColorTexture(GraphicsDevice graphicsDevice, Color color, int Width = 1, int Height = 1)
