@@ -10,6 +10,9 @@ namespace Monogame_Tools
 {
     public class Tools
     {
+        /// <summary>
+        /// Generate a new texture from a PNG file
+        /// </summary>
         public static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName, string folder = "")
         {
             string absolutePath = new DirectoryInfo(Path.Combine(Path.Combine(contentManager.RootDirectory, folder), $"{imageName}.png")).ToString();
@@ -22,7 +25,9 @@ namespace Monogame_Tools
             return result;
         }
 
-
+        /// <summary>
+        /// Generate a new font from a Texture2D
+        /// </summary>
         public static SpriteFont GenerateFont(Texture2D texture2D, char[,] chars)
         {
             // ===== Implementation =====
@@ -86,13 +91,17 @@ namespace Monogame_Tools
             }
         }
 
-
+        /// <summary>
+        /// Get a SpriteFont from ContentManager
+        /// </summary>
         public static SpriteFont GetFont(ContentManager contentManager, string fontName, string folder = "")
         {
             return contentManager.Load<SpriteFont>(Path.Combine(folder, fontName));
         }
 
-
+        /// <summary>
+        /// Get a new Texture2D from a bigger Texture2D
+        /// </summary>
         public static Texture2D CropTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture2D, Rectangle extractRectangle)
         {
             Texture2D subtexture = new Texture2D(graphicsDevice, extractRectangle.Width, extractRectangle.Height);
@@ -105,7 +114,9 @@ namespace Monogame_Tools
             return subtexture;
         }
 
-
+        /// <summary>
+        /// Create a new Texture2D from a Color
+        /// </summary>
         public static Texture2D CreateColorTexture(GraphicsDevice graphicsDevice, Color color, int Width = 1, int Height = 1)
         {
             Texture2D texture2D = new Texture2D(graphicsDevice, Width, Height, false, SurfaceFormat.Color);
