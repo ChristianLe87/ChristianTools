@@ -93,15 +93,13 @@ namespace Monogame_Tools
         }
 
 
-        public static Texture2D GetSubtextureFromAtlasTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName, Point imagePosition)
+        public static Texture2D CropTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture2D, Rectangle extractRectangle)
         {
-            Texture2D atlasTexture = GetTexture(graphicsDevice, contentManager, imageName, "");
-
-            Texture2D subtexture = new Texture2D(graphicsDevice, 100, 100);
-            int count = 100 * 100;
+            Texture2D subtexture = new Texture2D(graphicsDevice, extractRectangle.Width, extractRectangle.Height);
+            int count = extractRectangle.Width * extractRectangle.Height;
             Color[] data = new Color[count];
 
-            atlasTexture.GetData(0, new Rectangle(imagePosition.X * 100, imagePosition.Y * 100, 100, 100), data, 0, count);
+            originalTexture2D.GetData(0, new Rectangle(extractRectangle.X, extractRectangle.Y, extractRectangle.Width, extractRectangle.Height), data, 0, count);
             subtexture.SetData(data);
 
             return subtexture;

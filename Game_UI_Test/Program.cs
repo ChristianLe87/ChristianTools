@@ -30,6 +30,9 @@ namespace Game_UI_Test
 
         List<object> UIs;
         Texture2D subAtlas_1;
+        Texture2D subAtlas_2;
+        Texture2D subAtlas_3;
+        Texture2D subAtlas_4;
 
         public Game1()
         {
@@ -91,7 +94,27 @@ namespace Game_UI_Test
                 )
             };
 
-            subAtlas_1 = Tools.GetSubtextureFromAtlasTexture(graphicsDeviceManager.GraphicsDevice, contentManager, "MyAtlasTexture", new Point(0, 0));
+            subAtlas_1 = Tools.CropTexture(
+                            graphicsDevice: graphicsDeviceManager.GraphicsDevice,
+                            originalTexture2D: Tools.GetTexture(graphicsDeviceManager.GraphicsDevice, contentManager, "MyAtlasTexture"),
+                            extractRectangle: new Rectangle(0, 0, 50, 50)
+                         );
+            subAtlas_2 = Tools.CropTexture(
+                            graphicsDevice: graphicsDeviceManager.GraphicsDevice,
+                            originalTexture2D: Tools.GetTexture(graphicsDeviceManager.GraphicsDevice, contentManager, "MyAtlasTexture"),
+                            extractRectangle: new Rectangle(50, 0, 50, 50)
+                         );
+            subAtlas_3 = Tools.CropTexture(
+                            graphicsDevice: graphicsDeviceManager.GraphicsDevice,
+                            originalTexture2D: Tools.GetTexture(graphicsDeviceManager.GraphicsDevice, contentManager, "MyAtlasTexture"),
+                            extractRectangle: new Rectangle(0, 50, 50, 50)
+                         );
+            subAtlas_4 = Tools.CropTexture(
+                            graphicsDevice: graphicsDeviceManager.GraphicsDevice,
+                            originalTexture2D: Tools.GetTexture(graphicsDeviceManager.GraphicsDevice, contentManager, "MyAtlasTexture"),
+                            extractRectangle: new Rectangle(50, 50, 50, 50)
+                         );
+
             base.IsMouseVisible = true;
 
             base.Initialize();
@@ -158,6 +181,10 @@ namespace Game_UI_Test
             foreach (var healthBar in healthBars) healthBar.Draw(spriteBatch);
 
             spriteBatch.Draw(subAtlas_1, new Vector2(200, 200), Color.White);
+            spriteBatch.Draw(subAtlas_2, new Vector2(275, 200), Color.White);
+            spriteBatch.Draw(subAtlas_3, new Vector2(200, 275), Color.White);
+            spriteBatch.Draw(subAtlas_4, new Vector2(275, 275), Color.White);
+
             this.spriteBatch.End();
 
             base.Draw(gameTime);
