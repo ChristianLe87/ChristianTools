@@ -73,8 +73,22 @@ namespace Game_UI_Test
                 new HealthBar(Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 175, 10, 50), Direction.Up),
                 new HealthBar(Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(30, 175, 10, 50), Direction.Down),
 
-                // GenerateFont
-                new Label(new Rectangle(120, 150, 100, 30), Tools.GenerateFont(graphicsDeviceManager.GraphicsDevice, contentManager, "MyFont_PNG_130x28"), "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ\nabcdefghijklmnñopqrstuvwxyz\n1234567890\n,:;?.!", Label.TextAlignment.Midle_Center, Color.Black)
+
+                new Label(
+                    rectangle: new Rectangle(120, 150, 100, 30),
+                    spriteFont:Tools.GenerateFont(
+                            texture2D: Tools.GetTexture(graphicsDeviceManager.GraphicsDevice, contentManager,"MyFont_PNG_130x28"),
+                            chars: new char[,]
+                            {
+                                { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' },
+                                { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' },
+                                { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+                                { ',', ':', ';', '?', '.', '!', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' }
+                            }
+                    ),
+                    text: "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ\nabcdefghijklmnñopqrstuvwxyz\n1234567890\n,:;?.!",
+                    textAlignment: Label.TextAlignment.Midle_Center, Color.Black
+                )
             };
 
             subAtlas_1 = Tools.GetSubtextureFromAtlasTexture(graphicsDeviceManager.GraphicsDevice, contentManager, "MyAtlasTexture", new Point(0, 0));
