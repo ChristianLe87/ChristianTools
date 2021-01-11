@@ -9,6 +9,7 @@ namespace Monogame_UI
         string text;
         Texture2D texture2D;
         Rectangle rectangle;
+        Vector2 textPosition;
         TextAlignment textAlignment;
         Color fontColor;
 
@@ -20,8 +21,8 @@ namespace Monogame_UI
             this.texture2D = texture;
             this.textAlignment = textAlignment;
             this.fontColor = fontColor;
-
             this.spriteFont.LineSpacing = lineSpacing;
+            this.textPosition = GetTextPosition();
         }
 
         public void Update(string text = null)
@@ -35,7 +36,7 @@ namespace Monogame_UI
             if (texture2D != null)
                 spriteBatch.Draw(texture2D, rectangle, Color.White);
 
-            spriteBatch.DrawString(spriteFont, text, GetTextPosition(), fontColor);
+            spriteBatch.DrawString(spriteFont, text, textPosition, fontColor);
         }
 
         private Vector2 GetTextPosition()
