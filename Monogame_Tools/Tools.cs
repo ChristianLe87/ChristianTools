@@ -73,8 +73,7 @@ namespace Monogame_Tools
                     {
                         fontChars.Add(new FontChar(
                                                 chars[column, element],
-                                                new Rectangle(element * charWidth, column * charHigh, charWidth, charHigh),
-                                                charHigh));
+                                                new Rectangle(element * charWidth, column * charHigh, charWidth, charHigh)));
                     }
                 }
                 return fontChars.Where(x => x._char != '\0').OrderBy(x => x._char).ToList();
@@ -88,12 +87,12 @@ namespace Monogame_Tools
             public Rectangle cropping { get; }
             public Vector3 kerning { get; }
 
-            public FontChar(char c, Rectangle glyphBound, int charHigh)
+            public FontChar(char c, Rectangle glyphBound)
             {
                 this._char = c;
                 this.glyphBound = glyphBound;
                 this.cropping = new Rectangle(0, 0, 0, 0);
-                this.kerning = new Vector3(0, charHigh, 0);
+                this.kerning = new Vector3(0, glyphBound.Width, glyphBound.Width / 3);
             }
         }
 
