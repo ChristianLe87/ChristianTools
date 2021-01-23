@@ -166,6 +166,7 @@ namespace Monogame_Tools
             // Helpers
             float Pitagoras(int x, int y)
             {
+                // r = (x^2 + y^2)^(1/2)
                 return (float)Math.Sqrt(((x * x) + (y * y)));
             }
         }
