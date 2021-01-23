@@ -136,5 +136,38 @@ namespace Monogame_Tools
 
             return texture2D;
         }
+
+
+        public static Texture2D CreateCircleTexture(GraphicsDevice graphicsDevice, Color color, int radius = 1)
+        {
+            // Implementation
+            {
+                List<Color> circle = new List<Color>();
+                for (int y = (radius * -1); y < radius; y++)
+                {
+                    for (int x = (radius * -1); x < radius; x++)
+                    {
+                        float pitagoras = Pitagoras(x, y);
+
+                        if (pitagoras <= radius)
+                            circle.Add(color);
+                        else
+                            circle.Add(Color.Transparent);
+                    }
+                }
+
+                Texture2D texture2D = new Texture2D(graphicsDevice, radius * 2, radius * 2, false, SurfaceFormat.Color);
+                texture2D.SetData(circle.ToArray());
+
+                return texture2D;
+
+            }
+
+            // Helpers
+            float Pitagoras(int x, int y)
+            {
+                return (float)Math.Sqrt(((x * x) + (y * y)));
+            }
+        }
     }
 }

@@ -34,6 +34,11 @@ namespace Game_UI_Test
         Texture2D subAtlas_3;
         Texture2D subAtlas_4;
 
+        Texture2D circle_1;
+        Texture2D circle_2;
+        Texture2D circle_3;
+        Texture2D circle_4;
+
         public Game1()
         {
             // Window
@@ -131,6 +136,14 @@ namespace Game_UI_Test
                             extractRectangle: new Rectangle(50, 50, 50, 50)
                          );
 
+            circle_1 = Tools.CreateCircleTexture(graphicsDevice: graphicsDeviceManager.GraphicsDevice, Color.Green, 3);
+            circle_2 = Tools.CreateCircleTexture(graphicsDevice: graphicsDeviceManager.GraphicsDevice, Color.Green, 4);
+            circle_3 = Tools.CreateCircleTexture(graphicsDevice: graphicsDeviceManager.GraphicsDevice, Color.Green, 25);
+            circle_4 = Tools.CreateCircleTexture(graphicsDevice: graphicsDeviceManager.GraphicsDevice, Color.Green, 26);
+
+
+
+
             base.IsMouseVisible = true;
 
             base.Initialize();
@@ -200,6 +213,11 @@ namespace Game_UI_Test
             spriteBatch.Draw(subAtlas_2, new Vector2(275, 200), Color.White);
             spriteBatch.Draw(subAtlas_3, new Vector2(200, 275), Color.White);
             spriteBatch.Draw(subAtlas_4, new Vector2(275, 275), Color.White);
+
+            spriteBatch.Draw(circle_1, new Vector2(25, 250), Color.White);
+            spriteBatch.Draw(circle_2, new Vector2(35, 250), Color.White);
+            spriteBatch.Draw(circle_3, new Vector2(45, 250), Color.White);
+            spriteBatch.Draw(circle_4, new Vector2(100, 250), Color.White);
 
             this.spriteBatch.End();
 
