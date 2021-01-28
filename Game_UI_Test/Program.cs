@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -39,6 +40,8 @@ namespace Game_UI_Test
         Texture2D circle_3;
         Texture2D circle_4;
 
+        SoundEffect soundEffect;
+
         public Game1()
         {
             // Window
@@ -58,7 +61,7 @@ namespace Game_UI_Test
 
             UIs = new List<object>()
             {
-                new Button(new Rectangle(360, 10, 100, 50), "Hello World", Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red), Tools.GetFont(contentManager, "Arial_10", "Fonts"), Color.Black),
+                new Button(new Rectangle(360, 10, 100, 50), "Hello World", Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red), Tools.GetFont(contentManager, "Arial_10", "Fonts"), Color.Black, "TestButton"),
 
                 // Left
                 new Label(new Rectangle(10, 10, 100, 30),Tools.GetFont(contentManager, "Arial_10", "Fonts"), "My Text", Label.TextAlignment.Top_Left, Color.Black, Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
@@ -113,6 +116,18 @@ namespace Game_UI_Test
                     text: "A 'B' CDEFGHIJKLMNÑOPQRSTUVWXYZ\nabcdefghijklmnñopqrstuvwxyz\n1234567890\n,:;?.!",
                     textAlignment: Label.TextAlignment.Top_Left, Color.Black,lineSpacing: 14+2
                 ),
+
+
+                new Button(
+                        rectangle: new Rectangle(360, 100, 100, 50),
+                        text: "Play sound",
+                        defaultTexture: Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Green),
+                        mouseOverTexture: Tools.CreateColorTexture(graphicsDeviceManager.GraphicsDevice, Color.Red),
+                        spriteFont: Tools.GetFont(contentManager, "Arial_10", "Fonts"),
+                        fontColor: Color.Black,
+                        ButtonID: "SoundButton"
+                    ),
+
             };
 
             subAtlas_1 = Tools.CropTexture(
@@ -141,7 +156,7 @@ namespace Game_UI_Test
             circle_3 = Tools.CreateCircleTexture(graphicsDevice: graphicsDeviceManager.GraphicsDevice, Color.Green, 25);
             circle_4 = Tools.CreateCircleTexture(graphicsDevice: graphicsDeviceManager.GraphicsDevice, Color.Green, 26);
 
-
+            soundEffect = Tools.GetSoundEffect(graphicsDeviceManager.GraphicsDevice, contentManager, "EatingSound_WAV", "Sounds");
 
 
             base.IsMouseVisible = true;
@@ -168,8 +183,11 @@ namespace Game_UI_Test
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     Exit();
 
-                List<Button> buttons = UIs.OfType<Button>().ToList();
-                foreach (var button in buttons) button.Update(ButtonDelegate);
+                Button testButton = UIs.OfType<Button>().Where(x=>x.ButtonID == "TestButton").First();
+                testButton.Update(TestButtonDelegate);
+
+                Button soundButton = UIs.OfType<Button>().Where(x => x.ButtonID == "SoundButton").First();
+                soundButton.Update(SoundButtonDelegate);
 
                 List<Label> labels = UIs.OfType<Label>().ToList();
                 foreach (var label in labels) label.Update();
@@ -187,9 +205,14 @@ namespace Game_UI_Test
             }
 
             // ===== Helpers =====
-            void ButtonDelegate()
+            void TestButtonDelegate()
             {
                 Console.WriteLine("User click button!");
+            }
+
+            void SoundButtonDelegate()
+            {
+                soundEffect.Play();
             }
         }
 

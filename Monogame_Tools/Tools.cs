@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -169,6 +170,23 @@ namespace Monogame_Tools
                 // r = (x^2 + y^2)^(1/2)
                 return (float)Math.Sqrt(((x * x) + (y * y)));
             }
+        }
+
+
+        /// <summary>
+        /// Get SoundEffect from WAV file
+        /// </summary>
+        public static SoundEffect GetSoundEffect(GraphicsDevice graphicsDevice, ContentManager contentManager, string soundName, string folder = "")
+        {
+            string absolutePath = new DirectoryInfo(Path.Combine(Path.Combine(contentManager.RootDirectory, folder), $"{soundName}.wav")).ToString();
+
+            FileStream fileStream = new FileStream(absolutePath, FileMode.Open);
+
+            SoundEffect result = SoundEffect.FromStream(fileStream);
+
+            fileStream.Dispose();
+
+            return result;
         }
     }
 }

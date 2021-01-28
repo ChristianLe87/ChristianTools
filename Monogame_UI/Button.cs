@@ -12,10 +12,11 @@ namespace Monogame_UI
         MouseState previousMouseState;
         bool isMouseOver;
         Label label;
+        public string ButtonID { get; private set; }
 
         public delegate void DxOnClickAction();
 
-        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor)
+        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor, string ButtonID)
         {
             this.rectangle = rectangle;
             this.defaultTexture = defaultTexture;
@@ -23,6 +24,8 @@ namespace Monogame_UI
             this.isMouseOver = false;
 
             this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, fontColor);
+
+            this.ButtonID = ButtonID;
         }
 
         public void Update(DxOnClickAction OnClickAction)
