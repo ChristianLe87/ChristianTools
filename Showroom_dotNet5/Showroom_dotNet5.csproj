@@ -30,6 +30,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scenes\" />
+  </ItemGroup>
   <Import Project="..\zUI\zUI.projitems" Label="Shared" Condition="Exists('..\zUI\zUI.projitems')" />
   <Import Project="..\zTools\zTools.projitems" Label="Shared" Condition="Exists('..\zTools\zTools.projitems')" />
 </Project>
