@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Monogame_UI
+namespace zUI
 {
     public class HealthBar
     {
@@ -59,13 +59,13 @@ namespace Monogame_UI
         {
             this.value -= reduceValue;
         }
-    }
 
-    public enum Direction
-    {
-        Right,
-        Left,
-        Up,
-        Down
+        public enum Direction
+        {
+            Right,
+            Left,
+            Up,
+            Down
+        }
     }
 }

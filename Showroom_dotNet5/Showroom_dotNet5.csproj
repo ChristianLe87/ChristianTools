@@ -17,10 +17,6 @@
       <Link>Content\MyFont_PNG_130x28.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\Content\Fonts\Arial_10.xnb">
-      <Link>Content\Fonts\Arial_10.xnb</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="..\Content\MyFont_PNG_260x56.png">
       <Link>Content\MyFont_PNG_260x56.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -29,7 +25,11 @@
       <Link>Content\Sounds\EatingSound_WAV.wav</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\Content\Fonts\Arial_10.xnb">
+      <Link>Content\Fonts\Arial_10.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <Import Project="..\Monogame_Tools\Monogame_Tools.projitems" Label="Shared" Condition="Exists('..\Monogame_Tools\Monogame_Tools.projitems')" />
-  <Import Project="..\Monogame_UI\Monogame_UI.projitems" Label="Shared" Condition="Exists('..\Monogame_UI\Monogame_UI.projitems')" />
+  <Import Project="..\zUI\zUI.projitems" Label="Shared" Condition="Exists('..\zUI\zUI.projitems')" />
+  <Import Project="..\zTools\zTools.projitems" Label="Shared" Condition="Exists('..\zTools\zTools.projitems')" />
 </Project>

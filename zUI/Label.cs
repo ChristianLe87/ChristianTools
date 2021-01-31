@@ -1,7 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Monogame_UI
+namespace zUI
 {
     public class Label
     {
@@ -13,7 +14,7 @@ namespace Monogame_UI
         TextAlignment textAlignment;
         Color fontColor;
 
-        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment,Color fontColor, Texture2D texture = null, int lineSpacing = 10)
+        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, Color fontColor, Texture2D texture = null, int lineSpacing = 10)
         {
             this.rectangle = rectangle;
             this.spriteFont = spriteFont;

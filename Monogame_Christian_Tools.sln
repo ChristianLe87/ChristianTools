@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showroom_dotNet5", "Showroom_dotNet5\Showroom_dotNet5.csproj", "{58B4CBCF-C26E-4C64-AB8B-8B7CC63E8820}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zUI", "zUI\zUI.shproj", "{7D244132-1A04-4DDC-9226-C930CE5444E6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zTools", "zTools\zTools.shproj", "{D60AF7BE-2C38-4681-BA98-9039780BAD3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58B4CBCF-C26E-4C64-AB8B-8B7CC63E8820}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{58B4CBCF-C26E-4C64-AB8B-8B7CC63E8820}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{58B4CBCF-C26E-4C64-AB8B-8B7CC63E8820}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{58B4CBCF-C26E-4C64-AB8B-8B7CC63E8820}.Release|anycpu.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0F484E6-D26B-4717-B459-C284C52C0451}
+	EndGlobalSection
+EndGlobal

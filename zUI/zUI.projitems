@@ -3,14 +3,14 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>{5D212934-7594-4461-9329-9A7B10DE4B7F}</SharedGUID>
+    <SharedGUID>{7D244132-1A04-4DDC-9226-C930CE5444E6}</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Monogame_UI</Import_RootNamespace>
+    <Import_RootNamespace>zUI</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Button.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HealthBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Label.cs" />
   </ItemGroup>
 </Project>
