@@ -23,17 +23,33 @@ namespace Showroom_dotNet5
     {
         public class Scene
         {
+            public static readonly string Scene_Menu = "Scene_Menu";
             public static readonly string Scene_UI = "Scene_UI";
+            public static readonly string Scene_Phisics = "Scene_Phisics";
+        }
+
+        public class Font
+        {
+            public static readonly string Font_14 = "MyFont_PNG_260x56";
+
+            public static readonly char[,] chars = new char[,]
+            {
+                { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' },
+                { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' },
+                { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0' },
+                { ',', ':', ';', '?', '.', '!', ' ','\'','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0' }
+            };
         }
     }
+
     public class Game1 : Game
     {
         public static GraphicsDeviceManager graphicsDeviceManager;
         SpriteBatch spriteBatch;
         public static ContentManager contentManager;
 
-        Dictionary<string, IScene> scenes;
-        string actualScene = WK.Scene.Scene_UI;
+        static Dictionary<string, IScene> scenes;
+        static string actualScene = WK.Scene.Scene_Menu;
 
         public Game1()
         {
@@ -54,7 +70,9 @@ namespace Showroom_dotNet5
 
             scenes = new Dictionary<string, IScene>()
             {
-                { WK.Scene.Scene_UI, new Scene_UI() }
+                { WK.Scene.Scene_Menu, new Scene_Menu() },
+                { WK.Scene.Scene_UI, new Scene_UI() },
+                { WK.Scene.Scene_Phisics, new Scene_Phisics() }
             };
 
             base.IsMouseVisible = true;
@@ -96,6 +114,12 @@ namespace Showroom_dotNet5
             this.spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public static void ChangeToScene(string scene)
+        {
+            actualScene = scene;
+            scenes[actualScene].Initialize();
         }
     }
 }
