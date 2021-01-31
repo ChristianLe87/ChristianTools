@@ -3,25 +3,22 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Showroom_dotNet5
 {
-    public class Scene_Phisics: IScene
+    public class Scene_Physics : IScene
     {
-        public Scene_Phisics()
+        public Scene_Physics()
         {
         }
 
         public void Initialize()
         {
-            throw new NotImplementedException();
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
         }
     }
 }
