@@ -21,6 +21,11 @@ namespace Showroom_dotNet5
 
     public class WK
     {
+        public class Default
+        {
+            public static readonly int FPS = 60;
+        }
+
         public class Scene
         {
             public static readonly string Scene_Menu = "Scene_Menu";

@@ -200,5 +200,22 @@ namespace zTools
                 return result;
             }
         }
+
+        public class MyMath
+        {
+            /// <summary>
+            /// Calculate inclination
+            /// </summary>
+            public static float M(Vector2 start, Vector2 direction)
+            {
+                float y = direction.Y - start.Y;
+                float x = direction.X - start.X;
+
+                if (x == 0f)
+                    return 0;
+                else
+                    return y / x;
+            }
+        }
     }
 }

@@ -15,7 +15,6 @@ namespace Showroom_dotNet5
 {
     public class Scene_UI : IScene
     {
-
         List<object> UIs;
         Texture2D subAtlas_1;
         Texture2D subAtlas_2;
@@ -28,6 +27,8 @@ namespace Showroom_dotNet5
         Texture2D circle_4;
 
         SoundEffect soundEffect;
+
+        Button goToMenu;
 
         public Scene_UI()
         {
@@ -103,9 +104,18 @@ namespace Showroom_dotNet5
                         spriteFont: Tools.Font.GetFont(Game1.contentManager, "Arial_10", "Fonts"),
                         fontColor: Color.Black,
                         ButtonID: "SoundButton"
-                    ),
-
+                    )
             };
+
+            goToMenu = new Button(
+                            rectangle: new Rectangle(50, 400, 100, 50),
+                            text: "Menu",
+                            defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                            mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                            spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                            fontColor: Color.Black,
+                            ButtonID: "goToMenu"
+            );
 
             subAtlas_1 = Tools.Texture.CropTexture(
                             graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
@@ -158,6 +168,8 @@ namespace Showroom_dotNet5
                     else
                         healthBar.value = 100;
                 }
+
+                goToMenu.Update(goToMenu_Delegate);
             }
 
             // ===== Helpers =====
@@ -169,6 +181,11 @@ namespace Showroom_dotNet5
             void SoundButtonDelegate()
             {
                 soundEffect.Play();
+            }
+
+            void goToMenu_Delegate()
+            {
+                Game1.ChangeToScene(WK.Scene.Scene_Menu);
             }
         }
 
@@ -192,6 +209,8 @@ namespace Showroom_dotNet5
             spriteBatch.Draw(circle_2, new Vector2(35, 250), Color.White);
             spriteBatch.Draw(circle_3, new Vector2(45, 250), Color.White);
             spriteBatch.Draw(circle_4, new Vector2(100, 250), Color.White);
+
+            goToMenu.Draw(spriteBatch);
         }
     }
 }

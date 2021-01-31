@@ -1,4 +1,9 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Showroom_dotNet5;
+using zTools;
+
 namespace zAssets
 {
     public class Bullet
@@ -14,19 +19,11 @@ namespace zAssets
 
         public Bullet(Vector2 start, Vector2 direction)
         {
-            {
-                this.texture2D = Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Black, 10);
-                this.position = start;
-                this.m = M(start, direction);
-                this.timeCount = 0f;
-                this.isActive = true;
-            }
-
-
-            float M(Vector2 start, Vector2 direction)
-            {
-                return (direction.Y - start.Y) / (direction.X - start.X);
-            }
+            this.texture2D = Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Black, 10);
+            this.position = start;
+            this.m = Tools.MyMath.M(start, direction);
+            this.timeCount = 0f;
+            this.isActive = true;
         }
 
         public void Update()
@@ -34,7 +31,6 @@ namespace zAssets
             // Implementation
             {
                 position = Move();
-                //position = Tools.Other.MoveTowards(position, targetPoint, 3, 5);
                 TimeToDestroy();
             }
 
