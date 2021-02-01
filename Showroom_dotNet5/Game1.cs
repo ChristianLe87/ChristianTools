@@ -23,6 +23,8 @@ namespace Showroom_dotNet5
     {
         public class Default
         {
+            public static readonly int Width = 500;
+            public static readonly int Height = 500;
             public static readonly int FPS = 60;
         }
 
@@ -55,14 +57,14 @@ namespace Showroom_dotNet5
         public static ContentManager contentManager;
 
         static Dictionary<string, IScene> scenes;
-        static string actualScene = WK.Scene.Scene_Menu;
+        static string actualScene = WK.Scene.Scene_Assets;
 
         public Game1()
         {
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = 500;
-            graphicsDeviceManager.PreferredBackBufferHeight = 500;
+            graphicsDeviceManager.PreferredBackBufferWidth = WK.Default.Width;
+            graphicsDeviceManager.PreferredBackBufferHeight = WK.Default.Height;
             graphicsDeviceManager.ApplyChanges();
 
             // FPS

@@ -216,6 +216,11 @@ namespace zTools
                 else
                     return y / x;
             }
+
+            public static float B(float x, float y, float m)
+            {
+                return y - (m * x);
+            }
         }
     }
 }
