@@ -13,9 +13,8 @@ namespace zAssets
         Dir dir;
         float m;
         float b;
-        float timeCount;
         int steps;
-        int autoDestroyTime;
+        TimeSpan autoDestroyTime;
 
         public int Health;
         public bool isActive;
@@ -27,9 +26,8 @@ namespace zAssets
             this.position = start;
             this.m = Tools.MyMath.M(start, direction);
             this.b = Tools.MyMath.B(position.X, position.Y, m);
-            this.timeCount = 0f;
             this.steps = steps;
-            this.autoDestroyTime = (int)autoDestroyTime.TotalSeconds;
+            this.autoDestroyTime = autoDestroyTime;
 
             // is inclined
             if (m != 0)
@@ -106,11 +104,12 @@ namespace zAssets
             // Helpers
             void TimeToDestroy()
             {
-                if (autoDestroyTime != 0)
+                if (autoDestroyTime.TotalMilliseconds != 0)
                 {
-                    timeCount += 1f / WK.Default.FPS;
+                    var bla = new TimeSpan(0, 0, 0, 0, (int)((1f / (WK.Default.FPS)) * 1000));
+                    autoDestroyTime = autoDestroyTime.Subtract(bla);
 
-                    if (timeCount > autoDestroyTime) isActive = false;
+                    if (autoDestroyTime.TotalMilliseconds <= 0) isActive = false;
                 }
             }
         }

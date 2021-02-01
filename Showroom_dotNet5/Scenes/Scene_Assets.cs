@@ -112,7 +112,6 @@ namespace Showroom_dotNet5
 
             goToMenu.Update(goToMenu_Delegate);
 
-
             void goToMenu_Delegate()
             {
                 Game1.ChangeToScene(WK.Scene.Scene_Menu);
