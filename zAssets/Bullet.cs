@@ -28,66 +28,7 @@ namespace zAssets
             this.b = Tools.MyMath.B(position.X, position.Y, m);
             this.steps = steps;
             this.autoDestroyTime = autoDestroyTime;
-
-            // is inclined
-            if (m != 0)
-            {
-                // Go left
-                if (direction.X - position.X < 0)
-                {
-                    // go up
-                    if (direction.Y - position.Y < 0)
-                    {
-                        dir = Dir.UpLeft;
-                    }
-                    // go down
-                    else if (direction.Y - position.Y > 0)
-                    {
-                        dir = Dir.DownLeft;
-                    }
-                }
-
-                // go right
-                else if (direction.X - position.X > 0)
-                {
-                    // go up
-                    if (direction.Y - position.Y < 0)
-                    {
-                        dir = Dir.UpRight;
-                    }
-                    // go down
-                    else if (direction.Y - position.Y > 0)
-                    {
-                        dir = Dir.DownRight;
-                    }
-                }
-            }
-
-            // is horizontal or vertical
-            else if (m == 0)
-            {
-                // go up
-                if (direction.X == position.X && direction.Y - position.Y < 0)
-                {
-                    dir = Dir.Up;
-                }
-                // go down
-                else if (direction.X == position.X && direction.Y - position.Y > 0)
-                {
-                    dir = Dir.Down;
-                }
-                // go right
-                else if (direction.Y == position.Y && direction.X - position.X > 0)
-                {
-                    dir = Dir.Right;
-                }
-                // go left
-                else if (direction.Y == position.Y && direction.X - position.X < 0)
-                {
-                    dir = Dir.Left;
-                }
-            }
-
+            this.dir = GetDir(direction);
             this.isActive = true;
         }
 
@@ -156,6 +97,70 @@ namespace zAssets
             }
         }
 
+        private Dir GetDir(Vector2 direction)
+        {
+            // is inclined
+            if (m != 0)
+            {
+                // Go left
+                if (direction.X - position.X < 0)
+                {
+                    // go up
+                    if (direction.Y - position.Y < 0)
+                    {
+                        return Dir.UpLeft;
+                    }
+                    // go down
+                    else if (direction.Y - position.Y > 0)
+                    {
+                        return Dir.DownLeft;
+                    }
+                }
+
+                // go right
+                else if (direction.X - position.X > 0)
+                {
+                    // go up
+                    if (direction.Y - position.Y < 0)
+                    {
+                        return Dir.UpRight;
+                    }
+                    // go down
+                    else if (direction.Y - position.Y > 0)
+                    {
+                        return Dir.DownRight;
+                    }
+                }
+            }
+
+            // is horizontal or vertical
+            else if (m == 0)
+            {
+                // go up
+                if (direction.X == position.X && direction.Y - position.Y < 0)
+                {
+                    dir = Dir.Up;
+                }
+                // go down
+                else if (direction.X == position.X && direction.Y - position.Y > 0)
+                {
+                    dir = Dir.Down;
+                }
+                // go right
+                else if (direction.Y == position.Y && direction.X - position.X > 0)
+                {
+                    dir = Dir.Right;
+                }
+                // go left
+                else if (direction.Y == position.Y && direction.X - position.X < 0)
+                {
+                    dir = Dir.Left;
+                }
+            }
+
+            return Dir._;
+        }
+
         enum Dir
         {
             Up,
@@ -165,7 +170,8 @@ namespace zAssets
             UpLeft,
             DownLeft,
             UpRight,
-            DownRight
+            DownRight,
+            _
         }
     }
 }
