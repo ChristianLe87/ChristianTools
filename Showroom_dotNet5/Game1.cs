@@ -33,8 +33,8 @@ namespace Showroom_dotNet5
             public static readonly string Scene_Menu = "Scene_Menu";
             public static readonly string Scene_UI = "Scene_UI";
             public static readonly string Scene_Physics = "Scene_Physics";
-            public static readonly string Scene_Assets = "Scene_Assets";
             public static readonly string Scene_Shoot = "Scene_Shoot";
+            public static readonly string Scene_Triangle = "Scene_Triangle";
         }
 
         public class Font
@@ -58,7 +58,7 @@ namespace Showroom_dotNet5
         public static ContentManager contentManager;
 
         static Dictionary<string, IScene> scenes;
-        static string actualScene = WK.Scene.Scene_Shoot;
+        static string actualScene = WK.Scene.Scene_Menu;
 
         public Game1()
         {
@@ -70,7 +70,7 @@ namespace Showroom_dotNet5
 
             // FPS
             base.IsFixedTimeStep = true;
-            base.TargetElapsedTime = TimeSpan.FromSeconds(1d / 60);
+            base.TargetElapsedTime = TimeSpan.FromSeconds(1d / WK.Default.FPS);
 
             // Content
             string absolutePath = Path.Combine(Environment.CurrentDirectory, "Content");
@@ -82,8 +82,8 @@ namespace Showroom_dotNet5
                 { WK.Scene.Scene_Menu, new Scene_Menu() },
                 { WK.Scene.Scene_UI, new Scene_UI() },
                 { WK.Scene.Scene_Physics, new Scene_Physics() },
-                { WK.Scene.Scene_Assets, new Scene_Assets() },
-                { WK.Scene.Scene_Shoot, new Scene_Shoot() }
+                { WK.Scene.Scene_Shoot, new Scene_Shoot() },
+                { WK.Scene.Scene_Triangle, new Scene_Triangle() }
             };
 
             base.IsMouseVisible = true;

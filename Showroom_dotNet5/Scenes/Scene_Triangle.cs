@@ -1,21 +1,31 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using zAssets;
 using zTools;
 using zUI;
 
 namespace Showroom_dotNet5
 {
-    public class Scene_Physics : IScene
+    public class Scene_Triangle : IScene
     {
+        Texture2D triangle;
         Button goToMenu;
 
-        public Scene_Physics()
+        public Scene_Triangle()
         {
+            Initialize();
         }
 
         public void Initialize()
         {
+            triangle = zTools.Tools.Texture.CreateTriangle(
+                                                        graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
+                                                        color: Color.Red,
+                                                        Width: 50,
+                                                        Height: 30
+            );
+
             goToMenu = new Button(
                             rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
                             text: "Menu",
@@ -31,7 +41,6 @@ namespace Showroom_dotNet5
         {
             goToMenu.Update(goToMenu_Delegate);
 
-
             void goToMenu_Delegate()
             {
                 Game1.ChangeToScene(WK.Scene.Scene_Menu);
@@ -40,7 +49,10 @@ namespace Showroom_dotNet5
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(triangle, new Rectangle(WK.Default.Width / 2, WK.Default.Height / 2, triangle.Width, triangle.Height), Color.White);
             goToMenu.Draw(spriteBatch);
         }
+
+
     }
 }

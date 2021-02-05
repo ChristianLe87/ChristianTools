@@ -95,6 +95,45 @@ namespace zTools
                     return (float)Math.Sqrt(((x * x) + (y * y)));
                 }
             }
+
+            internal static Texture2D CreateTriangle(GraphicsDevice graphicsDevice, Color color, int Width, int Height)
+            {
+                List<Color> colors = new List<Color>();
+                
+                Point p1 = new Point(); // top
+                Point p2 = new Point(); // middle
+                Point p3 = new Point(); // down
+
+                float m1 = Tools.MyMath.M(p1.ToVector2(), p2.ToVector2());
+                float m2 = Tools.MyMath.M(p3.ToVector2(), p2.ToVector2());
+
+                for (int h = 0; h < Height; h++)
+                {
+                    for (int w = 0; w < Width; w++)
+                    {
+                        if(h < Height / 2)
+                        {
+                            int x = w;
+                            int y = (int)(m1 * x + p1.Y);
+
+                            //if()
+                            colors.Add(color);
+                        }
+                        else
+                        {
+                            colors.Add(Color.Black);
+                        }
+                        
+                    }
+                }
+
+
+
+                Texture2D texture2D = new Texture2D(graphicsDevice, Width, Height, false, SurfaceFormat.Color);
+                texture2D.SetData(colors.ToArray());
+
+                return texture2D;
+            }
         }
 
 

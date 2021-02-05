@@ -9,8 +9,8 @@ namespace Showroom_dotNet5
     public class Scene_Menu : IScene
     {
         Button goToUI;
-        Button goToPhysics;
-        Button goToAssets;
+        Button goToShoot;
+        Button goToTriangle;
 
         public Scene_Menu()
         {
@@ -29,24 +29,24 @@ namespace Showroom_dotNet5
                             ButtonID: "goToUI"
             );
 
-            goToPhysics = new Button(
+            goToShoot = new Button(
                             rectangle: new Rectangle(50, 150, 100, 50),
-                            text: "Physics",
+                            text: "Shoot",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                             fontColor: Color.Black,
-                            ButtonID: "goToPhysics"
+                            ButtonID: "goToShoot"
             );
 
-            goToAssets = new Button(
+            goToTriangle = new Button(
                             rectangle: new Rectangle(50, 250, 100, 50),
-                            text: "Assets",
+                            text: "Triangle",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                             fontColor: Color.Black,
-                            ButtonID: "goToAssets"
+                            ButtonID: "goToTriangle"
             );
         }
 
@@ -55,8 +55,8 @@ namespace Showroom_dotNet5
             // === Implementation ===
             {
                 goToUI.Update(goToUI_Delegate);
-                goToPhysics.Update(goToPhysics_Delegate);
-                goToAssets.Update(goToAssets_Delegate);
+                goToShoot.Update(goToShoot_Delegate);
+                goToTriangle.Update(goToTriangle_Delegate);
             }
 
             // === Helpers ===
@@ -65,22 +65,22 @@ namespace Showroom_dotNet5
                 Game1.ChangeToScene(WK.Scene.Scene_UI);
             }
 
-            void goToPhysics_Delegate()
+            void goToShoot_Delegate()
             {
-                Game1.ChangeToScene(WK.Scene.Scene_Physics);
+                Game1.ChangeToScene(WK.Scene.Scene_Shoot);
             }
 
-            void goToAssets_Delegate()
+            void goToTriangle_Delegate()
             {
-                Game1.ChangeToScene(WK.Scene.Scene_Assets);
+                Game1.ChangeToScene(WK.Scene.Scene_Triangle);
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             goToUI.Draw(spriteBatch);
-            goToPhysics.Draw(spriteBatch);
-            goToAssets.Draw(spriteBatch);
+            goToShoot.Draw(spriteBatch);
+            goToTriangle.Draw(spriteBatch);
         }
     }
 }

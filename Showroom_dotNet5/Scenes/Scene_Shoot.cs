@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using zAssets;
 using zTools;
+using zUI;
 
 namespace Showroom_dotNet5
 {
@@ -12,6 +13,7 @@ namespace Showroom_dotNet5
     {
         List<Bullet> bullets;
         MouseState lastMouseState;
+        Button goToMenu;
 
         public Scene_Shoot()
         {
@@ -20,6 +22,16 @@ namespace Showroom_dotNet5
         public void Initialize()
         {
             bullets = new List<Bullet>();
+
+            goToMenu = new Button(
+                             rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
+                             text: "Menu",
+                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                             fontColor: Color.Black,
+                             ButtonID: "goToMenu"
+             );
         }
         public void Update()
         {
@@ -44,11 +56,20 @@ namespace Showroom_dotNet5
             lastMouseState = mouseState;
 
             foreach (var bullet in bullets) bullet.Update();
+
+            goToMenu.Update(goToMenu_Delegate);
+
+            void goToMenu_Delegate()
+            {
+                Game1.ChangeToScene(WK.Scene.Scene_Menu);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (var bullet in bullets) bullet.Draw(spriteBatch);
+
+            goToMenu.Draw(spriteBatch);
         }
     }
 }
