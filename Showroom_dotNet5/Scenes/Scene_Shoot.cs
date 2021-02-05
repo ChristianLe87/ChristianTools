@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -47,7 +48,8 @@ namespace Showroom_dotNet5
                             texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 10),
                             start: new Vector2(WK.Default.Width / 2, WK.Default.Height / 2),
                             direction: mousePosition,
-                            steps: 1
+                            steps: 3,
+                            autoDestroyTime: new TimeSpan(0, 0, 2)
                 );
 
                 bullets.Add(bullet);
@@ -55,6 +57,7 @@ namespace Showroom_dotNet5
 
             lastMouseState = mouseState;
 
+            bullets = bullets.Where(x => x.isActive == true).ToList();
             foreach (var bullet in bullets) bullet.Update();
 
             goToMenu.Update(goToMenu_Delegate);
