@@ -100,9 +100,9 @@ namespace zTools
             {
                 List<Color> colors = new List<Color>();
                 
-                Point p1 = new Point(); // top
-                Point p2 = new Point(); // middle
-                Point p3 = new Point(); // down
+                Point p1 = new Point(0,0); // top
+                Point p2 = new Point(Width, Height/2); // middle
+                Point p3 = new Point(0, Height); // down
 
                 float m1 = Tools.MyMath.M(p1.ToVector2(), p2.ToVector2());
                 float m2 = Tools.MyMath.M(p3.ToVector2(), p2.ToVector2());
@@ -113,15 +113,21 @@ namespace zTools
                     {
                         if(h < Height / 2)
                         {
-                            int x = w;
-                            int y = (int)(m1 * x + p1.Y);
+                            int result = (int)(m1 * w + p1.Y);
 
-                            //if()
-                            colors.Add(color);
+                            if (result<=h)
+                                colors.Add(color);
+                            else
+                                colors.Add(Color.Transparent);
                         }
                         else
                         {
-                            colors.Add(Color.Black);
+                            int result = (int)(m2 * w + p3.Y);
+
+                            if (result >= h)
+                                colors.Add(color);
+                            else
+                                colors.Add(Color.Transparent);
                         }
                         
                     }

@@ -22,8 +22,8 @@ namespace Showroom_dotNet5
             triangle = zTools.Tools.Texture.CreateTriangle(
                                                         graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                                                         color: Color.Red,
-                                                        Width: 50,
-                                                        Height: 30
+                                                        Width: 40,
+                                                        Height: 40
             );
 
             goToMenu = new Button(
