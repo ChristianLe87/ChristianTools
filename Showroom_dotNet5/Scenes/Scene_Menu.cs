@@ -10,7 +10,7 @@ namespace Showroom_dotNet5
     {
         Button goToUI;
         Button goToShoot;
-        Button goToTriangle;
+        Button goToTools;
 
         public Scene_Menu()
         {
@@ -39,14 +39,14 @@ namespace Showroom_dotNet5
                             ButtonID: "goToShoot"
             );
 
-            goToTriangle = new Button(
+            goToTools = new Button(
                             rectangle: new Rectangle(50, 250, 100, 50),
-                            text: "Triangle",
+                            text: "Tools",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                             fontColor: Color.Black,
-                            ButtonID: "goToTriangle"
+                            ButtonID: "goToTools"
             );
         }
 
@@ -56,7 +56,7 @@ namespace Showroom_dotNet5
             {
                 goToUI.Update(goToUI_Delegate);
                 goToShoot.Update(goToShoot_Delegate);
-                goToTriangle.Update(goToTriangle_Delegate);
+                goToTools.Update(goToTriangle_Delegate);
             }
 
             // === Helpers ===
@@ -72,7 +72,7 @@ namespace Showroom_dotNet5
 
             void goToTriangle_Delegate()
             {
-                Game1.ChangeToScene(WK.Scene.Scene_Triangle);
+                Game1.ChangeToScene(WK.Scene.Scene_Tools);
             }
         }
 
@@ -80,7 +80,7 @@ namespace Showroom_dotNet5
         {
             goToUI.Draw(spriteBatch);
             goToShoot.Draw(spriteBatch);
-            goToTriangle.Draw(spriteBatch);
+            goToTools.Draw(spriteBatch);
         }
     }
 }
