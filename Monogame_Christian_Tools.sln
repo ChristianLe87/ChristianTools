@@ -14,6 +14,12 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zPhysics", "zPhysics\zPhysics.shproj", "{22F283AB-5776-4E10-A1AD-0E8FDE91C5A3}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		zPhysics\zPhysics.projitems*{22f283ab-5776-4e10-a1ad-0e8fde91c5a3}*SharedItemsImports = 13
+		zAssets\zAssets.projitems*{37980359-51a9-4b68-aad6-4b9b7eb07972}*SharedItemsImports = 13
+		zUI\zUI.projitems*{7d244132-1a04-4ddc-9226-c930ce5444e6}*SharedItemsImports = 13
+		zTools\zTools.projitems*{d60af7be-2c38-4681-ba98-9039780bad3a}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|anycpu = Debug|anycpu
 		Release|anycpu = Release|anycpu
