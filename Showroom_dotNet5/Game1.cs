@@ -34,7 +34,7 @@ namespace Showroom_dotNet5
             public static readonly string Scene_UI = "Scene_UI";
             public static readonly string Scene_Physics = "Scene_Physics";
             public static readonly string Scene_Shoot = "Scene_Shoot";
-            public static readonly string Scene_Triangle = "Scene_Triangle";
+            public static readonly string Scene_Tools = "Scene_Tools";
         }
 
         public class Font
@@ -83,7 +83,7 @@ namespace Showroom_dotNet5
                 { WK.Scene.Scene_UI, new Scene_UI() },
                 { WK.Scene.Scene_Physics, new Scene_Physics() },
                 { WK.Scene.Scene_Shoot, new Scene_Shoot() },
-                { WK.Scene.Scene_Triangle, new Scene_Triangle() }
+                { WK.Scene.Scene_Tools, new Scene_Tools() }
             };
 
             base.IsMouseVisible = true;
