@@ -13,6 +13,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zAssets", "zAssets\zAssets.
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zPhysics", "zPhysics\zPhysics.shproj", "{22F283AB-5776-4E10-A1AD-0E8FDE91C5A3}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zTopView_RPG", "zTopView_RPG\zTopView_RPG.shproj", "{ED877A14-7DC7-43B7-82F0-5547C7B8FFD4}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		zPhysics\zPhysics.projitems*{22f283ab-5776-4e10-a1ad-0e8fde91c5a3}*SharedItemsImports = 13
