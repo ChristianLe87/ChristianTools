@@ -57,32 +57,36 @@ namespace Showroom_dotNet5
         Point start;
         Point end;
         int thickness;
-        Color color;
 
         public Line(Point start, Point end, int thickness, Color color)
         {
             this.start = start;
             this.end = end;
             this.thickness = thickness;
-            this.color = color;
+            this.texture2D = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, color);
 
             CreateLine();
         }
 
         void CreateLine()
         {
-            int ammountOfRectanglesNeeded = (end.X - start.X) / thickness;
-            this.rectangles = new Rectangle[Math.Abs(ammountOfRectanglesNeeded)];
-            this.texture2D = zTools.Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, color);
+            int ammountOfRectanglesNeeded = Math.Abs((end.X - start.X) / thickness);
+            this.rectangles = new Rectangle[ammountOfRectanglesNeeded];
 
-            float m = zTools.Tools.MyMath.M(start.ToVector2(), end.ToVector2());
-            float b = zTools.Tools.MyMath.B(start.X, start.Y, m);
+            float m = Tools.MyMath.M(start.ToVector2(), end.ToVector2());
+            float b = Tools.MyMath.B(start.X, start.Y, m);
 
             for (int i = 0; i < rectangles.Length; i++)
             {
+                // check directoin
+                int x;
+                if (end.X - start.X > 0)
+                    x = start.X + (thickness * i);
+                else
+                    x = end.X + (thickness * i);
+
                 // y = mx +b
-                var x = start.X + (thickness * i);
-                var y = (m * x) + b;
+                float y = (m * x) + b;
 
                 rectangles[i] = new Rectangle(x, (int)y, thickness, thickness);
             }
