@@ -29,13 +29,7 @@ namespace Showroom_dotNet5
 
         public void Update()
         {
-            goToMenu.Update(goToMenu_Delegate);
-
-
-            void goToMenu_Delegate()
-            {
-                Game1.ChangeToScene(WK.Scene.Scene_Menu);
-            }
+            goToMenu.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Menu));
         }
 
         public void Draw(SpriteBatch spriteBatch)

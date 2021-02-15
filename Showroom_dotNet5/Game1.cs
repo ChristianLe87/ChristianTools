@@ -35,7 +35,7 @@ namespace Showroom_dotNet5
             public static readonly string Scene_Physics = "Scene_Physics";
             public static readonly string Scene_Shoot = "Scene_Shoot";
             public static readonly string Scene_Tools = "Scene_Tools";
-            public static readonly string Scene_Lines_Points_Mesh = "Scene_Lines_Points_Mesh";
+            public static readonly string Scene_Lines = "Scene_Lines";
         }
 
         public class Font
@@ -59,7 +59,7 @@ namespace Showroom_dotNet5
         public static ContentManager contentManager;
 
         static Dictionary<string, IScene> scenes;
-        static string actualScene = WK.Scene.Scene_Lines_Points_Mesh;
+        static string actualScene = WK.Scene.Scene_Menu;
 
         public Game1()
         {
@@ -85,7 +85,7 @@ namespace Showroom_dotNet5
                 { WK.Scene.Scene_Physics, new Scene_Physics() },
                 { WK.Scene.Scene_Shoot, new Scene_Shoot() },
                 { WK.Scene.Scene_Tools, new Scene_Tools() },
-                { WK.Scene.Scene_Lines_Points_Mesh, new Scene_Lines_Points_Mesh() }
+                { WK.Scene.Scene_Lines, new Scene_Lines() }
             };
 
             base.IsMouseVisible = true;

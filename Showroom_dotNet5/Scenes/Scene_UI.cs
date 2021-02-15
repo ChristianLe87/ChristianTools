@@ -110,44 +110,25 @@ namespace Showroom_dotNet5
 
         public void Update()
         {
-            // ===== Implementation =====
+            Button testButton = UIs.OfType<Button>().Where(x => x.ButtonID == "TestButton").First();
+            testButton.Update(() => Console.WriteLine("User click button!"));
+
+            Button soundButton = UIs.OfType<Button>().Where(x => x.ButtonID == "SoundButton").First();
+            soundButton.Update(() => soundEffect.Play());
+
+            List<Label> labels = UIs.OfType<Label>().ToList();
+            foreach (var label in labels) label.Update();
+
+            List<HealthBar> healthBars = UIs.OfType<HealthBar>().ToList();
+            foreach (var healthBar in healthBars)
             {
-                Button testButton = UIs.OfType<Button>().Where(x => x.ButtonID == "TestButton").First();
-                testButton.Update(TestButtonDelegate);
-
-                Button soundButton = UIs.OfType<Button>().Where(x => x.ButtonID == "SoundButton").First();
-                soundButton.Update(SoundButtonDelegate);
-
-                List<Label> labels = UIs.OfType<Label>().ToList();
-                foreach (var label in labels) label.Update();
-
-                List<HealthBar> healthBars = UIs.OfType<HealthBar>().ToList();
-                foreach (var healthBar in healthBars)
-                {
-                    if (healthBar.value > 0)
-                        healthBar.value--;
-                    else
-                        healthBar.value = 100;
-                }
-
-                goToMenu.Update(goToMenu_Delegate);
+                if (healthBar.value > 0)
+                    healthBar.value--;
+                else
+                    healthBar.value = 100;
             }
 
-            // ===== Helpers =====
-            void TestButtonDelegate()
-            {
-                Console.WriteLine("User click button!");
-            }
-
-            void SoundButtonDelegate()
-            {
-                soundEffect.Play();
-            }
-
-            void goToMenu_Delegate()
-            {
-                Game1.ChangeToScene(WK.Scene.Scene_Menu);
-            }
+            goToMenu.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Menu));
         }
 
         public void Draw(SpriteBatch spriteBatch)
