@@ -34,7 +34,7 @@ namespace Showroom_dotNet5
         public void Update()
         {
             MouseState mouseState = Mouse.GetState();
-            if(mouseState.LeftButton == ButtonState.Pressed)
+            if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 line_1.Update(end: new Point(mouseState.X, mouseState.Y));
             }
@@ -70,13 +70,18 @@ namespace Showroom_dotNet5
 
         void CreateLine()
         {
+            if (Math.Abs(start.X - end.X) > -1 && Math.Abs(start.X - end.X) < 1)
+            {
+                var bla = 0;
+            }
+
             int ammountOfRectanglesNeeded = Math.Abs((end.X - start.X) / thickness);
-            this.rectangles = new Rectangle[ammountOfRectanglesNeeded];
+            this.rectangles = new Rectangle[ammountOfRectanglesNeeded + 2];
 
             float m = Tools.MyMath.M(start.ToVector2(), end.ToVector2());
             float b = Tools.MyMath.B(start.X, start.Y, m);
 
-            for (int i = 0; i < rectangles.Length; i++)
+            for (int i = 0; i <= rectangles.Length; i++)
             {
                 // check directoin
                 int x;
@@ -88,7 +93,19 @@ namespace Showroom_dotNet5
                 // y = mx +b
                 float y = (m * x) + b;
 
-                rectangles[i] = new Rectangle(x, (int)y, thickness, thickness);
+                if (i == 0)
+                {
+                    rectangles[i] = new Rectangle(start.X, start.Y, thickness, thickness);
+                }
+                else if (i == rectangles.Length)
+                {
+                    rectangles[i - 1] = new Rectangle(end.X, end.Y, thickness, thickness);
+                }
+                else
+                {
+                    rectangles[i] = new Rectangle(x, (int)y, thickness, thickness);
+                }
+
             }
         }
 
