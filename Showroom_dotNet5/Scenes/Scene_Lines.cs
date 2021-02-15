@@ -91,19 +91,19 @@ namespace Showroom_dotNet5
                     x = end.X + (thickness * i);
 
                 // y = mx +b
-                float y = (m * x) + b;
+                int y = (int)((m * x) + b);
 
                 if (i == 0)
                 {
-                    rectangles[i] = new Rectangle(start.X, start.Y, thickness, thickness);
+                    rectangles[i] = new Rectangle(start.X - (thickness / 2), start.Y - (thickness / 2), thickness, thickness);
                 }
                 else if (i == rectangles.Length)
                 {
-                    rectangles[i - 1] = new Rectangle(end.X, end.Y, thickness, thickness);
+                    rectangles[i - 1] = new Rectangle(end.X - (thickness / 2), end.Y - (thickness / 2), thickness, thickness);
                 }
                 else
                 {
-                    rectangles[i] = new Rectangle(x, (int)y, thickness, thickness);
+                    rectangles[i] = new Rectangle(x - (thickness / 2), y - (thickness / 2), thickness, thickness);
                 }
 
             }
