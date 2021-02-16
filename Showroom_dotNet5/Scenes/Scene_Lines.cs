@@ -76,6 +76,7 @@ namespace Showroom_dotNet5
             }
 
             int ammountOfRectanglesNeeded = Math.Abs((end.X - start.X) / thickness);
+            int height = Math.Abs(start.Y - end.Y) / (ammountOfRectanglesNeeded + 1);
             this.rectangles = new Rectangle[ammountOfRectanglesNeeded + 2];
 
             float m = Tools.MyMath.M(start.ToVector2(), end.ToVector2());
@@ -103,9 +104,8 @@ namespace Showroom_dotNet5
                 }
                 else
                 {
-                    rectangles[i] = new Rectangle(x - (thickness / 2), y - (thickness / 2), thickness, thickness);
+                    rectangles[i] = new Rectangle(x - (thickness / 2), y - (thickness / 2), thickness, thickness + height);
                 }
-
             }
         }
 
