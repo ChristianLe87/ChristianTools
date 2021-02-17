@@ -61,7 +61,7 @@ namespace zUI
                 }
                 else
                 {
-                    rectangles[i] = new Rectangle(x - (thickness / 2), (int)(y - (heightOfEachRectangle / 2)), thickness, (int)heightOfEachRectangle);
+                    rectangles[i] = new Rectangle(x - (thickness / 2), (int)(y - (heightOfEachRectangle / 2)), thickness, (int)(heightOfEachRectangle < thickness ? thickness : heightOfEachRectangle));
                 }
             }
         }
