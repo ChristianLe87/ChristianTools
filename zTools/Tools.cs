@@ -100,9 +100,9 @@ namespace zTools
             internal static Texture2D CreateTriangle(GraphicsDevice graphicsDevice, Color color, int Width, int Height)
             {
                 List<Color> colors = new List<Color>();
-                
-                Point p1 = new Point(0,0); // top
-                Point p2 = new Point(Width, Height/2); // middle
+
+                Point p1 = new Point(0, 0); // top
+                Point p2 = new Point(Width, Height / 2); // middle
                 Point p3 = new Point(0, Height); // down
 
                 float m1 = Tools.MyMath.M(p1.ToVector2(), p2.ToVector2());
@@ -112,11 +112,11 @@ namespace zTools
                 {
                     for (int w = 0; w < Width; w++)
                     {
-                        if(h < Height / 2)
+                        if (h < Height / 2)
                         {
                             int result = (int)(m1 * w + p1.Y);
 
-                            if (result<=h)
+                            if (result <= h)
                                 colors.Add(color);
                             else
                                 colors.Add(Color.Transparent);
@@ -130,7 +130,7 @@ namespace zTools
                             else
                                 colors.Add(Color.Transparent);
                         }
-                        
+
                     }
                 }
 
@@ -309,6 +309,25 @@ namespace zTools
 
                 if (sin < 0) angle = -angle;
                 return angle;
+            }
+
+
+            public class Pitagoras
+            {
+                public static double r(double x, double y)
+                {
+                    return Math.Sqrt((x * x) + (y * y));
+                }
+
+                public static double y(double r, double x)
+                {
+                    return Math.Sqrt((r * r) - (x * x));
+                }
+
+                public static double x(double r, double y)
+                {
+                    return Math.Sqrt((r * r) - (y * y));
+                }
             }
         }
     }

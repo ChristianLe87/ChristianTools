@@ -32,7 +32,8 @@ namespace zUI
             }
 
             int ammountOfRectanglesNeeded = Math.Abs((end.X - start.X) / thickness);
-            int height = Math.Abs(start.Y - end.Y) / (ammountOfRectanglesNeeded + 1);
+            float distanceBetweenStartAndEnd = Vector2.Distance(start.ToVector2(), end.ToVector2());
+            float heightOfEachRectangle = distanceBetweenStartAndEnd / ammountOfRectanglesNeeded;
             this.rectangles = new Rectangle[ammountOfRectanglesNeeded + 2];
 
             float m = Tools.MyMath.M(start.ToVector2(), end.ToVector2());
@@ -60,7 +61,7 @@ namespace zUI
                 }
                 else
                 {
-                    rectangles[i] = new Rectangle(x - (thickness / 2), y - (thickness / 2), thickness, thickness + height);
+                    rectangles[i] = new Rectangle(x - (thickness / 2), (int)(y - (heightOfEachRectangle / 2)), thickness, (int)heightOfEachRectangle);
                 }
             }
         }
