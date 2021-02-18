@@ -38,6 +38,11 @@ namespace Showroom_dotNet5
             public static readonly string Scene_Lines = "Scene_Lines";
         }
 
+        public class Image
+        {
+            public static readonly string Background = "Cuadricula_500x500_PNG";
+        }
+
         public class Font
         {
             public static readonly string Font_14 = "MyFont_PNG_260x56";
@@ -59,7 +64,7 @@ namespace Showroom_dotNet5
         public static ContentManager contentManager;
 
         static Dictionary<string, IScene> scenes;
-        static string actualScene = WK.Scene.Scene_Menu;
+        static string actualScene = WK.Scene.Scene_Lines;
 
         public Game1()
         {

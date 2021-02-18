@@ -10,11 +10,18 @@ namespace Showroom_dotNet5
     {
         Line line_1;
         Button goToMenu;
+        Texture2D background;
 
         public Scene_Lines()
         {
             Initialize();
-            goToMenu = new Button(
+        }
+
+        public void Initialize()
+        {
+            Texture2D texture2D = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red);
+            this.line_1 = new Line(new Point(WK.Default.Width / 2, WK.Default.Height / 2), new Point(0, 0), 20, texture2D);
+            this.goToMenu = new Button(
                             rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
                             text: "Menu",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
@@ -23,12 +30,7 @@ namespace Showroom_dotNet5
                             fontColor: Color.Black,
                             ButtonID: "goToMenu"
             );
-        }
-
-        public void Initialize()
-        {
-            Texture2D texture2D = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red);
-            line_1 = new Line(new Point(WK.Default.Width / 2, WK.Default.Height / 2), new Point(0, 0), 5, texture2D);
+            this.background = Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Image.Background);
         }
 
         public void Update()
@@ -44,6 +46,7 @@ namespace Showroom_dotNet5
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(background, Vector2.Zero, Color.White);
             line_1.Draw(spriteBatch);
             goToMenu.Draw(spriteBatch);
         }
