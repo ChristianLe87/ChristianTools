@@ -62,8 +62,36 @@ namespace zUI
                     rectangles[i] = rectangle;
                 }
             }
+            // When Y == 0
+            else if (amountOn_Y == 0)
+            {
+                for (int i = 0; i < rectangles.Length; i++)
+                {
+                    Rectangle rectangle = new Rectangle();
+
+
+                    // Calculate X
+                    if (start.X - end.X < 0)
+                        rectangle.X = (start.X + (i * thickness) - (thickness / 2));
+                    else
+                        rectangle.X = (start.X - (i * thickness) - (thickness / 2));
+
+
+                    // Calculate Y
+                    rectangle.Y = (int)(start.Y - (thickness / 2));
+
+
+                    // Width and Height
+                    rectangle.Width = thickness;
+                    rectangle.Height = thickness;
+
+
+                    // Apply
+                    rectangles[i] = rectangle;
+                }
+            }
             // When bigger on X
-            else if (amountOn_X > amountOn_Y)
+            else if (amountOn_X >= amountOn_Y)
             {
                 for (int i = 0; i < rectangles.Length; i++)
                 {
@@ -91,7 +119,7 @@ namespace zUI
                 }
             }
             // When bigger on Y
-            else if (amountOn_X < amountOn_Y)
+            else if (amountOn_X <= amountOn_Y)
             {
                 for (int i = 0; i < rectangles.Length; i++)
                 {
