@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using zAssets;
@@ -7,13 +8,14 @@ using zUI;
 
 namespace Showroom_dotNet5
 {
-    public class Scene_Lines : IScene
+    public class Scene_Assets : IScene
     {
         Line line_1;
+        Prefab prefab_1;
         Button goToMenu;
         Texture2D background;
 
-        public Scene_Lines()
+        public Scene_Assets()
         {
             Initialize();
         }
@@ -30,6 +32,10 @@ namespace Showroom_dotNet5
                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                             fontColor: Color.Black,
                             ButtonID: "goToMenu"
+            );
+            this.prefab_1 = new Prefab(
+                                    texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 20),
+                                    position: new Point(100, 100)
             );
             this.background = Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Image.Background);
         }
@@ -49,6 +55,7 @@ namespace Showroom_dotNet5
         {
             spriteBatch.Draw(background, Vector2.Zero, Color.White);
             line_1.Draw(spriteBatch);
+            prefab_1.Draw(spriteBatch);
             goToMenu.Draw(spriteBatch);
         }
     }
