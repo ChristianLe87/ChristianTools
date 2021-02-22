@@ -26,50 +26,34 @@ namespace zUI
 
         void CreateLine()
         {
-            if (Math.Abs(start.X - end.X) > -1 && Math.Abs(start.X - end.X) < 1)
+            int amountOn_X = Math.Abs(start.X - end.X) / thickness;
+            int amountOn_Y = 0;
+            rectangles = new Rectangle[amountOn_X + 1];
+
+            for (int i = 0; i < rectangles.Length; i++)
             {
-                var bla = 0;
-            }
+                Rectangle rectangle = new Rectangle();
 
-            int ammountOfRectanglesNeeded = Math.Abs((end.X - start.X) / thickness);
-            float distanceBetweenStartAndEnd = Vector2.Distance(start.ToVector2(), end.ToVector2());
-            float heightOfEachRectangle = distanceBetweenStartAndEnd / ammountOfRectanglesNeeded;
-            this.rectangles = new Rectangle[ammountOfRectanglesNeeded + 2];
-
-            float m = Tools.MyMath.M(start.ToVector2(), end.ToVector2());
-            float b = Tools.MyMath.B(start.X, start.Y, m);
-
-            for (int i = 0; i <= rectangles.Length; i++)
-            {
-                // check directoin
-                int x;
-                if (end.X - start.X > 0)
-                    x = start.X + (thickness * i);
+                if(start.X - end.X < 0)
+                    rectangle.X = (start.X + (i * thickness) - (thickness / 2));
                 else
-                    x = end.X + (thickness * i);
+                    rectangle.X = (start.X - (i * thickness) - (thickness / 2));
+                
+                rectangle.Y = start.Y;
+                rectangle.Width = thickness;
+                rectangle.Height = thickness;
 
-                // y = mx +b
-                int y = (int)((m * x) + b);
-
-                if (i == 0)
-                {
-                    rectangles[i] = new Rectangle(start.X - (thickness / 2), start.Y - (thickness / 2), thickness, thickness);
-                }
-                else if (i == rectangles.Length)
-                {
-                    rectangles[i - 1] = new Rectangle(end.X - (thickness / 2), end.Y - (thickness / 2), thickness, thickness);
-                }
-                else
-                {
-                    rectangles[i] = new Rectangle(x - (thickness / 2), (int)(y - (heightOfEachRectangle / 2)), thickness, (int)(heightOfEachRectangle < thickness ? thickness : heightOfEachRectangle));
-                }
+                rectangles[i] = rectangle;
             }
         }
 
         public void Update(Point? start = null, Point? end = null)
         {
-            if (start != null) this.start = new Point(start.Value.X, start.Value.Y);
-            if (end != null) this.end = new Point(end.Value.X, end.Value.Y);
+            if (start != null)
+                this.start = new Point(start.Value.X, start.Value.Y);
+
+            if (end != null)
+                this.end = new Point(end.Value.X, end.Value.Y);
 
             CreateLine();
         }
