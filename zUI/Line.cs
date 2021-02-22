@@ -27,23 +27,39 @@ namespace zUI
         void CreateLine()
         {
             int amountOn_X = Math.Abs(start.X - end.X) / thickness;
-            int amountOn_Y = 0;
+            int amountOn_Y = Math.Abs(start.Y - end.Y) / thickness;
             rectangles = new Rectangle[amountOn_X + 1];
 
-            for (int i = 0; i < rectangles.Length; i++)
+            float m = Tools.MyMath.M(start.ToVector2(), end.ToVector2());
+            float b = Tools.MyMath.B(start.X, start.Y, m);
+
+            // When bigger on X
+            if (amountOn_X > amountOn_Y)
             {
-                Rectangle rectangle = new Rectangle();
+                for (int i = 0; i < rectangles.Length; i++)
+                {
+                    Rectangle rectangle = new Rectangle();
 
-                if(start.X - end.X < 0)
-                    rectangle.X = (start.X + (i * thickness) - (thickness / 2));
-                else
-                    rectangle.X = (start.X - (i * thickness) - (thickness / 2));
-                
-                rectangle.Y = start.Y;
-                rectangle.Width = thickness;
-                rectangle.Height = thickness;
 
-                rectangles[i] = rectangle;
+                    // Calculate X
+                    if (start.X - end.X < 0)
+                        rectangle.X = (start.X + (i * thickness) - (thickness / 2));
+                    else
+                        rectangle.X = (start.X - (i * thickness) - (thickness / 2));
+
+
+                    // Calculate Y
+                    rectangle.Y = (int)((m * rectangle.X) + b); // y = mx +b
+
+
+                    // Width and Height
+                    rectangle.Width = thickness;
+                    rectangle.Height = thickness;
+
+
+                    // Apply
+                    rectangles[i] = rectangle;
+                }
             }
         }
 
