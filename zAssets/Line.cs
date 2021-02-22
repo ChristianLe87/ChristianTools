@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using zTools;
 
-namespace zUI
+namespace zAssets
 {
     public class Line
     {
@@ -33,7 +33,7 @@ namespace zUI
             float m = Tools.MyMath.M(start.ToVector2(), end.ToVector2());
             float b = Tools.MyMath.B(start.X, start.Y, m);
 
-           
+
             // When X == 0
             if (amountOn_X == 0)
             {
