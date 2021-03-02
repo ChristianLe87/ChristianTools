@@ -36,6 +36,7 @@ namespace Showroom_dotNet5
             public static readonly string Scene_Shoot = "Scene_Shoot";
             public static readonly string Scene_Tools = "Scene_Tools";
             public static readonly string Scene_Assets = "Scene_Assets";
+            public static readonly string Scene_Dialogue = "Scene_Dialogue";
         }
 
         public class Image
@@ -90,7 +91,8 @@ namespace Showroom_dotNet5
                 { WK.Scene.Scene_Physics, new Scene_Physics() },
                 { WK.Scene.Scene_Shoot, new Scene_Shoot() },
                 { WK.Scene.Scene_Tools, new Scene_Tools() },
-                { WK.Scene.Scene_Assets, new Scene_Assets() }
+                { WK.Scene.Scene_Assets, new Scene_Assets() },
+                { WK.Scene.Scene_Dialogue, new Scene_Dialogue() },
             };
 
             base.IsMouseVisible = true;
