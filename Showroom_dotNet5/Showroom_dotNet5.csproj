@@ -36,7 +36,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scenes\" />
+    <Folder Include="Scenes\Playground\" />
   </ItemGroup>
+  <Import Project="..\zWorldElements\zWorldElements.projitems" Label="Shared" Condition="Exists('..\zWorldElements\zWorldElements.projitems')" />
   <Import Project="..\zTopView_RPG\zTopView_RPG.projitems" Label="Shared" Condition="Exists('..\zTopView_RPG\zTopView_RPG.projitems')" />
   <Import Project="..\zAssets\zAssets.projitems" Label="Shared" Condition="Exists('..\zAssets\zAssets.projitems')" />
   <Import Project="..\zPhysics\zPhysics.projitems" Label="Shared" Condition="Exists('..\zPhysics\zPhysics.projitems')" />

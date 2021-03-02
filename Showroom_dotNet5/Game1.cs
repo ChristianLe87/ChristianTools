@@ -37,6 +37,7 @@ namespace Showroom_dotNet5
             public static readonly string Scene_Tools = "Scene_Tools";
             public static readonly string Scene_Assets = "Scene_Assets";
             public static readonly string Scene_Dialogue = "Scene_Dialogue";
+            public static readonly string Scene_Playground_1 = "Scene_Playground_1";
         }
 
         public class Image
@@ -65,7 +66,7 @@ namespace Showroom_dotNet5
         public static ContentManager contentManager;
 
         static Dictionary<string, IScene> scenes;
-        static string actualScene = WK.Scene.Scene_Menu;
+        static string actualScene = WK.Scene.Scene_Playground_1;
 
         public Game1()
         {
@@ -93,6 +94,7 @@ namespace Showroom_dotNet5
                 { WK.Scene.Scene_Tools, new Scene_Tools() },
                 { WK.Scene.Scene_Assets, new Scene_Assets() },
                 { WK.Scene.Scene_Dialogue, new Scene_Dialogue() },
+                { WK.Scene.Scene_Playground_1, new Scene_Playground_1() },
             };
 
             base.IsMouseVisible = true;

@@ -13,5 +13,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)HealthBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dialogue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Panel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Border.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Popup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RadioButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Slider.cs" />
   </ItemGroup>
 </Project>
