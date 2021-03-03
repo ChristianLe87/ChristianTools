@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using zTools;
 
 namespace zWorldElements
 {
@@ -15,16 +16,18 @@ namespace zWorldElements
             this.texture2D = texture2D;
             this.rectangles = new Rectangle[rectangle.Width];
 
+            float ratio = (float)rectangle.Height / (float)rectangle.Width;
             switch (slopeFace)
             {
                 case SlopeOrientation.Right:
                     for (int i = 0; i < rectangles.Length; i++)
                     {
-                        Rectangle r = new Rectangle();
-                        r.X = rectangle.X + i;
-                        r.Y = rectangle.Y + i;
-                        r.Width = 1;
-                        r.Height = rectangle.Height - i;
+                        Rectangle r = new Rectangle().Create(
+                            rectangle.X + i,
+                            rectangle.Y + (i * ratio),
+                            1,
+                            rectangle.Height - (i * ratio)
+                        );
 
                         this.rectangles[i] = r;
                     }
@@ -32,11 +35,12 @@ namespace zWorldElements
                 case SlopeOrientation.Left:
                     for (int i = 0; i < rectangles.Length; i++)
                     {
-                        Rectangle r = new Rectangle();
-                        r.X = rectangle.X + i;
-                        r.Y = (rectangle.Width - i) + rectangle.Y;
-                        r.Width = 1;
-                        r.Height = i;
+                        Rectangle r = new Rectangle().Create(
+                            rectangle.X + i,
+                            (rectangle.Width - (i * ratio)) + rectangle.Y,
+                            1,
+                            (i * ratio)
+                        );
 
                         this.rectangles[i] = r;
                     }

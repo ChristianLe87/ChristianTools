@@ -37,7 +37,7 @@ namespace Showroom_dotNet5
                 slopeFace: SlopeOrientation.Right
             );
             this.slopeLeft = new Slope(
-                rectangle: new Rectangle().Create(centerPoint: new Point(WK.Default.Width / 2, WK.Default.Height / 2), Width: 100, Height: 100),
+                rectangle: new Rectangle().Create(centerPoint: new Point(WK.Default.Width / 2, WK.Default.Height / 2), Width: 200, Height: 100),
                 texture2D: slopeTexture,
                 slopeFace: SlopeOrientation.Left
             );
