@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using zTools;
 
 namespace zWorldElements
 {
@@ -8,7 +8,7 @@ namespace zWorldElements
     {
         Texture2D texture2D;
         Point centerPoint;
-        Rectangle rectangle { get => new Rectangle(centerPoint.X - (texture2D.Width / 2), centerPoint.Y - (texture2D.Height / 2), texture2D.Width, texture2D.Height); }
+        Rectangle rectangle { get => new Rectangle().Create(centerPoint, texture2D); }
 
         public WorldBlock(Point centerPoint, Texture2D texture2D)
         {
