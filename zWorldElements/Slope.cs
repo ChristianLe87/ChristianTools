@@ -9,11 +9,14 @@ namespace zWorldElements
     public class Slope : IWorldElement
     {
         Texture2D texture2D;
+        Point centerPoint;
+        public Rectangle rectangle { get => new Rectangle(); }
         Rectangle[] rectangles;
 
         public Slope(Rectangle rectangle, Texture2D texture2D, SlopeOrientation slopeFace)
         {
             this.texture2D = texture2D;
+            this.centerPoint = rectangle.Center;
             this.rectangles = new Rectangle[rectangle.Width];
 
             float ratio = (float)rectangle.Height / (float)rectangle.Width;

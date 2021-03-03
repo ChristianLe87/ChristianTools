@@ -8,7 +8,7 @@ namespace zWorldElements
     {
         Texture2D texture2D;
         Point centerPoint;
-        Rectangle rectangle { get => new Rectangle().Create(centerPoint, texture2D); }
+        public Rectangle rectangle { get => new Rectangle().Create(centerPoint, texture2D); }
 
         public WorldBlock(Point centerPoint, Texture2D texture2D)
         {

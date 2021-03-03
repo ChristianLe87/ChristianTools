@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using zAssets;
 using zTools;
 using zWorldElements;
@@ -17,6 +19,9 @@ namespace Showroom_dotNet5
         Player player;
         List<IWorldElement> worldElements;
 
+        KeyboardState lastKeyboardState;
+        GamePadState lastGamePadState;
+
         public Scene_Playground_1()
         {
             Initialize();
@@ -27,6 +32,9 @@ namespace Showroom_dotNet5
             Texture2D groundTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 50 * 16, 2 * 16);
             Texture2D ladderTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Brown, 16, 5 * 16);
             Texture2D slopeTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink);
+            Texture2D playerTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red, 16, 16);
+
+            this.player = new Player(new Point(20,20), playerTexture);
 
             this.worldElements = new List<IWorldElement>()
             {
@@ -49,12 +57,24 @@ namespace Showroom_dotNet5
 
         public void Update()
         {
+            KeyboardState keyboardState = Keyboard.GetState();
+            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+
+            player.Update(keyboardState, gamePadState, worldElements);
+
+            lastKeyboardState = keyboardState;
+            lastGamePadState = gamePadState;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            player.Draw(spriteBatch);
             foreach (var worldElement in worldElements)
-                worldElement.Draw(spriteBatch);
+            {
+                if(worldElement.GetType() != typeof(Slope))
+                    worldElement.Draw(spriteBatch);
+            }
+                
         }
     }
 }
