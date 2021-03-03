@@ -10,10 +10,7 @@ using zWorldElements;
 
 namespace Showroom_dotNet5
 {
-    /// <summary>
-    /// Based on Monochroma tutorial
-    /// https://www.moddb.com/games/monochroma/tutorials/road-to-monochroma-platformer-design-elements
-    /// </summary>
+    // Based on: https://www.moddb.com/games/monochroma/tutorials/road-to-monochroma-platformer-design-elements
     public class Scene_Playground_1 : IScene
     {
         Player player;
