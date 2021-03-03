@@ -8,46 +8,39 @@ namespace zWorldElements
     public class Slope
     {
         Texture2D texture2D;
-        Point centerPoint;
-        //Rectangle rectangle { get => new Rectangle(centerPoint.X - (texture2D.Width / 2), centerPoint.Y - (texture2D.Height / 2), texture2D.Width, texture2D.Height); }
-
         Rectangle[] rectangles;
 
-        public Slope(Point centerPoint, Texture2D texture2D, SlopeFace slopeFace)
+        public Slope(Rectangle rectangle, Texture2D texture2D, SlopeOrientation slopeFace)
         {
-            this.centerPoint = centerPoint;
             this.texture2D = texture2D;
+            this.rectangles = new Rectangle[rectangle.Width];
 
-
-            if (slopeFace == SlopeFace.Right)
+            switch (slopeFace)
             {
-                Rectangle rectangle = new Rectangle(centerPoint.X - (centerPoint.X / 2), centerPoint.Y - (centerPoint.Y / 2), 16, 16);
-                this.rectangles = new Rectangle[16];
-                for (int i = 0; i < rectangles.Length; i++)
-                {
-                    Rectangle r = new Rectangle();
-                    r.X = (i + centerPoint.X) - (centerPoint.X / 2);
-                    r.Y = i;
-                    r.Width = 1;
-                    r.Height = 16 - i;
+                case SlopeOrientation.Right:
+                    for (int i = 0; i < rectangles.Length; i++)
+                    {
+                        Rectangle r = new Rectangle();
+                        r.X = rectangle.X + i;
+                        r.Y = rectangle.Y + i;
+                        r.Width = 1;
+                        r.Height = rectangle.Height - i;
 
-                    this.rectangles[i] = r;
-                }
-            }
-            else if (slopeFace == SlopeFace.Left)
-            {
-                Rectangle rectangle = new Rectangle(centerPoint.X - (centerPoint.X / 2), centerPoint.Y - (centerPoint.Y / 2), 16, 16);
-                this.rectangles = new Rectangle[16];
-                for (int i = rectangles.Length - 1; i != 0; i--)
-                {
-                    Rectangle r = new Rectangle();
-                    r.X = (i + centerPoint.X) - (centerPoint.X / 2);
-                    r.Y = (centerPoint.Y - i) - (centerPoint.Y / 2);
-                    r.Width = 1;
-                    r.Height = i;
+                        this.rectangles[i] = r;
+                    }
+                    break;
+                case SlopeOrientation.Left:
+                    for (int i = 0; i < rectangles.Length; i++)
+                    {
+                        Rectangle r = new Rectangle();
+                        r.X = rectangle.X + i;
+                        r.Y = (rectangle.Width - i) + rectangle.Y;
+                        r.Width = 1;
+                        r.Height = i;
 
-                    this.rectangles[i] = r;
-                }
+                        this.rectangles[i] = r;
+                    }
+                    break;
             }
         }
 
@@ -60,8 +53,7 @@ namespace zWorldElements
         }
     }
 
-
-    public enum SlopeFace
+    public enum SlopeOrientation
     {
         Right,
         Left

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using zTools;
 using zWorldElements;
 
 namespace Showroom_dotNet5
@@ -13,8 +14,8 @@ namespace Showroom_dotNet5
     {
         WorldBlock ground;
         Ladder ladder;
-        Slope slope_1;
-        Slope slope_2;
+        Slope slopeRight;
+        Slope slopeLeft;
 
         public Scene_Playground_1()
         {
@@ -23,15 +24,23 @@ namespace Showroom_dotNet5
 
         public void Initialize()
         {
-            Texture2D groundTexture = zTools.Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 50 * 16, 2 * 16);
+            Texture2D groundTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 50 * 16, 2 * 16);
             this.ground = new WorldBlock(centerPoint: new Point(groundTexture.Width / 2, 7 * 16), texture2D: groundTexture);
 
-            Texture2D ladderTexture = zTools.Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Brown, 16, 5 * 16);
+            Texture2D ladderTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Brown, 16, 5 * 16);
             this.ladder = new Ladder(centerPoint: new Point(152, 16 * 3 + 8), texture2D: ladderTexture);
 
-            Texture2D slopeTexture = zTools.Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink);
-            this.slope_1 = new Slope(centerPoint: new Point(16*2+16, 20+40), texture2D: slopeTexture, slopeFace: SlopeFace.Right);
-            this.slope_2 = new Slope(centerPoint: new Point(16 * 4 + 16, 20+60), texture2D: slopeTexture, slopeFace: SlopeFace.Left);
+            Texture2D slopeTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink);
+            this.slopeRight = new Slope(
+                rectangle: new Rectangle().Create(centerPoint: new Point(WK.Default.Width / 2, WK.Default.Height / 2), Width: 100, Height: 100),
+                texture2D: slopeTexture,
+                slopeFace: SlopeOrientation.Right
+            );
+            this.slopeLeft = new Slope(
+                rectangle: new Rectangle().Create(centerPoint: new Point(WK.Default.Width / 2, WK.Default.Height / 2), Width: 100, Height: 100),
+                texture2D: slopeTexture,
+                slopeFace: SlopeOrientation.Left
+            );
         }
 
         public void Update()
@@ -42,8 +51,8 @@ namespace Showroom_dotNet5
         {
             ground.Draw(spriteBatch);
             ladder.Draw(spriteBatch);
-            slope_1.Draw(spriteBatch);
-            slope_2.Draw(spriteBatch);
+            slopeRight.Draw(spriteBatch);
+            slopeLeft.Draw(spriteBatch);
         }
     }
 }
