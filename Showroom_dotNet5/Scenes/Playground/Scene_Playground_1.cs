@@ -13,8 +13,8 @@ namespace Showroom_dotNet5
     {
         WorldBlock ground;
         Ladder ladder;
-        Slope_30d slope_30d_1;
-        Slope_30d slope_30d_2;
+        Slope slope_1;
+        Slope slope_2;
 
         public Scene_Playground_1()
         {
@@ -30,8 +30,8 @@ namespace Showroom_dotNet5
             this.ladder = new Ladder(centerPoint: new Point(152, 16 * 3 + 8), texture2D: ladderTexture);
 
             Texture2D slopeTexture = zTools.Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink);
-            this.slope_30d_1 = new Slope_30d(centerPoint: new Point(16*2+16, 20+40), texture2D: slopeTexture, slopeFace: SlopeFace.Right);
-            this.slope_30d_2 = new Slope_30d(centerPoint: new Point(16 * 4 + 16, 20+60), texture2D: slopeTexture, slopeFace: SlopeFace.Left);
+            this.slope_1 = new Slope(centerPoint: new Point(16*2+16, 20+40), texture2D: slopeTexture, slopeFace: SlopeFace.Right);
+            this.slope_2 = new Slope(centerPoint: new Point(16 * 4 + 16, 20+60), texture2D: slopeTexture, slopeFace: SlopeFace.Left);
         }
 
         public void Update()
@@ -42,8 +42,8 @@ namespace Showroom_dotNet5
         {
             ground.Draw(spriteBatch);
             ladder.Draw(spriteBatch);
-            slope_30d_1.Draw(spriteBatch);
-            slope_30d_2.Draw(spriteBatch);
+            slope_1.Draw(spriteBatch);
+            slope_2.Draw(spriteBatch);
         }
     }
 }

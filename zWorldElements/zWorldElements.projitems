@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Slopes\Slope_30d.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Slopes\Slope_45d.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Slopes\Slope_60d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Slope.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Interactable\" />
