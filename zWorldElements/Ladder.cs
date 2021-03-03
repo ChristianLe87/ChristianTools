@@ -16,7 +16,7 @@ namespace zWorldElements
             this.centerPoint = centerPoint;
         }
 
-        internal void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture2D, rectangle, Color.White);
         }

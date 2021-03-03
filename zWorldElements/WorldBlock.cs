@@ -4,7 +4,7 @@ using zTools;
 
 namespace zWorldElements
 {
-    public class WorldBlock
+    public class WorldBlock : IWorldElement
     {
         Texture2D texture2D;
         Point centerPoint;

@@ -1,10 +1,10 @@
 ﻿using System;
-namespace zTopView_RPG
+namespace zAssets
 {
-    /*public class Player
+    public class Player
     {
         public Player()
         {
         }
-    }*/
+    }
 }

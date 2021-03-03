@@ -12,5 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Bullet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Prefab.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Player.cs" />
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ using zTools;
 
 namespace zWorldElements
 {
-    public class Slope
+    public class Slope : IWorldElement
     {
         Texture2D texture2D;
         Rectangle[] rectangles;
