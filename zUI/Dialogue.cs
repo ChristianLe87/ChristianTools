@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using zTools;
 
 namespace zUI
 {
@@ -12,7 +13,7 @@ namespace zUI
         Label[] labels;
         int labelCount;
         bool isActive;
-        KeyboardState previousKeyboardState;
+        InputState previousinputState;
 
         Rectangle rectangle { get => new Rectangle(centerPosition.X - (background.Width / 2), centerPosition.Y - (background.Height / 2), background.Width, background.Height); }
 
@@ -27,11 +28,11 @@ namespace zUI
 
         public void Update()
         {
-            if (isActive == false) return;
+            if (isActive == false)
+                return;
 
-            KeyboardState keyboardState = Keyboard.GetState();
-
-            if (keyboardState.IsKeyDown(Keys.P) && previousKeyboardState.IsKeyUp(Keys.P))
+            InputState inputState = new InputState();
+            if (inputState.IsKeyboardKeyDown(Keys.P) && previousinputState.IsKeyboardKeyUp(Keys.P))
             {
                 labelCount++;
 
@@ -42,7 +43,7 @@ namespace zUI
                 }
             }
 
-            previousKeyboardState = keyboardState;
+            previousinputState = inputState;
         }
 
         public void Draw(SpriteBatch spriteBatch)

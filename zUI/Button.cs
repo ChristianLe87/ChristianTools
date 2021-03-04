@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using zTools;
 
 namespace zUI
 {
@@ -10,7 +10,7 @@ namespace zUI
         Rectangle rectangle;
         Texture2D defaultTexture;
         Texture2D mouseOverTexture;
-        MouseState previousMouseState;
+        InputState previousInputState;
         bool isMouseOver;
         Label label;
         public string ButtonID { get; private set; }
@@ -31,14 +31,12 @@ namespace zUI
 
         public void Update(DxOnClickAction OnClickAction)
         {
-            MouseState mouseState = Mouse.GetState();
+            InputState inputState = new InputState();
 
-            if (rectangle.Contains(mouseState.X, mouseState.Y))
+            if (rectangle.Contains(inputState.Mouse_Position))
             {
                 isMouseOver = true;
-                if (previousMouseState.LeftButton == ButtonState.Released
-                    &&
-                    Mouse.GetState().LeftButton == ButtonState.Pressed)
+                if (previousInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
                 {
                     OnClickAction();
                 }
@@ -48,8 +46,7 @@ namespace zUI
                 isMouseOver = false;
             }
 
-            previousMouseState = Mouse.GetState();
-
+            previousInputState = inputState;
         }
 
         public void Draw(SpriteBatch spriteBatch)
