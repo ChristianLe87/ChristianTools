@@ -25,10 +25,11 @@ namespace zAssets
             this.texture2D = texture2D;
         }
 
-        public void Update(KeyboardState keyboardState, GamePadState gamePadState, List<IWorldElement> worldElements)
+        public void Update(InputState inputState, InputState lastInputState, List<IWorldElement> worldElements)
         {
-            Move(keyboardState, gamePadState, worldElements);
+            Move(inputState, worldElements);
             ApplyGravity(worldElements);
+            Jump(inputState, lastInputState, worldElements);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -37,29 +38,29 @@ namespace zAssets
         }
 
         int moveSpeed { get => 2; }
-        private void Move(KeyboardState keyboardState, GamePadState gamePadState, List<IWorldElement> worldElements)
+        private void Move(InputState inputState, List<IWorldElement> worldElements)
         {
             // Move Right
-            if (keyboardState.IsKeyDown(Keys.D) || gamePadState.ThumbSticks.Left.X > 0f)
+            if (inputState.Right)
             {
-                IWorldElement firstRightIntersectElement = worldElements.Where(x => x.rectangle.Intersects(rectangleRight)).FirstOrDefault();
+                IWorldElement firstRightIntersectTile = worldElements.Where(x => x.rectangle.Intersects(rectangleRight)).FirstOrDefault();
 
                 // if no tiles right
-                if (firstRightIntersectElement == null)
+                if (firstRightIntersectTile == null)
                 {
-                    centerPoint.X += moveSpeed;
+                    centerPoint.X += isJumping ? moveSpeed : 1;
                 }
             }
 
             // Move Left
-            else if (keyboardState.IsKeyDown(Keys.A) || gamePadState.ThumbSticks.Left.X < 0f)
+            else if (inputState.Left)
             {
-                IWorldElement firstLeftIntersectElement = worldElements.Where(x => x.rectangle.Intersects(rectangleLeft)).FirstOrDefault();
+                IWorldElement firstLeftIntersectTile = worldElements.Where(x => x.rectangle.Intersects(rectangleLeft)).FirstOrDefault();
 
                 // if no tiles left
-                if (firstLeftIntersectElement == null)
+                if (firstLeftIntersectTile == null)
                 {
-                    centerPoint.X -= moveSpeed;
+                    centerPoint.X -= isJumping ? moveSpeed : 1;
                 }
             }
         }
@@ -70,7 +71,7 @@ namespace zAssets
             IWorldElement firstDownIntersectTile = worldElements.Where(x => x.rectangle.Intersects(rectangleDown)).FirstOrDefault();
 
             // if no tiles down
-            if (firstDownIntersectTile == null)
+            if (firstDownIntersectTile == null && isJumping == false)
             {
                 centerPoint.Y += gravitySpeed;
             }
@@ -79,6 +80,56 @@ namespace zAssets
             if (firstDownIntersectTile != null)
             {
                 centerPoint.Y -= Rectangle.Intersect(rectangle, firstDownIntersectTile.rectangle).Height;
+            }
+        }
+
+        bool isJumping;
+        int jumpTargetPosition_Y;
+        int jumpHeight { get => /*WK.Default.Pixels_Y*/16 * 3; }
+        int jumpSpeed { get => 3; }
+        int framesOfFlightCount;
+        int framesOfFlight { get => 2; }
+        private void Jump(InputState inputState, InputState lastInputState, List<IWorldElement> worldElements)
+        {
+            if (inputState.Jump && lastInputState.Jump)
+            {
+                IWorldElement firstDownIntersectTile = worldElements.Where(x => x.rectangle.Intersects(rectangleDown)).FirstOrDefault();
+
+                if (firstDownIntersectTile != null && rectangleDown.Intersects(firstDownIntersectTile.rectangle))
+                {
+                    isJumping = true;
+                    jumpTargetPosition_Y = centerPoint.Y - jumpHeight;
+                }
+            }
+
+            if (isJumping)
+            {
+                IWorldElement firstTopIntersectTile = worldElements.Where(x => x.rectangle.Intersects(rectangleUp)).FirstOrDefault();
+
+                if (firstTopIntersectTile == null)
+                {
+                    if (centerPoint.Y > jumpTargetPosition_Y)
+                    {
+                        centerPoint.Y -= jumpSpeed;
+                    }
+                    else
+                    {
+                        if (framesOfFlightCount > framesOfFlight)
+                        {
+                            isJumping = false;
+                            framesOfFlightCount = 0;
+                        }
+                        else
+                        {
+                            framesOfFlightCount++;
+                        }
+                    }
+                }
+                else
+                {
+                    isJumping = false;
+                    framesOfFlightCount = 0;
+                }
             }
         }
     }

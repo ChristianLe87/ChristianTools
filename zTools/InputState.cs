@@ -4,20 +4,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace zTools
 {
-    // ToDo
-    /*public class InputState
+    public class InputState
     {
         KeyboardState keyboardState = Keyboard.GetState();
         GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
 
-        public bool IsDown(Keys keys)
-        {
-            return keyboardState.IsKeyDown(keys);
-        }
-
-        public bool IsDown(Buttons buttons)
-        {
-            return gamePadState.IsButtonDown(buttons);
-        }
-    }*/
+        public bool Right { get => keyboardState.IsKeyDown(Keys.D) || (gamePadState.ThumbSticks.Left.X > 0); }
+        public bool Left { get => keyboardState.IsKeyDown(Keys.A) || (gamePadState.ThumbSticks.Left.X < 0); }
+        public bool Jump { get => keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A); }
+    }
 }

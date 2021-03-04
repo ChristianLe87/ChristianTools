@@ -16,8 +16,7 @@ namespace Showroom_dotNet5
         Player player;
         List<IWorldElement> worldElements;
 
-        KeyboardState lastKeyboardState;
-        GamePadState lastGamePadState;
+        InputState lastInputState;
 
         public Scene_Playground_1()
         {
@@ -27,6 +26,7 @@ namespace Showroom_dotNet5
         public void Initialize()
         {
             Texture2D groundTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 50 * 16, 2 * 16);
+            Texture2D worldBlockTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 20,20);
             Texture2D ladderTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Brown, 16, 5 * 16);
             Texture2D slopeTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink);
             Texture2D playerTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red, 16, 16);
@@ -36,6 +36,7 @@ namespace Showroom_dotNet5
             this.worldElements = new List<IWorldElement>()
             {
                 new WorldBlock(centerPoint: new Point(groundTexture.Width / 2, 7 * 16), texture2D: groundTexture),
+                new WorldBlock(centerPoint: new Point(40,50), texture2D: worldBlockTexture),
 
                 new Ladder(centerPoint: new Point(152, 16 * 3 + 8), texture2D: ladderTexture),
 
@@ -54,13 +55,11 @@ namespace Showroom_dotNet5
 
         public void Update()
         {
-            KeyboardState keyboardState = Keyboard.GetState();
-            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+            InputState inputState = new InputState();
 
-            player.Update(keyboardState, gamePadState, worldElements);
+            player.Update(inputState, lastInputState, worldElements);
 
-            lastKeyboardState = keyboardState;
-            lastGamePadState = gamePadState;
+            lastInputState = inputState;
         }
 
         public void Draw(SpriteBatch spriteBatch)
