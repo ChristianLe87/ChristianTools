@@ -16,16 +16,16 @@ namespace Showroom_dotNet5
                     public static readonly int Width = 500;
                     public static readonly int Height = 500;
 
-                    public static readonly int CenterX = (int)((float)Width / (float)2);
-                    public static readonly int CenterY = (int)((float)Height / (float)2);
+                    public static readonly int CenterX = Width / 2;
+                    public static readonly int CenterY = Height / 2;
 
-                    public static readonly Point Center = new Point(Width, Height);
+                    public static readonly Point Center = new Point(CenterX, CenterY);
                 }
 
                 public class Units
                 {
-                    public static readonly int Width = (int)((float)Pixels.Width / (float)Block.Pixels.Width);
-                    public static readonly int Height = (int)((float)Pixels.Height / (float)Block.Pixels.Height);
+                    public static readonly int Width = Pixels.Width / Block.Pixels.Width;
+                    public static readonly int Height = Pixels.Height / Block.Pixels.Height;
 
                 }
             }

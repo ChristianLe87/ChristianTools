@@ -22,19 +22,19 @@ namespace Showroom_dotNet5
         public void Initialize()
         {
             Texture2D texture2D = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red);
-            this.line_1 = new Line(new Point(WK.Default.Window.Pixels.Width / 2, WK.Default.Window.Pixels.Height / 2), new Point(0, 0), 20, texture2D);
+            this.line_1 = new Line(WK.Default.Window.Pixels.Center, new Point(0, 0), 20, texture2D);
             this.goToMenu = new Button(
-                            rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
-                            text: "Menu",
-                            defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
-                            mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
-                            spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
-                            fontColor: Color.Black,
-                            ButtonID: "goToMenu"
+                rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
+                text: "Menu",
+                defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                fontColor: Color.Black,
+                ButtonID: "goToMenu"
             );
             this.prefab_1 = new Prefab(
-                                    texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 20),
-                                    position: new Point(100, 100)
+                texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 20),
+                position: new Point(100, 100)
             );
             this.background = Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Image.Background);
         }

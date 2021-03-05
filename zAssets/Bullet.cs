@@ -9,15 +9,15 @@ namespace zAssets
     public class Bullet
     {
         Texture2D texture2D;
-        Vector2 position;
+        Point position;
         TimeSpan autoDestroyTime;
         public bool isActive;
         double x;
         double y;
 
-        public Rectangle rectangle { get => new Rectangle((int)position.X - (texture2D.Width / 2), (int)position.Y - (texture2D.Height / 2), texture2D.Width, texture2D.Height); }
+        public Rectangle rectangle { get => new Rectangle().Create(position, texture2D); }
 
-        public Bullet(Texture2D texture2D, Vector2 start, Vector2 direction, int steps, TimeSpan autoDestroyTime = new TimeSpan())
+        public Bullet(Texture2D texture2D, Point start, Point direction, int steps, TimeSpan autoDestroyTime = new TimeSpan())
         {
             this.texture2D = texture2D;
             this.position = start;
@@ -25,10 +25,10 @@ namespace zAssets
             this.isActive = true;
 
             double radAngle = Tools.MyMath.GetAngleInRadians(
-                                                        Point1_Start: start.ToPoint(),
+                                                        Point1_Start: start,
                                                         Point_1_End: new Point(WK.Default.Window.Pixels.Width, (int)start.Y),
-                                                        Point2_Start: start.ToPoint(),
-                                                        Pount2_End: direction.ToPoint()
+                                                        Point2_Start: start,
+                                                        Pount2_End: direction
             );
 
             this.x = steps * Math.Cos(radAngle);
@@ -48,8 +48,8 @@ namespace zAssets
             // Helpers
             void Move()
             {
-                position.X += (float)x;
-                position.Y += (float)y;
+                position.X += (int)x;
+                position.Y += (int)y;
             }
 
             void TimeToDestroy()
