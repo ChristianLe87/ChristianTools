@@ -41,12 +41,12 @@ namespace Showroom_dotNet5
                 new Ladder(centerPoint: new Point(152, 16 * 3 + 8), texture2D: ladderTexture),
 
                 new Slope(
-                    rectangle: new Rectangle().Create(centerPoint: new Point(WK.Default.Width / 2, WK.Default.Height / 2), Width: 100, Height: 100),
+                    rectangle: new Rectangle().Create(centerPoint: new Point(WK.Default.Window_Width / 2, WK.Default.Window_Height / 2), Width: 100, Height: 100),
                     texture2D: slopeTexture,
                     slopeFace: SlopeOrientation.Right
                 ),
                 new Slope(
-                    rectangle: new Rectangle().Create(centerPoint: new Point(WK.Default.Width / 2, WK.Default.Height / 2), Width: 200, Height: 100),
+                    rectangle: new Rectangle().Create(centerPoint: new Point(WK.Default.Window_Width / 2, WK.Default.Window_Height / 2), Width: 200, Height: 100),
                     texture2D: slopeTexture,
                     slopeFace: SlopeOrientation.Left
                 )

@@ -23,9 +23,9 @@ namespace Showroom_dotNet5
         public void Initialize()
         {
             Texture2D texture2D = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red);
-            this.line_1 = new Line(new Point(WK.Default.Width / 2, WK.Default.Height / 2), new Point(0, 0), 20, texture2D);
+            this.line_1 = new Line(new Point(WK.Default.Window_Width / 2, WK.Default.Window_Height / 2), new Point(0, 0), 20, texture2D);
             this.goToMenu = new Button(
-                            rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
+                            rectangle: new Rectangle(0, WK.Default.Window_Height - 50, 100, 50),
                             text: "Menu",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),

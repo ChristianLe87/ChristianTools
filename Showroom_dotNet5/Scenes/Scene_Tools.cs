@@ -87,7 +87,7 @@ namespace Showroom_dotNet5
             );
 
             goToMenu = new Button(
-                            rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
+                            rectangle: new Rectangle(0, WK.Default.Window_Height - 50, 100, 50),
                             text: "Menu",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),

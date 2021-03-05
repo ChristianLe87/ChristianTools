@@ -25,7 +25,7 @@ namespace Showroom_dotNet5
             bullets = new List<Bullet>();
 
             goToMenu = new Button(
-                             rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
+                             rectangle: new Rectangle(0, WK.Default.Window_Height - 50, 100, 50),
                              text: "Menu",
                              defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                              mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
@@ -46,7 +46,7 @@ namespace Showroom_dotNet5
 
                 Bullet bullet = new Bullet(
                             texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 10),
-                            start: new Vector2(WK.Default.Width / 2, WK.Default.Height / 2),
+                            start: new Vector2(WK.Default.Window_Width / 2, WK.Default.Window_Height / 2),
                             direction: mousePosition,
                             steps: 3,
                             autoDestroyTime: new TimeSpan(0, 0, 2)
