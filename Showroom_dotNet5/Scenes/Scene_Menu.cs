@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using zAssets;
 using zTools;
 using zUI;
 
@@ -11,8 +12,14 @@ namespace Showroom_dotNet5
         Button goToShoot;
         Button goToTools;
 
+        Line line1;
+
         Button goToAssets;
         Button goToDialog;
+
+        Line line2;
+
+        Button GoToPlayground1;
 
         public Scene_Menu()
         {
@@ -21,12 +28,13 @@ namespace Showroom_dotNet5
 
         public void Initialize()
         {
+            // Column 1
             goToUI = new Button(
                             rectangle: new Rectangle(50, 50, 100, 50),
                             text: "UI",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
-                            spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14),WK.Font.chars),
+                            spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                             fontColor: Color.Black,
                             ButtonID: "goToUI"
             );
@@ -51,8 +59,9 @@ namespace Showroom_dotNet5
                             ButtonID: "goToTools"
             );
 
+            // Column 2
             goToAssets = new Button(
-                            rectangle: new Rectangle(250, 50, 100, 50),
+                            rectangle: new Rectangle(200, 50, 100, 50),
                             text: "Assets",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
@@ -62,13 +71,40 @@ namespace Showroom_dotNet5
             );
 
             goToDialog = new Button(
-                            rectangle: new Rectangle(250, 150, 100, 50),
+                            rectangle: new Rectangle(200, 150, 100, 50),
                             text: "Dialog",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                             fontColor: Color.Black,
                             ButtonID: "goToDialog"
+            );
+
+            // Column 3
+            GoToPlayground1 = new Button(
+                            rectangle: new Rectangle(350, 50, 100, 50),
+                            text: "Playground1",
+                            defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                            mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                            spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                            fontColor: Color.Black,
+                            ButtonID: "GoToPlayground1"
+            );
+
+            // Lines
+            line1 = new Line(
+                start: new Point(175, 0),
+                end: new Point(175, 500),
+                thickness: 2,
+                texture2D: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Black)
+            );
+
+
+            line2 = new Line(
+                start: new Point(325, 0),
+                end: new Point(325, 500),
+                thickness: 2,
+                texture2D: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Black)
             );
         }
 
@@ -80,6 +116,8 @@ namespace Showroom_dotNet5
 
             goToAssets.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Assets));
             goToDialog.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Dialogue));
+
+            GoToPlayground1.Update(()=>Game1.ChangeToScene(WK.Scene.Scene_Playground_1));
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -90,6 +128,11 @@ namespace Showroom_dotNet5
 
             goToAssets.Draw(spriteBatch);
             goToDialog.Draw(spriteBatch);
+
+            GoToPlayground1.Draw(spriteBatch);
+
+            line1.Draw(spriteBatch);
+            line2.Draw(spriteBatch);
         }
     }
 }
