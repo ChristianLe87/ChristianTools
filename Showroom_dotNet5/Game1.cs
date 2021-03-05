@@ -32,8 +32,8 @@ namespace Showroom_dotNet5
         {
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = WK.Default.Window_Width;
-            graphicsDeviceManager.PreferredBackBufferHeight = WK.Default.Window_Height;
+            graphicsDeviceManager.PreferredBackBufferWidth = WK.Default.Window.Pixels.Width;
+            graphicsDeviceManager.PreferredBackBufferHeight = WK.Default.Window.Pixels.Height;
             graphicsDeviceManager.ApplyChanges();
 
             // FPS

@@ -1,13 +1,44 @@
 ﻿
+using Microsoft.Xna.Framework;
+
 namespace Showroom_dotNet5
 {
     public class WK
     {
         public class Default
         {
-            public static readonly int Window_Width = 500;
-            public static readonly int Window_Height = 500;
             public static readonly int FPS = 60;
+
+            public class Window
+            {
+                public class Pixels
+                {
+                    public static readonly int Width = 500;
+                    public static readonly int Height = 500;
+
+                    public static readonly int CenterX = (int)((float)Width / (float)2);
+                    public static readonly int CenterY = (int)((float)Height / (float)2);
+
+                    public static readonly Point Center = new Point(Width, Height);
+                }
+
+                public class Units
+                {
+                    public static readonly int Width = (int)((float)Pixels.Width / (float)Block.Pixels.Width);
+                    public static readonly int Height = (int)((float)Pixels.Height / (float)Block.Pixels.Height);
+
+                }
+            }
+
+            public class Block
+            {
+                public class Pixels
+                {
+                    public static readonly int Width = 16;
+                    public static readonly int Height = 16;
+                }
+
+            }
         }
 
         public class Scene
