@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using zAssets;
 using zTools;
 using zWorldElements;
@@ -25,23 +22,66 @@ namespace Showroom_dotNet5
 
         public void Initialize()
         {
-            Texture2D groundTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 50 * 16, 2 * 16);
-            Texture2D worldBlockTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 20,20);
-            Texture2D ladderTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Brown, 16, 5 * 16);
-            Texture2D slopeTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink);
-            Texture2D playerTexture = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red, 16, 16);
+            Texture2D groundTexture = Tools.Texture.CreateColorTexture(
+                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
+                color: Color.Green,
+                Width: 50 * WK.Default.Block.Pixels.Width,
+                Height: 1 * WK.Default.Block.Pixels.Height
+            );
+
+            Texture2D worldBlockTexture = Tools.Texture.CreateColorTexture(
+                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
+                color: Color.Green,
+                Width: 1 * WK.Default.Block.Pixels.Width,
+                Height: 1 * WK.Default.Block.Pixels.Height
+            );
+
+            Texture2D ladderTexture = Tools.Texture.CreateColorTexture(
+                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
+                color: Color.Brown,
+                Width: 1 * WK.Default.Block.Pixels.Width,
+                Height: 5 * WK.Default.Block.Pixels.Height
+            );
+
+            Texture2D slopeTexture = Tools.Texture.CreateColorTexture(
+                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
+                color: Color.Pink
+            );
+
+            Texture2D playerTexture = Tools.Texture.CreateColorTexture(
+                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
+                color: Color.Red,
+                Width: 1 * WK.Default.Block.Pixels.Width,
+                Height: 1 * WK.Default.Block.Pixels.Height
+            );
 
             this.player = new Player(new Point(20,20), playerTexture);
 
             this.worldElements = new List<IWorldElement>()
             {
-                new WorldBlock(centerPoint: new Point(groundTexture.Width / 2, 7 * 16), texture2D: groundTexture),
-                new WorldBlock(centerPoint: new Point(40,50), texture2D: worldBlockTexture),
+                // Ground
+                new WorldBlock(
+                    centerPoint: new Point(groundTexture.Width / 2, 6 * WK.Default.Block.Pixels.Height),
+                    texture2D: groundTexture
+                ),
 
-                new Ladder(centerPoint: new Point(152, 16 * 3 + 8), texture2D: ladderTexture),
+                // WorldBlock 1
+                new WorldBlock(
+                    centerPoint: new Point(40,50),
+                    texture2D: worldBlockTexture
+                ),
+
+                new Ladder(
+                    centerPoint: new Point( 9* WK.Default.Block.Pixels.Width, 3 * WK.Default.Block.Pixels.Height),
+                    texture2D: ladderTexture
+                ),
 
                 new Slope(
-                    rectangle: new Rectangle().Create(centerPoint: WK.Default.Window.Pixels.Center, Width: 100, Height: 100),
+                    rectangle: new Rectangle().Create(
+                        centerPoint: WK.Default.Window.Pixels.Center,
+                        Width: 100,
+                        Height: 100
+                    ),
                     texture2D: slopeTexture,
                     slopeFace: SlopeOrientation.Right
                 ),
