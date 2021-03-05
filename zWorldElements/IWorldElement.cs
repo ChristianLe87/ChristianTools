@@ -7,6 +7,7 @@ namespace zWorldElements
     public interface IWorldElement
     {
         Rectangle rectangle { get; }
+        string tag { get; }
         void Draw(SpriteBatch spriteBatch);
     }
 }

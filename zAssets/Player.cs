@@ -91,7 +91,7 @@ namespace zAssets
         int framesOfFlight { get => 2; }
         private void Jump(InputState inputState, InputState lastInputState, List<IWorldElement> worldElements)
         {
-            if (inputState.Jump && lastInputState.Jump)
+            if (inputState.Jump && lastInputState.NotJump)
             {
                 IWorldElement firstDownIntersectTile = worldElements.Where(x => x.rectangle.Intersects(rectangleDown)).FirstOrDefault();
 

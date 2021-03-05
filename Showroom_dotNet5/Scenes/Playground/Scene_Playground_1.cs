@@ -22,32 +22,6 @@ namespace Showroom_dotNet5
 
         public void Initialize()
         {
-            Texture2D groundTexture = Tools.Texture.CreateColorTexture(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                color: Color.Green,
-                Width: 50 * WK.Default.Block.Pixels.Width,
-                Height: 1 * WK.Default.Block.Pixels.Height
-            );
-
-            Texture2D worldBlockTexture = Tools.Texture.CreateColorTexture(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                color: Color.Green,
-                Width: 1 * WK.Default.Block.Pixels.Width,
-                Height: 1 * WK.Default.Block.Pixels.Height
-            );
-
-            Texture2D ladderTexture = Tools.Texture.CreateColorTexture(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                color: Color.Brown,
-                Width: 1 * WK.Default.Block.Pixels.Width,
-                Height: 5 * WK.Default.Block.Pixels.Height
-            );
-
-            Texture2D slopeTexture = Tools.Texture.CreateColorTexture(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                color: Color.Pink
-            );
-
             Texture2D playerTexture = Tools.Texture.CreateColorTexture(
                 graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                 color: Color.Red,
@@ -55,42 +29,9 @@ namespace Showroom_dotNet5
                 Height: 1 * WK.Default.Block.Pixels.Height
             );
 
-            this.player = new Player(new Point(20,20), playerTexture);
+            this.player = new Player(new Point(20, 20), playerTexture);
 
-            this.worldElements = new List<IWorldElement>()
-            {
-                // Ground
-                new WorldBlock(
-                    centerPoint: new Point(groundTexture.Width / 2, 6 * WK.Default.Block.Pixels.Height),
-                    texture2D: groundTexture
-                ),
-
-                // WorldBlock 1
-                new WorldBlock(
-                    centerPoint: new Point(40,50),
-                    texture2D: worldBlockTexture
-                ),
-
-                new Ladder(
-                    centerPoint: new Point( 9* WK.Default.Block.Pixels.Width, 3 * WK.Default.Block.Pixels.Height),
-                    texture2D: ladderTexture
-                ),
-
-                new Slope(
-                    rectangle: new Rectangle().Create(
-                        centerPoint: WK.Default.Window.Pixels.Center,
-                        Width: 100,
-                        Height: 100
-                    ),
-                    texture2D: slopeTexture,
-                    slopeFace: SlopeOrientation.Right
-                ),
-                new Slope(
-                    rectangle: new Rectangle().Create(centerPoint: WK.Default.Window.Pixels.Center, Width: 200, Height: 100),
-                    texture2D: slopeTexture,
-                    slopeFace: SlopeOrientation.Left
-                )
-            };
+            this.worldElements = GetTileMap(WK.Map.map1);
         }
 
         public void Update()
@@ -107,10 +48,52 @@ namespace Showroom_dotNet5
             player.Draw(spriteBatch);
             foreach (var worldElement in worldElements)
             {
-                if(worldElement.GetType() != typeof(Slope))
+                //if (worldElement.GetType() != typeof(Slope))
                     worldElement.Draw(spriteBatch);
             }
-                
+
+        }
+
+        private List<IWorldElement> GetTileMap(int[,] originalMap)
+        {
+            List<IWorldElement> worldElements = new List<IWorldElement>();
+
+            for (int row = 0; row < originalMap.GetLength(0); row++)
+            {
+                for (int elem = 0; elem < originalMap.GetLength(1); elem++)
+                {
+                    switch (originalMap[row, elem])
+                    {
+                        case 1:
+                            worldElements.Add(
+                                new WorldBlock(
+                                    centerPoint: new Rectangle(elem * 16, row * 16, WK.Default.Block.Pixels.Width, WK.Default.Block.Pixels.Height).Center,
+                                    texture2D: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, WK.Default.Block.Pixels.Width, WK.Default.Block.Pixels.Height),
+                                    tag: "x")
+                            );
+                            break;
+                        case 2:
+                            worldElements.Add(
+                                new Slope(
+                                    rectangle: new Rectangle(elem * 16, row * 16, 16, 16),
+                                    texture2D: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink, WK.Default.Block.Pixels.Width, WK.Default.Block.Pixels.Height),
+                                    slopeFace: SlopeOrientation.Left,
+                                    tag: "x")
+                            );
+                            break;
+                        case 3:
+                            worldElements.Add(
+                                new Slope(
+                                    rectangle: new Rectangle(elem * 16, row * 16, 16, 16),
+                                    texture2D: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink, WK.Default.Block.Pixels.Width, WK.Default.Block.Pixels.Height),
+                                    slopeFace: SlopeOrientation.Left,
+                                    tag: "x")
+                            );
+                            break;
+                    }
+                }
+            }
+            return worldElements;
         }
     }
 }

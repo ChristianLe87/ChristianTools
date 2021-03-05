@@ -10,14 +10,16 @@ namespace zWorldElements
     {
         Texture2D texture2D;
         Point centerPoint;
+        public string tag { get; }
         public Rectangle rectangle { get => new Rectangle(); }
         Rectangle[] rectangles;
 
-        public Slope(Rectangle rectangle, Texture2D texture2D, SlopeOrientation slopeFace)
+        public Slope(Rectangle rectangle, Texture2D texture2D, SlopeOrientation slopeFace, string tag)
         {
             this.texture2D = texture2D;
             this.centerPoint = rectangle.Center;
             this.rectangles = new Rectangle[rectangle.Width];
+            this.tag = tag;
 
             float ratio = (float)rectangle.Height / (float)rectangle.Width;
             switch (slopeFace)

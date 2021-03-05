@@ -12,6 +12,7 @@ namespace zTools
         public bool Right => keyboardState.IsKeyDown(Keys.D) || (gamePadState.ThumbSticks.Left.X > 0);
         public bool Left => keyboardState.IsKeyDown(Keys.A) || (gamePadState.ThumbSticks.Left.X < 0);
         public bool Jump => keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A);
+        public bool NotJump => !(keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A));
 
         // Keyboard
         public bool IsKeyboardKeyDown(Keys key) => keyboardState.IsKeyDown(key);
