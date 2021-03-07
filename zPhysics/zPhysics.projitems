@@ -8,4 +8,9 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>zPhysics</Import_RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Physics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gravity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Force.cs" />
+  </ItemGroup>
 </Project>
