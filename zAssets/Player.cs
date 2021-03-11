@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using zPhysics;
 using zTools;
 using zWorldElements;
 
@@ -19,16 +20,21 @@ namespace zAssets
         Rectangle rectangleRight { get => new Rectangle(x: rectangle.Right, y: rectangle.Y + 1, width: 1, height: (rectangle.Bottom - 1) - (rectangle.Y + 1)); }
         Rectangle rectangleLeft { get => new Rectangle(x: rectangle.X - 1, y: rectangle.Y, width: 1, height: (rectangle.Bottom - 1) - (rectangle.Y + 1)); }
 
+        Physics physics;
+
         public Player(Point centerPoint, Texture2D texture2D)
         {
             this.centerPoint = centerPoint;
             this.texture2D = texture2D;
+            physics = new Physics();
         }
 
         public void Update(InputState inputState, InputState lastInputState, List<IWorldElement> worldElements)
         {
             Move(inputState, worldElements);
-            ApplyGravity(worldElements);
+
+            physics.Update(ref centerPoint);
+            //ApplyGravity(worldElements);
             Jump(inputState, lastInputState, worldElements);
         }
 
