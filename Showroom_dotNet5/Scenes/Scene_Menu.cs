@@ -21,6 +21,7 @@ namespace Showroom_dotNet5
         Line line2;
 
         Button GoToPlayground1;
+        Button GoToPlayground2;
 
         public Scene_Menu()
         {
@@ -102,6 +103,16 @@ namespace Showroom_dotNet5
                             ButtonID: "GoToPlayground1"
             );
 
+            GoToPlayground2 = new Button(
+                rectangle: new Rectangle(350, 150, 100, 50),
+                text: "Playground2",
+                defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                fontColor: Color.Black,
+                ButtonID: "GoToPlayground2"
+);
+
             // Lines
             line1 = new Line(
                 start: new Point(175, 0),
@@ -130,6 +141,7 @@ namespace Showroom_dotNet5
             goToPhysics.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Physics));
 
             GoToPlayground1.Update(()=>Game1.ChangeToScene(WK.Scene.Scene_Playground_1));
+            GoToPlayground2.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Playground_2));
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -143,6 +155,7 @@ namespace Showroom_dotNet5
             goToPhysics.Draw(spriteBatch);
 
             GoToPlayground1.Draw(spriteBatch);
+            GoToPlayground2.Draw(spriteBatch);
 
             line1.Draw(spriteBatch);
             line2.Draw(spriteBatch);
