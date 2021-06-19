@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using zAssets;
 using zTools;
+using zUI;
 using zWorldElements;
 
 namespace Showroom_dotNet5
@@ -11,8 +12,11 @@ namespace Showroom_dotNet5
     {
         Player player;
         List<IWorldElement> worldElements;
-
         InputState lastInputState;
+
+
+        Label timeLabel;
+
 
         public Scene_Playground_2()
         {
@@ -31,6 +35,16 @@ namespace Showroom_dotNet5
             this.player = new Player(new Point(20, 20), playerTexture);
 
             this.worldElements = GetTileMap(WK.Map.map2);
+
+
+            this.timeLabel = new Label(
+                new Rectangle(10, 10, 100, 30),
+                Tools.Font.GetFont(Game1.contentManager, "Arial_10", "Fonts"),
+                "My Text",
+                Label.TextAlignment.Down_Left,
+                Color.Black,
+                Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
+                11);
         }
 
         public void Update()
@@ -50,6 +64,8 @@ namespace Showroom_dotNet5
                 //if (worldElement.GetType() != typeof(Slope))
                 worldElement.Draw(spriteBatch);
             }
+
+            timeLabel.Draw(spriteBatch);
 
         }
 
