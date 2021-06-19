@@ -45,6 +45,10 @@
       <Link>Content\you_win.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\Content\Sprites\Player\Run.png">
+      <Link>Content\Run.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scenes\" />

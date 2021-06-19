@@ -39,28 +39,28 @@ namespace Showroom_dotNet5
                 Height: 1 * WK.Default.Block.Pixels.Height
             );
 
-            this.player = new Player(new Point(20, 20), playerTexture);
+            this.player = new Player(new Point(20, 20), null);
 
             this.worldElements = GetTileMap(WK.Map.map2);
 
 
             this.timeLabel = new Label(
-                                    new Rectangle(10, 10, 100, 30),
+                                    new Rectangle(10, 5, 100, 30),
                                     Tools.Font.GetFont(Game1.contentManager, "Arial_10", "Fonts"),
-                                    "My Text",
+                                    "My time",
                                     Label.TextAlignment.Down_Left,
-                                    Color.Black,
-                                    Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
-                                    11
+                                    Color.Black
+                                    //Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
+                                    //11
                                     );
             this.scoreLabel = new Label(
-                                      new Rectangle(10, 10, 100, 30),
+                                      new Rectangle(10, 20, 100, 30),
                                       Tools.Font.GetFont(Game1.contentManager, "Arial_10", "Fonts"),
-                                      "My Text",
+                                      "My score",
                                       Label.TextAlignment.Down_Left,
-                                      Color.Black,
-                                      Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
-                                      11
+                                      Color.Black
+                                      //Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
+                                      //11
                                       );
 
             this.winOverlay = new Prefab(
@@ -69,7 +69,8 @@ namespace Showroom_dotNet5
                                                                 Game1.contentManager,
                                                                 imageName: "you_win"
                                                                 ),
-                                    position: new Point(0, 0)
+                                    position: new Point(WK.Default.Window.Pixels.CenterX, WK.Default.Window.Pixels.CenterY),
+                                    isActive: false
                                     );
 
             this.loseOverlay = new Prefab(
@@ -78,7 +79,8 @@ namespace Showroom_dotNet5
                                                                 Game1.contentManager,
                                                                 imageName: "you_lose"
                                                                 ),
-                                    position: new Point(0, 0)
+                                    position: new Point(WK.Default.Window.Pixels.CenterX, WK.Default.Window.Pixels.CenterY),
+                                    isActive: false
                                     );
 
 
@@ -90,7 +92,8 @@ namespace Showroom_dotNet5
                                                                 Game1.contentManager,
                                                                 imageName: "you_died"
                                                                 ),
-                                    position: new Point(0, 0)
+                                    position: new Point(WK.Default.Window.Pixels.CenterX, WK.Default.Window.Pixels.CenterY),
+                                    isActive: false
                                     );
         }
 
@@ -114,6 +117,11 @@ namespace Showroom_dotNet5
 
             timeLabel.Draw(spriteBatch);
             scoreLabel.Draw(spriteBatch);
+
+
+            winOverlay.Draw(spriteBatch);
+            loseOverlay.Draw(spriteBatch);
+            diedOverlay.Draw(spriteBatch);
         }
 
         private List<IWorldElement> GetTileMap(int[,] originalMap)

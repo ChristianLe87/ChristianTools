@@ -29,7 +29,7 @@ namespace Showroom_dotNet5
                 Height: 1 * WK.Default.Block.Pixels.Height
             );
 
-            this.player = new Player(new Point(20, 20), playerTexture);
+            this.player = new Player(new Point(20, 20), null);
 
             this.worldElements = GetTileMap(WK.Map.map1);
         }

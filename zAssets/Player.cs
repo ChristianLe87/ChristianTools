@@ -9,11 +9,17 @@ using zWorldElements;
 
 namespace zAssets
 {
+    public enum AnimationState
+    {
+        Idle,
+        RunLeft,
+        RunRight
+    }
+
     public class Player
     {
         Point centerPoint;
-        Texture2D texture2D;
-        Rectangle rectangle { get => new Rectangle().Create(centerPoint, texture2D); }
+        Rectangle rectangle { get => new Rectangle().Create(centerPoint, animations[0].rectangle.Width, animations[0].rectangle.Height); }
 
         Rectangle rectangleUp { get => new Rectangle(x: rectangle.X + 1, y: rectangle.Y, width: (rectangle.Right - 1) - (rectangle.X + 1), height: 1); }
         Rectangle rectangleDown { get => new Rectangle(x: rectangle.X + 1, y: rectangle.Bottom, width: (rectangle.Right - 1) - (rectangle.X + 1), height: 1); }
@@ -22,11 +28,16 @@ namespace zAssets
 
         Physics physics;
 
-        public Player(Point centerPoint, Texture2D texture2D)
+        AnimationState animationState;
+        Dictionary<AnimationState, Animation> animations;
+
+        public Player(Point centerPoint, Dictionary<AnimationState, Animation> animations)
         {
             this.centerPoint = centerPoint;
-            this.texture2D = texture2D;
-            physics = new Physics();
+            this.physics = new Physics();
+
+            this.animationState = AnimationState.RunLeft;
+            this.animations = animations;
         }
 
         public void Update(InputState inputState, InputState lastInputState, List<IWorldElement> worldElements)
@@ -40,7 +51,8 @@ namespace zAssets
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture2D, rectangle, Color.White);
+            animations[animationState].Draw(spriteBatch);
+            //spriteBatch.Draw(texture2D, rectangle, Color.White);
         }
 
         int moveSpeed { get => 2; }

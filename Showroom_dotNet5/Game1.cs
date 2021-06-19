@@ -56,6 +56,7 @@ namespace Showroom_dotNet5
                 { WK.Scene.Scene_Dialogue, new Scene_Dialogue() },
                 { WK.Scene.Scene_Playground_1, new Scene_Playground_1() },
                 { WK.Scene.Scene_Playground_2, new Scene_Playground_2() },
+                { WK.Scene.Scene_Animations, new Scene_Animations() },
             };
 
             base.IsMouseVisible = true;

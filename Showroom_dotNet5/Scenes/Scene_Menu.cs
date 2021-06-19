@@ -11,13 +11,12 @@ namespace Showroom_dotNet5
         Button goToUI;
         Button goToShoot;
         Button goToTools;
-
+        Button goToAnimations;
         Line line1;
 
         Button goToAssets;
         Button goToDialog;
         Button goToPhysics;
-
         Line line2;
 
         Button GoToPlayground1;
@@ -59,6 +58,16 @@ namespace Showroom_dotNet5
                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                             fontColor: Color.Black,
                             ButtonID: "goToTools"
+            );
+
+            goToAnimations = new Button(
+                            rectangle: new Rectangle(50, 350, 100, 50),
+                            text: "Animations",
+                            defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                            mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                            spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                            fontColor: Color.Black,
+                            ButtonID: "goToAnimations"
             );
 
             // Column 2
@@ -135,6 +144,7 @@ namespace Showroom_dotNet5
             goToUI.Update(() => Game1.ChangeToScene(WK.Scene.Scene_UI));
             goToShoot.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Shoot));
             goToTools.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Tools));
+            goToAnimations.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Animations));
 
             goToAssets.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Assets));
             goToDialog.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Dialogue));
@@ -149,6 +159,7 @@ namespace Showroom_dotNet5
             goToUI.Draw(spriteBatch);
             goToShoot.Draw(spriteBatch);
             goToTools.Draw(spriteBatch);
+            goToAnimations.Draw(spriteBatch);
 
             goToAssets.Draw(spriteBatch);
             goToDialog.Draw(spriteBatch);

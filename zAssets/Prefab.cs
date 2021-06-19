@@ -31,7 +31,8 @@ namespace zAssets
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture2D, rectangle, Color.White);
+            if(isActive)
+                spriteBatch.Draw(texture2D, rectangle, Color.White);
         }
     }
 }
