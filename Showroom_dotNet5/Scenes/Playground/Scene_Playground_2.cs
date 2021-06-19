@@ -16,6 +16,13 @@ namespace Showroom_dotNet5
 
 
         Label timeLabel;
+        Label scoreLabel;
+
+        Prefab winOverlay;
+        Prefab loseOverlay;
+        Prefab diedOverlay;
+
+
 
 
         public Scene_Playground_2()
@@ -38,13 +45,53 @@ namespace Showroom_dotNet5
 
 
             this.timeLabel = new Label(
-                new Rectangle(10, 10, 100, 30),
-                Tools.Font.GetFont(Game1.contentManager, "Arial_10", "Fonts"),
-                "My Text",
-                Label.TextAlignment.Down_Left,
-                Color.Black,
-                Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
-                11);
+                                    new Rectangle(10, 10, 100, 30),
+                                    Tools.Font.GetFont(Game1.contentManager, "Arial_10", "Fonts"),
+                                    "My Text",
+                                    Label.TextAlignment.Down_Left,
+                                    Color.Black,
+                                    Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
+                                    11
+                                    );
+            this.scoreLabel = new Label(
+                                      new Rectangle(10, 10, 100, 30),
+                                      Tools.Font.GetFont(Game1.contentManager, "Arial_10", "Fonts"),
+                                      "My Text",
+                                      Label.TextAlignment.Down_Left,
+                                      Color.Black,
+                                      Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
+                                      11
+                                      );
+
+            this.winOverlay = new Prefab(
+                                    texture2D: Tools.Texture.GetTexture(
+                                                                Game1.graphicsDeviceManager.GraphicsDevice,
+                                                                Game1.contentManager,
+                                                                imageName: "you_win"
+                                                                ),
+                                    position: new Point(0, 0)
+                                    );
+
+            this.loseOverlay = new Prefab(
+                                    texture2D: Tools.Texture.GetTexture(
+                                                                Game1.graphicsDeviceManager.GraphicsDevice,
+                                                                Game1.contentManager,
+                                                                imageName: "you_lose"
+                                                                ),
+                                    position: new Point(0, 0)
+                                    );
+
+
+
+
+            this.diedOverlay = new Prefab(
+                                    texture2D: Tools.Texture.GetTexture(
+                                                                Game1.graphicsDeviceManager.GraphicsDevice,
+                                                                Game1.contentManager,
+                                                                imageName: "you_died"
+                                                                ),
+                                    position: new Point(0, 0)
+                                    );
         }
 
         public void Update()
@@ -66,7 +113,7 @@ namespace Showroom_dotNet5
             }
 
             timeLabel.Draw(spriteBatch);
-
+            scoreLabel.Draw(spriteBatch);
         }
 
         private List<IWorldElement> GetTileMap(int[,] originalMap)

@@ -33,6 +33,18 @@
       <Link>Content\Cuadricula_500x500_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\Content\you_died.png">
+      <Link>Content\you_died.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\you_lose.png">
+      <Link>Content\you_lose.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\you_win.png">
+      <Link>Content\you_win.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scenes\" />
