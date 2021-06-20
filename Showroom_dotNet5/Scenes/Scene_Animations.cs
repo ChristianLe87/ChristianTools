@@ -20,12 +20,12 @@ namespace Showroom_dotNet5
             // animations
             Dictionary<AnimationState, Animation> animations = new Dictionary<AnimationState, Animation>()
             {
-                { AnimationState.RunLeft, new Animation(zTools.Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "Run"), 5, 0.5f) },
+                { AnimationState.RunLeft, new Animation(zTools.Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Image.RunLeft_64x450_PNG), 10, 0.5f) },
             };
 
 
             this.player = new Player(
-                                    centerPoint: new Point(),
+                                    centerPoint: new Point(200, 200),
                                     animations: animations
                                     );
         }

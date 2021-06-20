@@ -51,7 +51,7 @@ namespace zAssets
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            animations[animationState].Draw(spriteBatch);
+            animations[animationState].Draw(spriteBatch, centerPoint.ToVector2());
             //spriteBatch.Draw(texture2D, rectangle, Color.White);
         }
 

@@ -58,6 +58,7 @@ namespace Showroom_dotNet5
         public class Image
         {
             public static readonly string Background = "Cuadricula_500x500_PNG";
+            public static readonly string RunLeft_64x450_PNG = "RunLeft_64x450_PNG";
         }
 
         public class Font

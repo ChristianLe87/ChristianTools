@@ -45,8 +45,8 @@
       <Link>Content\you_win.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\Content\Sprites\Player\Run.png">
-      <Link>Content\Run.png</Link>
+    <None Include="..\Content\RunLeft_64x450_PNG.png">
+      <Link>Content\RunLeft_64x450_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
