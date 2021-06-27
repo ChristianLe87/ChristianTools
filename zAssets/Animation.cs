@@ -14,6 +14,9 @@ namespace zAssets
         public Rectangle rectangle { get => new Rectangle(0, 0, sprite.Width, sprite.Height); }
         AnimationState animationState;
 
+        int animationIndex = 0;
+
+
     List<Rectangle> rectangles;
 
         public Animation(Texture2D sprite, int elementsInSprite, float delayPerPsrite, bool loop = false, AnimationState animationState = AnimationState.Idle)
@@ -33,12 +36,23 @@ namespace zAssets
             }
         }
 
-        public void Update()
-        {
-            if (loop)
-            {
 
+        int frameCount;
+        public void Update(bool bla)
+        {
+            if (frameCount % 10 == 0)
+            {
+                animationIndex++;
             }
+
+
+            if(frameCount == 10)
+            {
+                animationIndex = 0;
+            }
+
+
+            frameCount++;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
@@ -54,7 +68,7 @@ namespace zAssets
                 spriteBatch.Draw(
                             texture: sprite,
                             position: position,//new Vector2(100, 100),
-                            sourceRectangle: new Rectangle(0,0,45,64),
+                            sourceRectangle: new Rectangle(animationIndex*45, 0, animationIndex*45+45, 64),
                             color: Color.White
                             );
             }

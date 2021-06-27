@@ -22,6 +22,10 @@ namespace Showroom_dotNet5
         Texture2D triangle_3;
         Texture2D triangle_4;
 
+        Texture2D fontMap_Green;
+        Texture2D fontMap_Red;
+
+
         Button goToMenu;
 
         public Scene_Tools()
@@ -86,6 +90,17 @@ namespace Showroom_dotNet5
                                                         Height: 40
             );
 
+            var fontMap = zTools.Tools.Texture.GetTexture(
+                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
+                 Game1.contentManager,
+                 "MyFont_PNG_260x56"
+                );
+
+
+            fontMap_Green = zTools.Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Green);
+
+            fontMap_Red = zTools.Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Red);
+
             goToMenu = new Button(
                             rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
                             text: "Menu",
@@ -95,6 +110,7 @@ namespace Showroom_dotNet5
                             fontColor: Color.Black,
                             ButtonID: "goToMenu"
             );
+
         }
 
         public void Update()
@@ -118,6 +134,9 @@ namespace Showroom_dotNet5
             spriteBatch.Draw(triangle_2, new Vector2(50, 100), Color.White);
             spriteBatch.Draw(triangle_3, new Vector2(50, 150), Color.White);
             spriteBatch.Draw(triangle_4, new Vector2(50, 200), Color.White);
+
+            spriteBatch.Draw(fontMap_Green, new Vector2(200, 20), Color.White);
+            spriteBatch.Draw(fontMap_Red, new Vector2(200, 80), Color.White);
 
             goToMenu.Draw(spriteBatch);
         }

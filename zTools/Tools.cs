@@ -13,7 +13,6 @@ namespace zTools
     {
         public class Texture
         {
-            // aqui estuve
             /// <summary>
             /// Generate a new texture from a PNG file
             /// </summary>
@@ -60,6 +59,29 @@ namespace zTools
                 texture2D.SetData(colors);
 
                 return texture2D;
+            }
+
+            public static Texture2D ReColorTexture(GraphicsDevice graphicsDevice, Texture2D texture2D, Color color)
+            {
+                Texture2D newTexture2D = new Texture2D(graphicsDevice, texture2D.Width, texture2D.Height, false, SurfaceFormat.Color);
+
+                int count = texture2D.Width * texture2D.Height;
+                Color[] data = new Color[count];
+
+                texture2D.GetData(0, new Rectangle(0,0, texture2D.Width, texture2D.Height), data, 0, count);
+
+                for (int i = 0; i < data.Length; i++)
+                {
+                    if(data[i].A != 0)
+                    {
+                        data[i] = new Color(color.R, color.G, color.B, data[i].A);
+                    }
+                }
+
+                newTexture2D.SetData(data);
+
+
+                return newTexture2D;
             }
 
             /// <summary>

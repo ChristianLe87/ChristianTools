@@ -15,7 +15,7 @@ namespace Showroom_dotNet5
         Line line1;
 
         Button goToAssets;
-        Button goToDialog;
+        Button goToDialogue;
         Button goToPhysics;
         Line line2;
 
@@ -81,14 +81,14 @@ namespace Showroom_dotNet5
                             ButtonID: "goToAssets"
             );
 
-            goToDialog = new Button(
+            goToDialogue = new Button(
                             rectangle: new Rectangle(200, 150, 100, 50),
-                            text: "Dialog",
+                            text: "Dialogue",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                             fontColor: Color.Black,
-                            ButtonID: "goToDialog"
+                            ButtonID: "goToDialogue"
             );
 
             goToPhysics = new Button(
@@ -147,7 +147,7 @@ namespace Showroom_dotNet5
             goToAnimations.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Animations));
 
             goToAssets.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Assets));
-            goToDialog.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Dialogue));
+            goToDialogue.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Dialogue));
             goToPhysics.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Physics));
 
             GoToPlayground1.Update(()=>Game1.ChangeToScene(WK.Scene.Scene_Playground_1));
@@ -162,7 +162,7 @@ namespace Showroom_dotNet5
             goToAnimations.Draw(spriteBatch);
 
             goToAssets.Draw(spriteBatch);
-            goToDialog.Draw(spriteBatch);
+            goToDialogue.Draw(spriteBatch);
             goToPhysics.Draw(spriteBatch);
 
             GoToPlayground1.Draw(spriteBatch);

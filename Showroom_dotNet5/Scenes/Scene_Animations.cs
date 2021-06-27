@@ -32,7 +32,7 @@ namespace Showroom_dotNet5
 
         public void Update()
         {
-            //throw new NotImplementedException();
+            player.Update(null, null, null);
         }
 
         public void Draw(SpriteBatch spriteBatch)

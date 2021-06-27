@@ -42,11 +42,12 @@ namespace zAssets
 
         public void Update(InputState inputState, InputState lastInputState, List<IWorldElement> worldElements)
         {
-            Move(inputState, worldElements);
+            animations[animationState].Update(false);
+            //Move(inputState, worldElements);
 
-            physics.Update(ref centerPoint);
+            //physics.Update(ref centerPoint);
             //ApplyGravity(worldElements);
-            Jump(inputState, lastInputState, worldElements);
+            //Jump(inputState, lastInputState, worldElements);
         }
 
         public void Draw(SpriteBatch spriteBatch)

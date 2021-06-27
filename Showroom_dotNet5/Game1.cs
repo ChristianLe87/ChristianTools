@@ -26,7 +26,7 @@ namespace Showroom_dotNet5
         public static ContentManager contentManager;
 
         static Dictionary<string, IScene> scenes;
-        static string actualScene = WK.Scene.Scene_Animations;
+        static string actualScene = WK.Scene.Scene_Menu;
 
         public Game1()
         {
