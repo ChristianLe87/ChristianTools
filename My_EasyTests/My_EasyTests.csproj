@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="MonoGame.Framework.DesktopGL" />
+    <None Remove="Scene\" />
+    <None Remove="Assets\" />
+    <None Remove="Tools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scene\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Tools\" />
+  </ItemGroup>
+</Project>

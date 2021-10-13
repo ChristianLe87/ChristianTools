@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_Template", "My_Template\My_Template.csproj", "{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_EasyTests", "My_EasyTests\My_EasyTests.csproj", "{68DD715C-4BA0-4C08-BB96-458BBCB7A0D4}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		zPhysics\zPhysics.projitems*{22f283ab-5776-4e10-a1ad-0e8fde91c5a3}*SharedItemsImports = 13
@@ -45,6 +47,10 @@ Global
 		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Release|anycpu.Build.0 = Release|Any CPU
+		{68DD715C-4BA0-4C08-BB96-458BBCB7A0D4}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{68DD715C-4BA0-4C08-BB96-458BBCB7A0D4}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{68DD715C-4BA0-4C08-BB96-458BBCB7A0D4}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{68DD715C-4BA0-4C08-BB96-458BBCB7A0D4}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
