@@ -19,6 +19,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zWorldElements", "zWorldEle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{D9055A24-FEF5-4BD7-B5DA-3347A6044EE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_Template", "My_Template\My_Template.csproj", "{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		zPhysics\zPhysics.projitems*{22f283ab-5776-4e10-a1ad-0e8fde91c5a3}*SharedItemsImports = 13
@@ -39,6 +41,10 @@ Global
 		{D9055A24-FEF5-4BD7-B5DA-3347A6044EE6}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{D9055A24-FEF5-4BD7-B5DA-3347A6044EE6}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{D9055A24-FEF5-4BD7-B5DA-3347A6044EE6}.Release|anycpu.Build.0 = Release|Any CPU
+		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
