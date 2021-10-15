@@ -131,36 +131,35 @@ namespace My_Template
 
     public class Scene_1 : IScene
     {
-        Plyaer plyaer;
+        Player player;
         Tree tree;
 
         public Scene_1()
         {
-            this.plyaer = new Plyaer();
+            this.player = new Player();
             this.tree = new Tree();
         }
 
         public void Update()
         {
-            plyaer.Update();
+            player.Update();
             tree.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            plyaer.Draw(spriteBatch);
+            player.Draw(spriteBatch);
             tree.Draw(spriteBatch);
         }
     }
 
-    public class Plyaer
+    public class Player
     {
         Texture2D texture2D;
         Rectangle rectangle;
         float layer = 0.1f;
 
-
-        public Plyaer()
+        public Player()
         {
             texture2D = Tools.CreateColorTexture(
                 graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,

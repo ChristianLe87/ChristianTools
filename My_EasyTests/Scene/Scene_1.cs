@@ -4,21 +4,21 @@ namespace My_EasyTests
 {
     public class Scene_1 : IScene
     {
-        Plyaer plyaer;
+        Player player;
 
         public Scene_1()
         {
-            this.plyaer = new Plyaer();
+            this.player = new Player();
         }
 
         public void Update()
         {
-            plyaer.Update();
+            player.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            plyaer.Draw(spriteBatch);
+            player.Draw(spriteBatch);
         }
     }
 }

@@ -4,14 +4,14 @@ using Microsoft.Xna.Framework.Input;
 
 namespace My_EasyTests
 {
-    public class Plyaer
+    public class Player
     {
         Texture2D texture2D;
         Rectangle rectangle;
         float layer = 0.1f;
 
 
-        public Plyaer()
+        public Player()
         {
             texture2D = Tools.CreateColorTexture(
                 graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
