@@ -32,4 +32,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Interactable\Elements\" />
     <Folder Include="$(MSBuildThisFileDirectory)Slopes\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)_Readme_.txt" />
+  </ItemGroup>
 </Project>

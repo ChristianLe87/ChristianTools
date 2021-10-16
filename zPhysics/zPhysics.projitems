@@ -13,4 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Gravity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Force.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)_Readme_.txt" />
+  </ItemGroup>
 </Project>
