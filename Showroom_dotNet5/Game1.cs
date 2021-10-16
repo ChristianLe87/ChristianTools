@@ -54,6 +54,7 @@ namespace Showroom_dotNet5
                 { WK.Scene.Scene_Tools, new Scene_Tools() },
                 { WK.Scene.Scene_Assets, new Scene_Assets() },
                 { WK.Scene.Scene_Dialogue, new Scene_Dialogue() },
+                { WK.Scene.Scene_Camera, new Scene_Camera() },
                 { WK.Scene.Scene_Playground_1, new Scene_Playground_1() },
                 { WK.Scene.Scene_Playground_2, new Scene_Playground_2() },
                 { WK.Scene.Scene_Animations, new Scene_Animations() },
@@ -91,10 +92,11 @@ namespace Showroom_dotNet5
         {
             base.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            this.spriteBatch.Begin();
+            this.spriteBatch.Begin(transformMatrix: scenes[actualScene].camera?.transform);
 
             // code
             scenes[actualScene].Draw(spriteBatch);
+
             this.spriteBatch.End();
 
             base.Draw(gameTime);

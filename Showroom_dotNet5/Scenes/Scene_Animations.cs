@@ -8,6 +8,7 @@ namespace Showroom_dotNet5
     public class Scene_Animations : IScene
     {
         Button goToMenu;
+        public Camera camera { get; }
 
         public Scene_Animations()
         {
@@ -34,6 +35,7 @@ namespace Showroom_dotNet5
         public void Draw(SpriteBatch spriteBatch)
         {
             goToMenu.Draw(spriteBatch);
+
         }
     }
 }

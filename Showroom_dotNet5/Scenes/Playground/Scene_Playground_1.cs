@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using zTools;
+using zTopView_RPG;
 using zUI;
 
 namespace Showroom_dotNet5
@@ -8,6 +10,8 @@ namespace Showroom_dotNet5
     // Based on: https://www.moddb.com/games/monochroma/tutorials/road-to-monochroma-platformer-design-elements
     public class Scene_Playground_1 : IScene
     {
+        public Camera camera { get; private set; }
+
         Button goToMenu;
 
         public Scene_Playground_1()

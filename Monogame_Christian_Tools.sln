@@ -17,8 +17,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zTopView_RPG", "zTopView_RP
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zWorldElements", "zWorldElements\zWorldElements.shproj", "{9282EB3F-168D-424A-ACF3-B39917467ED2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{D9055A24-FEF5-4BD7-B5DA-3347A6044EE6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_Template", "My_Template\My_Template.csproj", "{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_EasyTests", "My_EasyTests\My_EasyTests.csproj", "{68DD715C-4BA0-4C08-BB96-458BBCB7A0D4}"
@@ -39,10 +37,6 @@ Global
 		{58B4CBCF-C26E-4C64-AB8B-8B7CC63E8820}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{58B4CBCF-C26E-4C64-AB8B-8B7CC63E8820}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{58B4CBCF-C26E-4C64-AB8B-8B7CC63E8820}.Release|anycpu.Build.0 = Release|Any CPU
-		{D9055A24-FEF5-4BD7-B5DA-3347A6044EE6}.Debug|anycpu.ActiveCfg = Debug|Any CPU
-		{D9055A24-FEF5-4BD7-B5DA-3347A6044EE6}.Debug|anycpu.Build.0 = Debug|Any CPU
-		{D9055A24-FEF5-4BD7-B5DA-3347A6044EE6}.Release|anycpu.ActiveCfg = Release|Any CPU
-		{D9055A24-FEF5-4BD7-B5DA-3347A6044EE6}.Release|anycpu.Build.0 = Release|Any CPU
 		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Debug|anycpu.ActiveCfg = Debug|Any CPU
 		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{B461CE81-BC00-41DE-9B5F-CB9F3DAAFB2C}.Release|anycpu.ActiveCfg = Release|Any CPU

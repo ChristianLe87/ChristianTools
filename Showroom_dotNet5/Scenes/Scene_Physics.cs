@@ -8,6 +8,8 @@ namespace Showroom_dotNet5
 {
     public class Scene_Physics : IScene
     {
+        public Camera camera { get; }
+
         Button goToMenu;
 
         public Scene_Physics()

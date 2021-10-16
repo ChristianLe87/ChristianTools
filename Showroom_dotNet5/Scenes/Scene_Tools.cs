@@ -7,6 +7,8 @@ namespace Showroom_dotNet5
 {
     public class Scene_Tools : IScene
     {
+        public Camera camera { get; }
+
         Texture2D subAtlas_1;
         Texture2D subAtlas_2;
         Texture2D subAtlas_3;
@@ -140,7 +142,5 @@ namespace Showroom_dotNet5
 
             goToMenu.Draw(spriteBatch);
         }
-
-
     }
 }

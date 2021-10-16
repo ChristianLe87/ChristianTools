@@ -9,6 +9,8 @@ namespace Showroom_dotNet5
 {
     public class Scene_Assets : IScene
     {
+        public Camera camera { get; }
+
         Line line_1;
         Prefab prefab_1;
         Button goToMenu;

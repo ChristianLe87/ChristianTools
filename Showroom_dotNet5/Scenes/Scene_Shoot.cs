@@ -12,6 +12,8 @@ namespace Showroom_dotNet5
 {
     public class Scene_Shoot : IScene
     {
+        public Camera camera { get; }
+
         List<Bullet> bullets;
         MouseState lastMouseState;
         Button goToMenu;

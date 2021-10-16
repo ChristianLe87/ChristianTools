@@ -51,6 +51,7 @@ namespace Showroom_dotNet5
             public static readonly string Scene_Animations = "Scene_Animations";
             public static readonly string Scene_Assets = "Scene_Assets";
             public static readonly string Scene_Dialogue = "Scene_Dialogue";
+            public static readonly string Scene_Camera = "Scene_Camera";
             public static readonly string Scene_Playground_1 = "Scene_Playground_1";
             public static readonly string Scene_Playground_2 = "Scene_Playground_2";
         }

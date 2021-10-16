@@ -12,6 +12,8 @@ namespace Showroom_dotNet5
 {
     public class Scene_UI : IScene
     {
+        public Camera camera { get; }
+
         List<object> UIs;
 
         SoundEffect soundEffect;

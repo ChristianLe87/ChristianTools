@@ -8,6 +8,8 @@ namespace Showroom_dotNet5
 {
     public class Scene_Menu : IScene
     {
+        public Camera camera { get; }
+
         Button goToUI;
         Button goToShoot;
         Button goToTools;
@@ -17,6 +19,7 @@ namespace Showroom_dotNet5
         Button goToAssets;
         Button goToDialogue;
         Button goToPhysics;
+        Button goToCamera;
         Line line2;
 
         Button GoToPlayground1;
@@ -101,6 +104,16 @@ namespace Showroom_dotNet5
                             ButtonID: "goToPhysics"
             );
 
+            goToCamera = new Button(
+                rectangle: new Rectangle(200, 350, 100, 50),
+                text: "Camera",
+                defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                fontColor: Color.Black,
+                ButtonID: "goToCamera"
+);
+
             // Column 3
             GoToPlayground1 = new Button(
                             rectangle: new Rectangle(350, 50, 100, 50),
@@ -149,6 +162,7 @@ namespace Showroom_dotNet5
             goToAssets.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Assets));
             goToDialogue.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Dialogue));
             goToPhysics.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Physics));
+            goToCamera.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Camera));
 
             GoToPlayground1.Update(()=>Game1.ChangeToScene(WK.Scene.Scene_Playground_1));
             GoToPlayground2.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Playground_2));
@@ -164,6 +178,7 @@ namespace Showroom_dotNet5
             goToAssets.Draw(spriteBatch);
             goToDialogue.Draw(spriteBatch);
             goToPhysics.Draw(spriteBatch);
+            goToCamera.Draw(spriteBatch);
 
             GoToPlayground1.Draw(spriteBatch);
             GoToPlayground2.Draw(spriteBatch);

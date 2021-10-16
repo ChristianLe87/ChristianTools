@@ -8,6 +8,8 @@ namespace Showroom_dotNet5
 {
     public class Scene_Dialogue : IScene
     {
+        public Camera camera { get; }
+
         Dialogue dialogue;
         Button goToMenu;
         Label instructionsLabel;

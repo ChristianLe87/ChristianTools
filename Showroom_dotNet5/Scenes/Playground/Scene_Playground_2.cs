@@ -7,6 +7,8 @@ namespace Showroom_dotNet5
 {
     public class Scene_Playground_2 : IScene
     {
+        public Camera camera { get; private set; }
+
         Button goToMenu;
 
         public Scene_Playground_2()
