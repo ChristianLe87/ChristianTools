@@ -7,6 +7,7 @@ namespace zTools
         public Matrix transform;
         int WindowWidth;
         int WindowHeight;
+        float rotation = 0;
 
         public Camera(int WindowWidth, int WindowHeight)
         {
@@ -18,10 +19,12 @@ namespace zTools
         {
             Vector2 center = new Vector2(position.X - WindowWidth / 2, position.Y - WindowHeight / 2);
 
-            float scaleX = 1;
-            float scaley = 1;
+            transform = Matrix.CreateTranslation(new Vector3(-center.X, -center.Y, 0)) * Matrix.CreateRotationZ(rotation);
+        }
 
-            transform = Matrix.CreateScale(new Vector3(scaleX, scaley, 0)) * Matrix.CreateTranslation(new Vector3(-center.X, -center.Y, 0));
+        public void Rotate()
+        {
+            rotation += 0.01f;
         }
     }
 }
