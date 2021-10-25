@@ -14,6 +14,75 @@ namespace zTools
         public class Texture
         {
             /// <summary>
+            /// Multiply size of texture
+            /// </summary>
+            public static Texture2D Multiply(GraphicsDevice graphicsDevice, Texture2D originalTexture, int multiply)
+            {
+                // === Implementation ===
+                {
+                    Color[] originalColors = new Color[originalTexture.Width * originalTexture.Height];
+                    originalTexture.GetData(0, new Rectangle(0, 0, originalTexture.Width, originalTexture.Height), originalColors, 0, (originalTexture.Width * originalTexture.Height));
+
+                    Color[,] multidimentionalColors = ToMultidimentional(originalColors, originalTexture.Width, originalTexture.Height);
+
+                    Color[,] expandedColors = Expand(multidimentionalColors, multiply);
+
+                    Color[] flatResult = FlattenArray(expandedColors);
+
+                    Texture2D newTexture2D = new Texture2D(graphicsDevice, originalTexture.Width * multiply, originalTexture.Height * multiply, false, SurfaceFormat.Color);
+                    newTexture2D.SetData(flatResult);
+
+                    return newTexture2D;
+                }
+
+                // === Helpers ===
+                Color[,] ToMultidimentional(Color[] arr, int width, int height)
+                {
+                    Color[,] result = new Color[height, width];
+
+                    int count = 0;
+                    for (int w = 0; w < height; w++)
+                    {
+                        for (int h = 0; h < width; h++)
+                        {
+                            result[w, h] = arr[count];
+                            count++;
+                        }
+                    }
+                    return result;
+                }
+         
+
+                Color[,] Expand(Color[,] original, int multiply)
+                {
+                    // From stackoverflow: https://stackoverflow.com/questions/69705678/multiply-element-in-multidimensional-array?answertab=votes#tab-top
+                    int sizeX = original.GetLength(0);
+                    int sizeY = original.GetLength(1);
+
+                    Color[,] newArray = new Color[sizeX * multiply, sizeY * multiply];
+
+                    for (var i = 0; i < newArray.GetLength(0); i++)
+                        for (var j = 0; j < newArray.GetLength(1); j++)
+                            newArray[i, j] = original[i / multiply, j / multiply];
+
+                    return newArray;
+                }
+
+                static Color[] FlattenArray(Color[,] input)
+                {
+                    Color[] result = new Color[input.Length];
+
+                    int count = 0;
+                    for (int w = 0; w <= input.GetUpperBound(0); w++)
+                        for (int h = 0; h <= input.GetUpperBound(1); h++)    
+                            result[count++] = input[w, h];
+
+                    return result;
+                }
+            }
+
+
+            /// <summary>
             /// Generate a new texture from a PNG file
             /// </summary>
             public static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName, string folder = "")
