@@ -9,7 +9,6 @@
     <None Remove="MonoGame.Framework.DesktopGL" />
     <None Remove="Scene\" />
     <None Remove="Assets\" />
-    <None Remove="Tools\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
@@ -17,6 +16,7 @@
   <ItemGroup>
     <Folder Include="Scene\" />
     <Folder Include="Assets\" />
-    <Folder Include="Tools\" />
   </ItemGroup>
+  <Import Project="..\zTools\zTools.projitems" Label="Shared" Condition="Exists('..\zTools\zTools.projitems')" />
+  <Import Project="..\zUI\zUI.projitems" Label="Shared" Condition="Exists('..\zUI\zUI.projitems')" />
 </Project>

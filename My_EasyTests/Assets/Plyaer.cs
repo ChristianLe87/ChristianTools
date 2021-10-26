@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using zTools;
 
 namespace My_EasyTests
 {
@@ -13,7 +14,7 @@ namespace My_EasyTests
 
         public Player()
         {
-            texture2D = Tools.CreateColorTexture(
+            texture2D = Tools.Texture.CreateColorTexture(
                 graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                 color: Color.Pink);
 
