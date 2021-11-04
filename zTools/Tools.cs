@@ -14,9 +14,9 @@ namespace zTools
         public class Texture
         {
             /// <summary>
-            /// Multiply size of texture
+            /// Increase image size by a scale factor
             /// </summary>
-            public static Texture2D Multiply(GraphicsDevice graphicsDevice, Texture2D originalTexture, int multiply)
+            public static Texture2D Scale(GraphicsDevice graphicsDevice, Texture2D originalTexture, int scaleFactor)
             {
                 // === Implementation ===
                 {
@@ -25,11 +25,11 @@ namespace zTools
 
                     Color[,] multidimentionalColors = ToMultidimentional(originalColors, originalTexture.Width, originalTexture.Height);
 
-                    Color[,] expandedColors = Expand(multidimentionalColors, multiply);
+                    Color[,] expandedColors = Expand(multidimentionalColors, scaleFactor);
 
                     Color[] flatResult = FlattenArray(expandedColors);
 
-                    Texture2D newTexture2D = new Texture2D(graphicsDevice, originalTexture.Width * multiply, originalTexture.Height * multiply, false, SurfaceFormat.Color);
+                    Texture2D newTexture2D = new Texture2D(graphicsDevice, originalTexture.Width * scaleFactor, originalTexture.Height * scaleFactor, false, SurfaceFormat.Color);
                     newTexture2D.SetData(flatResult);
 
                     return newTexture2D;
