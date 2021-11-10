@@ -27,6 +27,7 @@ namespace zUI
             this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, fontColor);
 
             this.ButtonID = ButtonID;
+            this.previousInputState = new InputState();
         }
 
         public void Update(DxOnClickAction OnClickAction)
