@@ -9,14 +9,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Tools
 {
-    internal class Tools
+    public class Tools
     {
-        internal class Texture
+        public class Texture
         {
             /// <summary>
             /// Increase image size by a scale factor
             /// </summary>
-            internal static Texture2D ScaleTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, int scaleFactor)
+            public static Texture2D ScaleTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, int scaleFactor)
             {
                 // === Implementation ===
                 {
@@ -87,7 +87,7 @@ namespace ChristianTools.Tools
             /// </summary>
             /// <param name="imageName">File name of the PNG -> without the extension</param>
             /// <returns></returns>
-            internal static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName)
+            public static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName)
             {
                 string absolutePath = Path.Combine(contentManager.RootDirectory, $"{imageName}.png");
                 Texture2D result = Texture2D.FromFile(graphicsDevice, absolutePath);
@@ -97,7 +97,7 @@ namespace ChristianTools.Tools
             /// <summary>
             /// Get a new Texture2D from a bigger Texture2D
             /// </summary>
-            internal static Texture2D CropTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Rectangle extractRectangle)
+            public static Texture2D CropTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Rectangle extractRectangle)
             {
                 Texture2D subtexture = new Texture2D(graphicsDevice, extractRectangle.Width, extractRectangle.Height);
                 int count = extractRectangle.Width * extractRectangle.Height;
@@ -112,7 +112,7 @@ namespace ChristianTools.Tools
             /// <summary>
             /// Create a new Texture2D from a Color
             /// </summary>
-            internal static Texture2D CreateColorTexture(GraphicsDevice graphicsDevice, Color color, int Width = 1, int Height = 1)
+            public static Texture2D CreateColorTexture(GraphicsDevice graphicsDevice, Color color, int Width = 1, int Height = 1)
             {
                 Texture2D texture2D = new Texture2D(graphicsDevice, Width, Height, false, SurfaceFormat.Color);
                 Color[] colors = new Color[Width * Height];
@@ -130,7 +130,7 @@ namespace ChristianTools.Tools
             /// <summary>
             /// Tint a texture
             /// </summary>
-            internal static Texture2D ReColorTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Color color)
+            public static Texture2D ReColorTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Color color)
             {
                 Texture2D texture2D = new Texture2D(graphicsDevice, originalTexture.Width, originalTexture.Height, false, SurfaceFormat.Color);
 
@@ -156,7 +156,7 @@ namespace ChristianTools.Tools
             /// <summary>
 			/// CreateCircleTexture
 			/// </summary>
-            internal static Texture2D CreateCircleTexture(GraphicsDevice graphicsDevice, Color color, int radius = 1)
+            public static Texture2D CreateCircleTexture(GraphicsDevice graphicsDevice, Color color, int radius = 1)
             {
                 // Implementation
                 {
@@ -188,7 +188,7 @@ namespace ChristianTools.Tools
                 }
             }
 
-            internal static Texture2D CreateTriangle(GraphicsDevice graphicsDevice, Color color, int Width, int Height)
+            public static Texture2D CreateTriangle(GraphicsDevice graphicsDevice, Color color, int Width, int Height)
             {
                 List<Color> colors = new List<Color>();
 
@@ -235,12 +235,12 @@ namespace ChristianTools.Tools
         }
 
 
-        internal class Font
+        public class Font
         {
             /// <summary>
             /// Generate a new font from a Texture2D
             /// </summary>
-            internal static SpriteFont GenerateFont(Texture2D texture2D, char[,] chars)
+            public static SpriteFont GenerateFont(Texture2D texture2D, char[,] chars)
             {
                 int charWidth = texture2D.Width / chars.GetLength(1);
                 int charHigh = texture2D.Height / chars.GetLength(0);
@@ -294,12 +294,12 @@ namespace ChristianTools.Tools
 
             class FontChar
             {
-                internal char _char { get; }
-                internal Rectangle glyphBound { get; }
-                internal Rectangle cropping { get; }
-                internal Vector3 kerning { get; }
+                public char _char { get; }
+                public Rectangle glyphBound { get; }
+                public Rectangle cropping { get; }
+                public Vector3 kerning { get; }
 
-                internal FontChar(char c, Rectangle glyphBound)
+                public FontChar(char c, Rectangle glyphBound)
                 {
                     this._char = c;
                     this.glyphBound = glyphBound;
@@ -311,21 +311,21 @@ namespace ChristianTools.Tools
             /// <summary>
             /// Get a SpriteFont from ContentManager
             /// </summary>
-            internal static SpriteFont GetFont(ContentManager contentManager, string fontName)
+            public static SpriteFont GetFont(ContentManager contentManager, string fontName)
             {
                 return contentManager.Load<SpriteFont>(fontName);
             }
         }
 
 
-        internal class Sound
+        public class Sound
         {
             /// <summary>
             /// Get SoundEffect from WAV file
             /// </summary>
             /// <param name="soundName">File name of the WAV -> without the extension</param>
             /// <returns></returns>
-            internal static SoundEffect GetSoundEffect(GraphicsDevice graphicsDevice, ContentManager contentManager, string soundName)
+            public static SoundEffect GetSoundEffect(GraphicsDevice graphicsDevice, ContentManager contentManager, string soundName)
             {
                 string absolutePath = Path.Combine(contentManager.RootDirectory, $"{soundName}.wav");
                 SoundEffect result = SoundEffect.FromFile(absolutePath);
@@ -333,12 +333,12 @@ namespace ChristianTools.Tools
             }
         }
 
-        internal class MyMath
+        public class MyMath
         {
             /// <summary>
             /// Calculate inclination
             /// </summary>
-            internal static float M(Vector2 start, Vector2 direction)
+            public static float M(Vector2 start, Vector2 direction)
             {
                 float y = direction.Y - start.Y;
                 float x = direction.X - start.X;
@@ -349,17 +349,17 @@ namespace ChristianTools.Tools
                     return y / x;
             }
 
-            internal static float B(float x, float y, float m)
+            public static float B(float x, float y, float m)
             {
                 return y - (m * x);
             }
 
-            internal static double DegreeToRadian(double degree)
+            public static double DegreeToRadian(double degree)
             {
                 return ((Math.PI / 180) * degree);
             }
 
-            internal static double RadianToDegree(double radian)
+            public static double RadianToDegree(double radian)
             {
                 return radian / (Math.PI / 180);
             }
@@ -370,7 +370,7 @@ namespace ChristianTools.Tools
             /// Angles less than zero are to the left. Angles greater than
             /// zero are to the right.
             /// </summary>
-            internal static double GetAngleInRadians(Point Point1_Start, Point Point_1_End, Point Point2_Start, Point Pount2_End)
+            public static double GetAngleInRadians(Point Point1_Start, Point Point_1_End, Point Point2_Start, Point Pount2_End)
             {
                 // Code thanks to: http://csharphelper.com/blog/2020/06/find-the-angle-between-two-vectors-in-c/
 
@@ -398,19 +398,19 @@ namespace ChristianTools.Tools
             }
 
 
-            internal class Pitagoras
+            public class Pitagoras
             {
-                internal static double r(double x, double y)
+                public static double r(double x, double y)
                 {
                     return Math.Sqrt((x * x) + (y * y));
                 }
 
-                internal static double y(double r, double x)
+                public static double y(double r, double x)
                 {
                     return Math.Sqrt((r * r) - (x * x));
                 }
 
-                internal static double x(double r, double y)
+                public static double x(double r, double y)
                 {
                     return Math.Sqrt((r * r) - (y * y));
                 }
@@ -418,4 +418,3 @@ namespace ChristianTools.Tools
         }
     }
 }
-

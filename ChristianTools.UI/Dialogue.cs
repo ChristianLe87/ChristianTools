@@ -1,10 +1,11 @@
 ﻿using System.Linq;
+using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using zTools;
 
-namespace zUI
+namespace ChristianTools.UI
 {
     public class Dialogue
     {
@@ -23,7 +24,7 @@ namespace zUI
             this.centerPosition = centerPosition;
             this.labelCount = 0;
             this.isActive = isActive;
-            this.labels = texts.Select(text =>  new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, Color.Pink)).ToArray();
+            this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, Color.Pink)).ToArray();
         }
 
         public void Update()

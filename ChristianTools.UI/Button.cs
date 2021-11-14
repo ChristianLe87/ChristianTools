@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using zTools;
 
-namespace zUI
+namespace ChristianTools.UI
 {
     public class Button
     {

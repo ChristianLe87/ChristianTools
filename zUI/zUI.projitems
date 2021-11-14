@@ -9,10 +9,6 @@
     <Import_RootNamespace>zUI</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Button.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HealthBar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Label.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Dialogue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CheckBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Panel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Border.cs" />

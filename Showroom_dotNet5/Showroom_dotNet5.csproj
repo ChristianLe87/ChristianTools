@@ -57,6 +57,7 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
   </ItemGroup>
+  <Import Project="..\ChristianTools.UI\ChristianTools.UI.projitems" Label="Shared" Condition="Exists('..\ChristianTools.UI\ChristianTools.UI.projitems')" />
   <Import Project="..\zAssets\zAssets.projitems" Label="Shared" Condition="Exists('..\zAssets\zAssets.projitems')" />
   <Import Project="..\zPhysics\zPhysics.projitems" Label="Shared" Condition="Exists('..\zPhysics\zPhysics.projitems')" />
   <Import Project="..\zTools\zTools.projitems" Label="Shared" Condition="Exists('..\zTools\zTools.projitems')" />
