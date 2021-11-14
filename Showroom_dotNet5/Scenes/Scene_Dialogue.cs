@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.IO;
+using ChristianTools.Tools;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using zTools;
@@ -26,7 +28,7 @@ namespace Showroom_dotNet5
                 texts: text,
                 centerPosition: new Point(200, 200),
                 background: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
-                spriteFont: Tools.Font.GetFont(Game1.contentManager, "Arial_10", "Fonts")
+                spriteFont: Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10"))
             );
 
             goToMenu = new Button(

@@ -57,10 +57,11 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
   </ItemGroup>
-  <Import Project="..\zWorldElements\zWorldElements.projitems" Label="Shared" Condition="Exists('..\zWorldElements\zWorldElements.projitems')" />
-  <Import Project="..\zUI\zUI.projitems" Label="Shared" Condition="Exists('..\zUI\zUI.projitems')" />
-  <Import Project="..\zTopView_RPG\zTopView_RPG.projitems" Label="Shared" Condition="Exists('..\zTopView_RPG\zTopView_RPG.projitems')" />
-  <Import Project="..\zTools\zTools.projitems" Label="Shared" Condition="Exists('..\zTools\zTools.projitems')" />
-  <Import Project="..\zPhysics\zPhysics.projitems" Label="Shared" Condition="Exists('..\zPhysics\zPhysics.projitems')" />
   <Import Project="..\zAssets\zAssets.projitems" Label="Shared" Condition="Exists('..\zAssets\zAssets.projitems')" />
+  <Import Project="..\zPhysics\zPhysics.projitems" Label="Shared" Condition="Exists('..\zPhysics\zPhysics.projitems')" />
+  <Import Project="..\zTools\zTools.projitems" Label="Shared" Condition="Exists('..\zTools\zTools.projitems')" />
+  <Import Project="..\zTopView_RPG\zTopView_RPG.projitems" Label="Shared" Condition="Exists('..\zTopView_RPG\zTopView_RPG.projitems')" />
+  <Import Project="..\zUI\zUI.projitems" Label="Shared" Condition="Exists('..\zUI\zUI.projitems')" />
+  <Import Project="..\zWorldElements\zWorldElements.projitems" Label="Shared" Condition="Exists('..\zWorldElements\zWorldElements.projitems')" />
+  <Import Project="..\ChristianTools.Tools\ChristianTools.Tools.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Tools\ChristianTools.Tools.projitems')" />
 </Project>

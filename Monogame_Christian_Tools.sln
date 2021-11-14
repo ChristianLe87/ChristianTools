@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_Template", "My_Template\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_EasyTests", "My_EasyTests\My_EasyTests.csproj", "{68DD715C-4BA0-4C08-BB96-458BBCB7A0D4}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.Tools", "ChristianTools.Tools\ChristianTools.Tools.shproj", "{F57B7D86-CEA4-408B-B3D0-E2A1BA9F7D05}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		zPhysics\zPhysics.projitems*{22f283ab-5776-4e10-a1ad-0e8fde91c5a3}*SharedItemsImports = 13

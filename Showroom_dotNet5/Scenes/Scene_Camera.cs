@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ChristianTools.Tools;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using zTools;
@@ -9,8 +10,6 @@ namespace Showroom_dotNet5
 {
     public class Scene_Camera : IScene
     {
-
-
         Button goToMenu;
         Label label;
         Player player;

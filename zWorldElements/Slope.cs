@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using zTools;
 
 namespace zWorldElements
 {

@@ -7,16 +7,16 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace zTools
+namespace ChristianTools.Tools
 {
-    public class Tools
+    internal class Tools
     {
-        public class Texture
+        internal class Texture
         {
             /// <summary>
             /// Increase image size by a scale factor
             /// </summary>
-            public static Texture2D Scale(GraphicsDevice graphicsDevice, Texture2D originalTexture, int scaleFactor)
+            internal static Texture2D ScaleTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, int scaleFactor)
             {
                 // === Implementation ===
                 {
@@ -51,7 +51,7 @@ namespace zTools
                     }
                     return result;
                 }
-         
+
 
                 Color[,] Expand(Color[,] original, int multiply)
                 {
@@ -74,7 +74,7 @@ namespace zTools
 
                     int count = 0;
                     for (int w = 0; w <= input.GetUpperBound(0); w++)
-                        for (int h = 0; h <= input.GetUpperBound(1); h++)    
+                        for (int h = 0; h <= input.GetUpperBound(1); h++)
                             result[count++] = input[w, h];
 
                     return result;
@@ -85,28 +85,25 @@ namespace zTools
             /// <summary>
             /// Generate a new texture from a PNG file
             /// </summary>
-            public static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName, string folder = "")
+            /// <param name="imageName">File name of the PNG -> without the extension</param>
+            /// <returns></returns>
+            internal static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName)
             {
-                string absolutePath = new DirectoryInfo(Path.Combine(Path.Combine(contentManager.RootDirectory, folder), $"{imageName}.png")).ToString();
-
-                FileStream fileStream = new FileStream(absolutePath, FileMode.Open);
-
-                var result = Texture2D.FromStream(graphicsDevice, fileStream);
-                fileStream.Dispose();
-
+                string absolutePath = Path.Combine(contentManager.RootDirectory, $"{imageName}.png");
+                Texture2D result = Texture2D.FromFile(graphicsDevice, absolutePath);
                 return result;
             }
 
             /// <summary>
             /// Get a new Texture2D from a bigger Texture2D
             /// </summary>
-            public static Texture2D CropTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture2D, Rectangle extractRectangle)
+            internal static Texture2D CropTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Rectangle extractRectangle)
             {
                 Texture2D subtexture = new Texture2D(graphicsDevice, extractRectangle.Width, extractRectangle.Height);
                 int count = extractRectangle.Width * extractRectangle.Height;
                 Color[] data = new Color[count];
 
-                originalTexture2D.GetData(0, new Rectangle(extractRectangle.X, extractRectangle.Y, extractRectangle.Width, extractRectangle.Height), data, 0, count);
+                originalTexture.GetData(0, new Rectangle(extractRectangle.X, extractRectangle.Y, extractRectangle.Width, extractRectangle.Height), data, 0, count);
                 subtexture.SetData(data);
 
                 return subtexture;
@@ -115,7 +112,7 @@ namespace zTools
             /// <summary>
             /// Create a new Texture2D from a Color
             /// </summary>
-            public static Texture2D CreateColorTexture(GraphicsDevice graphicsDevice, Color color, int Width = 1, int Height = 1)
+            internal static Texture2D CreateColorTexture(GraphicsDevice graphicsDevice, Color color, int Width = 1, int Height = 1)
             {
                 Texture2D texture2D = new Texture2D(graphicsDevice, Width, Height, false, SurfaceFormat.Color);
                 Color[] colors = new Color[Width * Height];
@@ -130,33 +127,36 @@ namespace zTools
                 return texture2D;
             }
 
-            public static Texture2D ReColorTexture(GraphicsDevice graphicsDevice, Texture2D texture2D, Color color)
+            /// <summary>
+            /// Tint a texture
+            /// </summary>
+            internal static Texture2D ReColorTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Color color)
             {
-                Texture2D newTexture2D = new Texture2D(graphicsDevice, texture2D.Width, texture2D.Height, false, SurfaceFormat.Color);
+                Texture2D texture2D = new Texture2D(graphicsDevice, originalTexture.Width, originalTexture.Height, false, SurfaceFormat.Color);
 
-                int count = texture2D.Width * texture2D.Height;
+                int count = originalTexture.Width * originalTexture.Height;
                 Color[] data = new Color[count];
 
-                texture2D.GetData(0, new Rectangle(0,0, texture2D.Width, texture2D.Height), data, 0, count);
+                originalTexture.GetData(0, new Rectangle(0, 0, originalTexture.Width, originalTexture.Height), data, 0, count);
 
                 for (int i = 0; i < data.Length; i++)
                 {
-                    if(data[i].A != 0)
+                    if (data[i].A != 0)
                     {
                         data[i] = new Color(color.R, color.G, color.B, data[i].A);
                     }
                 }
 
-                newTexture2D.SetData(data);
+                texture2D.SetData(data);
 
 
-                return newTexture2D;
+                return texture2D;
             }
 
             /// <summary>
 			/// CreateCircleTexture
 			/// </summary>
-            public static Texture2D CreateCircleTexture(GraphicsDevice graphicsDevice, Color color, int radius = 1)
+            internal static Texture2D CreateCircleTexture(GraphicsDevice graphicsDevice, Color color, int radius = 1)
             {
                 // Implementation
                 {
@@ -235,12 +235,12 @@ namespace zTools
         }
 
 
-        public class Font
+        internal class Font
         {
             /// <summary>
             /// Generate a new font from a Texture2D
             /// </summary>
-            public static SpriteFont GenerateFont(Texture2D texture2D, char[,] chars)
+            internal static SpriteFont GenerateFont(Texture2D texture2D, char[,] chars)
             {
                 int charWidth = texture2D.Width / chars.GetLength(1);
                 int charHigh = texture2D.Height / chars.GetLength(0);
@@ -294,12 +294,12 @@ namespace zTools
 
             class FontChar
             {
-                public char _char { get; }
-                public Rectangle glyphBound { get; }
-                public Rectangle cropping { get; }
-                public Vector3 kerning { get; }
+                internal char _char { get; }
+                internal Rectangle glyphBound { get; }
+                internal Rectangle cropping { get; }
+                internal Vector3 kerning { get; }
 
-                public FontChar(char c, Rectangle glyphBound)
+                internal FontChar(char c, Rectangle glyphBound)
                 {
                     this._char = c;
                     this.glyphBound = glyphBound;
@@ -311,39 +311,34 @@ namespace zTools
             /// <summary>
             /// Get a SpriteFont from ContentManager
             /// </summary>
-            public static SpriteFont GetFont(ContentManager contentManager, string fontName, string folder = "")
+            internal static SpriteFont GetFont(ContentManager contentManager, string fontName)
             {
-                return contentManager.Load<SpriteFont>(Path.Combine(folder, fontName));
+                return contentManager.Load<SpriteFont>(fontName);
             }
-
         }
 
 
-        public class Sound
+        internal class Sound
         {
             /// <summary>
             /// Get SoundEffect from WAV file
             /// </summary>
-            public static SoundEffect GetSoundEffect(GraphicsDevice graphicsDevice, ContentManager contentManager, string soundName, string folder = "")
+            /// <param name="soundName">File name of the WAV -> without the extension</param>
+            /// <returns></returns>
+            internal static SoundEffect GetSoundEffect(GraphicsDevice graphicsDevice, ContentManager contentManager, string soundName)
             {
-                string absolutePath = new DirectoryInfo(Path.Combine(Path.Combine(contentManager.RootDirectory, folder), $"{soundName}.wav")).ToString();
-
-                FileStream fileStream = new FileStream(absolutePath, FileMode.Open);
-
-                SoundEffect result = SoundEffect.FromStream(fileStream);
-
-                fileStream.Dispose();
-
+                string absolutePath = Path.Combine(contentManager.RootDirectory, $"{soundName}.wav");
+                SoundEffect result = SoundEffect.FromFile(absolutePath);
                 return result;
             }
         }
 
-        public class MyMath
+        internal class MyMath
         {
             /// <summary>
             /// Calculate inclination
             /// </summary>
-            public static float M(Vector2 start, Vector2 direction)
+            internal static float M(Vector2 start, Vector2 direction)
             {
                 float y = direction.Y - start.Y;
                 float x = direction.X - start.X;
@@ -354,17 +349,17 @@ namespace zTools
                     return y / x;
             }
 
-            public static float B(float x, float y, float m)
+            internal static float B(float x, float y, float m)
             {
                 return y - (m * x);
             }
 
-            public static double DegreeToRadian(double degree)
+            internal static double DegreeToRadian(double degree)
             {
                 return ((Math.PI / 180) * degree);
             }
 
-            public static double RadianToDegree(double radian)
+            internal static double RadianToDegree(double radian)
             {
                 return radian / (Math.PI / 180);
             }
@@ -375,7 +370,7 @@ namespace zTools
             /// Angles less than zero are to the left. Angles greater than
             /// zero are to the right.
             /// </summary>
-            public static double GetAngleInRadians(Point Point1_Start, Point Point_1_End, Point Point2_Start, Point Pount2_End)
+            internal static double GetAngleInRadians(Point Point1_Start, Point Point_1_End, Point Point2_Start, Point Pount2_End)
             {
                 // Code thanks to: http://csharphelper.com/blog/2020/06/find-the-angle-between-two-vectors-in-c/
 
@@ -403,19 +398,19 @@ namespace zTools
             }
 
 
-            public class Pitagoras
+            internal class Pitagoras
             {
-                public static double r(double x, double y)
+                internal static double r(double x, double y)
                 {
                     return Math.Sqrt((x * x) + (y * y));
                 }
 
-                public static double y(double r, double x)
+                internal static double y(double r, double x)
                 {
                     return Math.Sqrt((r * r) - (x * x));
                 }
 
-                public static double x(double r, double y)
+                internal static double x(double r, double y)
                 {
                     return Math.Sqrt((r * r) - (y * y));
                 }
@@ -423,3 +418,4 @@ namespace zTools
         }
     }
 }
+

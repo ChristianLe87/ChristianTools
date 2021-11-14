@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ChristianTools.Tools;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using zTools;
 using zUI;
@@ -39,22 +40,22 @@ namespace Showroom_dotNet5
         {
             subAtlas_1 = Tools.Texture.CropTexture(
                             graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                            originalTexture2D: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
+                            originalTexture: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
                             extractRectangle: new Rectangle(0, 0, 50, 50)
                          );
             subAtlas_2 = Tools.Texture.CropTexture(
                             graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                            originalTexture2D: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
+                            originalTexture: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
                             extractRectangle: new Rectangle(50, 0, 50, 50)
                          );
             subAtlas_3 = Tools.Texture.CropTexture(
                             graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                            originalTexture2D: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
+                            originalTexture: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
                             extractRectangle: new Rectangle(0, 50, 50, 50)
                          );
             subAtlas_4 = Tools.Texture.CropTexture(
                             graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                            originalTexture2D: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
+                            originalTexture: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
                             extractRectangle: new Rectangle(50, 50, 50, 50)
                          );
 
@@ -64,44 +65,44 @@ namespace Showroom_dotNet5
             circle_4 = Tools.Texture.CreateCircleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 26);
 
 
-            triangle_1 = zTools.Tools.Texture.CreateTriangle(
+            triangle_1 = Tools.Texture.CreateTriangle(
                                                         graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                                                         color: Color.Red,
                                                         Width: 40,
                                                         Height: 40
             );
 
-            triangle_2 = zTools.Tools.Texture.CreateTriangle(
+            triangle_2 = Tools.Texture.CreateTriangle(
                                                         graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                                                         color: Color.Red,
                                                         Width: 40,
                                                         Height: 40
             );
 
-            triangle_3 = zTools.Tools.Texture.CreateTriangle(
+            triangle_3 = Tools.Texture.CreateTriangle(
                                                         graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                                                         color: Color.Red,
                                                         Width: 40,
                                                         Height: 40
             );
 
-            triangle_4 = zTools.Tools.Texture.CreateTriangle(
+            triangle_4 = Tools.Texture.CreateTriangle(
                                                         graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                                                         color: Color.Red,
                                                         Width: 40,
                                                         Height: 40
             );
 
-            var fontMap = zTools.Tools.Texture.GetTexture(
+            var fontMap = Tools.Texture.GetTexture(
                 graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                  Game1.contentManager,
                  "MyFont_PNG_260x56"
                 );
 
 
-            fontMap_Green = zTools.Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Green);
+            fontMap_Green = Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Green);
 
-            fontMap_Red = zTools.Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Red);
+            fontMap_Red = Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Red);
 
             goToMenu = new Button(
                             rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),

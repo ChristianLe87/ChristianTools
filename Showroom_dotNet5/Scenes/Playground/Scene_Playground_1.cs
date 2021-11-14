@@ -1,8 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ChristianTools.Tools;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using zTools;
-using zTopView_RPG;
 using zUI;
 
 namespace Showroom_dotNet5
