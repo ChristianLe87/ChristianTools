@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using ChristianTools.UI;
+using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using zTools;
 
 namespace ChristianTools.UI
 {
