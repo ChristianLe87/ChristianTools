@@ -33,10 +33,10 @@ namespace ChristianTools.Tools
         /// Create GameData file
         /// </summary>
         /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
-        public static void Create(GameData gameData, string gameDataFileName)
+        public static void Create<T>(T gameData, string gameDataFileName)
         {
             string UserLibraryCaches_Path = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
-            string absolutePath = Path.Combine(UserLibraryCaches_Path,$"{gameDataFileName}.json");
+            string absolutePath = Path.Combine(UserLibraryCaches_Path, $"{gameDataFileName}.json");
 
             TextWriter textWriter = new StreamWriter(path: absolutePath, append: false);
 
@@ -50,7 +50,7 @@ namespace ChristianTools.Tools
         /// Update GameData file
         /// </summary>
         /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
-        public static void Update(GameData gameData, string gameDataFileName)
+        public static void Update<T>(T gameData, string gameDataFileName)
         {
             Create(gameData, gameDataFileName);
         }
@@ -59,7 +59,7 @@ namespace ChristianTools.Tools
         /// Read GameData file
         /// </summary>
         /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
-        public static GameData Read(string gameDataFileName)
+        public static T Read<T>(string gameDataFileName)
         {
             string UserLibraryCaches_Path = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
             string absolutePath = Path.Combine(UserLibraryCaches_Path, $"{gameDataFileName}.json");
@@ -68,7 +68,7 @@ namespace ChristianTools.Tools
             string fileContents = textWriter.ReadToEnd();
             textWriter.Close();
 
-            GameData gameData = Newtonsoft.Json.JsonConvert.DeserializeObject<GameData>(fileContents);
+            T gameData = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(fileContents);
 
             return gameData;
         }
