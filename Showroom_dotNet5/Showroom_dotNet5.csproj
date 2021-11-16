@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <None Remove="MonoGame.Framework.DesktopGL" />
+    <None Remove="Newtonsoft.Json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Content\MyAtlasTexture.png">
@@ -56,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <Import Project="..\ChristianTools.UI\ChristianTools.UI.projitems" Label="Shared" Condition="Exists('..\ChristianTools.UI\ChristianTools.UI.projitems')" />
   <Import Project="..\zAssets\zAssets.projitems" Label="Shared" Condition="Exists('..\zAssets\zAssets.projitems')" />
