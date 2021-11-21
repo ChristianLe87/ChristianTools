@@ -25,6 +25,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.Tools", "Chr
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.UI", "ChristianTools.UI\ChristianTools.UI.shproj", "{587E6C09-E5E8-4A29-BC2C-B65BC740CA4B}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.Helpers", "ChristianTools.Helpers\ChristianTools.Helpers.shproj", "{D303B2DE-52D1-4698-824B-F0D486922015}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		zPhysics\zPhysics.projitems*{22f283ab-5776-4e10-a1ad-0e8fde91c5a3}*SharedItemsImports = 13
