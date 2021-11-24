@@ -19,7 +19,7 @@ namespace zAssets
     public class Player
     {
         Point centerPoint;
-        Rectangle rectangle { get => new Rectangle().Create(centerPoint, animations[0].rectangle.Width, animations[0].rectangle.Height); }
+        Rectangle rectangle { get => Tools.GetRectangle.Rectangle(centerPoint, animations[0].rectangle.Width, animations[0].rectangle.Height); }
 
         Rectangle rectangleUp { get => new Rectangle(x: rectangle.X + 1, y: rectangle.Y, width: (rectangle.Right - 1) - (rectangle.X + 1), height: 1); }
         Rectangle rectangleDown { get => new Rectangle(x: rectangle.X + 1, y: rectangle.Bottom, width: (rectangle.Right - 1) - (rectangle.X + 1), height: 1); }

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace zWorldElements
 {
-    public class Ladder : IWorldElement
+    /*public class Ladder : IWorldElement
     {
         Texture2D texture2D;
         Point centerPoint;
@@ -22,5 +22,5 @@ namespace zWorldElements
         {
             spriteBatch.Draw(texture2D, rectangle, Color.White);
         }
-    }
+    }*/
 }

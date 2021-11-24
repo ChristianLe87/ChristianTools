@@ -5,12 +5,10 @@ using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Shared;
 
 namespace ChristianTools.Helpers
 {
-    /*public class ChristianGame : Game
+    public class ChristianGame : Game
     {
         // a way to access the graphics devices (iPhone, Mac, Pc, PS4, etc)
         public static GraphicsDeviceManager graphicsDeviceManager;
@@ -20,22 +18,31 @@ namespace ChristianTools.Helpers
 
         public static ContentManager contentManager;
 
-        public static KeyboardState lastKeyboardState;
+        // Input
+        public static InputState lastInputState;
 
+        // Scenes
         static Dictionary<string, IScene> scenes;
-        static string actualScene = WK.Scene.Level1;
+        static string actualScene;
         public static IScene GetScene { get => scenes[actualScene]; }
 
-        public static GameData data;
+        // GameData
+        static string gameDataFileName;
+        public static GameData gameData;
 
-        TestThings testThings;
 
-        public ChristianGame()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
+        public ChristianGame(string gameDataFileName, int canvasWidth = 500, int canvasHeight = 500, string windowTitle = "Game", bool isMouseVisible = true)
         {
+            ChristianGame.gameDataFileName = gameDataFileName;
+
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = WK.Default.CanvasWidth;
-            graphicsDeviceManager.PreferredBackBufferHeight = WK.Default.CanvasHeight;
+            graphicsDeviceManager.PreferredBackBufferWidth = canvasWidth;
+            graphicsDeviceManager.PreferredBackBufferHeight = canvasHeight;
             graphicsDeviceManager.ApplyChanges();
 
 
@@ -48,35 +55,39 @@ namespace ChristianTools.Helpers
             // Content
             string absolutePath = Path.Combine(Environment.CurrentDirectory, "Content");
             base.Content.RootDirectory = absolutePath;
-            Game1.contentManager = base.Content;
-
-            // Save data
-            if (JsonSerialization.FileExist() == false)
-                JsonSerialization.Create();
-            else
-                JsonSerialization.Read();
+            ChristianGame.contentManager = base.Content;
 
 
-            // scenes
-            scenes = new Dictionary<string, IScene>()
+            // GameData
+            if (JsonSerialization.FileExist(gameDataFileName) == false)
             {
-                { WK.Scene.Menu, new Scene_Menu() },
-                { WK.Scene.Setup, new Scene_Setup() },
-                { WK.Scene.Level1, new Scene_Level1() },
-            };
+                ChristianGame.gameData = new GameData();
+                JsonSerialization.Create<GameData>(gameData, gameDataFileName);
+            }
+            else
+            {
+                GameData gameData = JsonSerialization.Read<GameData>(gameDataFileName);
+                ChristianGame.gameData = gameData;
+            }
+
 
             // others
-            base.Window.Title = WK.Default.WindowTitle;
-            base.IsMouseVisible = true;
+            base.Window.Title = windowTitle;
+            base.IsMouseVisible = isMouseVisible;
 
-            Game1.lastKeyboardState = Keyboard.GetState();
-
-
-            //testThings = new TestThings();
-
+            ChristianGame.lastInputState = new InputState();
 
             // Initialize objects (scores, values, items, etc)
             base.Initialize();
+        }
+
+
+
+   
+        public void SetupScenes(Dictionary<string, IScene> scenes, string startScene)
+        {
+            ChristianGame.scenes = scenes;
+            ChristianGame.actualScene = startScene;
         }
 
         protected override void LoadContent()
@@ -92,17 +103,11 @@ namespace ChristianTools.Helpers
 
         protected override void Update(GameTime gameTime)
         {
+            InputState inputState = new InputState();
 
-            KeyboardState keyboardState = Keyboard.GetState();
+            scenes[actualScene].Update(lastInputState, inputState);   
 
-
-            Scene_Helper.Update(keyboardState, lastKeyboardState);
-
-
-            testThings?.Update();
-
-            Game1.lastKeyboardState = keyboardState;
-
+            ChristianGame.lastInputState = inputState;
 
             base.Update(gameTime);
         }
@@ -112,8 +117,7 @@ namespace ChristianTools.Helpers
             base.GraphicsDevice.Clear(Color.CornflowerBlue);
             this.spriteBatch.Begin(sortMode: SpriteSortMode.Deferred, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform);
 
-            Scene_Helper.Draw(spriteBatch, scenes[actualScene]);
-            testThings?.Draw(spriteBatch);
+            scenes[actualScene].Draw(spriteBatch);
 
             this.spriteBatch.End();
             base.Draw(gameTime);
@@ -121,9 +125,9 @@ namespace ChristianTools.Helpers
 
         public static void ChangeToScene(string scene)
         {
-            JsonSerialization.Update(Game1.data);
+            JsonSerialization.Update(ChristianGame.gameData, ChristianGame.gameDataFileName);
             actualScene = scene;
             scenes[actualScene].Initialize();
         }
-    }*/
+    }
 }

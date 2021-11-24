@@ -15,7 +15,7 @@ namespace zAssets
         double x;
         double y;
 
-        public Rectangle rectangle { get => new Rectangle().Create(position, texture2D); }
+        public Rectangle rectangle { get => Tools.GetRectangle.Rectangle(position, texture2D); }
 
         public Bullet(Texture2D texture2D, Point start, Point direction, int steps, TimeSpan autoDestroyTime = new TimeSpan())
         {

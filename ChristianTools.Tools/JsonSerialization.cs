@@ -4,9 +4,6 @@ using Microsoft.Xna.Framework.Content;
 
 namespace ChristianTools.Tools
 {
-    //Environment.GetFolderPath(Environment.SpecialFolder.InternetCache)
-    //"/Users/christianlehnhoff/Library/Caches"
-
 
     public class GameData
     {
@@ -15,6 +12,8 @@ namespace ChristianTools.Tools
         public int lifes { get; set; } = 3;
     }
 
+    //Environment.GetFolderPath(Environment.SpecialFolder.InternetCache)
+    //"/Users/christianlehnhoff/Library/Caches"
     public class JsonSerialization
     {
         /// <summary>

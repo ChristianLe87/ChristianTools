@@ -25,11 +25,10 @@ namespace zWorldElements
                 case SlopeOrientation.Right:
                     for (int i = 0; i < rectangles.Length; i++)
                     {
-                        Rectangle r = new Rectangle().Create(
-                            rectangle.X + i,
-                            rectangle.Y + (i * ratio),
-                            1,
-                            rectangle.Height - (i * ratio)
+                        Rectangle r = Tools.GetRectangle.Rectangle(
+                            centerPosition: new Point(rectangle.X + i, (int)(rectangle.Y + (i * ratio))),
+                            Width: 1,
+                            Height: (int)(rectangle.Height - (i * ratio))
                         );
 
                         this.rectangles[i] = r;
@@ -38,11 +37,10 @@ namespace zWorldElements
                 case SlopeOrientation.Left:
                     for (int i = 0; i < rectangles.Length; i++)
                     {
-                        Rectangle r = new Rectangle().Create(
-                            rectangle.X + i,
-                            (rectangle.Width - (i * ratio)) + rectangle.Y,
-                            1,
-                            (i * ratio)
+                        Rectangle r = Tools.GetRectangle.Rectangle(
+                            centerPosition: new Point(rectangle.X + i, (int)(rectangle.Width - (i * ratio)) + rectangle.Y),
+                            Width: 1,
+                            Height: (int)(i * ratio)
                         );
 
                         this.rectangles[i] = r;

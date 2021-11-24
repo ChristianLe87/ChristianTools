@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ChristianTools.Tools;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Helpers
@@ -19,6 +20,8 @@ namespace ChristianTools.Helpers
         public Camera camera { get; }
         //public Map map { get; }
         public void Initialize();
+        public void Update(InputState lastInputState, InputState inputState);
+        public void Draw(SpriteBatch spriteBatch);
     }
 
     public interface IUI
