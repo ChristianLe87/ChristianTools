@@ -12,7 +12,12 @@ namespace ChristianTools.Tools
         // General
         public bool Right => keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right) || (gamePadState.ThumbSticks.Left.X > 0);
         public bool Left => keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left) || (gamePadState.ThumbSticks.Left.X < 0);
+
+        /// <summary>
+        /// keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A);
+        /// </summary>
         public bool Jump => keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A);
+
         public bool NotJump => !(keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A));
         public bool Action => keyboardState.IsKeyDown(Keys.Enter) || gamePadState.IsButtonDown(Buttons.X) || (mouseState.LeftButton == ButtonState.Pressed);
 

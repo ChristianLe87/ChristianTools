@@ -19,7 +19,7 @@ namespace ChristianTools.Helpers
         public static ContentManager contentManager;
 
         // Input
-        public static InputState lastInputState;
+        private static InputState lastInputState;
 
         // Scenes
         static Dictionary<string, IScene> scenes;
