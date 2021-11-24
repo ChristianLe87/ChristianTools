@@ -4,36 +4,35 @@ namespace ChristianTools.Helpers
 {
     public class Rigidbody
     {
-        Vector2 force;
-        public Vector2 GetForce { get => force; }
+        public Vector2 force { get; private set; }
         Vector2 gravity;
 
-        int scaleFactor;
+        public Point centerPosition { get; set; }
 
-        public Point centerPosition { get => new Point(transform.X, transform.Y); set { transform.X = value.X; transform.Y = value.Y; } }
-        public int centerPosition_X { get => centerPosition.X; set { transform.X = value; } }
-        public int centerPosition_Y { get => centerPosition.Y; set { transform.Y = value; } }
-
-        public Rectangle rectangle { get => Tools.Tools.GetRectangle.Rectangle(transform.Center, transform.Width, transform.Height); }
+        public Rectangle rectangle { get => Tools.Tools.GetRectangle.Rectangle(centerPosition, Width, Height); }
 
         public Rectangle rectangleUp { get => Tools.Tools.GetRectangle.Up(rectangle, scaleFactor); }
         public Rectangle rectangleDown { get => Tools.Tools.GetRectangle.Down(rectangle, scaleFactor); }
         public Rectangle rectangleLeft { get => Tools.Tools.GetRectangle.Left(rectangle, scaleFactor); }
         public Rectangle rectangleRight { get => Tools.Tools.GetRectangle.Right(rectangle, scaleFactor); }
 
-        Rectangle transform;
+        int Width;
+        int Height;
 
+        int scaleFactor;
         public Rigidbody(Point centerPosition, int Width, int Height, Vector2 gravity, int scaleFactor)
         {
             this.gravity = gravity;
-            this.transform = Tools.Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
+            this.centerPosition = centerPosition;
+            this.Width = Width;
+            this.Height = Height;
             this.scaleFactor = scaleFactor;
         }
 
         public void Update()
         {
             // Force
-            centerPosition += (force * scaleFactor).ToPoint();
+            centerPosition += force.ToPoint();
 
             // Gravity
             centerPosition += gravity.ToPoint();
@@ -47,6 +46,26 @@ namespace ChristianTools.Helpers
         public void SetForce(Vector2 force)
         {
             this.force = force;
+        }
+
+        public void SetForce_X(int X)
+        {
+            this.force = new Vector2(X, force.Y);
+        }
+
+        public void SetForce_Y(int Y)
+        {
+            this.force = new Vector2(force.X, Y);
+        }
+
+        public void Move_X(int X)
+        {
+            centerPosition = new Point(centerPosition.X + X, centerPosition.Y);
+        }
+
+        public void Move_Y(int Y)
+        {
+            centerPosition = new Point(centerPosition.X, centerPosition.Y + Y);
         }
     }
 }

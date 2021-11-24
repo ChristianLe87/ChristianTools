@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Helpers
@@ -13,12 +12,12 @@ namespace ChristianTools.Helpers
 
     public interface IScene
     {
-        public Player player { get; set; }
+        //public Player player { get; set; }
         public List<IEntity> entities { get; set; }
         public List<IUI> UIs { get; set; }
-        public List<Bullet> bullets { get; set; }
+        //public List<Bullet> bullets { get; set; }
         public Camera camera { get; }
-        public Map map { get; }
+        //public Map map { get; }
         public void Initialize();
     }
 

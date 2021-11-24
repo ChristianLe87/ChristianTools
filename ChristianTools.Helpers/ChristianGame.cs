@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Shared;
 
 namespace ChristianTools.Helpers
 {
-    public class ChristianGame : Game
+    /*public class ChristianGame : Game
     {
         // a way to access the graphics devices (iPhone, Mac, Pc, PS4, etc)
         public static GraphicsDeviceManager graphicsDeviceManager;
@@ -123,5 +125,5 @@ namespace ChristianTools.Helpers
             actualScene = scene;
             scenes[actualScene].Initialize();
         }
-    }
+    }*/
 }
