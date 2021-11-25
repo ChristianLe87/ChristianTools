@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace ChristianTools.Helpers
+namespace ChristianTools.Components
 {
     public class Rigidbody
     {

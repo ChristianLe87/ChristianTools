@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ChristianTools.Helpers
+namespace ChristianTools.Components
 {
     public class Map
     {

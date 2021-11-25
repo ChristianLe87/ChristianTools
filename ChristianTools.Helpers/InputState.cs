@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace ChristianTools.Tools
+namespace ChristianTools.Helpers
 {
     public class InputState
     {

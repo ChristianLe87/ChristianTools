@@ -1,8 +1,7 @@
 ﻿using System;
 using System.IO;
-using Microsoft.Xna.Framework.Content;
 
-namespace ChristianTools.Tools
+namespace ChristianTools.Helpers
 {
 
     public class GameData

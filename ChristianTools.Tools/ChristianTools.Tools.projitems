@@ -10,7 +10,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Tools.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)InputState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)JsonSerialization.cs" />
   </ItemGroup>
 </Project>

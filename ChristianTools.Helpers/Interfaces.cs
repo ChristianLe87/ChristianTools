@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ChristianTools.Tools;
+using ChristianTools.Components;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Helpers

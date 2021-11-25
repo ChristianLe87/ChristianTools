@@ -10,11 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)ChristianGame.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Rigidbody.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Camera.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Animation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Map.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InputState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonSerialization.cs" />
   </ItemGroup>
 </Project>
