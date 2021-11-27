@@ -72,7 +72,7 @@ namespace Showroom_dotNet5
                 line_1.Update(end: inputState.Mouse_Position);
             
 
-            Button goToMenu = Game1.GetScene.entities.OfType<Button>().Where(x => x.tag == "goToMenu").First();
+            Button goToMenu = Game1.GetScene.UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
             goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Menu));
         }
 
@@ -80,6 +80,9 @@ namespace Showroom_dotNet5
         {
             foreach (var entity in entities)
                 entity.Draw(spriteBatch);
+
+            foreach (var ui in UIs)
+                ui.Draw(spriteBatch);
         }
     }
 }

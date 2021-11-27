@@ -42,6 +42,8 @@ namespace Showroom_dotNet5
                 ),
             };
 
+            entities = new List<IEntity>();
+
         }
         public void Update(InputState lastInputState, InputState inputState)
         {
@@ -62,19 +64,19 @@ namespace Showroom_dotNet5
                 entities.Add(bullet);
             }
 
-
             List<Bullet> bullets = entities.OfType<Bullet>().Where(x => x.isActive == true).ToList();
             foreach (var bullet in bullets)
                 bullet.Update(lastInputState, inputState);
 
-            Button goToMenu = entities.OfType<Button>().Where(x => x.tag == "goToMenu").First();
+            Button goToMenu = UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
             goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Menu));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var entity in entities)
-                entity.Draw(spriteBatch);
+            if(entities != null)
+                foreach (var entity in entities)
+                    entity.Draw(spriteBatch);
 
             foreach (var ui in UIs)
                 ui.Draw(spriteBatch);
