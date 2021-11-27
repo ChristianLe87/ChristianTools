@@ -18,7 +18,7 @@ namespace zAssets
 
     public class Player
     {
-        Point centerPoint;
+        Vector2 centerPoint;
         Rectangle rectangle { get => Tools.GetRectangle.Rectangle(centerPoint, animations[0].rectangle.Width, animations[0].rectangle.Height); }
 
         Rectangle rectangleUp { get => new Rectangle(x: rectangle.X + 1, y: rectangle.Y, width: (rectangle.Right - 1) - (rectangle.X + 1), height: 1); }
@@ -31,7 +31,7 @@ namespace zAssets
         AnimationState animationState;
         Dictionary<AnimationState, Animation> animations;
 
-        public Player(Point centerPoint, Dictionary<AnimationState, Animation> animations)
+        public Player(Vector2 centerPoint, Dictionary<AnimationState, Animation> animations)
         {
             this.centerPoint = centerPoint;
             this.physics = new Physics();
@@ -52,7 +52,7 @@ namespace zAssets
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            animations[animationState].Draw(spriteBatch, centerPoint.ToVector2());
+            animations[animationState].Draw(spriteBatch, centerPoint);
             //spriteBatch.Draw(texture2D, rectangle, Color.White);
         }
 
@@ -117,7 +117,7 @@ namespace zAssets
                 if (firstDownIntersectTile != null && rectangleDown.Intersects(firstDownIntersectTile.rectangle))
                 {
                     isJumping = true;
-                    jumpTargetPosition_Y = centerPoint.Y - jumpHeight;
+                    jumpTargetPosition_Y = (int)(centerPoint.Y - jumpHeight);
                 }
             }
 

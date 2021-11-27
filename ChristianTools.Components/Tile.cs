@@ -16,7 +16,14 @@ namespace ChristianTools.Components
         public Tile(Texture2D texture, Rectangle rectangle, int scaleFactor, string tag = "")
         {
             this.texture = texture;
-            this.rigidbody = new Rigidbody(rectangle.Center.ToVector2(), rectangle.Width, rectangle.Height, Vector2.Zero, scaleFactor);
+            this.rigidbody = new Rigidbody(
+                centerPosition: rectangle.Center.ToVector2(),
+                Width: rectangle.Width,
+                Height: rectangle.Height,
+                gravity: Vector2.Zero,
+                force: Vector2.Zero,
+                scaleFactor: scaleFactor
+            );
             this.tag = tag;
             this.isActive = true;
         }

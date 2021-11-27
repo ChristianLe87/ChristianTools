@@ -5,7 +5,7 @@ namespace ChristianTools.Components
     public class Rigidbody
     {
         public Vector2 force { get; private set; }
-        Vector2 gravity;
+        public Vector2 gravity { get; private set; }
 
         public Vector2 centerPosition { get; set; }
 
@@ -20,9 +20,10 @@ namespace ChristianTools.Components
         int Height;
 
         int scaleFactor;
-        public Rigidbody(Vector2 centerPosition, int Width, int Height, Vector2 gravity, int scaleFactor)
+        public Rigidbody(Vector2 centerPosition, int Width, int Height, Vector2? gravity = null, Vector2? force = null, int scaleFactor = 0)
         {
-            this.gravity = gravity;
+            this.gravity = gravity == null ? Vector2.Zero : gravity.Value;
+            this.force = force == null ? Vector2.Zero : force.Value;
             this.centerPosition = centerPosition;
             this.Width = Width;
             this.Height = Height;

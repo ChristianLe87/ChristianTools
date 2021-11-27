@@ -7,11 +7,11 @@ namespace zWorldElements
     public class WorldBlock : IWorldElement
     {
         Texture2D texture2D;
-        Point centerPoint;
+        Vector2 centerPoint;
         public string tag { get; }
         public Rectangle rectangle { get => Tools.GetRectangle.Rectangle(centerPoint, texture2D); }
 
-        public WorldBlock(Point centerPoint, Texture2D texture2D, string tag)
+        public WorldBlock(Vector2 centerPoint, Texture2D texture2D, string tag)
         {
             this.texture2D = texture2D;
             this.centerPoint = centerPoint;

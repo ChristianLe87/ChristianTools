@@ -43,13 +43,13 @@ namespace Showroom_dotNet5
 
             if (mouseState.LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released)
             {
-                Point mousePosition = mouseState.Position;
+                Vector2 mousePosition = mouseState.Position.ToVector2();
 
                 Console.WriteLine($"X: {mousePosition.X} Y: {mousePosition.Y}");
 
                 Bullet bullet = new Bullet(
                             texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 10),
-                            start: WK.Default.Window.Pixels.Center,
+                            start: WK.Default.Window.Pixels.Center.ToVector2(),
                             direction: mousePosition,
                             steps: 3,
                             autoDestroyTime: new TimeSpan(0, 0, 2)

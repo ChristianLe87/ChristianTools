@@ -7,7 +7,7 @@ namespace zWorldElements
     public class Slope : IWorldElement
     {
         Texture2D texture2D;
-        Point centerPoint;
+        Vector2 centerPoint;
         public string tag { get; }
         public Rectangle rectangle { get => new Rectangle(); }
         Rectangle[] rectangles;
@@ -15,7 +15,7 @@ namespace zWorldElements
         public Slope(Rectangle rectangle, Texture2D texture2D, SlopeOrientation slopeFace, string tag)
         {
             this.texture2D = texture2D;
-            this.centerPoint = rectangle.Center;
+            this.centerPoint = rectangle.Center.ToVector2();
             this.rectangles = new Rectangle[rectangle.Width];
             this.tag = tag;
 
@@ -26,7 +26,7 @@ namespace zWorldElements
                     for (int i = 0; i < rectangles.Length; i++)
                     {
                         Rectangle r = Tools.GetRectangle.Rectangle(
-                            centerPosition: new Point(rectangle.X + i, (int)(rectangle.Y + (i * ratio))),
+                            centerPosition: new Vector2(rectangle.X + i, (int)(rectangle.Y + (i * ratio))),
                             Width: 1,
                             Height: (int)(rectangle.Height - (i * ratio))
                         );
@@ -38,7 +38,7 @@ namespace zWorldElements
                     for (int i = 0; i < rectangles.Length; i++)
                     {
                         Rectangle r = Tools.GetRectangle.Rectangle(
-                            centerPosition: new Point(rectangle.X + i, (int)(rectangle.Width - (i * ratio)) + rectangle.Y),
+                            centerPosition: new Vector2(rectangle.X + i, (int)(rectangle.Width - (i * ratio)) + rectangle.Y),
                             Width: 1,
                             Height: (int)(i * ratio)
                         );
