@@ -579,7 +579,7 @@ namespace ChristianTools.Tools
                         double x = Tools.MyMath.Pitagoras.x(r, y);
 
                         result.Y += (float)y;
-                        result.X -= (float)x;);
+                        result.X -= (float)x;
                     }
                 }
 
