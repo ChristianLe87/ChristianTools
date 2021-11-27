@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace ChristianTools.Tools
 {
@@ -370,13 +371,13 @@ namespace ChristianTools.Tools
             /// Angles less than zero are to the left. Angles greater than
             /// zero are to the right.
             /// </summary>
-            public static double GetAngleInRadians(Point Point1_Start, Point Point_1_End, Point Point2_Start, Point Pount2_End)
+            public static double GetAngleInRadians(Vector2 Point1_Start, Vector2 Point1_End, Vector2 Point2_Start, Vector2 Pount2_End)
             {
                 // Code thanks to: http://csharphelper.com/blog/2020/06/find-the-angle-between-two-vectors-in-c/
 
                 // Find the vectors.
-                Point v1 = new Point(Point_1_End.X - Point1_Start.X, Point_1_End.Y - Point1_Start.Y);
-                Point v2 = new Point(Pount2_End.X - Point2_Start.X, Pount2_End.Y - Point2_Start.Y);
+                Vector2 v1 = new Vector2(Point1_End.X - Point1_Start.X, Point1_End.Y - Point1_Start.Y);
+                Vector2 v2 = new Vector2(Pount2_End.X - Point2_Start.X, Pount2_End.Y - Point2_Start.Y);
 
                 // Calculate the vector lengths.
                 double len1 = Math.Sqrt(v1.X * v1.X + v1.Y * v1.Y);
@@ -396,6 +397,22 @@ namespace ChristianTools.Tools
                 if (sin < 0) angle = -angle;
                 return angle;
             }
+
+
+            public static double GetAngleInRadians(Vector2 Point1, Vector2 Point2)
+            {
+
+                double angle = GetAngleInRadians(
+                    Point1_Start: Point1,
+                    Point1_End: Point2,
+                    Point2_Start: Point1,
+                    Pount2_End: new Vector2(Point1.X, Point1.Y + Math.Abs(Point2.Y - Point1.Y))
+                ); ;
+
+                return angle;
+            }
+
+
 
 
             public class Pitagoras
@@ -430,11 +447,11 @@ namespace ChristianTools.Tools
 
         public class GetRectangle
         {
-            public static Rectangle Rectangle(Point centerPosition, int Width, int Height)
+            public static Rectangle Rectangle(Vector2 centerPosition, int Width, int Height)
             {
                 Rectangle rectangle = new Rectangle(
-                    x: centerPosition.X - (Width / 2),
-                    y: centerPosition.Y - (Height / 2),
+                    x: (int)(centerPosition.X - (Width / 2)),
+                    y: (int)(centerPosition.Y - (Height / 2)),
                     width: Width,
                     height: Height
                 );
@@ -442,7 +459,7 @@ namespace ChristianTools.Tools
                 return rectangle;
             }
 
-            public static Rectangle Rectangle(Point centerPosition, Texture2D texture2D)
+            public static Rectangle Rectangle(Vector2 centerPosition, Texture2D texture2D)
             {
                 return Rectangle(centerPosition, texture2D.Width, texture2D.Height);
             }
@@ -499,61 +516,75 @@ namespace ChristianTools.Tools
         public class Other
         {
             /// <summary>
-            /// Get next position base on a step
+            /// Get next new position base on a step
             /// </summary>
             /// <param name="mainRigidbody"></param>
             /// <param name="targetRigidbody"></param>
             /// <param name="maxAproximation"></param>
             /// <param name="steps"></param>
-            /// <returns></returns>
-            public static Point MoveTowards(Rigidbody mainRigidbody, Rigidbody targetRigidbody, int maxAproximation, int steps)
+            /// <returns>New position</returns>
+            public static Vector2 MoveTowards(Rigidbody mainRigidbody, Rigidbody targetRigidbody, int maxAproximation, int steps)
             {
-                Point mainPoint = mainRigidbody.centerPosition;
-                Point endPoint = targetRigidbody.centerPosition;
+                Vector2 mainPoint = mainRigidbody.centerPosition;
+                Vector2 endPoint = targetRigidbody.centerPosition;
+
+                Vector2 result = mainPoint;
 
                 // target is right
-                if (endPoint.X - mainPoint.X >= maxAproximation)
+                if (endPoint.X - mainPoint.X >= 0)
                 {
                     // is up
-                    if (endPoint.Y - mainPoint.Y <= maxAproximation)
+                    if (endPoint.Y - mainPoint.Y <= 0)
                     {
-                        mainPoint.Y -= steps;// (int)Pitagoras_r(steps, steps);
-                        mainPoint.X += steps;// (int)Pitagoras_r(steps, steps);
+                        int r = steps;
+                        double angleRad = Tools.MyMath.GetAngleInRadians(mainPoint, endPoint);
+                        double y = r * Math.Cos(angleRad);
+                        double x = Tools.MyMath.Pitagoras.x(r, y);
 
-                        Console.WriteLine("===== Up Right =====");
+                        result.Y += (float)y;
+                        result.X += (float)x;
                     }
                     // is down
-                    else if (endPoint.Y - mainPoint.Y >= maxAproximation)
+                    else if (endPoint.Y - mainPoint.Y >= 0)
                     {
-                        mainPoint.Y += steps;// (int)Pitagoras_r(steps, steps);
-                        mainPoint.X += steps;// (int)Pitagoras_r(steps, steps);
+                        int r = steps;
+                        double angleRad = Tools.MyMath.GetAngleInRadians(mainPoint, endPoint);
+                        double y = r * Math.Cos(angleRad);
+                        double x = Tools.MyMath.Pitagoras.x(r, y);
 
-                        Console.WriteLine("===== Down Right =====");
+                        result.Y += (float)y;
+                        result.X += (float)x;
                     }
                 }
                 // target is left
-                else if (endPoint.X - mainPoint.X < maxAproximation)
+                else if (endPoint.X - mainPoint.X < 0)
                 {
                     // is up
-                    if (endPoint.Y - mainPoint.Y <= maxAproximation)
+                    if (endPoint.Y - mainPoint.Y <= 0)
                     {
-                        mainPoint.Y -= steps;// (int)Pitagoras_r(steps, steps);
-                        mainPoint.X -= steps;// (int)Pitagoras_r(steps, steps);
+                        int r = steps;
+                        double angleRad = Tools.MyMath.GetAngleInRadians(mainPoint, endPoint);
+                        double y = r * Math.Cos(angleRad);
+                        double x = Tools.MyMath.Pitagoras.x(r, y);
 
-                        Console.WriteLine("===== Up Left =====");
+                        result.Y += (float)y;
+                        result.X -= (float)x;
                     }
                     // is down
-                    else if (endPoint.Y - mainPoint.Y >= maxAproximation)
+                    else if (endPoint.Y - mainPoint.Y >= 0)
                     {
-                        mainPoint.Y += steps;// (int)Pitagoras_r(steps, steps);
-                        mainPoint.X -= steps;// (int)Pitagoras_r(steps, steps);
+                        int r = steps;
+                        double angleRad = Tools.MyMath.GetAngleInRadians(mainPoint, endPoint);
+                        double y = r * Math.Cos(angleRad);
+                        double x = Tools.MyMath.Pitagoras.x(r, y);
 
-                        Console.WriteLine("===== Down Left =====");
+                        result.Y += (float)y;
+                        result.X -= (float)x;);
                     }
                 }
 
                 // Return
-                return mainPoint;
+                return result;
             }
         }
     }

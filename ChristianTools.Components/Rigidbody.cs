@@ -7,7 +7,7 @@ namespace ChristianTools.Components
         public Vector2 force { get; private set; }
         Vector2 gravity;
 
-        public Point centerPosition { get; set; }
+        public Vector2 centerPosition { get; set; }
 
         public Rectangle rectangle { get => Tools.Tools.GetRectangle.Rectangle(centerPosition, Width, Height); }
 
@@ -20,7 +20,7 @@ namespace ChristianTools.Components
         int Height;
 
         int scaleFactor;
-        public Rigidbody(Point centerPosition, int Width, int Height, Vector2 gravity, int scaleFactor)
+        public Rigidbody(Vector2 centerPosition, int Width, int Height, Vector2 gravity, int scaleFactor)
         {
             this.gravity = gravity;
             this.centerPosition = centerPosition;
@@ -32,10 +32,10 @@ namespace ChristianTools.Components
         public void Update()
         {
             // Force
-            centerPosition += force.ToPoint();
+            centerPosition += force;
 
             // Gravity
-            centerPosition += gravity.ToPoint();
+            centerPosition += gravity;
         }
 
         public void AddForce(Vector2 forceToAdd)
@@ -48,24 +48,24 @@ namespace ChristianTools.Components
             this.force = force;
         }
 
-        public void SetForce_X(int X)
+        public void SetForce_X(float X)
         {
             this.force = new Vector2(X, force.Y);
         }
 
-        public void SetForce_Y(int Y)
+        public void SetForce_Y(float Y)
         {
             this.force = new Vector2(force.X, Y);
         }
 
-        public void Move_X(int X)
+        public void Move_X(float X)
         {
-            centerPosition = new Point(centerPosition.X + X, centerPosition.Y);
+            centerPosition = new Vector2(centerPosition.X + X, centerPosition.Y);
         }
 
-        public void Move_Y(int Y)
+        public void Move_Y(float Y)
         {
-            centerPosition = new Point(centerPosition.X, centerPosition.Y + Y);
+            centerPosition = new Vector2(centerPosition.X, centerPosition.Y + Y);
         }
     }
 }
