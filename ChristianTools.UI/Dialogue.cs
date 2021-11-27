@@ -15,7 +15,10 @@ namespace ChristianTools.UI
         bool isActive;
         InputState previousinputState;
 
-        Rectangle rectangle { get => new Rectangle(centerPosition.X - (background.Width / 2), centerPosition.Y - (background.Height / 2), background.Width, background.Height); }
+        
+        public Rectangle rectangle { get => new Rectangle(centerPosition.X - (background.Width / 2), centerPosition.Y - (background.Height / 2), background.Width, background.Height); }
+
+        public string tag => throw new System.NotImplementedException();
 
         public Dialogue(string[] texts, Point centerPosition, Texture2D background, SpriteFont spriteFont, bool isActive = true)
         {
@@ -23,7 +26,7 @@ namespace ChristianTools.UI
             this.centerPosition = centerPosition;
             this.labelCount = 0;
             this.isActive = isActive;
-            this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, Color.Pink)).ToArray();
+            this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, Color.Pink, tag: "")).ToArray();
         }
 
         public void Update()

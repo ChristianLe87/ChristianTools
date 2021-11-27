@@ -6,40 +6,18 @@ using ChristianTools.UI;
 using ChristianTools.Helpers;
 using ChristianTools.Components;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Showroom_dotNet5
 {
     public class Scene_Tools : IScene
     {
-        public Camera camera { get; }
-
-        public GameState gameState => throw new System.NotImplementedException();
-
-        public List<IEntity> entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public List<IUI> UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-        public Map map => throw new System.NotImplementedException();
-
-        Texture2D subAtlas_1;
-        Texture2D subAtlas_2;
-        Texture2D subAtlas_3;
-        Texture2D subAtlas_4;
-
-        Texture2D circle_1;
-        Texture2D circle_2;
-        Texture2D circle_3;
-        Texture2D circle_4;
-
-        Texture2D triangle_1;
-        Texture2D triangle_2;
-        Texture2D triangle_3;
-        Texture2D triangle_4;
-
-        Texture2D fontMap_Green;
-        Texture2D fontMap_Red;
-
-
-        Button goToMenu;
+        public Camera camera { get; private set; }
+        public GameState gameState { get; private set; }
+        public List<IEntity> entities { get; set; }
+        public List<IUI> UIs { get; set; }
+        public List<SoundEffect> soundEffects { get; private set; }
+        public Map map { get; private set; }
 
         public Scene_Tools()
         {
@@ -48,7 +26,7 @@ namespace Showroom_dotNet5
 
         public void Initialize()
         {
-            subAtlas_1 = Tools.Texture.CropTexture(
+            /*subAtlas_1 = Tools.Texture.CropTexture(
                             graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                             originalTexture: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
                             extractRectangle: new Rectangle(0, 0, 50, 50)
@@ -123,17 +101,17 @@ namespace Showroom_dotNet5
                             fontColor: Color.Black,
                             ButtonID: "goToMenu"
             );
-
+            */
         }
 
-        public void Update()
+        public void Update(InputState lastInputState, InputState inputState)
         {
-            goToMenu.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Menu));
+            //goToMenu.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Menu));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(subAtlas_1, new Vector2(200, 200), Color.White);
+            /*spriteBatch.Draw(subAtlas_1, new Vector2(200, 200), Color.White);
             spriteBatch.Draw(subAtlas_2, new Vector2(275, 200), Color.White);
             spriteBatch.Draw(subAtlas_3, new Vector2(200, 275), Color.White);
             spriteBatch.Draw(subAtlas_4, new Vector2(275, 275), Color.White);
@@ -151,12 +129,7 @@ namespace Showroom_dotNet5
             spriteBatch.Draw(fontMap_Green, new Vector2(200, 20), Color.White);
             spriteBatch.Draw(fontMap_Red, new Vector2(200, 80), Color.White);
 
-            goToMenu.Draw(spriteBatch);
-        }
-
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            throw new System.NotImplementedException();
+            goToMenu.Draw(spriteBatch);*/
         }
     }
 }

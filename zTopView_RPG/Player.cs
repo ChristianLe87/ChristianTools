@@ -1,51 +1,57 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ChristianTools.Components;
+using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace zTopView_RPG
 {
-    public class Player
+    public class Player:IEntity
     {
         Texture2D texture2D;
-        Rectangle rectangle;
         float layer = 0.1f;
 
-        public Point CenterPosition { get => rectangle.Center; }
+
+        public Rigidbody rigidbody { get; }
+
+        public bool isActive => throw new System.NotImplementedException();
+
+        public string tag => throw new System.NotImplementedException();
+
+        public int health => throw new System.NotImplementedException();
 
         public Player(Texture2D texture2D)
         {
             this.texture2D = texture2D;
-
-            rectangle = new Rectangle(250, 250, 20, 20);
+            
+            this.rigidbody = new Rigidbody(new Vector2(250, 250), 20, 20);
         }
 
-        public void Update()
+        public void Update(InputState lastInputState, InputState inputState)
         {
             // ===== Implementation =====
             {
-                Vector2 oldPosition = new Vector2(rectangle.X, rectangle.Y);
+                Vector2 oldPosition = rigidbody.centerPosition;
                 Vector2 newPosition = MovePlayer(oldPosition, 100, 100, 2);
-                rectangle = new Rectangle((int)newPosition.X, (int)newPosition.Y, rectangle.Width, rectangle.Height);
+                rigidbody.centerPosition = newPosition;
             }
 
             // ===== Helpers =====
             Vector2 MovePlayer(Vector2 position, int minPosition, int maxPosition, int moveSpeed)
             {
-                KeyboardState keyboardState = Keyboard.GetState();
-
-                if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
+                if (inputState.Left)
                 {
                     position.X -= moveSpeed;
                 }
-                else if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
+                else if (inputState.Right)
                 {
                     position.X += moveSpeed;
                 }
-                else if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
+                else if (inputState.Up)
                 {
                     position.Y -= moveSpeed;
                 }
-                else if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
+                else if (inputState.Down)
                 {
                     position.Y += moveSpeed;
                 }
@@ -56,7 +62,7 @@ namespace zTopView_RPG
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture2D, new Vector2(rectangle.X, rectangle.Y), rectangle, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, layer);
+            spriteBatch.Draw(texture2D, rigidbody.centerPosition, rigidbody.rectangle, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, layer);
         }
     }
 }

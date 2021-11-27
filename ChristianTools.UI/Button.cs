@@ -7,37 +7,34 @@ namespace ChristianTools.UI
 {
     public class Button : IUI
     {
-        Rectangle rectangle;
         Texture2D defaultTexture;
         Texture2D mouseOverTexture;
-        InputState previousInputState;
         bool isMouseOver;
         Label label;
-        public string ButtonID { get; private set; }
+
+        public Rectangle rectangle { get; }
+        public string tag { get; }
 
         public delegate void DxOnClickAction();
 
-        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor, string ButtonID)
+        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor, string tag)
         {
             this.rectangle = rectangle;
             this.defaultTexture = defaultTexture;
             this.mouseOverTexture = mouseOverTexture;
             this.isMouseOver = false;
 
-            this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, fontColor);
+            this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, fontColor, tag: "");
 
-            this.ButtonID = ButtonID;
-            this.previousInputState = new InputState();
+            this.tag = tag;
         }
 
-        public void Update(DxOnClickAction OnClickAction)
+        public void Update(InputState inputState, InputState lastInputState, DxOnClickAction OnClickAction)
         {
-            InputState inputState = new InputState();
-
             if (rectangle.Contains(inputState.Mouse_Position))
             {
                 isMouseOver = true;
-                if (previousInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
+                if (lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
                 {
                     OnClickAction();
                 }
@@ -46,8 +43,6 @@ namespace ChristianTools.UI
             {
                 isMouseOver = false;
             }
-
-            previousInputState = inputState;
         }
 
         public void Draw(SpriteBatch spriteBatch)

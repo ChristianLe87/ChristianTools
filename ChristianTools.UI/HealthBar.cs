@@ -1,4 +1,5 @@
-﻿using ChristianTools.Helpers;
+﻿using System.Diagnostics;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -8,11 +9,14 @@ namespace ChristianTools.UI
     {
         Texture2D topTexture;
         Texture2D backTexture;
-        Rectangle rectangle;
         Direction direction;
         public uint value { get; set; }
         public uint maxVal { get; }
         public uint reduceValue { get; }
+
+        public Rectangle rectangle { get; }
+
+        public string tag => throw new System.NotImplementedException();
 
         public HealthBar(Texture2D topTexture, Texture2D backTexture, Rectangle rectangle, Direction direction, uint maxVal = 100, uint reduceValue = 5, uint startValue = 80)
         {
@@ -66,6 +70,11 @@ namespace ChristianTools.UI
             Left,
             Up,
             Down
+        }
+
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
         }
     }
 }

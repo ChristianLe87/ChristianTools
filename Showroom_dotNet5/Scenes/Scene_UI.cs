@@ -2,33 +2,24 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ChristianTools.Components;
+using ChristianTools.Helpers;
 using ChristianTools.Tools;
+using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using zTools;
-using ChristianTools.UI;
-using ChristianTools.Helpers;
-using ChristianTools.Components;
 
 namespace Showroom_dotNet5
 {
     public class Scene_UI : IScene
     {
-        public Camera camera { get; }
-
-        public GameState gameState { get; }
-
+        public Camera camera { get; private set; }
+        public GameState gameState { get; private set; }
         public List<IEntity> entities { get; set; }
-        List<IUI> IScene.UIs { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public Map map { get; }
-
-        List<object> UIs;
-
-        SoundEffect soundEffect;
-
-        Button goToMenu;
+        public List<IUI> UIs { get; set; }
+        public List<SoundEffect> soundEffects { get; private set; }
+        public Map map { get; private set; }
 
         public Scene_UI()
         {
@@ -37,24 +28,24 @@ namespace Showroom_dotNet5
 
         public void Initialize()
         {
-            UIs = new List<object>()
+            UIs = new List<IUI>()
             {
                 new Button(new Rectangle(360, 10, 100, 50), "Hello World", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red), Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), Color.Black, "TestButton"),
 
                 // Left
-                new Label(new Rectangle(10, 10, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Top_Left, Color.Black, Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
-                new Label(new Rectangle(10, 50, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Midle_Left, Color.Black, Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
-                new Label(new Rectangle(10, 90, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Down_Left, Color.Black, Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 10, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Top_Left, Color.Black, tag: "", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 50, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Midle_Left, Color.Black, tag: "", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(10, 90, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Down_Left, Color.Black, tag: "", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
 
                 // Center
-                new Label(new Rectangle(120, 10, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Top_Center, Color.Black, Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
-                new Label(new Rectangle(120, 50, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Midle_Center, Color.Black, Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
-                new Label(new Rectangle(120, 90, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Down_Center, Color.Black, Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 10, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Top_Center, Color.Black, tag: "", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 50, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Midle_Center, Color.Black, tag: "", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(120, 90, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Down_Center, Color.Black, tag: "", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
 
                 // Right
-                new Label(new Rectangle(230, 10, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Top_Right, Color.Black, Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
-                new Label(new Rectangle(230, 50, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Midle_Right, Color.Black, Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
-                new Label(new Rectangle(230, 90, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Down_Right, Color.Black, Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 10, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Top_Right, Color.Black, tag: "", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 50, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Midle_Right, Color.Black, tag: "", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
+                new Label(new Rectangle(230, 90, 100, 30),Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")), "My Text", Label.TextAlignment.Down_Right, Color.Black, tag: "", Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30), 11),
 
                 new HealthBar(Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 130, 50, 10), HealthBar.Direction.Right),
                 new HealthBar(Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 150, 50, 10), HealthBar.Direction.Left),
@@ -70,7 +61,8 @@ namespace Showroom_dotNet5
                             chars: WK.Font.chars
                     ),
                     text: "A 'B' CDEFGHIJKLMNÑOPQRSTUVWXYZ\nabcdefghijklmnñopqrstuvwxyz\n1234567890\n,:;?.!()",
-                    textAlignment: Label.TextAlignment.Top_Left, Color.Black, lineSpacing: 7+2
+                    textAlignment: Label.TextAlignment.Top_Left, Color.Black, lineSpacing: 7+2,
+                    tag: ""
                 ),
 
                 new Label(
@@ -80,7 +72,8 @@ namespace Showroom_dotNet5
                             chars: WK.Font.chars
                     ),
                     text: "A 'B' CDEFGHIJKLMNÑOPQRSTUVWXYZ\nabcdefghijklmnñopqrstuvwxyz\n1234567890\n,:;?.!()",
-                    textAlignment: Label.TextAlignment.Top_Left, Color.Black,lineSpacing: 14+2
+                    textAlignment: Label.TextAlignment.Top_Left, Color.Black,lineSpacing: 14+2,
+                    tag: ""
                 ),
 
 
@@ -91,30 +84,33 @@ namespace Showroom_dotNet5
                         mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
                         spriteFont: Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10")),
                         fontColor: Color.Black,
-                        ButtonID: "SoundButton"
-                    )
-            };
+                        tag: "SoundButton"
+                ),
 
-            goToMenu = new Button(
+                new Button(
                             rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
                             text: "Menu",
                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                             fontColor: Color.Black,
-                            ButtonID: "goToMenu"
-            ) ;
+                            tag: "goToMenu"
+                )
+            };
 
-            soundEffect = Tools.Sound.GetSoundEffect(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, Path.Combine("Sounds", "EatingSound_WAV"));
+            soundEffects = new List<SoundEffect>()
+            {
+                Tools.Sound.GetSoundEffect(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, Path.Combine("Sounds", "EatingSound_WAV"))
+            };
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
-            Button testButton = UIs.OfType<Button>().Where(x => x.ButtonID == "TestButton").First();
-            testButton.Update(() => Console.WriteLine("User click button!"));
+            Button testButton = UIs.OfType<Button>().Where(x => x.tag == "TestButton").First();
+            testButton.Update(inputState, lastInputState, () => Console.WriteLine("User click button!"));
 
-            Button soundButton = UIs.OfType<Button>().Where(x => x.ButtonID == "SoundButton").First();
-            soundButton.Update(() => soundEffect.Play());
+            Button soundButton = UIs.OfType<Button>().Where(x => x.tag == "SoundButton").First();
+            soundButton.Update(inputState, lastInputState, () => soundEffects.First().Play());
 
             List<Label> labels = UIs.OfType<Label>().ToList();
             foreach (var label in labels) label.Update();
@@ -128,21 +124,14 @@ namespace Showroom_dotNet5
                     healthBar.value = 100;
             }
 
-            goToMenu.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Menu));
+            Button goToMenu = UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
+            goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Menu));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            List<Button> buttons = UIs.OfType<Button>().ToList();
-            foreach (var button in buttons) button.Draw(spriteBatch);
-
-            List<Label> labels = UIs.OfType<Label>().ToList();
-            foreach (var label in labels) label.Draw(spriteBatch);
-
-            List<HealthBar> healthBars = UIs.OfType<HealthBar>().ToList();
-            foreach (var healthBar in healthBars) healthBar.Draw(spriteBatch);
-
-            goToMenu.Draw(spriteBatch);
+            foreach (var ui in UIs)
+                ui.Draw(spriteBatch);
         }
     }
 }

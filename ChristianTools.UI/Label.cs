@@ -9,12 +9,15 @@ namespace ChristianTools.UI
         SpriteFont spriteFont;
         string text;
         Texture2D texture2D;
-        Rectangle rectangle;
         Vector2 textPosition;
         TextAlignment textAlignment;
         Color fontColor;
 
-        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, Color fontColor, Texture2D texture = null, int lineSpacing = 10)
+        public Rectangle rectangle { get; }
+
+        public string tag { get; }
+
+        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, Color fontColor, string tag, Texture2D texture = null, int lineSpacing = 10)
         {
             this.rectangle = rectangle;
             this.spriteFont = spriteFont;
@@ -24,6 +27,7 @@ namespace ChristianTools.UI
             this.fontColor = fontColor;
             this.spriteFont.LineSpacing = lineSpacing;
             this.textPosition = GetTextPosition();
+            this.tag = tag;
         }
 
         public void Update(string text = null)

@@ -1,38 +1,48 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ChristianTools.Components;
+using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace zAssets
 {
-    public class Prefab
+    /// <summary>
+    /// Something with a texture and a rectangle
+    /// </summary>
+    public class Prefab: IEntity
     {
         Texture2D texture2D;
-        Point position;
-
-        public Rectangle rectangle { get => new Rectangle(x: position.X - (texture2D.Width / 2), y: position.Y - (texture2D.Height / 2), width: texture2D.Width, height: texture2D.Height); }
-        public bool isActive;
+        public bool isActive { get; private set; }
         public string tag { get; private init; }
+        public Rigidbody rigidbody { get; }
+        public int health { get; }
+        public delegate void DxOnUpdate();
 
-        public Prefab(Texture2D texture2D, Point position, bool isActive = true, string tag = "")
+        public Prefab(Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "")
         {
             this.texture2D = texture2D;
-            this.position = position;
+            this.rigidbody = new Rigidbody(centerPosition, texture2D.Width, texture2D.Height, Vector2.Zero, Vector2.Zero);
             this.isActive = isActive;
             this.tag = tag;
         }
 
-        public void Update(Point? position = null, bool? isActive= null)
+        public void Update(InputState lastInputState, InputState inputState, DxOnUpdate dxOnUpdate = null, bool isActive = true)
         {
-            if (position != null)
-                this.position = new Point(position.Value.X, position.Value.Y);
+            if(dxOnUpdate != null)
+                dxOnUpdate();
 
-            if (isActive != null)
-                this.isActive = isActive.Value;
+            if (isActive != true)
+                this.isActive = isActive;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             if(isActive)
-                spriteBatch.Draw(texture2D, rectangle, Color.White);
+                spriteBatch.Draw(texture2D, rigidbody.rectangle, Color.White);
+        }
+
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

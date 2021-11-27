@@ -8,25 +8,19 @@ using ChristianTools.UI;
 using ChristianTools.Helpers;
 using ChristianTools.Components;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
+using System.Linq;
 
 namespace Showroom_dotNet5
 {
     public class Scene_Dialogue : IScene
     {
-        public Camera camera { get; }
-
-        GameState IScene.gameState => throw new System.NotImplementedException();
-
-        List<IEntity> IScene.entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        List<IUI> IScene.UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-        Camera IScene.camera => throw new System.NotImplementedException();
-
-        Map IScene.map => throw new System.NotImplementedException();
-
-        Dialogue dialogue;
-        Button goToMenu;
-        Label instructionsLabel;
+        public Camera camera { get; private set; }
+        public GameState gameState { get; private set; }
+        public List<IEntity> entities { get; set; }
+        public List<IUI> UIs { get; set; }
+        public List<SoundEffect> soundEffects { get; private set; }
+        public Map map { get; private set; }
 
         public Scene_Dialogue()
         {
@@ -36,58 +30,57 @@ namespace Showroom_dotNet5
         public void Initialize()
         {
             string[] text = { "text 1", "text 2", "text 3" };
-            dialogue = new Dialogue(
-                texts: text,
-                centerPosition: new Point(200, 200),
-                background: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
-                spriteFont: Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10"))
-            );
 
-            goToMenu = new Button(
-                rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
-                text: "Menu",
-                defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
-                mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
-                spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
-                fontColor: Color.Black,
-                ButtonID: "goToMenu"
-            );
+            UIs = new List<IUI>()
+            {
+                new Dialogue(
+                    texts: text,
+                    centerPosition: new Point(200, 200),
+                    background: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
+                    spriteFont: Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10"))
+                ),
 
-            this.instructionsLabel = new Label(new Rectangle(200, 100, 100, 50),
-                                spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
-                "'p' for next text\n'o' to reactivate", Label.TextAlignment.Midle_Left, Color.Pink, lineSpacing: 20);
+                new Button(
+                    rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
+                    text: "Menu",
+                    defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                    mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                    fontColor: Color.Black,
+                    tag: "goToMenu"
+                ),
+
+                new Label(
+                    new Rectangle(200, 100, 100, 50),
+                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                    "'p' for next text\n'o' to reactivate",
+                    Label.TextAlignment.Midle_Left,
+                    Color.Pink,
+                    lineSpacing: 20,
+                    tag: ""
+                )
+            };
         }
 
-        public void Update()
+        public void Update(InputState lastInputState, InputState inputState)
         {
-            dialogue.Update();
 
-            if (Keyboard.GetState().IsKeyDown(Keys.O))
-                dialogue.SetActiveState(true);
+            foreach (Dialogue dialogue in UIs.OfType<Dialogue>())
+            {
+                dialogue.Update();
 
-            goToMenu.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Menu));
+                if (inputState.IsKeyboardKeyDown(Keys.O))
+                    dialogue.SetActiveState(true);
+            }
+
+            Button goToMenu = Game1.GetScene.UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
+            goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Menu));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            dialogue.Draw(spriteBatch);
-            goToMenu.Draw(spriteBatch);
-            instructionsLabel.Draw(spriteBatch);
-        }
-
-        void IScene.Initialize()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        void IScene.Update(InputState lastInputState, InputState inputState)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        void IScene.Draw(SpriteBatch spriteBatch)
-        {
-            throw new System.NotImplementedException();
+            foreach (var ui in UIs)
+                ui.Draw(spriteBatch);
         }
     }
 }

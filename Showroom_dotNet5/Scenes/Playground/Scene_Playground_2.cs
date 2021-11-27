@@ -6,21 +6,19 @@ using ChristianTools.UI;
 using ChristianTools.Helpers;
 using ChristianTools.Components;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
+using System.Linq;
 
 namespace Showroom_dotNet5
 {
     public class Scene_Playground_2 : IScene
     {
         public Camera camera { get; private set; }
-
-        public GameState gameState => throw new System.NotImplementedException();
-
-        public List<IEntity> entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public List<IUI> UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-        public Map map => throw new System.NotImplementedException();
-
-        Button goToMenu;
+        public GameState gameState { get; private set; }
+        public List<IEntity> entities { get; set; }
+        public List<IUI> UIs { get; set; }
+        public List<SoundEffect> soundEffects { get; private set; }
+        public Map map { get; private set; }
 
         public Scene_Playground_2()
         {
@@ -29,29 +27,29 @@ namespace Showroom_dotNet5
 
         public void Initialize()
         {
-            goToMenu = new Button(
-                rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
-                text: "Menu",
-                defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
-                mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
-                spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
-                fontColor: Color.Black,
-                ButtonID: "goToMenu");
-        }
-
-        public void Update()
-        {
-            goToMenu.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Menu));
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            goToMenu.Draw(spriteBatch);
+            this.UIs = new List<IUI>()
+            {
+                new Button(
+                    rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
+                    text: "Menu",
+                    defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                    mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                    fontColor: Color.Black,
+                    tag: "goToMenu")
+            };
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
-            throw new System.NotImplementedException();
+            Button goToMenu = Game1.GetScene.UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
+            goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Menu));
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            Button goToMenu = Game1.GetScene.UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
+            goToMenu.Draw(spriteBatch);
         }
     }
 }

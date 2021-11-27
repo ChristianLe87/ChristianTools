@@ -1,4 +1,6 @@
 ﻿using System;
+using ChristianTools.Components;
+using ChristianTools.Helpers;
 using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,28 +8,30 @@ using Showroom_dotNet5;
 
 namespace zAssets
 {
-    public class Bullet
+    public class Bullet : IEntity
     {
         Texture2D texture2D;
-        Vector2 position;
         TimeSpan autoDestroyTime;
-        public bool isActive;
         double x;
         double y;
 
-        public Rectangle rectangle { get => Tools.GetRectangle.Rectangle(position, texture2D); }
 
-        public Bullet(Texture2D texture2D, Vector2 start, Vector2 direction, int steps, TimeSpan autoDestroyTime = new TimeSpan())
+        public Rigidbody rigidbody { get; }
+        public bool isActive { get; private set; }
+        public string tag { get; }
+        public int health { get; }
+
+        public Bullet(Texture2D texture2D, Vector2 centerPosition, Vector2 direction, int steps, TimeSpan autoDestroyTime = new TimeSpan())
         {
             this.texture2D = texture2D;
-            this.position = start;
+            this.rigidbody = new Rigidbody(centerPosition, texture2D.Width, texture2D.Height);
             this.autoDestroyTime = autoDestroyTime;
             this.isActive = true;
 
             double radAngle = Tools.MyMath.GetAngleInRadians(
-                                                        Point1_Start: start,
-                                                        Point1_End: new Vector2(WK.Default.Window.Pixels.Width, (int)start.Y),
-                                                        Point2_Start: start,
+                                                        Point1_Start: centerPosition,
+                                                        Point1_End: new Vector2(WK.Default.Window.Pixels.Width, (int)centerPosition.Y),
+                                                        Point2_Start: centerPosition,
                                                         Pount2_End: direction
             );
 
@@ -35,11 +39,12 @@ namespace zAssets
             this.y = steps * Math.Sin(radAngle);
         }
 
-        public void Update()
+        public void Update(InputState lastInputState, InputState inputState)
         {
             // Implementation
             {
-                if (isActive == false) return;
+                if (isActive == false)
+                    return;
 
                 Move();
                 TimeToDestroy();
@@ -48,8 +53,8 @@ namespace zAssets
             // Helpers
             void Move()
             {
-                position.X += (int)x;
-                position.Y += (int)y;
+                rigidbody.Move_X((float)x);
+                rigidbody.Move_Y((float)y);
             }
 
             void TimeToDestroy()
@@ -59,15 +64,18 @@ namespace zAssets
                     TimeSpan timeSpan = new TimeSpan(0, 0, 0, 0, (int)((1f / (WK.Default.FPS)) * 1000));
                     autoDestroyTime = autoDestroyTime.Subtract(timeSpan);
 
-                    if (autoDestroyTime.TotalMilliseconds <= 0) isActive = false;
+                    if (autoDestroyTime.TotalMilliseconds <= 0)
+                        isActive = false;
                 }
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (isActive == false) return;
-            spriteBatch.Draw(texture2D, rectangle, Color.White);
+            if (isActive == false)
+                return;
+
+            spriteBatch.Draw(texture2D, rigidbody.rectangle, Color.White);
         }
     }
 }

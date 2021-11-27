@@ -10,23 +10,18 @@ using zTools;
 using ChristianTools.UI;
 using ChristianTools.Helpers;
 using ChristianTools.Components;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Showroom_dotNet5
 {
     public class Scene_Shoot : IScene
     {
-        public Camera camera { get; }
-
-        public GameState gameState => throw new NotImplementedException();
-
-        public List<IEntity> entities { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<IUI> UIs { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public Map map => throw new NotImplementedException();
-
-        List<Bullet> bullets;
-        MouseState lastMouseState;
-        Button goToMenu;
+        public Camera camera { get; private set; }
+        public GameState gameState { get; private set; }
+        public List<IEntity> entities { get; set; }
+        public List<IUI> UIs { get; set; }
+        public List<SoundEffect> soundEffects { get; private set; }
+        public Map map { get; private set; }
 
         public Scene_Shoot()
         {
@@ -34,57 +29,55 @@ namespace Showroom_dotNet5
         }
         public void Initialize()
         {
-            bullets = new List<Bullet>();
-
-            goToMenu = new Button(
-                             rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
-                             text: "Menu",
-                             defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
-                             mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
-                             spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
-                             fontColor: Color.Black,
-                             ButtonID: "goToMenu"
-             );
-        }
-        public void Update()
-        {
-            MouseState mouseState = Mouse.GetState();
-
-            if (mouseState.LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released)
+            this.UIs = new List<IUI>()
             {
-                Vector2 mousePosition = mouseState.Position.ToVector2();
+                new Button(
+                    rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
+                    text: "Menu",
+                    defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                    mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                    fontColor: Color.Black,
+                    tag: "goToMenu"
+                ),
+            };
+
+        }
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+            if (inputState.Mouse_LeftButton == ButtonState.Pressed && lastInputState.Mouse_LeftButton == ButtonState.Released)
+            {
+                Vector2 mousePosition = inputState.Mouse_Position.ToVector2();
 
                 Console.WriteLine($"X: {mousePosition.X} Y: {mousePosition.Y}");
 
                 Bullet bullet = new Bullet(
-                            texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 10),
-                            start: WK.Default.Window.Pixels.Center.ToVector2(),
-                            direction: mousePosition,
-                            steps: 3,
-                            autoDestroyTime: new TimeSpan(0, 0, 2)
+                    texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 10),
+                    centerPosition: WK.Default.Window.Pixels.Center.ToVector2(),
+                    direction: mousePosition,
+                    steps: 3,
+                    autoDestroyTime: new TimeSpan(0, 0, 2)
                 );
 
-                bullets.Add(bullet);
+                entities.Add(bullet);
             }
 
-            lastMouseState = mouseState;
 
-            bullets = bullets.Where(x => x.isActive == true).ToList();
-            foreach (var bullet in bullets) bullet.Update();
+            List<Bullet> bullets = entities.OfType<Bullet>().Where(x => x.isActive == true).ToList();
+            foreach (var bullet in bullets)
+                bullet.Update(lastInputState, inputState);
 
-            goToMenu.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Menu));
+            Button goToMenu = entities.OfType<Button>().Where(x => x.tag == "goToMenu").First();
+            goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Menu));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var bullet in bullets) bullet.Draw(spriteBatch);
+            foreach (var entity in entities)
+                entity.Draw(spriteBatch);
 
-            goToMenu.Draw(spriteBatch);
-        }
-
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            throw new NotImplementedException();
+            foreach (var ui in UIs)
+                ui.Draw(spriteBatch);
         }
     }
 }

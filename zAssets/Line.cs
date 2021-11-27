@@ -1,11 +1,13 @@
 ﻿using System;
+using ChristianTools.Components;
+using ChristianTools.Helpers;
 using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace zAssets
 {
-    public class Line
+    public class Line : IEntity
     {
         Texture2D texture2D;
         Rectangle[] rectangles;
@@ -14,12 +16,18 @@ namespace zAssets
         Point end;
         int thickness;
 
-        public Line(Point start, Point end, int thickness, Texture2D texture2D)
+        public Rigidbody rigidbody { get; }
+        public bool isActive { get; }
+        public string tag { get; }
+        public int health { get; }
+
+        public Line(Point start, Point end, int thickness, Texture2D texture2D, string tag)
         {
             this.start = start;
             this.end = end;
             this.thickness = thickness;
             this.texture2D = texture2D;
+            this.tag = tag;
 
             CreateLine();
         }
@@ -166,6 +174,11 @@ namespace zAssets
             {
                 spriteBatch.Draw(texture2D, rectangle, Color.White);
             }
+        }
+
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+            throw new NotImplementedException();
         }
     }
 }

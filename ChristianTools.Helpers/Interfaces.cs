@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using ChristianTools.Components;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Helpers
@@ -16,11 +18,10 @@ namespace ChristianTools.Helpers
 
     public interface IScene
     {
-        //public IEntity player { get; set; }
         public GameState gameState { get; }
         public List<IEntity> entities { get; set; }
         public List<IUI> UIs { get; set; }
-        //public List<IParticles> particles { get; set; }
+        public List<SoundEffect> soundEffects { get; }
         public Camera camera { get; }
         public Map map { get; }
         public void Initialize();
@@ -35,6 +36,8 @@ namespace ChristianTools.Helpers
 
     public interface IUI
     {
+        public Rectangle rectangle { get; }
+        public string tag { get; }
         public void Draw(SpriteBatch spriteBatch);
     }
 
