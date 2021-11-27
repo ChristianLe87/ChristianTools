@@ -64,7 +64,7 @@ namespace Showroom_dotNet5
             Button goToMenu = Game1.GetScene.UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
             goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Menu));
 
-            Player player = Game1.GetScene.UIs.OfType<Player>().First();
+            Player player = Game1.GetScene.entities.OfType<Player>().First();
             player.Update(lastInputState, inputState);
 
             camera.Update(player.rigidbody.centerPosition);
