@@ -8,12 +8,21 @@ using Microsoft.Xna.Framework.Input;
 using zAssets;
 using zTools;
 using ChristianTools.UI;
+using ChristianTools.Helpers;
+using ChristianTools.Components;
 
 namespace Showroom_dotNet5
 {
     public class Scene_Shoot : IScene
     {
         public Camera camera { get; }
+
+        public GameState gameState => throw new NotImplementedException();
+
+        public List<IEntity> entities { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<IUI> UIs { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public Map map => throw new NotImplementedException();
 
         List<Bullet> bullets;
         MouseState lastMouseState;
@@ -71,6 +80,11 @@ namespace Showroom_dotNet5
             foreach (var bullet in bullets) bullet.Draw(spriteBatch);
 
             goToMenu.Draw(spriteBatch);
+        }
+
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+            throw new NotImplementedException();
         }
     }
 }

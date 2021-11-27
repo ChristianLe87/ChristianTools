@@ -5,12 +5,24 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using zTools;
 using ChristianTools.UI;
+using ChristianTools.Helpers;
+using ChristianTools.Components;
+using System.Collections.Generic;
 
 namespace Showroom_dotNet5
 {
     public class Scene_Dialogue : IScene
     {
         public Camera camera { get; }
+
+        GameState IScene.gameState => throw new System.NotImplementedException();
+
+        List<IEntity> IScene.entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        List<IUI> IScene.UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        Camera IScene.camera => throw new System.NotImplementedException();
+
+        Map IScene.map => throw new System.NotImplementedException();
 
         Dialogue dialogue;
         Button goToMenu;
@@ -61,6 +73,21 @@ namespace Showroom_dotNet5
             dialogue.Draw(spriteBatch);
             goToMenu.Draw(spriteBatch);
             instructionsLabel.Draw(spriteBatch);
+        }
+
+        void IScene.Initialize()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        void IScene.Update(InputState lastInputState, InputState inputState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        void IScene.Draw(SpriteBatch spriteBatch)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

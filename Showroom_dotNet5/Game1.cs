@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+﻿using System.Collections.Generic;
+using ChristianTools.Helpers;
 
 namespace Showroom_dotNet5
 {
@@ -19,33 +14,12 @@ namespace Showroom_dotNet5
         }
     }
 
-    public class Game1 : Game
+    public class Game1 : ChristianGame
     {
-        public static GraphicsDeviceManager graphicsDeviceManager;
-        SpriteBatch spriteBatch;
-        public static ContentManager contentManager;
-
-        static Dictionary<string, IScene> scenes;
-        static string actualScene = WK.Scene.Scene_Menu;
-
-        public Game1()
+        public Game1() : base(gameDataFileName: "Monogame_ChristianTools_DataFile")
         {
-            // Window
-            graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = WK.Default.Window.Pixels.Width;
-            graphicsDeviceManager.PreferredBackBufferHeight = WK.Default.Window.Pixels.Height;
-            graphicsDeviceManager.ApplyChanges();
 
-            // FPS
-            base.IsFixedTimeStep = true;
-            base.TargetElapsedTime = TimeSpan.FromSeconds(1d / WK.Default.FPS);
-
-            // Content
-            string absolutePath = Path.Combine(Environment.CurrentDirectory, "Content");
-            base.Content.RootDirectory = absolutePath;
-            Game1.contentManager = base.Content;
-
-            scenes = new Dictionary<string, IScene>()
+            Dictionary<string, IScene> scenes = new Dictionary<string, IScene>()
             {
                 { WK.Scene.Scene_Menu, new Scene_Menu() },
                 { WK.Scene.Scene_UI, new Scene_UI() },
@@ -60,52 +34,7 @@ namespace Showroom_dotNet5
                 { WK.Scene.Scene_Animations, new Scene_Animations() },
             };
 
-            base.IsMouseVisible = true;
-
-            base.Initialize();
-        }
-
-        protected override void LoadContent()
-        {
-            this.spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: Code
-        }
-
-        protected override void UnloadContent()
-        {
-            // TODO: Code
-        }
-
-        protected override void Update(GameTime gameTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            scenes[actualScene].Update();
-
-            base.Update(gameTime);
-
-        }
-
-        protected override void Draw(GameTime gameTime)
-        {
-            base.GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            this.spriteBatch.Begin(transformMatrix: scenes[actualScene].camera?.transform);
-
-            // code
-            scenes[actualScene].Draw(spriteBatch);
-
-            this.spriteBatch.End();
-
-            base.Draw(gameTime);
-        }
-
-        public static void ChangeToScene(string scene)
-        {
-            actualScene = scene;
-            scenes[actualScene].Initialize();
+            base.SetupScenes(scenes, WK.Scene.Scene_Menu);
         }
     }
 }

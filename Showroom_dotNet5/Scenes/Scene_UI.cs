@@ -8,12 +8,21 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using zTools;
 using ChristianTools.UI;
+using ChristianTools.Helpers;
+using ChristianTools.Components;
 
 namespace Showroom_dotNet5
 {
     public class Scene_UI : IScene
     {
         public Camera camera { get; }
+
+        public GameState gameState { get; }
+
+        public List<IEntity> entities { get; set; }
+        List<IUI> IScene.UIs { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public Map map { get; }
 
         List<object> UIs;
 
@@ -99,7 +108,7 @@ namespace Showroom_dotNet5
             soundEffect = Tools.Sound.GetSoundEffect(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, Path.Combine("Sounds", "EatingSound_WAV"));
         }
 
-        public void Update()
+        public void Update(InputState lastInputState, InputState inputState)
         {
             Button testButton = UIs.OfType<Button>().Where(x => x.ButtonID == "TestButton").First();
             testButton.Update(() => Console.WriteLine("User click button!"));

@@ -3,12 +3,22 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using zTools;
 using ChristianTools.UI;
+using ChristianTools.Helpers;
+using ChristianTools.Components;
+using System.Collections.Generic;
 
 namespace Showroom_dotNet5
 {
     public class Scene_Tools : IScene
     {
         public Camera camera { get; }
+
+        public GameState gameState => throw new System.NotImplementedException();
+
+        public List<IEntity> entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public List<IUI> UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public Map map => throw new System.NotImplementedException();
 
         Texture2D subAtlas_1;
         Texture2D subAtlas_2;
@@ -142,6 +152,11 @@ namespace Showroom_dotNet5
             spriteBatch.Draw(fontMap_Red, new Vector2(200, 80), Color.White);
 
             goToMenu.Draw(spriteBatch);
+        }
+
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

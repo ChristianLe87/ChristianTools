@@ -5,12 +5,22 @@ using Microsoft.Xna.Framework.Input;
 using zAssets;
 using zTools;
 using ChristianTools.UI;
+using ChristianTools.Helpers;
+using ChristianTools.Components;
+using System.Collections.Generic;
 
 namespace Showroom_dotNet5
 {
     public class Scene_Assets : IScene
     {
         public Camera camera { get; }
+
+        public GameState gameState => throw new System.NotImplementedException();
+
+        public List<IEntity> entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public List<IUI> UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public Map map => throw new System.NotImplementedException();
 
         Line line_1;
         Prefab prefab_1;
@@ -59,6 +69,11 @@ namespace Showroom_dotNet5
             line_1.Draw(spriteBatch);
             prefab_1.Draw(spriteBatch);
             goToMenu.Draw(spriteBatch);
+        }
+
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

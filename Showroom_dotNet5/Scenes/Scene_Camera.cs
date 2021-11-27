@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework.Input;
 using zTools;
 using zTopView_RPG;
 using ChristianTools.UI;
+using ChristianTools.Helpers;
+using ChristianTools.Components;
+using System.Collections.Generic;
 
 namespace Showroom_dotNet5
 {
@@ -14,6 +17,13 @@ namespace Showroom_dotNet5
         Label label;
         Player player;
         public Camera camera { get; private set; }
+
+        public GameState gameState => throw new System.NotImplementedException();
+
+        public List<IEntity> entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public List<IUI> UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public Map map => throw new System.NotImplementedException();
 
         public Scene_Camera()
         {
@@ -44,19 +54,19 @@ namespace Showroom_dotNet5
 
             player = new Player(Tools.Texture.CreateColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, color: Color.Pink));
 
-            camera = new Camera(WK.Default.Window.Pixels.Width, WK.Default.Window.Pixels.Height);
+            camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
         }
 
         public void Update()
         {
             goToMenu.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Menu));
             player.Update();
-            camera.Update(player.CenterPosition);
+            camera.Update(player.CenterPosition.ToVector2());
 
             KeyboardState keyboardState = Keyboard.GetState();
             if (keyboardState.IsKeyDown(Keys.Q))
             {
-                camera.Rotate();
+                //camera.Rotate();
             }
         }
 
@@ -65,6 +75,11 @@ namespace Showroom_dotNet5
             label.Draw(spriteBatch);
             player.Draw(spriteBatch);
             goToMenu.Draw(spriteBatch);
+        }
+
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

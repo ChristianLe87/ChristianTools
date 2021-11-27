@@ -1,4 +1,7 @@
-﻿using ChristianTools.Tools;
+﻿using System.Collections.Generic;
+using ChristianTools.Components;
+using ChristianTools.Helpers;
+using ChristianTools.Tools;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,6 +13,13 @@ namespace Showroom_dotNet5
     public class Scene_Playground_1 : IScene
     {
         public Camera camera { get; private set; }
+
+        public GameState gameState => throw new System.NotImplementedException();
+
+        public List<IEntity> entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public List<IUI> UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public Map map => throw new System.NotImplementedException();
 
         Button goToMenu;
 
@@ -38,6 +48,11 @@ namespace Showroom_dotNet5
         public void Draw(SpriteBatch spriteBatch)
         {
             goToMenu.Draw(spriteBatch);
+        }
+
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

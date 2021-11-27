@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using zTools;
 using ChristianTools.UI;
+using ChristianTools.Helpers;
+using ChristianTools.Components;
+using System.Collections.Generic;
 
 namespace Showroom_dotNet5
 {
@@ -10,6 +13,13 @@ namespace Showroom_dotNet5
     {
         Button goToMenu;
         public Camera camera { get; }
+
+        public GameState gameState => throw new System.NotImplementedException();
+
+        public List<IEntity> entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public List<IUI> UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public Map map => throw new System.NotImplementedException();
 
         public Scene_Animations()
         {
@@ -37,6 +47,11 @@ namespace Showroom_dotNet5
         {
             goToMenu.Draw(spriteBatch);
 
+        }
+
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

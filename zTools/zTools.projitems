@@ -9,10 +9,7 @@
     <Import_RootNamespace>zTools</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ExtensionMethods.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)InputState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Circle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Camera.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)_Readme_.txt" />

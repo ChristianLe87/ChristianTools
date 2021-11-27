@@ -4,12 +4,22 @@ using Microsoft.Xna.Framework.Graphics;
 using zAssets;
 using zTools;
 using ChristianTools.UI;
+using ChristianTools.Helpers;
+using ChristianTools.Components;
+using System.Collections.Generic;
 
 namespace Showroom_dotNet5
 {
     public class Scene_Menu : IScene
     {
         public Camera camera { get; }
+
+        public GameState gameState => throw new System.NotImplementedException();
+
+        public List<IEntity> entities { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public List<IUI> UIs { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public Map map => throw new System.NotImplementedException();
 
         Button goToUI;
         Button goToShoot;
@@ -153,7 +163,7 @@ namespace Showroom_dotNet5
             );
         }
 
-        public void Update()
+        public void Update(InputState lastInputState, InputState inputState)
         {
             goToUI.Update(() => Game1.ChangeToScene(WK.Scene.Scene_UI));
             goToShoot.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Shoot));
@@ -165,7 +175,7 @@ namespace Showroom_dotNet5
             goToPhysics.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Physics));
             goToCamera.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Camera));
 
-            GoToPlayground1.Update(()=>Game1.ChangeToScene(WK.Scene.Scene_Playground_1));
+            GoToPlayground1.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Playground_1));
             GoToPlayground2.Update(() => Game1.ChangeToScene(WK.Scene.Scene_Playground_2));
         }
 
