@@ -8,17 +8,19 @@ namespace ChristianTools.Helpers
     {
         public Rigidbody rigidbody { get; }
         public bool isActive { get; }
+        public string tag { get; }
+        public int health { get; }
         public void Update(InputState lastInputState, InputState inputState);
         public void Draw(SpriteBatch spriteBatch);
-        public string tag { get; }
     }
 
     public interface IScene
     {
-        //public Player player { get; set; }
+        //public IEntity player { get; set; }
+        public GameState gameState { get; }
         public List<IEntity> entities { get; set; }
         public List<IUI> UIs { get; set; }
-        //public List<Bullet> bullets { get; set; }
+        //public List<IParticles> particles { get; set; }
         public Camera camera { get; }
         public Map map { get; }
         public void Initialize();
@@ -26,8 +28,14 @@ namespace ChristianTools.Helpers
         public void Draw(SpriteBatch spriteBatch);
     }
 
+    /*public interface IParticles
+    {
+    }*/
+
+
     public interface IUI
     {
+        public void Draw(SpriteBatch spriteBatch);
     }
 
     public interface ILanguage

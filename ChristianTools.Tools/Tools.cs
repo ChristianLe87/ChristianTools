@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ChristianTools.Components;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -400,18 +402,29 @@ namespace ChristianTools.Tools
             {
                 public static double r(double x, double y)
                 {
+                    // r = (x^2 + y^2)^(1/2)
                     return Math.Sqrt((x * x) + (y * y));
                 }
 
                 public static double y(double r, double x)
                 {
-                    return Math.Sqrt((r * r) - (x * x));
+                    // y = (r^2 - x^2)^(1/2)
+                    return (float)Math.Sqrt((r * r) - (x * x));
                 }
 
                 public static double x(double r, double y)
                 {
+                    // x = (r^2 - y^2)^(1/2)
                     return Math.Sqrt((r * r) - (y * y));
                 }
+            }
+
+            [Obsolete("Obsolete. \"Use Microsoft.Xna.Framework.MathHelper.Clamp\" or \"System.Math.Clamp\" instead.", error: true)]
+            public static int Clamp(int Min, int Max, int Number)
+            {
+                if (Number <= Min) return Min;
+                if (Number >= Max) return Max;
+                return Number;
             }
         }
 
@@ -480,6 +493,67 @@ namespace ChristianTools.Tools
                 );
 
                 return rectangleRight;
+            }
+        }
+
+        public class Other
+        {
+            /// <summary>
+            /// Get next position base on a step
+            /// </summary>
+            /// <param name="mainRigidbody"></param>
+            /// <param name="targetRigidbody"></param>
+            /// <param name="maxAproximation"></param>
+            /// <param name="steps"></param>
+            /// <returns></returns>
+            public static Point MoveTowards(Rigidbody mainRigidbody, Rigidbody targetRigidbody, int maxAproximation, int steps)
+            {
+                Point mainPoint = mainRigidbody.centerPosition;
+                Point endPoint = targetRigidbody.centerPosition;
+
+                // target is right
+                if (endPoint.X - mainPoint.X >= maxAproximation)
+                {
+                    // is up
+                    if (endPoint.Y - mainPoint.Y <= maxAproximation)
+                    {
+                        mainPoint.Y -= steps;// (int)Pitagoras_r(steps, steps);
+                        mainPoint.X += steps;// (int)Pitagoras_r(steps, steps);
+
+                        Console.WriteLine("===== Up Right =====");
+                    }
+                    // is down
+                    else if (endPoint.Y - mainPoint.Y >= maxAproximation)
+                    {
+                        mainPoint.Y += steps;// (int)Pitagoras_r(steps, steps);
+                        mainPoint.X += steps;// (int)Pitagoras_r(steps, steps);
+
+                        Console.WriteLine("===== Down Right =====");
+                    }
+                }
+                // target is left
+                else if (endPoint.X - mainPoint.X < maxAproximation)
+                {
+                    // is up
+                    if (endPoint.Y - mainPoint.Y <= maxAproximation)
+                    {
+                        mainPoint.Y -= steps;// (int)Pitagoras_r(steps, steps);
+                        mainPoint.X -= steps;// (int)Pitagoras_r(steps, steps);
+
+                        Console.WriteLine("===== Up Left =====");
+                    }
+                    // is down
+                    else if (endPoint.Y - mainPoint.Y >= maxAproximation)
+                    {
+                        mainPoint.Y += steps;// (int)Pitagoras_r(steps, steps);
+                        mainPoint.X -= steps;// (int)Pitagoras_r(steps, steps);
+
+                        Console.WriteLine("===== Down Left =====");
+                    }
+                }
+
+                // Return
+                return mainPoint;
             }
         }
     }

@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.UI
 {
-    public class HealthBar
+    public class HealthBar : IUI
     {
         Texture2D topTexture;
         Texture2D backTexture;

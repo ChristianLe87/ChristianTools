@@ -13,5 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InputState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)JsonSerialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums.cs" />
   </ItemGroup>
 </Project>

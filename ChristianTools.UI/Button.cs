@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ChristianTools.UI
 {
-    public class Button
+    public class Button : IUI
     {
         Rectangle rectangle;
         Texture2D defaultTexture;

@@ -12,6 +12,8 @@ namespace ChristianTools.Helpers
         // General
         public bool Right => keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right) || (gamePadState.ThumbSticks.Left.X > 0);
         public bool Left => keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left) || (gamePadState.ThumbSticks.Left.X < 0);
+        public bool Up => keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up) || (gamePadState.ThumbSticks.Left.Y > 0);
+        public bool Down => keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down) || (gamePadState.ThumbSticks.Left.Y < 0);
 
         /// <summary>
         /// keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A);

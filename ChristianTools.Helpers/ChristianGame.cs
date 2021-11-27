@@ -13,7 +13,7 @@ namespace ChristianTools.Helpers
         public static GraphicsDeviceManager graphicsDeviceManager;
 
         // Is used to draw sprites (a 2D or 3D images)
-        SpriteBatch spriteBatch;
+        public static SpriteBatch spriteBatch;
 
         public static ContentManager contentManager;
 
@@ -91,7 +91,7 @@ namespace ChristianTools.Helpers
 
         protected override void LoadContent()
         {
-            this.spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: Code
         }
 
@@ -114,11 +114,11 @@ namespace ChristianTools.Helpers
         protected override void Draw(GameTime gameTime)
         {
             base.GraphicsDevice.Clear(Color.CornflowerBlue);
-            this.spriteBatch.Begin(sortMode: SpriteSortMode.Deferred, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.Deferred, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform);
 
             scenes[actualScene].Draw(spriteBatch);
 
-            this.spriteBatch.End();
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 
@@ -128,5 +128,9 @@ namespace ChristianTools.Helpers
             actualScene = scene;
             scenes[actualScene].Initialize();
         }
+
+
+
+        //public static bool isMouseVisible { get => IsMouseVisible; set => IsMouseVisible = value; }
     }
 }

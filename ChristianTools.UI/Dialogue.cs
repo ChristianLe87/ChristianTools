@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ChristianTools.UI
 {
-    public class Dialogue
+    public class Dialogue : IUI
     {
         Texture2D background;
         Point centerPosition;

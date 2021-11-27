@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.UI
 {
-    public class Label
+    public class Label : IUI
     {
         SpriteFont spriteFont;
         string text;
@@ -85,4 +86,3 @@ namespace ChristianTools.UI
         }
     }
 }
-
