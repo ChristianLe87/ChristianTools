@@ -16,8 +16,9 @@ namespace ChristianTools.UI
         public string tag { get; }
 
         public delegate void DxOnClickAction();
+        DxOnClickAction OnClickAction;
 
-        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor, string tag)
+        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor, string tag, DxOnClickAction OnClickAction)
         {
             this.rectangle = rectangle;
             this.defaultTexture = defaultTexture;
@@ -27,9 +28,11 @@ namespace ChristianTools.UI
             this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, fontColor, tag: "");
 
             this.tag = tag;
+
+            this.OnClickAction = OnClickAction;
         }
 
-        public void Update(InputState inputState, InputState lastInputState, DxOnClickAction OnClickAction)
+        public void Update(InputState inputState, InputState lastInputState)
         {
             if (rectangle.Contains(inputState.Mouse_Position))
             {

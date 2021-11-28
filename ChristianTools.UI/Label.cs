@@ -30,10 +30,8 @@ namespace ChristianTools.UI
             this.tag = tag;
         }
 
-        public void Update(string text = null)
+        public void Update(InputState lastInputState, InputState inputState)
         {
-            if (text != null)
-                this.text = text;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -73,6 +71,14 @@ namespace ChristianTools.UI
                 _ => new Vector2(),
             };
         }
+
+        public void UpdateText(string text = null)
+        {
+            if (text != null)
+                this.text = text;
+        }
+
+
 
         public enum TextAlignment
         {

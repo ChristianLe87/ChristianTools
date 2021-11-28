@@ -29,7 +29,7 @@ namespace ChristianTools.UI
             this.reduceValue = reduceValue;
         }
 
-        public void Update()
+        public void Update(InputState lastInputState, InputState inputState)
         {
         }
 

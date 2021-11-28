@@ -28,6 +28,9 @@
     <UseSGen>true</UseSGen>
     <UseRefCounting>true</UseRefCounting>
     <HttpClientHandler></HttpClientHandler>
+    <LinkMode>None</LinkMode>
+    <AOTMode>None</AOTMode>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,6 +48,8 @@
     <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
     <LinkMode>SdkOnly</LinkMode>
     <HttpClientHandler></HttpClientHandler>
+    <AOTMode>None</AOTMode>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -90,6 +95,23 @@
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\runtimes\osx\native\libopenal.1.dylib">
+      <Kind>Dynamic</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+    <NativeReference Include="..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\runtimes\osx\native\libSDL2-2.0.0.dylib">
+      <Kind>Dynamic</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\Content\MyFont_130x28_PNG.png">
+      <Link>Resources\Content\MyFont_130x28_PNG.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+  </ItemGroup>
+  <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="..\ChristianTools.UI\ChristianTools.UI.projitems" Label="Shared" Condition="Exists('..\ChristianTools.UI\ChristianTools.UI.projitems')" />
   <Import Project="..\ChristianTools.Tools\ChristianTools.Tools.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Tools\ChristianTools.Tools.projitems')" />
   <Import Project="..\ChristianTools.Helpers\ChristianTools.Helpers.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Helpers\ChristianTools.Helpers.projitems')" />

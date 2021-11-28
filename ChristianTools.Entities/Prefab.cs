@@ -13,7 +13,7 @@ namespace ChristianTools.Entities
     {
         Texture2D texture2D;
         public bool isActive { get; private set; }
-        public string tag { get; private init; }
+        public string tag { get; private set; }
         public Rigidbody rigidbody { get; }
         public int health { get; }
         public delegate void DxOnUpdate();

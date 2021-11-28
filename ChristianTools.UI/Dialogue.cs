@@ -29,7 +29,25 @@ namespace ChristianTools.UI
             this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, Color.Pink, tag: "")).ToArray();
         }
 
-        public void Update()
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            if (isActive == false) return;
+
+            spriteBatch.Draw(background, rectangle, Color.White);
+            labels[labelCount].Draw(spriteBatch);
+        }
+
+        public void SetActiveState(bool isActive)
+        {
+            this.isActive = isActive;
+        }
+
+        public void UpdateText()
         {
             if (isActive == false)
                 return;
@@ -47,19 +65,6 @@ namespace ChristianTools.UI
             }
 
             previousinputState = inputState;
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            if (isActive == false) return;
-
-            spriteBatch.Draw(background, rectangle, Color.White);
-            labels[labelCount].Draw(spriteBatch);
-        }
-
-        public void SetActiveState(bool isActive)
-        {
-            this.isActive = isActive;
         }
     }
 }

@@ -38,6 +38,7 @@ namespace ChristianTools.Helpers
     {
         public Rectangle rectangle { get; }
         public string tag { get; }
+        public void Update(InputState lastInputState, InputState inputState);
         public void Draw(SpriteBatch spriteBatch);
     }
 
