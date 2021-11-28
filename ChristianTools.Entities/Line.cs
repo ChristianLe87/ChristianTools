@@ -1,11 +1,10 @@
 ﻿using System;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
-using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace zAssets
+namespace ChristianTools.Entities
 {
     public class Line : IEntity
     {
@@ -38,8 +37,8 @@ namespace zAssets
             int amountOn_Y = Math.Abs(start.Y - end.Y) / thickness;
             rectangles = new Rectangle[Math.Max(amountOn_X, amountOn_Y) + 1];
 
-            float m = Tools.MyMath.M(start.ToVector2(), end.ToVector2());
-            float b = Tools.MyMath.B(start.X, start.Y, m);
+            float m = ChristianTools.Tools.Tools.MyMath.M(start.ToVector2(), end.ToVector2());
+            float b = ChristianTools.Tools.Tools.MyMath.B(start.X, start.Y, m);
 
 
             // When X == 0
