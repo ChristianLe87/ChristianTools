@@ -11,6 +11,7 @@ using ChristianTools.UI;
 using ChristianTools.Helpers;
 using ChristianTools.Components;
 using Microsoft.Xna.Framework.Audio;
+using ChristianTools.Entities;
 
 namespace Showroom_dotNet5
 {
@@ -66,7 +67,7 @@ namespace Showroom_dotNet5
 
             List<Bullet> bullets = entities.OfType<Bullet>().Where(x => x.isActive == true).ToList();
             foreach (var bullet in bullets)
-                bullet.Update(lastInputState, inputState);
+                bullet.Update();
 
             Button goToMenu = UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
             goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Menu));
