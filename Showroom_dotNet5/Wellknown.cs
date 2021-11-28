@@ -7,53 +7,29 @@ namespace Showroom_dotNet5
     {
         public class Default
         {
-            public static readonly int FPS = 60;
-
-            public class Window
-            {
-                public class Pixels
-                {
-                    public static readonly int Width = 500;
-                    public static readonly int Height = 500;
-
-                    public static readonly int CenterX = Width / 2;
-                    public static readonly int CenterY = Height / 2;
-
-                    public static readonly Point Center = new Point(CenterX, CenterY);
-                }
-
-                public class Units
-                {
-                    public static readonly int Width = Pixels.Width / Block.Pixels.Width;
-                    public static readonly int Height = Pixels.Height / Block.Pixels.Height;
-
-                }
-            }
-
-            public class Block
-            {
-                public class Pixels
-                {
-                    public static readonly int Width = 16;
-                    public static readonly int Height = 16;
-                }
-
-            }
+            public static readonly string WindowTitle = "Showroom";
+            public static readonly double FPS = 60;
+            public static readonly int ScaleFactor = 3;
+            public static readonly int Width = 500;
+            public static readonly int Height = 500;
+            public static readonly Point Center = new Point(Width / 2, Height / 2);
+            public static readonly int AssetSize = 16;
+            public static readonly string gameDataFileName = "ChristianTools_Showroom_GameData";
         }
 
         public class Scene
         {
-            public static readonly string Scene_Menu = "Scene_Menu";
-            public static readonly string Scene_UI = "Scene_UI";
-            public static readonly string Scene_Physics = "Scene_Physics";
-            public static readonly string Scene_Shoot = "Scene_Shoot";
-            public static readonly string Scene_Tools = "Scene_Tools";
-            public static readonly string Scene_Animations = "Scene_Animations";
-            public static readonly string Scene_Assets = "Scene_Assets";
-            public static readonly string Scene_Dialogue = "Scene_Dialogue";
-            public static readonly string Scene_Camera = "Scene_Camera";
-            public static readonly string Scene_Playground_1 = "Scene_Playground_1";
-            public static readonly string Scene_Playground_2 = "Scene_Playground_2";
+            public static readonly string Menu = "Menu";
+            public static readonly string UI = "UI";
+            public static readonly string Physics = "Physics";
+            public static readonly string Shoot = "Shoot";
+            public static readonly string Tools = "Tools";
+            public static readonly string Animations = "Animations";
+            public static readonly string Assets = "Assets";
+            public static readonly string Dialogue = "Dialogue";
+            public static readonly string Camera = "Camera";
+            public static readonly string Playground_1 = "Playground_1";
+            public static readonly string Playground_2 = "Playground_2";
         }
 
         public class Image

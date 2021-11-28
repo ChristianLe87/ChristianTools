@@ -21,20 +21,20 @@ namespace Showroom_dotNet5
 
             Dictionary<string, IScene> scenes = new Dictionary<string, IScene>()
             {
-                { WK.Scene.Scene_Menu, new Scene_Menu() },
-                { WK.Scene.Scene_UI, new Scene_UI() },
-                { WK.Scene.Scene_Physics, new Scene_Physics() },
-                { WK.Scene.Scene_Shoot, new Scene_Shoot() },
-                { WK.Scene.Scene_Tools, new Scene_Tools() },
-                { WK.Scene.Scene_Assets, new Scene_Assets() },
-                { WK.Scene.Scene_Dialogue, new Scene_Dialogue() },
-                { WK.Scene.Scene_Camera, new Scene_Camera() },
-                { WK.Scene.Scene_Playground_1, new Scene_Playground_1() },
-                { WK.Scene.Scene_Playground_2, new Scene_Playground_2() },
-                { WK.Scene.Scene_Animations, new Scene_Animations() },
+                { WK.Scene.Menu, new Scene_Menu() },
+                { WK.Scene.UI, new Scene_UI() },
+                { WK.Scene.Physics, new Scene_Physics() },
+                { WK.Scene.Shoot, new Scene_Shoot() },
+                { WK.Scene.Tools, new Scene_Tools() },
+                { WK.Scene.Assets, new Scene_Assets() },
+                { WK.Scene.Dialogue, new Scene_Dialogue() },
+                { WK.Scene.Camera, new Scene_Camera() },
+                { WK.Scene.Playground_1, new Scene_Playground_1() },
+                { WK.Scene.Playground_2, new Scene_Playground_2() },
+                { WK.Scene.Animations, new Scene_Animations() },
             };
 
-            base.SetupScenes(scenes, WK.Scene.Scene_Menu);
+            base.SetupScenes(scenes, WK.Scene.Menu);
         }
     }
 }

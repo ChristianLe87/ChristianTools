@@ -30,7 +30,7 @@ namespace zAssets
 
             double radAngle = Tools.MyMath.GetAngleInRadians(
                                                         Point1_Start: centerPosition,
-                                                        Point1_End: new Vector2(WK.Default.Window.Pixels.Width, (int)centerPosition.Y),
+                                                        Point1_End: new Vector2(WK.Default.Width, (int)centerPosition.Y),
                                                         Point2_Start: centerPosition,
                                                         Pount2_End: direction
             );

@@ -160,18 +160,18 @@ namespace Showroom_dotNet5
         {
             List<Button> buttons = UIs.OfType<Button>().ToList();
 
-            buttons.Where(x => x.tag == "goToUI").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_UI));
-            buttons.Where(x => x.tag == "goToShoot").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Shoot));
-            buttons.Where(x => x.tag == "goToTools").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Tools));
-            buttons.Where(x => x.tag == "goToAnimations").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Animations));
+            buttons.Where(x => x.tag == "goToUI").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.UI));
+            buttons.Where(x => x.tag == "goToShoot").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Shoot));
+            buttons.Where(x => x.tag == "goToTools").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Tools));
+            buttons.Where(x => x.tag == "goToAnimations").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Animations));
 
-            buttons.Where(x => x.tag == "goToAssets").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Assets));
-            buttons.Where(x => x.tag == "goToDialogue").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Dialogue));
-            buttons.Where(x => x.tag == "goToPhysics").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Physics));
-            buttons.Where(x => x.tag == "goToCamera").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Camera));
+            buttons.Where(x => x.tag == "goToAssets").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Assets));
+            buttons.Where(x => x.tag == "goToDialogue").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Dialogue));
+            buttons.Where(x => x.tag == "goToPhysics").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Physics));
+            buttons.Where(x => x.tag == "goToCamera").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Camera));
 
-            buttons.Where(x => x.tag == "GoToPlayground1").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Playground_1));
-            buttons.Where(x => x.tag == "GoToPlayground2").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Playground_2));
+            buttons.Where(x => x.tag == "GoToPlayground1").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Playground_1));
+            buttons.Where(x => x.tag == "GoToPlayground2").First().Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Playground_2));
         }
 
         public void Draw(SpriteBatch spriteBatch)

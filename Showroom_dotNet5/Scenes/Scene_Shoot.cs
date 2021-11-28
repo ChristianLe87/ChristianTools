@@ -32,7 +32,7 @@ namespace Showroom_dotNet5
             this.UIs = new List<IUI>()
             {
                 new Button(
-                    rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
+                    rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
                     text: "Menu",
                     defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                     mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
@@ -55,7 +55,7 @@ namespace Showroom_dotNet5
 
                 Bullet bullet = new Bullet(
                     texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 10),
-                    centerPosition: WK.Default.Window.Pixels.Center.ToVector2(),
+                    centerPosition: WK.Default.Center.ToVector2(),
                     direction: mousePosition,
                     steps: 3,
                     autoDestroyTime: new TimeSpan(0, 0, 2)
@@ -69,7 +69,7 @@ namespace Showroom_dotNet5
                 bullet.Update(lastInputState, inputState);
 
             Button goToMenu = UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
-            goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Menu));
+            goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Menu));
         }
 
         public void Draw(SpriteBatch spriteBatch)

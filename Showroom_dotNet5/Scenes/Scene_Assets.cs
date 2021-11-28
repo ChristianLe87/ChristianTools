@@ -32,7 +32,7 @@ namespace Showroom_dotNet5
             this.entities = new List<IEntity>()
             {
                 new Line(
-                    start: WK.Default.Window.Pixels.Center,
+                    start: WK.Default.Center,
                     end: new Point(0, 0),
                     thickness: 20,
                     texture2D: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
@@ -54,7 +54,7 @@ namespace Showroom_dotNet5
             this.UIs = new List<IUI>()
             {
                 new Button(
-                    rectangle: new Rectangle(0, WK.Default.Window.Pixels.Height - 50, 100, 50),
+                    rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
                     text: "Menu",
                     defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                     mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
@@ -73,7 +73,7 @@ namespace Showroom_dotNet5
             
 
             Button goToMenu = Game1.GetScene.UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
-            goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Scene_Menu));
+            goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Menu));
         }
 
         public void Draw(SpriteBatch spriteBatch)
