@@ -38,7 +38,7 @@ namespace Shared
                     camera
                 ),
                 new Button(
-                    rectangle: new Rectangle (10, 60, 230, 30),
+                    rectangle: new Rectangle (10, 50, 230, 30),
                     text: "Components_Camera",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
@@ -47,8 +47,27 @@ namespace Shared
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Camera),
                     camera
                 ),
-
-                 new Button(
+                new Button(
+                    rectangle: new Rectangle (10, 90, 230, 30),
+                    text: "Components_Map",
+                    defaultTexture: WK.Texture.Red,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "goToComponents_Map",
+                    OnClickAction: null,
+                    camera
+                ),
+                new Button(
+                    rectangle: new Rectangle (10, 130, 230, 30),
+                    text: "Components_Rigidbody",
+                    defaultTexture: WK.Texture.Red,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "goToComponents_Rigidbody",
+                    OnClickAction: null,
+                    camera
+                ),
+                new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
                     text: "<- Menu",
                     defaultTexture: WK.Texture.LightGray,

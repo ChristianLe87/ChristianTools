@@ -43,6 +43,9 @@ namespace Shared
             public static readonly Texture2D Gray = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Gray);
             public static readonly Texture2D LightGray = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.LightGray);
             public static readonly Texture2D Blue = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Blue);
+            public static readonly Texture2D Red = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red);
+            public static readonly Texture2D DarkRed = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.DarkRed);
+
 
             public class Player
             {

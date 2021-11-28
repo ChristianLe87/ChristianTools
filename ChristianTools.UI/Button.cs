@@ -42,7 +42,8 @@ namespace ChristianTools.UI
                 isMouseOver = true;
                 if (lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
                 {
-                    OnClickAction();
+                    if (OnClickAction != null)
+                        OnClickAction();
                 }
             }
             else
