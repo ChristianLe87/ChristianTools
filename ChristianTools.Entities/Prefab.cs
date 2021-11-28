@@ -1,14 +1,15 @@
-﻿using ChristianTools.Components;
+﻿using System;
+using ChristianTools.Components;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace zAssets
+namespace ChristianTools.Entities
 {
     /// <summary>
     /// Something with a texture and a rectangle
     /// </summary>
-    public class Prefab: IEntity
+    public class Prefab : IEntity
     {
         Texture2D texture2D;
         public bool isActive { get; private set; }
@@ -27,7 +28,7 @@ namespace zAssets
 
         public void Update(InputState lastInputState, InputState inputState, DxOnUpdate dxOnUpdate = null, bool isActive = true)
         {
-            if(dxOnUpdate != null)
+            if (dxOnUpdate != null)
                 dxOnUpdate();
 
             if (isActive != true)
@@ -36,7 +37,7 @@ namespace zAssets
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if(isActive)
+            if (isActive)
                 spriteBatch.Draw(texture2D, rigidbody.rectangle, Color.White);
         }
 
