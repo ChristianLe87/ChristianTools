@@ -17,9 +17,20 @@ namespace Shared
                 { WK.Scene.Components_Animation, new Scene_Components_Animation() },
                 { WK.Scene.Components_Camera, new Scene_Components_Camera() },
 
+                // Entities
                 { WK.Scene.Entities, new Scene_Entities() },
+                { WK.Scene.Entities_Bullet, new Scene_Entities_Bullet() },
+                { WK.Scene.Entities_Prefab, new Scene_Entities_Prefab() },
+
+                // Helpers
                 { WK.Scene.Helpers, new Scene_Helpers() },
+                { WK.Scene.Helpers_InputState, new Scene_Helpers_InputState() },
+                { WK.Scene.Helpers_JsonSerialization, new Scene_Helpers() },
+
+                // Tools
                 { WK.Scene.Tools, new Scene_Tools() },
+
+                // UI
                 { WK.Scene.UI, new Scene_UI() },
             };
 

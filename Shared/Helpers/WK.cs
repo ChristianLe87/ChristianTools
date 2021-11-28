@@ -25,12 +25,24 @@ namespace Shared
 
             // Components
             public static readonly string Components = "Components";
-            public static readonly string Components_Animation = "Scene_Components_Animation";
-            public static readonly string Components_Camera = "Scene_Components_Camera";
+            public static readonly string Components_Animation = "Components_Animation";
+            public static readonly string Components_Camera = "Components_Camera";
 
+            // Entities
             public static readonly string Entities = "Entities";
+            public static readonly string Entities_Bullet = "Entities_Bullet";
+            public static readonly string Entities_Line = "Entities_Line";
+            public static readonly string Entities_Prefab = "Entities_Prefab";
+
+            // Helpers
             public static readonly string Helpers = "Helpers";
+            public static readonly string Helpers_InputState = "Helpers_InputState";
+            public static readonly string Helpers_JsonSerialization = "Helpers_JsonSerialization";
+
+            // Tools
             public static readonly string Tools = "Tools";
+
+            // UI
             public static readonly string UI = "UI";
         }
 

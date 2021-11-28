@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Shared
 {
-    public class Scene_Tools : IScene
+    public class Scene_Helpers_InputState : IScene
     {
         public GameState gameState { get; private set; }
         public List<IEntity> entities { get; set; }
@@ -16,7 +16,7 @@ namespace Shared
         public Camera camera { get; }
         public Map map { get; }
 
-        public Scene_Tools()
+        public Scene_Helpers_InputState()
         {
             Initialize();
         }
