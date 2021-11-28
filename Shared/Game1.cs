@@ -11,7 +11,11 @@ namespace Shared
             Dictionary<string, IScene> scenes = new Dictionary<string, IScene>()
             {
                 { WK.Scene.Menu, new Scene_Menu() },
+
+                // Components
                 { WK.Scene.Components, new Scene_Components() },
+                { WK.Scene.Components_Animation, new Scene_Components_Animation() },
+
                 { WK.Scene.Entities, new Scene_Entities() },
                 { WK.Scene.Helpers, new Scene_Helpers() },
                 { WK.Scene.Tools, new Scene_Tools() },

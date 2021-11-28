@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
+using ChristianTools.UI;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -18,21 +20,36 @@ namespace Shared
 
         public Scene_Components()
         {
+            Initialize();
         }
 
         public void Initialize()
         {
-            throw new NotImplementedException();
+            this.UIs = new List<IUI>()
+            {
+                new Button(
+                    rectangle: new Rectangle (10, 10, 230, 30),
+                    text: "Components_Animation",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    fontColor: Color.Pink,
+                    tag: "goToComponents_Animation",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Animation)
+                ),
+            };
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
-            throw new NotImplementedException();
+            foreach (var ui in UIs)
+                ui.Update(lastInputState, inputState);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            foreach (var ui in UIs)
+                ui.Draw(spriteBatch);
         }
     }
 }
