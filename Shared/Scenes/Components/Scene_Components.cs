@@ -49,6 +49,18 @@ namespace Shared
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Camera),
                     camera
                 ),
+
+                 new Button(
+                    rectangle: new Rectangle (0, 470, 230, 30),
+                    text: "<- Menu",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    fontColor: Color.Pink,
+                    tag: "goToMenu",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
+                    camera: camera
+                ),
             };
         }
 

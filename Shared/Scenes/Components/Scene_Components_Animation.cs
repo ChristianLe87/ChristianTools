@@ -34,7 +34,7 @@ namespace Shared
             {
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
-                    text: "Components",
+                    text: "<- Components",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
