@@ -27,6 +27,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zUI", "zUI\zUI.shproj", "{7
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zWorldElements", "zWorldElements\zWorldElements.shproj", "{9282EB3F-168D-424A-ACF3-B39917467ED2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showroom_macOS", "Showroom_macOS\Showroom_macOS.csproj", "{F080F81E-1D36-4D7F-9C54-C4155E22A57A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{4A000878-67A9-472F-8281-640D886C5375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A000878-67A9-472F-8281-640D886C5375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A000878-67A9-472F-8281-640D886C5375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F080F81E-1D36-4D7F-9C54-C4155E22A57A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F080F81E-1D36-4D7F-9C54-C4155E22A57A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F080F81E-1D36-4D7F-9C54-C4155E22A57A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F080F81E-1D36-4D7F-9C54-C4155E22A57A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
