@@ -20,14 +20,14 @@ namespace ChristianTools.UI
         DxOnClickAction OnClickAction;
         Camera camera;
 
-        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor, string tag, DxOnClickAction OnClickAction, Camera camera)
+        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, string tag, DxOnClickAction OnClickAction, Camera camera)
         {
             this.rectangle = rectangle;
             this.defaultTexture = defaultTexture;
             this.mouseOverTexture = mouseOverTexture;
             this.isMouseOver = false;
 
-            this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, fontColor, tag: "");
+            this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, tag: "");
 
             this.tag = tag;
 

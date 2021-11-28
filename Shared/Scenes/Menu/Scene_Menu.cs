@@ -34,7 +34,6 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToComponents",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
                     camera
@@ -45,7 +44,6 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToEntities",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities),
                     camera
@@ -56,7 +54,6 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToHelpers",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers),
                     camera
@@ -67,7 +64,6 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToTools",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Tools),
                     camera
@@ -78,7 +74,6 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToUI",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.UI),
                     camera

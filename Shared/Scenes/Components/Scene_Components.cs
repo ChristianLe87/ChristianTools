@@ -33,7 +33,6 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToComponents_Animation",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Animation),
                     camera
@@ -44,7 +43,6 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToComponents_Camera",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Camera),
                     camera
@@ -56,7 +54,6 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToMenu",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
                     camera: camera

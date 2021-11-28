@@ -11,20 +11,18 @@ namespace ChristianTools.UI
         Texture2D texture2D;
         Vector2 textPosition;
         TextAlignment textAlignment;
-        Color fontColor;
 
         public Rectangle rectangle { get; }
 
         public string tag { get; }
 
-        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, Color fontColor, string tag, Texture2D texture = null, int lineSpacing = 10)
+        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, string tag, Texture2D texture = null, int lineSpacing = 10)
         {
             this.rectangle = rectangle;
             this.spriteFont = spriteFont;
             this.text = text;
             this.texture2D = texture;
             this.textAlignment = textAlignment;
-            this.fontColor = fontColor;
             this.spriteFont.LineSpacing = lineSpacing;
             this.textPosition = GetTextPosition();
             this.tag = tag;
@@ -39,7 +37,7 @@ namespace ChristianTools.UI
             if (texture2D != null)
                 spriteBatch.Draw(texture2D, rectangle, Color.White);
 
-            spriteBatch.DrawString(spriteFont, text, textPosition, fontColor);
+            spriteBatch.DrawString(spriteFont, text, textPosition, Color.White);
         }
 
         private Vector2 GetTextPosition()

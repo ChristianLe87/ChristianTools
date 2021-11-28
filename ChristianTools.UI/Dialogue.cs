@@ -26,7 +26,7 @@ namespace ChristianTools.UI
             this.centerPosition = centerPosition;
             this.labelCount = 0;
             this.isActive = isActive;
-            this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, Color.Pink, tag: "")).ToArray();
+            this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, tag: "")).ToArray();
         }
 
         public void Update(InputState lastInputState, InputState inputState)

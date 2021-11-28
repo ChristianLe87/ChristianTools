@@ -38,12 +38,11 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToComponents",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
                     camera: camera
                 ),
-                new Label(new Rectangle(10, 10, 100, 50), WK.Font.font_14, "Use \"Up\", \"Down\", \"Right\", \"Left\"\nto move camera", Label.TextAlignment.Midle_Left, Color.Pink, ""),
+                new Label(new Rectangle(10, 10, 100, 50), WK.Font.font_14, "Use \"Up\", \"Down\", \"Right\", \"Left\"\nto move camera", Label.TextAlignment.Midle_Left, ""),
             };
         }
 

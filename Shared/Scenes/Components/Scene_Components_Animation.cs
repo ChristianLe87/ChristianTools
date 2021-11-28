@@ -38,7 +38,6 @@ namespace Shared
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
-                    fontColor: Color.Pink,
                     tag: "goToComponents",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
                     camera
