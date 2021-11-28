@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ChristianTools.Components;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace ChristianTools.Helpers
@@ -32,7 +33,21 @@ namespace ChristianTools.Helpers
         public bool IsGamePadButtonUp(Buttons button) => gamePadState.IsButtonUp(button);
 
         // Mouse
-        public Point Mouse_Position => mouseState.Position;
+        //public Point Mouse_Position => mouseState.Position;
+        public Point Mouse_Position(Camera camera = null)
+        {
+            if (camera != null)
+            {
+                Point point = mouseState.Position;
+                point += camera.center.ToPoint();
+                return point;
+            }
+            else
+            {
+                return mouseState.Position;
+            }
+        }
+
         public ButtonState Mouse_LeftButton => mouseState.LeftButton;
     }
 }

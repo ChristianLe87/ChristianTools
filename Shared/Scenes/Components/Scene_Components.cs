@@ -35,7 +35,19 @@ namespace Shared
                     spriteFont: WK.Font.font_14,
                     fontColor: Color.Pink,
                     tag: "goToComponents_Animation",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Animation)
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Animation),
+                    camera
+                ),
+                new Button(
+                    rectangle: new Rectangle (10, 60, 230, 30),
+                    text: "Components_Camera",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    fontColor: Color.Pink,
+                    tag: "goToComponents_Camera",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Camera),
+                    camera
                 ),
             };
         }

@@ -15,6 +15,7 @@ namespace Shared
                 // Components
                 { WK.Scene.Components, new Scene_Components() },
                 { WK.Scene.Components_Animation, new Scene_Components_Animation() },
+                { WK.Scene.Components_Camera, new Scene_Components_Camera() },
 
                 { WK.Scene.Entities, new Scene_Entities() },
                 { WK.Scene.Helpers, new Scene_Helpers() },

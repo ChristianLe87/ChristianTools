@@ -36,7 +36,8 @@ namespace Shared
                     spriteFont: WK.Font.font_14,
                     fontColor: Color.Pink,
                     tag: "goToComponents",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components)
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
+                    camera
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 50, 230, 30),
@@ -46,7 +47,8 @@ namespace Shared
                     spriteFont: WK.Font.font_14,
                     fontColor: Color.Pink,
                     tag: "goToEntities",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities)
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities),
+                    camera
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 90, 230, 30),
@@ -56,7 +58,8 @@ namespace Shared
                     spriteFont: WK.Font.font_14,
                     fontColor: Color.Pink,
                     tag: "goToHelpers",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers)
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers),
+                    camera
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 130, 230, 30),
@@ -66,7 +69,8 @@ namespace Shared
                     spriteFont: WK.Font.font_14,
                     fontColor: Color.Pink,
                     tag: "goToTools",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Tools)
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Tools),
+                    camera
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 170, 230, 30),
@@ -76,7 +80,8 @@ namespace Shared
                     spriteFont: WK.Font.font_14,
                     fontColor: Color.Pink,
                     tag: "goToUI",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.UI)
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.UI),
+                    camera
                 ),
             };
         }

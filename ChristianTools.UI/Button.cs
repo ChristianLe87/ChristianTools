@@ -1,4 +1,5 @@
-﻿using ChristianTools.Helpers;
+﻿using ChristianTools.Components;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -17,8 +18,9 @@ namespace ChristianTools.UI
 
         public delegate void DxOnClickAction();
         DxOnClickAction OnClickAction;
+        Camera camera;
 
-        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor, string tag, DxOnClickAction OnClickAction)
+        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, Color fontColor, string tag, DxOnClickAction OnClickAction, Camera camera)
         {
             this.rectangle = rectangle;
             this.defaultTexture = defaultTexture;
@@ -30,11 +32,12 @@ namespace ChristianTools.UI
             this.tag = tag;
 
             this.OnClickAction = OnClickAction;
+            this.camera = camera;
         }
 
         public void Update(InputState inputState, InputState lastInputState)
         {
-            if (rectangle.Contains(inputState.Mouse_Position))
+            if (rectangle.Contains(inputState.Mouse_Position(camera)))
             {
                 isMouseOver = true;
                 if (lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
