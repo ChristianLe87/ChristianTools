@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showroom_dotNet5", "Showroo
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zAssets", "zAssets\zAssets.shproj", "{37980359-51A9-4B68-AAD6-4B9B7EB07972}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zPhysics", "zPhysics\zPhysics.shproj", "{22F283AB-5776-4E10-A1AD-0E8FDE91C5A3}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zTools", "zTools\zTools.shproj", "{D60AF7BE-2C38-4681-BA98-9039780BAD3A}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zTopView_RPG", "zTopView_RPG\zTopView_RPG.shproj", "{ED877A14-7DC7-43B7-82F0-5547C7B8FFD4}"
