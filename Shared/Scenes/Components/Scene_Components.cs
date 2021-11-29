@@ -62,11 +62,11 @@ namespace Shared
                 new Button(
                     rectangle: new Rectangle (10, 130, 230, 30),
                     text: "Components_Rigidbody",
-                    defaultTexture: WK.Texture.Red,
+                    defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
                     tag: "goToComponents_Rigidbody",
-                    OnClickAction: null,
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Rigidbody),
                     camera
                 ),
                 new Button(

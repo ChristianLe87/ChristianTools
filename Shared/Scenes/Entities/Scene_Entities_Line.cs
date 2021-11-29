@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ChristianTools.Components;
+using ChristianTools.Entities;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,6 +17,8 @@ namespace Shared
         public Camera camera { get; }
         public Map map { get; }
 
+        Line line;
+
         public Scene_Entities_Line()
         {
             Initialize();
@@ -23,6 +26,16 @@ namespace Shared
 
         public void Initialize()
         {
+            this.entities = new List<IEntity>()
+            {
+                new Line(
+                    start: WK.Default.Center,
+                    end: WK.Default.Center,
+                    thickness: 5,
+                    texture2D: WK.Texture.Red,
+                    tag: ""
+                ),
+            };
         }
 
         public void Update(InputState lastInputState, InputState inputState)

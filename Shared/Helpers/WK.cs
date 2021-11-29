@@ -27,6 +27,8 @@ namespace Shared
             public static readonly string Components = "Components";
             public static readonly string Components_Animation = "Components_Animation";
             public static readonly string Components_Camera = "Components_Camera";
+            public static readonly string Components_Rigidbody = "Components_Rigidbody";
+
 
             // Entities
             public static readonly string Entities = "Entities";

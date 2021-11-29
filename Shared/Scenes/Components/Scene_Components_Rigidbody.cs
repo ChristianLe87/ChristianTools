@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using ChristianTools.Components;
+using ChristianTools.Entities;
 using ChristianTools.Helpers;
+using ChristianTools.UI;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -23,18 +26,64 @@ namespace Shared
 
         public void Initialize()
         {
+            this.UIs = new List<IUI>()
+            {
+                new Button(
+                    rectangle: new Rectangle (10, 10, 230, 30),
+                    text: "Jump",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "jump",
+                    OnClickAction: () => Jump(),
+                    camera
+                ),
+                new Button(
+                    rectangle: new Rectangle (0, 470, 230, 30),
+                    text: "<- Components",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "goToComponents",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
+                    camera
+                ),
+            };
+
+
+            Prefab prefab = new Prefab(
+                texture2D: WK.Texture.Player.IdleLeft_Multiply,
+                centerPosition: WK.Default.Center.ToVector2(),
+                dxOnUpdate: null//() => Jump()
+            );
+            prefab.rigidbody.AddForce(new Vector2(0, 1));
+
+            this.entities = new List<IEntity>();
+            this.entities.Add(prefab);
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
             foreach (var ui in UIs)
                 ui.Update(lastInputState, inputState);
+
+            foreach (var entity in entities)
+                entity.Update(lastInputState, inputState);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (var ui in UIs)
                 ui.Draw(spriteBatch);
+
+            foreach (var entity in entities)
+                entity.Draw(spriteBatch);
+        }
+
+
+        private void Jump()
+        {
+
         }
     }
 }
