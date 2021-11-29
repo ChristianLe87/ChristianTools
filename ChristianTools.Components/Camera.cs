@@ -22,9 +22,11 @@ namespace ChristianTools.Components
         {
             center = new Vector2(
                 targetPosition.X - viewport.Width / 2,
-                targetPosition.Y - viewport.Height / 2);
+                targetPosition.Y - viewport.Height / 2
+            );
 
             transform = Matrix.CreateScale(new Vector3(zoom, zoom, 0)) * Matrix.CreateTranslation(new Vector3(-center.X, -center.Y, 0));
+            //transform = Matrix.CreateTranslation(new Vector3(center.X, -center.Y, 0));
         }
     }
 }

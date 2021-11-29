@@ -39,9 +39,9 @@ namespace ChristianTools.UI
         public void Draw(SpriteBatch spriteBatch)
         {
             if (texture2D != null)
-                spriteBatch.Draw(texture2D, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White); //spriteBatch.Draw(texture2D, rectangle, Color.White);
+                spriteBatch.Draw(texture2D, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);
 
-            spriteBatch.DrawString(spriteFont, text, textPosition + camera.center, Color.White);//spriteBatch.DrawString(spriteFont, text, textPosition, Color.White);
+            spriteBatch.DrawString(spriteFont, text, textPosition + camera.center, Color.White);
         }
 
         private Vector2 GetTextPosition()

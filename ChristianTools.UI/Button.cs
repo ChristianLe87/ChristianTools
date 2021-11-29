@@ -32,12 +32,13 @@ namespace ChristianTools.UI
             this.tag = tag;
 
             this.OnClickAction = OnClickAction;
-            this.camera = camera;
+            this.camera = camera == null ? new Camera() : camera;
         }
 
         public void Update(InputState inputState, InputState lastInputState)
         {
-            if (rectangle.Contains(inputState.Mouse_Position(camera)))
+            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height);
+            if (tempRectangle.Contains(inputState.Mouse_Position(camera)))
             {
                 isMouseOver = true;
                 if (lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
@@ -54,12 +55,12 @@ namespace ChristianTools.UI
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height);
+
             if (isMouseOver)
-                if(camera != null) spriteBatch.Draw(mouseOverTexture, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);
-                else spriteBatch.Draw(mouseOverTexture, rectangle, Color.White);
+                spriteBatch.Draw(mouseOverTexture, tempRectangle, Color.White);
             else
-                if(camera != null) spriteBatch.Draw(defaultTexture, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);
-                else spriteBatch.Draw(defaultTexture, rectangle, Color.White);
+                spriteBatch.Draw(defaultTexture, tempRectangle, Color.White);
 
             label.Draw(spriteBatch);
 
