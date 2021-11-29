@@ -10,6 +10,8 @@ namespace ChristianTools.Components
         public Vector2 center;
         public int zoom = 1;
 
+        public Camera() { }
+
         public Camera(Viewport viewport)
         {
             this.viewport = viewport;

@@ -26,10 +26,18 @@ namespace Shared
 
         public void Initialize()
         {
-            this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
+            //this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
 
             this.UIs = new List<IUI>()
             {
+                new Label(
+                    rectangle: new Rectangle(260, 10, 230, 30),
+                    spriteFont: WK.Font.font_14,
+                    "Menu",
+                    Label.TextAlignment.Midle_Center,
+                    "",
+                    camera
+                ),
                 new Button(
                     rectangle: new Rectangle (10, 10, 230, 30),
                     text: "Components",

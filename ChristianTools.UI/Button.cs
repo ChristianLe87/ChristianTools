@@ -55,9 +55,11 @@ namespace ChristianTools.UI
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isMouseOver)
-                spriteBatch.Draw(mouseOverTexture, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);//spriteBatch.Draw(mouseOverTexture, rectangle, Color.White);
+                if(camera != null) spriteBatch.Draw(mouseOverTexture, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);
+                else spriteBatch.Draw(mouseOverTexture, rectangle, Color.White);
             else
-                spriteBatch.Draw(defaultTexture, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);//spriteBatch.Draw(defaultTexture, rectangle, Color.White);
+                if(camera != null) spriteBatch.Draw(defaultTexture, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);
+                else spriteBatch.Draw(defaultTexture, rectangle, Color.White);
 
             label.Draw(spriteBatch);
 
