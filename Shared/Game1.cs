@@ -22,6 +22,7 @@ namespace Shared
                 { WK.Scene.Entities, new Scene_Entities() },
                 { WK.Scene.Entities_Bullet, new Scene_Entities_Bullet() },
                 { WK.Scene.Entities_Prefab, new Scene_Entities_Prefab() },
+                { WK.Scene.Entities_Line, new Scene_Entities_Line() },
 
                 // Helpers
                 { WK.Scene.Helpers, new Scene_Helpers() },

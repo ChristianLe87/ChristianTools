@@ -156,7 +156,7 @@ namespace ChristianTools.Entities
 
         }
 
-        public void Update(Point? start = null, Point? end = null)
+        public void UpdatePoints(Point? start = null, Point? end = null)
         {
             if (start != null)
                 this.start = new Point(start.Value.X, start.Value.Y);
@@ -177,7 +177,6 @@ namespace ChristianTools.Entities
 
         public void Update(InputState lastInputState, InputState inputState)
         {
-            throw new NotImplementedException();
         }
     }
 }

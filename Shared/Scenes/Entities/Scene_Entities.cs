@@ -42,7 +42,7 @@ namespace Shared
                 new Button(
                     rectangle: new Rectangle (10, 50, 230, 30),
                     text: "Entities_Line",
-                    defaultTexture: WK.Texture.Red,
+                    defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
                     tag: "goToEntities_Line",
