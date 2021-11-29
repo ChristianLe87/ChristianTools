@@ -1,4 +1,5 @@
-﻿using ChristianTools.Helpers;
+﻿using ChristianTools.Components;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,12 +12,13 @@ namespace ChristianTools.UI
         Texture2D texture2D;
         Vector2 textPosition;
         TextAlignment textAlignment;
+        Camera camera;
 
         public Rectangle rectangle { get; }
 
         public string tag { get; }
 
-        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, string tag, Texture2D texture = null, int lineSpacing = 10)
+        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, string tag, Camera camera, Texture2D texture = null, int lineSpacing = 10)
         {
             this.rectangle = rectangle;
             this.spriteFont = spriteFont;
@@ -26,6 +28,7 @@ namespace ChristianTools.UI
             this.spriteFont.LineSpacing = lineSpacing;
             this.textPosition = GetTextPosition();
             this.tag = tag;
+            this.camera = camera;
         }
 
         public void Update(InputState lastInputState, InputState inputState)
@@ -35,9 +38,11 @@ namespace ChristianTools.UI
         public void Draw(SpriteBatch spriteBatch)
         {
             if (texture2D != null)
-                spriteBatch.Draw(texture2D, rectangle, Color.White);
+                spriteBatch.Draw(texture2D, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);
 
-            spriteBatch.DrawString(spriteFont, text, textPosition, Color.White);
+
+            if(camera != null)
+                spriteBatch.DrawString(spriteFont, text, textPosition + camera.center, Color.White);
         }
 
         private Vector2 GetTextPosition()

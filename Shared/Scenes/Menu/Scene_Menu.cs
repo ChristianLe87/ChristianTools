@@ -16,7 +16,7 @@ namespace Shared
         public List<IEntity> entities { get; set; }
         public List<IUI> UIs { get; set; }
         public List<SoundEffect> soundEffects { get; }
-        public Camera camera { get; }
+        public Camera camera { get; private set; }
         public Map map { get; }
 
         public Scene_Menu()
@@ -26,6 +26,8 @@ namespace Shared
 
         public void Initialize()
         {
+            this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
+
             this.UIs = new List<IUI>()
             {
                 new Button(
@@ -61,7 +63,7 @@ namespace Shared
                 new Button(
                     rectangle: new Rectangle (10, 130, 230, 30),
                     text: "Tools",
-                    defaultTexture: WK.Texture.LightGray,
+                    defaultTexture: WK.Texture.Red,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
                     tag: "goToTools",
@@ -71,7 +73,7 @@ namespace Shared
                 new Button(
                     rectangle: new Rectangle (10, 170, 230, 30),
                     text: "UI",
-                    defaultTexture: WK.Texture.LightGray,
+                    defaultTexture: WK.Texture.Red,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
                     tag: "goToUI",

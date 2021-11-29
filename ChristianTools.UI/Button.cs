@@ -27,7 +27,7 @@ namespace ChristianTools.UI
             this.mouseOverTexture = mouseOverTexture;
             this.isMouseOver = false;
 
-            this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, tag: "");
+            this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, tag: "", camera);
 
             this.tag = tag;
 
@@ -55,11 +55,12 @@ namespace ChristianTools.UI
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isMouseOver)
-                spriteBatch.Draw(mouseOverTexture, rectangle, Color.White);
+                spriteBatch.Draw(mouseOverTexture, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);//spriteBatch.Draw(mouseOverTexture, rectangle, Color.White);
             else
-                spriteBatch.Draw(defaultTexture, rectangle, Color.White);
+                spriteBatch.Draw(defaultTexture, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);//spriteBatch.Draw(defaultTexture, rectangle, Color.White);
 
             label.Draw(spriteBatch);
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using ChristianTools.Components;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -20,18 +21,17 @@ namespace ChristianTools.UI
 
         public string tag => throw new System.NotImplementedException();
 
-        public Dialogue(string[] texts, Point centerPosition, Texture2D background, SpriteFont spriteFont, bool isActive = true)
+        public Dialogue(string[] texts, Point centerPosition, Texture2D background, SpriteFont spriteFont, Camera camera, bool isActive = true)
         {
             this.background = background;
             this.centerPosition = centerPosition;
             this.labelCount = 0;
             this.isActive = isActive;
-            this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, tag: "")).ToArray();
+            this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, tag: "", camera)).ToArray();
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
-
         }
 
         public void Draw(SpriteBatch spriteBatch)

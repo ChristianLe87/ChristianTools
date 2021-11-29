@@ -15,7 +15,7 @@ namespace Shared
         public List<IEntity> entities { get; set; }
         public List<IUI> UIs { get; set; }
         public List<SoundEffect> soundEffects { get; }
-        public Camera camera { get; }
+        public Camera camera { get; private set; }
         public Map map { get; }
 
         public Scene_Helpers()
@@ -24,6 +24,8 @@ namespace Shared
         }
         public void Initialize()
         {
+            this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
+
             this.UIs = new List<IUI>()
             {
                 new Button(

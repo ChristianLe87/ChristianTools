@@ -19,6 +19,7 @@ namespace Shared
         public Map map { get; }
 
         Vector2 position;
+        Texture2D texture2D;
 
         public Scene_Components_Camera()
         {
@@ -29,6 +30,7 @@ namespace Shared
         {
             this.position = new Vector2(WK.Default.Width / 2, WK.Default.Height / 2);
             this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
+            this.texture2D = WK.Texture.Red;
 
             this.UIs = new List<IUI>()
             {
@@ -42,7 +44,7 @@ namespace Shared
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
                     camera: camera
                 ),
-                new Label(new Rectangle(10, 10, 100, 50), WK.Font.font_14, "Use \"Up\", \"Down\", \"Right\", \"Left\"\nto move camera", Label.TextAlignment.Midle_Left, ""),
+                new Label(new Rectangle(10, 10, 200, 30), WK.Font.font_14, "Use \"Up\", \"Down\", \"Right\", \"Left\"\nto move camera", Label.TextAlignment.Midle_Left, "", camera, WK.Texture.LightGray),
             };
         }
 
@@ -67,6 +69,8 @@ namespace Shared
         {
             foreach (var ui in UIs)
                 ui.Draw(spriteBatch);
+
+            spriteBatch.Draw(texture2D, new Rectangle(250, 250, 50, 50), Color.White);
         }
     }
 }

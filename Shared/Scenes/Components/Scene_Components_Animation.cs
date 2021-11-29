@@ -16,7 +16,7 @@ namespace Shared
         public List<IEntity> entities { get; set; }
         public List<IUI> UIs { get; set; }
         public List<SoundEffect> soundEffects { get; }
-        public Camera camera { get; }
+        public Camera camera { get; private set; }
         public Map map { get; }
 
         MyCharacter myCharacter;
@@ -29,6 +29,7 @@ namespace Shared
         public void Initialize()
         {
             this.myCharacter = new MyCharacter();
+            this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
 
             this.UIs = new List<IUI>()
             {
