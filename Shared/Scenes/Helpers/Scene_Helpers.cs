@@ -24,8 +24,6 @@ namespace Shared
         }
         public void Initialize()
         {
-            this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
-
             this.UIs = new List<IUI>()
             {
                 new Button(
@@ -35,13 +33,13 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
                     tag: "goToHelpers_InputState",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers_InputState),
+                    OnClickAction: null,/*() => Game1.ChangeToScene(WK.Scene.Helpers_InputState),*/
                     camera
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 50, 230, 30),
                     text: "Helpers_JsonSerialization",
-                    defaultTexture: WK.Texture.Red,
+                    defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
                     tag: "goToHelpers_JsonSerialization",

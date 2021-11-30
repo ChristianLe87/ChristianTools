@@ -56,7 +56,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
                     tag: "goToEntities_Prefab",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities_Prefab),
+                    OnClickAction: null /*() => Game1.ChangeToScene(WK.Scene.Entities_Prefab)*/,
                     camera
                 ),
                 new Button(

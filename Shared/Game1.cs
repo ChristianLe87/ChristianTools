@@ -28,7 +28,7 @@ namespace Shared
                 // Helpers
                 { WK.Scene.Helpers, new Scene_Helpers() },
                 { WK.Scene.Helpers_InputState, new Scene_Helpers_InputState() },
-                { WK.Scene.Helpers_JsonSerialization, new Scene_Helpers() },
+                { WK.Scene.Helpers_JsonSerialization, new Scene_Helpers_JsonSerialization() },
 
                 // Tools
                 { WK.Scene.Tools, new Scene_Tools() },

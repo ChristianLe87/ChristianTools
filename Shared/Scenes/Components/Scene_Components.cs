@@ -25,8 +25,6 @@ namespace Shared
 
         public void Initialize()
         {
-            this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
-
             this.UIs = new List<IUI>()
             {
                 new Button(

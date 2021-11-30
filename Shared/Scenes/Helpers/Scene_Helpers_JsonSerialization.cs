@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
+using ChristianTools.UI;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -23,10 +26,64 @@ namespace Shared
 
         public void Initialize()
         {
+            this.UIs = new List<IUI>()
+            {
+                new Label(
+                    rectangle: new Rectangle(250, 10, 230, 30),
+                    spriteFont: WK.Font.font_14,
+                    text: "Score:",
+                    textAlignment: Label.TextAlignment.Midle_Center,
+                    tag: "",
+                    camera: camera
+                ),
+                new Button(
+                    rectangle: new Rectangle (10, 10, 230, 30),
+                    text: "Save",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "save",
+                    OnClickAction: () => JsonSerialization.Update<GameData>(Game1.gameData, WK.Default.gameDataFileName),
+                    camera
+                ),
+                new Button(
+                    rectangle: new Rectangle (10, 50, 230, 30),
+                    text: "+",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "plus",
+                    OnClickAction: () => Game1.gameData.score++,
+                    camera
+                ),
+                new Button(
+                    rectangle: new Rectangle (10, 90, 230, 30),
+                    text: "-",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "minus",
+                    OnClickAction: () => Game1.gameData.score--,
+                    camera
+                ),
+                new Button(
+                    rectangle: new Rectangle (0, 470, 230, 30),
+                    text: "<- Helpers",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "goToComponents",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers),
+                    camera
+                ),
+            };
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
+            Label label = UIs.OfType<Label>().First();
+            label.UpdateText($"Score: {Game1.gameData.score}");
+
             foreach (var ui in UIs)
                 ui.Update(lastInputState, inputState);
         }
