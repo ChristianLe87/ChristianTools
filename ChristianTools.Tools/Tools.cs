@@ -46,69 +46,20 @@ namespace ChristianTools.Tools
             /// </summary>
             public static Texture2D ScaleTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, int scaleFactor)
             {
-                // === Implementation ===
-                {
-                    Color[] originalColors = new Color[originalTexture.Width * originalTexture.Height];
-                    originalTexture.GetData(0, new Rectangle(0, 0, originalTexture.Width, originalTexture.Height), originalColors, 0, (originalTexture.Width * originalTexture.Height));
+                Color[] originalColors = new Color[originalTexture.Width * originalTexture.Height];
+                originalTexture.GetData(0, new Rectangle(0, 0, originalTexture.Width, originalTexture.Height), originalColors, 0, (originalTexture.Width * originalTexture.Height));
 
-                    Color[,] multidimentionalColors = ToMultidimentional(originalColors, originalTexture.Width, originalTexture.Height);
+                Color[,] multidimentionalColors = Tools.Other.ToMultidimentional<Color>(originalColors, originalTexture.Width, originalTexture.Height);
 
-                    Color[,] expandedColors = Expand(multidimentionalColors, scaleFactor);
+                Color[,] expandedColors = Tools.Other.Expand<Color>(multidimentionalColors, scaleFactor);
 
-                    Color[] flatResult = FlattenArray(expandedColors);
+                Color[] flatResult = Tools.Other.FlattenArray<Color>(expandedColors);
 
-                    Texture2D newTexture2D = new Texture2D(graphicsDevice, originalTexture.Width * scaleFactor, originalTexture.Height * scaleFactor, false, SurfaceFormat.Color);
-                    newTexture2D.SetData(flatResult);
+                Texture2D newTexture2D = new Texture2D(graphicsDevice, originalTexture.Width * scaleFactor, originalTexture.Height * scaleFactor, false, SurfaceFormat.Color);
+                newTexture2D.SetData(flatResult);
 
-                    return newTexture2D;
-                }
-
-                // === Helpers ===
-                Color[,] ToMultidimentional(Color[] arr, int width, int height)
-                {
-                    Color[,] result = new Color[height, width];
-
-                    int count = 0;
-                    for (int w = 0; w < height; w++)
-                    {
-                        for (int h = 0; h < width; h++)
-                        {
-                            result[w, h] = arr[count];
-                            count++;
-                        }
-                    }
-                    return result;
-                }
-
-
-                Color[,] Expand(Color[,] original, int multiply)
-                {
-                    // From stackoverflow: https://stackoverflow.com/questions/69705678/multiply-element-in-multidimensional-array?answertab=votes#tab-top
-                    int sizeX = original.GetLength(0);
-                    int sizeY = original.GetLength(1);
-
-                    Color[,] newArray = new Color[sizeX * multiply, sizeY * multiply];
-
-                    for (var i = 0; i < newArray.GetLength(0); i++)
-                        for (var j = 0; j < newArray.GetLength(1); j++)
-                            newArray[i, j] = original[i / multiply, j / multiply];
-
-                    return newArray;
-                }
-
-                static Color[] FlattenArray(Color[,] input)
-                {
-                    Color[] result = new Color[input.Length];
-
-                    int count = 0;
-                    for (int w = 0; w <= input.GetUpperBound(0); w++)
-                        for (int h = 0; h <= input.GetUpperBound(1); h++)
-                            result[count++] = input[w, h];
-
-                    return result;
-                }
+                return newTexture2D;
             }
-
 
             /// <summary>
             /// Generate a new texture from a PNG file
@@ -136,7 +87,6 @@ namespace ChristianTools.Tools
 
                 return subtexture;
             }
-
 
             /// <summary>
             /// Just combine CropTexture() and ScaleTexture()
@@ -229,7 +179,9 @@ namespace ChristianTools.Tools
                 }
             }
 
-            public static Texture2D CreateTriangle(GraphicsDevice graphicsDevice, Color color, int Width, int Height)
+
+            public enum PointDirection { Up, Down, Right, Left }
+            public static Texture2D CreateTriangle(GraphicsDevice graphicsDevice, Color color, int Width, int Height, PointDirection pointDirection)
             {
                 List<Color> colors = new List<Color>();
 
@@ -262,13 +214,22 @@ namespace ChristianTools.Tools
                             else
                                 colors.Add(Color.Transparent);
                         }
-
                     }
                 }
 
-
-
                 Texture2D texture2D = new Texture2D(graphicsDevice, Width, Height, false, SurfaceFormat.Color);
+                switch (pointDirection)
+                {
+                    case PointDirection.Up:
+
+                        break;
+                    case PointDirection.Down:
+                        break;
+                    case PointDirection.Right:
+                        break;
+                    case PointDirection.Left:
+                        break;
+                }
                 texture2D.SetData(colors.ToArray());
 
                 return texture2D;
@@ -553,6 +514,73 @@ namespace ChristianTools.Tools
 
         public class Other
         {
+            public static T[,] Expand<T>(T[,] original, int multiply)
+            {
+                // From stackoverflow: https://stackoverflow.com/questions/69705678/multiply-element-in-multidimensional-array?answertab=votes#tab-top
+                int sizeX = original.GetLength(0);
+                int sizeY = original.GetLength(1);
+
+                T[,] newArray = new T[sizeX * multiply, sizeY * multiply];
+
+                for (var i = 0; i < newArray.GetLength(0); i++)
+                    for (var j = 0; j < newArray.GetLength(1); j++)
+                        newArray[i, j] = original[i / multiply, j / multiply];
+
+                return newArray;
+            }
+
+
+            public static T[] FlattenArray<T>(T[,] input)
+            {
+                T[] result = new T[input.Length];
+
+                int count = 0;
+                for (int w = 0; w <= input.GetUpperBound(0); w++)
+                    for (int h = 0; h <= input.GetUpperBound(1); h++)
+                        result[count++] = input[w, h];
+
+                return result;
+            }
+
+
+            public static T[,] RotateArray_90_Clockwise<T>(T[,] array)
+            {
+                T[,] result = new T[array.GetLength(1), array.GetLength(0)];
+                int newCol = 0;
+                int newRow = 0;
+
+                for (int col = array.GetLength(1) - 1; col >= 0; col--)
+                {
+                    newCol = 0;
+                    for (int row = 0; row < array.GetLength(0); row++)
+                    {
+                        result[newRow, newCol] = array[row, col];
+                        newCol++;
+                    }
+                    newRow++;
+                }
+
+                return result;
+            }
+
+
+            public static T[,] ToMultidimentional<T>(T[] array, int width, int height)
+            {
+                T[,] result = new T[height, width];
+
+                int count = 0;
+                for (int w = 0; w < height; w++)
+                {
+                    for (int h = 0; h < width; h++)
+                    {
+                        result[w, h] = array[count];
+                        count++;
+                    }
+                }
+                return result;
+            }
+
+
             /// <summary>
             /// Get next new position base on a step
             /// </summary>
