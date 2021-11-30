@@ -14,32 +14,31 @@ namespace ChristianTools.Tools
     {
         public class Texture
         {
-            public static Dictionary<int, Texture2D> GetTileTextures(Texture2D atlasTexture, int pixelsPerTile_Width, int pixelsPerTile_Height, int units_Width, int units_Height)
+            public static Dictionary<int, Texture2D> GetTileTextures(GraphicsDevice graphicsDevice, Texture2D atlasTexture, int pixelsPerTile_Width, int pixelsPerTile_Height, int units_Width, int units_Height, int scaleFactor)
             {
                 Dictionary<int, Texture2D> tileTextures = new Dictionary<int, Texture2D>();
+                tileTextures.Add(0, null);
 
                 int count = 1;
-                /*for (int row = 0; row < map.GetLength(0); row++)
+                for (int y = 0; y < (pixelsPerTile_Height * units_Height); y += pixelsPerTile_Height)
                 {
-                    for (int element = 0; element < map.GetLength(1); element++)
+                    for (int x = 0; x < (pixelsPerTile_Width * units_Width); x += pixelsPerTile_Width)
                     {
-                        if (textures[map[row, element]] != null)
-                        {
+                        Rectangle rectangle = new Rectangle(x, y, pixelsPerTile_Width, pixelsPerTile_Height);
 
-                            Texture2D tileTexture = Tools.Texture.CropTexture(
-                                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                                originalTexture: atlasTexture,
-                                extractRectangle: new Rectangle()
-                            );
+                        Texture2D tileTexture_Scaled = Tools.Texture.CropAndScaleTexture(
+                            graphicsDevice: graphicsDevice,
+                            originalTexture: atlasTexture,
+                            extractRectangle: rectangle,
+                            scaleFactor: scaleFactor
+                        );
 
-                            tileTextures.Add(count, tileTexture);
-
-
-                        }
+                        tileTextures.Add(count, tileTexture_Scaled);
+                        count++;
                     }
-                }*/
+                }
 
-                return null;
+                return tileTextures;
             }
 
             /// <summary>

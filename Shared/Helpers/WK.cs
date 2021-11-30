@@ -107,34 +107,16 @@ namespace Shared
             {
                 private static readonly string AtlasTiles_15x25_PNG = "AtlasTiles_15x25_PNG";
                 private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Texture.Tiles.AtlasTiles_15x25_PNG);
-                private static readonly Texture2D atlasTexture_Scaled = Tools.Texture.ScaleTexture(Game1.graphicsDeviceManager.GraphicsDevice,atlasTexture, WK.Default.ScaleFactor);
 
                 public static Dictionary<int, Texture2D> tileTextures = Tools.Texture.GetTileTextures(
-                    atlasTexture: atlasTexture_Scaled,
+                    graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
+                    atlasTexture: atlasTexture,
                     pixelsPerTile_Height: 5,
                     pixelsPerTile_Width: 5,
                     units_Height: 5,
-                    units_Width: 3
+                    units_Width: 3,
+                    scaleFactor: WK.Default.ScaleFactor * 3
                 );
-
-                /*public static readonly Texture2D _01_Scaled = Tools.Texture.CropAndScaleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 0, 5, 5));
-                public static readonly Texture2D _02_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 0, 5, 5));
-                public static readonly Texture2D _03_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(10, 0, 5, 5));
-                public static readonly Texture2D _04_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _05_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _06_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _07_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _08_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _09_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _10_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _11_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _12_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _13_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _14_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _15_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _16_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _17_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
-                public static readonly Texture2D _18_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));*/
             }
         }
 
@@ -154,6 +136,17 @@ namespace Shared
 
         public class Map
         {
+            public static readonly int[,] map0 = new int[,]
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 1, 2, 3, 0 },
+                { 0, 4, 5, 6, 0 },
+                { 0, 7, 8, 9, 0 },
+                { 0,10,11,12, 0 },
+                { 0,13,14,15, 0 },
+                { 0, 0, 0, 0, 0 }
+            };
+
             public static readonly int[,] map1 = new int[,]
             {
                 //1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50

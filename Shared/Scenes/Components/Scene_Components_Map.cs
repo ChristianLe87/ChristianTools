@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
+using ChristianTools.UI;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -23,15 +24,22 @@ namespace Shared
 
         public void Initialize()
         {
-            Dictionary<int, Texture2D> textures = new Dictionary<int, Texture2D>()
-            {
-                {0, null },
-                {1, WK.Texture.DarkRed},
-                {2, WK.Texture.Gray},
-                {3, WK.Texture.Green}
-            };
+            Dictionary<int, Texture2D> tileTextures = WK.Texture.Tiles.tileTextures;
+            this.map = new Map(tileTextures, WK.Map.map0, WK.Default.ScaleFactor);
 
-            this.map = new Map(textures, WK.Map.map1, WK.Default.ScaleFactor);
+            this.UIs = new List<IUI>()
+            {
+                new Button(
+                    rectangle: new Rectangle (0, 470, 230, 30),
+                    text: "<- Components",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "goToComponents",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
+                    camera
+                ),
+            };
         }
 
         public void Update(InputState lastInputState, InputState inputState)

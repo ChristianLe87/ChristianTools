@@ -20,7 +20,7 @@ namespace ChristianTools.Components
                     if (textures[map[row, element]] != null)
                     {
                         Tile tile = new Tile(
-                            texture: textures[map[row, element]],// WK.Texture.Tiles._05_Multiply,
+                            texture: textures[map[row, element]],
                             rectangle: new Rectangle(x: element * textures[map[row, element]].Width, y: row * textures[map[row, element]].Height, textures[map[row, element]].Width, textures[map[row, element]].Height),
                             scaleFactor: scaleFactor,
                             tag: ""
