@@ -57,7 +57,7 @@ namespace Showroom_dotNet5
                     centerPosition: WK.Default.Center.ToVector2(),
                     direction: mousePosition,
                     steps: 3,
-                    autoDestroyTime: new TimeSpan(0, 0, 2)
+                    timeToDeactivate: new TimeSpan(0, 0, 2)
                 );
 
                 entities.Add(bullet);

@@ -32,7 +32,7 @@ namespace Shared
                 new Button(
                     rectangle: new Rectangle (10, 10, 230, 30),
                     text: "Entities_Bullet",
-                    defaultTexture: WK.Texture.Red,
+                    defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
                     tag: "goToEntities_Bullet",
