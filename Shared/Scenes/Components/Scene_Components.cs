@@ -52,11 +52,11 @@ namespace Shared
                 new Button(
                     rectangle: new Rectangle (10, 90, 230, 30),
                     text: "Components_Map",
-                    defaultTexture: WK.Texture.Red,
+                    defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_14,
                     tag: "goToComponents_Map",
-                    OnClickAction: null,
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Map),
                     camera
                 ),
                 new Button(

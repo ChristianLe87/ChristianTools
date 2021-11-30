@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+using ChristianTools.Components;
 using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,6 +29,7 @@ namespace Shared
             public static readonly string Components = "Components";
             public static readonly string Components_Animation = "Components_Animation";
             public static readonly string Components_Camera = "Components_Camera";
+            public static readonly string Components_Map = "Components_Map";
             public static readonly string Components_Rigidbody = "Components_Rigidbody";
 
 
@@ -98,6 +101,40 @@ namespace Shared
                 // JumpLeft
                 public static readonly Texture2D JumpLeft = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 20, 5, 10));
                 public static readonly Texture2D JumpLeft_Multiply = Tools.Texture.ScaleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: JumpLeft, scaleFactor: WK.Default.ScaleFactor);
+            }
+
+            public class Tiles
+            {
+                private static readonly string AtlasTiles_15x25_PNG = "AtlasTiles_15x25_PNG";
+                private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Texture.Tiles.AtlasTiles_15x25_PNG);
+                private static readonly Texture2D atlasTexture_Scaled = Tools.Texture.ScaleTexture(Game1.graphicsDeviceManager.GraphicsDevice,atlasTexture, WK.Default.ScaleFactor);
+
+                public static Dictionary<int, Texture2D> tileTextures = Tools.Texture.GetTileTextures(
+                    atlasTexture: atlasTexture_Scaled,
+                    pixelsPerTile_Height: 5,
+                    pixelsPerTile_Width: 5,
+                    units_Height: 5,
+                    units_Width: 3
+                );
+
+                /*public static readonly Texture2D _01_Scaled = Tools.Texture.CropAndScaleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 0, 5, 5));
+                public static readonly Texture2D _02_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 0, 5, 5));
+                public static readonly Texture2D _03_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(10, 0, 5, 5));
+                public static readonly Texture2D _04_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _05_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _06_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _07_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _08_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _09_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _10_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _11_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _12_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _13_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _14_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _15_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _16_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _17_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));
+                public static readonly Texture2D _18_Scaled = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 5, 5, 5));*/
             }
         }
 

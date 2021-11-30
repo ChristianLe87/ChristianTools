@@ -14,6 +14,34 @@ namespace ChristianTools.Tools
     {
         public class Texture
         {
+            public static Dictionary<int, Texture2D> GetTileTextures(Texture2D atlasTexture, int pixelsPerTile_Width, int pixelsPerTile_Height, int units_Width, int units_Height)
+            {
+                Dictionary<int, Texture2D> tileTextures = new Dictionary<int, Texture2D>();
+
+                int count = 1;
+                /*for (int row = 0; row < map.GetLength(0); row++)
+                {
+                    for (int element = 0; element < map.GetLength(1); element++)
+                    {
+                        if (textures[map[row, element]] != null)
+                        {
+
+                            Texture2D tileTexture = Tools.Texture.CropTexture(
+                                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
+                                originalTexture: atlasTexture,
+                                extractRectangle: new Rectangle()
+                            );
+
+                            tileTextures.Add(count, tileTexture);
+
+
+                        }
+                    }
+                }*/
+
+                return null;
+            }
+
             /// <summary>
             /// Increase image size by a scale factor
             /// </summary>
@@ -108,6 +136,19 @@ namespace ChristianTools.Tools
                 subtexture.SetData(data);
 
                 return subtexture;
+            }
+
+
+            /// <summary>
+            /// Just combine CropTexture() and ScaleTexture()
+            /// </summary>
+            /// <returns></returns>
+            public static Texture2D CropAndScaleTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Rectangle extractRectangle, int scaleFactor)
+            {
+                Texture2D texture2D = Tools.Texture.CropTexture(graphicsDevice, originalTexture, extractRectangle);
+                Texture2D scale = Tools.Texture.ScaleTexture(graphicsDevice, texture2D, scaleFactor);
+
+                return scale;
             }
 
             /// <summary>
