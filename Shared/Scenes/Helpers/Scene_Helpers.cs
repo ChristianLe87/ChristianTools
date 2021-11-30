@@ -31,7 +31,7 @@ namespace Shared
                     text: "Helpers_InputState",
                     defaultTexture: WK.Texture.Red,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToHelpers_InputState",
                     OnClickAction: null,/*() => Game1.ChangeToScene(WK.Scene.Helpers_InputState),*/
                     camera
@@ -41,7 +41,7 @@ namespace Shared
                     text: "Helpers_JsonSerialization",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToHelpers_JsonSerialization",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers_JsonSerialization),
                     camera
@@ -51,7 +51,7 @@ namespace Shared
                     text: "<- Menu",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
                     camera: camera

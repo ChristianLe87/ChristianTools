@@ -32,7 +32,7 @@ namespace Shared
             {
                 new Label(
                     rectangle: new Rectangle(10, 10, 250, 50),
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     text: "Click somewhere",
                     textAlignment: Label.TextAlignment.Midle_Center,
                     tag: "",
@@ -43,7 +43,7 @@ namespace Shared
                     text: "<- Entities",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToEntities",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities),
                     camera: camera

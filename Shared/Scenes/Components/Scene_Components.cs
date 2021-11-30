@@ -32,7 +32,7 @@ namespace Shared
                     text: "Components_Animation",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToComponents_Animation",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Animation),
                     camera
@@ -42,7 +42,7 @@ namespace Shared
                     text: "Components_Camera",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToComponents_Camera",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Camera),
                     camera
@@ -52,7 +52,7 @@ namespace Shared
                     text: "Components_Map",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToComponents_Map",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Map),
                     camera
@@ -62,7 +62,7 @@ namespace Shared
                     text: "Components_Rigidbody",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToComponents_Rigidbody",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Rigidbody),
                     camera
@@ -72,7 +72,7 @@ namespace Shared
                     text: "<- Menu",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
                     camera: camera

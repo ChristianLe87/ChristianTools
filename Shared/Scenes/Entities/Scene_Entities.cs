@@ -34,7 +34,7 @@ namespace Shared
                     text: "Entities_Bullet",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToEntities_Bullet",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities_Bullet),
                     camera
@@ -44,7 +44,7 @@ namespace Shared
                     text: "Entities_Line",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToEntities_Line",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities_Line),
                     camera
@@ -54,7 +54,7 @@ namespace Shared
                     text: "Entities_Prefab",
                     defaultTexture: WK.Texture.Red,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToEntities_Prefab",
                     OnClickAction: null /*() => Game1.ChangeToScene(WK.Scene.Entities_Prefab)*/,
                     camera
@@ -64,7 +64,7 @@ namespace Shared
                     text: "<- Menu",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
                     camera: camera

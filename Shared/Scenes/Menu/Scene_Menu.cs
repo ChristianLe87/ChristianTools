@@ -32,7 +32,7 @@ namespace Shared
             {
                 new Label(
                     rectangle: new Rectangle(260, 10, 230, 30),
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     "Menu",
                     Label.TextAlignment.Midle_Center,
                     "",
@@ -44,7 +44,7 @@ namespace Shared
                     text: "Components",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToComponents",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
                     camera
@@ -54,7 +54,7 @@ namespace Shared
                     text: "Entities",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToEntities",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities),
                     camera
@@ -64,7 +64,7 @@ namespace Shared
                     text: "Helpers",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToHelpers",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers),
                     camera
@@ -74,7 +74,7 @@ namespace Shared
                     text: "Tools",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToTools",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Tools),
                     camera
@@ -84,7 +84,7 @@ namespace Shared
                     text: "UI",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToUI",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.UI),
                     camera

@@ -30,7 +30,7 @@ namespace Shared
             {
                 new Label(
                     rectangle: new Rectangle(250, 10, 230, 30),
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     text: "Score:",
                     textAlignment: Label.TextAlignment.Midle_Center,
                     tag: "",
@@ -41,7 +41,7 @@ namespace Shared
                     text: "Save",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "save",
                     OnClickAction: () => JsonSerialization.Update<GameData>(Game1.gameData, WK.Default.gameDataFileName),
                     camera
@@ -51,7 +51,7 @@ namespace Shared
                     text: "+",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "plus",
                     OnClickAction: () => Game1.gameData.score++,
                     camera
@@ -61,7 +61,7 @@ namespace Shared
                     text: "-",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "minus",
                     OnClickAction: () => Game1.gameData.score--,
                     camera
@@ -71,7 +71,7 @@ namespace Shared
                     text: "<- Helpers",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToComponents",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers),
                     camera

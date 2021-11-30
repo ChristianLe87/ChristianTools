@@ -34,7 +34,7 @@ namespace Shared
                     text: "<- Entities",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToEntities",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities),
                     camera: camera

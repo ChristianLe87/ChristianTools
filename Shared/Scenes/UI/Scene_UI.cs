@@ -37,26 +37,26 @@ namespace Shared
                     text: "Hello World",
                     defaultTexture: WK.Texture.Green,
                     mouseOverTexture: WK.Texture.Red,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "",
                     OnClickAction: () => Console.WriteLine("User click button!"),
                     camera: camera
                 ),
 
                 // Left
-                new Label(new Rectangle(10, 10, 100, 30), WK.Font.font_14, "My Text", Label.TextAlignment.Top_Left, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(10, 50, 100, 30), WK.Font.font_14, "My Text", Label.TextAlignment.Midle_Left, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(10, 90, 100, 30), WK.Font.font_14, "My Text", Label.TextAlignment.Down_Left, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(10, 10, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Top_Left, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(10, 50, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Midle_Left, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(10, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Left, tag: "",camera: camera, WK.Texture.Green),
 
                 // Center
-                new Label(new Rectangle(120, 10, 100, 30), WK.Font.font_14, "My Text", Label.TextAlignment.Top_Center, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(120, 50, 100, 30), WK.Font.font_14, "My Text", Label.TextAlignment.Midle_Center, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(120, 90, 100, 30), WK.Font.font_14, "My Text", Label.TextAlignment.Down_Center, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(120, 10, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Top_Center, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(120, 50, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Midle_Center, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(120, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Center, tag: "",camera: camera, WK.Texture.Green),
 
                 // Right
-                new Label(new Rectangle(230, 10, 100, 30), WK.Font.font_14, "My Text", Label.TextAlignment.Top_Right, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(230, 50, 100, 30), WK.Font.font_14, "My Text", Label.TextAlignment.Midle_Right, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(230, 90, 100, 30), WK.Font.font_14, "My Text", Label.TextAlignment.Down_Right, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(230, 10, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Top_Right, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(230, 50, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Midle_Right, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(230, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Right, tag: "",camera: camera, WK.Texture.Green),
 
 
                 new HealthBar(Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 130, 50, 10), HealthBar.Direction.Right),
@@ -67,7 +67,7 @@ namespace Shared
 
                 new Label(
                     rectangle: new Rectangle(100, 150, 100, 30),
-                    spriteFont:WK.Font.font_14,
+                    spriteFont:WK.Font.font_7,
                     text: textOfChars,
                     textAlignment: Label.TextAlignment.Top_Left,
                     tag: "",
@@ -77,7 +77,7 @@ namespace Shared
 
                 new Label(
                     rectangle: new Rectangle(50, 350, 450, 60),
-                    spriteFont:WK.Font.font_14,
+                    spriteFont:WK.Font.font_7,
                     text: textOfChars,
                     textAlignment: Label.TextAlignment.Top_Left,
                     tag: "",
@@ -91,7 +91,7 @@ namespace Shared
                     text: "Play sound",
                     defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
                     mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
-                    spriteFont:WK.Font.font_14,
+                    spriteFont:WK.Font.font_7,
                     tag: "SoundButton",
                     OnClickAction: () => soundEffects.First().Play(),
                     camera: camera
@@ -102,7 +102,7 @@ namespace Shared
                     text: "<- Menu",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
-                    spriteFont: WK.Font.font_14,
+                    spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
                     camera: camera
@@ -137,3 +137,77 @@ namespace Shared
         }
     }
 }
+
+
+// Todo add Dialogue
+/*
+public class Scene_Dialogue : IScene
+{
+    public Camera camera { get; private set; }
+    public GameState gameState { get; private set; }
+    public List<IEntity> entities { get; set; }
+    public List<IUI> UIs { get; set; }
+    public List<SoundEffect> soundEffects { get; private set; }
+    public Map map { get; private set; }
+
+    public Scene_Dialogue()
+    {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        string[] text = { "text 1", "text 2", "text 3" };
+
+        UIs = new List<IUI>()
+            {
+                new Dialogue(
+                    texts: text,
+                    centerPosition: new Point(200, 200),
+                    background: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
+                    spriteFont: Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10"))
+                ),
+
+                new Button(
+                    rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
+                    text: "Menu",
+                    defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
+                    mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                    fontColor: Color.Black,
+                    tag: "goToMenu"
+                ),
+
+                new Label(
+                    new Rectangle(200, 100, 100, 50),
+                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                    "'p' for next text\n'o' to reactivate",
+                    Label.TextAlignment.Midle_Left,
+                    Color.Pink,
+                    lineSpacing: 20,
+                    tag: ""
+                )
+            };
+    }
+
+    public void Update(InputState lastInputState, InputState inputState)
+    {
+
+        foreach (Dialogue dialogue in UIs.OfType<Dialogue>())
+        {
+            dialogue.Update();
+
+            if (inputState.IsKeyboardKeyDown(Keys.O))
+                dialogue.SetActiveState(true);
+        }
+
+        Button goToMenu = Game1.GetScene.UIs.OfType<Button>().Where(x => x.tag == "goToMenu").First();
+        goToMenu.Update(inputState, lastInputState, () => Game1.ChangeToScene(WK.Scene.Menu));
+    }
+
+    public void Draw(SpriteBatch spriteBatch)
+    {
+        foreach (var ui in UIs)
+            ui.Draw(spriteBatch);
+    }
+}*/
