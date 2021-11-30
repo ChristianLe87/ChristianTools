@@ -121,6 +121,10 @@
       <Link>Resources\Content\MyAtlasTexture.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="..\Content\Sounds\EatingSound_WAV.wav">
+      <Link>Resources\Content\Sounds\EatingSound_WAV.wav</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="..\ChristianTools.UI\ChristianTools.UI.projitems" Label="Shared" Condition="Exists('..\ChristianTools.UI\ChristianTools.UI.projitems')" />
