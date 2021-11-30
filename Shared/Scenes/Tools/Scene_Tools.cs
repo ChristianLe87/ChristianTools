@@ -38,11 +38,6 @@ namespace Shared
         Texture2D fontMap_Green;
         Texture2D fontMap_Red;
 
-        Button goToMenu;
-
-
-
-
         public Scene_Tools()
         {
             Initialize();
@@ -111,20 +106,22 @@ namespace Shared
                 "MyFont_130x28_PNG"
             );
 
-
             fontMap_Green = Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Green);
             fontMap_Red = Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Red);
 
-            goToMenu = new Button(
-                rectangle: new Rectangle(0, 470, 230, 30),
-                text: "<- Menu",
-                defaultTexture: WK.Texture.LightGray,
-                mouseOverTexture: WK.Texture.Gray,
-                spriteFont: WK.Font.font_14,
-                tag: "goToMenu",
-                OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
-                camera: camera
-            );
+            this.UIs = new List<IUI>()
+            {
+                new Button(
+                    rectangle: new Rectangle(0, 470, 230, 30),
+                    text: "<- Menu",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_14,
+                    tag: "goToMenu",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
+                    camera: camera
+                )
+            };
         }
 
         public void Update(InputState lastInputState, InputState inputState)
@@ -157,8 +154,6 @@ namespace Shared
 
             spriteBatch.Draw(fontMap_Green, new Vector2(200, 20), Color.White);
             spriteBatch.Draw(fontMap_Red, new Vector2(200, 80), Color.White);
-
-            goToMenu.Draw(spriteBatch);
         }
     }
 }
