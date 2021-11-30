@@ -183,7 +183,7 @@ namespace ChristianTools.Tools
             public enum PointDirection { Up, Down, Right, Left }
             public static Texture2D CreateTriangle(GraphicsDevice graphicsDevice, Color color, int Width, int Height, PointDirection pointDirection)
             {
-                List<Color> colors = new List<Color>();
+                Color[] colors = new Color[Width * Height];
 
                 Point p1 = new Point(0, 0); // top
                 Point p2 = new Point(Width, Height / 2); // middle
@@ -192,6 +192,7 @@ namespace ChristianTools.Tools
                 float m1 = Tools.MyMath.M(p1.ToVector2(), p2.ToVector2());
                 float m2 = Tools.MyMath.M(p3.ToVector2(), p2.ToVector2());
 
+                int count = 0;
                 for (int h = 0; h < Height; h++)
                 {
                     for (int w = 0; w < Width; w++)
@@ -201,19 +202,21 @@ namespace ChristianTools.Tools
                             int result = (int)(m1 * w + p1.Y);
 
                             if (result <= h)
-                                colors.Add(color);
+                                colors[count] = color;
                             else
-                                colors.Add(Color.Transparent);
+                                colors[count] = Color.Transparent;
                         }
                         else
                         {
                             int result = (int)(m2 * w + p3.Y);
 
                             if (result >= h)
-                                colors.Add(color);
+                                colors[count] = color;
                             else
-                                colors.Add(Color.Transparent);
+                                colors[count] = Color.Transparent;
                         }
+
+                        count++;
                     }
                 }
 
@@ -221,16 +224,31 @@ namespace ChristianTools.Tools
                 switch (pointDirection)
                 {
                     case PointDirection.Up:
-
+                        {
+                            Color[,] multidimentionalColors = Tools.Other.ToMultidimentional(colors, Width, Height);
+                            multidimentionalColors = Tools.Other.RotateArray_90_AntiClockwise(multidimentionalColors);
+                            colors = Tools.Other.FlattenArray(multidimentionalColors);
+                        }
                         break;
                     case PointDirection.Down:
+                        {
+                            Color[,] multidimentionalColors = Tools.Other.ToMultidimentional(colors, Width, Height);
+                            multidimentionalColors = Tools.Other.RotateArray_270_AntiClockwise(multidimentionalColors);
+                            colors = Tools.Other.FlattenArray(multidimentionalColors);
+                        }
                         break;
                     case PointDirection.Right:
+                        // original
                         break;
                     case PointDirection.Left:
+                        {
+                            Color[,] multidimentionalColors = Tools.Other.ToMultidimentional(colors, Width, Height);
+                            multidimentionalColors = Tools.Other.RotateArray_180_AntiClockwise(multidimentionalColors);
+                            colors = Tools.Other.FlattenArray(multidimentionalColors);
+                        }
                         break;
                 }
-                texture2D.SetData(colors.ToArray());
+                texture2D.SetData(colors);
 
                 return texture2D;
             }
@@ -543,7 +561,7 @@ namespace ChristianTools.Tools
             }
 
 
-            public static T[,] RotateArray_90_Clockwise<T>(T[,] array)
+            public static T[,] RotateArray_90_AntiClockwise<T>(T[,] array)
             {
                 T[,] result = new T[array.GetLength(1), array.GetLength(0)];
                 int newCol = 0;
@@ -561,6 +579,22 @@ namespace ChristianTools.Tools
                 }
 
                 return result;
+            }
+
+            public static T[,] RotateArray_180_AntiClockwise<T>(T[,] array)
+            {
+                // todo: Do this better
+                array = RotateArray_90_AntiClockwise(array);
+                array = RotateArray_90_AntiClockwise(array);
+                return array;
+            }
+
+            public static T[,] RotateArray_270_AntiClockwise<T>(T[,] array)
+            {
+                array = RotateArray_90_AntiClockwise(array);
+                array = RotateArray_90_AntiClockwise(array);
+                array = RotateArray_90_AntiClockwise(array);
+                return array;
             }
 
 

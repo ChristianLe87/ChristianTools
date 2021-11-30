@@ -117,6 +117,10 @@
     <BundleResource Include="..\Content\AtlasTiles_15x25_PNG.png">
       <Link>Resources\Content\AtlasTiles_15x25_PNG.png</Link>
     </BundleResource>
+    <BundleResource Include="..\Content\MyAtlasTexture.png">
+      <Link>Resources\Content\MyAtlasTexture.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="..\ChristianTools.UI\ChristianTools.UI.projitems" Label="Shared" Condition="Exists('..\ChristianTools.UI\ChristianTools.UI.projitems')" />
