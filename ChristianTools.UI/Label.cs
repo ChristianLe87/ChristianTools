@@ -29,7 +29,7 @@ namespace ChristianTools.UI
             this.textPosition = GetTextPosition();
             this.tag = tag;
 
-            this.camera = camera == null ? new Camera() : camera;
+            this.camera = camera ?? new Camera();
         }
 
         public void Update(InputState lastInputState, InputState inputState)
@@ -39,7 +39,7 @@ namespace ChristianTools.UI
         public void Draw(SpriteBatch spriteBatch)
         {
             if (texture2D != null)
-                spriteBatch.Draw(texture2D, new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height), Color.White);
+                spriteBatch.Draw(texture2D, new Rectangle(rectangle.Location + camera.center.ToPoint(), rectangle.Size), Color.White);
 
             spriteBatch.DrawString(spriteFont, text, textPosition + camera.center, Color.White);
         }

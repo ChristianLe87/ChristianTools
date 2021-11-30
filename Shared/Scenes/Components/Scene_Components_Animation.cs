@@ -82,7 +82,7 @@ namespace Shared
                     { CharacterState.JumpRight, new Texture2D[] { WK.Texture.Player.JumpRight_Multiply } },
                 };
 
-                this.animation = new Animation(animations);
+                this.animation = new Animation(animations: animations, framesPerTexture: 16);
             }
 
             public void Update(InputState lastInputState, InputState inputState)

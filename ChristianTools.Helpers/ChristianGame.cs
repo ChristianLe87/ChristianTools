@@ -79,9 +79,6 @@ namespace ChristianTools.Helpers
             // Initialize objects (scores, values, items, etc)
             base.Initialize();
         }
-
-
-
    
         public void SetupScenes(Dictionary<string, IScene> scenes, string startScene)
         {
@@ -129,8 +126,6 @@ namespace ChristianTools.Helpers
             scenes[actualScene].Initialize();
         }
 
-
-
-        //public static bool isMouseVisible { get => IsMouseVisible; set => IsMouseVisible = value; }
+        // todo: public static bool isMouseVisible { get => IsMouseVisible; set => IsMouseVisible = value; }
     }
 }

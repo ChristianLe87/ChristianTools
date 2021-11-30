@@ -32,7 +32,7 @@ namespace ChristianTools.UI
             this.tag = tag;
 
             this.OnClickAction = OnClickAction;
-            this.camera = camera == null ? new Camera() : camera;
+            this.camera = camera ?? new Camera();
         }
 
         public void Update(InputState inputState, InputState lastInputState)

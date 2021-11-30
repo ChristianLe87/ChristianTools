@@ -15,8 +15,6 @@ namespace ChristianTools.UI
         int labelCount;
         bool isActive;
         InputState previousinputState;
-
-        
         public Rectangle rectangle { get => new Rectangle(centerPosition.X - (background.Width / 2), centerPosition.Y - (background.Height / 2), background.Width, background.Height); }
 
         public string tag => throw new System.NotImplementedException();

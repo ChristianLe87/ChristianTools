@@ -37,6 +37,7 @@ namespace Shared
                     Label.TextAlignment.Midle_Center,
                     "",
                     camera
+                    //texture: WK.Texture.LightGray
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 10, 230, 30),

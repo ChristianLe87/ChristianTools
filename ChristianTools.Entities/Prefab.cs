@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ChristianTools.Entities
 {
     /// <summary>
-    /// Something with a texture and a rectangle
+    /// Something with a texture and a rigidbody
     /// </summary>
     public class Prefab : IEntity
     {

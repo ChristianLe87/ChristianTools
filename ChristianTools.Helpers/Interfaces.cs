@@ -29,11 +29,6 @@ namespace ChristianTools.Helpers
         public void Draw(SpriteBatch spriteBatch);
     }
 
-    /*public interface IParticles
-    {
-    }*/
-
-
     public interface IUI
     {
         public Rectangle rectangle { get; }

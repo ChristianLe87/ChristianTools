@@ -31,6 +31,29 @@ namespace ChristianTools.Entities
             CreateLine();
         }
 
+        public void Update(InputState lastInputState, InputState inputState)
+        {
+        }
+
+        public void UpdatePoints(Point? start = null, Point? end = null)
+        {
+            if (start != null)
+                this.start = new Point(start.Value.X, start.Value.Y);
+
+            if (end != null)
+                this.end = new Point(end.Value.X, end.Value.Y);
+
+            CreateLine();
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (var rectangle in rectangles)
+            {
+                spriteBatch.Draw(texture2D, rectangle, Color.White);
+            }
+        }
+
         void CreateLine()
         {
             int amountOn_X = Math.Abs(start.X - end.X) / thickness;
@@ -154,29 +177,6 @@ namespace ChristianTools.Entities
                 }
             }
 
-        }
-
-        public void UpdatePoints(Point? start = null, Point? end = null)
-        {
-            if (start != null)
-                this.start = new Point(start.Value.X, start.Value.Y);
-
-            if (end != null)
-                this.end = new Point(end.Value.X, end.Value.Y);
-
-            CreateLine();
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var rectangle in rectangles)
-            {
-                spriteBatch.Draw(texture2D, rectangle, Color.White);
-            }
-        }
-
-        public void Update(InputState lastInputState, InputState inputState)
-        {
         }
     }
 }
