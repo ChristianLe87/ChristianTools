@@ -74,7 +74,7 @@ namespace Shared
                             prefab.rigidbody.Move_Y(1);
                     },
                     dxDrawSystem: (SpriteBatch spriteBatch, Prefab prefab) => {
-                        Systems.DrawWithRotation(spriteBatch, prefab);
+                        Systems.Draw.EntityWithRotation(spriteBatch, prefab);
                     }
                 ),
             };

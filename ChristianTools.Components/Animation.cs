@@ -26,10 +26,10 @@ namespace ChristianTools.Components
         }
 
 
-        public Texture2D GetTexture()
+        /*public Texture2D GetTexture()
         {
             return texture2D;
-        }
+        }*/
 
         int animationFrameCount;
         public Texture2D GetTexture(CharacterState characterState)

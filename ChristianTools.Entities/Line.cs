@@ -52,7 +52,7 @@ namespace ChristianTools.Entities
         {
             foreach (var rectangle in rectangles)
             {
-                spriteBatch.Draw(animation.GetTexture(), rectangle, Color.White);
+                spriteBatch.Draw(animation.GetTexture(characterState), rectangle, Color.White);
             }
         }
 

@@ -65,7 +65,7 @@ namespace ChristianTools.Entities
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isActive == true)
-                spriteBatch.Draw(animation.GetTexture(), rigidbody.rectangle, Color.White);
+                spriteBatch.Draw(animation.GetTexture(characterState), rigidbody.rectangle, Color.White);
         }
     }
 }

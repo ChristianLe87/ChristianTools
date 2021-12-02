@@ -51,7 +51,7 @@ namespace ChristianTools.Entities
                 if (dxDrawSystem != null)
                     dxDrawSystem(spriteBatch, this);
                 else
-                    spriteBatch.Draw(animation.GetTexture(), rigidbody.rectangle, Color.White);
+                    spriteBatch.Draw(animation.GetTexture(characterState), rigidbody.rectangle, Color.White);
             }
         }
     }

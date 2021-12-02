@@ -21,6 +21,8 @@ namespace Shared
         public Camera camera { get; }
         public Map map { get; }
 
+        Vector2 centerPosition = WK.Default.Center.ToVector2();
+
         public Scene_Entities_Bullet()
         {
             Initialize();
@@ -51,21 +53,33 @@ namespace Shared
             };
 
             this.entities = new List<IEntity>();
+
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
+            if (inputState.Up)
+                centerPosition.Y--;
+            else if (inputState.Down)
+                centerPosition.Y++;
 
-            if(lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
+            if (inputState.Right)
+                centerPosition.X++;
+            else if (inputState.Left)
+                centerPosition.X--;
+
+
+            //if(lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
+            if (inputState.Jump || inputState.Mouse_LeftButton == ButtonState.Pressed)// lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
             {
                 Bullet bullet = new Bullet(
                     texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.White, 10),
-                    centerPosition: WK.Default.Center.ToVector2(),
+                    centerPosition: centerPosition,
                     direction: inputState.Mouse_Position().ToVector2(),
                     steps: 3,
                     timeToDeactivate: new TimeSpan(0, 0, 2)
                 );
-
+                Console.WriteLine(inputState.Mouse_Position().ToVector2());
                 entities.Add(bullet);
             }
 
