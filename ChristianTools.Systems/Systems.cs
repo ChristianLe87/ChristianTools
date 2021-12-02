@@ -12,6 +12,13 @@ namespace ChristianTools.Systems
             if (scene.UIs != null)
                 foreach (var ui in scene.UIs)
                     ui.Draw(spriteBatch);
+
+            if (scene.entities != null)
+                foreach (var entity in scene.entities)
+                    entity.Draw(spriteBatch);
+
+            if (scene.map != null)
+                scene.map.Draw(spriteBatch);
         }
 
         public static void DrawWithRotation(SpriteBatch spriteBatch, IEntity entity)

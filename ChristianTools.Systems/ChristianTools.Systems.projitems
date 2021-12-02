@@ -9,6 +9,6 @@
     <Import_RootNamespace>ChristianTools.Systems</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)DrawSystems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems.cs" />
   </ItemGroup>
 </Project>
