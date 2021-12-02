@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using ChristianTools.Components;
-using ChristianTools.Entities;
 using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
@@ -10,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Shared
 {
-    public class Scene_Components_Rigidbody : IScene
+    public class Scene_Systems : IScene
     {
         public GameState gameState { get; private set; }
         public List<IEntity> entities { get; set; }
@@ -19,7 +18,7 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; }
 
-        public Scene_Components_Rigidbody()
+        public Scene_Systems()
         {
             Initialize();
         }
@@ -30,60 +29,39 @@ namespace Shared
             {
                 new Button(
                     rectangle: new Rectangle (10, 10, 230, 30),
-                    text: "Jump",
+                    text: "Systems_DrawSystems",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
-                    tag: "jump",
-                    OnClickAction: () => Jump(),
+                    tag: "goToDrawSystems",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Systems_DrawSystems),
                     camera
                 ),
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
-                    text: "<- Components",
+                    text: "<- Menu",
                     defaultTexture: WK.Texture.LightGray,
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
-                    tag: "goToComponents",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
-                    camera
+                    tag: "goToMenu",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
+                    camera: camera
                 ),
             };
-
-
-            Prefab prefab = new Prefab(
-                texture2D: WK.Texture.Player.IdleLeft_Multiply,
-                centerPosition: WK.Default.Center.ToVector2(),
-                dxUpdateSystem: null//() => Jump()
-            );
-            prefab.rigidbody.AddForce(new Vector2(0, 1));
-
-            this.entities = new List<IEntity>();
-            this.entities.Add(prefab);
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
-            foreach (var ui in UIs)
-                ui.Update(lastInputState, inputState);
-
-            foreach (var entity in entities)
-                entity.Update(lastInputState, inputState);
+            if (UIs != null)
+                foreach (var ui in UIs)
+                    ui.Update(lastInputState, inputState);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var ui in UIs)
-                ui.Draw(spriteBatch);
-
-            foreach (var entity in entities)
-                entity.Draw(spriteBatch);
-        }
-
-
-        private void Jump()
-        {
-
+            if (UIs != null)
+                foreach (var ui in UIs)
+                    ui.Draw(spriteBatch);
         }
     }
 }

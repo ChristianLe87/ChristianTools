@@ -49,6 +49,10 @@ namespace Shared
 
             // UI
             public static readonly string UI = "UI";
+
+            // Systems
+            public static readonly string Systems = "Systems";
+            public static readonly string Systems_DrawSystems = "Systems_DrawSystems";
         }
 
         public class Texture

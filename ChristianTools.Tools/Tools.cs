@@ -388,13 +388,13 @@ namespace ChristianTools.Tools
             /// Angles less than zero are to the left. Angles greater than
             /// zero are to the right.
             /// </summary>
-            public static double GetAngleInRadians(Vector2 Point1_Start, Vector2 Point1_End, Vector2 Point2_Start, Vector2 Pount2_End)
+            public static double GetAngleInRadians(Vector2 Point1_Start, Vector2 Point1_End, Vector2 Point2_Start, Vector2 Point2_End)
             {
                 // Code thanks to: http://csharphelper.com/blog/2020/06/find-the-angle-between-two-vectors-in-c/
 
                 // Find the vectors.
                 Vector2 v1 = new Vector2(Point1_End.X - Point1_Start.X, Point1_End.Y - Point1_Start.Y);
-                Vector2 v2 = new Vector2(Pount2_End.X - Point2_Start.X, Pount2_End.Y - Point2_Start.Y);
+                Vector2 v2 = new Vector2(Point2_End.X - Point2_Start.X, Point2_End.Y - Point2_Start.Y);
 
                 // Calculate the vector lengths.
                 double len1 = Math.Sqrt(v1.X * v1.X + v1.Y * v1.Y);
@@ -423,7 +423,7 @@ namespace ChristianTools.Tools
                     Point1_Start: Point1,
                     Point1_End: Point2,
                     Point2_Start: Point1,
-                    Pount2_End: new Vector2(Point1.X, Point1.Y + Math.Abs(Point2.Y - Point1.Y))
+                    Point2_End: new Vector2(Point1.X, Point1.Y + Math.Abs(Point2.Y - Point1.Y))
                 ); ;
 
                 return angle;

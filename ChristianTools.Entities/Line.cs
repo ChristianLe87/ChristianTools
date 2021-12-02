@@ -8,7 +8,6 @@ namespace ChristianTools.Entities
 {
     public class Line : IEntity
     {
-        Texture2D texture2D;
         Rectangle[] rectangles;
 
         Point start;
@@ -20,12 +19,15 @@ namespace ChristianTools.Entities
         public string tag { get; }
         public int health { get; }
 
+        public Animation animation { get; }
+        public Animation.CharacterState characterState { get; }
+
         public Line(Point start, Point end, int thickness, Texture2D texture2D, string tag)
         {
             this.start = start;
             this.end = end;
             this.thickness = thickness;
-            this.texture2D = texture2D;
+            this.animation = new Animation(texture2D);
             this.tag = tag;
 
             CreateLine();
@@ -50,7 +52,7 @@ namespace ChristianTools.Entities
         {
             foreach (var rectangle in rectangles)
             {
-                spriteBatch.Draw(texture2D, rectangle, Color.White);
+                spriteBatch.Draw(animation.GetTexture(), rectangle, Color.White);
             }
         }
 
@@ -176,7 +178,6 @@ namespace ChristianTools.Entities
                     rectangles[i] = rectangle;
                 }
             }
-
         }
     }
 }

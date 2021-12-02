@@ -3,12 +3,15 @@ using ChristianTools.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using static ChristianTools.Components.Animation;
 
 namespace ChristianTools.Helpers
 {
     public interface IEntity
     {
         public Rigidbody rigidbody { get; }
+        public Animation animation { get; }
+        public CharacterState characterState { get; }
         public bool isActive { get; }
         public string tag { get; }
         public int health { get; }

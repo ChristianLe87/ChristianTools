@@ -89,6 +89,16 @@ namespace Shared
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.UI),
                     camera
                 ),
+                new Button(
+                    rectangle: new Rectangle (10, 210, 230, 30),
+                    text: "Systems",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_7,
+                    tag: "goToSystems",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Systems),
+                    camera
+                ),
             };
         }
 

@@ -58,6 +58,7 @@ namespace My_EasyTests
                 base.Window.Title = "Hello Window";
                 base.IsMouseVisible = true;
             }
+            base.IsMouseVisible = true;
 
             base.Initialize();
         }

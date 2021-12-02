@@ -8,7 +8,6 @@ namespace ChristianTools.Entities
 {
     public class Bullet : IEntity
     {
-        Texture2D texture2D;
         TimeSpan timeToDeactivate;
         int FPS;
 
@@ -17,9 +16,12 @@ namespace ChristianTools.Entities
         public string tag { get; }
         public int health { get; }
 
+        public Animation animation { get; }
+        public Animation.CharacterState characterState { get; }
+
         public Bullet(Texture2D texture2D, Vector2 centerPosition, Vector2 direction, int steps, TimeSpan timeToDeactivate = new TimeSpan(), int FPS = 60)
         {
-            this.texture2D = texture2D;
+            this.animation = new Animation(texture2D);
             this.timeToDeactivate = timeToDeactivate;
             this.isActive = true;
             this.FPS = FPS;
@@ -28,7 +30,7 @@ namespace ChristianTools.Entities
                 Point1_Start: centerPosition,
                 Point1_End: new Vector2(500, (int)centerPosition.Y),
                 Point2_Start: centerPosition,
-                Pount2_End: direction
+                Point2_End: direction
             );
 
             float x = (float)(steps * Math.Cos(radAngle));
@@ -63,7 +65,7 @@ namespace ChristianTools.Entities
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isActive == true)
-                spriteBatch.Draw(texture2D, rigidbody.rectangle, Color.White);
+                spriteBatch.Draw(animation.GetTexture(), rigidbody.rectangle, Color.White);
         }
     }
 }

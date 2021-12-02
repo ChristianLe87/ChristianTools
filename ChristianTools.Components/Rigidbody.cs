@@ -4,6 +4,7 @@ namespace ChristianTools.Components
 {
     public class Rigidbody
     {
+        public float rotationDegree { get; private set; }
         public Vector2 force { get; private set; }
         public Vector2 gravity { get; private set; }
 
@@ -67,6 +68,11 @@ namespace ChristianTools.Components
         public void Move_Y(float Y)
         {
             centerPosition = new Vector2(centerPosition.X, centerPosition.Y + Y);
+        }
+
+        public void SetAngleRotation(float rotationDegree)
+        {
+            this.rotationDegree = rotationDegree;
         }
     }
 }

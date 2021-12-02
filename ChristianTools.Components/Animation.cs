@@ -7,6 +7,12 @@ namespace ChristianTools.Components
     {
         Dictionary<CharacterState, Texture2D[]> animations;
         int framesPerTexture;
+        Texture2D texture2D;
+
+        public Animation(Texture2D texture2D)
+        {
+            this.texture2D = texture2D;
+        }
 
         public Animation(Dictionary<CharacterState, Texture2D[]> animations, int framesPerTexture)
         {
@@ -19,9 +25,17 @@ namespace ChristianTools.Components
             animationFrameCount++;
         }
 
+
+        public Texture2D GetTexture()
+        {
+            return texture2D;
+        }
+
         int animationFrameCount;
         public Texture2D GetTexture(CharacterState characterState)
         {
+            if(animations == null)
+                return texture2D;
 
             if (animationFrameCount > framesPerTexture)
                 animationFrameCount = 0;

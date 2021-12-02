@@ -11,29 +11,34 @@ namespace ChristianTools.Entities
     /// </summary>
     public class Prefab : IEntity
     {
-        Texture2D texture2D;
         public bool isActive { get; set; }
         public string tag { get; private set; }
         public Rigidbody rigidbody { get; }
         public int health { get; }
-        public delegate void DxOnUpdate();
-        DxOnUpdate dxOnUpdate;
+        public delegate void DxUpdateSystem(InputState lastInputState, InputState inputState, Prefab prefab);
+        public delegate void DxDrawSystem(SpriteBatch spriteBatch, Prefab prefab);
+        DxUpdateSystem dxUpdateSystem;
+        DxDrawSystem dxDrawSystem;
 
-        public Prefab(Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", DxOnUpdate dxOnUpdate = null)
+        public Animation animation { get; }
+        public Animation.CharacterState characterState { get; }
+
+        public Prefab(Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", DxUpdateSystem dxUpdateSystem = null, DxDrawSystem dxDrawSystem = null)
         {
-            this.texture2D = texture2D;
+            this.animation = new Animation(texture2D);
             this.rigidbody = new Rigidbody(centerPosition, texture2D.Width, texture2D.Height, Vector2.Zero, Vector2.Zero);
             this.isActive = isActive;
             this.tag = tag;
-            this.dxOnUpdate = dxOnUpdate;
+            this.dxUpdateSystem = dxUpdateSystem;
+            this.dxDrawSystem = dxDrawSystem;
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
             if(isActive == true)
             {
-                if (dxOnUpdate != null)
-                    dxOnUpdate();
+                if (dxUpdateSystem != null)
+                    dxUpdateSystem(lastInputState, inputState, this);
 
                 rigidbody.Update();
             }
@@ -42,7 +47,12 @@ namespace ChristianTools.Entities
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isActive == true)
-                spriteBatch.Draw(texture2D, rigidbody.rectangle, Color.White);
+            {
+                if (dxDrawSystem != null)
+                    dxDrawSystem(spriteBatch, this);
+                else
+                    spriteBatch.Draw(animation.GetTexture(), rigidbody.rectangle, Color.White);
+            }
         }
     }
 }

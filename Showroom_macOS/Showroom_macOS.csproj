@@ -126,6 +126,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
   </ItemGroup>
+  <Import Project="..\ChristianTools.Systems\ChristianTools.Systems.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Systems\ChristianTools.Systems.projitems')" />
   <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="..\ChristianTools.UI\ChristianTools.UI.projitems" Label="Shared" Condition="Exists('..\ChristianTools.UI\ChristianTools.UI.projitems')" />
   <Import Project="..\ChristianTools.Tools\ChristianTools.Tools.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Tools\ChristianTools.Tools.projitems')" />

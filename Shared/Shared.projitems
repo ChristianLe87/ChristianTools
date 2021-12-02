@@ -26,6 +26,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\UI\Scene_UI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Helpers\Scene_Helpers_InputState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Helpers\Scene_Helpers_JsonSerialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Systems\Scene_Systems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Systems\Scene_Systems_DrawSystems.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
@@ -36,5 +38,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\Entities\" />
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\UI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\Systems\" />
   </ItemGroup>
 </Project>

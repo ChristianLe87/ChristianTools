@@ -35,6 +35,10 @@ namespace Shared
 
                 // UI
                 { WK.Scene.UI, new Scene_UI() },
+
+                // Systems
+                { WK.Scene.Systems, new Scene_Systems() },
+                { WK.Scene.Systems_DrawSystems, new Scene_Systems_DrawSystems() },
             };
 
             base.SetupScenes(scenes, WK.Scene.Menu);
