@@ -623,12 +623,13 @@ namespace ChristianTools.Tools
             /// <param name="maxAproximation"></param>
             /// <param name="steps"></param>
             /// <returns>New position</returns>
-            public static Vector2 MoveTowards(Rigidbody mainRigidbody, Rigidbody targetRigidbody, int maxAproximation, int steps)
+            public static Vector2 MoveTowards(Vector2 mainPoint, Vector2 endPoint, int maxAproximation, int steps)
             {
-                Vector2 mainPoint = mainRigidbody.centerPosition;
-                Vector2 endPoint = targetRigidbody.centerPosition;
-
                 Vector2 result = mainPoint;
+
+                if (Vector2.Distance(mainPoint, endPoint) < maxAproximation)
+                    return result;
+
 
                 // target is right
                 if (endPoint.X - mainPoint.X >= 0)
@@ -684,6 +685,15 @@ namespace ChristianTools.Tools
                 }
 
                 // Return
+                return result;
+            }
+
+            public static Vector2 MoveTowards(Rigidbody mainRigidbody, Rigidbody targetRigidbody, int maxAproximation, int steps)
+            {
+                Vector2 mainPoint = mainRigidbody.centerPosition;
+                Vector2 endPoint = targetRigidbody.centerPosition;
+
+                Vector2 result = MoveTowards(mainPoint, endPoint, maxAproximation, steps);
                 return result;
             }
         }
