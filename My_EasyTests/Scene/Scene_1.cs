@@ -1,4 +1,6 @@
-﻿using ChristianTools.Tools;
+﻿using ChristianTools.Components;
+using ChristianTools.Helpers;
+using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -7,46 +9,63 @@ namespace My_EasyTests
 {
     public class Scene_1 : IScene
     {
-        Texture2D texture2D;
-        float rotationAngleInRadians = 45f;
-        int canvasWidth = 500;
-        int canvasHeight = 500;
-
-        Rectangle rectangle;
-        Vector2 position;
+        Rigidbody rigidbody;
+        Animation animation;
 
         public Scene_1()
         {
-            this.texture2D = Tools.Texture.CreateTriangle(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink, 100, 100, Tools.Texture.PointDirection.Right);
-            this.rectangle = Tools.GetRectangle.Rectangle(new Vector2(canvasWidth / 2, canvasHeight / 2), texture2D.Width, texture2D.Height);
+            int canvasWidth = 500;
+            int canvasHeight = 500;
 
-            this.position = new Vector2(canvasWidth/2, canvasHeight/2);
+            Vector2 position = new Vector2(canvasWidth / 2, canvasHeight / 2);
+            Texture2D texture2D = Tools.Texture.CreateTriangle(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink, 100, 100, Tools.Texture.PointDirection.Right);
+
+            this.animation = new Animation(texture2D);
+            this.rigidbody = new Rigidbody(position, texture2D.Width, texture2D.Height);
         }
 
         public void Update()
         {
-            MouseState mouseState = Mouse.GetState();
-            Point mousePosition = mouseState.Position;
+            InputState inputState = new InputState();
 
-            double angleInRadians = Tools.MyMath.GetAngleInRadians(
-                Point1_Start: position,
-                Point1_End: new Vector2(500, 250),
-                Point2_Start: position,
-                Point2_End: mousePosition.ToVector2()
-            );
+            // Mouse
+            {
+                double angleInRadians = Tools.MyMath.GetAngleInRadians(
+                    Point1_Start: rigidbody.centerPosition,
+                    Point1_End: new Vector2(rigidbody.centerPosition.X + 250, rigidbody.centerPosition.Y),
+                    Point2_Start: rigidbody.centerPosition,
+                    Point2_End: inputState.Mouse_Position().ToVector2()
+                );
 
-            rotationAngleInRadians = (float)angleInRadians;
+                rigidbody.SetAngleRotation((float)Tools.MyMath.RadianToDegree(angleInRadians));
+            }
+
+
+            // Keyboard
+            {
+                int move = 1;
+
+                if (inputState.Left)
+                    rigidbody.Move_X(-move);
+                else if (inputState.Right)
+                    rigidbody.Move_X(move);
+
+                if (inputState.Up)
+                    rigidbody.Move_Y(-move);
+                else if (inputState.Down)
+                    rigidbody.Move_Y(move);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
-               texture: texture2D,
-               destinationRectangle: new Rectangle(canvasWidth / 2, canvasHeight / 2, texture2D.Width, texture2D.Height),
+               texture: animation.GetTexture(),
+               destinationRectangle: new Rectangle((int)rigidbody.centerPosition.X, (int)rigidbody.centerPosition.Y, rigidbody.rectangle.Width, rigidbody.rectangle.Height),
                sourceRectangle: null,
                color: Color.White,
-               rotation: rotationAngleInRadians,
-               origin: new Vector2(texture2D.Width / 2, texture2D.Height / 2),
+               rotation: (float)Tools.MyMath.DegreeToRadian(rigidbody.rotationDegree),// always value radians
+               origin: new Vector2(rigidbody.rectangle.Width / 2, rigidbody.rectangle.Height / 2),
                effects: SpriteEffects.None,
                layerDepth: 0f
            );

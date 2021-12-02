@@ -50,18 +50,31 @@ namespace Shared
                     centerPosition: WK.Default.Center.ToVector2(),
                     dxUpdateSystem: (InputState lastInputState, InputState inputState, Prefab prefab) => {
 
+                        // Set rotation
                         double angleInRadians = Tools.MyMath.GetAngleInRadians(
-                            Point1_Start: WK.Default.Center.ToVector2(),
-                            Point1_End: new Vector2(500, 250),
-                            Point2_Start: WK.Default.Center.ToVector2(),
+                            Point1_Start: prefab.rigidbody.centerPosition,
+                            Point1_End: new Vector2(prefab.rigidbody.centerPosition.X + WK.Default.Width, prefab.rigidbody.centerPosition.Y),
+                            Point2_Start: prefab.rigidbody.centerPosition,
                             Point2_End: inputState.Mouse_Position().ToVector2()
                         );
                         double angleInDegrees = Tools.MyMath.RadianToDegree(angleInRadians);
 
                         prefab.rigidbody.SetAngleRotation((float)angleInDegrees);
+
+
+                        // Set position
+                        if (inputState.Left)
+                            prefab.rigidbody.Move_X(-1);
+                        else if (inputState.Right)
+                            prefab.rigidbody.Move_X(1);
+
+                        if (inputState.Up)
+                            prefab.rigidbody.Move_Y(-1);
+                        else if (inputState.Down)
+                            prefab.rigidbody.Move_Y(1);
                     },
                     dxDrawSystem: (SpriteBatch spriteBatch, Prefab prefab) => {
-                        Systems.DrawWithRotation(spriteBatch, WK.Default.Width, WK.Default.Height, prefab);
+                        Systems.DrawWithRotation(spriteBatch, prefab);
                     }
                 ),
             };

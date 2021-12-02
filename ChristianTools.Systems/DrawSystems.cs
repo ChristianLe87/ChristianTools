@@ -14,20 +14,18 @@ namespace ChristianTools.Systems
                     ui.Draw(spriteBatch);
         }
 
-        public static void DrawWithRotation(SpriteBatch spriteBatch, int canvasWidth, int canvasHeight, IEntity entity)
+        public static void DrawWithRotation(SpriteBatch spriteBatch, IEntity entity)
         {
-            Texture2D texture2D = entity.animation.GetTexture();
-            float rotationAngleInRadians = (float)Tools.Tools.MyMath.DegreeToRadian(entity.rigidbody.rotationDegree);
             spriteBatch.Draw(
-               texture: texture2D,
-               destinationRectangle: new Rectangle(canvasWidth / 2, canvasHeight / 2, texture2D.Width, texture2D.Height),
-               sourceRectangle: null,
-               color: Color.White,
-               rotation: rotationAngleInRadians,
-               origin: new Vector2(texture2D.Width / 2, texture2D.Height / 2),
-               effects: SpriteEffects.None,
-               layerDepth: 0f
-           );
+                texture: entity.animation.GetTexture(),
+                destinationRectangle: new Rectangle((int)entity.rigidbody.centerPosition.X, (int)entity.rigidbody.centerPosition.Y, entity.rigidbody.rectangle.Width, entity.rigidbody.rectangle.Height),
+                sourceRectangle: null,
+                color: Color.White,
+                rotation: (float)Tools.Tools.MyMath.DegreeToRadian(entity.rigidbody.rotationDegree),// always value radians
+                origin: new Vector2(entity.rigidbody.rectangle.Width / 2, entity.rigidbody.rectangle.Height / 2),
+                effects: SpriteEffects.None,
+                layerDepth: 0f
+            );
         }
     }
 }
