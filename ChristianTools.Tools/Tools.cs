@@ -383,50 +383,58 @@ namespace ChristianTools.Tools
             }
 
 
-            /// <summary>
-            /// Return the angle between vector p11 --> p12 and p21 --> p22.
-            /// Angles less than zero are to the left. Angles greater than
-            /// zero are to the right.
-            /// </summary>
-            public static double GetAngleInRadians(Vector2 Point1_Start, Vector2 Point1_End, Vector2 Point2_Start, Vector2 Point2_End)
+            public static double GetAngleInDegree(Vector2 main, Vector2 target)
             {
-                // Code thanks to: http://csharphelper.com/blog/2020/06/find-the-angle-between-two-vectors-in-c/
+                // Based on: tan^-1 (y/x) = angle
+                double x = target.X - main.X;
+                double y = target.Y - main.Y;
+                double angleRad = Math.Atan(y / x);
+                double angleDeg = MyMath.RadianToDegree(angleRad);
 
-                // Find the vectors.
-                Vector2 v1 = new Vector2(Point1_End.X - Point1_Start.X, Point1_End.Y - Point1_Start.Y);
-                Vector2 v2 = new Vector2(Point2_End.X - Point2_Start.X, Point2_End.Y - Point2_Start.Y);
 
-                // Calculate the vector lengths.
-                double len1 = Math.Sqrt(v1.X * v1.X + v1.Y * v1.Y);
-                double len2 = Math.Sqrt(v2.X * v2.X + v2.Y * v2.Y);
+                // Not straight lines
+                {
+                    // Quadrant 1
+                    if (x > 0 && y > 0)
+                        return angleDeg;
+                    // Quadrant 2
+                    else if (x < 0 && y > 0)
+                        return (90 * 2) + angleDeg;
+                    // Quadrant 3
+                    else if (x < 0 && y < 0)
+                        return (90 * 2) + angleDeg;
+                    // Quadrant 4
+                    else if (x > 0 && y < 0)
+                        return (90 * 4) + angleDeg;
+                }
 
-                // Use the dot product to get the cosine.
-                double dot_product = v1.X * v2.X + v1.Y * v2.Y;
-                double cos = dot_product / len1 / len2;
 
-                // Use the cross product to get the sine.
-                double cross_product = v1.X * v2.Y - v1.Y * v2.X;
-                double sin = cross_product / len1 / len2;
+                // Straight lines
+                {
+                    // Right
+                    if (x > 0 && y == 0)
+                        return 0;
+                    // Down
+                    else if (x == 0 && y > 4)
+                        return 90;
+                    // Left
+                    else if (x < 0 && y == 0)
+                        return 180;
+                    // Up
+                    else if (x == 0 && y < 0)
+                        return 270;
+                }
 
-                // Find the angle.
-                double angle = Math.Acos(cos);
-
-                if (sin < 0) angle = -angle;
-                return angle;
+                return 0; //throw new Exception("You broke the matrix");
             }
 
 
-            public static double GetAngleInRadians(Vector2 Point1, Vector2 Point2)
+            public static double GetAngleInRadians(Vector2 main, Vector2 target)
             {
+                double angleInDegrees = Tools.MyMath.GetAngleInDegree(main, target);
+                double angleInRadians = Tools.MyMath.DegreeToRadian(angleInDegrees);
 
-                double angle = GetAngleInRadians(
-                    Point1_Start: Point1,
-                    Point1_End: Point2,
-                    Point2_Start: Point1,
-                    Point2_End: new Vector2(Point1.X, Point1.Y + Math.Abs(Point2.Y - Point1.Y))
-                ); ;
-
-                return angle;
+                return angleInRadians;
             }
 
 
@@ -623,78 +631,12 @@ namespace ChristianTools.Tools
             /// <param name="maxAproximation"></param>
             /// <param name="steps"></param>
             /// <returns>New position</returns>
-            public static Vector2 MoveTowards(Vector2 mainPoint, Vector2 endPoint, int maxAproximation, int steps)
+            public static Vector2 MoveTowards(Vector2 mainPoint, Vector2 endPoint, int maxAproximation, float steps)
             {
-                Vector2 result = mainPoint;
-
-                if (Vector2.Distance(mainPoint, endPoint) < maxAproximation)
-                    return result;
-
-
-                // target is right
-                if (endPoint.X - mainPoint.X >= 0)
-                {
-                    // is up
-                    if (endPoint.Y - mainPoint.Y <= 0)
-                    {
-                        int r = steps;
-                        double angleRad = Tools.MyMath.GetAngleInRadians(mainPoint, endPoint);
-                        double y = r * Math.Cos(angleRad);
-                        double x = Tools.MyMath.Pitagoras.x(r, y);
-
-                        result.Y += (float)y;
-                        result.X += (float)x;
-                    }
-                    // is down
-                    else if (endPoint.Y - mainPoint.Y >= 0)
-                    {
-                        int r = steps;
-                        double angleRad = Tools.MyMath.GetAngleInRadians(mainPoint, endPoint);
-                        double y = r * Math.Cos(angleRad);
-                        double x = Tools.MyMath.Pitagoras.x(r, y);
-
-                        result.Y += (float)y;
-                        result.X += (float)x;
-                    }
-                }
-                // target is left
-                else if (endPoint.X - mainPoint.X < 0)
-                {
-                    // is up
-                    if (endPoint.Y - mainPoint.Y <= 0)
-                    {
-                        int r = steps;
-                        double angleRad = Tools.MyMath.GetAngleInRadians(mainPoint, endPoint);
-                        double y = r * Math.Cos(angleRad);
-                        double x = Tools.MyMath.Pitagoras.x(r, y);
-
-                        result.Y += (float)y;
-                        result.X -= (float)x;
-                    }
-                    // is down
-                    else if (endPoint.Y - mainPoint.Y >= 0)
-                    {
-                        int r = steps;
-                        double angleRad = Tools.MyMath.GetAngleInRadians(mainPoint, endPoint);
-                        double y = r * Math.Cos(angleRad);
-                        double x = Tools.MyMath.Pitagoras.x(r, y);
-
-                        result.Y += (float)y;
-                        result.X -= (float)x;
-                    }
-                }
-
-                // Return
-                return result;
-            }
-
-            public static Vector2 MoveTowards(Rigidbody mainRigidbody, Rigidbody targetRigidbody, int maxAproximation, int steps)
-            {
-                Vector2 mainPoint = mainRigidbody.centerPosition;
-                Vector2 endPoint = targetRigidbody.centerPosition;
-
-                Vector2 result = MoveTowards(mainPoint, endPoint, maxAproximation, steps);
-                return result;
+                if (Vector2.Distance(mainPoint, endPoint) > maxAproximation)
+                    return Vector2.Lerp(mainPoint, endPoint, steps / 100f);
+                else
+                    return mainPoint;
             }
         }
     }

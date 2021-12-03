@@ -22,6 +22,7 @@ namespace ChristianTools.Systems
 
             public static void Entity(InputState lastInputState, InputState inputState, IEntity entity)
             {
+                entity.Update(lastInputState, inputState);
             }
         }
 

@@ -51,13 +51,14 @@ namespace Shared
                     dxUpdateSystem: (InputState lastInputState, InputState inputState, Prefab prefab) => {
 
                         // Set rotation
-                        double angleInRadians = Tools.MyMath.GetAngleInRadians(
+                        /*double angleInRadians = Tools.MyMath.GetAngleInRadians(
                             Point1_Start: prefab.rigidbody.centerPosition,
                             Point1_End: new Vector2(prefab.rigidbody.centerPosition.X + WK.Default.Width, prefab.rigidbody.centerPosition.Y),
                             Point2_Start: prefab.rigidbody.centerPosition,
                             Point2_End: inputState.Mouse_Position().ToVector2()
                         );
-                        double angleInDegrees = Tools.MyMath.RadianToDegree(angleInRadians);
+                        double angleInDegrees = Tools.MyMath.RadianToDegree(angleInRadians);*/
+                        double angleInDegrees = Tools.MyMath.GetAngleInDegree(prefab.rigidbody.centerPosition, inputState.Mouse_Position().ToVector2());
 
                         prefab.rigidbody.SetAngleRotation((float)angleInDegrees);
 

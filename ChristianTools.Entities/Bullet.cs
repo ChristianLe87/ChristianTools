@@ -26,13 +26,7 @@ namespace ChristianTools.Entities
             this.isActive = true;
             this.FPS = FPS;
 
-            double radAngle = ChristianTools.Tools.Tools.MyMath.GetAngleInRadians(
-                Point1_Start: centerPosition,
-                Point1_End: new Vector2(500, (int)centerPosition.Y),
-                Point2_Start: centerPosition,
-                Point2_End: direction
-            );
-
+            double radAngle = Tools.Tools.MyMath.GetAngleInRadians(centerPosition, direction);
             float x = (float)(steps * Math.Cos(radAngle));
             float y = (float)(steps * Math.Sin(radAngle));
 
