@@ -438,26 +438,40 @@ namespace ChristianTools.Tools
             }
 
 
+            public static Vector2 Get_X_and_Y_BasedOnAngle_Radians(float slope, double angleInRadians)
+            {
+                float x = (float)(slope * Math.Cos(angleInRadians));
+                float y = (float)(slope * Math.Sin(angleInRadians));
+                return new Vector2(x, y);
+            }
+
+            public static Vector2 Get_X_and_Y_BasedOnAngle_Degrees(float slope, double angleInDegrees)
+            {
+                double angleInRadians = MyMath.DegreeToRadian(angleInDegrees);
+                float x = (float)(slope * Math.Cos(angleInRadians));
+                float y = (float)(slope * Math.Sin(angleInRadians));
+                return new Vector2(x, y);
+            }
 
 
             public class Pitagoras
             {
-                public static double r(double x, double y)
+                public static double GetSlope(double x, double y)
                 {
                     // r = (x^2 + y^2)^(1/2)
                     return Math.Sqrt((x * x) + (y * y));
                 }
 
-                public static double y(double r, double x)
+                public static double Get_Y(double slope, double x)
                 {
                     // y = (r^2 - x^2)^(1/2)
-                    return (float)Math.Sqrt((r * r) - (x * x));
+                    return (float)Math.Sqrt((slope * slope) - (x * x));
                 }
 
-                public static double x(double r, double y)
+                public static double x(double slope, double y)
                 {
                     // x = (r^2 - y^2)^(1/2)
-                    return Math.Sqrt((r * r) - (y * y));
+                    return Math.Sqrt((slope * slope) - (y * y));
                 }
             }
 
@@ -631,12 +645,31 @@ namespace ChristianTools.Tools
             /// <param name="maxAproximation"></param>
             /// <param name="steps"></param>
             /// <returns>New position</returns>
-            public static Vector2 MoveTowards(Vector2 mainPoint, Vector2 endPoint, int maxAproximation, float steps)
+            public static Vector2 MoveTowards(Vector2 main, Vector2 target, int maxAproximation, float steps)
             {
-                if (Vector2.Distance(mainPoint, endPoint) > maxAproximation)
-                    return Vector2.Lerp(mainPoint, endPoint, steps / 100f);
-                else
-                    return mainPoint;
+                if (Vector2.Distance(main, target) < maxAproximation)
+                    return main;
+
+                double angleInRadians = Tools.MyMath.GetAngleInRadians(main, target);
+                
+                Vector2 result = main + MyMath.Get_X_and_Y_BasedOnAngle_Radians(steps, angleInRadians);
+
+                return result;
+            }
+
+            public static Vector2 MoveTowards(Rigidbody main, Rigidbody target, int maxAproximation, float steps)
+            {
+                return MoveTowards(main.centerPosition, target.centerPosition, maxAproximation, steps);
+            }
+
+            public static Vector2 MoveTowards(Rigidbody main, Vector2 target, int maxAproximation, float steps)
+            {
+                return MoveTowards(main.centerPosition, target, maxAproximation, steps);
+            }
+
+            public static Vector2 MoveTowards(Vector2 main, Rigidbody target, int maxAproximation, float steps)
+            {
+                return MoveTowards(main, target.centerPosition, maxAproximation, steps);
             }
         }
     }
