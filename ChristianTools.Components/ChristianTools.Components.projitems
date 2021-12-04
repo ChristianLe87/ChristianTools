@@ -14,5 +14,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Map.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rigidbody.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components.cs" />
   </ItemGroup>
 </Project>
