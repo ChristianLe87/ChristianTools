@@ -18,6 +18,7 @@ namespace ChristianTools.Entities
         public bool isActive { get; }
         public string tag { get; }
         public int health { get; }
+        public Components.Components components { get; set; }
 
         public Animation animation { get; }
         public Animation.CharacterState characterState { get; }

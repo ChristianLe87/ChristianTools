@@ -15,6 +15,7 @@ namespace ChristianTools.Helpers
         public bool isActive { get; }
         public string tag { get; }
         public int health { get; }
+        public Components.Components components { get; set; }
         public void Update(InputState lastInputState, InputState inputState);
         public void Draw(SpriteBatch spriteBatch);
     }

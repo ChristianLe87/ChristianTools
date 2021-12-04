@@ -15,6 +15,7 @@ namespace ChristianTools.Entities
         public string tag { get; private set; }
         public Rigidbody rigidbody { get; }
         public int health { get; }
+        public Components.Components components { get; set; }
         public delegate void DxUpdateSystem(InputState lastInputState, InputState inputState, Prefab prefab);
         public delegate void DxDrawSystem(SpriteBatch spriteBatch, Prefab prefab);
         DxUpdateSystem dxUpdateSystem;
