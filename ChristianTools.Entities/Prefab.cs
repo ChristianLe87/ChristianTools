@@ -16,15 +16,19 @@ namespace ChristianTools.Entities
         public Rigidbody rigidbody { get; }
         public int health { get; }
         public Components.Components components { get; set; }
+
+        public delegate void DxInitializeSystem();
         public delegate void DxUpdateSystem(InputState lastInputState, InputState inputState, Prefab prefab);
         public delegate void DxDrawSystem(SpriteBatch spriteBatch, Prefab prefab);
+
+        DxInitializeSystem dxInitializeSystem;
         DxUpdateSystem dxUpdateSystem;
         DxDrawSystem dxDrawSystem;
 
         public Animation animation { get; }
         public Animation.CharacterState characterState { get; }
 
-        public Prefab(Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", DxUpdateSystem dxUpdateSystem = null, DxDrawSystem dxDrawSystem = null)
+        public Prefab(Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", DxInitializeSystem dxInitializeSystem = null, DxUpdateSystem dxUpdateSystem = null, DxDrawSystem dxDrawSystem = null)
         {
             this.animation = new Animation(texture2D);
             this.rigidbody = new Rigidbody(centerPosition, texture2D.Width, texture2D.Height, Vector2.Zero, Vector2.Zero);
@@ -32,6 +36,9 @@ namespace ChristianTools.Entities
             this.tag = tag;
             this.dxUpdateSystem = dxUpdateSystem;
             this.dxDrawSystem = dxDrawSystem;
+
+            if (dxInitializeSystem != null)
+                dxInitializeSystem();
         }
 
         public void Update(InputState lastInputState, InputState inputState)
