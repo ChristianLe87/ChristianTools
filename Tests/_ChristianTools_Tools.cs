@@ -332,28 +332,782 @@ namespace Tests
                 Assert.Warn("");
             }
 
-            [Test]
-            public void _MoveTowards_1()
+            public class _MoveTowards
             {
-                Assert.Warn("");
-            }
+                public class _Quadrant_posX_posY
+                {
+                    [Test]
+                    public void _MoveTowards_Right()
+                    {
+                        Vector2 start = new Vector2(2, 2);
+                        Vector2 end = new Vector2(10, 2);
 
-            [Test]
-            public void _MoveTowards_2()
-            {
-                Assert.Warn("");
-            }
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
 
-            [Test]
-            public void _MoveTowards_3()
-            {
-                Assert.Warn("");
-            }
+                            if (result == start)
+                                break;
 
-            [Test]
-            public void _MoveTowards_4()
-            {
-                Assert.Warn("");
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Left()
+                    {
+                        Vector2 start = new Vector2(10, 2);
+                        Vector2 end = new Vector2(2, 2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Down()
+                    {
+                        Vector2 start = new Vector2(2, 2);
+                        Vector2 end = new Vector2(2, 10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Up()
+                    {
+                        Vector2 start = new Vector2(2, 10);
+                        Vector2 end = new Vector2(2, 2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownRight()
+                    {
+                        Vector2 start = new Vector2(2, 2);
+                        Vector2 end = new Vector2(10, 10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpLeft()
+                    {
+                        Vector2 start = new Vector2(10, 10);
+                        Vector2 end = new Vector2(2, 2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownLeft()
+                    {
+                        Vector2 start = new Vector2(10, 2);
+                        Vector2 end = new Vector2(2, 10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpRight()
+                    {
+                        Vector2 start = new Vector2(2, 10);
+                        Vector2 end = new Vector2(10, 2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+                }
+
+                public class _Quadrant_negX_posY
+                {
+                    [Test]
+                    public void _MoveTowards_Right()
+                    {
+                        Vector2 start = new Vector2(-10, 2);
+                        Vector2 end = new Vector2(-2, 2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Left()
+                    {
+                        Vector2 start = new Vector2(-10, 2);
+                        Vector2 end = new Vector2(-2, 2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Down()
+                    {
+                        Vector2 start = new Vector2(-2, 2);
+                        Vector2 end = new Vector2(-2, 10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Up()
+                    {
+                        Vector2 start = new Vector2(-2, 10);
+                        Vector2 end = new Vector2(-2, 2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownRight()
+                    {
+                        Vector2 start = new Vector2(-2, 2);
+                        Vector2 end = new Vector2(-10, 10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpLeft()
+                    {
+                        Vector2 start = new Vector2(-10, 10);
+                        Vector2 end = new Vector2(-2, 2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownLeft()
+                    {
+                        Vector2 start = new Vector2(-2, 2);
+                        Vector2 end = new Vector2(-10, 10);
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpRight()
+                    {
+                        Vector2 start = new Vector2(-2, 10);
+                        Vector2 end = new Vector2(-10, 2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+                }
+
+                public class _Quadrant_negX_negY
+                {
+                    [Test]
+                    public void _MoveTowards_Right()
+                    {
+                        Vector2 start = new Vector2(-2, -2);
+                        Vector2 end = new Vector2(-10, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Left()
+                    {
+                        Vector2 start = new Vector2(-10, -2);
+                        Vector2 end = new Vector2(-2, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Down()
+                    {
+                        Vector2 start = new Vector2(-2, -2);
+                        Vector2 end = new Vector2(-2, -10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Up()
+                    {
+                        Vector2 start = new Vector2(-2, -10);
+                        Vector2 end = new Vector2(-2, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownRight()
+                    {
+                        Vector2 start = new Vector2(-2, -2);
+                        Vector2 end = new Vector2(-10, -10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpLeft()
+                    {
+                        Vector2 start = new Vector2(-10, -10);
+                        Vector2 end = new Vector2(-2, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownLeft()
+                    {
+                        Vector2 start = new Vector2(-2, -10);
+                        Vector2 end = new Vector2(-10, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpRight()
+                    {
+                        Vector2 start = new Vector2(-2, -10);
+                        Vector2 end = new Vector2(-10, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+                }
+
+                public class _Quadrant_posX_negY
+                {
+                    [Test]
+                    public void _MoveTowards_Right()
+                    {
+                        Vector2 start = new Vector2(2, -2);
+                        Vector2 end = new Vector2(10, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Left()
+                    {
+                        Vector2 start = new Vector2(10, -2);
+                        Vector2 end = new Vector2(2, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Down()
+                    {
+                        Vector2 start = new Vector2(2, -2);
+                        Vector2 end = new Vector2(2, -10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Up()
+                    {
+                        Vector2 start = new Vector2(2, -10);
+                        Vector2 end = new Vector2(2, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownRight()
+                    {
+                        Vector2 start = new Vector2(2, -2);
+                        Vector2 end = new Vector2(10, -10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpLeft()
+                    {
+                        Vector2 start = new Vector2(10, -10);
+                        Vector2 end = new Vector2(2, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownLeft()
+                    {
+                        Vector2 start = new Vector2(2, -2);
+                        Vector2 end = new Vector2(10, -10);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpRight()
+                    {
+                        Vector2 start = new Vector2(2, -10);
+                        Vector2 end = new Vector2(10, -2);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+                }
+
+                public class _Center
+                {
+                    [Test]
+                    public void _MoveTowards_Right()
+                    {
+                        Vector2 start = new Vector2(-5, 0);
+                        Vector2 end = new Vector2(5, 0);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Left()
+                    {
+                        Vector2 start = new Vector2(5, 0);
+                        Vector2 end = new Vector2(-5, 0);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Down()
+                    {
+                        Vector2 start = new Vector2(0, -5);
+                        Vector2 end = new Vector2(0, 5);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_Up()
+                    {
+                        Vector2 start = new Vector2(0, 5);
+                        Vector2 end = new Vector2(0, -5);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownRight()
+                    {
+                        Vector2 start = new Vector2(-5, -5);
+                        Vector2 end = new Vector2(5, 5);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpLeft()
+                    {
+                        Vector2 start = new Vector2(5, 5);
+                        Vector2 end = new Vector2(-5, -5);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_DownLeft()
+                    {
+                        Vector2 start = new Vector2(5, -5);
+                        Vector2 end = new Vector2(-5, 5);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+
+                    [Test]
+                    public void _MoveTowards_UpRight()
+                    {
+                        Vector2 start = new Vector2(-5, 5);
+                        Vector2 end = new Vector2(5, -5);
+
+                        while (true)
+                        {
+                            Vector2 result = Tools.Other.MoveTowards(start, end, 1, 1);
+
+                            if (result == start)
+                                break;
+
+                            start = result;
+                        }
+
+                        Assert.IsTrue(Vector2.Distance(start, end) <= 1);
+                    }
+                }
+
             }
         }
     }
