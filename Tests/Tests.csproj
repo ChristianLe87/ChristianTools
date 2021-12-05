@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="MonoGame.Framework.DesktopGL" />
+    <None Remove="Newtonsoft.Json" />
+  </ItemGroup>
+  <Import Project="..\ChristianTools.UI\ChristianTools.UI.projitems" Label="Shared" Condition="Exists('..\ChristianTools.UI\ChristianTools.UI.projitems')" />
+  <Import Project="..\ChristianTools.Tools\ChristianTools.Tools.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Tools\ChristianTools.Tools.projitems')" />
+  <Import Project="..\ChristianTools.Systems\ChristianTools.Systems.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Systems\ChristianTools.Systems.projitems')" />
+  <Import Project="..\ChristianTools.Helpers\ChristianTools.Helpers.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Helpers\ChristianTools.Helpers.projitems')" />
+  <Import Project="..\ChristianTools.Entities\ChristianTools.Entities.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Entities\ChristianTools.Entities.projitems')" />
+  <Import Project="..\ChristianTools.Components\ChristianTools.Components.projitems" Label="Shared" Condition="Exists('..\ChristianTools.Components\ChristianTools.Components.projitems')" />
+</Project>
