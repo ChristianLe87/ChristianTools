@@ -12,6 +12,10 @@ namespace ChristianTools.Components
 
         public Camera() { }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewport">Viewport = Game1.spriteBatch.GraphicsDevice.Viewport;</param>
         public Camera(Viewport viewport)
         {
             this.viewport = viewport;
