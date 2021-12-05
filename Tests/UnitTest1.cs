@@ -5,159 +5,355 @@ using NUnit.Framework;
 
 namespace Tests
 {
-    public class Tests
+    public class _ChristianTools_Tools
     {
-        public class Test_ChristianTools_Tools
+        public class _Texture
         {
-            public class Test_GetRectangle
+            [Test]
+            public void _GetTileTextures()
             {
-                static Vector2 centerPosition = new Vector2(0, 0);
-                static int Width = 100;
-                static int Height = 100;
-                static int scaleFactor = 1;
+                Assert.Warn("");
+            }
 
-                public class Test_GetRectangle_Rectangle
-                {
-                    [Test]
-                    public void Test_Rectangle_centerPosition_Width_Height()
-                    {
-                        Rectangle rectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
+            [Test]
+            public void _ScaleTexture()
+            {
+                Assert.Warn("");
+            }
 
-                        // check center
-                        Assert.True(rectangle.Center.X == centerPosition.X);
-                        Assert.True(rectangle.Center.Y == centerPosition.Y);
+            [Test]
+            public void _GetTexture()
+            {
+                Assert.Warn("");
+            }
 
-                        // check size
-                        Assert.True(rectangle.Width == Width);
-                        Assert.True(rectangle.Height == Height);
+            [Test]
+            public void _CropTexture()
+            {
+                Assert.Warn("");
+            }
 
-                        // check top right corner
-                        Assert.True(rectangle.X == (centerPosition.X - (Width / 2)));
-                        Assert.True(rectangle.Y == (centerPosition.Y - (Height / 2)));
-                    }
+            [Test]
+            public void _CropAndScaleTexture()
+            {
+                Assert.Warn("");
+            }
 
-                    [Test]
-                    public void Test_Rectangle_centerPosition_texture2D()
-                    {
-                        // Todo: Implement me
-                    }
-                }
+            [Test]
+            public void _CreateColorTexture()
+            {
+                Assert.Warn("");
+            }
 
-                public class Test_GetRectangle_Up
-                {
-                    [Test]
-                    public void Test_Up_mainRectangle_scaleFactor()
-                    {
-                        Rectangle mainRectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
-                        Rectangle upRectangle = Tools.GetRectangle.Up(mainRectangle, scaleFactor);
+            [Test]
+            public void _ReColorTexture()
+            {
+                Assert.Warn("");
+            }
 
-                        Rectangle expected_upRectangle = new Rectangle(
-                            x: mainRectangle.X,
-                            y: mainRectangle.Y - scaleFactor,
-                            width: Width,
-                            height: scaleFactor
-                        );
+            [Test]
+            public void _CreateCircleTexture()
+            {
+                Assert.Warn("");
+            }
 
-                        // check center
-                        Assert.True(upRectangle.Center.X == expected_upRectangle.Center.X);
-                        Assert.True(upRectangle.Center.Y == expected_upRectangle.Center.Y);
+            [Test]
+            public void _CreateTriangle()
+            {
+                Assert.Warn("");
+            }
+        }
 
-                        // check size
-                        Assert.True(upRectangle.Width == Width);
-                        Assert.True(upRectangle.Height == scaleFactor);
+        public class _Font
+        {
+            [Test]
+            public void _GenerateFont()
+            {
+                Assert.Warn("");
+            }
 
-                        // check top right corner
-                        Assert.True(upRectangle.X == expected_upRectangle.X);
-                        Assert.True(upRectangle.Y == expected_upRectangle.Y);
-                    }
-                }
+            [Test]
+            public void _GetFont()
+            {
+                Assert.Warn("");
+            }
+        }
 
-                public class Test_GetRectangle_Down
-                {
-                    [Test]
-                    public void Test_Down_mainRectangle_scaleFactor()
-                    {
-                        Rectangle mainRectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
-                        Rectangle downRectangle = Tools.GetRectangle.Down(mainRectangle, scaleFactor);
+        public class _Sound
+        {
+            [Test]
+            public void _GetSoundEffect()
+            {
+                Assert.Warn("");
+            }
+        }
 
-                        Rectangle expected_downRectangle = new Rectangle(
-                            x: mainRectangle.X,
-                            y: mainRectangle.Y + Height,
-                            width: Width,
-                            height: scaleFactor
-                        );
+        public class _MyMath
+        {
+            [Test]
+            public void _M()
+            {
+                Assert.Warn("");
+            }
 
-                        // check center
-                        Assert.True(downRectangle.Center.X == expected_downRectangle.Center.X);
-                        Assert.True(downRectangle.Center.Y == expected_downRectangle.Center.Y);
+            [Test]
+            public void _B()
+            {
+                Assert.Warn("");
+            }
 
-                        // check size
-                        Assert.True(downRectangle.Width == Width);
-                        Assert.True(downRectangle.Height == scaleFactor);
+            [Test]
+            public void _DegreeToRadian()
+            {
+                Assert.Warn("");
+            }
 
-                        // check top right corner
-                        Assert.True(downRectangle.X == expected_downRectangle.X);
-                        Assert.True(downRectangle.Y == expected_downRectangle.Y);
-                    }
-                }
+            [Test]
+            public void _RadianToDegree()
+            {
+                Assert.Warn("");
+            }
 
-                public class Test_GetRectangle_Right
-                {
-                    [Test]
-                    public void Test_Right_mainRectangle_scaleFactor()
-                    {
-                        Rectangle mainRectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
-                        Rectangle rightRectangle = Tools.GetRectangle.Right(mainRectangle, scaleFactor);
+            [Test]
+            public void GetAngleInDegree()
+            {
+                Assert.Warn("");
+            }
 
-                        Rectangle expected_rightRectangle = new Rectangle(
-                            x: mainRectangle.X + Width,
-                            y: mainRectangle.Y,
-                            width: scaleFactor,
-                            height: Height
-                        );
+            [Test]
+            public void _GetAngleInRadians()
+            {
+                Assert.Warn("");
+            }
 
-                        // check center
-                        Assert.True(rightRectangle.Center.X == expected_rightRectangle.Center.X);
-                        Assert.True(rightRectangle.Center.Y == expected_rightRectangle.Center.Y);
+            [Test]
+            public void _Get_X_and_Y_BasedOnAngle_Radians()
+            {
+                Assert.Warn("");
+            }
 
-                        // check size
-                        Assert.True(rightRectangle.Width == scaleFactor);
-                        Assert.True(rightRectangle.Height == Height);
+            [Test]
+            public void _Get_X_and_Y_BasedOnAngle_Degrees()
+            {
+                Assert.Warn("");
+            }
 
-                        // check top right corner
-                        Assert.True(rightRectangle.X == expected_rightRectangle.X);
-                        Assert.True(rightRectangle.Y == expected_rightRectangle.Y);
-                    }
-                }
+            [Test]
+            public void _Pitagoras_GetSlope()
+            {
+                Assert.Warn("");
+            }
 
-                public class Test_GetRectangle_Left
-                {
-                    [Test]
-                    public void Test_Left_mainRectangle_scaleFactor()
-                    {
-                        Rectangle mainRectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
-                        Rectangle leftRectangle = Tools.GetRectangle.Left(mainRectangle, scaleFactor);
+            [Test]
+            public void _Pitagoras_Get_Y()
+            {
+                Assert.Warn("");
+            }
 
-                        Rectangle expected_leftRectangle = new Rectangle(
-                            x: mainRectangle.X - scaleFactor,
-                            y: mainRectangle.Y,
-                            width: scaleFactor,
-                            height: Height
-                        );
+            [Test]
+            public void _Pitagoras_Get_X()
+            {
+                Assert.Warn("");
+            }
+        }
 
-                        // check center
-                        Assert.True(leftRectangle.Center.X == expected_leftRectangle.Center.X);
-                        Assert.True(leftRectangle.Center.Y == expected_leftRectangle.Center.Y);
+        public class _GetRectangle
+        {
+            static Vector2 centerPosition = new Vector2(0, 0);
+            static int Width = 100;
+            static int Height = 100;
+            static int scaleFactor = 1;
 
-                        // check size
-                        Assert.True(leftRectangle.Width == scaleFactor);
-                        Assert.True(leftRectangle.Height == Height);
+            [Test]
+            public void _Rectangle_1()
+            {
+                Rectangle rectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
 
-                        // check top right corner
-                        Assert.True(leftRectangle.X == expected_leftRectangle.X);
-                        Assert.True(leftRectangle.Y == expected_leftRectangle.Y);
-                    }
-                }
+                // check center
+                Assert.True(rectangle.Center.X == centerPosition.X);
+                Assert.True(rectangle.Center.Y == centerPosition.Y);
+
+                // check size
+                Assert.True(rectangle.Width == Width);
+                Assert.True(rectangle.Height == Height);
+
+                // check top right corner
+                Assert.True(rectangle.X == (centerPosition.X - (Width / 2)));
+                Assert.True(rectangle.Y == (centerPosition.Y - (Height / 2)));
+            }
+
+            [Test]
+            public void _Rectangle_2()
+            {
+                Assert.Warn("");
+            }
+
+
+            [Test]
+            public void _Up()
+            {
+                Rectangle mainRectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
+                Rectangle upRectangle = Tools.GetRectangle.Up(mainRectangle, scaleFactor);
+
+                Rectangle expected_upRectangle = new Rectangle(
+                    x: mainRectangle.X,
+                    y: mainRectangle.Y - scaleFactor,
+                    width: Width,
+                    height: scaleFactor
+                );
+
+                // check center
+                Assert.True(upRectangle.Center.X == expected_upRectangle.Center.X);
+                Assert.True(upRectangle.Center.Y == expected_upRectangle.Center.Y);
+
+                // check size
+                Assert.True(upRectangle.Width == Width);
+                Assert.True(upRectangle.Height == scaleFactor);
+
+                // check top right corner
+                Assert.True(upRectangle.X == expected_upRectangle.X);
+                Assert.True(upRectangle.Y == expected_upRectangle.Y);
+            }
+
+            [Test]
+            public void _Down()
+            {
+                Rectangle mainRectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
+                Rectangle downRectangle = Tools.GetRectangle.Down(mainRectangle, scaleFactor);
+
+                Rectangle expected_downRectangle = new Rectangle(
+                    x: mainRectangle.X,
+                    y: mainRectangle.Y + Height,
+                    width: Width,
+                    height: scaleFactor
+                );
+
+                // check center
+                Assert.True(downRectangle.Center.X == expected_downRectangle.Center.X);
+                Assert.True(downRectangle.Center.Y == expected_downRectangle.Center.Y);
+
+                // check size
+                Assert.True(downRectangle.Width == Width);
+                Assert.True(downRectangle.Height == scaleFactor);
+
+                // check top right corner
+                Assert.True(downRectangle.X == expected_downRectangle.X);
+                Assert.True(downRectangle.Y == expected_downRectangle.Y);
+            }
+
+            [Test]
+            public void _Right()
+            {
+                Rectangle mainRectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
+                Rectangle rightRectangle = Tools.GetRectangle.Right(mainRectangle, scaleFactor);
+
+                Rectangle expected_rightRectangle = new Rectangle(
+                    x: mainRectangle.X + Width,
+                    y: mainRectangle.Y,
+                    width: scaleFactor,
+                    height: Height
+                );
+
+                // check center
+                Assert.True(rightRectangle.Center.X == expected_rightRectangle.Center.X);
+                Assert.True(rightRectangle.Center.Y == expected_rightRectangle.Center.Y);
+
+                // check size
+                Assert.True(rightRectangle.Width == scaleFactor);
+                Assert.True(rightRectangle.Height == Height);
+
+                // check top right corner
+                Assert.True(rightRectangle.X == expected_rightRectangle.X);
+                Assert.True(rightRectangle.Y == expected_rightRectangle.Y);
+            }
+
+            [Test]
+            public void _Left()
+            {
+                Rectangle mainRectangle = Tools.GetRectangle.Rectangle(centerPosition, Width, Height);
+                Rectangle leftRectangle = Tools.GetRectangle.Left(mainRectangle, scaleFactor);
+
+                Rectangle expected_leftRectangle = new Rectangle(
+                    x: mainRectangle.X - scaleFactor,
+                    y: mainRectangle.Y,
+                    width: scaleFactor,
+                    height: Height
+                );
+
+                // check center
+                Assert.True(leftRectangle.Center.X == expected_leftRectangle.Center.X);
+                Assert.True(leftRectangle.Center.Y == expected_leftRectangle.Center.Y);
+
+                // check size
+                Assert.True(leftRectangle.Width == scaleFactor);
+                Assert.True(leftRectangle.Height == Height);
+
+                // check top right corner
+                Assert.True(leftRectangle.X == expected_leftRectangle.X);
+                Assert.True(leftRectangle.Y == expected_leftRectangle.Y);
+            }
+        }
+
+        public class _Other
+        {
+            [Test]
+            public void _Expand()
+            {
+                Assert.Warn("");
+            }
+
+            [Test]
+            public void _FlattenArray()
+            {
+                Assert.Warn("");
+            }
+
+            [Test]
+            public void _RotateArray_90_AntiClockwise()
+            {
+                Assert.Warn("");
+            }
+
+            [Test]
+            public void _RotateArray_180_AntiClockwise()
+            {
+                Assert.Warn("");
+            }
+
+            [Test]
+            public void _RotateArray_270_AntiClockwise()
+            {
+                Assert.Warn("");
+            }
+
+            [Test]
+            public void _ToMultidimentional()
+            {
+                Assert.Warn("");
+            }
+
+            [Test]
+            public void _MoveTowards_1()
+            {
+                Assert.Warn("");
+            }
+
+            [Test]
+            public void _MoveTowards_2()
+            {
+                Assert.Warn("");
+            }
+
+            [Test]
+            public void _MoveTowards_3()
+            {
+                Assert.Warn("");
+            }
+
+            [Test]
+            public void _MoveTowards_4()
+            {
+                Assert.Warn("");
             }
         }
     }
