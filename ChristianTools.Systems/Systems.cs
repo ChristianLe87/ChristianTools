@@ -2,6 +2,7 @@
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Shared;
 
 namespace ChristianTools.Systems
 {
@@ -18,6 +19,20 @@ namespace ChristianTools.Systems
                 if (scene.entities != null)
                     for (int i = 0; i < scene.entities.Count; i++)
                         scene.entities[i].Update(lastInputState, inputState);
+            }
+
+            internal static void Player(InputState lastInputState, InputState inputState, IEntity player, int scaleFactor)
+            {
+                if (inputState.Down)
+                    player.rigidbody.Move_Y(scaleFactor);
+                else if (inputState.Up)
+                    player.rigidbody.Move_Y(-scaleFactor);
+
+                if (inputState.Right)
+                    player.rigidbody.Move_X(scaleFactor);
+                else if (inputState.Left)
+                    player.rigidbody.Move_X(-scaleFactor);
+
             }
 
             public static void Entity(InputState lastInputState, InputState inputState, IEntity entity)

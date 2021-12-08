@@ -95,7 +95,7 @@ namespace ChristianTools.Helpers
             if (camera != null)
             {
                 Point point = mouseState.Position;
-                point += camera.center.ToPoint();
+                point += new Point(camera.rectangle.X, camera.rectangle.Y);
                 return point;
             }
             else

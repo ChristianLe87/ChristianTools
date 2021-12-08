@@ -37,7 +37,7 @@ namespace ChristianTools.UI
 
         public void Update(InputState inputState, InputState lastInputState)
         {
-            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height);
+            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.rectangle.X), (int)(rectangle.Y + camera.rectangle.Y), rectangle.Width, rectangle.Height);
             if (tempRectangle.Contains(inputState.Mouse_Position(camera)))
             {
                 isMouseOver = true;
@@ -55,7 +55,7 @@ namespace ChristianTools.UI
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.center.X), (int)(rectangle.Y + camera.center.Y), rectangle.Width, rectangle.Height);
+            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.rectangle.X), (int)(rectangle.Y + camera.rectangle.Y), rectangle.Width, rectangle.Height);
 
             if (isMouseOver)
                 spriteBatch.Draw(mouseOverTexture, tempRectangle, Color.White);
