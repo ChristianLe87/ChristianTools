@@ -9,6 +9,11 @@ namespace ChristianTools.Components
         public List<Tile> tiles;
         public delegate void DxOnUpdate();
 
+        public Map()
+        {
+            this.tiles = new List<Tile>();
+        }
+
         public Map(Dictionary<int, Texture2D> textures, int[,] map, int scaleFactor)
         {
             this.tiles = new List<Tile>();

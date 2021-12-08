@@ -3,6 +3,7 @@ using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shared;
+using System.Linq;
 
 namespace ChristianTools.Systems
 {
@@ -21,7 +22,7 @@ namespace ChristianTools.Systems
                         scene.entities[i].Update(lastInputState, inputState);
             }
 
-            internal static void Player(InputState lastInputState, InputState inputState, IEntity player, int scaleFactor)
+            internal static void Player(InputState lastInputState, InputState inputState, IEntity player, IScene scene, int scaleFactor)
             {
                 if (inputState.Down)
                     player.rigidbody.Move_Y(scaleFactor);
@@ -33,6 +34,8 @@ namespace ChristianTools.Systems
                 else if (inputState.Left)
                     player.rigidbody.Move_X(-scaleFactor);
 
+
+                player.rigidbody.Update(scene.map);
             }
 
             public static void Entity(InputState lastInputState, InputState inputState, IEntity entity)
@@ -53,8 +56,8 @@ namespace ChristianTools.Systems
                     foreach (var entity in scene.entities)
                         entity.Draw(spriteBatch);
 
-                /*if (scene.map != null)
-                    scene.map.Draw(spriteBatch);*/
+                if (scene.map != null)
+                    scene.map.Draw(spriteBatch);
             }
 
             public static void Entity(SpriteBatch spriteBatch, IEntity entity)

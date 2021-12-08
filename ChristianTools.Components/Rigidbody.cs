@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Components
 {
@@ -31,13 +33,33 @@ namespace ChristianTools.Components
             this.scaleFactor = scaleFactor;
         }
 
-        public void Update()
+        public void Update(Map map = null)
         {
             // Force
             centerPosition += force;
 
             // Gravity
-            centerPosition += gravity;
+            Tile tileDown = map?.tiles
+                .OfType<Tile>()
+                .Where(x => x.rigidbody.rectangle.Intersects(rectangleDown))
+                .FirstOrDefault();
+
+            if (tileDown == null)
+            {
+                Move_X(gravity.X);
+                Move_Y(gravity.Y);
+            }
+            else
+            {
+                Move_X(gravity.X);
+                //Move_Y(gravity.Y);
+
+                // get space between player and tile down
+                int spaceBetween = tileDown.rigidbody.rectangle.Y - rectangle.Bottom;
+
+                // adjust space between player and tile down
+                Move_Y(spaceBetween);
+            }
         }
 
         public void AddForce(Vector2 forceToAdd)
