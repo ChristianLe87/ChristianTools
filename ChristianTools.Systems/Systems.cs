@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shared;
 using System.Linq;
+using ChristianTools.Components;
 
 namespace ChristianTools.Systems
 {
@@ -22,17 +23,62 @@ namespace ChristianTools.Systems
                         scene.entities[i].Update(lastInputState, inputState);
             }
 
-            internal static void Player(InputState lastInputState, InputState inputState, IEntity player, IScene scene, int scaleFactor)
+            internal static void PlayerMetroid(InputState lastInputState, InputState inputState, IEntity player, IScene scene, int scaleFactor)
             {
+                if (player.characterState.ToString().Contains("Right"))
+                    player.characterState = Components.Animation.CharacterState.IdleRight;
+                else if (player.characterState.ToString().Contains("Left"))
+                    player.characterState = Components.Animation.CharacterState.IdleLeft;
+
                 if (inputState.Down)
-                    player.rigidbody.Move_Y(scaleFactor);
+                    player.rigidbody.Move_Y(scaleFactor*6);
                 else if (inputState.Up)
-                    player.rigidbody.Move_Y(-scaleFactor);
+                    player.rigidbody.Move_Y(-scaleFactor*3);
 
                 if (inputState.Right)
-                    player.rigidbody.Move_X(scaleFactor);
+                {
+                    player.characterState = Components.Animation.CharacterState.MoveRight;
+                    player.rigidbody.Move_X(scaleFactor*2);
+                }                    
                 else if (inputState.Left)
-                    player.rigidbody.Move_X(-scaleFactor);
+                {
+                    player.characterState = Components.Animation.CharacterState.MoveLeft;
+                    player.rigidbody.Move_X(-scaleFactor*2);
+                }
+
+
+                Tile tile = scene.map.tiles.Where(x => x.rigidbody.rectangle.Intersects(player.rigidbody.rectangleDown)).FirstOrDefault();
+                if(tile == null)
+                {
+                    if(player.characterState.ToString().Contains("Right"))
+                        player.characterState = Animation.CharacterState.FallRight;
+                    else if (player.characterState.ToString().Contains("Left"))
+                        player.characterState = Animation.CharacterState.FallLeft;
+                }
+                else
+                {
+                    player.components.Set("isJumping", false);
+                }
+
+                if (lastInputState.Jump == false && inputState.Jump == true)
+                {
+                    player.components.Set("isJumping", true);
+
+                    if (player.characterState.ToString().Contains("Right"))
+                        player.characterState = Animation.CharacterState.JumpRight;
+                    else if (player.characterState.ToString().Contains("Left"))
+                        player.characterState = Animation.CharacterState.JumpLeft;
+                }
+
+
+                if(player.components.Get<bool>("isJumping") == true)
+                {
+                    if (player.characterState.ToString().Contains("Right"))
+                        player.characterState = Animation.CharacterState.JumpRight;
+                    else if (player.characterState.ToString().Contains("Left"))
+                        player.characterState = Animation.CharacterState.JumpLeft;
+                }
+
 
                 player.animation.Update();
                 player.rigidbody.Update(scene.map);

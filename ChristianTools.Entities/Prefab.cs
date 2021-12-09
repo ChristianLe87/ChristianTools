@@ -26,7 +26,7 @@ namespace ChristianTools.Entities
         DxDrawSystem dxDrawSystem;
 
         public Animation animation { get; }
-        public Animation.CharacterState characterState { get; }
+        public Animation.CharacterState characterState { get; set; }
 
         public Prefab(Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", DxInitializeSystem dxInitializeSystem = null, DxUpdateSystem dxUpdateSystem = null, DxDrawSystem dxDrawSystem = null)
         {

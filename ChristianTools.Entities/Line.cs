@@ -21,7 +21,7 @@ namespace ChristianTools.Entities
         public Components.Components components { get; set; }
 
         public Animation animation { get; }
-        public Animation.CharacterState characterState { get; }
+        public Animation.CharacterState characterState { get; set; }
 
         public Line(Point start, Point end, int thickness, Texture2D texture2D, string tag)
         {

@@ -17,13 +17,14 @@ namespace ChristianTools.Components
             this.texture2D = texture2D;
         }
 
-        public Animation(Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations, int framesPerTexture = 16)
+        public Animation(Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations, int framesPerTexture = 8)
         {
             this.animations = animations;
-            this.framesPerTexture = 50;// framesPerTexture;
+            this.framesPerTexture = framesPerTexture;
             this.frameCount = 0;
             this.frame = 0;
         }
+
         public void Update()
         {
             frameCount++;
@@ -56,7 +57,7 @@ namespace ChristianTools.Components
             }
 
 
-            if (frame == animations[characterState].Item1.Length)
+            if (frame >= animations[characterState].Item1.Length)
                 frame = 0;
 
 
@@ -67,10 +68,12 @@ namespace ChristianTools.Components
         {
             IdleRight,
             IdleLeft,
-            WalkRight,
-            WalkLeft,
+            MoveRight,
+            MoveLeft,
             JumpRight,
             JumpLeft,
+            FallRight,
+            FallLeft,
             HangRight,
             HangLeft,
             ShootRight,

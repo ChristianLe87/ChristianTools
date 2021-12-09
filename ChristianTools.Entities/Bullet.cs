@@ -18,7 +18,7 @@ namespace ChristianTools.Entities
         public Components.Components components { get; set; }
 
         public Animation animation { get; }
-        public Animation.CharacterState characterState { get; }
+        public Animation.CharacterState characterState { get; set; }
 
         public Bullet(Texture2D texture2D, Vector2 centerPosition, Vector2 direction, int steps, TimeSpan timeToDeactivate = new TimeSpan(), int FPS = 60)
         {
