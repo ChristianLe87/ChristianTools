@@ -5,8 +5,11 @@ namespace ChristianTools.Components
 {
     public class Animation
     {
-        Dictionary<CharacterState, Texture2D[]> animations;
+        Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations;
+
         int framesPerTexture;
+        int frameCount;
+        int frame;
         Texture2D texture2D;
 
         public Animation(Texture2D texture2D)
@@ -14,38 +17,50 @@ namespace ChristianTools.Components
             this.texture2D = texture2D;
         }
 
-        public Animation(Dictionary<CharacterState, Texture2D[]> animations, int framesPerTexture)
+        public Animation(Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations, int framesPerTexture = 16)
         {
             this.animations = animations;
-            this.animationFrameCount = 0;
-            this.framesPerTexture = 16;
+            this.framesPerTexture = 50;// framesPerTexture;
+            this.frameCount = 0;
+            this.frame = 0;
         }
         public void Update()
         {
-            animationFrameCount++;
+            frameCount++;
         }
 
-
-        /*public Texture2D GetTexture()
-        {
-            return texture2D;
-        }*/
-
-        int animationFrameCount;
         public Texture2D GetTexture(CharacterState characterState)
         {
-            if(animations == null)
+
+            if (animations == null)
                 return texture2D;
 
-            if (animationFrameCount > framesPerTexture)
-                animationFrameCount = 0;
 
-            int element = animationFrameCount < framesPerTexture / animations[characterState].Length ? 0 : 1;
+            if (frameCount >= framesPerTexture)
+            {
+                frameCount = 0;
 
-            if (animations[characterState].Length == 1)
-                return animations[characterState][0];
+                if (animations[characterState].Item2 == AnimationOption.Stop && frame == (animations[characterState].Item1.Length - 1))
+                {
+                    //frame++;
+                }
+                else// if(animations[characterState].Item2 == AnimationOption.Loop)
+                {
+                    frame++;
+                }
+                
+            }
             else
-                return animations[characterState][element];
+            {
+                frameCount++;
+            }
+
+
+            if (frame == animations[characterState].Item1.Length)
+                frame = 0;
+
+
+            return animations[characterState].Item1[frame];
         }
 
         public enum CharacterState
@@ -60,6 +75,13 @@ namespace ChristianTools.Components
             HangLeft,
             ShootRight,
             ShootLeft,
+        }
+
+        public enum AnimationOption
+        {
+            Loop,
+            //Bounce,
+            Stop,
         }
     }
 }

@@ -34,7 +34,7 @@ namespace ChristianTools.Systems
                 else if (inputState.Left)
                     player.rigidbody.Move_X(-scaleFactor);
 
-
+                player.animation.Update();
                 player.rigidbody.Update(scene.map);
             }
 

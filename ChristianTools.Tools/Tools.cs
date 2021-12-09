@@ -14,6 +14,36 @@ namespace ChristianTools.Tools
     {
         public class Texture
         {
+            /*public static Texture2D FlipTexture(Texture2D originalTexture)
+            {
+                return null;
+            }*/
+
+            public static Texture2D[] SliceHorizontalTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, int cuts)
+            {
+                Texture2D[] textures = new Texture2D[cuts];
+                int w = originalTexture.Width / cuts;
+                int h = originalTexture.Height;
+                for (int i = 0; i < cuts; i++)
+                {
+                    Rectangle rectangle = new Rectangle(i * w, 0, w, h);
+                    textures[i] = Tools.Texture.CropTexture(graphicsDevice, originalTexture, rectangle);
+                }
+
+                return textures;
+            }
+
+            /// <summary>
+            /// Automatic get a list of tiles based on a tilemap
+            /// </summary>
+            /// <param name="graphicsDevice"></param>
+            /// <param name="atlasTexture"></param>
+            /// <param name="pixelsPerTile_Width"></param>
+            /// <param name="pixelsPerTile_Height"></param>
+            /// <param name="units_Width"></param>
+            /// <param name="units_Height"></param>
+            /// <param name="scaleFactor"></param>
+            /// <returns></returns>
             public static Dictionary<int, Texture2D> GetTileTextures(GraphicsDevice graphicsDevice, Texture2D atlasTexture, int pixelsPerTile_Width, int pixelsPerTile_Height, int units_Width, int units_Height, int scaleFactor)
             {
                 Dictionary<int, Texture2D> tileTextures = new Dictionary<int, Texture2D>();
