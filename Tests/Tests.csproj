@@ -18,4 +18,5 @@
     <None Remove="MonoGame.Framework.DesktopGL" />
     <None Remove="Newtonsoft.Json" />
   </ItemGroup>
+  <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" Condition="Exists('..\ChristianTools\ChristianTools.projitems')" />
 </Project>
