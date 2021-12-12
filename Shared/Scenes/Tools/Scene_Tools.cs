@@ -20,8 +20,8 @@ namespace Shared
         public Map map { get; }
 
         public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+        public DxSceneUpdateSystem dxSceneUpdateSystem { get; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
 
         Texture2D subAtlas_1;
         Texture2D subAtlas_2;
@@ -126,21 +126,12 @@ namespace Shared
                     camera: camera
                 )
             };
-        }
 
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            if (UIs != null)
-                foreach (var ui in UIs)
-                    ui.Update(lastInputState, inputState);
+            this.dxSceneDrawSystem = (SpriteBatch spriteBatch) => Draw(spriteBatch);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (UIs != null)
-                foreach (var ui in UIs)
-                    ui.Draw(spriteBatch);
-
             spriteBatch.Draw(subAtlas_1, new Vector2(200, 200), Color.White);
             spriteBatch.Draw(subAtlas_2, new Vector2(275, 200), Color.White);
             spriteBatch.Draw(subAtlas_3, new Vector2(200, 275), Color.White);

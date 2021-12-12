@@ -117,13 +117,12 @@ namespace Shared
             {
                 Tools.Sound.GetSoundEffect(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, Path.Combine("Sounds", "EatingSound_WAV"))
             };
+
+            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);
         }
 
         public void Update(InputState lastInputState, InputState inputState)
         {
-            foreach (var ui in UIs)
-                ui.Update(lastInputState, inputState);
-
             List<HealthBar> healthBars = UIs.OfType<HealthBar>().ToList();
             foreach (var healthBar in healthBars)
             {
@@ -132,12 +131,6 @@ namespace Shared
                 else
                     healthBar.value = 100;
             }
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var ui in UIs)
-                ui.Draw(spriteBatch);
         }
     }
 }

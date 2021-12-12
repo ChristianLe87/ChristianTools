@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using ChristianTools.Components;
 using ChristianTools.Entities;
 using ChristianTools.Helpers;
-using ChristianTools.Systems;
 using ChristianTools.Tools;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Shared
 {
@@ -29,6 +24,7 @@ namespace Shared
 
         public Scene_Systems_DrawSystems()
         {
+            Initialize();
         }
 
         public void Initialize()
@@ -55,7 +51,6 @@ namespace Shared
                     dxUpdateSystem: (InputState lastInputState, InputState inputState, IEntity entity) => {
 
                         // Set rotation
-                        
                         double angleInDegrees = Tools.MyMath.GetAngleInDegree(entity.rigidbody.centerPosition, inputState.Mouse_Position().ToVector2());
 
                         entity.rigidbody.SetAngleRotation((float)angleInDegrees);
@@ -71,9 +66,6 @@ namespace Shared
                             entity.rigidbody.Move_Y(-1);
                         else if (inputState.Down)
                             entity.rigidbody.Move_Y(1);
-                    },
-                    dxDrawSystem: (SpriteBatch spriteBatch, IEntity entity) => {
-                        Systems.Draw.Entity(spriteBatch, entity);
                     }
                 ),
             };

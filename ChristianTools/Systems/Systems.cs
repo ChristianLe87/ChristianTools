@@ -26,7 +26,7 @@ namespace ChristianTools.Systems
                     scene.dxSceneUpdateSystem(lastInputState, inputState);
             }
 
-            public static void PlayerMetroid(InputState lastInputState, InputState inputState, IEntity player, IScene scene, int scaleFactor)
+            /*public static void PlayerMetroid(InputState lastInputState, InputState inputState, IEntity player, IScene scene, int scaleFactor)
             {
                 if (player.characterState.ToString().Contains("Right"))
                     player.characterState = CharacterState.IdleRight;
@@ -85,9 +85,9 @@ namespace ChristianTools.Systems
 
                 player.animation.Update();
                 player.rigidbody.Update(scene.map);
-            }
+            }*/
 
-            public static void Prefab(InputState lastInputState, InputState inputState, Entity prefab)
+            /*public static void Prefab(InputState lastInputState, InputState inputState, Entity prefab)
             {
                 if (prefab.isActive == true)
                 {
@@ -96,7 +96,7 @@ namespace ChristianTools.Systems
 
                     prefab.rigidbody.Update();
                 }
-            }
+            }*/
 
             public static void Entity(InputState lastInputState, InputState inputState, IEntity entity)
             {
@@ -129,7 +129,7 @@ namespace ChristianTools.Systems
                 ui.Draw(spriteBatch);
             }
 
-            public static void Prefab(SpriteBatch spriteBatch, Entity prefab)
+            /*public static void Prefab(SpriteBatch spriteBatch, Entity prefab)
             {
                 if (prefab.isActive == true)
                 {
@@ -138,7 +138,7 @@ namespace ChristianTools.Systems
                     else
                         spriteBatch.Draw(prefab.animation.GetTexture(prefab.characterState), prefab.rigidbody.rectangle, Color.White);
                 }
-            }
+            }*/
 
             public static void Entity(SpriteBatch spriteBatch, IEntity entity)
             {

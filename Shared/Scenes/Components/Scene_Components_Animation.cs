@@ -6,7 +6,6 @@ using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using static ChristianTools.Components.Animation;
 
 namespace Shared
 {
@@ -23,9 +22,6 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-
-        MyCharacter myCharacter;
-
         public Scene_Components_Animation()
         {
             Initialize();
@@ -33,8 +29,6 @@ namespace Shared
 
         public void Initialize()
         {
-            this.myCharacter = new MyCharacter();
-
             this.UIs = new List<IUI>()
             {
                 new Button(
@@ -48,32 +42,31 @@ namespace Shared
                     camera
                 ),
             };
-        }
 
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            myCharacter.Update(lastInputState, inputState);
-
-            foreach (var ui in UIs)
-                ui.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            myCharacter.Draw(spriteBatch);
-
-            foreach (var ui in UIs)
-                ui.Draw(spriteBatch);
+            this.entities = new List<IEntity>()
+            {
+                new MyCharacter()
+            };
         }
 
 
-        class MyCharacter
+        class MyCharacter : IEntity
         {
-            Animation animation;
-            CharacterState characterState;
+            public bool isActive { get; set; }
+            public string tag { get; private set; }
+            public Rigidbody rigidbody { get; }
+            public int health { get; }
+            public ExtraComponents extraComponents { get; set; }
+            public Animation animation { get; }
+            public CharacterState characterState { get; set; }
+
+            public DxEntityInitializeSystem dxEntityInitializeSystem { get; set; }
+            public DxEntityUpdateSystem dxEntityUpdateSystem { get; set; }
+            public DxEntityDrawSystem dxEntityDrawSystem { get; set; }
 
             public MyCharacter()
             {
+                this.isActive = true;
                 this.characterState = CharacterState.IdleLeft;
 
                 Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations = new Dictionary<CharacterState, (Texture2D[], AnimationOption)>()
@@ -87,7 +80,11 @@ namespace Shared
                 };
 
                 this.animation = new Animation(animations: animations, framesPerTexture: 16);
+                this.rigidbody = new Rigidbody(new Vector2(300, 300), 1, 1);
+
+                this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => Update(lastInputState, inputState);
             }
+
 
             public void Update(InputState lastInputState, InputState inputState)
             {
@@ -116,13 +113,6 @@ namespace Shared
 
                 animation.Update();
             }
-
-            public void Draw(SpriteBatch spriteBatch)
-            {
-                spriteBatch.Draw(animation.GetTexture(characterState), new Vector2(WK.Default.Width / 2, WK.Default.Height / 2), Color.White);
-            }
         }
     }
-
-    
 }
