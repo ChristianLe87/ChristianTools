@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{859C4805-7FB8-4BF8-82A3-8523829756FE}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ChristianTools</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Font.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\GetRectangle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\MyMath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Other.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Sound.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Animation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Components.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Map.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Bullet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Prefab.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ChristianGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Interfaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\JsonSerialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\TestCross.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Dialogue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\HealthBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Systems.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Tools\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Components\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Entities\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)UI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Systems\" />
+  </ItemGroup>
+</Project>

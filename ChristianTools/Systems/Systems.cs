@@ -31,26 +31,26 @@ namespace ChristianTools.Systems
                     player.characterState = Components.Animation.CharacterState.IdleLeft;
 
                 if (inputState.Down)
-                    player.rigidbody.Move_Y(scaleFactor*6);
+                    player.rigidbody.Move_Y(scaleFactor * 6);
                 else if (inputState.Up)
-                    player.rigidbody.Move_Y(-scaleFactor*3);
+                    player.rigidbody.Move_Y(-scaleFactor * 3);
 
                 if (inputState.Right)
                 {
                     player.characterState = Components.Animation.CharacterState.MoveRight;
-                    player.rigidbody.Move_X(scaleFactor*2);
-                }                    
+                    player.rigidbody.Move_X(scaleFactor * 2);
+                }
                 else if (inputState.Left)
                 {
                     player.characterState = Components.Animation.CharacterState.MoveLeft;
-                    player.rigidbody.Move_X(-scaleFactor*2);
+                    player.rigidbody.Move_X(-scaleFactor * 2);
                 }
 
 
                 Tile tile = scene.map.tiles.Where(x => x.rigidbody.rectangle.Intersects(player.rigidbody.rectangleDown)).FirstOrDefault();
-                if(tile == null)
+                if (tile == null)
                 {
-                    if(player.characterState.ToString().Contains("Right"))
+                    if (player.characterState.ToString().Contains("Right"))
                         player.characterState = Animation.CharacterState.FallRight;
                     else if (player.characterState.ToString().Contains("Left"))
                         player.characterState = Animation.CharacterState.FallLeft;
@@ -71,7 +71,7 @@ namespace ChristianTools.Systems
                 }
 
 
-                if(player.components.Get<bool>("isJumping") == true)
+                if (player.components.Get<bool>("isJumping") == true)
                 {
                     if (player.characterState.ToString().Contains("Right"))
                         player.characterState = Animation.CharacterState.JumpRight;

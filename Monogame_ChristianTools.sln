@@ -3,37 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.810.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.Components", "ChristianTools.Components\ChristianTools.Components.shproj", "{CDB87FE8-6EA9-4547-911C-5BE24DC22592}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.Entities", "ChristianTools.Entities\ChristianTools.Entities.shproj", "{1B2885FA-2205-4A44-B3DA-C38928E44C7C}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.Helpers", "ChristianTools.Helpers\ChristianTools.Helpers.shproj", "{D303B2DE-52D1-4698-824B-F0D486922015}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.Tools", "ChristianTools.Tools\ChristianTools.Tools.shproj", "{F57B7D86-CEA4-408B-B3D0-E2A1BA9F7D05}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.UI", "ChristianTools.UI\ChristianTools.UI.shproj", "{587E6C09-E5E8-4A29-BC2C-B65BC740CA4B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_EasyTests", "My_EasyTests\My_EasyTests.csproj", "{A09AE51C-AF7D-4C91-A6CF-8A303C1BC698}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_Template", "My_Template\My_Template.csproj", "{618EDD90-260C-45E3-9428-68890E2DD553}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showroom_dotNet5", "Showroom_dotNet5\Showroom_dotNet5.csproj", "{4A000878-67A9-472F-8281-640D886C5375}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zTools", "zTools\zTools.shproj", "{D60AF7BE-2C38-4681-BA98-9039780BAD3A}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zTopView_RPG", "zTopView_RPG\zTopView_RPG.shproj", "{ED877A14-7DC7-43B7-82F0-5547C7B8FFD4}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zUI", "zUI\zUI.shproj", "{7D244132-1A04-4DDC-9226-C930CE5444E6}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "zWorldElements", "zWorldElements\zWorldElements.shproj", "{9282EB3F-168D-424A-ACF3-B39917467ED2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showroom_macOS", "Showroom_macOS\Showroom_macOS.csproj", "{F080F81E-1D36-4D7F-9C54-C4155E22A57A}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{F5F95732-8049-455E-8C64-A492809A988F}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools.Systems", "ChristianTools.Systems\ChristianTools.Systems.shproj", "{8CB8F55D-7885-443E-AACF-28F6B6206F37}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{9DDAF5BD-8332-4FD6-8491-7F4F99CBCA56}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "My_EasyTests", "My_EasyTests\My_EasyTests.csproj", "{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "My_Template", "My_Template\My_Template.csproj", "{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Showroom_dotNet5", "Showroom_dotNet5\Showroom_dotNet5.csproj", "{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zTools", "zTools\zTools.shproj", "{8954FD6C-722F-46E4-9E9C-5B0A2582DF34}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zTopView_RPG", "zTopView_RPG\zTopView_RPG.shproj", "{81ED84EF-A91A-403C-A85B-BDC4FEC3E379}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zUI", "zUI\zUI.shproj", "{A4BACFE5-0FD9-4E94-8457-F8635E8CB2A5}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zWorldElements", "zWorldElements\zWorldElements.shproj", "{0417DADF-EE03-41E3-867A-B1A319BC6CDF}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools", "ChristianTools\ChristianTools.shproj", "{859C4805-7FB8-4BF8-82A3-8523829756FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,18 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A09AE51C-AF7D-4C91-A6CF-8A303C1BC698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A09AE51C-AF7D-4C91-A6CF-8A303C1BC698}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A09AE51C-AF7D-4C91-A6CF-8A303C1BC698}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A09AE51C-AF7D-4C91-A6CF-8A303C1BC698}.Release|Any CPU.Build.0 = Release|Any CPU
-		{618EDD90-260C-45E3-9428-68890E2DD553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{618EDD90-260C-45E3-9428-68890E2DD553}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{618EDD90-260C-45E3-9428-68890E2DD553}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{618EDD90-260C-45E3-9428-68890E2DD553}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A000878-67A9-472F-8281-640D886C5375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A000878-67A9-472F-8281-640D886C5375}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A000878-67A9-472F-8281-640D886C5375}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A000878-67A9-472F-8281-640D886C5375}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F080F81E-1D36-4D7F-9C54-C4155E22A57A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F080F81E-1D36-4D7F-9C54-C4155E22A57A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F080F81E-1D36-4D7F-9C54-C4155E22A57A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,6 +39,18 @@ Global
 		{9DDAF5BD-8332-4FD6-8491-7F4F99CBCA56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DDAF5BD-8332-4FD6-8491-7F4F99CBCA56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DDAF5BD-8332-4FD6-8491-7F4F99CBCA56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

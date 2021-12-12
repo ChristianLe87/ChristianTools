@@ -71,14 +71,14 @@ namespace Shared
             {
                 this.characterState = CharacterState.IdleLeft;
 
-                Dictionary<CharacterState, Texture2D[]> animations = new Dictionary<CharacterState, Texture2D[]>()
+                Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations = new Dictionary<CharacterState, (Texture2D[], AnimationOption)>()
                 {
-                    { CharacterState.IdleLeft, new Texture2D[] { WK.Texture.Player.IdleLeft_Multiply } },
-                    { CharacterState.IdleRight, new Texture2D[] { WK.Texture.Player.IdleRight_Multiply } },
-                    { CharacterState.WalkLeft, new Texture2D[] { WK.Texture.Player.WalkLeft1_Multiply, WK.Texture.Player.WalkLeft2_Multiply } },
-                    { CharacterState.WalkRight, new Texture2D[] { WK.Texture.Player.WalkRight1_Multiply, WK.Texture.Player.WalkRight2_Multiply } },
-                    { CharacterState.JumpLeft, new Texture2D[] { WK.Texture.Player.JumpLeft_Multiply } },
-                    { CharacterState.JumpRight, new Texture2D[] { WK.Texture.Player.JumpRight_Multiply } },
+                    { CharacterState.IdleLeft, (new Texture2D[] { WK.Texture.Player.IdleLeft_Multiply }, AnimationOption.Loop) },
+                    { CharacterState.IdleRight, (new Texture2D[] { WK.Texture.Player.IdleRight_Multiply }, AnimationOption.Loop) },
+                    { CharacterState.MoveLeft, (new Texture2D[] { WK.Texture.Player.WalkLeft1_Multiply }, AnimationOption.Loop) },
+                    { CharacterState.MoveRight, (new Texture2D[] { WK.Texture.Player.WalkRight1_Multiply}, AnimationOption.Loop) },
+                    { CharacterState.JumpLeft, (new Texture2D[] { WK.Texture.Player.JumpLeft_Multiply }, AnimationOption.Loop) },
+                    { CharacterState.JumpRight, (new Texture2D[] { WK.Texture.Player.JumpRight_Multiply }, AnimationOption.Loop) },
                 };
 
                 this.animation = new Animation(animations: animations, framesPerTexture: 16);
@@ -88,11 +88,11 @@ namespace Shared
             {
                 if (inputState.Right)
                 {
-                    characterState = CharacterState.WalkRight;
+                    characterState = CharacterState.MoveRight;
                 }
                 else if (inputState.Left)
                 {
-                    characterState = CharacterState.WalkLeft;
+                    characterState = CharacterState.MoveLeft;
                 }
                 else if (inputState.Jump)
                 {
