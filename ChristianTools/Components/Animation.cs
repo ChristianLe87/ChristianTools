@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Components
@@ -64,27 +65,6 @@ namespace ChristianTools.Components
             return animations[characterState].Item1[frame];
         }
 
-        public enum CharacterState
-        {
-            IdleRight,
-            IdleLeft,
-            MoveRight,
-            MoveLeft,
-            JumpRight,
-            JumpLeft,
-            FallRight,
-            FallLeft,
-            HangRight,
-            HangLeft,
-            ShootRight,
-            ShootLeft,
-        }
-
-        public enum AnimationOption
-        {
-            Loop,
-            //Bounce,
-            Stop,
-        }
+       
     }
 }

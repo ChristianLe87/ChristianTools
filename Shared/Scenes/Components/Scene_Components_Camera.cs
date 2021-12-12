@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using ChristianTools.Components;
+using ChristianTools.Entities;
 using ChristianTools.Helpers;
+using ChristianTools.Tools;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -17,6 +19,10 @@ namespace Shared
         public List<SoundEffect> soundEffects { get; }
         public Camera camera { get; private set; }
         public Map map { get; }
+
+        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
+        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
         Vector2 position;
         Texture2D texture2D;
@@ -56,6 +62,14 @@ namespace Shared
                 ),
                 new Label(new Rectangle(10, 10, 200, 30), WK.Font.font_7, "Use \"Up\", \"Down\", \"Right\", \"Left\"\nto move camera", Label.TextAlignment.Midle_Left, "", camera, WK.Texture.LightGray),
             };
+
+            Texture2D Red = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red, Width: 50, Height: 50);
+            this.entities = new List<IEntity>()
+            {
+                new Entity(Red, new Vector2(WK.Default.Width / 2, WK.Default.Height / 2)),
+            };
+
+            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);
         }
 
         public void Update(InputState lastInputState, InputState inputState)
@@ -70,17 +84,6 @@ namespace Shared
                 position.Y++;
 
             camera.Update(position);
-
-            foreach (var ui in UIs)
-                ui.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var ui in UIs)
-                ui.Draw(spriteBatch);
-
-            spriteBatch.Draw(texture2D, new Rectangle(250, 250, 50, 50), Color.White);
         }
     }
 }

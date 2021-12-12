@@ -17,6 +17,11 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
+        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
+        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+
+
         public Scene_Components_Map()
         {
             Initialize();

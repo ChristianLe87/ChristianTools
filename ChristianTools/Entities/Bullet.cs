@@ -15,10 +15,15 @@ namespace ChristianTools.Entities
         public bool isActive { get; private set; }
         public string tag { get; }
         public int health { get; }
-        public Components.Components components { get; set; }
+        public ExtraComponents extraComponents { get; set; }
 
         public Animation animation { get; }
-        public Animation.CharacterState characterState { get; set; }
+        public CharacterState characterState { get; set; }
+
+        public DxEntityInitializeSystem dxEntityInitializeSystem { get; }
+        public DxEntityUpdateSystem dxEntityUpdateSystem { get; private set; }
+        public DxEntityDrawSystem dxEntityDrawSystem { get; }
+
 
         public Bullet(Texture2D texture2D, Vector2 centerPosition, Vector2 direction, int steps, TimeSpan timeToDeactivate = new TimeSpan(), int FPS = 60)
         {
@@ -32,9 +37,11 @@ namespace ChristianTools.Entities
             float y = (float)(steps * Math.Sin(radAngle));
 
             this.rigidbody = new Rigidbody(centerPosition, texture2D.Width, texture2D.Height, force: new Vector2(x, y));
+
+            this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => BulletUpdateSystem(lastInputState, inputState, entity);
         }
 
-        public void Update(InputState lastInputState = null, InputState inputState = null)
+        public void BulletUpdateSystem(InputState lastInputState, InputState inputState, IEntity entity)
         {
             // Implementation
             if (isActive == true)
@@ -55,12 +62,6 @@ namespace ChristianTools.Entities
                         isActive = false;
                 }
             }
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            if (isActive == true)
-                spriteBatch.Draw(animation.GetTexture(characterState), rigidbody.rectangle, Color.White);
         }
     }
 }

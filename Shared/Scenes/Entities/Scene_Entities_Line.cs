@@ -20,6 +20,10 @@ namespace Shared
         public Camera camera { get; }
         public Map map { get; }
 
+        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
+        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+
         public Scene_Entities_Line()
         {
             Initialize();
@@ -51,29 +55,14 @@ namespace Shared
                     tag: "line1"
                 ),
             };
+
+            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => SceneUpdateSystem(lastInputState, inputState);
         }
 
-        public void Update(InputState lastInputState, InputState inputState)
+        public void SceneUpdateSystem(InputState lastInputState, InputState inputState)
         {
-            if (UIs != null)
-                foreach (var ui in UIs)
-                    ui.Update(lastInputState, inputState);
-
-            foreach (var entity in entities)
-                entity.Update(lastInputState, inputState);
-
             Line line = entities.OfType<Line>().First();
-            line.UpdatePoints(end: inputState.Mouse_Position());
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            if (UIs != null)
-                foreach (var ui in UIs)
-                    ui.Draw(spriteBatch);
-
-            foreach (var entity in entities)
-                entity.Draw(spriteBatch);
+            line.UpdatePoints(start: null, end: inputState.Mouse_Position());
         }
     }
 }

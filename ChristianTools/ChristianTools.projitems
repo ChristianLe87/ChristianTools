@@ -25,9 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Prefab.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ChristianGame.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Interfaces.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\JsonSerialization.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TestCross.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
@@ -35,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\HealthBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Systems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />

@@ -19,6 +19,10 @@ namespace Shared
         public Camera camera { get; }
         public Map map { get; }
 
+        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
+        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+
         Texture2D subAtlas_1;
         Texture2D subAtlas_2;
         Texture2D subAtlas_3;

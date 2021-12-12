@@ -21,6 +21,10 @@ namespace Shared
         public Camera camera { get; }
         public Map map { get; }
 
+        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
+        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+
         Vector2 centerPosition = WK.Default.Center.ToVector2();
 
         public Scene_Entities_Bullet()
@@ -53,13 +57,12 @@ namespace Shared
             };
 
             this.entities = new List<IEntity>();
-
+            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => SceneUpdateSystem(lastInputState, inputState);
         }
 
-        public void Update(InputState lastInputState, InputState inputState)
+        public void SceneUpdateSystem(InputState lastInputState, InputState inputState)
         {
-
-            if(lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
+            if (lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
             {
                 Bullet bullet = new Bullet(
                     texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.White, 10),
@@ -70,22 +73,6 @@ namespace Shared
                 );
                 entities.Add(bullet);
             }
-
-
-            foreach (var ui in UIs)
-                ui.Update(lastInputState, inputState);
-
-            foreach (var entity in entities)
-                entity.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var ui in UIs)
-                ui.Draw(spriteBatch);
-
-            foreach (var entity in entities)
-                entity.Draw(spriteBatch);
         }
     }
 }

@@ -19,6 +19,10 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; }
 
+        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
+        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+
         public Scene_Components_Rigidbody()
         {
             Initialize();
@@ -35,7 +39,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "jump",
-                    OnClickAction: () => Jump(),
+                    OnClickAction: null,
                     camera
                 ),
                 new Button(
@@ -51,39 +55,15 @@ namespace Shared
             };
 
 
-            Prefab prefab = new Prefab(
+            Entity entity = new Entity(
                 texture2D: WK.Texture.Player.IdleLeft_Multiply,
                 centerPosition: WK.Default.Center.ToVector2(),
                 dxUpdateSystem: null//() => Jump()
             );
-            prefab.rigidbody.AddForce(new Vector2(0, 1));
+            entity.rigidbody.AddForce(new Vector2(0, 1));
 
             this.entities = new List<IEntity>();
-            this.entities.Add(prefab);
-        }
-
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            foreach (var ui in UIs)
-                ui.Update(lastInputState, inputState);
-
-            foreach (var entity in entities)
-                entity.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var ui in UIs)
-                ui.Draw(spriteBatch);
-
-            foreach (var entity in entities)
-                entity.Draw(spriteBatch);
-        }
-
-
-        private void Jump()
-        {
-
+            this.entities.Add(entity);
         }
     }
 }

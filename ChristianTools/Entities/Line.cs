@@ -18,10 +18,14 @@ namespace ChristianTools.Entities
         public bool isActive { get; }
         public string tag { get; }
         public int health { get; }
-        public Components.Components components { get; set; }
+        public ExtraComponents extraComponents { get; set; }
 
         public Animation animation { get; }
-        public Animation.CharacterState characterState { get; set; }
+        public CharacterState characterState { get; set; }
+
+        public DxEntityInitializeSystem dxEntityInitializeSystem { get; }
+        public DxEntityUpdateSystem dxEntityUpdateSystem { get; }
+        public DxEntityDrawSystem dxEntityDrawSystem { get; }
 
         public Line(Point start, Point end, int thickness, Texture2D texture2D, string tag)
         {
@@ -32,13 +36,11 @@ namespace ChristianTools.Entities
             this.tag = tag;
 
             CreateLine();
+
+            this.dxEntityDrawSystem = (SpriteBatch spriteBatch, IEntity entity) => Draw(spriteBatch);
         }
 
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-        }
-
-        public void UpdatePoints(Point? start = null, Point? end = null)
+        public void UpdatePoints(Point? start, Point? end)
         {
             if (start != null)
                 this.start = new Point(start.Value.X, start.Value.Y);

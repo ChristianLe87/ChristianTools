@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using ChristianTools.Components;
+using ChristianTools.Entities;
 
 namespace ChristianTools.Systems
 {
@@ -11,7 +12,7 @@ namespace ChristianTools.Systems
     {
         public class Update
         {
-            public static void All(InputState lastInputState, InputState inputState, IScene scene)
+            public static void Scene(InputState lastInputState, InputState inputState, IScene scene)
             {
                 if (scene.UIs != null)
                     foreach (var ui in scene.UIs)
@@ -19,15 +20,18 @@ namespace ChristianTools.Systems
 
                 if (scene.entities != null)
                     for (int i = 0; i < scene.entities.Count; i++)
-                        scene.entities[i].Update(lastInputState, inputState);
+                        Systems.Update.Entity(lastInputState, inputState, scene.entities[i]);
+
+                if (scene.dxSceneUpdateSystem != null)
+                    scene.dxSceneUpdateSystem(lastInputState, inputState);
             }
 
-            internal static void PlayerMetroid(InputState lastInputState, InputState inputState, IEntity player, IScene scene, int scaleFactor)
+            public static void PlayerMetroid(InputState lastInputState, InputState inputState, IEntity player, IScene scene, int scaleFactor)
             {
                 if (player.characterState.ToString().Contains("Right"))
-                    player.characterState = Components.Animation.CharacterState.IdleRight;
+                    player.characterState = CharacterState.IdleRight;
                 else if (player.characterState.ToString().Contains("Left"))
-                    player.characterState = Components.Animation.CharacterState.IdleLeft;
+                    player.characterState = CharacterState.IdleLeft;
 
                 if (inputState.Down)
                     player.rigidbody.Move_Y(scaleFactor * 6);
@@ -36,12 +40,12 @@ namespace ChristianTools.Systems
 
                 if (inputState.Right)
                 {
-                    player.characterState = Components.Animation.CharacterState.MoveRight;
+                    player.characterState = CharacterState.MoveRight;
                     player.rigidbody.Move_X(scaleFactor * 2);
                 }
                 else if (inputState.Left)
                 {
-                    player.characterState = Components.Animation.CharacterState.MoveLeft;
+                    player.characterState = CharacterState.MoveLeft;
                     player.rigidbody.Move_X(-scaleFactor * 2);
                 }
 
@@ -50,32 +54,32 @@ namespace ChristianTools.Systems
                 if (tile == null)
                 {
                     if (player.characterState.ToString().Contains("Right"))
-                        player.characterState = Animation.CharacterState.FallRight;
+                        player.characterState = CharacterState.FallRight;
                     else if (player.characterState.ToString().Contains("Left"))
-                        player.characterState = Animation.CharacterState.FallLeft;
+                        player.characterState = CharacterState.FallLeft;
                 }
                 else
                 {
-                    player.components.Set("isJumping", false);
+                    player.extraComponents.Set("isJumping", false);
                 }
 
                 if (lastInputState.Jump == false && inputState.Jump == true)
                 {
-                    player.components.Set("isJumping", true);
+                    player.extraComponents.Set("isJumping", true);
 
                     if (player.characterState.ToString().Contains("Right"))
-                        player.characterState = Animation.CharacterState.JumpRight;
+                        player.characterState = CharacterState.JumpRight;
                     else if (player.characterState.ToString().Contains("Left"))
-                        player.characterState = Animation.CharacterState.JumpLeft;
+                        player.characterState = CharacterState.JumpLeft;
                 }
 
 
-                if (player.components.Get<bool>("isJumping") == true)
+                if (player.extraComponents.Get<bool>("isJumping") == true)
                 {
                     if (player.characterState.ToString().Contains("Right"))
-                        player.characterState = Animation.CharacterState.JumpRight;
+                        player.characterState = CharacterState.JumpRight;
                     else if (player.characterState.ToString().Contains("Left"))
-                        player.characterState = Animation.CharacterState.JumpLeft;
+                        player.characterState = CharacterState.JumpLeft;
                 }
 
 
@@ -83,45 +87,82 @@ namespace ChristianTools.Systems
                 player.rigidbody.Update(scene.map);
             }
 
+            public static void Prefab(InputState lastInputState, InputState inputState, Entity prefab)
+            {
+                if (prefab.isActive == true)
+                {
+                    if (prefab.dxEntityUpdateSystem != null)
+                        prefab.dxEntityUpdateSystem(lastInputState, inputState, prefab);
+
+                    prefab.rigidbody.Update();
+                }
+            }
+
             public static void Entity(InputState lastInputState, InputState inputState, IEntity entity)
             {
-                entity.Update(lastInputState, inputState);
+                if (entity.dxEntityUpdateSystem != null)
+                    entity.dxEntityUpdateSystem(lastInputState, inputState, entity);
             }
         }
 
         public class Draw
         {
-            public static void All(SpriteBatch spriteBatch, IScene scene)
+            public static void Scene(SpriteBatch spriteBatch, IScene scene)
             {
                 if (scene.UIs != null)
                     foreach (var ui in scene.UIs)
-                        ui.Draw(spriteBatch);
+                        Systems.Draw.UI(spriteBatch, ui);
 
                 if (scene.entities != null)
                     foreach (var entity in scene.entities)
-                        entity.Draw(spriteBatch);
+                        Systems.Draw.Entity(spriteBatch, entity);
 
                 if (scene.map != null)
                     scene.map.Draw(spriteBatch);
+
+                if (scene.dxSceneDrawSystem != null)
+                    scene.dxSceneDrawSystem(spriteBatch);
+            }
+
+            public static void UI(SpriteBatch spriteBatch, IUI ui)
+            {
+                ui.Draw(spriteBatch);
+            }
+
+            public static void Prefab(SpriteBatch spriteBatch, Entity prefab)
+            {
+                if (prefab.isActive == true)
+                {
+                    if (prefab.dxEntityDrawSystem != null)
+                        prefab.dxEntityDrawSystem(spriteBatch, prefab);
+                    else
+                        spriteBatch.Draw(prefab.animation.GetTexture(prefab.characterState), prefab.rigidbody.rectangle, Color.White);
+                }
             }
 
             public static void Entity(SpriteBatch spriteBatch, IEntity entity)
             {
-                spriteBatch.Draw(entity.animation.GetTexture(entity.characterState), entity.rigidbody.rectangle, Color.White);
-            }
+                if (entity.isActive == true)
+                {
+                    Texture2D texture2D = entity.animation.GetTexture(entity.characterState);
+                    Rectangle rectangle = new Rectangle((int)entity.rigidbody.centerPosition.X, (int)entity.rigidbody.centerPosition.Y, texture2D.Width, texture2D.Height);
 
-            public static void EntityWithRotation(SpriteBatch spriteBatch, IEntity entity)
-            {
-                spriteBatch.Draw(
-                    texture: entity.animation.GetTexture(entity.characterState),
-                    destinationRectangle: new Rectangle((int)entity.rigidbody.centerPosition.X, (int)entity.rigidbody.centerPosition.Y, entity.rigidbody.rectangle.Width, entity.rigidbody.rectangle.Height),
-                    sourceRectangle: null,
-                    color: Color.White,
-                    rotation: (float)Tools.Tools.MyMath.DegreeToRadian(entity.rigidbody.rotationDegree),// always value radians
-                    origin: new Vector2(entity.rigidbody.rectangle.Width / 2, entity.rigidbody.rectangle.Height / 2),
-                    effects: SpriteEffects.None,
-                    layerDepth: 0f
-                );
+
+                    spriteBatch.Draw(
+                        texture: texture2D,
+                        destinationRectangle: rectangle,
+                        sourceRectangle: null,
+                        color: Color.White,
+                        rotation: (float)Tools.Tools.MyMath.DegreeToRadian(entity.rigidbody.rotationDegree),// always value radians
+                        origin: new Vector2(rectangle.Width / 2, rectangle.Height / 2),
+                        effects: SpriteEffects.None,
+                        layerDepth: 0f
+                    );
+                }
+
+
+                if (entity.dxEntityDrawSystem != null)
+                    entity.dxEntityDrawSystem(spriteBatch, entity);
             }
         }
     }

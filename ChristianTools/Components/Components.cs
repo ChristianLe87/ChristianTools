@@ -4,33 +4,33 @@ using System.Linq;
 
 namespace ChristianTools.Components
 {
-    public class Components
+    public class ExtraComponents
     {
-        Dictionary<string, object> components = new Dictionary<string, object>();
+        Dictionary<string, object> extraComponents = new Dictionary<string, object>();
 
         public T Get<T>(string key)
         {
-            return (T)components[key];
+            return (T)extraComponents[key];
         }
 
         public void Add<T>(string key, T value)
         {
-            components.Add(key, (T)value);
+            extraComponents.Add(key, (T)value);
         }
 
         public void Set<T>(string key, T value)
         {
-            components[key] = (T)value;
+            extraComponents[key] = (T)value;
         }
 
         public bool Exist(string key)
         {
-            return components.Keys.Contains(key);
+            return extraComponents.Keys.Contains(key);
         }
 
         public void Remove(string key)
         {
-            components.Remove(key);
+            extraComponents.Remove(key);
         }
     }
 }

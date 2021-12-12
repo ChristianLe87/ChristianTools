@@ -101,7 +101,9 @@ namespace ChristianTools.Helpers
         {
             InputState inputState = new InputState();
 
-            scenes[actualScene].Update(lastInputState, inputState);   
+            Systems.Systems.Update.Scene(lastInputState, inputState, scenes[actualScene]);
+            //scenes[actualScene].Update(lastInputState, inputState);   
+
 
             ChristianGame.lastInputState = inputState;
 
@@ -113,7 +115,8 @@ namespace ChristianTools.Helpers
             base.GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(sortMode: SpriteSortMode.Deferred, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform);
 
-            scenes[actualScene].Draw(spriteBatch);
+            Systems.Systems.Draw.Scene(spriteBatch, scenes[actualScene]);
+            //scenes[actualScene].Draw(spriteBatch);
 
             spriteBatch.End();
             base.Draw(gameTime);

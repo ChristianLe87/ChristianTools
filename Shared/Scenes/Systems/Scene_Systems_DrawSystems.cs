@@ -23,6 +23,10 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; }
 
+        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
+        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+
         public Scene_Systems_DrawSystems()
         {
         }
@@ -45,62 +49,34 @@ namespace Shared
 
             this.entities = new List<IEntity>()
             {
-                new Prefab(
+                new Entity(
                     texture2D: Tools.Texture.CreateTriangle(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink, 100, 100, Tools.Texture.PointDirection.Right),
                     centerPosition: WK.Default.Center.ToVector2(),
-                    dxUpdateSystem: (InputState lastInputState, InputState inputState, Prefab prefab) => {
+                    dxUpdateSystem: (InputState lastInputState, InputState inputState, IEntity entity) => {
 
                         // Set rotation
-                        /*double angleInRadians = Tools.MyMath.GetAngleInRadians(
-                            Point1_Start: prefab.rigidbody.centerPosition,
-                            Point1_End: new Vector2(prefab.rigidbody.centerPosition.X + WK.Default.Width, prefab.rigidbody.centerPosition.Y),
-                            Point2_Start: prefab.rigidbody.centerPosition,
-                            Point2_End: inputState.Mouse_Position().ToVector2()
-                        );
-                        double angleInDegrees = Tools.MyMath.RadianToDegree(angleInRadians);*/
-                        double angleInDegrees = Tools.MyMath.GetAngleInDegree(prefab.rigidbody.centerPosition, inputState.Mouse_Position().ToVector2());
+                        
+                        double angleInDegrees = Tools.MyMath.GetAngleInDegree(entity.rigidbody.centerPosition, inputState.Mouse_Position().ToVector2());
 
-                        prefab.rigidbody.SetAngleRotation((float)angleInDegrees);
+                        entity.rigidbody.SetAngleRotation((float)angleInDegrees);
 
 
                         // Set position
                         if (inputState.Left)
-                            prefab.rigidbody.Move_X(-1);
+                            entity.rigidbody.Move_X(-1);
                         else if (inputState.Right)
-                            prefab.rigidbody.Move_X(1);
+                            entity.rigidbody.Move_X(1);
 
                         if (inputState.Up)
-                            prefab.rigidbody.Move_Y(-1);
+                            entity.rigidbody.Move_Y(-1);
                         else if (inputState.Down)
-                            prefab.rigidbody.Move_Y(1);
+                            entity.rigidbody.Move_Y(1);
                     },
-                    dxDrawSystem: (SpriteBatch spriteBatch, Prefab prefab) => {
-                        Systems.Draw.EntityWithRotation(spriteBatch, prefab);
+                    dxDrawSystem: (SpriteBatch spriteBatch, IEntity entity) => {
+                        Systems.Draw.Entity(spriteBatch, entity);
                     }
                 ),
             };
-        }
-
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            if (UIs != null)
-                foreach (var ui in UIs)
-                    ui.Update(lastInputState, inputState);
-
-            if (entities != null)
-                foreach (var entity in entities)
-                    entity.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            if (UIs != null)
-                foreach (var ui in UIs)
-                    ui.Draw(spriteBatch);
-
-            if (entities != null)
-                foreach (var entity in entities)
-                    entity.Draw(spriteBatch);
         }
     }
 }
