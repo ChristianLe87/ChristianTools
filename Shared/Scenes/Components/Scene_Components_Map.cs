@@ -30,7 +30,7 @@ namespace Shared
         public void Initialize()
         {
             Dictionary<int, Texture2D> tileTextures = WK.Texture.Tiles.tileTextures;
-            this.map = new Map(tileTextures, WK.Map.map0, WK.Default.ScaleFactor);
+            this.map = new Map(tileTextures, WK.Map.map0);
 
             this.UIs = new List<IUI>()
             {

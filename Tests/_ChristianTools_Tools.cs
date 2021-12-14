@@ -1,4 +1,5 @@
-﻿using ChristianTools.Tools;
+﻿using ChristianTools.Helpers;
+using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NUnit.Framework;
@@ -162,7 +163,7 @@ namespace Tests
             static Vector2 centerPosition = new Vector2(0, 0);
             static int Width = 100;
             static int Height = 100;
-            static int scaleFactor = 1;
+            static int scaleFactor = 3;
 
             [Test]
             public void _Rectangle_1()
@@ -186,6 +187,10 @@ namespace Tests
             public void _Rectangle_2()
             {
                 Assert.Warn("");
+                return;
+
+                Texture2D texture = new Texture2D(null, Width, Height);
+                Rectangle rectangle = Tools.GetRectangle.Rectangle(centerPosition, texture);
             }
 
 

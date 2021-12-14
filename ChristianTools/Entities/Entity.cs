@@ -1,13 +1,10 @@
-﻿using System;
-using ChristianTools.Components;
+﻿using ChristianTools.Components;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using static ChristianTools.Components.Animation;
 
 namespace ChristianTools.Entities
 {
-
     /// <summary>
     /// Something with a texture and a rigidbody
     /// </summary>
@@ -25,25 +22,25 @@ namespace ChristianTools.Entities
         public DxEntityUpdateSystem dxEntityUpdateSystem { get; set; }
         public DxEntityDrawSystem dxEntityDrawSystem { get; set; }
 
-        public Entity(Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", DxEntityInitializeSystem dxInitializeSystem = null, DxEntityUpdateSystem dxUpdateSystem = null, DxEntityDrawSystem dxDrawSystem = null)
+        public Entity(
+            Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", Vector2? force = null,
+            DxEntityInitializeSystem dxInitializeSystem = null, DxEntityUpdateSystem dxUpdateSystem = null, DxEntityDrawSystem dxDrawSystem = null)
         {
+            this.characterState = CharacterState.IdleRight;
             this.animation = new Animation(texture2D);
-            this.rigidbody = new Rigidbody(centerPosition, texture2D.Width, texture2D.Height, Vector2.Zero, Vector2.Zero);
+            this.rigidbody = new Rigidbody(
+                centerPosition: centerPosition,
+                entity: this,
+                force: force
+            );
             this.isActive = isActive;
             this.tag = tag;
             this.dxEntityUpdateSystem = dxUpdateSystem;
             this.dxEntityDrawSystem = dxDrawSystem;
 
+            // Initialize
             if (dxInitializeSystem != null)
                 dxInitializeSystem();
         }
-
-        /*public void Update(InputState lastInputState, InputState inputState)
-        {
-        }*/
-
-        /*public void Draw(SpriteBatch spriteBatch)
-        {
-        }*/
     }
 }

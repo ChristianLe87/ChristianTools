@@ -13,16 +13,11 @@ namespace ChristianTools.Components
 
         public delegate void DxOnUpdate();
 
-        public Tile(Texture2D texture, Rectangle rectangle, int scaleFactor, string tag = "")
+        public Tile(Texture2D texture, Rectangle rectangle, string tag = "")
         {
             this.texture = texture;
             this.rigidbody = new Rigidbody(
-                centerPosition: rectangle.Center.ToVector2(),
-                Width: rectangle.Width,
-                Height: rectangle.Height,
-                gravity: Vector2.Zero,
-                force: Vector2.Zero,
-                scaleFactor: scaleFactor
+                rectangle: rectangle
             );
             this.tag = tag;
             this.isActive = true;

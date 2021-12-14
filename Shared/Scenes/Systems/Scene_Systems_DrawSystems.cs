@@ -53,7 +53,7 @@ namespace Shared
                         // Set rotation
                         double angleInDegrees = Tools.MyMath.GetAngleInDegree(entity.rigidbody.centerPosition, inputState.Mouse_Position().ToVector2());
 
-                        entity.rigidbody.SetAngleRotation((float)angleInDegrees);
+                        entity.rigidbody.rotationDegree = (float)angleInDegrees;
 
 
                         // Set position

@@ -80,7 +80,7 @@ namespace Shared
                 };
 
                 this.animation = new Animation(animations: animations, framesPerTexture: 16);
-                this.rigidbody = new Rigidbody(new Vector2(300, 300), 1, 1);
+                this.rigidbody = new Rigidbody(new Vector2(300, 300), this);
 
                 this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => Update(lastInputState, inputState);
             }

@@ -34,7 +34,7 @@ namespace ChristianTools.Helpers
         /// 
         /// </summary>
         /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
-        public ChristianGame(string gameDataFileName, int canvasWidth = 500, int canvasHeight = 500, string windowTitle = "Game", bool isMouseVisible = true)
+        public ChristianGame(string gameDataFileName, int canvasWidth = 500, int canvasHeight = 500, string windowTitle = "Game", bool isMouseVisible = true, bool IsFullScreen = false)
         {
             ChristianGame.gameDataFileName = gameDataFileName;
 
@@ -42,6 +42,8 @@ namespace ChristianTools.Helpers
             graphicsDeviceManager = new GraphicsDeviceManager(this);
             graphicsDeviceManager.PreferredBackBufferWidth = canvasWidth;
             graphicsDeviceManager.PreferredBackBufferHeight = canvasHeight;
+            graphicsDeviceManager.IsFullScreen = IsFullScreen;
+            //graphicsDeviceManager.ToggleFullScreen();
             graphicsDeviceManager.ApplyChanges();
 
 

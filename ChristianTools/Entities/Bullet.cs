@@ -36,7 +36,11 @@ namespace ChristianTools.Entities
             float x = (float)(steps * Math.Cos(radAngle));
             float y = (float)(steps * Math.Sin(radAngle));
 
-            this.rigidbody = new Rigidbody(centerPosition, texture2D.Width, texture2D.Height, force: new Vector2(x, y));
+            this.rigidbody = new Rigidbody(
+                centerPosition: centerPosition,
+                entity: this,
+                force: new Vector2(x, y)
+            );
 
             this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => BulletUpdateSystem(lastInputState, inputState, entity);
         }

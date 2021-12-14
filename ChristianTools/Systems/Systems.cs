@@ -101,7 +101,10 @@ namespace ChristianTools.Systems
             public static void Entity(InputState lastInputState, InputState inputState, IEntity entity)
             {
                 if (entity.dxEntityUpdateSystem != null)
+                {
                     entity.dxEntityUpdateSystem(lastInputState, inputState, entity);
+                }
+                    
             }
         }
 

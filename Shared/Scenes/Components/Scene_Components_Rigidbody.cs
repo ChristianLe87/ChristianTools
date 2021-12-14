@@ -60,7 +60,7 @@ namespace Shared
                 centerPosition: WK.Default.Center.ToVector2(),
                 dxUpdateSystem: null//() => Jump()
             );
-            entity.rigidbody.AddForce(new Vector2(0, 1));
+            entity.rigidbody.force = entity.rigidbody.force + new Vector2(0, 1);
 
             this.entities = new List<IEntity>();
             this.entities.Add(entity);

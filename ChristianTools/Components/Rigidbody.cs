@@ -1,99 +1,164 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Components
 {
     public class Rigidbody
     {
-        public float rotationDegree { get; private set; }
-        public Vector2 force { get; private set; }
-        public Vector2 gravity { get; private set; }
+        public float rotationDegree { get; set; }
+        // public void SetPosition(Vector2 position) => centerPosition = position;
 
-        public Vector2 centerPosition { get; set; }
+        public Vector2 force { get; set; }
+        public float SetForce_X { set => force = new Vector2(value, force.Y); }
+        public float SetForce_Y { set => force = new Vector2(force.X, value); }
 
-        public Rectangle rectangle { get => Tools.Tools.GetRectangle.Rectangle(centerPosition, Width, Height); }
+        public Vector2 centerPosition { get; private set; }
+        public Vector2 SetCenterPosition { set => centerPosition = value; }
 
-        public Rectangle rectangleUp { get => Tools.Tools.GetRectangle.Up(rectangle, scaleFactor); }
-        public Rectangle rectangleDown { get => Tools.Tools.GetRectangle.Down(rectangle, scaleFactor); }
-        public Rectangle rectangleLeft { get => Tools.Tools.GetRectangle.Left(rectangle, scaleFactor); }
-        public Rectangle rectangleRight { get => Tools.Tools.GetRectangle.Right(rectangle, scaleFactor); }
 
-        int Width;
-        int Height;
-
-        int scaleFactor;
-        public Rigidbody(Vector2 centerPosition, int Width, int Height, Vector2? gravity = null, Vector2? force = null, int scaleFactor = 0)
+        public Rectangle rectangle
         {
-            this.gravity = gravity == null ? Vector2.Zero : gravity.Value;
+            get => Tools.Tools.GetRectangle.Rectangle(
+                centerPosition: centerPosition,
+                Width: (entity?.animation.GetTexture(entity.characterState).Width ?? baseRectangle.Width),
+                Height: (entity?.animation.GetTexture(entity.characterState).Height ?? baseRectangle.Height)
+            );
+        }
+
+        public Rectangle rectangleUp(int scaleFactor) => Tools.Tools.GetRectangle.Up(rectangle, scaleFactor);
+        public Rectangle rectangleDown(int scaleFactor) => Tools.Tools.GetRectangle.Down(rectangle, scaleFactor);
+        public Rectangle rectangleLeft(int scaleFactor) => Tools.Tools.GetRectangle.Left(rectangle, scaleFactor);
+        public Rectangle rectangleRight(int scaleFactor) => Tools.Tools.GetRectangle.Right(rectangle, scaleFactor);
+
+        public Rectangle rectangleScaled(int scaleFactor) => Tools.Tools.GetRectangle.ScaleSides(rectangle, scaleFactor);
+
+        public bool isGrounded { get; private set; }
+
+        IEntity entity;
+        public Rigidbody(Vector2 centerPosition, IEntity entity, Vector2? force = null)
+        {
+            this.entity = entity;
             this.force = force == null ? Vector2.Zero : force.Value;
             this.centerPosition = centerPosition;
-            this.Width = Width;
-            this.Height = Height;
-            this.scaleFactor = scaleFactor;
+            this.isGrounded = false;
         }
 
-        public void Update(Map map = null)
+        Rectangle baseRectangle;
+        public Rigidbody(Rectangle rectangle, Vector2? force = null)
         {
-            // Force
+            this.baseRectangle = rectangle;
+            this.force = force == null ? Vector2.Zero : force.Value;
+            this.centerPosition = rectangle.Center.ToVector2();
+            this.isGrounded = false;
+        }
+
+
+        List<Tile> intersectTiles;
+        public void Update(List<Tile> intersectTiles = null)
+        {
+            if (intersectTiles != null)
+                this.intersectTiles = intersectTiles;
+
+
+            //Move_Y(force.Y);
             centerPosition += force;
-
-            // Gravity
-            Tile tileDown = map?.tiles
-                .OfType<Tile>()
-                .Where(x => x.rigidbody.rectangle.Intersects(rectangleDown))
-                .FirstOrDefault();
-
-            if (tileDown == null)
-            {
-                Move_X(gravity.X);
-                Move_Y(gravity.Y);
-            }
-            else
-            {
-                Move_X(gravity.X);
-                //Move_Y(gravity.Y);
-
-                // get space between player and tile down
-                int spaceBetween = tileDown.rigidbody.rectangle.Y - rectangle.Bottom;
-
-                // adjust space between player and tile down
-                Move_Y(spaceBetween);
-            }
         }
 
-        public void AddForce(Vector2 forceToAdd)
-        {
-            force += forceToAdd;
-        }
-
-        public void SetForce(Vector2 force)
-        {
-            this.force = force;
-        }
-
-        public void SetForce_X(float X)
-        {
-            this.force = new Vector2(X, force.Y);
-        }
-
-        public void SetForce_Y(float Y)
-        {
-            this.force = new Vector2(force.X, Y);
-        }
-
+        
         public void Move_X(float X)
         {
-            centerPosition = new Vector2(centerPosition.X + X, centerPosition.Y);
+            int scFct = (int)Math.Abs(X);
+
+            if (X > 0) // Right
+            {
+                if (CanMoveRight() == true)
+                {
+                    centerPosition = new Vector2(centerPosition.X + X, centerPosition.Y);
+                }
+                else if (CanMoveRight() == false)
+                {
+                    Tile tileRight = this.intersectTiles.Where(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle)).FirstOrDefault();
+                    int dif = rectangle.Right - tileRight.rigidbody.rectangle.X;
+                    centerPosition = new Vector2(centerPosition.X - dif, centerPosition.Y);
+                }
+            }
+            else if (X < 0)
+            {
+                if (CanMoveLeft() == true)
+                {
+                    centerPosition = new Vector2(centerPosition.X + X, centerPosition.Y);
+                }
+                else if (CanMoveLeft() == false)
+                {
+                    Tile tileLeft = this.intersectTiles.Where(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle)).FirstOrDefault();
+                    int dif = tileLeft.rigidbody.rectangle.Right - rectangle.X;
+                    centerPosition = new Vector2(centerPosition.X + dif, centerPosition.Y);
+                }
+            }
+
+            bool CanMoveRight()
+            {
+                Tile tileRight = this.intersectTiles.Where(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle)).FirstOrDefault();
+                return tileRight == null ? true : false;
+            }
+
+            bool CanMoveLeft()
+            {
+                Tile tileLeft = this.intersectTiles.Where(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle)).FirstOrDefault();
+                return tileLeft == null ? true : false;
+            }
         }
+
 
         public void Move_Y(float Y)
         {
-            centerPosition = new Vector2(centerPosition.X, centerPosition.Y + Y);
-        }
+            int scFct = (int)Math.Abs(Y);
 
-        public void SetAngleRotation(float rotationDegree)
-        {
-            this.rotationDegree = rotationDegree;
+            if (Y > 0) // down
+            {
+                if (CanMoveDown() == true)
+                {
+                    centerPosition = new Vector2(centerPosition.X, centerPosition.Y + Y);
+                }
+                else if (CanMoveDown() == false)
+                {
+                    Tile tileDown = this.intersectTiles.Where(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle)).FirstOrDefault();
+                    int dif = rectangle.Bottom - tileDown.rigidbody.rectangle.Y;
+
+                    dif = Math.Clamp(dif, 0, scFct * 2); // fix a problem that jump on corners
+                    centerPosition = new Vector2(centerPosition.X, centerPosition.Y - dif);
+                }
+            }
+            else if (Y < 0)
+            {
+                if (CanMoveUp() == true)
+                {
+                    centerPosition = new Vector2(centerPosition.X, centerPosition.Y + Y);
+                }
+                else if (CanMoveUp() == false)
+                {
+                    Tile tileUp = this.intersectTiles.Where(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle)).FirstOrDefault();
+                    int dif = tileUp.rigidbody.rectangle.Bottom - rectangle.Y;
+
+                    dif = Math.Clamp(dif, 0, scFct * 2); // fix a problem that jump on corners
+                    centerPosition = new Vector2(centerPosition.X, centerPosition.Y + dif);
+                }
+            }
+
+            bool CanMoveDown()
+            {
+                Tile tileDown = this.intersectTiles.Where(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle)).FirstOrDefault();
+                return tileDown == null ? true : false;
+            }
+
+            bool CanMoveUp()
+            {
+                Tile tileUp = this.intersectTiles.Where(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle)).FirstOrDefault();
+                return tileUp == null ? true : false;
+            }
         }
     }
 }

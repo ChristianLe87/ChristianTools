@@ -23,7 +23,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Bullet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Prefab.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ChristianGame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\JsonSerialization.cs" />
@@ -34,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Systems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Entity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />

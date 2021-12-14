@@ -19,6 +19,18 @@ namespace ChristianTools.Tools
                 return rectangle;
             }
 
+            public static Rectangle ScaleSides(Rectangle originalRectangle, int scaleFactor)
+            {
+                Rectangle rectangle = new Rectangle(
+                    x: (int)(originalRectangle.X - scaleFactor),
+                    y: (int)(originalRectangle.Y - scaleFactor),
+                    width: originalRectangle.Width + (scaleFactor * 2),
+                    height: originalRectangle.Height + (scaleFactor * 2)
+                );
+
+                return rectangle;
+            }
+
             public static Rectangle Rectangle(Vector2 centerPosition, Texture2D texture2D)
             {
                 return Rectangle(centerPosition, texture2D.Width, texture2D.Height);
