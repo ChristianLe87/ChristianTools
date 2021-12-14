@@ -9,7 +9,6 @@ namespace ChristianTools.Components
     public class Rigidbody
     {
         public float rotationDegree { get; set; }
-        // public void SetPosition(Vector2 position) => centerPosition = position;
 
         public Vector2 force { get; set; }
         public float SetForce_X { set => force = new Vector2(value, force.Y); }
@@ -17,7 +16,6 @@ namespace ChristianTools.Components
 
         public Vector2 centerPosition { get; private set; }
         public Vector2 SetCenterPosition { set => centerPosition = value; }
-
 
         public Rectangle rectangle
         {
@@ -62,12 +60,13 @@ namespace ChristianTools.Components
             if (intersectTiles != null)
                 this.intersectTiles = intersectTiles;
 
-
-            //Move_Y(force.Y);
             centerPosition += force;
         }
 
-        
+        /// <summary>
+        /// Move on X, if tiles, dont move
+        /// </summary>
+        /// <param name="X"></param>
         public void Move_X(float X)
         {
             int scFct = (int)Math.Abs(X);
@@ -80,7 +79,7 @@ namespace ChristianTools.Components
                 }
                 else if (CanMoveRight() == false)
                 {
-                    Tile tileRight = this.intersectTiles.Where(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle)).FirstOrDefault();
+                    Tile tileRight = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle));
                     int dif = rectangle.Right - tileRight.rigidbody.rectangle.X;
                     centerPosition = new Vector2(centerPosition.X - dif, centerPosition.Y);
                 }
@@ -93,7 +92,7 @@ namespace ChristianTools.Components
                 }
                 else if (CanMoveLeft() == false)
                 {
-                    Tile tileLeft = this.intersectTiles.Where(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle)).FirstOrDefault();
+                    Tile tileLeft = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle));
                     int dif = tileLeft.rigidbody.rectangle.Right - rectangle.X;
                     centerPosition = new Vector2(centerPosition.X + dif, centerPosition.Y);
                 }
@@ -101,18 +100,21 @@ namespace ChristianTools.Components
 
             bool CanMoveRight()
             {
-                Tile tileRight = this.intersectTiles.Where(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle)).FirstOrDefault();
-                return tileRight == null ? true : false;
+                int tilesRight = this.intersectTiles.Count(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle));
+                return tilesRight == 0 ? true : false;
             }
 
             bool CanMoveLeft()
             {
-                Tile tileLeft = this.intersectTiles.Where(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle)).FirstOrDefault();
-                return tileLeft == null ? true : false;
+                int tilesLeft = this.intersectTiles.Count(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle));
+                return tilesLeft == 0 ? true : false;
             }
         }
 
-
+        /// <summary>
+        /// Move on Y, if tiles, dont move
+        /// </summary>
+        /// <param name="Y"></param>
         public void Move_Y(float Y)
         {
             int scFct = (int)Math.Abs(Y);
@@ -125,7 +127,7 @@ namespace ChristianTools.Components
                 }
                 else if (CanMoveDown() == false)
                 {
-                    Tile tileDown = this.intersectTiles.Where(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle)).FirstOrDefault();
+                    Tile tileDown = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle));
                     int dif = rectangle.Bottom - tileDown.rigidbody.rectangle.Y;
 
                     dif = Math.Clamp(dif, 0, scFct * 2); // fix a problem that jump on corners
@@ -140,7 +142,7 @@ namespace ChristianTools.Components
                 }
                 else if (CanMoveUp() == false)
                 {
-                    Tile tileUp = this.intersectTiles.Where(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle)).FirstOrDefault();
+                    Tile tileUp = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle));
                     int dif = tileUp.rigidbody.rectangle.Bottom - rectangle.Y;
 
                     dif = Math.Clamp(dif, 0, scFct * 2); // fix a problem that jump on corners
@@ -150,14 +152,14 @@ namespace ChristianTools.Components
 
             bool CanMoveDown()
             {
-                Tile tileDown = this.intersectTiles.Where(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle)).FirstOrDefault();
-                return tileDown == null ? true : false;
+                int tilesDown = this.intersectTiles.Count(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle));
+                return tilesDown == 0 ? true : false;
             }
 
             bool CanMoveUp()
             {
-                Tile tileUp = this.intersectTiles.Where(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle)).FirstOrDefault();
-                return tileUp == null ? true : false;
+                int tilesUp = this.intersectTiles.Count(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle));
+                return tilesUp == 0 ? true : false;
             }
         }
     }
