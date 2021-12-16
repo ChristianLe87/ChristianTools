@@ -11,6 +11,7 @@ namespace ChristianTools.Helpers
     {
         // a way to access the graphics devices (iPhone, Mac, Pc, PS4, etc)
         public static GraphicsDeviceManager graphicsDeviceManager;
+        private RenderTarget2D renderTarget2D;
 
         // Is used to draw sprites (a 2D or 3D images)
         public static SpriteBatch spriteBatch;
@@ -29,12 +30,11 @@ namespace ChristianTools.Helpers
         static string gameDataFileName;
         public static GameData gameData;
 
-
         /// <summary>
         /// 
         /// </summary>
         /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
-        public ChristianGame(string gameDataFileName, int canvasWidth = 500, int canvasHeight = 500, string windowTitle = "Game", bool isMouseVisible = true, bool IsFullScreen = false)
+        public ChristianGame(string gameDataFileName, int canvasWidth = 500, int canvasHeight = 500, string windowTitle = "Game", bool isMouseVisible = true, bool IsFullScreen = false, bool AllowUserResizing = false)
         {
             ChristianGame.gameDataFileName = gameDataFileName;
 
@@ -45,7 +45,7 @@ namespace ChristianTools.Helpers
             graphicsDeviceManager.IsFullScreen = IsFullScreen;
             //graphicsDeviceManager.ToggleFullScreen();
             graphicsDeviceManager.ApplyChanges();
-
+            //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
 
             // FPS
             base.IsFixedTimeStep = true;
@@ -75,13 +75,26 @@ namespace ChristianTools.Helpers
             // others
             base.Window.Title = windowTitle;
             base.IsMouseVisible = isMouseVisible;
+            Window.AllowUserResizing = AllowUserResizing;
+
+
+            /*this.renderTarget2D = new RenderTarget2D(
+                graphicsDevice: graphicsDeviceManager.GraphicsDevice,
+                width: canvasWidth,
+                height: canvasHeight,
+                mipMap: false,
+                preferredFormat: SurfaceFormat.Color,
+                preferredDepthFormat: DepthFormat.None,
+                preferredMultiSampleCount: graphicsDeviceManager.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                usage: RenderTargetUsage.DiscardContents
+            );*/
 
             ChristianGame.lastInputState = new InputState();
 
             // Initialize objects (scores, values, items, etc)
             base.Initialize();
         }
-   
+
         public void SetupScenes(Dictionary<string, IScene> scenes, string startScene)
         {
             ChristianGame.scenes = scenes;
@@ -118,11 +131,39 @@ namespace ChristianTools.Helpers
             spriteBatch.Begin(sortMode: SpriteSortMode.Deferred, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform);
 
             Systems.Systems.Draw.Scene(spriteBatch, scenes[actualScene]);
-            //scenes[actualScene].Draw(spriteBatch);
 
             spriteBatch.End();
             base.Draw(gameTime);
         }
+
+
+
+        /*protected override void Draw(GameTime gameTime)
+        {
+            base.GraphicsDevice.SetRenderTarget(renderTarget2D);
+            base.GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            spriteBatch.Begin(sortMode: SpriteSortMode.Deferred, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform);
+
+            Systems.Systems.Draw.Scene(spriteBatch, scenes[actualScene]);
+
+            spriteBatch.End();
+
+            // ===
+
+            base.GraphicsDevice.SetRenderTarget(null);
+
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            var dst = new Rectangle(
+                x: 0,
+                y:0,
+                (int)(Window.ClientBounds.Width/ GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.AspectRatio),
+                Window.ClientBounds.Height
+            );
+            spriteBatch.Draw(renderTarget2D, dst, Color.White);
+            spriteBatch.End();
+        }*/
+
 
         public static void ChangeToScene(string scene)
         {
