@@ -33,7 +33,7 @@ namespace ChristianTools.Components
 
         public Rectangle rectangleScaled(int scaleFactor) => Tools.Tools.GetRectangle.ScaleSides(rectangle, scaleFactor);
 
-        public bool isGrounded { get; private set; }
+        public bool isGrounded(int scaleFactor) => (CanMoveDown(scaleFactor) == false);
 
         IEntity entity;
         public Rigidbody(Vector2 centerPosition, IEntity entity, Vector2? force = null)
@@ -41,7 +41,6 @@ namespace ChristianTools.Components
             this.entity = entity;
             this.force = force == null ? Vector2.Zero : force.Value;
             this.centerPosition = centerPosition;
-            this.isGrounded = false;
         }
 
         Rectangle baseRectangle;
@@ -50,7 +49,6 @@ namespace ChristianTools.Components
             this.baseRectangle = rectangle;
             this.force = force == null ? Vector2.Zero : force.Value;
             this.centerPosition = rectangle.Center.ToVector2();
-            this.isGrounded = false;
         }
 
 
@@ -58,12 +56,14 @@ namespace ChristianTools.Components
         public void Update(List<Tile> intersectTiles = null)
         {
             if (intersectTiles != null)
+            {
                 this.intersectTiles = intersectTiles;
 
 
-            // Force
-            Move_X(force.X);
-            Move_Y(force.Y);
+                // Force
+                Move_X(force.X);
+                Move_Y(force.Y);
+            }
         }
 
         /// <summary>
@@ -128,11 +128,11 @@ namespace ChristianTools.Components
 
             if (Y > 0) // down
             {
-                if (CanMoveDown() == true)
+                if (CanMoveDown(scFct) == true)
                 {
                     centerPosition = new Vector2(centerPosition.X, centerPosition.Y + Y);
                 }
-                else if (CanMoveDown() == false)
+                else if (CanMoveDown(scFct) == false)
                 {
                     Tile tileDown = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle));
                     int dif = rectangle.Bottom - tileDown.rigidbody.rectangle.Y;
@@ -143,11 +143,11 @@ namespace ChristianTools.Components
             }
             else if (Y < 0)
             {
-                if (CanMoveUp() == true)
+                if (CanMoveUp(scFct) == true)
                 {
                     centerPosition = new Vector2(centerPosition.X, centerPosition.Y + Y);
                 }
-                else if (CanMoveUp() == false)
+                else if (CanMoveUp(scFct) == false)
                 {
                     Tile tileUp = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle));
                     int dif = tileUp.rigidbody.rectangle.Bottom - rectangle.Y;
@@ -156,18 +156,24 @@ namespace ChristianTools.Components
                     centerPosition = new Vector2(centerPosition.X, centerPosition.Y + dif);
                 }
             }
+        }
 
-            bool CanMoveDown()
-            {
-                int tilesDown = this.intersectTiles.Count(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle));
-                return tilesDown == 0 ? true : false;
-            }
+        public bool CanMoveDown(int scaleFactor)
+        {
+            if (intersectTiles == null)
+                return true;
 
-            bool CanMoveUp()
-            {
-                int tilesUp = this.intersectTiles.Count(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle));
-                return tilesUp == 0 ? true : false;
-            }
+            int tilesDown = this.intersectTiles.Count(x => x.rigidbody.rectangleUp(scaleFactor).Intersects(rectangle));
+            return tilesDown == 0 ? true : false;
+        }
+
+        public bool CanMoveUp(int scaleFactor)
+        {
+            if (intersectTiles == null)
+                return true;
+
+            int tilesUp = this.intersectTiles.Count(x => x.rigidbody.rectangleDown(scaleFactor).Intersects(rectangle));
+            return tilesUp == 0 ? true : false;
         }
     }
 }

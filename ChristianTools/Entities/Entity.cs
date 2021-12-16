@@ -23,7 +23,7 @@ namespace ChristianTools.Entities
         public DxEntityDrawSystem dxEntityDrawSystem { get; set; }
 
         public Entity(
-            Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", Vector2? force = null,
+            Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", Vector2? force = null, Vector2? gravity = null,
             DxEntityInitializeSystem dxInitializeSystem = null, DxEntityUpdateSystem dxUpdateSystem = null, DxEntityDrawSystem dxDrawSystem = null)
         {
             this.characterState = CharacterState.IdleRight;
