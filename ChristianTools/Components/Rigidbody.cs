@@ -60,7 +60,10 @@ namespace ChristianTools.Components
             if (intersectTiles != null)
                 this.intersectTiles = intersectTiles;
 
-            centerPosition += force;
+
+            // Force
+            Move_X(force.X);
+            Move_Y(force.Y);
         }
 
         /// <summary>
@@ -81,6 +84,8 @@ namespace ChristianTools.Components
                 {
                     Tile tileRight = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle));
                     int dif = rectangle.Right - tileRight.rigidbody.rectangle.X;
+
+                    dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
                     centerPosition = new Vector2(centerPosition.X - dif, centerPosition.Y);
                 }
             }
@@ -94,6 +99,8 @@ namespace ChristianTools.Components
                 {
                     Tile tileLeft = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle));
                     int dif = tileLeft.rigidbody.rectangle.Right - rectangle.X;
+
+                    dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
                     centerPosition = new Vector2(centerPosition.X + dif, centerPosition.Y);
                 }
             }
@@ -130,7 +137,7 @@ namespace ChristianTools.Components
                     Tile tileDown = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle));
                     int dif = rectangle.Bottom - tileDown.rigidbody.rectangle.Y;
 
-                    dif = Math.Clamp(dif, 0, scFct * 2); // fix a problem that jump on corners
+                    dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
                     centerPosition = new Vector2(centerPosition.X, centerPosition.Y - dif);
                 }
             }
@@ -145,7 +152,7 @@ namespace ChristianTools.Components
                     Tile tileUp = this.intersectTiles.FirstOrDefault(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle));
                     int dif = tileUp.rigidbody.rectangle.Bottom - rectangle.Y;
 
-                    dif = Math.Clamp(dif, 0, scFct * 2); // fix a problem that jump on corners
+                    dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
                     centerPosition = new Vector2(centerPosition.X, centerPosition.Y + dif);
                 }
             }

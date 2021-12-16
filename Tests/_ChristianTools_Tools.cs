@@ -160,7 +160,7 @@ namespace Tests
 
         public class _GetRectangle
         {
-            static Vector2 centerPosition = new Vector2(0, 0);
+            static Vector2 centerPosition = new Vector2(500, 500);
             static int Width = 100;
             static int Height = 100;
             static int scaleFactor = 3;
@@ -212,8 +212,8 @@ namespace Tests
                 Assert.True(upRectangle.Center.Y == expected_upRectangle.Center.Y);
 
                 // check size
-                Assert.True(upRectangle.Width == Width);
-                Assert.True(upRectangle.Height == scaleFactor);
+                Assert.True(upRectangle.Width == expected_upRectangle.Width);
+                Assert.True(upRectangle.Height == expected_upRectangle.Height);
 
                 // check top right corner
                 Assert.True(upRectangle.X == expected_upRectangle.X);
@@ -238,8 +238,8 @@ namespace Tests
                 Assert.True(downRectangle.Center.Y == expected_downRectangle.Center.Y);
 
                 // check size
-                Assert.True(downRectangle.Width == Width);
-                Assert.True(downRectangle.Height == scaleFactor);
+                Assert.True(downRectangle.Width == expected_downRectangle.Width);
+                Assert.True(downRectangle.Height == expected_downRectangle.Height);
 
                 // check top right corner
                 Assert.True(downRectangle.X == expected_downRectangle.X);
@@ -264,8 +264,8 @@ namespace Tests
                 Assert.True(rightRectangle.Center.Y == expected_rightRectangle.Center.Y);
 
                 // check size
-                Assert.True(rightRectangle.Width == scaleFactor);
-                Assert.True(rightRectangle.Height == Height);
+                Assert.True(rightRectangle.Width == expected_rightRectangle.Width);
+                Assert.True(rightRectangle.Height == expected_rightRectangle.Height);
 
                 // check top right corner
                 Assert.True(rightRectangle.X == expected_rightRectangle.X);
@@ -290,8 +290,8 @@ namespace Tests
                 Assert.True(leftRectangle.Center.Y == expected_leftRectangle.Center.Y);
 
                 // check size
-                Assert.True(leftRectangle.Width == scaleFactor);
-                Assert.True(leftRectangle.Height == Height);
+                Assert.True(leftRectangle.Width == expected_leftRectangle.Width);
+                Assert.True(leftRectangle.Height == expected_leftRectangle.Height);
 
                 // check top right corner
                 Assert.True(leftRectangle.X == expected_leftRectangle.X);
