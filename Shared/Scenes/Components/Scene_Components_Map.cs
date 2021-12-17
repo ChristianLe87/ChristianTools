@@ -21,12 +21,6 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-
-        public Scene_Components_Map()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             Dictionary<int, Texture2D> tileTextures = WK.Texture.Tiles.tileTextures;
@@ -45,22 +39,6 @@ namespace Shared
                     camera
                 ),
             };
-        }
-
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            if (UIs != null)
-                foreach (var ui in UIs)
-                    ui.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            if(UIs != null)
-                foreach (var ui in UIs)
-                    ui.Draw(spriteBatch);
-
-            map.Draw(spriteBatch);
         }
     }
 }

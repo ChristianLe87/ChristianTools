@@ -23,11 +23,6 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        public Scene_Components_Rigidbody()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             this.UIs = new List<IUI>()

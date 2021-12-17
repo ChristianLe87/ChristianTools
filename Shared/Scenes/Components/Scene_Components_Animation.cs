@@ -22,11 +22,6 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        public Scene_Components_Animation()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             this.UIs = new List<IUI>()
@@ -82,11 +77,11 @@ namespace Shared
                 this.animation = new Animation(animations: animations, framesPerTexture: 16);
                 this.rigidbody = new Rigidbody(new Vector2(300, 300), this);
 
-                this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => Update(lastInputState, inputState);
+                this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => UpdateSystem(inputState);
             }
 
 
-            public void Update(InputState lastInputState, InputState inputState)
+            public void UpdateSystem(InputState inputState)
             {
                 if (inputState.Right)
                 {
@@ -110,8 +105,6 @@ namespace Shared
                     else if (characterState.ToString().Contains("Right"))
                         characterState = CharacterState.IdleRight;
                 }
-
-                animation.Update();
             }
         }
     }

@@ -8,7 +8,7 @@ namespace ChristianTools.Components
 {
     public class Rigidbody
     {
-        public float rotationDegree { get; set; }
+        public double rotationDegree { get; set; }
 
         public Vector2 force { get; set; }
         public float SetForce_X { set => force = new Vector2(value, force.Y); }
@@ -56,14 +56,12 @@ namespace ChristianTools.Components
         public void Update(List<Tile> intersectTiles = null)
         {
             if (intersectTiles != null)
-            {
                 this.intersectTiles = intersectTiles;
 
 
-                // Force
-                Move_X(force.X);
-                Move_Y(force.Y);
-            }
+            // Force
+            Move_X(force.X);
+            Move_Y(force.Y);
         }
 
         /// <summary>
@@ -107,12 +105,18 @@ namespace ChristianTools.Components
 
             bool CanMoveRight()
             {
+                if (intersectTiles == null)
+                    return true;
+
                 int tilesRight = this.intersectTiles.Count(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle));
                 return tilesRight == 0 ? true : false;
             }
 
             bool CanMoveLeft()
             {
+                if (intersectTiles == null)
+                    return true;
+
                 int tilesLeft = this.intersectTiles.Count(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle));
                 return tilesLeft == 0 ? true : false;
             }

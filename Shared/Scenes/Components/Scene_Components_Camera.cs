@@ -27,11 +27,6 @@ namespace Shared
         Vector2 position;
         Texture2D texture2D;
 
-        public Scene_Components_Camera()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             this.position = new Vector2(WK.Default.Width / 2, WK.Default.Height / 2);
@@ -69,10 +64,10 @@ namespace Shared
                 new Entity(Red, new Vector2(WK.Default.Width / 2, WK.Default.Height / 2)),
             };
 
-            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);
+            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
         }
 
-        public void Update(InputState lastInputState, InputState inputState)
+        public void UpdateSystem(InputState lastInputState, InputState inputState)
         {
             if (inputState.Right)
                 position.X++;

@@ -23,11 +23,6 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        public Scene_Menu()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             //this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);

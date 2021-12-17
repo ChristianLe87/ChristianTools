@@ -27,11 +27,6 @@ namespace Shared
 
         Vector2 centerPosition = WK.Default.Center.ToVector2();
 
-        public Scene_Entities_Bullet()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             this.UIs = new List<IUI>()

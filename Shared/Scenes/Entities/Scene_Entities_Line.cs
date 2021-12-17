@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ChristianTools.Components;
 using ChristianTools.Entities;
@@ -7,7 +6,6 @@ using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Shared
 {
@@ -23,11 +21,6 @@ namespace Shared
         public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
-
-        public Scene_Entities_Line()
-        {
-            Initialize();
-        }
 
         public void Initialize()
         {
@@ -56,10 +49,10 @@ namespace Shared
                 ),
             };
 
-            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => SceneUpdateSystem(lastInputState, inputState);
+            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
         }
 
-        public void SceneUpdateSystem(InputState lastInputState, InputState inputState)
+        public void UpdateSystem(InputState lastInputState, InputState inputState)
         {
             Line line = entities.OfType<Line>().First();
             line.UpdatePoints(start: null, end: inputState.Mouse_Position());

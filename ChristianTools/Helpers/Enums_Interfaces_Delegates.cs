@@ -44,8 +44,8 @@ namespace ChristianTools.Helpers
     // === Interfaces ===
     public interface IEntity
     {
-        public Rigidbody rigidbody { get; }
         public Animation animation { get; }
+        public Rigidbody rigidbody { get; }
         public CharacterState characterState { get; set; }
         public bool isActive { get; }
         public string tag { get; }

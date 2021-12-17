@@ -99,6 +99,7 @@ namespace ChristianTools.Helpers
         {
             ChristianGame.scenes = scenes;
             ChristianGame.actualScene = startScene;
+            scenes[actualScene].Initialize();
         }
 
         protected override void LoadContent()

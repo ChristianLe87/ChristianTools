@@ -23,11 +23,6 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        public Scene_Helpers_JsonSerialization()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             this.UIs = new List<IUI>()
@@ -87,15 +82,6 @@ namespace Shared
         {
             Label label = UIs.OfType<Label>().First();
             label.UpdateText($"Score: {Game1.gameData.score}");
-
-            foreach (var ui in UIs)
-                ui.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var ui in UIs)
-                ui.Draw(spriteBatch);
         }
     }
 }

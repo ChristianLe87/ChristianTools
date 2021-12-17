@@ -22,10 +22,6 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        public Scene_Helpers()
-        {
-            Initialize();
-        }
         public void Initialize()
         {
             this.UIs = new List<IUI>()
@@ -61,18 +57,6 @@ namespace Shared
                     camera: camera
                 ),
             };
-        }
-
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            foreach (var ui in UIs)
-                ui.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var ui in UIs)
-                ui.Draw(spriteBatch);
         }
     }
 }

@@ -42,10 +42,10 @@ namespace ChristianTools.Entities
                 force: new Vector2(x, y)
             );
 
-            this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => BulletUpdateSystem(lastInputState, inputState, entity);
+            this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => BulletUpdateSystem();
         }
 
-        public void BulletUpdateSystem(InputState lastInputState, InputState inputState, IEntity entity)
+        public void BulletUpdateSystem()
         {
             // Implementation
             if (isActive == true)

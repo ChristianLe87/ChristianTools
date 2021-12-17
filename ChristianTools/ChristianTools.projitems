@@ -31,10 +31,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\Dialogue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\HealthBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Systems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Console.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Scene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Scene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\PlayerPlatformer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\UI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Entity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />
@@ -43,5 +48,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)UI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Systems\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Systems\Update\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Systems\Draw\" />
   </ItemGroup>
 </Project>

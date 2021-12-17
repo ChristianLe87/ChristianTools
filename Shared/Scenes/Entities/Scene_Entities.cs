@@ -22,11 +22,6 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        public Scene_Entities()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
@@ -74,18 +69,6 @@ namespace Shared
                     camera: camera
                 ),
             };
-        }
-
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            foreach (var ui in UIs)
-                ui.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var ui in UIs)
-                ui.Draw(spriteBatch);
         }
     }
 }
