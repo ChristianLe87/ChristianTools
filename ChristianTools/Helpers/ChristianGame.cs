@@ -11,7 +11,6 @@ namespace ChristianTools.Helpers
     {
         // a way to access the graphics devices (iPhone, Mac, Pc, PS4, etc)
         public static GraphicsDeviceManager graphicsDeviceManager;
-        private RenderTarget2D renderTarget2D;
 
         // Is used to draw sprites (a 2D or 3D images)
         public static SpriteBatch spriteBatch;
@@ -48,6 +47,9 @@ namespace ChristianTools.Helpers
             graphicsDeviceManager.ApplyChanges();
             //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
 
+
+      
+
             // FPS
             base.IsFixedTimeStep = true;
             base.TargetElapsedTime = TimeSpan.FromSeconds(1d / 60);
@@ -76,19 +78,16 @@ namespace ChristianTools.Helpers
             // others
             base.Window.Title = windowTitle;
             base.IsMouseVisible = isMouseVisible;
-            Window.AllowUserResizing = AllowUserResizing;
             game = this;
 
-            /*this.renderTarget2D = new RenderTarget2D(
-                graphicsDevice: graphicsDeviceManager.GraphicsDevice,
-                width: canvasWidth,
-                height: canvasHeight,
-                mipMap: false,
-                preferredFormat: SurfaceFormat.Color,
-                preferredDepthFormat: DepthFormat.None,
-                preferredMultiSampleCount: graphicsDeviceManager.GraphicsDevice.PresentationParameters.MultiSampleCount,
-                usage: RenderTargetUsage.DiscardContents
-            );*/
+
+
+            if (AllowUserResizing == true)
+            {
+                Window.AllowUserResizing = AllowUserResizing;
+                Window.ClientSizeChanged += GameWindowSizeChangeEvent;
+            }
+
 
             ChristianGame.lastInputState = new InputState();
 
@@ -143,31 +142,37 @@ namespace ChristianTools.Helpers
 
 
 
-        /*protected override void Draw(GameTime gameTime)
+
+        private void GameWindowSizeChangeEvent(object sender, System.EventArgs e)
         {
-            base.GraphicsDevice.SetRenderTarget(renderTarget2D);
-            base.GraphicsDevice.Clear(Color.CornflowerBlue);
+            // thanks to: https://stackoverflow.com/questions/45396416/how-can-i-detect-window-clientsizechanged-end#45403843
 
-            spriteBatch.Begin(sortMode: SpriteSortMode.Deferred, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform);
 
-            Systems.Systems.Draw.Scene(spriteBatch, scenes[actualScene]);
+            // Unsubscribe
+            Window.ClientSizeChanged -= GameWindowSizeChangeEvent;
 
-            spriteBatch.End();
+            {
+                // Good to know
+                DisplayMode myDisplay = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+                float aspectRatio = myDisplay.AspectRatio;
+                int displayWidth = myDisplay.Width;
+                int displayHeight = myDisplay.Height;
 
-            // ===
+                GameWindow gameWindow = Window;
+                var gameWindowWidth = gameWindow.ClientBounds.Width;
+                var gameWindowHeight = gameWindow.ClientBounds.Height;
 
-            base.GraphicsDevice.SetRenderTarget(null);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
-            var dst = new Rectangle(
-                x: 0,
-                y:0,
-                (int)(Window.ClientBounds.Width/ GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.AspectRatio),
-                Window.ClientBounds.Height
-            );
-            spriteBatch.Draw(renderTarget2D, dst, Color.White);
-            spriteBatch.End();
-        }*/
+                //ChristianGame.graphicsDeviceManager.PreferredBackBufferWidth = 700;
+                //ChristianGame.graphicsDeviceManager.PreferredBackBufferHeight = 700;
+                //ChristianGame.graphicsDeviceManager.ApplyChanges();
+
+                int bla = 0;
+            }
+
+            // Subscribe
+            Window.ClientSizeChanged += GameWindowSizeChangeEvent;
+        }
 
 
         public static void ToggleFullScreen()
