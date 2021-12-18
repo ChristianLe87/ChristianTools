@@ -30,6 +30,7 @@ namespace ChristianTools.Helpers
         static string gameDataFileName;
         public static GameData gameData;
 
+
         /// <summary>
         /// 
         /// </summary>
@@ -76,7 +77,7 @@ namespace ChristianTools.Helpers
             base.Window.Title = windowTitle;
             base.IsMouseVisible = isMouseVisible;
             Window.AllowUserResizing = AllowUserResizing;
-
+            game = this;
 
             /*this.renderTarget2D = new RenderTarget2D(
                 graphicsDevice: graphicsDeviceManager.GraphicsDevice,
@@ -94,6 +95,9 @@ namespace ChristianTools.Helpers
             // Initialize objects (scores, values, items, etc)
             base.Initialize();
         }
+
+
+
 
         public void SetupScenes(Dictionary<string, IScene> scenes, string startScene)
         {
@@ -166,6 +170,12 @@ namespace ChristianTools.Helpers
         }*/
 
 
+        public static void ToggleFullScreen()
+        {
+            graphicsDeviceManager.ToggleFullScreen();
+        }
+
+
         public static void ChangeToScene(string scene)
         {
             JsonSerialization.Update(ChristianGame.gameData, ChristianGame.gameDataFileName);
@@ -173,6 +183,10 @@ namespace ChristianTools.Helpers
             scenes[actualScene].Initialize();
         }
 
-        // todo: public static bool isMouseVisible { get => IsMouseVisible; set => IsMouseVisible = value; }
+        private static ChristianGame game;
+        public static void MouseVisible(bool IsMouseVisible)
+        {
+            game.IsMouseVisible = IsMouseVisible;
+        }
     }
 }
