@@ -10,15 +10,17 @@ namespace ChristianTools.Helpers
     public class ChristianGame : Game
     {
         // a way to access the graphics devices (iPhone, Mac, Pc, PS4, etc)
-        public static GraphicsDeviceManager graphicsDeviceManager;
+        static GraphicsDeviceManager graphicsDeviceManager;
+        public static GraphicsDevice graphicsDevice => graphicsDeviceManager.GraphicsDevice;
 
         // Is used to draw sprites (a 2D or 3D images)
-        public static SpriteBatch spriteBatch;
+        static SpriteBatch spriteBatch;
+        public static Viewport viewport => spriteBatch.GraphicsDevice.Viewport;
 
         public static ContentManager contentManager;
 
         // Input
-        private static InputState lastInputState;
+        static InputState lastInputState;
 
         // Scenes
         static Dictionary<string, IScene> scenes;
@@ -29,14 +31,13 @@ namespace ChristianTools.Helpers
         static string gameDataFileName;
         public static GameData gameData;
 
-
         /// <summary>
         /// 
         /// </summary>
         /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
         public ChristianGame(string gameDataFileName, int canvasWidth = 500, int canvasHeight = 500, string windowTitle = "Game", bool isMouseVisible = true, bool IsFullScreen = false, bool AllowUserResizing = false)
         {
-            ChristianGame.gameDataFileName = gameDataFileName;
+
 
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -47,8 +48,6 @@ namespace ChristianTools.Helpers
             graphicsDeviceManager.ApplyChanges();
             //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
 
-
-      
 
             // FPS
             base.IsFixedTimeStep = true;
@@ -63,6 +62,7 @@ namespace ChristianTools.Helpers
 
 
             // GameData
+            ChristianGame.gameDataFileName = gameDataFileName;
             if (JsonSerialization.FileExist(gameDataFileName) == false)
             {
                 ChristianGame.gameData = new GameData();
@@ -78,14 +78,18 @@ namespace ChristianTools.Helpers
             // others
             base.Window.Title = windowTitle;
             base.IsMouseVisible = isMouseVisible;
+            Window.AllowUserResizing = AllowUserResizing;
             game = this;
 
 
-
+            // use with GameWindowSizeChangeEvent()
             if (AllowUserResizing == true)
             {
                 Window.AllowUserResizing = AllowUserResizing;
                 Window.ClientSizeChanged += GameWindowSizeChangeEvent;
+
+                gameWindow = Window;
+                myDisplay = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
             }
 
 
@@ -94,9 +98,6 @@ namespace ChristianTools.Helpers
             // Initialize objects (scores, values, items, etc)
             base.Initialize();
         }
-
-
-
 
         public void SetupScenes(Dictionary<string, IScene> scenes, string startScene)
         {
@@ -141,8 +142,8 @@ namespace ChristianTools.Helpers
         }
 
 
-
-
+        GameWindow gameWindow;
+        DisplayMode myDisplay;
         private void GameWindowSizeChangeEvent(object sender, System.EventArgs e)
         {
             // thanks to: https://stackoverflow.com/questions/45396416/how-can-i-detect-window-clientsizechanged-end#45403843
@@ -153,21 +154,21 @@ namespace ChristianTools.Helpers
 
             {
                 // Good to know
-                DisplayMode myDisplay = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
                 float aspectRatio = myDisplay.AspectRatio;
                 int displayWidth = myDisplay.Width;
                 int displayHeight = myDisplay.Height;
 
-                GameWindow gameWindow = Window;
                 var gameWindowWidth = gameWindow.ClientBounds.Width;
                 var gameWindowHeight = gameWindow.ClientBounds.Height;
 
+                // Code
 
                 //ChristianGame.graphicsDeviceManager.PreferredBackBufferWidth = 700;
                 //ChristianGame.graphicsDeviceManager.PreferredBackBufferHeight = 700;
                 //ChristianGame.graphicsDeviceManager.ApplyChanges();
 
                 int bla = 0;
+                gameWindow = Window;
             }
 
             // Subscribe
