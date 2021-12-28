@@ -101,6 +101,13 @@ namespace ChristianTools.Tools
                 return result;
             }
 
+            public static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName, int scaleFactor)
+            {
+                Texture2D texture2D = Tools.Texture.GetTexture(graphicsDevice, contentManager, imageName);
+                Texture2D result = Tools.Texture.ScaleTexture(graphicsDevice, texture2D, scaleFactor);
+                return result;
+            }
+
             /// <summary>
             /// Get a new Texture2D from a bigger Texture2D
             /// </summary>

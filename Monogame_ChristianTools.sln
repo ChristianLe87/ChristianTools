@@ -9,21 +9,21 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{9DDAF5BD-8332-4FD6-8491-7F4F99CBCA56}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "My_EasyTests", "My_EasyTests\My_EasyTests.csproj", "{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}"
-EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "My_Template", "My_Template\My_Template.csproj", "{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}"
-EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Showroom_dotNet5", "Showroom_dotNet5\Showroom_dotNet5.csproj", "{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}"
-EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zTools", "zTools\zTools.shproj", "{8954FD6C-722F-46E4-9E9C-5B0A2582DF34}"
-EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zTopView_RPG", "zTopView_RPG\zTopView_RPG.shproj", "{81ED84EF-A91A-403C-A85B-BDC4FEC3E379}"
-EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zUI", "zUI\zUI.shproj", "{A4BACFE5-0FD9-4E94-8457-F8635E8CB2A5}"
-EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zWorldElements", "zWorldElements\zWorldElements.shproj", "{0417DADF-EE03-41E3-867A-B1A319BC6CDF}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools", "ChristianTools\ChristianTools.shproj", "{859C4805-7FB8-4BF8-82A3-8523829756FE}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "My_EasyTests", "My_EasyTests\My_EasyTests.csproj", "{BAA79033-2FAA-40C1-A797-5CFC73FD43E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_Template", "My_Template\My_Template.csproj", "{8F981F29-AE9B-4375-AC7D-A06D50D35AF7}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Showroom_dotNet5", "Showroom_dotNet5\Showroom_dotNet5.csproj", "{C60E3417-BBD1-45CC-B693-D75D814A1651}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zTools", "zTools\zTools.shproj", "{78C85343-1678-4338-9544-081509B73BE6}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zTopView_RPG", "zTopView_RPG\zTopView_RPG.shproj", "{2EA13B36-D27A-4568-9019-B7688C3BEA71}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zUI", "zUI\zUI.shproj", "{7FCA4638-B219-4099-985D-7DAA030A7BDA}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "zWorldElements", "zWorldElements\zWorldElements.shproj", "{F76A8CF1-EB23-41C0-80BB-2437F22E45CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,18 +39,18 @@ Global
 		{9DDAF5BD-8332-4FD6-8491-7F4F99CBCA56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DDAF5BD-8332-4FD6-8491-7F4F99CBCA56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DDAF5BD-8332-4FD6-8491-7F4F99CBCA56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2B97A89-7C73-4E30-BB55-DA9D2E914F79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C4A5B31-FDF8-4C24-94B1-ED2C2D463035}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95BAD298-DF4B-4A62-B6AE-D05B1F14E46A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA79033-2FAA-40C1-A797-5CFC73FD43E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA79033-2FAA-40C1-A797-5CFC73FD43E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA79033-2FAA-40C1-A797-5CFC73FD43E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA79033-2FAA-40C1-A797-5CFC73FD43E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F981F29-AE9B-4375-AC7D-A06D50D35AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F981F29-AE9B-4375-AC7D-A06D50D35AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F981F29-AE9B-4375-AC7D-A06D50D35AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F981F29-AE9B-4375-AC7D-A06D50D35AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C60E3417-BBD1-45CC-B693-D75D814A1651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C60E3417-BBD1-45CC-B693-D75D814A1651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C60E3417-BBD1-45CC-B693-D75D814A1651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C60E3417-BBD1-45CC-B693-D75D814A1651}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
