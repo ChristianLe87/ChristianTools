@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ChristianTools;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
 using ChristianTools.Systems;
@@ -45,10 +46,10 @@ namespace My_Template
         {
             public static string WindowTitle => "Template Game";
 
-            public static int canvasWidth => 500;
-            public static int canvasHeight => 500;
+            public static int CanvasWidth => 500;
+            public static int CanvasHeight => 500;
 
-            public static string gameDataFileName => "MyTemplate_GameData";
+            public static string GameDataFileName => "MyTemplate_GameData";
             public static readonly int ScaleFactor = 3;
         }
 
@@ -76,50 +77,41 @@ namespace My_Template
 
         public class Texture
         {
-            public static Texture2D tree => Tools.Texture.GetTexture(Game1.graphicsDevice, Game1.contentManager, "Tree");
+            public class PixelColor
+            {
+                public static Texture2D Gray = Tools.Texture.CreateColorTexture(Game1.graphicsDevice, Color.Gray);
+                public static Texture2D LightGray = Tools.Texture.CreateColorTexture(Game1.graphicsDevice, Color.LightGray);
+
+                public static Texture2D Red = Tools.Texture.CreateColorTexture(Game1.graphicsDevice, Color.Red);
+            }
+
+            public static Texture2D Tree => Tools.Texture.GetTexture(Game1.graphicsDevice, Game1.contentManager, "Tree");
         }
     }
 
     public class Game1 : ChristianGame
     {
         public Game1() : base(
-            gameDataFileName: WK.Default.gameDataFileName,
-            canvasHeight: WK.Default.canvasHeight,
-            canvasWidth: WK.Default.canvasWidth,
+            gameDataFileName: WK.Default.GameDataFileName,
+            canvasHeight: WK.Default.CanvasHeight,
+            canvasWidth: WK.Default.CanvasWidth,
             windowTitle: WK.Default.WindowTitle
             )
         {
+
             Dictionary<string, IScene> scenes = new Dictionary<string, IScene>()
             {
                 { WK.Scene.Intro, new SceneIntro() },
-                { WK.Scene.Menu, new SceneMenu() },
+                { WK.Scene.Menu,  new Factory.SceneMenu(WK.Font.MyFont_130x28, WK.Scene.Game)},
                 { WK.Scene.About, new SceneAbout() },
                 { WK.Scene.Game, new SceneGame() }
             };
 
-            base.SetupScenes(scenes, WK.Scene.Game);
+            base.SetupScenes(scenes, WK.Scene.Menu);
         }
     }
 
     public class SceneIntro : IScene
-    {
-        public GameState gameState { get; private set; }
-        public List<IEntity> entities { get; set; }
-        public List<IUI> UIs { get; set; }
-        public List<SoundEffect> soundEffects { get; private set; }
-        public Camera camera { get; private set; }
-        public Map map { get; private set; }
-
-        public DxSceneInitializeSystem dxSceneInitializeSystem { get; private set; }
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
-
-        public void Initialize()
-        {
-        }
-    }
-
-    public class SceneMenu : IScene
     {
         public GameState gameState { get; private set; }
         public List<IEntity> entities { get; set; }
@@ -223,7 +215,7 @@ namespace My_Template
 
         public Tree()
         {
-            this.animation = new Animation(WK.Texture.tree);
+            this.animation = new Animation(WK.Texture.Tree);
 
             this.rigidbody = new Rigidbody(new Vector2(200, 200), this);
 
