@@ -60,7 +60,7 @@ namespace Shared
             if (lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
             {
                 Bullet bullet = new Bullet(
-                    texture2D: Tools.Texture.CreateCircleTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.White, 10),
+                    texture2D: Tools.Texture.CreateCircleTexture(Color.White, 10),
                     centerPosition: centerPosition,
                     direction: inputState.Mouse_Position().ToVector2(),
                     steps: 3,

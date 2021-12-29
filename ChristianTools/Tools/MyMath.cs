@@ -122,7 +122,7 @@ namespace ChristianTools.Tools
                     return (float)Math.Sqrt((slope * slope) - (x * x));
                 }
 
-                public static double x(double slope, double y)
+                public static double Get_X(double slope, double y)
                 {
                     // x = (r^2 - y^2)^(1/2)
                     return Math.Sqrt((slope * slope) - (y * y));

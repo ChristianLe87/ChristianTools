@@ -63,11 +63,11 @@ namespace Shared
                 new Label(new Rectangle(230, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Right, tag: "",camera: camera, WK.Texture.Green),
 
 
-                new HealthBar(Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 130, 50, 10), HealthBar.Direction.Right),
-                new HealthBar(Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 150, 50, 10), HealthBar.Direction.Left),
+                new HealthBar(Tools.Texture.CreateColorTexture(Color.Green), Tools.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 130, 50, 10), HealthBar.Direction.Right),
+                new HealthBar(Tools.Texture.CreateColorTexture(Color.Green), Tools.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 150, 50, 10), HealthBar.Direction.Left),
 
-                new HealthBar(Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(10, 175, 10, 50), HealthBar.Direction.Up),
-                new HealthBar(Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green), Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red), new Rectangle(30, 175, 10, 50), HealthBar.Direction.Down),
+                new HealthBar(Tools.Texture.CreateColorTexture(Color.Green), Tools.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 175, 10, 50), HealthBar.Direction.Up),
+                new HealthBar(Tools.Texture.CreateColorTexture(Color.Green), Tools.Texture.CreateColorTexture(Color.Red), new Rectangle(30, 175, 10, 50), HealthBar.Direction.Down),
 
                 new Label(
                     rectangle: new Rectangle(100, 150, 100, 30),
@@ -93,8 +93,8 @@ namespace Shared
                 new Button(
                     rectangle: new Rectangle(360, 100, 100, 50),
                     text: "Play sound",
-                    defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
-                    mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
+                    defaultTexture: Tools.Texture.CreateColorTexture(Color.Green),
+                    mouseOverTexture: Tools.Texture.CreateColorTexture(Color.Red),
                     spriteFont:WK.Font.font_7,
                     tag: "SoundButton",
                     OnClickAction: () => soundEffects.First().Play(),
@@ -115,7 +115,7 @@ namespace Shared
 
             this.soundEffects = new List<SoundEffect>()
             {
-                Tools.Sound.GetSoundEffect(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, Path.Combine("Sounds", "EatingSound_WAV"))
+                Tools.Sound.GetSoundEffect(Path.Combine("Sounds", "EatingSound_WAV"))
             };
 
             this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);
@@ -161,23 +161,23 @@ public class Scene_Dialogue : IScene
                 new Dialogue(
                     texts: text,
                     centerPosition: new Point(200, 200),
-                    background: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 100, 30),
+                    background: Tools.Texture.CreateColorTexture(Color.Green, 100, 30),
                     spriteFont: Tools.Font.GetFont(Game1.contentManager, Path.Combine("Fonts", "Arial_10"))
                 ),
 
                 new Button(
                     rectangle: new Rectangle(0, WK.Default.Height - 50, 100, 50),
                     text: "Menu",
-                    defaultTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green),
-                    mouseOverTexture: Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red),
-                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                    defaultTexture: Tools.Texture.CreateColorTexture(Color.Green),
+                    mouseOverTexture: Tools.Texture.CreateColorTexture(Color.Red),
+                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                     fontColor: Color.Black,
                     tag: "goToMenu"
                 ),
 
                 new Label(
                     new Rectangle(200, 100, 100, 50),
-                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
+                    spriteFont: Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.contentManager, WK.Font.Font_14), WK.Font.chars),
                     "'p' for next text\n'o' to reactivate",
                     Label.TextAlignment.Midle_Left,
                     Color.Pink,

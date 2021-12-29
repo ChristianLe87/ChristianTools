@@ -60,60 +60,59 @@ namespace Shared
             public static readonly string Background = "Cuadricula_500x500_PNG";
             public static readonly string RunLeft_64x450_PNG = "RunLeft_64x450_PNG";
 
-            public static readonly Texture2D Green = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Green);
-            public static readonly Texture2D Gray = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Gray);
-            public static readonly Texture2D LightGray = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.LightGray);
-            public static readonly Texture2D Blue = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Blue);
-            public static readonly Texture2D Red = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red);
-            public static readonly Texture2D DarkRed = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.DarkRed);
+            public static readonly Texture2D Green = Tools.Texture.CreateColorTexture(Color.Green);
+            public static readonly Texture2D Gray = Tools.Texture.CreateColorTexture(Color.Gray);
+            public static readonly Texture2D LightGray = Tools.Texture.CreateColorTexture(Color.LightGray);
+            public static readonly Texture2D Blue = Tools.Texture.CreateColorTexture(Color.Blue);
+            public static readonly Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red);
+            public static readonly Texture2D DarkRed = Tools.Texture.CreateColorTexture(Color.DarkRed);
 
 
             public class Player
             {
                 public static readonly string AtlasPlayer_20x40_PNG = "AtlasPlayer_20x40_PNG";
 
-                public static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Texture.Player.AtlasPlayer_20x40_PNG);
+                public static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Player.AtlasPlayer_20x40_PNG);
 
                 // IdleRight
-                public static readonly Texture2D IdleRight = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 0, 5, 10));
-                public static readonly Texture2D IdleRight_Multiply = Tools.Texture.ScaleTexture(Game1.graphicsDeviceManager.GraphicsDevice, IdleRight, WK.Default.ScaleFactor);
+                public static readonly Texture2D IdleRight = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 0, 5, 10));
+                public static readonly Texture2D IdleRight_Multiply = Tools.Texture.ScaleTexture(IdleRight, WK.Default.ScaleFactor);
 
                 // IdleLeft
-                public static readonly Texture2D IdleLeft = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 0, 5, 10));
-                public static readonly Texture2D IdleLeft_Multiply = Tools.Texture.ScaleTexture(Game1.graphicsDeviceManager.GraphicsDevice, IdleLeft, WK.Default.ScaleFactor);
+                public static readonly Texture2D IdleLeft = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 0, 5, 10));
+                public static readonly Texture2D IdleLeft_Multiply = Tools.Texture.ScaleTexture(IdleLeft, WK.Default.ScaleFactor);
 
                 // WalkRight1
-                public static readonly Texture2D WalkRight1 = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 10, 5, 10));
-                public static readonly Texture2D WalkRight1_Multiply = Tools.Texture.ScaleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: WalkRight1, scaleFactor: WK.Default.ScaleFactor);
+                public static readonly Texture2D WalkRight1 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 10, 5, 10));
+                public static readonly Texture2D WalkRight1_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkRight1, scaleFactor: WK.Default.ScaleFactor);
 
                 // WalkRight2
-                public static readonly Texture2D WalkRight2 = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 10, 5, 10));
-                public static readonly Texture2D WalkRight2_Multiply = Tools.Texture.ScaleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: WalkRight2, scaleFactor: WK.Default.ScaleFactor);
+                public static readonly Texture2D WalkRight2 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 10, 5, 10));
+                public static readonly Texture2D WalkRight2_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkRight2, scaleFactor: WK.Default.ScaleFactor);
 
                 // WalkLeft1
-                public static readonly Texture2D WalkLeft1 = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(10, 10, 5, 10));
-                public static readonly Texture2D WalkLeft1_Multiply = Tools.Texture.ScaleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: WalkLeft1, scaleFactor: WK.Default.ScaleFactor);
+                public static readonly Texture2D WalkLeft1 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(10, 10, 5, 10));
+                public static readonly Texture2D WalkLeft1_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkLeft1, scaleFactor: WK.Default.ScaleFactor);
 
                 // WalkLeft2
-                public static readonly Texture2D WalkLeft2 = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(15, 10, 5, 10));
-                public static readonly Texture2D WalkLeft2_Multiply = Tools.Texture.ScaleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: WalkLeft2, scaleFactor: WK.Default.ScaleFactor);
+                public static readonly Texture2D WalkLeft2 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(15, 10, 5, 10));
+                public static readonly Texture2D WalkLeft2_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkLeft2, scaleFactor: WK.Default.ScaleFactor);
 
                 // JumpRight
-                public static readonly Texture2D JumpRight = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 20, 5, 10));
-                public static readonly Texture2D JumpRight_Multiply = Tools.Texture.ScaleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: JumpRight, scaleFactor: WK.Default.ScaleFactor);
+                public static readonly Texture2D JumpRight = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 20, 5, 10));
+                public static readonly Texture2D JumpRight_Multiply = Tools.Texture.ScaleTexture(originalTexture: JumpRight, scaleFactor: WK.Default.ScaleFactor);
 
                 // JumpLeft
-                public static readonly Texture2D JumpLeft = Tools.Texture.CropTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 20, 5, 10));
-                public static readonly Texture2D JumpLeft_Multiply = Tools.Texture.ScaleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, originalTexture: JumpLeft, scaleFactor: WK.Default.ScaleFactor);
+                public static readonly Texture2D JumpLeft = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 20, 5, 10));
+                public static readonly Texture2D JumpLeft_Multiply = Tools.Texture.ScaleTexture(originalTexture: JumpLeft, scaleFactor: WK.Default.ScaleFactor);
             }
 
             public class Tiles
             {
                 private static readonly string AtlasTiles_15x25_PNG = "AtlasTiles_15x25_PNG";
-                private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Texture.Tiles.AtlasTiles_15x25_PNG);
+                private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Tiles.AtlasTiles_15x25_PNG);
 
                 public static Dictionary<int, Texture2D> tileTextures = Tools.Texture.GetTileTextures(
-                    graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                     atlasTexture: atlasTexture,
                     pixelsPerTile_Height: 5,
                     pixelsPerTile_Width: 5,
@@ -135,7 +134,7 @@ namespace Shared
                 { ',', ':', ';', '?', '.', '!', ' ','\'','(',')','_','\"','<','>','-','+','\\','\0','\0','\0','\0','\0','\0','\0','\0','\0' }
             };
 
-            public static readonly SpriteFont font_7 = Tools.Font.GenerateFont(Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, WK.Font.MyFont_130x28_PNG), WK.Font.chars);
+            public static readonly SpriteFont font_7 = Tools.Font.GenerateFont(Tools.Texture.GetTexture(WK.Font.MyFont_130x28_PNG), WK.Font.chars);
         }
 
         public class Map

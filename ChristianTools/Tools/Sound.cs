@@ -1,7 +1,7 @@
 ﻿using System.IO;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Tools
 {
@@ -14,8 +14,10 @@ namespace ChristianTools.Tools
             /// </summary>
             /// <param name="soundName">File name of the WAV -> without the extension</param>
             /// <returns></returns>
-            public static SoundEffect GetSoundEffect(GraphicsDevice graphicsDevice, ContentManager contentManager, string soundName)
+            public static SoundEffect GetSoundEffect(string soundName)
             {
+                ContentManager contentManager = ChristianGame.contentManager;
+
                 string absolutePath = Path.Combine(contentManager.RootDirectory, $"{soundName}.wav");
                 SoundEffect result = SoundEffect.FromFile(absolutePath);
                 return result;

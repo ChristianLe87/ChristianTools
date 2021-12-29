@@ -50,68 +50,56 @@ namespace Shared
         public void Initialize()
         {
             subAtlas_1 = Tools.Texture.CropTexture(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                originalTexture: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
+                originalTexture: Tools.Texture.GetTexture("MyAtlasTexture"),
                 extractRectangle: new Rectangle(0, 0, 50, 50)
             );
             subAtlas_2 = Tools.Texture.CropTexture(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                originalTexture: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
+                originalTexture: Tools.Texture.GetTexture("MyAtlasTexture"),
                 extractRectangle: new Rectangle(50, 0, 50, 50)
             );
             subAtlas_3 = Tools.Texture.CropTexture(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                originalTexture: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
+                originalTexture: Tools.Texture.GetTexture("MyAtlasTexture"),
                 extractRectangle: new Rectangle(0, 50, 50, 50)
             );
             subAtlas_4 = Tools.Texture.CropTexture(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                originalTexture: Tools.Texture.GetTexture(Game1.graphicsDeviceManager.GraphicsDevice, Game1.contentManager, "MyAtlasTexture"),
+                originalTexture: Tools.Texture.GetTexture("MyAtlasTexture"),
                 extractRectangle: new Rectangle(50, 50, 50, 50)
             );
 
-            circle_1 = Tools.Texture.CreateCircleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 3);
-            circle_2 = Tools.Texture.CreateCircleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 4);
-            circle_3 = Tools.Texture.CreateCircleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 25);
-            circle_4 = Tools.Texture.CreateCircleTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, Color.Green, 26);
+            circle_1 = Tools.Texture.CreateCircleTexture(Color.Green, 3);
+            circle_2 = Tools.Texture.CreateCircleTexture(Color.Green, 4);
+            circle_3 = Tools.Texture.CreateCircleTexture(Color.Green, 25);
+            circle_4 = Tools.Texture.CreateCircleTexture(Color.Green, 26);
 
             triangle_Up = Tools.Texture.CreateTriangle(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                 color: Color.Red,
                 Width: 40,
                 Height: 40,
                 pointDirection: Tools.Texture.PointDirection.Up
             );
             triangle_Down = Tools.Texture.CreateTriangle(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                 color: Color.Red,
                 Width: 40,
                 Height: 40,
                 pointDirection: Tools.Texture.PointDirection.Down
             );
             triangle_Right = Tools.Texture.CreateTriangle(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                 color: Color.Red,
                 Width: 40,
                 Height: 40,
                 pointDirection: Tools.Texture.PointDirection.Right
             );
             triangle_Left = Tools.Texture.CreateTriangle(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
                 color: Color.Red,
                 Width: 40,
                 Height: 40,
                 pointDirection: Tools.Texture.PointDirection.Left
             );
 
-            fontMap = Tools.Texture.GetTexture(
-                graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice,
-                Game1.contentManager,
-                "MyFont_130x28_PNG"
-            );
+            fontMap = Tools.Texture.GetTexture("MyFont_130x28_PNG");
 
-            fontMap_Green = Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Green);
-            fontMap_Red = Tools.Texture.ReColorTexture(graphicsDevice: Game1.graphicsDeviceManager.GraphicsDevice, fontMap, Color.Red);
+            fontMap_Green = Tools.Texture.ReColorTexture(fontMap, Color.Green);
+            fontMap_Red = Tools.Texture.ReColorTexture(fontMap, Color.Red);
 
             this.UIs = new List<IUI>()
             {

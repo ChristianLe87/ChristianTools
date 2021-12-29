@@ -30,7 +30,7 @@ namespace Shared
         public void Initialize()
         {
             this.position = new Vector2(WK.Default.Width / 2, WK.Default.Height / 2);
-            this.camera = new Camera(Game1.spriteBatch.GraphicsDevice.Viewport);
+            this.camera = new Camera();
             this.texture2D = WK.Texture.Red;
 
             this.UIs = new List<IUI>()
@@ -58,7 +58,7 @@ namespace Shared
                 new Label(new Rectangle(10, 10, 200, 30), WK.Font.font_7, "Use \"Up\", \"Down\", \"Right\", \"Left\"\nto move camera", Label.TextAlignment.Midle_Left, "", camera, WK.Texture.LightGray),
             };
 
-            Texture2D Red = Tools.Texture.CreateColorTexture(Game1.graphicsDeviceManager.GraphicsDevice, Color.Red, Width: 50, Height: 50);
+            Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red, Width: 50, Height: 50);
             this.entities = new List<IEntity>()
             {
                 new Entity(Red, new Vector2(WK.Default.Width / 2, WK.Default.Height / 2)),

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,15 +18,17 @@ namespace ChristianTools.Tools
                 return null;
             }*/
 
-            public static Texture2D[] SliceHorizontalTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, int cuts)
+            public static Texture2D[] SliceHorizontalTexture(Texture2D originalTexture, int cuts)
             {
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+
                 Texture2D[] textures = new Texture2D[cuts];
                 int w = originalTexture.Width / cuts;
                 int h = originalTexture.Height;
                 for (int i = 0; i < cuts; i++)
                 {
                     Rectangle rectangle = new Rectangle(i * w, 0, w, h);
-                    textures[i] = Tools.Texture.CropTexture(graphicsDevice, originalTexture, rectangle);
+                    textures[i] = Tools.Texture.CropTexture(originalTexture, rectangle);
                 }
 
                 return textures;
@@ -42,7 +45,7 @@ namespace ChristianTools.Tools
             /// <param name="units_Height"></param>
             /// <param name="scaleFactor"></param>
             /// <returns></returns>
-            public static Dictionary<int, Texture2D> GetTileTextures(GraphicsDevice graphicsDevice, Texture2D atlasTexture, int pixelsPerTile_Width, int pixelsPerTile_Height, int units_Width, int units_Height, int scaleFactor)
+            public static Dictionary<int, Texture2D> GetTileTextures(Texture2D atlasTexture, int pixelsPerTile_Width, int pixelsPerTile_Height, int units_Width, int units_Height, int scaleFactor)
             {
                 Dictionary<int, Texture2D> tileTextures = new Dictionary<int, Texture2D>();
                 tileTextures.Add(0, null);
@@ -55,7 +58,6 @@ namespace ChristianTools.Tools
                         Rectangle rectangle = new Rectangle(x, y, pixelsPerTile_Width, pixelsPerTile_Height);
 
                         Texture2D tileTexture_Scaled = Tools.Texture.CropAndScaleTexture(
-                            graphicsDevice: graphicsDevice,
                             originalTexture: atlasTexture,
                             extractRectangle: rectangle,
                             scaleFactor: scaleFactor
@@ -72,8 +74,10 @@ namespace ChristianTools.Tools
             /// <summary>
             /// Increase image size by a scale factor
             /// </summary>
-            public static Texture2D ScaleTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, int scaleFactor)
+            public static Texture2D ScaleTexture(Texture2D originalTexture, int scaleFactor)
             {
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+
                 Color[] originalColors = new Color[originalTexture.Width * originalTexture.Height];
                 originalTexture.GetData(0, new Rectangle(0, 0, originalTexture.Width, originalTexture.Height), originalColors, 0, (originalTexture.Width * originalTexture.Height));
 
@@ -94,25 +98,33 @@ namespace ChristianTools.Tools
             /// </summary>
             /// <param name="imageName">File name of the PNG -> without the extension</param>
             /// <returns></returns>
-            public static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName)
+            public static Texture2D GetTexture(string imageName)
             {
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+                ContentManager contentManager = ChristianGame.contentManager;
+
                 string absolutePath = Path.Combine(contentManager.RootDirectory, $"{imageName}.png");
                 Texture2D result = Texture2D.FromFile(graphicsDevice, absolutePath);
                 return result;
             }
 
-            public static Texture2D GetTexture(GraphicsDevice graphicsDevice, ContentManager contentManager, string imageName, int scaleFactor)
+            public static Texture2D GetTexture(string imageName, int scaleFactor)
             {
-                Texture2D texture2D = Tools.Texture.GetTexture(graphicsDevice, contentManager, imageName);
-                Texture2D result = Tools.Texture.ScaleTexture(graphicsDevice, texture2D, scaleFactor);
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+                ContentManager contentManager = ChristianGame.contentManager;
+
+                Texture2D texture2D = Tools.Texture.GetTexture(imageName);
+                Texture2D result = Tools.Texture.ScaleTexture(texture2D, scaleFactor);
                 return result;
             }
 
             /// <summary>
             /// Get a new Texture2D from a bigger Texture2D
             /// </summary>
-            public static Texture2D CropTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Rectangle extractRectangle)
+            public static Texture2D CropTexture(Texture2D originalTexture, Rectangle extractRectangle)
             {
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+
                 Texture2D subtexture = new Texture2D(graphicsDevice, extractRectangle.Width, extractRectangle.Height);
                 int count = extractRectangle.Width * extractRectangle.Height;
                 Color[] data = new Color[count];
@@ -127,10 +139,12 @@ namespace ChristianTools.Tools
             /// Just combine CropTexture() and ScaleTexture()
             /// </summary>
             /// <returns></returns>
-            public static Texture2D CropAndScaleTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Rectangle extractRectangle, int scaleFactor)
+            public static Texture2D CropAndScaleTexture(Texture2D originalTexture, Rectangle extractRectangle, int scaleFactor)
             {
-                Texture2D texture2D = Tools.Texture.CropTexture(graphicsDevice, originalTexture, extractRectangle);
-                Texture2D scale = Tools.Texture.ScaleTexture(graphicsDevice, texture2D, scaleFactor);
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+
+                Texture2D texture2D = Tools.Texture.CropTexture(originalTexture, extractRectangle);
+                Texture2D scale = Tools.Texture.ScaleTexture(texture2D, scaleFactor);
 
                 return scale;
             }
@@ -138,8 +152,10 @@ namespace ChristianTools.Tools
             /// <summary>
             /// Create a new Texture2D from a Color
             /// </summary>
-            public static Texture2D CreateColorTexture(GraphicsDevice graphicsDevice, Color color, int Width = 1, int Height = 1)
+            public static Texture2D CreateColorTexture(Color color, int Width = 1, int Height = 1)
             {
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+
                 Texture2D texture2D = new Texture2D(graphicsDevice, Width, Height, false, SurfaceFormat.Color);
                 Color[] colors = new Color[Width * Height];
 
@@ -156,8 +172,10 @@ namespace ChristianTools.Tools
             /// <summary>
             /// Tint a texture
             /// </summary>
-            public static Texture2D ReColorTexture(GraphicsDevice graphicsDevice, Texture2D originalTexture, Color color)
+            public static Texture2D ReColorTexture(Texture2D originalTexture, Color color)
             {
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+
                 Texture2D texture2D = new Texture2D(graphicsDevice, originalTexture.Width, originalTexture.Height, false, SurfaceFormat.Color);
 
                 int count = originalTexture.Width * originalTexture.Height;
@@ -182,8 +200,10 @@ namespace ChristianTools.Tools
             /// <summary>
             /// CreateCircleTexture
             /// </summary>
-            public static Texture2D CreateCircleTexture(GraphicsDevice graphicsDevice, Color color, int radius = 1)
+            public static Texture2D CreateCircleTexture(Color color, int radius = 1)
             {
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+
                 // Implementation
                 {
                     List<Color> circle = new List<Color>();
@@ -216,8 +236,10 @@ namespace ChristianTools.Tools
 
 
             public enum PointDirection { Up, Down, Right, Left }
-            public static Texture2D CreateTriangle(GraphicsDevice graphicsDevice, Color color, int Width, int Height, PointDirection pointDirection)
+            public static Texture2D CreateTriangle(Color color, int Width, int Height, PointDirection pointDirection)
             {
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+
                 Color[] colors = new Color[Width * Height];
 
                 Point p1 = new Point(0, 0); // top

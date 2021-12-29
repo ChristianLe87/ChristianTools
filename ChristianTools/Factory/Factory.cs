@@ -35,8 +35,8 @@ namespace ChristianTools
 
             public void Initialize()
             {
-                Texture2D lightGray = Tools.Tools.Texture.CreateColorTexture(ChristianGame.graphicsDevice, Color.LightGray);
-                Texture2D gray = Tools.Tools.Texture.CreateColorTexture(ChristianGame.graphicsDevice, Color.Gray);
+                Texture2D lightGray = Tools.Tools.Texture.CreateColorTexture(Color.LightGray);
+                Texture2D gray = Tools.Tools.Texture.CreateColorTexture(Color.Gray);
 
                 this.UIs = new List<IUI>()
                 {

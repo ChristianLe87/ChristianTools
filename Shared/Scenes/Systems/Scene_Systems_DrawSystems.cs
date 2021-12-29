@@ -46,7 +46,7 @@ namespace Shared
             this.entities = new List<IEntity>()
             {
                 new Entity(
-                    texture2D: Tools.Texture.CreateTriangle(Game1.graphicsDeviceManager.GraphicsDevice, Color.Pink, 100, 100, Tools.Texture.PointDirection.Right),
+                    texture2D: Tools.Texture.CreateTriangle(Color.Pink, 100, 100, Tools.Texture.PointDirection.Right),
                     centerPosition: WK.Default.Center.ToVector2(),
                     dxUpdateSystem: (InputState lastInputState, InputState inputState, IEntity entity) => {
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Components
@@ -10,15 +11,9 @@ namespace ChristianTools.Components
         Viewport viewport;
         int zoom = 1;
 
-        public Camera() { }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="viewport">Viewport = Game1.spriteBatch.GraphicsDevice.Viewport;</param>
-        public Camera(Viewport viewport)
+        public Camera()
         {
-            this.viewport = viewport;
+            this.viewport = ChristianGame.viewport;
             transform = Matrix.CreateScale(new Vector3(zoom, zoom, 0)) * Matrix.CreateTranslation(Vector3.Zero);//-center.X, -center.Y, 0);
             rectangle = new Rectangle(0, 0, viewport.Width, viewport.Height);
         }

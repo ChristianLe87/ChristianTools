@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -84,8 +85,9 @@ namespace ChristianTools.Tools
             /// <summary>
             /// Get a SpriteFont from ContentManager
             /// </summary>
-            public static SpriteFont GetFont(ContentManager contentManager, string fontName)
+            public static SpriteFont GetFont(string fontName)
             {
+                ContentManager contentManager = ChristianGame.contentManager;
                 return contentManager.Load<SpriteFont>(fontName);
             }
         }

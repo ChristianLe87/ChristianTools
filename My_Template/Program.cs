@@ -63,7 +63,7 @@ namespace My_Template
 
         public class Font
         {
-            static Texture2D texture2D = Tools.Texture.GetTexture(Game1.graphicsDevice, Game1.contentManager, "MyFont_130x28_PNG", WK.Default.ScaleFactor);
+            static Texture2D texture2D = Tools.Texture.GetTexture("MyFont_130x28_PNG", WK.Default.ScaleFactor);
             static char[,] chars = new char[,]
             {
                 { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' },
@@ -79,13 +79,13 @@ namespace My_Template
         {
             public class PixelColor
             {
-                public static Texture2D Gray = Tools.Texture.CreateColorTexture(Game1.graphicsDevice, Color.Gray);
-                public static Texture2D LightGray = Tools.Texture.CreateColorTexture(Game1.graphicsDevice, Color.LightGray);
+                public static Texture2D Gray = Tools.Texture.CreateColorTexture(Color.Gray);
+                public static Texture2D LightGray = Tools.Texture.CreateColorTexture(Color.LightGray);
 
-                public static Texture2D Red = Tools.Texture.CreateColorTexture(Game1.graphicsDevice, Color.Red);
+                public static Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red);
             }
 
-            public static Texture2D Tree => Tools.Texture.GetTexture(Game1.graphicsDevice, Game1.contentManager, "Tree");
+            public static Texture2D Tree => Tools.Texture.GetTexture("Tree");
         }
     }
 
@@ -191,7 +191,7 @@ namespace My_Template
 
         public Player()
         {
-            Texture2D texture2D = Tools.Texture.CreateColorTexture(Game1.graphicsDevice, Color.Pink, 10 * WK.Default.ScaleFactor, 10 * WK.Default.ScaleFactor);
+            Texture2D texture2D = Tools.Texture.CreateColorTexture(Color.Pink, 10 * WK.Default.ScaleFactor, 10 * WK.Default.ScaleFactor);
             this.animation = new Animation(texture2D);
             this.rigidbody = new Rigidbody(new Vector2(200, 200), this);
             this.isActive = true;

@@ -50,7 +50,7 @@ namespace ChristianTools.Components
                 {
                     frame++;
                 }
-                
+
             }
             else
             {
@@ -64,7 +64,5 @@ namespace ChristianTools.Components
 
             return animations[characterState].Item1[frame];
         }
-
-       
     }
 }
