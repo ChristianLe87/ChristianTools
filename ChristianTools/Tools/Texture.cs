@@ -57,7 +57,7 @@ namespace ChristianTools.Tools
                     {
                         Rectangle rectangle = new Rectangle(x, y, pixelsPerTile_Width, pixelsPerTile_Height);
 
-                        Texture2D tileTexture_Scaled = Tools.Texture.CropAndScaleTexture(
+                        Texture2D tileTexture_Scaled = Tools.Texture.CropTexture(
                             originalTexture: atlasTexture,
                             extractRectangle: rectangle,
                             scaleFactor: scaleFactor
@@ -121,7 +121,7 @@ namespace ChristianTools.Tools
             /// <summary>
             /// Get a new Texture2D from a bigger Texture2D
             /// </summary>
-            public static Texture2D CropTexture(Texture2D originalTexture, Rectangle extractRectangle)
+            public static Texture2D CropTexture(Texture2D originalTexture, Rectangle extractRectangle, int scaleFactor = 1)
             {
                 GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
 
@@ -132,6 +132,9 @@ namespace ChristianTools.Tools
                 originalTexture.GetData(0, new Rectangle(extractRectangle.X, extractRectangle.Y, extractRectangle.Width, extractRectangle.Height), data, 0, count);
                 subtexture.SetData(data);
 
+                if (scaleFactor > 1)
+                    subtexture = Tools.Texture.ScaleTexture(subtexture, scaleFactor);
+
                 return subtexture;
             }
 
@@ -139,7 +142,7 @@ namespace ChristianTools.Tools
             /// Just combine CropTexture() and ScaleTexture()
             /// </summary>
             /// <returns></returns>
-            public static Texture2D CropAndScaleTexture(Texture2D originalTexture, Rectangle extractRectangle, int scaleFactor)
+            /*public static Texture2D CropAndScaleTexture(Texture2D originalTexture, Rectangle extractRectangle, int scaleFactor)
             {
                 GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
 
@@ -147,7 +150,7 @@ namespace ChristianTools.Tools
                 Texture2D scale = Tools.Texture.ScaleTexture(texture2D, scaleFactor);
 
                 return scale;
-            }
+            }*/
 
             /// <summary>
             /// Create a new Texture2D from a Color

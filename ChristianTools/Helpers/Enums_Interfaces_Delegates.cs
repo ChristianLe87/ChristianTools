@@ -18,8 +18,12 @@ namespace ChristianTools.Helpers
 
     public enum CharacterState
     {
+        IdleUp,
+        IdleDown,
         IdleRight,
         IdleLeft,
+        MoveUp,
+        MoveDown,
         MoveRight,
         MoveLeft,
         JumpRight,
