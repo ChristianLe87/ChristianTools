@@ -11,6 +11,11 @@ namespace ChristianTools
 {
     public partial class Factory
     {
+
+    }
+
+    public partial class Factory
+    {
         public class SceneMenu : IScene
         {
             public GameState gameState { get; private set; }
@@ -33,7 +38,7 @@ namespace ChristianTools
                 this.gameSceneName = gameSceneName;
             }
 
-            public void Initialize()
+            public void Initialize(Vector2? playerPosition = null)
             {
                 Texture2D lightGray = Tools.Tools.Texture.CreateColorTexture(Color.LightGray);
                 Texture2D gray = Tools.Tools.Texture.CreateColorTexture(Color.Gray);
@@ -46,7 +51,7 @@ namespace ChristianTools
                 };
             }
 
-            public void ButtonPlaySystem()
+            private void ButtonPlaySystem()
             {
                 ChristianGame.ChangeToScene(gameSceneName);
             }

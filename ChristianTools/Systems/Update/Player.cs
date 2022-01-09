@@ -46,7 +46,7 @@ namespace ChristianTools.Systems
                             entity.rigidbody.Move_Y(-scaleFactor);
 
                             // move until player until alligne with tile
-                            if (entity.rigidbody.rectangle.Y % assetSize * scaleFactor != 0)
+                            if (entity.rigidbody.rectangle.Y % (assetSize * scaleFactor) != 0)
                             {
                                 entity.characterState = CharacterState.MoveUp;
                             }
@@ -63,7 +63,7 @@ namespace ChristianTools.Systems
                             entity.rigidbody.Move_Y(scaleFactor);
 
                             // move until player until alligne with tile
-                            if (entity.rigidbody.rectangle.Y % assetSize * scaleFactor != 0)
+                            if (entity.rigidbody.rectangle.Y % (assetSize * scaleFactor) != 0)
                             {
                                 entity.characterState = CharacterState.MoveDown;
                             }
@@ -81,7 +81,7 @@ namespace ChristianTools.Systems
                             entity.rigidbody.Move_X(scaleFactor);
 
                             // move until player until alligne with tile
-                            if (entity.rigidbody.rectangle.X % assetSize * scaleFactor != 0)
+                            if (entity.rigidbody.rectangle.X % (assetSize * scaleFactor) != 0)
                             {
                                 entity.characterState = CharacterState.MoveRight;
                             }
@@ -99,7 +99,7 @@ namespace ChristianTools.Systems
                             entity.rigidbody.Move_X(-scaleFactor);
 
                             // move until player until alligne with tile
-                            if (entity.rigidbody.rectangle.X % assetSize * scaleFactor != 0)
+                            if (entity.rigidbody.rectangle.X % (assetSize * scaleFactor) != 0)
                             {
                                 entity.characterState = CharacterState.MoveLeft;
                             }

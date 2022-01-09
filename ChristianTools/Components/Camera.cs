@@ -20,8 +20,6 @@ namespace ChristianTools.Components
 
         public void Update(Vector2 targetPosition)
         {
-            //rectangle = new Rectangle((int)center.X, (int)center.Y, viewport.Width, viewport.Height);
-
             rectangle = new Rectangle(
                 x: (int)(targetPosition.X - viewport.Width / 2),
                 y: (int)targetPosition.Y - viewport.Height / 2,
@@ -30,7 +28,6 @@ namespace ChristianTools.Components
             );
 
             transform = Matrix.CreateTranslation(new Vector3(-rectangle.X, -rectangle.Y, 0));
-
         }
     }
 }

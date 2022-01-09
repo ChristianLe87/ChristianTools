@@ -27,7 +27,7 @@ namespace Shared
         Vector2 position;
         Texture2D texture2D;
 
-        public void Initialize()
+        public void Initialize(Vector2? playerPosition = null)
         {
             this.position = new Vector2(WK.Default.Width / 2, WK.Default.Height / 2);
             this.camera = new Camera();

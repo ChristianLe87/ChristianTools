@@ -32,7 +32,7 @@ namespace Shared
             Initialize();
         }
 
-        public void Initialize()
+        public void Initialize(Vector2? playerPosition = null)
         {
             UIs = new List<IUI>()
             {

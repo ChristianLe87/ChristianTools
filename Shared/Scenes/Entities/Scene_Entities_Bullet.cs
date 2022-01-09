@@ -27,7 +27,7 @@ namespace Shared
 
         Vector2 centerPosition = WK.Default.Center.ToVector2();
 
-        public void Initialize()
+        public void Initialize(Vector2? playerPosition = null)
         {
             this.UIs = new List<IUI>()
             {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -20,7 +21,7 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        public void Initialize()
+        public void Initialize(Vector2? playerPosition = null)
         {
         }
     }

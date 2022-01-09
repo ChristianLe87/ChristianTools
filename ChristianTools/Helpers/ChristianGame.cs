@@ -99,11 +99,15 @@ namespace ChristianTools.Helpers
             base.Initialize();
         }
 
-        public void SetupScenes(Dictionary<string, IScene> scenes, string startScene)
+        public void SetupScenes(Dictionary<string, IScene> scenes, string startScene, Vector2? playerPosition = null)
         {
             ChristianGame.scenes = scenes;
             ChristianGame.actualScene = startScene;
-            scenes[actualScene].Initialize();
+
+            if(playerPosition != null)
+                scenes[actualScene].Initialize(playerPosition.Value);
+            else
+                scenes[actualScene].Initialize();
         }
 
         protected override void LoadContent()
@@ -181,12 +185,15 @@ namespace ChristianTools.Helpers
             graphicsDeviceManager.ToggleFullScreen();
         }
 
-
-        public static void ChangeToScene(string scene)
+        public static void ChangeToScene(string scene, Vector2? playerPosition = null)
         {
             JsonSerialization.Update(ChristianGame.gameData, ChristianGame.gameDataFileName);
             actualScene = scene;
-            scenes[actualScene].Initialize();
+
+            if (playerPosition != null)
+                scenes[actualScene].Initialize(playerPosition);
+            else
+                scenes[actualScene].Initialize();
         }
 
         private static ChristianGame game;

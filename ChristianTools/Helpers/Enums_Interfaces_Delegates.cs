@@ -69,7 +69,7 @@ namespace ChristianTools.Helpers
         public List<SoundEffect> soundEffects { get; }
         public Camera camera { get; }
         public Map map { get; }
-        public void Initialize();
+        public void Initialize(Vector2? playerPosition = null);
 
         public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; }

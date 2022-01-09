@@ -21,7 +21,7 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        public void Initialize()
+        public void Initialize(Vector2? playerPosition = null)
         {
             Dictionary<int, Texture2D> tileTextures = WK.Texture.Tiles.tileTextures;
             this.map = new Map(tileTextures, WK.Map.map0);
