@@ -124,7 +124,7 @@ namespace My_Template
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
 
-        public void Initialize()
+        public void Initialize(Vector2? playerPosition = null)
         {
         }
     }
@@ -142,7 +142,7 @@ namespace My_Template
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
 
-        public void Initialize()
+        public void Initialize(Vector2? playerPosition = null)
         {
         }
     }
@@ -160,7 +160,7 @@ namespace My_Template
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
 
-        public void Initialize()
+        public void Initialize(Vector2? playerPosition = null)
         {
             this.UIs = new List<IUI>()
             {
