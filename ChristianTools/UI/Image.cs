@@ -14,9 +14,9 @@ namespace ChristianTools.UI
         public Texture2D texture;
         Camera camera;
 
-        public Image(Texture2D texture, Vector2 centerPosition, Camera camera, string tag = "")
+        public Image(Texture2D texture, Vector2 centerPosition, string tag = "")
         {
-            this.camera = camera;
+            this.camera = ChristianGame.GetScene.camera;// != null ? ChristianGame.GetScene.camera: null;
             this.rectangle = Tools.Tools.GetRectangle.Rectangle(centerPosition, texture);
             this.texture = texture;
             this.tag = tag;

@@ -10,10 +10,10 @@ namespace ChristianTools.Helpers
         public string systemLanguage { get; set; } = "en";
         public int lifes { get; set; } = 3;
         public int coins { get; set; } = 0;
-        public bool pickable_hammer { get; set; } = false;
-        public bool ui_hammer { get; set; } = false;
-        public bool pickable_key1 { get; set; } = false;
-        public bool ui_key1 { get; set; } = false;
+        public bool hammer_entity_isVisible { get; set; } = true;
+        public bool hammer_ui_isVisible { get; set; } = false;
+        public bool key1_entity_isVisible { get; set; } = true;
+        public bool key1_ui_isVisible { get; set; } = false;
     }
 
     //Environment.GetFolderPath(Environment.SpecialFolder.InternetCache)

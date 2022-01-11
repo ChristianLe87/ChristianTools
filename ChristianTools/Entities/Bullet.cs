@@ -12,7 +12,7 @@ namespace ChristianTools.Entities
         int FPS;
 
         public Rigidbody rigidbody { get; }
-        public bool isActive { get; private set; }
+        public bool isActive { get; set; }
         public string tag { get; }
         public int health { get; }
         public ExtraComponents extraComponents { get; set; }

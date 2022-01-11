@@ -51,7 +51,7 @@ namespace ChristianTools.Helpers
         public Animation animation { get; }
         public Rigidbody rigidbody { get; }
         public CharacterState characterState { get; set; }
-        public bool isActive { get; }
+        public bool isActive { get; set; }
         public string tag { get; }
         public int health { get; }
         public ExtraComponents extraComponents { get; set; }
