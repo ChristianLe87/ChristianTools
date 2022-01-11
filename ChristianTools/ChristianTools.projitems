@@ -42,6 +42,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Player.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factory\Factory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Image.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />

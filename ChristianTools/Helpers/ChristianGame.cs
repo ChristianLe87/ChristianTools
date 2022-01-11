@@ -63,6 +63,14 @@ namespace ChristianTools.Helpers
 
             // GameData
             ChristianGame.gameDataFileName = gameDataFileName;
+
+            // Create folder
+            if(JsonSerialization.FolderExist() == false)
+            {
+                JsonSerialization.CreateFolder();
+            }
+
+
             if (JsonSerialization.FileExist(gameDataFileName) == false)
             {
                 ChristianGame.gameData = new GameData();

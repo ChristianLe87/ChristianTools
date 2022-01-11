@@ -9,12 +9,32 @@ namespace ChristianTools.Helpers
         public int score { get; set; } = 0;
         public string systemLanguage { get; set; } = "en";
         public int lifes { get; set; } = 3;
+        public int coins { get; set; } = 0;
+        public bool pickable_hammer { get; set; } = false;
+        public bool ui_hammer { get; set; } = false;
+        public bool pickable_key1 { get; set; } = false;
+        public bool ui_key1 { get; set; } = false;
     }
 
     //Environment.GetFolderPath(Environment.SpecialFolder.InternetCache)
     //"/Users/christianlehnhoff/Library/Caches"
     public class JsonSerialization
     {
+        public static string FolderName => "ChristianGames";
+
+        public static bool FolderExist()
+        {
+            string UserLibraryCaches_Path = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
+            return System.IO.Directory.Exists(Path.Combine(UserLibraryCaches_Path, FolderName));
+        }
+
+        public static void CreateFolder()
+        {
+            string UserLibraryCaches_Path = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
+            System.IO.Directory.CreateDirectory(Path.Combine(UserLibraryCaches_Path, FolderName));
+        }
+
+
         /// <summary>
         /// Check if GameData file exist
         /// </summary>
@@ -22,7 +42,7 @@ namespace ChristianTools.Helpers
         public static bool FileExist(string gameDataFileName)
         {
             string UserLibraryCaches_Path = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
-            string absolutePath = Path.Combine(UserLibraryCaches_Path, $"{gameDataFileName}.json");
+            string absolutePath = Path.Combine(UserLibraryCaches_Path, FolderName, $"{gameDataFileName}.json");
 
             return File.Exists(absolutePath);
         }
@@ -34,7 +54,7 @@ namespace ChristianTools.Helpers
         public static void Create<T>(T gameData, string gameDataFileName)
         {
             string UserLibraryCaches_Path = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
-            string absolutePath = Path.Combine(UserLibraryCaches_Path, $"{gameDataFileName}.json");
+            string absolutePath = Path.Combine(UserLibraryCaches_Path, FolderName, $"{gameDataFileName}.json");
 
             TextWriter textWriter = new StreamWriter(path: absolutePath, append: false);
 
@@ -60,7 +80,7 @@ namespace ChristianTools.Helpers
         public static T Read<T>(string gameDataFileName)
         {
             string UserLibraryCaches_Path = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
-            string absolutePath = Path.Combine(UserLibraryCaches_Path, $"{gameDataFileName}.json");
+            string absolutePath = Path.Combine(UserLibraryCaches_Path, FolderName, $"{gameDataFileName}.json");
 
             TextReader textWriter = new StreamReader(absolutePath);
             string fileContents = textWriter.ReadToEnd();
@@ -78,7 +98,7 @@ namespace ChristianTools.Helpers
         public static void Delete(string gameDataFileName)
         {
             string UserLibraryCaches_Path = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
-            string absolutePath = Path.Combine(UserLibraryCaches_Path, $"{gameDataFileName}.json");
+            string absolutePath = Path.Combine(UserLibraryCaches_Path, FolderName, $"{gameDataFileName}.json");
 
             File.Delete(absolutePath);
         }
