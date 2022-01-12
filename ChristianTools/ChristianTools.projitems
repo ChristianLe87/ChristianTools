@@ -43,6 +43,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Player.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factory\Factory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Image.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Transition.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />
