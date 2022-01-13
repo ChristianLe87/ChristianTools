@@ -1,4 +1,5 @@
-﻿using ChristianTools.Components;
+﻿using System;
+using ChristianTools.Components;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,7 +22,7 @@ namespace ChristianTools.UI
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
         public DxUiDrawSystem dxUiDrawSystem { get; }
 
-        public Texture2D texture => throw new NotImplementedException();
+        public Texture2D texture { get; }
 
         public delegate void DxOnClickAction();
         DxOnClickAction OnClickAction;
@@ -43,6 +44,7 @@ namespace ChristianTools.UI
 
             this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
             this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.isActive = true;
         }
 
         private void UpdateSystem(InputState lastInputState, InputState inputState)

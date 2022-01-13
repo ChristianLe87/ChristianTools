@@ -180,7 +180,7 @@ namespace My_Template
         public Animation animation { get; private set; }
         public Rigidbody rigidbody { get; private set; }
         public CharacterState characterState { get; set; }
-        public bool isActive { get; private set; }
+        public bool isActive { get; set; }
         public string tag { get; private set; }
         public int health { get; private set; }
         public ExtraComponents extraComponents { get; set; }
@@ -204,7 +204,7 @@ namespace My_Template
         public Animation animation { get; private set; }
         public Rigidbody rigidbody { get; private set; }
         public CharacterState characterState { get; set; }
-        public bool isActive { get; private set; }
+        public bool isActive { get; set; }
         public string tag { get; private set; }
         public int health { get; private set; }
         public ExtraComponents extraComponents { get; set; }

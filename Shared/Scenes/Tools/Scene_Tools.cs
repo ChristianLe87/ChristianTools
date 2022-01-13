@@ -42,10 +42,6 @@ namespace Shared
         Texture2D fontMap_Green;
         Texture2D fontMap_Red;
 
-        public Scene_Tools()
-        {
-            Initialize();
-        }
 
         public void Initialize(Vector2? playerPosition = null)
         {
@@ -115,10 +111,10 @@ namespace Shared
                 )
             };
 
-            this.dxSceneDrawSystem = (SpriteBatch spriteBatch) => Draw(spriteBatch);
+            this.dxSceneDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        private void DrawSystem(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(subAtlas_1, new Vector2(200, 200), Color.White);
             spriteBatch.Draw(subAtlas_2, new Vector2(275, 200), Color.White);

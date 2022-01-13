@@ -61,10 +61,10 @@ namespace Shared
             Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red, Width: 50, Height: 50);
             this.entities = new List<IEntity>()
             {
-                new Entity(Red, new Vector2(WK.Default.Width / 2, WK.Default.Height / 2)),
+                new Entity(Red, new Vector2(WK.Default.Width / 2, WK.Default.Height / 2),tag: "player", dxUpdateSystem: (InputState lastInputState, InputState inputState, IEntity entity)=>UpdateSystem(lastInputState, inputState)),
             };
 
-            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+            //this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
         }
 
         public void UpdateSystem(InputState lastInputState, InputState inputState)
@@ -78,7 +78,8 @@ namespace Shared
             else if (inputState.Down)
                 position.Y++;
 
-            camera.Update(position);
+
+            //camera.Update(position);
         }
     }
 }

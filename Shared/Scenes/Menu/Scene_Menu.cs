@@ -100,17 +100,5 @@ namespace Shared
                 ),
             };
         }
-
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-            foreach (IUI ui in UIs)
-                ui.Update(lastInputState, inputState);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (IUI ui in UIs)
-                ui.Draw(spriteBatch);
-        }
     }
 }

@@ -34,10 +34,10 @@ namespace ChristianTools.Entities
             this.thickness = thickness;
             this.animation = new Animation(texture2D);
             this.tag = tag;
-
+            this.isActive = true;
             CreateLine();
 
-            this.dxEntityDrawSystem = (SpriteBatch spriteBatch, IEntity entity) => Draw(spriteBatch);
+            this.dxEntityDrawSystem = (SpriteBatch spriteBatch, IEntity entity) => DrawSystem(spriteBatch);
         }
 
         public void UpdatePoints(Point? start, Point? end)
@@ -51,7 +51,7 @@ namespace ChristianTools.Entities
             CreateLine();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        private void DrawSystem(SpriteBatch spriteBatch)
         {
             foreach (var rectangle in rectangles)
             {

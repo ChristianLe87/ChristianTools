@@ -1,4 +1,5 @@
-﻿using ChristianTools.Helpers;
+﻿using System.Linq;
+using ChristianTools.Helpers;
 
 namespace ChristianTools.Systems
 {
@@ -20,8 +21,12 @@ namespace ChristianTools.Systems
 
                 if (scene.camera != null)
                 {
-                    IEntity player = scene.entities.Where(x => x.tag == "player").First();
-                    Systems.Update.Camera(scene.camera, player.rigidbody.centerPosition);
+                    if (scene.entities != null)
+                    {
+                        IEntity player = scene.entities.Where(x => x.tag == "player")?.FirstOrDefault();
+                        if (player != null)
+                            Systems.Update.Camera(scene.camera, player.rigidbody.centerPosition);
+                    }
                 }
 
 

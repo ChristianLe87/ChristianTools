@@ -52,7 +52,7 @@ namespace Shared
             this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
         }
 
-        public void UpdateSystem(InputState lastInputState, InputState inputState)
+        private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
             Line line = entities.OfType<Line>().First();
             line.UpdatePoints(start: null, end: inputState.Mouse_Position());

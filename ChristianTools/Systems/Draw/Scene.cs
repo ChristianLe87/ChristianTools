@@ -26,6 +26,10 @@ namespace ChristianTools.Systems
                 if (scene.UIs != null)
                     foreach (IUI ui in scene.UIs)
                         Systems.Draw.UI(spriteBatch, ui);
+
+
+                if (scene.dxSceneDrawSystem != null)
+                    scene.dxSceneDrawSystem(spriteBatch);
             }
         }
     }

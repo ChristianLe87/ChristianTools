@@ -21,7 +21,7 @@ namespace ChristianTools.UI
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
         public DxUiDrawSystem dxUiDrawSystem { get; }
 
-        public Texture2D texture => throw new NotImplementedException();
+        public Texture2D texture { get; }
 
         public HealthBar(Texture2D topTexture, Texture2D backTexture, Rectangle rectangle, Direction direction, uint maxVal = 100, uint reduceValue = 5, uint startValue = 80)
         {
