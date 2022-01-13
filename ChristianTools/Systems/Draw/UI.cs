@@ -1,4 +1,5 @@
 ﻿using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Systems
@@ -9,7 +10,17 @@ namespace ChristianTools.Systems
         {
             public static void UI(SpriteBatch spriteBatch, IUI ui)
             {
-                ui.Draw(spriteBatch);
+                if (ui.isActive == false)
+                    return;
+
+                if (ui.dxUiDrawSystem != null)
+                {
+                    ui.dxUiDrawSystem(spriteBatch);
+                }
+                else
+                {
+                    spriteBatch.Draw(ui.texture, ui.rectangle, Color.White);
+                }
             }
         }
     }

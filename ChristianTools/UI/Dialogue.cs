@@ -9,35 +9,42 @@ namespace ChristianTools.UI
 {
     public class Dialogue : IUI
     {
-        Texture2D background;
+        public Texture2D texture { get; }
         Point centerPosition;
         Label[] labels;
         int labelCount;
-        bool isActive;
         InputState previousinputState;
-        public Rectangle rectangle { get => new Rectangle(centerPosition.X - (background.Width / 2), centerPosition.Y - (background.Height / 2), background.Width, background.Height); }
+        public Rectangle rectangle { get => new Rectangle(centerPosition.X - (texture.Width / 2), centerPosition.Y - (texture.Height / 2), texture.Width, texture.Height); }
 
         public string tag => throw new System.NotImplementedException();
+        public bool isActive { get; set; }
+
+        public DxUiInitializeSystem dxUiInitializeSystem { get; }
+        public DxUiUpdateSystem dxUiUpdateSystem { get; }
+        public DxUiDrawSystem dxUiDrawSystem { get; }
 
         public Dialogue(string[] texts, Point centerPosition, Texture2D background, SpriteFont spriteFont, Camera camera, bool isActive = true)
         {
-            this.background = background;
+            this.texture = background;
             this.centerPosition = centerPosition;
             this.labelCount = 0;
             this.isActive = isActive;
             this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, tag: "", camera)).ToArray();
+
+            this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
-        public void Update(InputState lastInputState, InputState inputState)
+        private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        private void DrawSystem(SpriteBatch spriteBatch)
         {
             if (isActive == false) return;
 
-            spriteBatch.Draw(background, rectangle, Color.White);
-            labels[labelCount].Draw(spriteBatch);
+            spriteBatch.Draw(texture, rectangle, Color.White);
+            labels[labelCount].dxUiDrawSystem(spriteBatch);
         }
 
         public void SetActiveState(bool isActive)

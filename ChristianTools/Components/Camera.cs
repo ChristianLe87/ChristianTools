@@ -6,9 +6,9 @@ namespace ChristianTools.Components
 {
     public class Camera
     {
-        public Rectangle rectangle { get; private set; }
-        public Matrix transform { get; private set; }
-        Viewport viewport;
+        public Rectangle rectangle { get; set; }
+        public Matrix transform { get; set; }
+        public Viewport viewport { get; }
         int zoom = 1;
 
         public Camera()
@@ -18,7 +18,7 @@ namespace ChristianTools.Components
             rectangle = new Rectangle(0, 0, viewport.Width, viewport.Height);
         }
 
-        public void Update(Vector2 targetPosition)
+        /*public void Update(Vector2 targetPosition)
         {
             rectangle = new Rectangle(
                 x: (int)(targetPosition.X - viewport.Width / 2),
@@ -28,6 +28,6 @@ namespace ChristianTools.Components
             );
 
             transform = Matrix.CreateTranslation(new Vector3(-rectangle.X, -rectangle.Y, 0));
-        }
+        }*/
     }
 }

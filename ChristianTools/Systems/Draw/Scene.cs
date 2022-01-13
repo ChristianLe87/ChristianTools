@@ -1,4 +1,5 @@
-﻿using ChristianTools.Helpers;
+﻿using ChristianTools.Components;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Systems
@@ -9,18 +10,21 @@ namespace ChristianTools.Systems
         {
             public static void Scene(SpriteBatch spriteBatch, IScene scene)
             {
-                if (scene.dxSceneDrawSystem != null)
-                    scene.dxSceneDrawSystem(spriteBatch);
-
+                // Tiles
                 if (scene.map != null)
-                    scene.map.Draw(spriteBatch);
+                    foreach (ITile tile in scene.map.tiles)
+                        Systems.Draw.Tile(spriteBatch, tile);
 
+
+                // Entities
                 if (scene.entities != null)
-                    foreach (var entity in scene.entities)
+                    foreach (IEntity entity in scene.entities)
                         Systems.Draw.Entity(spriteBatch, entity);
 
+
+                // UIs
                 if (scene.UIs != null)
-                    foreach (var ui in scene.UIs)
+                    foreach (IUI ui in scene.UIs)
                         Systems.Draw.UI(spriteBatch, ui);
             }
         }

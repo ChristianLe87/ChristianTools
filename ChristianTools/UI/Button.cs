@@ -15,6 +15,13 @@ namespace ChristianTools.UI
 
         public Rectangle rectangle { get; }
         public string tag { get; }
+        public bool isActive { get; set; }
+
+        public DxUiInitializeSystem dxUiInitializeSystem { get; }
+        public DxUiUpdateSystem dxUiUpdateSystem { get; }
+        public DxUiDrawSystem dxUiDrawSystem { get; }
+
+        public Texture2D texture => throw new NotImplementedException();
 
         public delegate void DxOnClickAction();
         DxOnClickAction OnClickAction;
@@ -33,9 +40,12 @@ namespace ChristianTools.UI
 
             this.OnClickAction = OnClickAction;
             this.camera = camera ?? new Camera();
+
+            this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
-        public void Update(InputState inputState, InputState lastInputState)
+        private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
             Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.rectangle.X), (int)(rectangle.Y + camera.rectangle.Y), rectangle.Width, rectangle.Height);
             if (tempRectangle.Contains(inputState.Mouse_Position(camera)))
@@ -53,7 +63,7 @@ namespace ChristianTools.UI
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        private void DrawSystem(SpriteBatch spriteBatch)
         {
             Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.rectangle.X), (int)(rectangle.Y + camera.rectangle.Y), rectangle.Width, rectangle.Height);
 
@@ -62,8 +72,8 @@ namespace ChristianTools.UI
             else
                 spriteBatch.Draw(defaultTexture, tempRectangle, Color.White);
 
-            label.Draw(spriteBatch);
 
+            label.dxUiDrawSystem(spriteBatch);
         }
     }
 }

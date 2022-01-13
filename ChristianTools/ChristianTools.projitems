@@ -44,6 +44,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Factory\Factory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Image.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Transition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\UI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Camera.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />

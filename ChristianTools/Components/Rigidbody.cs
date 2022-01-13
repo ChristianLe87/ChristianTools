@@ -76,7 +76,7 @@ namespace ChristianTools.Components
                 }
                 else if (CanMoveRight(scFct) == false)
                 {
-                    Tile tileRight = this.map.tiles.FirstOrDefault(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle));
+                    ITile tileRight = this.map.tiles.Where(x => x.isActive = true).FirstOrDefault(x => x.rigidbody.rectangleLeft(scFct).Intersects(rectangle));
                     int dif = rectangle.Right - tileRight.rigidbody.rectangle.X;
 
                     dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
@@ -91,7 +91,7 @@ namespace ChristianTools.Components
                 }
                 else if (CanMoveLeft(scFct) == false)
                 {
-                    Tile tileLeft = this.map.tiles.FirstOrDefault(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle));
+                    ITile tileLeft = this.map.tiles.Where(x => x.isActive = true).FirstOrDefault(x => x.rigidbody.rectangleRight(scFct).Intersects(rectangle));
                     int dif = tileLeft.rigidbody.rectangle.Right - rectangle.X;
 
                     dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
@@ -118,7 +118,7 @@ namespace ChristianTools.Components
                 }
                 else if (CanMoveDown(scFct) == false)
                 {
-                    Tile tileDown = this.map.tiles.FirstOrDefault(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle));
+                    ITile tileDown = this.map.tiles.Where(x => x.isActive = true).FirstOrDefault(x => x.rigidbody.rectangleUp(scFct).Intersects(rectangle));
                     int dif = rectangle.Bottom - tileDown.rigidbody.rectangle.Y;
 
                     dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
@@ -133,7 +133,7 @@ namespace ChristianTools.Components
                 }
                 else if (CanMoveUp(scFct) == false)
                 {
-                    Tile tileUp = this.map.tiles.FirstOrDefault(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle));
+                    ITile tileUp = this.map.tiles.Where(x => x.isActive = true).FirstOrDefault(x => x.rigidbody.rectangleDown(scFct).Intersects(rectangle));
                     int dif = tileUp.rigidbody.rectangle.Bottom - rectangle.Y;
 
                     dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
@@ -149,7 +149,7 @@ namespace ChristianTools.Components
             if (map == null)
                 return true;
 
-            int tilesRight = this.map.tiles.Count(x => x.rigidbody.rectangleLeft(scaleFactor).Intersects(rectangle));
+            int tilesRight = this.map.tiles.Where(x => x.isActive = true).Count(x => x.rigidbody.rectangleLeft(scaleFactor).Intersects(rectangle));
             return tilesRight == 0 ? true : false;
         }
 
@@ -158,7 +158,7 @@ namespace ChristianTools.Components
             if (map == null)
                 return true;
 
-            int tilesLeft = this.map.tiles.Count(x => x.rigidbody.rectangleRight(scaleFactor).Intersects(rectangle));
+            int tilesLeft = this.map.tiles.Where(x => x.isActive = true).Count(x => x.rigidbody.rectangleRight(scaleFactor).Intersects(rectangle));
             return tilesLeft == 0 ? true : false;
         }
 
@@ -168,7 +168,7 @@ namespace ChristianTools.Components
             if (map == null)
                 return true;
 
-            int tilesDown = this.map.tiles.Count(x => x.rigidbody.rectangleUp(scaleFactor).Intersects(rectangle));
+            int tilesDown = this.map.tiles.Where(x => x.isActive = true).Count(x => x.rigidbody.rectangleUp(scaleFactor).Intersects(rectangle));
             return tilesDown == 0 ? true : false;
         }
 
@@ -177,7 +177,7 @@ namespace ChristianTools.Components
             if (map == null)
                 return true;
 
-            int tilesUp = this.map.tiles.Count(x => x.rigidbody.rectangleDown(scaleFactor).Intersects(rectangle));
+            int tilesUp = this.map.tiles.Where(x => x.isActive = true).Count(x => x.rigidbody.rectangleDown(scaleFactor).Intersects(rectangle));
             return tilesUp == 0 ? true : false;
         }
     }

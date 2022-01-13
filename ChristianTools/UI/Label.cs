@@ -9,37 +9,45 @@ namespace ChristianTools.UI
     {
         SpriteFont spriteFont;
         string text;
-        Texture2D texture2D;
+        public Texture2D texture { get; }
         Vector2 textPosition;
         TextAlignment textAlignment;
         Camera camera;
 
         public Rectangle rectangle { get; }
-
+        public bool isActive { get; set; }
         public string tag { get; }
 
-        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, string tag, Camera camera, Texture2D texture = null, int lineSpacing = 10)
+        public DxUiInitializeSystem dxUiInitializeSystem { get; }
+        public DxUiUpdateSystem dxUiUpdateSystem { get; }
+        public DxUiDrawSystem dxUiDrawSystem { get; }
+
+        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, string tag, Camera camera, Texture2D texture = null, int lineSpacing = 10, bool isActive = true)
         {
             this.rectangle = rectangle;
             this.spriteFont = spriteFont;
             this.text = text;
-            this.texture2D = texture;
+            this.texture = texture;
             this.textAlignment = textAlignment;
             this.spriteFont.LineSpacing = lineSpacing;
             this.textPosition = GetTextPosition();
             this.tag = tag;
-
+            this.isActive = isActive;
             this.camera = camera ?? new Camera();
+
+            //this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
-        public void Update(InputState lastInputState, InputState inputState)
+        private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
+            throw new Exception();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        private void DrawSystem(SpriteBatch spriteBatch)
         {
-            if (texture2D != null)
-                spriteBatch.Draw(texture2D, new Rectangle(rectangle.Location + new Point(camera.rectangle.X, camera.rectangle.Y), rectangle.Size), Color.White);
+            if (texture != null)
+                spriteBatch.Draw(texture, new Rectangle(rectangle.Location + new Point(camera.rectangle.X, camera.rectangle.Y), rectangle.Size), Color.White);
 
             spriteBatch.DrawString(spriteFont, text, textPosition + new Vector2(camera.rectangle.X, camera.rectangle.Y), Color.White);
         }
@@ -79,8 +87,6 @@ namespace ChristianTools.UI
             if (text != null)
                 this.text = text;
         }
-
-
 
         public enum TextAlignment
         {

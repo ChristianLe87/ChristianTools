@@ -1,22 +1,23 @@
 ﻿using System.Collections.Generic;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 
 namespace ChristianTools.Components
 {
     public class Map
     {
-        public List<Tile> tiles;
-        public delegate void DxOnUpdate();
+        public List<ITile> tiles;
 
         public Map()
         {
-            this.tiles = new List<Tile>();
+            this.tiles = new List<ITile>();
         }
 
         public Map(Dictionary<int, Texture2D> textures, int[,] map)
         {
-            this.tiles = new List<Tile>();
+            this.tiles = new List<ITile>();
 
             for (int row = 0; row < map.GetLength(0); row++)
             {
@@ -34,17 +35,6 @@ namespace ChristianTools.Components
                     }
                 }
             }
-        }
-
-        public void Update(DxOnUpdate dxOnUpdate)
-        {
-            dxOnUpdate();
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var tile in tiles)
-                tile.Draw(spriteBatch);
         }
     }
 }

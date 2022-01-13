@@ -10,7 +10,16 @@ namespace ChristianTools.Systems
         {
             public static void Entity(SpriteBatch spriteBatch, IEntity entity)
             {
-                if (entity.isActive == true)
+                if (entity.isActive == false)
+                    return;
+
+
+
+                if (entity.dxEntityDrawSystem != null)
+                {
+                    entity.dxEntityDrawSystem(spriteBatch, entity);
+                }
+                else
                 {
                     Texture2D texture2D = entity.animation.GetTexture(entity.characterState);
                     Rectangle rectangle = new Rectangle((int)entity.rigidbody.centerPosition.X, (int)entity.rigidbody.centerPosition.Y, texture2D.Width, texture2D.Height);
@@ -28,9 +37,6 @@ namespace ChristianTools.Systems
                     );
                 }
 
-
-                if (entity.dxEntityDrawSystem != null)
-                    entity.dxEntityDrawSystem(spriteBatch, entity);
             }
         }
     }

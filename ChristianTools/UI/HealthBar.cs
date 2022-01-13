@@ -14,8 +14,14 @@ namespace ChristianTools.UI
         public uint reduceValue { get; }
 
         public Rectangle rectangle { get; }
-
+        public bool isActive { get; set; }
         public string tag => throw new System.NotImplementedException();
+
+        public DxUiInitializeSystem dxUiInitializeSystem { get; }
+        public DxUiUpdateSystem dxUiUpdateSystem { get; }
+        public DxUiDrawSystem dxUiDrawSystem { get; }
+
+        public Texture2D texture => throw new NotImplementedException();
 
         public HealthBar(Texture2D topTexture, Texture2D backTexture, Rectangle rectangle, Direction direction, uint maxVal = 100, uint reduceValue = 5, uint startValue = 80)
         {
@@ -26,13 +32,11 @@ namespace ChristianTools.UI
             this.value = startValue;
             this.maxVal = maxVal;
             this.reduceValue = reduceValue;
+
+            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
-        public void Update(InputState lastInputState, InputState inputState)
-        {
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
+        private void DrawSystem(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(backTexture, rectangle, Color.White);
             spriteBatch.Draw(topTexture, GetTopRectangle(), Color.White);

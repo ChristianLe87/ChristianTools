@@ -79,9 +79,23 @@ namespace ChristianTools.Helpers
     public interface IUI
     {
         public Rectangle rectangle { get; }
+        public Texture2D texture { get; }
         public string tag { get; }
-        public void Update(InputState lastInputState, InputState inputState);
-        public void Draw(SpriteBatch spriteBatch);
+        public bool isActive { get; set; }
+
+        public DxUiInitializeSystem dxUiInitializeSystem { get;}
+        public DxUiUpdateSystem dxUiUpdateSystem { get; }
+        public DxUiDrawSystem dxUiDrawSystem { get; }
+    }
+
+    public interface ITile
+    {
+        public Texture2D texture { get; }
+        public Rigidbody rigidbody { get; }
+        public bool isActive { get; set; }
+        public DxTileInitializeSystem dxTileInitializeSystem { get; }
+        public DxTileUpdateSystem dxTileUpdateSystem { get; }
+        public DxTileDrawSystem dxTileDrawSystem { get; }
     }
 
     public interface ILanguage
@@ -102,4 +116,11 @@ namespace ChristianTools.Helpers
     public delegate void DxSceneUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxSceneDrawSystem(SpriteBatch spriteBatch);
 
+    public delegate void DxTileInitializeSystem();
+    public delegate void DxTileUpdateSystem(InputState lastInputState, InputState inputState);
+    public delegate void DxTileDrawSystem(SpriteBatch spriteBatch);
+
+    public delegate void DxUiInitializeSystem();
+    public delegate void DxUiUpdateSystem(InputState lastInputState, InputState inputState);
+    public delegate void DxUiDrawSystem(SpriteBatch spriteBatch);
 }

@@ -15,11 +15,16 @@ namespace ChristianTools.UI
             public Rectangle rectangle { get; private set; }
             public string tag { get; private set; } = "";
 
-            Texture2D texture;
+            public Texture2D texture { get; private set; }
             Color color;
             byte fadeSpeed;
-
+            public bool isActive { get; set; }
             public bool fadeFinish { get; private set; }
+
+
+            public DxUiInitializeSystem dxUiInitializeSystem { get; }
+            public DxUiUpdateSystem dxUiUpdateSystem { get; }
+            public DxUiDrawSystem dxUiDrawSystem { get; }
 
             public FadeIn(byte fadeSpeed = 10)
             {
@@ -32,9 +37,13 @@ namespace ChristianTools.UI
                 this.texture = ChristianTools.Tools.Tools.Texture.CreateColorTexture(color);
 
                 this.fadeFinish = false;
+
+
+                this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+                this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
             }
 
-            public void Update(InputState lastInputState, InputState inputState)
+            private void UpdateSystem(InputState lastInputState, InputState inputState)
             {
                 if (fadeFinish == true)
                     return;
@@ -47,7 +56,7 @@ namespace ChristianTools.UI
                     fadeFinish = true;
             }
 
-            public void Draw(SpriteBatch spriteBatch)
+            private void DrawSystem(SpriteBatch spriteBatch)
             {
                 if (color.A <= fadeSpeed)
                     return;
@@ -78,11 +87,16 @@ namespace ChristianTools.UI
             public Rectangle rectangle { get; private set; }
             public string tag { get; private set; } = "";
 
-            Texture2D texture;
+            public Texture2D texture { get; private set; }
             Color color;
             byte fadeSpeed;
 
             public bool fadeFinish { get; private set; }
+            public bool isActive { get; set; }
+
+            public DxUiInitializeSystem dxUiInitializeSystem { get; }
+            public DxUiUpdateSystem dxUiUpdateSystem { get; }
+            public DxUiDrawSystem dxUiDrawSystem { get; }
 
             public FadeOut(byte fadeSpeed = 10)
             {
@@ -96,9 +110,12 @@ namespace ChristianTools.UI
                 this.texture = ChristianTools.Tools.Tools.Texture.CreateColorTexture(color);
 
                 this.fadeFinish = false;
+
+                this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+                this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
             }
 
-            public void Update(InputState lastInputState, InputState inputState)
+            private void UpdateSystem(InputState lastInputState, InputState inputState)
             {
                 if (fadeFinish == true)
                     return;
@@ -111,7 +128,7 @@ namespace ChristianTools.UI
                     fadeFinish = true;
             }
 
-            public void Draw(SpriteBatch spriteBatch)
+            private void DrawSystem(SpriteBatch spriteBatch)
             {
                 spriteBatch.Draw(
                     texture,
