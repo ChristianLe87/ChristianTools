@@ -19,7 +19,6 @@ namespace ChristianTools.UI
         public bool isActive { get; set; }
         public string tag { get; }
 
-        public DxUiInitializeSystem dxUiInitializeSystem { get; }
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
         public DxUiDrawSystem dxUiDrawSystem { get; }
 

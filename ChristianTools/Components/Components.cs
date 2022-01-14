@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ChristianTools.Components
 {
-    public class ExtraComponents
+    /*public class ExtraComponents
     {
         Dictionary<string, object> extraComponents = new Dictionary<string, object>();
 
@@ -32,5 +32,5 @@ namespace ChristianTools.Components
         {
             extraComponents.Remove(key);
         }
-    }
+    }*/
 }

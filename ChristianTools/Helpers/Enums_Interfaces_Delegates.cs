@@ -54,9 +54,9 @@ namespace ChristianTools.Helpers
         public bool isActive { get; set; }
         public string tag { get; }
         public int health { get; }
-        public ExtraComponents extraComponents { get; set; }
+        //public ExtraComponents extraComponents { get; set; }
 
-        public DxEntityInitializeSystem dxEntityInitializeSystem { get; }
+        //public DxEntityInitializeSystem dxEntityInitializeSystem { get; }
         public DxEntityUpdateSystem dxEntityUpdateSystem { get; }
         public DxEntityDrawSystem dxEntityDrawSystem { get; }
     }
@@ -71,7 +71,7 @@ namespace ChristianTools.Helpers
         public Map map { get; }
         public void Initialize(Vector2? playerPosition = null);
 
-        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
+        //public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
     }
@@ -83,7 +83,7 @@ namespace ChristianTools.Helpers
         public string tag { get; }
         public bool isActive { get; set; }
 
-        public DxUiInitializeSystem dxUiInitializeSystem { get;}
+        //public DxUiInitializeSystem dxUiInitializeSystem { get;}
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
         public DxUiDrawSystem dxUiDrawSystem { get; }
     }
@@ -93,7 +93,7 @@ namespace ChristianTools.Helpers
         public Texture2D texture { get; }
         public Rigidbody rigidbody { get; }
         public bool isActive { get; set; }
-        public DxTileInitializeSystem dxTileInitializeSystem { get; }
+        //public DxTileInitializeSystem dxTileInitializeSystem { get; }
         public DxTileUpdateSystem dxTileUpdateSystem { get; }
         public DxTileDrawSystem dxTileDrawSystem { get; }
     }
@@ -108,19 +108,19 @@ namespace ChristianTools.Helpers
 
 
     // === Delegates ===
-    public delegate void DxEntityInitializeSystem();
-    public delegate void DxEntityUpdateSystem(InputState lastInputState, InputState inputState, IEntity entity);
-    public delegate void DxEntityDrawSystem(SpriteBatch spriteBatch, IEntity entity);
+    //public delegate void DxEntityInitializeSystem();
+    public delegate void DxEntityUpdateSystem(InputState lastInputState, InputState inputState);
+    public delegate void DxEntityDrawSystem(SpriteBatch spriteBatch);
 
-    public delegate void DxSceneInitializeSystem();
+    //public delegate void DxSceneInitializeSystem();
     public delegate void DxSceneUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxSceneDrawSystem(SpriteBatch spriteBatch);
 
-    public delegate void DxTileInitializeSystem();
+    //public delegate void DxTileInitializeSystem();
     public delegate void DxTileUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxTileDrawSystem(SpriteBatch spriteBatch);
 
-    public delegate void DxUiInitializeSystem();
+    //public delegate void DxUiInitializeSystem();
     public delegate void DxUiUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxUiDrawSystem(SpriteBatch spriteBatch);
 }

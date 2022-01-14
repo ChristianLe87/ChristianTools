@@ -10,21 +10,20 @@ namespace ChristianTools.Entities
     /// </summary>
     public class Entity : IEntity
     {
-        public bool isActive { get; set; }
-        public string tag { get; private set; }
         public Rigidbody rigidbody { get; }
+        public bool isActive { get; set; }
+        public string tag { get; }
         public int health { get; }
-        public ExtraComponents extraComponents { get; set; }
+
         public Animation animation { get; }
         public CharacterState characterState { get; set; }
 
-        public DxEntityInitializeSystem dxEntityInitializeSystem { get; set; }
-        public DxEntityUpdateSystem dxEntityUpdateSystem { get; set; }
-        public DxEntityDrawSystem dxEntityDrawSystem { get; set; }
+        public DxEntityUpdateSystem dxEntityUpdateSystem { get; private set; }
+        public DxEntityDrawSystem dxEntityDrawSystem { get; private set; }
 
         public Entity(
             Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", Vector2? force = null, Vector2? gravity = null,
-            DxEntityInitializeSystem dxInitializeSystem = null, DxEntityUpdateSystem dxUpdateSystem = null, DxEntityDrawSystem dxDrawSystem = null)
+            DxEntityUpdateSystem dxUpdateSystem = null, DxEntityDrawSystem dxDrawSystem = null)
         {
             this.characterState = CharacterState.IdleRight;
             this.animation = new Animation(texture2D);
@@ -37,10 +36,6 @@ namespace ChristianTools.Entities
             this.tag = tag;
             this.dxEntityUpdateSystem = dxUpdateSystem;
             this.dxEntityDrawSystem = dxDrawSystem;
-
-            // Initialize
-            if (dxInitializeSystem != null)
-                dxInitializeSystem();
         }
     }
 }

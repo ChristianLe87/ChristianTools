@@ -17,7 +17,6 @@ namespace ChristianTools.UI
         public bool isActive { get; set; }
         public string tag => throw new System.NotImplementedException();
 
-        public DxUiInitializeSystem dxUiInitializeSystem { get; }
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
         public DxUiDrawSystem dxUiDrawSystem { get; }
 

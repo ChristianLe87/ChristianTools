@@ -19,7 +19,6 @@ namespace ChristianTools.UI
         public string tag => throw new System.NotImplementedException();
         public bool isActive { get; set; }
 
-        public DxUiInitializeSystem dxUiInitializeSystem { get; }
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
         public DxUiDrawSystem dxUiDrawSystem { get; }
 
@@ -31,12 +30,8 @@ namespace ChristianTools.UI
             this.isActive = isActive;
             this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, tag: "", camera)).ToArray();
 
-            this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+            //this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
             this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
-        }
-
-        private void UpdateSystem(InputState lastInputState, InputState inputState)
-        {
         }
 
         private void DrawSystem(SpriteBatch spriteBatch)

@@ -14,10 +14,9 @@ namespace ChristianTools.Systems
                     return;
 
 
-
                 if (entity.dxEntityDrawSystem != null)
                 {
-                    entity.dxEntityDrawSystem(spriteBatch, entity);
+                    entity.dxEntityDrawSystem(spriteBatch);
                 }
                 else
                 {

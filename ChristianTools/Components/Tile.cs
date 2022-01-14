@@ -12,7 +12,6 @@ namespace ChristianTools.Components
         public string tag { get; }
         public bool isActive { get; set; }
 
-        public DxTileInitializeSystem dxTileInitializeSystem { get; }
         public DxTileUpdateSystem dxTileUpdateSystem { get; private set; }
         public DxTileDrawSystem dxTileDrawSystem { get; }
 

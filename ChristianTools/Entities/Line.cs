@@ -18,12 +18,10 @@ namespace ChristianTools.Entities
         public bool isActive { get; set; }
         public string tag { get; }
         public int health { get; }
-        public ExtraComponents extraComponents { get; set; }
 
         public Animation animation { get; }
         public CharacterState characterState { get; set; }
 
-        public DxEntityInitializeSystem dxEntityInitializeSystem { get; }
         public DxEntityUpdateSystem dxEntityUpdateSystem { get; }
         public DxEntityDrawSystem dxEntityDrawSystem { get; }
 
@@ -37,7 +35,7 @@ namespace ChristianTools.Entities
             this.isActive = true;
             CreateLine();
 
-            this.dxEntityDrawSystem = (SpriteBatch spriteBatch, IEntity entity) => DrawSystem(spriteBatch);
+            this.dxEntityDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
         public void UpdatePoints(Point? start, Point? end)

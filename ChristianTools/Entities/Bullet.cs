@@ -15,15 +15,12 @@ namespace ChristianTools.Entities
         public bool isActive { get; set; }
         public string tag { get; }
         public int health { get; }
-        public ExtraComponents extraComponents { get; set; }
 
         public Animation animation { get; }
         public CharacterState characterState { get; set; }
 
-        public DxEntityInitializeSystem dxEntityInitializeSystem { get; }
-        public DxEntityUpdateSystem dxEntityUpdateSystem { get; private set; }
+        public DxEntityUpdateSystem dxEntityUpdateSystem { get; }
         public DxEntityDrawSystem dxEntityDrawSystem { get; }
-
 
         public Bullet(Texture2D texture2D, Vector2 centerPosition, Vector2 direction, int steps, TimeSpan timeToDeactivate = new TimeSpan(), int FPS = 60)
         {
@@ -42,7 +39,7 @@ namespace ChristianTools.Entities
                 force: new Vector2(x, y)
             );
 
-            this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => BulletUpdateSystem();
+            this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState) => BulletUpdateSystem();
         }
 
         public void BulletUpdateSystem()
