@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Components
@@ -9,52 +10,39 @@ namespace ChristianTools.Components
         Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations;
 
         int framesPerTexture;
-        int frameCount;
+        int framesCount;
         int frame;
         Texture2D texture2D;
+        
 
         public Animation(Texture2D texture2D)
         {
             this.texture2D = texture2D;
+            this.frame = 0;
         }
 
-        public Animation(Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations, int framesPerTexture = 8)
+        public Animation(Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations, int framesPerTexture = 6)
         {
             this.animations = animations;
             this.framesPerTexture = framesPerTexture;
-            this.frameCount = 0;
             this.frame = 0;
         }
 
         public void Update()
         {
-            frameCount++;
+            framesCount++;
         }
 
         public Texture2D GetTexture(CharacterState characterState)
         {
-
             if (animations == null)
                 return texture2D;
 
 
-            if (frameCount >= framesPerTexture)
+            if (framesCount > framesPerTexture)
             {
-                frameCount = 0;
-
-                if (animations[characterState].Item2 == AnimationOption.Stop && frame == (animations[characterState].Item1.Length - 1))
-                {
-                    //frame++;
-                }
-                else// if(animations[characterState].Item2 == AnimationOption.Loop)
-                {
-                    frame++;
-                }
-
-            }
-            else
-            {
-                frameCount++;
+                framesCount = 0;
+                frame++;
             }
 
 

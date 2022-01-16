@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using ChristianTools.Helpers;
+﻿using ChristianTools.Helpers;
 
 namespace ChristianTools.Systems
 {
