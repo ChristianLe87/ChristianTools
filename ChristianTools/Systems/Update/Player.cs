@@ -34,7 +34,7 @@ namespace ChristianTools.Systems
                     // Implementation
                     {
                         Move();
-                        entity.animation.Update();
+                        //entity.animation.Update();
                     }
 
 

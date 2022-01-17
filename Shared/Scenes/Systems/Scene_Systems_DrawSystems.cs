@@ -18,7 +18,6 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; }
 
-        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
@@ -48,7 +47,7 @@ namespace Shared
                 new Entity(
                     texture2D: Tools.Texture.CreateTriangle(Color.Pink, 100, 100, Tools.Texture.PointDirection.Right),
                     centerPosition: WK.Default.Center.ToVector2(),
-                    dxUpdateSystem: (InputState lastInputState, InputState inputState, IEntity entity) => {
+                    dxUpdateSystem: (InputState lastInputState, InputState inputState) => {
 
                         // Set rotation
                         double angleInDegrees = Tools.MyMath.GetAngleInDegree(entity.rigidbody.centerPosition, inputState.Mouse_Position().ToVector2());

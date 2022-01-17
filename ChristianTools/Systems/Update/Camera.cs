@@ -10,7 +10,7 @@ namespace ChristianTools.Systems
         public partial class Update
         {
             public static void Camera(Camera camera, Vector2 targetPosition)
-        {
+            {
                 camera.rectangle = new Rectangle(
                     x: (int)(targetPosition.X - camera.viewport.Width / 2),
                     y: (int)targetPosition.Y - camera.viewport.Height / 2,

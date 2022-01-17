@@ -9,10 +9,12 @@ namespace ChristianTools.Systems
         {
             public static void Entity(InputState lastInputState, InputState inputState, IEntity entity)
             {
+                if (entity.isActive != true)
+                    return;
+
+
                 if (entity.dxEntityUpdateSystem != null)
-                {
                     entity.dxEntityUpdateSystem(lastInputState, inputState);
-                }
 
                 entity.animation.Update();
                 entity.rigidbody.Update();

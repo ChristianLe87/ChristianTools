@@ -20,7 +20,6 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; }
 
-        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
@@ -61,7 +60,7 @@ namespace Shared
             Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red, Width: 50, Height: 50);
             this.entities = new List<IEntity>()
             {
-                new Entity(Red, new Vector2(WK.Default.Width / 2, WK.Default.Height / 2),tag: "player", dxUpdateSystem: (InputState lastInputState, InputState inputState, IEntity entity)=>UpdateSystem(lastInputState, inputState)),
+                new Entity(Red, new Vector2(WK.Default.Width / 2, WK.Default.Height / 2),tag: "player", dxUpdateSystem: (InputState lastInputState, InputState inputState)=>UpdateSystem(lastInputState, inputState)),
             };
 
             //this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);

@@ -179,7 +179,6 @@ namespace ChristianTools.Helpers
                 //ChristianGame.graphicsDeviceManager.PreferredBackBufferHeight = 700;
                 //ChristianGame.graphicsDeviceManager.ApplyChanges();
 
-                int bla = 0;
                 gameWindow = Window;
             }
 

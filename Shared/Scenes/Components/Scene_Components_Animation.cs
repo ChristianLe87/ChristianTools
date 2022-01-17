@@ -18,7 +18,6 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; }
 
-        public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
@@ -51,11 +50,9 @@ namespace Shared
             public string tag { get; private set; }
             public Rigidbody rigidbody { get; }
             public int health { get; }
-            public ExtraComponents extraComponents { get; set; }
             public Animation animation { get; }
             public CharacterState characterState { get; set; }
 
-            public DxEntityInitializeSystem dxEntityInitializeSystem { get; set; }
             public DxEntityUpdateSystem dxEntityUpdateSystem { get; set; }
             public DxEntityDrawSystem dxEntityDrawSystem { get; set; }
 
