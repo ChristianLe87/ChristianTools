@@ -44,10 +44,25 @@ namespace ChristianTools.UI
 
         private void DrawSystem(SpriteBatch spriteBatch)
         {
-            if (texture != null)
-                spriteBatch.Draw(texture, new Rectangle(rectangle.Location + new Point(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y), rectangle.Size), Color.White);
+            Rectangle rec;
+            Vector2 vec;
+            if (ChristianGame.GetScene.camera != null)
+            {
+                rec = new Rectangle(rectangle.Location + new Point(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y), rectangle.Size);
+                vec = new Vector2(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y);
+            }
+            else
+            {
+                rec = rectangle;
+                vec = new Vector2();
+            }
+                
 
-            spriteBatch.DrawString(spriteFont, text, textPosition + new Vector2(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y), Color.White);
+            if (texture != null)
+                spriteBatch.Draw(texture, rec, Color.White);
+
+
+            spriteBatch.DrawString(spriteFont, text, textPosition + vec, Color.White);
         }
 
         private Vector2 GetTextPosition()

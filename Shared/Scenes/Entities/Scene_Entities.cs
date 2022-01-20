@@ -34,8 +34,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToEntities_Bullet",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities_Bullet),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities_Bullet)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 50, 230, 30),
@@ -44,8 +43,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToEntities_Line",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities_Line),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities_Line)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 90, 230, 30),
@@ -54,8 +52,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToEntities_Prefab",
-                    OnClickAction: null /*() => Game1.ChangeToScene(WK.Scene.Entities_Prefab)*/,
-                    camera
+                    OnClickAction: null
                 ),
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
@@ -64,8 +61,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
-                    camera: camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu)
                 ),
             };
         }

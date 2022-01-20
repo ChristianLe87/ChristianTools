@@ -90,12 +90,12 @@ namespace ChristianTools.Helpers
 
         // Mouse
         //public Point Mouse_Position => mouseState.Position;
-        public Point Mouse_Position(Camera camera = null)
+        public Point Mouse_Position()
         {
-            if (camera != null)
+            if (ChristianGame.GetScene.camera != null)
             {
                 Point point = mouseState.Position;
-                point += new Point(camera.rectangle.X, camera.rectangle.Y);
+                point += new Point(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y);
                 return point;
             }
             else

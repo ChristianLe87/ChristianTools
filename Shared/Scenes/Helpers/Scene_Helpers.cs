@@ -32,8 +32,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToHelpers_InputState",
-                    OnClickAction: null,/*() => Game1.ChangeToScene(WK.Scene.Helpers_InputState),*/
-                    camera
+                    OnClickAction: null
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 50, 230, 30),
@@ -42,8 +41,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToHelpers_JsonSerialization",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers_JsonSerialization),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers_JsonSerialization)
                 ),
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
@@ -52,8 +50,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
-                    camera: camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu)
                 ),
             };
         }

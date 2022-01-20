@@ -12,7 +12,6 @@ namespace ChristianTools.UI
         public string tag { get; }
 
         public Texture2D texture { get; }
-        Camera camera;
         public bool isActive { get; set; }
 
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
@@ -20,7 +19,6 @@ namespace ChristianTools.UI
 
         public Image(Texture2D texture, Vector2 centerPosition, string tag = "")
         {
-            this.camera = ChristianGame.GetScene.camera;// != null ? ChristianGame.GetScene.camera: null;
             this.rectangle = Tools.Tools.GetRectangle.Rectangle(centerPosition, texture);
             this.texture = texture;
             this.tag = tag;
@@ -41,7 +39,7 @@ namespace ChristianTools.UI
 
         private void DrawSystem(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, new Rectangle(rectangle.Location + new Point(camera.rectangle.X, camera.rectangle.Y), rectangle.Size), Color.White);
+            spriteBatch.Draw(texture, new Rectangle(rectangle.Location + new Point(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y), rectangle.Size), Color.White);
         }
     }
 }

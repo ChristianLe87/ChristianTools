@@ -32,16 +32,15 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToEntities",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities),
-                    camera: camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities)
                 ),
             };
 
             this.entities = new List<IEntity>()
             {
                 new Line(
-                    start: WK.Default.Center,
-                    end: WK.Default.Center,
+                    start: new Point(ChristianGame.Setup.canvasWidth/2, ChristianGame.Setup.canvasHeight/2),
+                    end: new Point(ChristianGame.Setup.canvasWidth/2, ChristianGame.Setup.canvasHeight/2),
                     thickness: 5,
                     texture2D: WK.Texture.Red,
                     tag: "line1"

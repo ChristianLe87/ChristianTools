@@ -105,8 +105,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
-                    camera: camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu)
                 )
             };
 

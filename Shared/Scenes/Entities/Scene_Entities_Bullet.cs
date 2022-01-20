@@ -24,7 +24,7 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        Vector2 centerPosition = WK.Default.Center.ToVector2();
+        Vector2 centerPosition = new Point(ChristianGame.Setup.canvasWidth / 2, ChristianGame.Setup.canvasHeight / 2).ToVector2();
 
         public void Initialize(Vector2? playerPosition = null)
         {
@@ -35,8 +35,7 @@ namespace Shared
                     spriteFont: WK.Font.font_7,
                     text: "Click somewhere",
                     textAlignment: Label.TextAlignment.Midle_Center,
-                    tag: "",
-                    camera: camera
+                    tag: ""
                 ),
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
@@ -45,8 +44,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToEntities",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities),
-                    camera: camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities)
                 ),
             };
 

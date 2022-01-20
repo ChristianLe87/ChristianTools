@@ -33,9 +33,7 @@ namespace Shared
                     spriteFont: WK.Font.font_7,
                     "Menu",
                     Label.TextAlignment.Midle_Center,
-                    "",
-                    camera
-                    //texture: WK.Texture.LightGray
+                    ""
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 10, 230, 30),
@@ -44,8 +42,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToComponents",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 50, 230, 30),
@@ -54,8 +51,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToEntities",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Entities)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 90, 230, 30),
@@ -64,8 +60,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToHelpers",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 130, 230, 30),
@@ -74,8 +69,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToTools",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Tools),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Tools)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 170, 230, 30),
@@ -84,8 +78,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToUI",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.UI),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.UI)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 210, 230, 30),
@@ -94,8 +87,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToSystems",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Systems),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Systems)
                 ),
             };
         }

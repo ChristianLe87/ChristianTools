@@ -34,8 +34,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToComponents",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components)
                 ),
             };
         }

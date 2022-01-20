@@ -31,8 +31,7 @@ namespace Shared
                     spriteFont: WK.Font.font_7,
                     text: "Score:",
                     textAlignment: Label.TextAlignment.Midle_Center,
-                    tag: "",
-                    camera: camera
+                    tag: ""
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 10, 230, 30),
@@ -41,8 +40,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "save",
-                    OnClickAction: () => JsonSerialization.Update<GameData>(Game1.gameData, WK.Default.gameDataFileName),
-                    camera
+                    OnClickAction: () => JsonSerialization.Update<GameData>(Game1.gameData, ChristianGame.Setup.GameDataFileName)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 50, 230, 30),
@@ -51,8 +49,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "plus",
-                    OnClickAction: () => Game1.gameData.score++,
-                    camera
+                    OnClickAction: () => Game1.gameData.score++
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 90, 230, 30),
@@ -61,8 +58,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "minus",
-                    OnClickAction: () => Game1.gameData.score--,
-                    camera
+                    OnClickAction: () => Game1.gameData.score--
                 ),
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
@@ -71,8 +67,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToComponents",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Helpers)
                 ),
             };
         }

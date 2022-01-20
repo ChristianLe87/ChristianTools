@@ -32,8 +32,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToComponents_Animation",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Animation),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Animation)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 50, 230, 30),
@@ -42,8 +41,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToComponents_Camera",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Camera),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Camera)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 90, 230, 30),
@@ -52,8 +50,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToComponents_Map",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Map),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Map)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 130, 230, 30),
@@ -62,8 +59,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToComponents_Rigidbody",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Rigidbody),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components_Rigidbody)
                 ),
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
@@ -72,8 +68,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
-                    camera: camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu)
                 ),
             };
         }

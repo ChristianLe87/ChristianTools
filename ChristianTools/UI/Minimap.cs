@@ -1,11 +1,7 @@
-﻿using System;
-using ChristianTools.Components;
+﻿using System.Collections.Generic;
 using ChristianTools.Helpers;
-using ChristianTools.Tools;
-using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 
 namespace ChristianTools.UI
 {
@@ -24,7 +20,7 @@ namespace ChristianTools.UI
         Texture2D miniPlayerTexture;
         IEntity player;
 
-        public Minimimap(Dictionary<int, Color> minimapColors, int[,] map, Vector2 centerPosition, int scaleFactor, IEntity player)//, Camera camera//, Player player)
+        public Minimimap(Dictionary<int, Color> minimapColors, int[,] map, Vector2 centerPosition, int scaleFactor, IEntity player)
         {
             // Implementation
             {
@@ -39,7 +35,6 @@ namespace ChristianTools.UI
 
                 this.tag = "";
                 this.isActive = true;
-                //this.camera = camera;
 
                 this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
                 this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);

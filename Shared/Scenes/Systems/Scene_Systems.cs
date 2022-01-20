@@ -37,8 +37,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToDrawSystems",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Systems_DrawSystems),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Systems_DrawSystems)
                 ),
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
@@ -47,8 +46,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
-                    camera: camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu)
                 ),
             };
         }

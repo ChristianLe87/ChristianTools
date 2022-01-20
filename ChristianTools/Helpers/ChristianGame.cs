@@ -63,7 +63,7 @@ namespace ChristianTools.Helpers
 
 
             // GameData
-            ChristianGame.gameDataFileName = gameDataFileName;
+            ChristianGame.gameDataFileName = setup.GameDataFileName;
 
             // Create folder
             if(JsonSerialization.FolderExist() == false)

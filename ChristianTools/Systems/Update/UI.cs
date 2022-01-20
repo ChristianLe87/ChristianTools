@@ -12,19 +12,8 @@ namespace ChristianTools.Systems
 				if (ui.isActive == false)
 					return;
 
-
-				if(ui.tag == "coin")
-                {
-					int bla = 0;
-                }
 				if (ui.dxUiUpdateSystem != null)
-                {
 					ui.dxUiUpdateSystem(lastInputState, inputState);
-                }
-                else
-                {
-
-                }
 			}
 		}
 	}

@@ -33,8 +33,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "jump",
-                    OnClickAction: null,
-                    camera
+                    OnClickAction: null
                 ),
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),
@@ -43,15 +42,14 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToComponents",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
-                    camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components)
                 ),
             };
 
 
             Entity entity = new Entity(
                 texture2D: WK.Texture.Player.IdleLeft_Multiply,
-                centerPosition: WK.Default.Center.ToVector2(),
+                centerPosition: new Vector2(ChristianGame.Setup.canvasWidth/2, ChristianGame.Setup.canvasHeight/2),
                 dxUpdateSystem: null//() => Jump()
             );
             entity.rigidbody.force = entity.rigidbody.force + new Vector2(0, 1);

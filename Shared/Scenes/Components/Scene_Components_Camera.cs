@@ -28,7 +28,7 @@ namespace Shared
 
         public void Initialize(Vector2? playerPosition = null)
         {
-            this.position = new Vector2(WK.Default.Width / 2, WK.Default.Height / 2);
+            this.position = new Vector2(ChristianGame.Setup.canvasWidth / 2, ChristianGame.Setup.canvasHeight / 2);
             this.camera = new Camera();
             this.texture2D = WK.Texture.Red;
 
@@ -41,8 +41,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToComponents",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components),
-                    camera: camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Components)
                 ),
                  new Button(
                     rectangle: new Rectangle (100, 100, 100, 100),
@@ -51,16 +50,15 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "test",
-                    OnClickAction: null,
-                    camera: camera
+                    OnClickAction: null
                 ),
-                new Label(new Rectangle(10, 10, 200, 30), WK.Font.font_7, "Use \"Up\", \"Down\", \"Right\", \"Left\"\nto move camera", Label.TextAlignment.Midle_Left, "", camera, WK.Texture.LightGray),
+                new Label(new Rectangle(10, 10, 200, 30), WK.Font.font_7, "Use \"Up\", \"Down\", \"Right\", \"Left\"\nto move camera", Label.TextAlignment.Midle_Left, "", WK.Texture.LightGray),
             };
 
             Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red, Width: 50, Height: 50);
             this.entities = new List<IEntity>()
             {
-                new Entity(Red, new Vector2(WK.Default.Width / 2, WK.Default.Height / 2),tag: "player", dxUpdateSystem: (InputState lastInputState, InputState inputState)=>UpdateSystem(lastInputState, inputState)),
+                new Entity(Red, new Vector2(ChristianGame.Setup.canvasWidth / 2, ChristianGame.Setup.canvasHeight / 2),tag: "player", dxUpdateSystem: (InputState lastInputState, InputState inputState)=>UpdateSystem(lastInputState, inputState)),
             };
 
             //this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);

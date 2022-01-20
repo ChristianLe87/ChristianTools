@@ -42,24 +42,23 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Red,
                     spriteFont: WK.Font.font_7,
                     tag: "",
-                    OnClickAction: () => Console.WriteLine("User click button!"),
-                    camera: camera
+                    OnClickAction: () => Console.WriteLine("User click button!")
                 ),
 
                 // Left
-                new Label(new Rectangle(10, 10, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Top_Left, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(10, 50, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Midle_Left, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(10, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Left, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(10, 10, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Top_Left, tag: "", WK.Texture.Green),
+                new Label(new Rectangle(10, 50, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Midle_Left, tag: "", WK.Texture.Green),
+                new Label(new Rectangle(10, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Left, tag: "", WK.Texture.Green),
 
                 // Center
-                new Label(new Rectangle(120, 10, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Top_Center, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(120, 50, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Midle_Center, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(120, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Center, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(120, 10, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Top_Center, tag: "", WK.Texture.Green),
+                new Label(new Rectangle(120, 50, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Midle_Center, tag: "", WK.Texture.Green),
+                new Label(new Rectangle(120, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Center, tag: "", WK.Texture.Green),
 
                 // Right
-                new Label(new Rectangle(230, 10, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Top_Right, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(230, 50, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Midle_Right, tag: "",camera: camera, WK.Texture.Green),
-                new Label(new Rectangle(230, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Right, tag: "",camera: camera, WK.Texture.Green),
+                new Label(new Rectangle(230, 10, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Top_Right, tag: "", WK.Texture.Green),
+                new Label(new Rectangle(230, 50, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Midle_Right, tag: "", WK.Texture.Green),
+                new Label(new Rectangle(230, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Right, tag: "", WK.Texture.Green),
 
 
                 new HealthBar(Tools.Texture.CreateColorTexture(Color.Green), Tools.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 130, 50, 10), HealthBar.Direction.Right),
@@ -74,7 +73,6 @@ namespace Shared
                     text: textOfChars,
                     textAlignment: Label.TextAlignment.Top_Left,
                     tag: "",
-                    camera: camera,
                     lineSpacing: 7+2
                 ),
 
@@ -84,7 +82,6 @@ namespace Shared
                     text: textOfChars,
                     textAlignment: Label.TextAlignment.Top_Left,
                     tag: "",
-                    camera: camera,
                     lineSpacing: 14+2
                 ),
 
@@ -96,8 +93,7 @@ namespace Shared
                     mouseOverTexture: Tools.Texture.CreateColorTexture(Color.Red),
                     spriteFont:WK.Font.font_7,
                     tag: "SoundButton",
-                    OnClickAction: () => soundEffects.First().Play(),
-                    camera: camera
+                    OnClickAction: () => soundEffects.First().Play()
                 ),
 
                 new Button(
@@ -107,8 +103,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "goToMenu",
-                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu),
-                    camera: camera
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Menu)
                 )
             };
 
