@@ -106,6 +106,20 @@ namespace ChristianTools.Helpers
         public string Button_GoToSetup { get; }
     }
 
+    public interface ISetup
+    {
+        public string WindowTitle { get; }
+        public double FPS { get; }
+        public bool IsFullScreen { get; }
+        public bool AllowUserResizing { get; }
+        public int ScaleFactor { get; }
+        public int canvasWidth { get; }
+        public int canvasHeight { get; }
+        public bool isMouseVisible { get; set; }
+        //public Point Center => new Point(Width / 2, Height / 2);
+        public int AssetSize { get; }
+        public string GameDataFileName { get; }
+    }
 
     // === Delegates ===
     //public delegate void DxEntityInitializeSystem();

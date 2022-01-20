@@ -31,19 +31,20 @@ namespace ChristianTools.Helpers
         static string gameDataFileName;
         public static GameData gameData;
 
+        public static ISetup Setup { get; private set; }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
-        public ChristianGame(string gameDataFileName, int canvasWidth = 500, int canvasHeight = 500, string windowTitle = "Game", bool isMouseVisible = true, bool IsFullScreen = false, bool AllowUserResizing = false)
+        public ChristianGame(ISetup setup)
         {
-
+            ChristianGame.Setup = setup;
 
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = canvasWidth;
-            graphicsDeviceManager.PreferredBackBufferHeight = canvasHeight;
-            graphicsDeviceManager.IsFullScreen = IsFullScreen;
+            graphicsDeviceManager.PreferredBackBufferWidth = setup.canvasWidth;
+            graphicsDeviceManager.PreferredBackBufferHeight = setup.canvasHeight;
+            graphicsDeviceManager.IsFullScreen = setup.IsFullScreen;
             //graphicsDeviceManager.ToggleFullScreen();
             graphicsDeviceManager.ApplyChanges();
             //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
@@ -84,16 +85,16 @@ namespace ChristianTools.Helpers
 
 
             // others
-            base.Window.Title = windowTitle;
-            base.IsMouseVisible = isMouseVisible;
-            Window.AllowUserResizing = AllowUserResizing;
+            base.Window.Title = setup.WindowTitle;
+            base.IsMouseVisible = setup.isMouseVisible;
+            Window.AllowUserResizing = setup.AllowUserResizing;
             game = this;
 
 
             // use with GameWindowSizeChangeEvent()
-            if (AllowUserResizing == true)
+            if (setup.AllowUserResizing == true)
             {
-                Window.AllowUserResizing = AllowUserResizing;
+                Window.AllowUserResizing = setup.AllowUserResizing;
                 Window.ClientSizeChanged += GameWindowSizeChangeEvent;
 
                 gameWindow = Window;
