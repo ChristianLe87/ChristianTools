@@ -25,21 +25,21 @@ namespace ChristianTools.UI
 
         public delegate void DxOnClickAction();
         DxOnClickAction OnClickAction;
-        Camera camera;
 
-        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, string tag, DxOnClickAction OnClickAction, Camera camera)
+        public Button(Rectangle rectangle, string text, Texture2D defaultTexture, Texture2D mouseOverTexture, SpriteFont spriteFont, string tag, DxOnClickAction OnClickAction)
         {
+
             this.rectangle = rectangle;
             this.defaultTexture = defaultTexture;
             this.mouseOverTexture = mouseOverTexture;
             this.isMouseOver = false;
 
-            this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, tag: "", camera);
+            this.label = new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Center, tag: "");
 
             this.tag = tag;
 
             this.OnClickAction = OnClickAction;
-            this.camera = camera ?? new Camera();
+            
 
             this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
             this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
@@ -48,8 +48,8 @@ namespace ChristianTools.UI
 
         private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
-            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.rectangle.X), (int)(rectangle.Y + camera.rectangle.Y), rectangle.Width, rectangle.Height);
-            if (tempRectangle.Contains(inputState.Mouse_Position(camera)))
+            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + ChristianGame.GetScene.camera.rectangle.X), (int)(rectangle.Y + ChristianGame.GetScene.camera.rectangle.Y), rectangle.Width, rectangle.Height);
+            if (tempRectangle.Contains(inputState.Mouse_Position(ChristianGame.GetScene.camera)))
             {
                 isMouseOver = true;
                 if (lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
@@ -66,7 +66,7 @@ namespace ChristianTools.UI
 
         private void DrawSystem(SpriteBatch spriteBatch)
         {
-            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + camera.rectangle.X), (int)(rectangle.Y + camera.rectangle.Y), rectangle.Width, rectangle.Height);
+            Rectangle tempRectangle = new Rectangle((int)(rectangle.X + ChristianGame.GetScene.camera.rectangle.X), (int)(rectangle.Y + ChristianGame.GetScene.camera.rectangle.Y), rectangle.Width, rectangle.Height);
 
             if (isMouseOver)
                 spriteBatch.Draw(mouseOverTexture, tempRectangle, Color.White);

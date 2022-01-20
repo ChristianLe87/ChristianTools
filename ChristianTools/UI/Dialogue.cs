@@ -22,13 +22,13 @@ namespace ChristianTools.UI
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
         public DxUiDrawSystem dxUiDrawSystem { get; }
 
-        public Dialogue(string[] texts, Point centerPosition, Texture2D background, SpriteFont spriteFont, Camera camera, bool isActive = true)
+        public Dialogue(string[] texts, Point centerPosition, Texture2D background, SpriteFont spriteFont, bool isActive = true)
         {
             this.texture = background;
             this.centerPosition = centerPosition;
             this.labelCount = 0;
             this.isActive = isActive;
-            this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, tag: "", camera)).ToArray();
+            this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, tag: "")).ToArray();
 
             //this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
             this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);

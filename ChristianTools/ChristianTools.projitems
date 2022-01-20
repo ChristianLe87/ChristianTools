@@ -48,6 +48,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\UI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Minimap.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />

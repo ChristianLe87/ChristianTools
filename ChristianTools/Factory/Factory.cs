@@ -44,9 +44,9 @@ namespace ChristianTools
 
                 this.UIs = new List<IUI>()
                 {
-                    new Label(new Rectangle(), spriteFont, "SceneMenu", Label.TextAlignment.Top_Left, "", camera),
+                    new Label(new Rectangle(), spriteFont, "SceneMenu", Label.TextAlignment.Top_Left, ""),
 
-                    new Button(new Rectangle(100, 100, 100, 100), "Play", lightGray, gray, spriteFont, "", ButtonPlaySystem, camera),
+                    new Button(new Rectangle(100, 100, 100, 100), "Play", lightGray, gray, spriteFont, "", ButtonPlaySystem),
                 };
             }
 

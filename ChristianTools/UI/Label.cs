@@ -13,7 +13,6 @@ namespace ChristianTools.UI
         public Texture2D texture { get; }
         Vector2 textPosition;
         TextAlignment textAlignment;
-        Camera camera;
 
         public Rectangle rectangle { get; }
         public bool isActive { get; set; }
@@ -22,7 +21,7 @@ namespace ChristianTools.UI
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
         public DxUiDrawSystem dxUiDrawSystem { get; }
 
-        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, string tag, Camera camera, Texture2D texture = null, int lineSpacing = 10, bool isActive = true)
+        public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, string tag, Texture2D texture = null, int lineSpacing = 10, bool isActive = true)
         {
             this.rectangle = rectangle;
             this.spriteFont = spriteFont;
@@ -33,7 +32,6 @@ namespace ChristianTools.UI
             this.textPosition = GetTextPosition();
             this.tag = tag;
             this.isActive = isActive;
-            this.camera = camera ?? new Camera();
 
             //this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
             this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
@@ -47,9 +45,9 @@ namespace ChristianTools.UI
         private void DrawSystem(SpriteBatch spriteBatch)
         {
             if (texture != null)
-                spriteBatch.Draw(texture, new Rectangle(rectangle.Location + new Point(camera.rectangle.X, camera.rectangle.Y), rectangle.Size), Color.White);
+                spriteBatch.Draw(texture, new Rectangle(rectangle.Location + new Point(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y), rectangle.Size), Color.White);
 
-            spriteBatch.DrawString(spriteFont, text, textPosition + new Vector2(camera.rectangle.X, camera.rectangle.Y), Color.White);
+            spriteBatch.DrawString(spriteFont, text, textPosition + new Vector2(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y), Color.White);
         }
 
         private Vector2 GetTextPosition()
