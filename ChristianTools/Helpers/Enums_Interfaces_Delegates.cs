@@ -106,7 +106,7 @@ namespace ChristianTools.Helpers
         public string Button_GoToSetup { get; }
     }
 
-    public interface ISetup
+    public interface IDefault
     {
         public string WindowTitle { get; }
         public double FPS { get; }

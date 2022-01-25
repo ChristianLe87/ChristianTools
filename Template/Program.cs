@@ -14,11 +14,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace My_Template
+namespace Template
 {
     /*
     === Pasos ===
-    1) Crear "Aplicacion de consola .Net 5"
+    1) Crear "Aplicacion de consola .Net Core 6"
     2) Agregar NuGet: "MonoGame.Framework.DesktopGL"
     3) Agregar NuGet: "Newtonsoft.Json"
     4) Agregar carpeta "Content"
@@ -42,15 +42,18 @@ namespace My_Template
 
     public class WK
     {
-        public class Default
+        public class Default : IDefault
         {
-            public static string WindowTitle => "Template Game";
-
-            public static int CanvasWidth => 500;
-            public static int CanvasHeight => 500;
-
-            public static string GameDataFileName => "MyTemplate_GameData";
-            public static readonly int ScaleFactor = 3;
+            public string WindowTitle => "Monogame_Template";
+            public double FPS => 60;
+            public bool IsFullScreen => false;
+            public bool AllowUserResizing => true;
+            public int ScaleFactor => 3;
+            public int canvasWidth { get => AssetSize * 28 * ScaleFactor; }
+            public int canvasHeight { get => AssetSize * 16 * ScaleFactor; }
+            public int AssetSize => 16;
+            public string GameDataFileName => "Monogame_Template_GameData";
+            public bool isMouseVisible { get; set; } = true;
         }
 
         public class Scene
@@ -63,7 +66,7 @@ namespace My_Template
 
         public class Font
         {
-            static Texture2D texture2D = Tools.Texture.GetTexture("MyFont_130x28_PNG", WK.Default.ScaleFactor);
+            static Texture2D texture2D = Tools.Texture.GetTexture("MyFont_130x28_PNG", ChristianGame.Default.ScaleFactor);
             static char[,] chars = new char[,]
             {
                 { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' },
@@ -91,12 +94,7 @@ namespace My_Template
 
     public class Game1 : ChristianGame
     {
-        public Game1() : base(
-            gameDataFileName: WK.Default.GameDataFileName,
-            canvasHeight: WK.Default.CanvasHeight,
-            canvasWidth: WK.Default.CanvasWidth,
-            windowTitle: WK.Default.WindowTitle
-            )
+        public Game1() : base(new WK.Default())
         {
 
             Dictionary<string, IScene> scenes = new Dictionary<string, IScene>()
@@ -120,7 +118,6 @@ namespace My_Template
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneInitializeSystem dxSceneInitializeSystem { get; private set; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
 
@@ -138,7 +135,6 @@ namespace My_Template
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneInitializeSystem dxSceneInitializeSystem { get; private set; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
 
@@ -156,7 +152,6 @@ namespace My_Template
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneInitializeSystem dxSceneInitializeSystem { get; private set; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
 
@@ -164,7 +159,7 @@ namespace My_Template
         {
             this.UIs = new List<IUI>()
             {
-                new Label(new Rectangle(), WK.Font.MyFont_130x28, "SceneGame", Label.TextAlignment.Top_Left, "", camera)
+                new Label(new Rectangle(), WK.Font.MyFont_130x28, "SceneGame", Label.TextAlignment.Top_Left, "")
             };
 
             this.entities = new List<IEntity>()
@@ -183,19 +178,17 @@ namespace My_Template
         public bool isActive { get; set; }
         public string tag { get; private set; }
         public int health { get; private set; }
-        public ExtraComponents extraComponents { get; set; }
 
-        public DxEntityInitializeSystem dxEntityInitializeSystem { get; private set; }
         public DxEntityUpdateSystem dxEntityUpdateSystem { get; private set; }
         public DxEntityDrawSystem dxEntityDrawSystem { get; private set; }
 
         public Player()
         {
-            Texture2D texture2D = Tools.Texture.CreateColorTexture(Color.Pink, 10 * WK.Default.ScaleFactor, 10 * WK.Default.ScaleFactor);
+            Texture2D texture2D = Tools.Texture.CreateColorTexture(Color.Pink, 10 * ChristianGame.Default.ScaleFactor, 10 * ChristianGame.Default.ScaleFactor);
             this.animation = new Animation(texture2D);
             this.rigidbody = new Rigidbody(new Vector2(200, 200), this);
             this.isActive = true;
-            this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState, IEntity entity) => Systems.Update.Player.Basic_XY_Movement(inputState, this, WK.Default.ScaleFactor);
+            this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState) => Systems.Update.Player.Basic_XY_Movement(inputState, this);
         }
     }
 
@@ -207,9 +200,7 @@ namespace My_Template
         public bool isActive { get; set; }
         public string tag { get; private set; }
         public int health { get; private set; }
-        public ExtraComponents extraComponents { get; set; }
 
-        public DxEntityInitializeSystem dxEntityInitializeSystem { get; private set; }
         public DxEntityUpdateSystem dxEntityUpdateSystem { get; private set; }
         public DxEntityDrawSystem dxEntityDrawSystem { get; private set; }
 

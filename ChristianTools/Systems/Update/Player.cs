@@ -14,22 +14,22 @@ namespace ChristianTools.Systems
                 /// <param name="inputState"></param>
                 /// <param name="entity"></param>
                 /// <param name="scaleFactor"></param>
-                public static void Basic_XY_Movement(InputState inputState, IEntity entity, int scaleFactor)
+                public static void Basic_XY_Movement(InputState inputState, IEntity entity)
                 {
                     if (inputState.Up)
-                        entity.rigidbody.Move_Y(-scaleFactor);
+                        entity.rigidbody.Move_Y(-ChristianGame.Default.ScaleFactor);
                     else if (inputState.Down)
-                        entity.rigidbody.Move_Y(+scaleFactor);
+                        entity.rigidbody.Move_Y(+ChristianGame.Default.ScaleFactor);
 
                     if (inputState.Right)
-                        entity.rigidbody.Move_X(+scaleFactor);
+                        entity.rigidbody.Move_X(+ChristianGame.Default.ScaleFactor);
                     else if (inputState.Left)
-                        entity.rigidbody.Move_X(-scaleFactor);
+                        entity.rigidbody.Move_X(-ChristianGame.Default.ScaleFactor);
 
                     entity.rigidbody.Update();
                 }
 
-                public static void Zeldamon_Movement(InputState inputState, IEntity entity, int scaleFactor, int assetSize)
+                public static void Zeldamon_Movement(InputState inputState, IEntity entity)
                 {
                     // Implementation
                     {
@@ -43,16 +43,16 @@ namespace ChristianTools.Systems
                     {
                         if (inputState.Up || entity.characterState == CharacterState.MoveUp)
                         {
-                            entity.rigidbody.Move_Y(-scaleFactor);
+                            entity.rigidbody.Move_Y(-ChristianGame.Default.ScaleFactor);
 
                             // move until player until alligne with tile
-                            if (entity.rigidbody.rectangle.Y % (assetSize * scaleFactor) != 0)
+                            if (entity.rigidbody.rectangle.Y % (ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor) != 0)
                             {
                                 entity.characterState = CharacterState.MoveUp;
                             }
                             else
                             {
-                                if (inputState.Up == false || entity.rigidbody.CanMoveUp(scaleFactor) == false)
+                                if (inputState.Up == false || entity.rigidbody.CanMoveUp(ChristianGame.Default.ScaleFactor) == false)
                                 {
                                     entity.characterState = CharacterState.IdleUp;
                                 }
@@ -60,16 +60,16 @@ namespace ChristianTools.Systems
                         }
                         else if (inputState.Down || entity.characterState == CharacterState.MoveDown)
                         {
-                            entity.rigidbody.Move_Y(scaleFactor);
+                            entity.rigidbody.Move_Y(ChristianGame.Default.ScaleFactor);
 
                             // move until player until alligne with tile
-                            if (entity.rigidbody.rectangle.Y % (assetSize * scaleFactor) != 0)
+                            if (entity.rigidbody.rectangle.Y % (ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor) != 0)
                             {
                                 entity.characterState = CharacterState.MoveDown;
                             }
                             else
                             {
-                                if (inputState.Down == false || entity.rigidbody.CanMoveDown(scaleFactor) == false)
+                                if (inputState.Down == false || entity.rigidbody.CanMoveDown(ChristianGame.Default.ScaleFactor) == false)
                                 {
                                     entity.characterState = CharacterState.IdleDown;
                                 }
@@ -78,16 +78,16 @@ namespace ChristianTools.Systems
                         }
                         else if (inputState.Right || entity.characterState == CharacterState.MoveRight)
                         {
-                            entity.rigidbody.Move_X(scaleFactor);
+                            entity.rigidbody.Move_X(ChristianGame.Default.ScaleFactor);
 
                             // move until player until alligne with tile
-                            if (entity.rigidbody.rectangle.X % (assetSize * scaleFactor) != 0)
+                            if (entity.rigidbody.rectangle.X % (ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor) != 0)
                             {
                                 entity.characterState = CharacterState.MoveRight;
                             }
                             else
                             {
-                                if (inputState.Right == false || entity.rigidbody.CanMoveRight(scaleFactor) == false)
+                                if (inputState.Right == false || entity.rigidbody.CanMoveRight(ChristianGame.Default.ScaleFactor) == false)
                                 {
                                     entity.characterState = CharacterState.IdleRight;
                                 }
@@ -96,16 +96,16 @@ namespace ChristianTools.Systems
                         }
                         else if (inputState.Left || entity.characterState == CharacterState.MoveLeft)
                         {
-                            entity.rigidbody.Move_X(-scaleFactor);
+                            entity.rigidbody.Move_X(-ChristianGame.Default.ScaleFactor);
 
                             // move until player until alligne with tile
-                            if (entity.rigidbody.rectangle.X % (assetSize * scaleFactor) != 0)
+                            if (entity.rigidbody.rectangle.X % (ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor) != 0)
                             {
                                 entity.characterState = CharacterState.MoveLeft;
                             }
                             else
                             {
-                                if (inputState.Left == false || entity.rigidbody.CanMoveLeft(scaleFactor) == false)
+                                if (inputState.Left == false || entity.rigidbody.CanMoveLeft(ChristianGame.Default.ScaleFactor) == false)
                                 {
                                     entity.characterState = CharacterState.IdleLeft;
                                 }

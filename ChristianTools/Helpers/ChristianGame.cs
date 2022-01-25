@@ -31,20 +31,20 @@ namespace ChristianTools.Helpers
         static string gameDataFileName;
         public static GameData gameData;
 
-        public static ISetup Setup { get; private set; }
+        public static IDefault Default { get; private set; }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
-        public ChristianGame(ISetup setup)
+        public ChristianGame(IDefault Default)
         {
-            ChristianGame.Setup = setup;
+            ChristianGame.Default = Default;
 
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = setup.canvasWidth;
-            graphicsDeviceManager.PreferredBackBufferHeight = setup.canvasHeight;
-            graphicsDeviceManager.IsFullScreen = setup.IsFullScreen;
+            graphicsDeviceManager.PreferredBackBufferWidth = Default.canvasWidth;
+            graphicsDeviceManager.PreferredBackBufferHeight = Default.canvasHeight;
+            graphicsDeviceManager.IsFullScreen = Default.IsFullScreen;
             //graphicsDeviceManager.ToggleFullScreen();
             graphicsDeviceManager.ApplyChanges();
             //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
@@ -63,7 +63,7 @@ namespace ChristianTools.Helpers
 
 
             // GameData
-            ChristianGame.gameDataFileName = setup.GameDataFileName;
+            ChristianGame.gameDataFileName = Default.GameDataFileName;
 
             // Create folder
             if(JsonSerialization.FolderExist() == false)
@@ -85,16 +85,16 @@ namespace ChristianTools.Helpers
 
 
             // others
-            base.Window.Title = setup.WindowTitle;
-            base.IsMouseVisible = setup.isMouseVisible;
-            Window.AllowUserResizing = setup.AllowUserResizing;
+            base.Window.Title = Default.WindowTitle;
+            base.IsMouseVisible = Default.isMouseVisible;
+            Window.AllowUserResizing = Default.AllowUserResizing;
             game = this;
 
 
             // use with GameWindowSizeChangeEvent()
-            if (setup.AllowUserResizing == true)
+            if (Default.AllowUserResizing == true)
             {
-                Window.AllowUserResizing = setup.AllowUserResizing;
+                Window.AllowUserResizing = Default.AllowUserResizing;
                 Window.ClientSizeChanged += GameWindowSizeChangeEvent;
 
                 gameWindow = Window;
