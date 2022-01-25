@@ -1,10 +1,10 @@
 ﻿using System;
 namespace ChristianTools.APF
 {
-    public class Spike
+    /*public class Spike
     {
         public Spike()
         {
         }
-    }
+    }*/
 }

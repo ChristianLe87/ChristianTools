@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.APF
 {
-    public class WorldBlock : IWorldElement
+    /*public class WorldBlock : IWorldElement
     {
         Texture2D texture2D;
         Vector2 centerPoint;
@@ -22,5 +22,5 @@ namespace ChristianTools.APF
         {
             spriteBatch.Draw(texture2D, rectangle, Color.White);
         }
-    }
+    }*/
 }

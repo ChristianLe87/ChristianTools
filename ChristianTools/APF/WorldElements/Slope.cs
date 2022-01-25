@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.APF
 {
-    public class Slope : IWorldElement
+    /*public class Slope : IWorldElement
     {
         Texture2D texture2D;
         Vector2 centerPoint;
@@ -62,5 +62,5 @@ namespace ChristianTools.APF
     {
         Right,
         Left
-    }
+    }*/
 }

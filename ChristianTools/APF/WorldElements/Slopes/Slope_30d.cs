@@ -2,7 +2,7 @@
 
 namespace ChristianTools.APF
 {
-    public class Slope_30d
+    /*public class Slope_30d
     {
         public Slope_30d()
         {
@@ -11,5 +11,5 @@ namespace ChristianTools.APF
         public void Draw(SpriteBatch spriteBatch)
         {
         }
-    }
+    }*/
 }
