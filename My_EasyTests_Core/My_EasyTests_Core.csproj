@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -9,10 +10,28 @@
   <ItemGroup>
     <None Remove="Newtonsoft.Json" />
     <None Remove="MonoGame.Framework.DesktopGL" />
+    <None Remove="Entities\" />
+    <None Remove="Scenes\" />
+    <None Remove="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Content\Tree.png">
+      <Link>Content\Tree.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\MyFont_130x28_PNG.png">
+      <Link>Content\MyFont_130x28_PNG.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Scenes\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" Condition="Exists('..\ChristianTools\ChristianTools.projitems')" />
 </Project>
