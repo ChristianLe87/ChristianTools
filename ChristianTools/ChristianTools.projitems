@@ -49,6 +49,27 @@
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Minimap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\ToDo\Popup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\ToDo\Panel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\ToDo\RadioButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\ToDo\CheckBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\Circle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Elevator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\Elements\InteractablePlatform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\Inputs\InteractableButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\Inputs\InteractableSwitch.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\IWorldElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Ladder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\PushableBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Rope.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slope.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Spike.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Swing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Trampolin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\WorldBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slopes\Slope_60d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slopes\Slope_45d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slopes\Slope_30d.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />
@@ -60,5 +81,9 @@
     <Folder Include="$(MSBuildThisFileDirectory)Systems\Update\" />
     <Folder Include="$(MSBuildThisFileDirectory)Systems\Draw\" />
     <Folder Include="$(MSBuildThisFileDirectory)Factory\" />
+    <Folder Include="$(MSBuildThisFileDirectory)UI\ToDo\" />
+    <Folder Include="$(MSBuildThisFileDirectory)APF\" />
+    <Folder Include="$(MSBuildThisFileDirectory)APF\WorldElements\" />
+    <Folder Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\" />
   </ItemGroup>
 </Project>
