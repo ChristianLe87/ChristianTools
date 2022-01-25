@@ -1112,7 +1112,6 @@ namespace Tests
                         Assert.IsTrue(Vector2.Distance(start, end) <= 1);
                     }
                 }
-
             }
         }
     }
