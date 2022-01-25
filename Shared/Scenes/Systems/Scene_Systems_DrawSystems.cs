@@ -44,7 +44,7 @@ namespace Shared
             Entity entity = new Entity(null, new Vector2());
             entity = new Entity(
                 texture2D: Tools.Texture.CreateTriangle(Color.Pink, 100, 100, Tools.Texture.PointDirection.Right),
-                centerPosition: new Vector2(ChristianGame.Setup.canvasWidth / 2, ChristianGame.Setup.canvasHeight / 2),
+                centerPosition: new Vector2(ChristianGame.Default.canvasWidth / 2, ChristianGame.Default.canvasHeight / 2),
                 dxUpdateSystem: (InputState lastInputState, InputState inputState) => {
                     // Set rotation
                     double angleInDegrees = Tools.MyMath.GetAngleInDegree(entity.rigidbody.centerPosition, inputState.Mouse_Position().ToVector2());

@@ -28,7 +28,7 @@ namespace Shared
 
         public void Initialize(Vector2? playerPosition = null)
         {
-            this.position = new Vector2(ChristianGame.Setup.canvasWidth / 2, ChristianGame.Setup.canvasHeight / 2);
+            this.position = new Vector2(ChristianGame.Default.canvasWidth / 2, ChristianGame.Default.canvasHeight / 2);
             this.camera = new Camera();
             this.texture2D = WK.Texture.Red;
 
@@ -58,10 +58,8 @@ namespace Shared
             Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red, Width: 50, Height: 50);
             this.entities = new List<IEntity>()
             {
-                new Entity(Red, new Vector2(ChristianGame.Setup.canvasWidth / 2, ChristianGame.Setup.canvasHeight / 2),tag: "player", dxUpdateSystem: (InputState lastInputState, InputState inputState)=>UpdateSystem(lastInputState, inputState)),
+                new Entity(Red, new Vector2(ChristianGame.Default.canvasWidth / 2, ChristianGame.Default.canvasHeight / 2),tag: "player", dxUpdateSystem: (InputState lastInputState, InputState inputState)=>UpdateSystem(lastInputState, inputState)),
             };
-
-            //this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
         }
 
         public void UpdateSystem(InputState lastInputState, InputState inputState)
@@ -74,9 +72,6 @@ namespace Shared
                 position.Y--;
             else if (inputState.Down)
                 position.Y++;
-
-
-            //camera.Update(position);
         }
     }
 }

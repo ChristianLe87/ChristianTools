@@ -10,7 +10,7 @@ namespace Shared
 {
     public class WK
     {
-        public class Default : ISetup
+        public class Default : IDefault
         {
             public string WindowTitle => "Monogame_Showroom";
             public double FPS => 60;
@@ -79,35 +79,35 @@ namespace Shared
 
                 // IdleRight
                 public static readonly Texture2D IdleRight = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 0, 5, 10));
-                public static readonly Texture2D IdleRight_Multiply = Tools.Texture.ScaleTexture(IdleRight, ChristianGame.Setup.ScaleFactor);
+                public static readonly Texture2D IdleRight_Multiply = Tools.Texture.ScaleTexture(IdleRight, ChristianGame.Default.ScaleFactor);
 
                 // IdleLeft
                 public static readonly Texture2D IdleLeft = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 0, 5, 10));
-                public static readonly Texture2D IdleLeft_Multiply = Tools.Texture.ScaleTexture(IdleLeft, ChristianGame.Setup.ScaleFactor);
+                public static readonly Texture2D IdleLeft_Multiply = Tools.Texture.ScaleTexture(IdleLeft, ChristianGame.Default.ScaleFactor);
 
                 // WalkRight1
                 public static readonly Texture2D WalkRight1 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 10, 5, 10));
-                public static readonly Texture2D WalkRight1_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkRight1, scaleFactor: ChristianGame.Setup.ScaleFactor);
+                public static readonly Texture2D WalkRight1_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkRight1, scaleFactor: ChristianGame.Default.ScaleFactor);
 
                 // WalkRight2
                 public static readonly Texture2D WalkRight2 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 10, 5, 10));
-                public static readonly Texture2D WalkRight2_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkRight2, scaleFactor: ChristianGame.Setup.ScaleFactor);
+                public static readonly Texture2D WalkRight2_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkRight2, scaleFactor: ChristianGame.Default.ScaleFactor);
 
                 // WalkLeft1
                 public static readonly Texture2D WalkLeft1 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(10, 10, 5, 10));
-                public static readonly Texture2D WalkLeft1_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkLeft1, scaleFactor: ChristianGame.Setup.ScaleFactor);
+                public static readonly Texture2D WalkLeft1_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkLeft1, scaleFactor: ChristianGame.Default.ScaleFactor);
 
                 // WalkLeft2
                 public static readonly Texture2D WalkLeft2 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(15, 10, 5, 10));
-                public static readonly Texture2D WalkLeft2_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkLeft2, scaleFactor: ChristianGame.Setup.ScaleFactor);
+                public static readonly Texture2D WalkLeft2_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkLeft2, scaleFactor: ChristianGame.Default.ScaleFactor);
 
                 // JumpRight
                 public static readonly Texture2D JumpRight = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 20, 5, 10));
-                public static readonly Texture2D JumpRight_Multiply = Tools.Texture.ScaleTexture(originalTexture: JumpRight, scaleFactor: ChristianGame.Setup.ScaleFactor);
+                public static readonly Texture2D JumpRight_Multiply = Tools.Texture.ScaleTexture(originalTexture: JumpRight, scaleFactor: ChristianGame.Default.ScaleFactor);
 
                 // JumpLeft
                 public static readonly Texture2D JumpLeft = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 20, 5, 10));
-                public static readonly Texture2D JumpLeft_Multiply = Tools.Texture.ScaleTexture(originalTexture: JumpLeft, scaleFactor: ChristianGame.Setup.ScaleFactor);
+                public static readonly Texture2D JumpLeft_Multiply = Tools.Texture.ScaleTexture(originalTexture: JumpLeft, scaleFactor: ChristianGame.Default.ScaleFactor);
             }
 
             public class Tiles
@@ -121,7 +121,7 @@ namespace Shared
                     pixelsPerTile_Width: 5,
                     units_Height: 5,
                     units_Width: 3,
-                    scaleFactor: ChristianGame.Setup.ScaleFactor * 3
+                    scaleFactor: ChristianGame.Default.ScaleFactor * 3
                 );
             }
         }

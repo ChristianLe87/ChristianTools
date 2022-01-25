@@ -24,7 +24,7 @@ namespace Shared
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
 
-        Vector2 centerPosition = new Point(ChristianGame.Setup.canvasWidth / 2, ChristianGame.Setup.canvasHeight / 2).ToVector2();
+        Vector2 centerPosition = new Point(ChristianGame.Default.canvasWidth / 2, ChristianGame.Default.canvasHeight / 2).ToVector2();
 
         public void Initialize(Vector2? playerPosition = null)
         {

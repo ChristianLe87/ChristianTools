@@ -40,7 +40,7 @@ namespace Shared
                     mouseOverTexture: WK.Texture.Gray,
                     spriteFont: WK.Font.font_7,
                     tag: "save",
-                    OnClickAction: () => JsonSerialization.Update<GameData>(Game1.gameData, ChristianGame.Setup.GameDataFileName)
+                    OnClickAction: () => JsonSerialization.Update<GameData>(Game1.gameData, ChristianGame.Default.GameDataFileName)
                 ),
                 new Button(
                     rectangle: new Rectangle (10, 50, 230, 30),

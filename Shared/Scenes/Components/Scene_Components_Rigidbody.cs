@@ -49,7 +49,7 @@ namespace Shared
 
             Entity entity = new Entity(
                 texture2D: WK.Texture.Player.IdleLeft_Multiply,
-                centerPosition: new Vector2(ChristianGame.Setup.canvasWidth/2, ChristianGame.Setup.canvasHeight/2),
+                centerPosition: new Vector2(ChristianGame.Default.canvasWidth/2, ChristianGame.Default.canvasHeight/2),
                 dxUpdateSystem: null//() => Jump()
             );
             entity.rigidbody.force = entity.rigidbody.force + new Vector2(0, 1);

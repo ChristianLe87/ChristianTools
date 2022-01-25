@@ -39,8 +39,8 @@ namespace Shared
             this.entities = new List<IEntity>()
             {
                 new Line(
-                    start: new Point(ChristianGame.Setup.canvasWidth/2, ChristianGame.Setup.canvasHeight/2),
-                    end: new Point(ChristianGame.Setup.canvasWidth/2, ChristianGame.Setup.canvasHeight/2),
+                    start: new Point(ChristianGame.Default.canvasWidth/2, ChristianGame.Default.canvasHeight/2),
+                    end: new Point(ChristianGame.Default.canvasWidth/2, ChristianGame.Default.canvasHeight/2),
                     thickness: 5,
                     texture2D: WK.Texture.Red,
                     tag: "line1"
