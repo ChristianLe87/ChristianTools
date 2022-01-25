@@ -302,6 +302,38 @@ namespace Tests
         public class _Other
         {
             [Test]
+            public void GetColumn()
+            {
+                int[,] arr = new int[,]
+                {
+                    { 1, 2, 3 },
+                    { 4, 5, 6 },
+                    { 7, 8, 9 }
+                };
+
+                int[] result = Tools.Other.GetColumn(arr, 1);
+
+                Assert.AreEqual(result, new int[] { 2, 5, 8 });
+            }
+
+
+            [Test]
+            public void GetRow()
+            {
+                int[,] arr = new int[,]
+                {
+                    { 1, 2, 3 },
+                    { 4, 5, 6 },
+                    { 7, 8, 9 }
+                };
+
+                int[] result = Tools.Other.GetRow(arr, 1);
+
+                Assert.AreEqual(result, new int[] { 4, 5, 6 });
+            }
+
+
+            [Test]
             public void _Expand()
             {
                 Assert.Warn("");

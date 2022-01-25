@@ -1,4 +1,5 @@
-﻿using ChristianTools.Components;
+﻿using System.Linq;
+using ChristianTools.Components;
 using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Tools
@@ -36,6 +37,23 @@ namespace ChristianTools.Tools
             }
 
 
+            // thanks to: https://stackoverflow.com/questions/27427527/how-to-get-a-complete-row-or-column-from-2d-array-in-c-sharp
+            public static T[] GetColumn<T>(T[,] array, int columnNumber)
+            {
+                return Enumerable.Range(0, array.GetLength(0))
+                        .Select(x => array[x, columnNumber])
+                        .ToArray();
+            }
+
+            // thanks to: https://stackoverflow.com/questions/27427527/how-to-get-a-complete-row-or-column-from-2d-array-in-c-sharp
+            public static T[] GetRow<T>(T[,] array, int rowNumber)
+            {
+                return Enumerable.Range(0, array.GetLength(1))
+                        .Select(x => array[rowNumber, x])
+                        .ToArray();
+            }
+
+
             public static T[,] RotateArray_90_AntiClockwise<T>(T[,] array)
             {
                 T[,] result = new T[array.GetLength(1), array.GetLength(0)];
@@ -56,6 +74,7 @@ namespace ChristianTools.Tools
                 return result;
             }
 
+
             public static T[,] RotateArray_180_AntiClockwise<T>(T[,] array)
             {
                 // todo: Do this better
@@ -63,6 +82,7 @@ namespace ChristianTools.Tools
                 array = RotateArray_90_AntiClockwise(array);
                 return array;
             }
+
 
             public static T[,] RotateArray_270_AntiClockwise<T>(T[,] array)
             {
@@ -110,15 +130,18 @@ namespace ChristianTools.Tools
                 return result;
             }
 
+
             public static Vector2 MoveTowards(Rigidbody main, Rigidbody target, int maxAproximation, float steps)
             {
                 return MoveTowards(main.centerPosition, target.centerPosition, maxAproximation, steps);
             }
 
+
             public static Vector2 MoveTowards(Rigidbody main, Vector2 target, int maxAproximation, float steps)
             {
                 return MoveTowards(main.centerPosition, target, maxAproximation, steps);
             }
+
 
             public static Vector2 MoveTowards(Vector2 main, Rigidbody target, int maxAproximation, float steps)
             {

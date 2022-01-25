@@ -19,4 +19,5 @@
     <Folder Include="Scene\" />
     <Folder Include="Assets\" />
   </ItemGroup>
+  <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" Condition="Exists('..\ChristianTools\ChristianTools.projitems')" />
 </Project>
