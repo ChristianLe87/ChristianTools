@@ -1,4 +1,6 @@
-﻿using ChristianTools.Helpers;
+﻿using System;
+using System.Linq;
+using ChristianTools.Helpers;
 using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,6 +12,89 @@ namespace Tests
     {
         public class _Texture
         {
+            [Test]
+            public void MergeTexture()
+            {
+                // === Implementation ===
+                {
+                    int[,] bigArr = new int[,]
+                    {
+                        {    1,    2,    3,    4 },
+                        {   11,   22,   33,   44 },
+                        {  111,  222,  333,  444 },
+                        { 1111, 2222, 3333, 4444 }
+                    };
+
+                    int[,] smallArr = new int[,]
+                    {
+                        {  220,  330 },
+                        { 2220, 3330 }
+                    };
+
+                    int[,] result = Bla(bigArr, smallArr, 1, 1, 2, 2);
+
+
+                    int[,] expected = new int[,]
+                    {
+                        {    1,     2,     3,    4 },
+                        {   11,   220,   330,   44 },
+                        {  111,  2220,  3330,  444 },
+                        { 1111,  2222,  3333, 4444 }
+                    };
+
+                    Assert.AreEqual(result, expected);
+                }
+
+                // === Helpers ===
+                int[,] Bla(int[,] bigArr, int[,] smallArr, int _X, int _Y, int W, int H)
+                {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    int[,] result = new int[bigArr.GetLength(0), bigArr.GetLength(1)];
+
+                    int[] values = new int[] { 20, 30, 40 };
+                    int[] self = new int[] { 1, 2, 3, 4, 5 };
+                    int sourceIndex = 0;
+                    int index = 1;
+
+                    Array.Copy(
+                        sourceArray: values,
+                        sourceIndex: 0,
+                        destinationArray: self,
+                        destinationIndex: index,
+                        length: values.Length
+                    );
+
+
+                    Tools.Other.GetRow(bigArr, _Y);
+
+                    for (int row = _X-1; row == W; row++)
+                    {
+                        for (int element = _Y-1; element == H; element++)
+                        {
+                            bigArr[row, element] = 99;
+                        }
+                    }
+
+                    return bigArr;
+                }
+            }
+
+
             [Test]
             public void _GetTileTextures()
             {

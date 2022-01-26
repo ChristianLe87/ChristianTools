@@ -11,7 +11,7 @@ namespace ChristianTools.Tools
 {
     public partial class Tools
     {
-        public class Texture
+        public partial class Texture
         {
             /*public static Texture2D FlipTexture(Texture2D originalTexture)
             {

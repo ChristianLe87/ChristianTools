@@ -10,11 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Font.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\GetRectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\MyMath.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Other.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Sound.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Animation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Components.cs" />
@@ -70,6 +68,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slopes\Slope_60d.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slopes\Slope_45d.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slopes\Slope_30d.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture\Texture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\GetRectangle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture\PunchHole.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />
@@ -85,5 +86,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)APF\" />
     <Folder Include="$(MSBuildThisFileDirectory)APF\WorldElements\" />
     <Folder Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Tools\Texture\" />
   </ItemGroup>
 </Project>
