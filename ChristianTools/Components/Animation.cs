@@ -21,6 +21,20 @@ namespace ChristianTools.Components
             this.frame = 0;
         }
 
+        public Animation(Dictionary<CharacterState, Texture2D[]> animations, int framesPerTexture = 6)
+        {
+
+            this.animations = new Dictionary<CharacterState, (Texture2D[], AnimationOption)>();
+
+
+            foreach (var animation in animations)
+                this.animations.Add(animation.Key, (animation.Value, AnimationOption.Loop));
+
+
+            this.framesPerTexture = framesPerTexture;
+            this.frame = 0;
+        }
+
         public Animation(Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations, int framesPerTexture = 6)
         {
             this.animations = animations;
