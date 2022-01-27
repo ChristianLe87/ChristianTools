@@ -1,4 +1,5 @@
-﻿using ChristianTools.Helpers;
+﻿using System;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
