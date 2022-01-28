@@ -27,6 +27,7 @@
       <Link>Content\MyFont_130x28_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\.editorconfig" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
