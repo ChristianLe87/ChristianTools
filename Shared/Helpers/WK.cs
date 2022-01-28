@@ -73,7 +73,7 @@ namespace Shared
 
             public class Player
             {
-                public static readonly string AtlasPlayer_20x40_PNG = "AtlasPlayer_20x40_PNG";
+                public static readonly string AtlasPlayer_20x40_PNG = "AtlasPlayer_10x40_PNG";
 
                 public static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Player.AtlasPlayer_20x40_PNG);
 

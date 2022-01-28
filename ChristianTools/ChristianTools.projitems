@@ -71,6 +71,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture\Texture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\GetRectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture\PunchHole.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture\FlipHorizontal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />

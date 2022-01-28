@@ -24,10 +24,6 @@
       <Link>Content\Sounds\EatingSound_WAV.wav</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\Content\AtlasPlayer_20x40_PNG.png">
-      <Link>Content\AtlasPlayer_20x40_PNG.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="..\Content\AtlasTiles_15x25_PNG.png">
       <Link>Content\AtlasTiles_15x25_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -42,6 +38,10 @@
     </None>
     <None Include="..\Content\Tree.png">
       <Link>Content\Tree.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\AtlasPlayer_10x40_PNG.png">
+      <Link>Content\AtlasPlayer_10x40_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

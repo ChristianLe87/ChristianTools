@@ -13,11 +13,6 @@ namespace ChristianTools.Tools
     {
         public partial class Texture
         {
-            /*public static Texture2D FlipTexture(Texture2D originalTexture)
-            {
-                return null;
-            }*/
-
             public static Texture2D[] SliceHorizontalTexture(Texture2D originalTexture, int cuts)
             {
                 GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;

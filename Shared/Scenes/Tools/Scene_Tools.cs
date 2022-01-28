@@ -41,6 +41,9 @@ namespace Shared
         Texture2D fontMap_Green;
         Texture2D fontMap_Red;
 
+        Texture2D textureNormal;
+        Texture2D textureFlippedHorizontal;
+
 
         public void Initialize(Vector2? playerPosition = null)
         {
@@ -96,6 +99,9 @@ namespace Shared
             fontMap_Green = Tools.Texture.ReColorTexture(fontMap, Color.Green);
             fontMap_Red = Tools.Texture.ReColorTexture(fontMap, Color.Red);
 
+            textureNormal = Tools.Texture.GetTexture("MyAtlasTexture");
+            textureFlippedHorizontal = Tools.Texture.FlipHorizontal(textureNormal);
+
             this.UIs = new List<IUI>()
             {
                 new Button(
@@ -131,6 +137,9 @@ namespace Shared
 
             spriteBatch.Draw(fontMap_Green, new Vector2(200, 20), Color.White);
             spriteBatch.Draw(fontMap_Red, new Vector2(200, 80), Color.White);
+
+            spriteBatch.Draw(textureNormal, new Vector2(50, 350), Color.White);
+            spriteBatch.Draw(textureFlippedHorizontal, new Vector2(200, 350), Color.White);
         }
     }
 }
