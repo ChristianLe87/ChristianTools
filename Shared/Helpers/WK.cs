@@ -73,41 +73,31 @@ namespace Shared
 
             public class Player
             {
-                public static readonly string AtlasPlayer_20x40_PNG = "AtlasPlayer_10x40_PNG";
+                private static readonly string AtlasPlayer_10x40_PNG = "AtlasPlayer_10x40_PNG";
+                private static readonly Texture2D atlasAnimation = Tools.Texture.GetTexture(WK.Texture.Player.AtlasPlayer_10x40_PNG, ChristianGame.Default.ScaleFactor);
 
-                public static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Player.AtlasPlayer_20x40_PNG);
+                // Right
+                private static readonly (CharacterState, int)[] characterState_tilesRight = new (CharacterState, int)[]
+                {
+                    (CharacterState.IdleRight, 1),
+                    (CharacterState.MoveRight, 2),
+                    (CharacterState.JumpRight, 1),
+                    (CharacterState.HangRight, 1)
+                };
 
-                // IdleRight
-                public static readonly Texture2D IdleRight = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 0, 5, 10));
-                public static readonly Texture2D IdleRight_Multiply = Tools.Texture.ScaleTexture(IdleRight, ChristianGame.Default.ScaleFactor);
+                public static Dictionary<CharacterState, Texture2D[]> animationsRight = Tools.Other.GetCharacterAnimation(atlasAnimation, characterState_tilesRight);
 
-                // IdleLeft
-                public static readonly Texture2D IdleLeft = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 0, 5, 10));
-                public static readonly Texture2D IdleLeft_Multiply = Tools.Texture.ScaleTexture(IdleLeft, ChristianGame.Default.ScaleFactor);
 
-                // WalkRight1
-                public static readonly Texture2D WalkRight1 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 10, 5, 10));
-                public static readonly Texture2D WalkRight1_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkRight1, scaleFactor: ChristianGame.Default.ScaleFactor);
+                // Left
+                private static readonly (CharacterState, int)[] characterState_tilesLeft = new (CharacterState, int)[]
+                {
+                    (CharacterState.IdleLeft, 1),
+                    (CharacterState.MoveLeft, 2),
+                    (CharacterState.JumpLeft, 1),
+                    (CharacterState.HangLeft, 1)
+                };
 
-                // WalkRight2
-                public static readonly Texture2D WalkRight2 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 10, 5, 10));
-                public static readonly Texture2D WalkRight2_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkRight2, scaleFactor: ChristianGame.Default.ScaleFactor);
-
-                // WalkLeft1
-                public static readonly Texture2D WalkLeft1 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(10, 10, 5, 10));
-                public static readonly Texture2D WalkLeft1_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkLeft1, scaleFactor: ChristianGame.Default.ScaleFactor);
-
-                // WalkLeft2
-                public static readonly Texture2D WalkLeft2 = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(15, 10, 5, 10));
-                public static readonly Texture2D WalkLeft2_Multiply = Tools.Texture.ScaleTexture(originalTexture: WalkLeft2, scaleFactor: ChristianGame.Default.ScaleFactor);
-
-                // JumpRight
-                public static readonly Texture2D JumpRight = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(0, 20, 5, 10));
-                public static readonly Texture2D JumpRight_Multiply = Tools.Texture.ScaleTexture(originalTexture: JumpRight, scaleFactor: ChristianGame.Default.ScaleFactor);
-
-                // JumpLeft
-                public static readonly Texture2D JumpLeft = Tools.Texture.CropTexture(originalTexture: atlasTexture, extractRectangle: new Rectangle(5, 20, 5, 10));
-                public static readonly Texture2D JumpLeft_Multiply = Tools.Texture.ScaleTexture(originalTexture: JumpLeft, scaleFactor: ChristianGame.Default.ScaleFactor);
+                public static Dictionary<CharacterState, Texture2D[]> animationsLeft = Tools.Other.GetCharacterAnimation(atlasAnimation, characterState_tilesLeft, true);
             }
 
             public class Tiles

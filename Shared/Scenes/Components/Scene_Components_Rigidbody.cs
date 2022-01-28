@@ -48,7 +48,7 @@ namespace Shared
 
 
             Entity entity = new Entity(
-                texture2D: WK.Texture.Player.IdleLeft_Multiply,
+                texture2D: WK.Texture.Player.animationsLeft[CharacterState.IdleLeft][0],
                 centerPosition: new Vector2(ChristianGame.Default.canvasWidth/2, ChristianGame.Default.canvasHeight/2),
                 dxUpdateSystem: null//() => Jump()
             );

@@ -41,7 +41,7 @@ namespace Shared
                 { WK.Scene.Systems_DrawSystems, new Scene_Systems_DrawSystems() },
             };
 
-            base.SetupScenes(scenes, WK.Scene.Menu);
+            base.SetupScenes(scenes, WK.Scene.Components_Animation);
         }
     }
 }

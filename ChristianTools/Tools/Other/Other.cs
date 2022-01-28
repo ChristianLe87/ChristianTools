@@ -6,7 +6,7 @@ namespace ChristianTools.Tools
 {
     public partial class Tools
     {
-        public class Other
+        public partial class Other
         {
             public static T[,] Expand<T>(T[,] original, int multiply)
             {

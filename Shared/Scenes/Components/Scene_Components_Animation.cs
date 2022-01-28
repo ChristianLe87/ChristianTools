@@ -59,17 +59,18 @@ namespace Shared
                 this.isActive = true;
                 this.characterState = CharacterState.IdleLeft;
 
-                Dictionary<CharacterState, (Texture2D[], AnimationOption)> animations = new Dictionary<CharacterState, (Texture2D[], AnimationOption)>()
-                {
-                    { CharacterState.IdleLeft, (new Texture2D[] { WK.Texture.Player.IdleLeft_Multiply }, AnimationOption.Loop) },
-                    { CharacterState.IdleRight, (new Texture2D[] { WK.Texture.Player.IdleRight_Multiply }, AnimationOption.Loop) },
-                    { CharacterState.MoveLeft, (new Texture2D[] { WK.Texture.Player.WalkLeft1_Multiply }, AnimationOption.Loop) },
-                    { CharacterState.MoveRight, (new Texture2D[] { WK.Texture.Player.WalkRight1_Multiply}, AnimationOption.Loop) },
-                    { CharacterState.JumpLeft, (new Texture2D[] { WK.Texture.Player.JumpLeft_Multiply }, AnimationOption.Loop) },
-                    { CharacterState.JumpRight, (new Texture2D[] { WK.Texture.Player.JumpRight_Multiply }, AnimationOption.Loop) },
-                };
+                var animationsRight = WK.Texture.Player.animationsRight;
+                var animationsLeft = WK.Texture.Player.animationsLeft;
 
-                this.animation = new Animation(animations: animations, framesPerTexture: 16);
+                Dictionary<CharacterState, Texture2D[]> animations = new Dictionary<CharacterState, Texture2D[]>();
+                foreach (var right in animationsRight)
+                    animations.Add(right.Key, right.Value);
+
+                foreach (var left in animationsLeft)
+                    animations.Add(left.Key, left.Value);
+
+
+                this.animation = new Animation(animations);
                 this.rigidbody = new Rigidbody(new Vector2(300, 300), this);
 
                 this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(inputState);
