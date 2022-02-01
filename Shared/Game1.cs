@@ -39,9 +39,13 @@ namespace Shared
                 // Systems
                 { WK.Scene.Systems, new Scene_Systems() },
                 { WK.Scene.Systems_DrawSystems, new Scene_Systems_DrawSystems() },
+
+                // Others
+                { WK.Scene.Others, new Scene_Others() },
+                { WK.Scene.Others_PunchHole, new Scene_Others_PunchHole() },
             };
 
-            base.SetupScenes(scenes, WK.Scene.Components_Animation);
+            base.SetupScenes(scenes, WK.Scene.Menu);
         }
     }
 }

@@ -28,6 +28,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Helpers\Scene_Helpers_JsonSerialization.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Systems\Scene_Systems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Systems\Scene_Systems_DrawSystems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_PunchHole.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
@@ -39,5 +41,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\UI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\Systems\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\Others\" />
   </ItemGroup>
 </Project>

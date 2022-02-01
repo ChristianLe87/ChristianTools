@@ -56,6 +56,10 @@ namespace Shared
             // Systems
             public static readonly string Systems = "Systems";
             public static readonly string Systems_DrawSystems = "Systems_DrawSystems";
+
+            // Others
+            public static readonly string Others = "Others";
+            public static readonly string Others_PunchHole = "Scene_Others_PunchHole";
         }
 
         public class Texture

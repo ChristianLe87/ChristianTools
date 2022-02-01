@@ -89,6 +89,16 @@ namespace Shared
                     tag: "goToSystems",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Systems)
                 ),
+
+                   new Button(
+                    rectangle: new Rectangle (250, 210, 230, 30),
+                    text: "Others",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_7,
+                    tag: "goToOthers",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Others)
+                ),
             };
         }
     }

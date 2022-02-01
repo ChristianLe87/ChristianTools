@@ -9,12 +9,12 @@ namespace ChristianTools.Tools
     {
         public partial class Texture
         {
-            public static Texture2D PunchHole(Texture2D bigTexture, Point point, int gradientLength, int fullBrightDistance)
+            public static Texture2D PunchHole(Texture2D bigTexture, Point point, int gradientLength = 20, int fullBrightDistance = 10)
             {
                 return PunchHole(bigTexture, new Point[] { point }, gradientLength, fullBrightDistance);
             }
 
-            public static Texture2D PunchHole(Texture2D bigTexture, Point[] points, int gradientLength, int fullBrightDistance)
+            public static Texture2D PunchHole(Texture2D bigTexture, Point[] points, int gradientLength = 20, int fullBrightDistance = 10)
             {
                 // === Implementation ===
                 {
