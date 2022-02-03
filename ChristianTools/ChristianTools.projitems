@@ -73,6 +73,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture\FlipHorizontal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\GetCharacterAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\Other.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\GetMGFX.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />

@@ -43,7 +43,15 @@ namespace ChristianTools.Helpers
         Stop,
     }
 
-
+    // === Others ===
+    public class ClassicHardwareScreenSize
+    {
+        public static Point Gameboy => new Point(160, 144);
+        public static Point GBA => new Point(240, 160);
+        public static Point NES => new Point(256, 240);
+        public static Point SNES => new Point(256, 224);
+        public static Point Genesis => new Point(320, 224);
+    }
 
     // === Interfaces ===
     public interface IEntity
@@ -54,9 +62,6 @@ namespace ChristianTools.Helpers
         public bool isActive { get; set; }
         public string tag { get; }
         public int health { get; }
-        //public ExtraComponents extraComponents { get; set; }
-
-        //public DxEntityInitializeSystem dxEntityInitializeSystem { get; }
         public DxEntityUpdateSystem dxEntityUpdateSystem { get; }
         public DxEntityDrawSystem dxEntityDrawSystem { get; }
     }
@@ -70,8 +75,6 @@ namespace ChristianTools.Helpers
         public Camera camera { get; }
         public Map map { get; }
         public void Initialize(Vector2? playerPosition = null);
-
-        //public DxSceneInitializeSystem dxSceneInitializeSystem { get; }
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; }
         public DxSceneDrawSystem dxSceneDrawSystem { get; }
     }
@@ -82,8 +85,6 @@ namespace ChristianTools.Helpers
         public Texture2D texture { get; }
         public string tag { get; }
         public bool isActive { get; set; }
-
-        //public DxUiInitializeSystem dxUiInitializeSystem { get;}
         public DxUiUpdateSystem dxUiUpdateSystem { get; }
         public DxUiDrawSystem dxUiDrawSystem { get; }
     }
@@ -93,7 +94,6 @@ namespace ChristianTools.Helpers
         public Texture2D texture { get; }
         public Rigidbody rigidbody { get; }
         public bool isActive { get; set; }
-        //public DxTileInitializeSystem dxTileInitializeSystem { get; }
         public DxTileUpdateSystem dxTileUpdateSystem { get; }
         public DxTileDrawSystem dxTileDrawSystem { get; }
     }
@@ -101,7 +101,6 @@ namespace ChristianTools.Helpers
     public interface ILanguage
     {
         public string GameWindowTitle { get; }
-
         public string Button_GoToMenu { get; }
         public string Button_GoToSetup { get; }
     }
@@ -116,25 +115,25 @@ namespace ChristianTools.Helpers
         public int canvasWidth { get; }
         public int canvasHeight { get; }
         public bool isMouseVisible { get; set; }
-        //public Point Center => new Point(Width / 2, Height / 2);
         public int AssetSize { get; }
         public string GameDataFileName { get; }
     }
 
     // === Delegates ===
-    //public delegate void DxEntityInitializeSystem();
+
+    // Entity
     public delegate void DxEntityUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxEntityDrawSystem(SpriteBatch spriteBatch);
 
-    //public delegate void DxSceneInitializeSystem();
+    // Scene
     public delegate void DxSceneUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxSceneDrawSystem(SpriteBatch spriteBatch);
 
-    //public delegate void DxTileInitializeSystem();
+    // Tile
     public delegate void DxTileUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxTileDrawSystem(SpriteBatch spriteBatch);
 
-    //public delegate void DxUiInitializeSystem();
+    // UI
     public delegate void DxUiUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxUiDrawSystem(SpriteBatch spriteBatch);
 }
