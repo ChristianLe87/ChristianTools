@@ -70,6 +70,7 @@ namespace ChristianTools.Helpers
     {
         public GameState gameState { get; }
         public List<IEntity> entities { get; set; }
+        public List<Light> lights { get; set; }
         public List<IUI> UIs { get; set; }
         public List<SoundEffect> soundEffects { get; }
         public Camera camera { get; }
@@ -97,8 +98,7 @@ namespace ChristianTools.Helpers
         public DxTileUpdateSystem dxTileUpdateSystem { get; }
         public DxTileDrawSystem dxTileDrawSystem { get; }
 
-        public Color color { get; set; }
-        public byte Al { get; set; }
+        public Color GetShadow(List<Light> lights);
     }
 
     public interface ILanguage

@@ -74,6 +74,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\GetCharacterAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\Other.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\GetMGFX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Light.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Shadow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Light.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />

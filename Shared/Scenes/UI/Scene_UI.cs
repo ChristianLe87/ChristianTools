@@ -16,13 +16,14 @@ namespace Shared
     {
         public GameState gameState { get; private set; }
         public List<IEntity> entities { get; set; }
+        public List<Light> lights { get; set; }
         public List<IUI> UIs { get; set; }
         public List<SoundEffect> soundEffects { get; private set; }
-        public Camera camera { get; }
-        public Map map { get; }
+        public Camera camera { get; private set; }
+        public Map map { get; private set; }
 
         public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
 
         string textOfChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nabcdefghijklmnopqrstuvwxyz\n0123456789Ññß\n,:;?.! \'()_\"<>-+\\";
 

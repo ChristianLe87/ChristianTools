@@ -110,10 +110,6 @@
       <Link>Resources\Content\MyFont_130x28_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
-    <BundleResource Include="..\Content\AtlasPlayer_20x40_PNG.png">
-      <Link>Resources\Content\AtlasPlayer_20x40_PNG.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
     <BundleResource Include="..\Content\AtlasTiles_15x25_PNG.png">
       <Link>Resources\Content\AtlasTiles_15x25_PNG.png</Link>
     </BundleResource>

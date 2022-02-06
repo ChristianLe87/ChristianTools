@@ -6,26 +6,23 @@ using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Shared
 {
     public class Scene_Others_PunchHole : IScene
     {
-
-        public GameState gameState { get; }
-
+        public GameState gameState { get; private set; }
         public List<IEntity> entities { get; set; }
+        public List<Light> lights { get; set; }
         public List<IUI> UIs { get; set; }
+        public List<SoundEffect> soundEffects { get; private set; }
+        public Camera camera { get; private set; }
+        public Map map { get; private set; }
 
-        public List<SoundEffect> soundEffects { get; set; }
-
-        public Camera camera { get; }
-
-        public Map map { get; }
-
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; }
-
-        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
+        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
 
         public Scene_Others_PunchHole()
         {
@@ -56,7 +53,7 @@ namespace Shared
 
             this.entities = new List<IEntity>()
             {
-                new Light(new Point(30, 30)),
+                //new Light(new Point(30, 30)),
                 new Player(new Point(100,100))
             };
 
@@ -94,7 +91,7 @@ namespace Shared
             }
         }
 
-        private class Light : IEntity
+       /* public class Light : IEntity
         {
             public Animation animation { get; }
             public Rigidbody rigidbody { get; }
@@ -112,7 +109,7 @@ namespace Shared
                 this.animation = new Animation(WK.Texture.Blue);
                 this.rigidbody = new Rigidbody(point.ToVector2(), this);
             }
-        }
+        }*/
 
         private class Shadow : IUI
         {

@@ -43,6 +43,7 @@ namespace Shared
                 // Others
                 { WK.Scene.Others, new Scene_Others() },
                 { WK.Scene.Others_PunchHole, new Scene_Others_PunchHole() },
+                { WK.Scene.Scene_Others_Lights, new Scene_Others_Lights() },
             };
 
             base.SetupScenes(scenes, WK.Scene.Menu);

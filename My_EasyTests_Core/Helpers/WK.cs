@@ -48,6 +48,7 @@ namespace My_EasyTests_Core
                 public static Texture2D LightGray = Tools.Texture.CreateColorTexture(Color.LightGray);
                 public static Texture2D Pink = Tools.Texture.CreateColorTexture(Color.Pink);
                 public static Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red);
+                public static Texture2D Black = Tools.Texture.CreateColorTexture(Color.Black);
             }
 
             public static Texture2D Player = Tools.Texture.ScaleTexture(WK.Texture.PixelColor.Pink, ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor);
@@ -77,7 +78,7 @@ namespace My_EasyTests_Core
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
                 { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                 { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },

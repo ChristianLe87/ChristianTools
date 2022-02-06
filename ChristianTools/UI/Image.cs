@@ -39,7 +39,23 @@ namespace ChristianTools.UI
 
         private void DrawSystem(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, new Rectangle(rectangle.Location + new Point(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y), rectangle.Size), Color.White);
+            //spriteBatch.Draw(texture, rectangle, Color.White);
+
+
+            {
+                Rectangle tempRectangle;
+
+                if (ChristianGame.GetScene.camera != null)
+                    tempRectangle = new Rectangle((int)(rectangle.X + ChristianGame.GetScene.camera.rectangle.X), (int)(rectangle.Y + ChristianGame.GetScene.camera.rectangle.Y), rectangle.Width, rectangle.Height);
+                else
+                    tempRectangle = rectangle;
+
+            
+                    spriteBatch.Draw(texture, tempRectangle, Color.White);
+
+
+                //label.dxUiDrawSystem(spriteBatch);
+            }
         }
     }
 }

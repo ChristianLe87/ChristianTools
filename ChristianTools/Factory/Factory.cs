@@ -27,6 +27,7 @@ namespace ChristianTools
 
             public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
             public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+            public List<Light> lights { get; set; }
 
             SpriteFont spriteFont;
             string gameSceneName;

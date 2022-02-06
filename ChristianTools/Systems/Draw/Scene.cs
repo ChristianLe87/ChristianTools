@@ -27,6 +27,10 @@ namespace ChristianTools.Systems
                     foreach (IUI ui in scene.UIs)
                         Systems.Draw.UI(spriteBatch, ui);
 
+                // Light
+                if (scene.lights != null)
+                    foreach (Light light in scene.lights)
+                        Systems.Draw.Light(spriteBatch, light);
 
                 if (scene.dxSceneDrawSystem != null)
                     scene.dxSceneDrawSystem(spriteBatch);

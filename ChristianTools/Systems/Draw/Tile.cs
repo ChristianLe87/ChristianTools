@@ -22,17 +22,12 @@ namespace ChristianTools.Systems
 				}
                 else
                 {
+					// Tile texture
 					spriteBatch.Draw(tile.texture, tile.rigidbody.rectangle, Color.White);
 
-					//Texture2D texture = Tools.Tools.Texture.CreateColorTexture(tile.color, tile.texture.Width, tile.texture.Height);
-					spriteBatch.Draw(tile.texture, tile.rigidbody.rectangle, tile.color);
-
-					Color color = tile.color;
-					color.A--;
-
-					tile.color = color;
+					// Shadow
+					spriteBatch.Draw(tile.texture, tile.rigidbody.rectangle, tile.GetShadow(ChristianTools.Helpers.ChristianGame.GetScene.lights));
 				}
-					
 			}
 		}
 	}
