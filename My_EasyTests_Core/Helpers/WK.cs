@@ -53,6 +53,35 @@ namespace My_EasyTests_Core
             public static Texture2D Player = Tools.Texture.ScaleTexture(WK.Texture.PixelColor.Pink, ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor);
             public static Texture2D Lightmask => ChristianTools.Tools.Tools.Texture.GetTexture("lightmask");
             public static Texture2D Tree => Tools.Texture.GetTexture("Tree");
+
+            public class Tiles
+            {
+                private static readonly string AtlasTiles_15x25_PNG = "AtlasTiles_15x25_PNG";
+                private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Tiles.AtlasTiles_15x25_PNG);
+
+                public static Dictionary<int, Texture2D> tileTextures = Tools.Texture.GetTileTextures(
+                    atlasTexture: atlasTexture,
+                    pixelsPerTile_Height: 5,
+                    pixelsPerTile_Width: 5,
+                    units_Height: 5,
+                    units_Width: 3,
+                    scaleFactor: ChristianGame.Default.ScaleFactor * 3
+                );
+            }
+        }
+
+        public class Map
+        {
+            public static readonly int[,] map0 = new int[,]
+            {
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            };
         }
     }
 }

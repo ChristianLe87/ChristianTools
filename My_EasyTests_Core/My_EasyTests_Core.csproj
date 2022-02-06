@@ -44,6 +44,10 @@
       <Link>Content\lighteffect2.mgfx</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\Content\AtlasTiles_15x25_PNG.png">
+      <Link>Content\AtlasTiles_15x25_PNG.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />

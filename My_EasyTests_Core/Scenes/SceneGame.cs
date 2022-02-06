@@ -20,10 +20,12 @@ namespace My_EasyTests_Core
         {
             this.entities = new List<IEntity>()
             {
-                new Tree(new Vector2(200, 200)),
+                //new Tree(new Vector2(200, 200)),
                 new Player(new Vector2(200, 200)),
-                new Thing1(new Vector2(500, 200))
+                //new Thing1(new Vector2(500, 200))
             };
+
+            this.map = new Map(WK.Texture.Tiles.tileTextures, WK.Map.map0);
         }
     }
 }
