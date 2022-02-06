@@ -96,6 +96,9 @@ namespace ChristianTools.Helpers
         public bool isActive { get; set; }
         public DxTileUpdateSystem dxTileUpdateSystem { get; }
         public DxTileDrawSystem dxTileDrawSystem { get; }
+
+        public Color color { get; set; }
+        public byte Al { get; set; }
     }
 
     public interface ILanguage

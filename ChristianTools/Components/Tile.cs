@@ -15,6 +15,9 @@ namespace ChristianTools.Components
         public DxTileUpdateSystem dxTileUpdateSystem { get; private set; }
         public DxTileDrawSystem dxTileDrawSystem { get; }
 
+        public byte Al { get; set; }
+        public Color color { get; set; }
+
         public Tile(Texture2D texture, Rectangle rectangle, bool isActive = true, string tag = "")
         {
             this.texture = texture;
@@ -23,6 +26,9 @@ namespace ChristianTools.Components
             );
             this.tag = tag;
             this.isActive = isActive;
+
+            this.color = Color.Black;
+            this.Al = byte.MaxValue;
         }
     }
 }
