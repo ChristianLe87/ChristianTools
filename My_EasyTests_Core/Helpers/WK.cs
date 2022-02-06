@@ -46,10 +46,12 @@ namespace My_EasyTests_Core
             {
                 public static Texture2D Gray = Tools.Texture.CreateColorTexture(Color.Gray);
                 public static Texture2D LightGray = Tools.Texture.CreateColorTexture(Color.LightGray);
-
+                public static Texture2D Pink = Tools.Texture.CreateColorTexture(Color.Pink);
                 public static Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red);
             }
 
+            public static Texture2D Player = Tools.Texture.ScaleTexture(WK.Texture.PixelColor.Pink, ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor);
+            public static Texture2D Lightmask => ChristianTools.Tools.Tools.Texture.GetTexture("lightmask");
             public static Texture2D Tree => Tools.Texture.GetTexture("Tree");
         }
     }

@@ -20,8 +20,9 @@ namespace My_EasyTests_Core
         {
             this.entities = new List<IEntity>()
             {
-                new Tree(),
-                new Player()
+                new Tree(new Vector2(200, 200)),
+                new Player(new Vector2(200, 200)),
+                new Thing1(new Vector2(500, 200))
             };
         }
     }

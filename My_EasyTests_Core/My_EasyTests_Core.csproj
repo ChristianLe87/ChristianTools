@@ -28,6 +28,22 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\.editorconfig" />
+    <None Include="..\Content\GrayScale_1_FX.fx">
+      <Link>Content\GrayScale_1_FX.fx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\LightEffect_1_FX.fx">
+      <Link>Content\LightEffect_1_FX.fx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\lightmask.png">
+      <Link>Content\lightmask.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\lighteffect2.mgfx">
+      <Link>Content\lighteffect2.mgfx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />

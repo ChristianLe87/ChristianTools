@@ -18,12 +18,12 @@ namespace My_EasyTests_Core
         public DxEntityUpdateSystem dxEntityUpdateSystem { get; private set; }
         public DxEntityDrawSystem dxEntityDrawSystem { get; private set; }
 
-        public Player()
+        public Player(Vector2 centerPosition)
         {
-            Texture2D texture2D = Tools.Texture.CreateColorTexture(Color.Pink, 10 * ChristianGame.Default.ScaleFactor, 10 * ChristianGame.Default.ScaleFactor);
-            this.animation = new Animation(texture2D);
-            this.rigidbody = new Rigidbody(new Vector2(200, 200), this);
+            this.animation = new Animation(WK.Texture.Player);
+            this.rigidbody = new Rigidbody(centerPosition, this);
             this.isActive = true;
+
             this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState) => Systems.Update.Player.Basic_XY_Movement(inputState, this);
         }
     }

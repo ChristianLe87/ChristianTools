@@ -9,6 +9,8 @@ namespace ChristianTools.Helpers
 {
     public class ChristianGame : Game
     {
+        Effect effect;
+
         // a way to access the graphics devices (iPhone, Mac, Pc, PS4, etc)
         static GraphicsDeviceManager graphicsDeviceManager;
         public static GraphicsDevice graphicsDevice => graphicsDeviceManager.GraphicsDevice;
@@ -122,6 +124,8 @@ namespace ChristianTools.Helpers
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //effect = Tools.Tools.Other.GetMGFX("lighteffect2");
             // TODO: Code
         }
 
@@ -135,8 +139,6 @@ namespace ChristianTools.Helpers
             InputState inputState = new InputState();
 
             Systems.Systems.Update.Scene(lastInputState, inputState, scenes[actualScene]);
-            //scenes[actualScene].Update(lastInputState, inputState);   
-
 
             ChristianGame.lastInputState = inputState;
 
@@ -146,7 +148,13 @@ namespace ChristianTools.Helpers
         protected override void Draw(GameTime gameTime)
         {
             base.GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin(sortMode: SpriteSortMode.Deferred, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform);
+
+            spriteBatch.Begin(
+                sortMode: SpriteSortMode.Deferred,
+                blendState: BlendState.AlphaBlend,
+                transformMatrix: scenes[actualScene].camera?.transform,
+                effect: effect
+            );
 
             Systems.Systems.Draw.Scene(spriteBatch, scenes[actualScene]);
 
