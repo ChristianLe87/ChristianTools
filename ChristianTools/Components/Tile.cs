@@ -31,37 +31,32 @@ namespace ChristianTools.Components
 
         public Color GetShadow(List<Light> lights)
         {
-            
-                Light nearLight = lights?.OrderByDescending(x => (int)Vector2.Distance(x.centerPosition.ToVector2(), rigidbody.centerPosition)).Reverse().FirstOrDefault();
-
-
-            if (nearLight == null)
+            if (lights == null)
                 return Shadow.Shadow_0;
 
-            int distance = (int)Vector2.Distance(nearLight.centerPosition.ToVector2(), rigidbody.centerPosition);
 
+            int nearDistance = lights.Select(x => (int)Vector2.Distance(x.centerPosition.ToVector2(), rigidbody.centerPosition)).Min();
 
             int AssetSize_x_ScaleFactor = ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor;
 
 
-
-            if (distance > 6 * AssetSize_x_ScaleFactor)
+            if (nearDistance > 6 * AssetSize_x_ScaleFactor)
             {
                 return Shadow.Shadow_100;
             }
-            else if (distance > 5 * AssetSize_x_ScaleFactor)
+            else if (nearDistance > 5 * AssetSize_x_ScaleFactor)
             {
                 return Shadow.Shadow_75;
             }
-            else if (distance > 4 * AssetSize_x_ScaleFactor)
+            else if (nearDistance > 4 * AssetSize_x_ScaleFactor)
             {
                 return Shadow.Shadow_50;
             }
-            else if (distance > 3 * AssetSize_x_ScaleFactor)
+            else if (nearDistance > 3 * AssetSize_x_ScaleFactor)
             {
                 return Shadow.Shadow_25;
             }
-            else if (distance > 2 * AssetSize_x_ScaleFactor)
+            else if (nearDistance > 2 * AssetSize_x_ScaleFactor)
             {
                 return Shadow.Shadow_10;
             }
