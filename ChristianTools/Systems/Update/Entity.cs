@@ -13,8 +13,8 @@ namespace ChristianTools.Systems
                     return;
 
 
-                if (entity.dxEntityUpdateSystem != null)
-                    entity.dxEntityUpdateSystem(lastInputState, inputState);
+                if (entity.dxUpdateSystem != null)
+                    entity.dxUpdateSystem(lastInputState, inputState);
 
                 entity.animation?.Update();
                 entity.rigidbody?.Update();

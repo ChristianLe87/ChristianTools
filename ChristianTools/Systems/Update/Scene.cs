@@ -41,12 +41,8 @@ namespace ChristianTools.Systems
                 }
 
 
-
-
-
-
-                if (scene.dxSceneUpdateSystem != null)
-                    scene.dxSceneUpdateSystem(lastInputState, inputState);
+                if (scene.dxUpdateSystem != null)
+                    scene.dxUpdateSystem(lastInputState, inputState);
             }
         }
     }

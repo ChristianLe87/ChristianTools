@@ -21,8 +21,8 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public Scene_Others_PunchHole()
         {
@@ -73,15 +73,15 @@ namespace Shared
             public string tag { get; }
             public int health { get; }
 
-            public DxEntityUpdateSystem dxEntityUpdateSystem { get; }
-            public DxEntityDrawSystem dxEntityDrawSystem { get; }
+            public DxUpdateSystem dxUpdateSystem { get; }
+            public DxDrawSystem dxDrawSystem { get; }
 
             public Player(Point point)
             {
                 this.isActive = true;
                 this.rigidbody = new Rigidbody(point.ToVector2(), this);
                 this.animation = new Animation(Tools.Texture.ScaleTexture(WK.Texture.Red, 50));
-                this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+                this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
             }
 
             private void UpdateSystem(InputState lastInputState, InputState inputState)
@@ -122,9 +122,8 @@ namespace Shared
 
             public bool isActive { get; set; }
 
-            public DxUiUpdateSystem dxUiUpdateSystem { get; }
-
-            public DxUiDrawSystem dxUiDrawSystem { get; }
+            public DxUpdateSystem dxUpdateSystem { get; }
+            public DxDrawSystem dxDrawSystem { get; }
 
             public Shadow(Point[] lights)
             {

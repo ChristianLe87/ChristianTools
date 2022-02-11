@@ -18,8 +18,8 @@ namespace ChristianTools.UI
         public string tag { get; }
         public bool isActive { get; set; }
 
-        public DxUiUpdateSystem dxUiUpdateSystem { get; }
-        public DxUiDrawSystem dxUiDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public Texture2D texture { get; }
 
@@ -41,8 +41,8 @@ namespace ChristianTools.UI
             this.OnClickAction = OnClickAction;
             
 
-            this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
-            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
             this.isActive = true;
         }
 
@@ -83,7 +83,7 @@ namespace ChristianTools.UI
                 spriteBatch.Draw(defaultTexture, tempRectangle, Color.White);
 
 
-            label.dxUiDrawSystem(spriteBatch);
+            label.dxDrawSystem(spriteBatch);
         }
     }
 }

@@ -22,8 +22,8 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; private set; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         string textOfChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nabcdefghijklmnopqrstuvwxyz\n0123456789Ññß\n,:;?.! \'()_\"<>-+\\";
 
@@ -113,7 +113,7 @@ namespace Shared
                 Tools.Sound.GetSoundEffect(Path.Combine("Sounds", "EatingSound_WAV"))
             };
 
-            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);
         }
 
         public void Update(InputState lastInputState, InputState inputState)

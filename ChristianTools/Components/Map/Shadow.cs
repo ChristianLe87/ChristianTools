@@ -24,9 +24,8 @@ namespace ChristianTools.Components
 
         public byte Al { get; set; }
 
-        public DxShadowUpdateSystem dxShadowUpdateSystem { get; private set; }
-
-        public DxShadowDrawSystem dxShadowDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public Color shadowColor { get; private set; }
 
@@ -42,7 +41,7 @@ namespace ChristianTools.Components
             this.tag = tag;
             this.isActive = isActive;
 
-            this.dxShadowUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
         }
 
 

@@ -21,8 +21,8 @@ namespace ChristianTools.UI
             public bool isActive { get; set; }
             public bool fadeFinish { get; private set; }
 
-            public DxUiUpdateSystem dxUiUpdateSystem { get; }
-            public DxUiDrawSystem dxUiDrawSystem { get; }
+            public DxUpdateSystem dxUpdateSystem { get; }
+            public DxDrawSystem dxDrawSystem { get; }
 
             public FadeIn(byte fadeSpeed = 10, bool isActive = true)
             {
@@ -38,8 +38,8 @@ namespace ChristianTools.UI
 
                 this.isActive = isActive;
 
-                this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
-                this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+                this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+                this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
             }
 
             private void UpdateSystem(InputState lastInputState, InputState inputState)
@@ -93,8 +93,8 @@ namespace ChristianTools.UI
             public bool fadeFinish { get; private set; }
             public bool isActive { get; set; }
 
-            public DxUiUpdateSystem dxUiUpdateSystem { get; }
-            public DxUiDrawSystem dxUiDrawSystem { get; }
+            public DxUpdateSystem dxUpdateSystem { get; }
+            public DxDrawSystem dxDrawSystem { get; }
 
             public FadeOut(byte fadeSpeed = 10, bool isActive = true)
             {
@@ -111,8 +111,8 @@ namespace ChristianTools.UI
 
                 this.isActive = isActive;
 
-                this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
-                this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+                this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+                this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
             }
 
             private void UpdateSystem(InputState lastInputState, InputState inputState)

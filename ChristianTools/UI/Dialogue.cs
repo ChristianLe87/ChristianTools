@@ -19,8 +19,8 @@ namespace ChristianTools.UI
         public string tag => throw new System.NotImplementedException();
         public bool isActive { get; set; }
 
-        public DxUiUpdateSystem dxUiUpdateSystem { get; }
-        public DxUiDrawSystem dxUiDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public Dialogue(string[] texts, Point centerPosition, Texture2D background, SpriteFont spriteFont, bool isActive = true)
         {
@@ -31,7 +31,7 @@ namespace ChristianTools.UI
             this.labels = texts.Select(text => new Label(rectangle, spriteFont, text, Label.TextAlignment.Midle_Left, tag: "")).ToArray();
 
             //this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
-            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
         private void DrawSystem(SpriteBatch spriteBatch)
@@ -39,7 +39,7 @@ namespace ChristianTools.UI
             if (isActive == false) return;
 
             spriteBatch.Draw(texture, rectangle, Color.White);
-            labels[labelCount].dxUiDrawSystem(spriteBatch);
+            labels[labelCount].dxDrawSystem(spriteBatch);
         }
 
         public void SetActiveState(bool isActive)

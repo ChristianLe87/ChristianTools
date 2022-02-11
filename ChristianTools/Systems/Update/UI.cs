@@ -12,8 +12,8 @@ namespace ChristianTools.Systems
 				if (ui.isActive == false)
 					return;
 
-				if (ui.dxUiUpdateSystem != null)
-					ui.dxUiUpdateSystem(lastInputState, inputState);
+				if (ui.dxUpdateSystem != null)
+					ui.dxUpdateSystem(lastInputState, inputState);
 			}
 		}
 	}

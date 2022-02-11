@@ -13,9 +13,9 @@ namespace ChristianTools.Systems
                 if (ui.isActive == false)
                     return;
 
-                if (ui.dxUiDrawSystem != null)
+                if (ui.dxDrawSystem != null)
                 {
-                    ui.dxUiDrawSystem(spriteBatch);
+                    ui.dxDrawSystem(spriteBatch);
                 }
                 else
                 {

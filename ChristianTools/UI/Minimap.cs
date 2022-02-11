@@ -14,8 +14,8 @@ namespace ChristianTools.UI
         public string tag { get; }
         public bool isActive { get; set; }
 
-        public DxUiUpdateSystem dxUiUpdateSystem { get; }
-        public DxUiDrawSystem dxUiDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         Texture2D miniPlayerTexture;
         IEntity player;
@@ -36,8 +36,8 @@ namespace ChristianTools.UI
                 this.tag = "";
                 this.isActive = true;
 
-                this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
-                this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+                this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
+                this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
                 this.miniPlayerTexture = Tools.Tools.Texture.CreateColorTexture(Color.Red, scaleFactor, scaleFactor);
             }
 

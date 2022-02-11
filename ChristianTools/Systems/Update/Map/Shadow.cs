@@ -13,8 +13,8 @@ namespace ChristianTools.Systems
 				if (shadow.isActive == false)
 					return;
 
-				if (shadow.dxShadowUpdateSystem != null)
-					shadow.dxShadowUpdateSystem(lastInputState, inputState);
+				if (shadow.dxUpdateSystem != null)
+					shadow.dxUpdateSystem(lastInputState, inputState);
 			}
 		}
 	}

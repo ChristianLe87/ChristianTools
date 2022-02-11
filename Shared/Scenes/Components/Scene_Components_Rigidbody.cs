@@ -20,8 +20,8 @@ namespace Shared
         public Map map { get; }
         public List<Light> lights { get; set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public void Initialize(Vector2? playerPosition = null)
         {

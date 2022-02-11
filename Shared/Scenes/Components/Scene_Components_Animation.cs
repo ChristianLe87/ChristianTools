@@ -18,8 +18,8 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public void Initialize(Vector2? playerPosition = null)
         {
@@ -52,8 +52,8 @@ namespace Shared
             public Animation animation { get; }
             public CharacterState characterState { get; set; }
 
-            public DxEntityUpdateSystem dxEntityUpdateSystem { get; set; }
-            public DxEntityDrawSystem dxEntityDrawSystem { get; set; }
+            public DxUpdateSystem dxUpdateSystem { get; }
+            public DxDrawSystem dxDrawSystem { get; }
 
             public MyCharacter()
             {
@@ -74,7 +74,7 @@ namespace Shared
                 this.animation = new Animation(animations);
                 this.rigidbody = new Rigidbody(new Vector2(300, 300), this);
 
-                this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(inputState);
+                this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(inputState);
             }
 
 

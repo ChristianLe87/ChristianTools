@@ -17,8 +17,8 @@ namespace ChristianTools.UI
         public bool isActive { get; set; }
         public string tag => throw new System.NotImplementedException();
 
-        public DxUiUpdateSystem dxUiUpdateSystem { get; }
-        public DxUiDrawSystem dxUiDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public Texture2D texture { get; }
 
@@ -32,7 +32,7 @@ namespace ChristianTools.UI
             this.maxVal = maxVal;
             this.reduceValue = reduceValue;
 
-            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
         private void DrawSystem(SpriteBatch spriteBatch)

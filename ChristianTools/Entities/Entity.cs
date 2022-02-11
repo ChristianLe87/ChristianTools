@@ -18,12 +18,12 @@ namespace ChristianTools.Entities
         public Animation animation { get; }
         public CharacterState characterState { get; set; }
 
-        public DxEntityUpdateSystem dxEntityUpdateSystem { get; private set; }
-        public DxEntityDrawSystem dxEntityDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public Entity(
             Texture2D texture2D, Vector2 centerPosition, bool isActive = true, string tag = "", Vector2? force = null, Vector2? gravity = null,
-            DxEntityUpdateSystem dxUpdateSystem = null, DxEntityDrawSystem dxDrawSystem = null)
+            DxUpdateSystem dxUpdateSystem = null, DxDrawSystem dxDrawSystem = null)
         {
             this.characterState = CharacterState.IdleRight;
             this.animation = new Animation(texture2D);
@@ -34,8 +34,8 @@ namespace ChristianTools.Entities
             );
             this.isActive = isActive;
             this.tag = tag;
-            this.dxEntityUpdateSystem = dxUpdateSystem;
-            this.dxEntityDrawSystem = dxDrawSystem;
+            this.dxUpdateSystem = dxUpdateSystem;
+            this.dxDrawSystem = dxDrawSystem;
         }
     }
 }

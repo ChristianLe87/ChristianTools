@@ -20,8 +20,8 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; private set; }
 
         Texture2D subAtlas_1;
         Texture2D subAtlas_2;
@@ -116,7 +116,7 @@ namespace Shared
                 )
             };
 
-            this.dxSceneDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
         private void DrawSystem(SpriteBatch spriteBatch)

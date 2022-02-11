@@ -22,8 +22,8 @@ namespace ChristianTools.Entities
         public Animation animation { get; }
         public CharacterState characterState { get; set; }
 
-        public DxEntityUpdateSystem dxEntityUpdateSystem { get; }
-        public DxEntityDrawSystem dxEntityDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public Line(Point start, Point end, int thickness, Texture2D texture2D, string tag)
         {
@@ -35,7 +35,7 @@ namespace ChristianTools.Entities
             this.isActive = true;
             CreateLine();
 
-            this.dxEntityDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
         public void UpdatePoints(Point? start, Point? end)

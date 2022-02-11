@@ -18,8 +18,8 @@ namespace ChristianTools.UI
         public bool isActive { get; set; }
         public string tag { get; }
 
-        public DxUiUpdateSystem dxUiUpdateSystem { get; }
-        public DxUiDrawSystem dxUiDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public Label(Rectangle rectangle, SpriteFont spriteFont, string text, TextAlignment textAlignment, string tag, Texture2D texture = null, int lineSpacing = 10, bool isActive = true)
         {
@@ -34,7 +34,7 @@ namespace ChristianTools.UI
             this.isActive = isActive;
 
             //this.dxUiUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
-            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
         private void UpdateSystem(InputState lastInputState, InputState inputState)

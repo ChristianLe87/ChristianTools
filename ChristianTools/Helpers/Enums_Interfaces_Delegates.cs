@@ -62,22 +62,21 @@ namespace ChristianTools.Helpers
         public bool isActive { get; set; }
         public string tag { get; }
         public int health { get; }
-        public DxEntityUpdateSystem dxEntityUpdateSystem { get; }
-        public DxEntityDrawSystem dxEntityDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
     }
 
     public interface IScene
     {
         public GameState gameState { get; }
         public List<IEntity> entities { get; set; }
-        //public List<Light> lights { get; set; }
         public List<IUI> UIs { get; set; }
         public List<SoundEffect> soundEffects { get; }
         public Camera camera { get; }
         public Map map { get; }
         public void Initialize(Vector2? playerPosition = null);
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
     }
 
     public interface IUI
@@ -86,8 +85,8 @@ namespace ChristianTools.Helpers
         public Texture2D texture { get; }
         public string tag { get; }
         public bool isActive { get; set; }
-        public DxUiUpdateSystem dxUiUpdateSystem { get; }
-        public DxUiDrawSystem dxUiDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
     }
 
     public interface ITile
@@ -95,8 +94,8 @@ namespace ChristianTools.Helpers
         public Texture2D texture { get; }
         public Rigidbody rigidbody { get; }
         public bool isActive { get; set; }
-        public DxTileUpdateSystem dxTileUpdateSystem { get; }
-        public DxTileDrawSystem dxTileDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
     }
 
     public interface IShadow
@@ -104,9 +103,8 @@ namespace ChristianTools.Helpers
         public Texture2D texture { get; }
         public Rigidbody rigidbody { get; }
         public bool isActive { get; set; }
-        public DxShadowUpdateSystem dxShadowUpdateSystem { get; }
-        public DxShadowDrawSystem dxShadowDrawSystem { get; }
-
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
         public Color shadowColor { get; }
     }
 
@@ -132,28 +130,6 @@ namespace ChristianTools.Helpers
     }
 
     // === Delegates ===
-
-    // Entity
-    public delegate void DxEntityUpdateSystem(InputState lastInputState, InputState inputState);
-    public delegate void DxEntityDrawSystem(SpriteBatch spriteBatch);
-
-    // Scene
-    public delegate void DxSceneUpdateSystem(InputState lastInputState, InputState inputState);
-    public delegate void DxSceneDrawSystem(SpriteBatch spriteBatch);
-
-    // Tile
-    public delegate void DxTileUpdateSystem(InputState lastInputState, InputState inputState);
-    public delegate void DxTileDrawSystem(SpriteBatch spriteBatch);
-
-    // Shadow
-    public delegate void DxShadowUpdateSystem(InputState lastInputState, InputState inputState);
-    public delegate void DxShadowDrawSystem(SpriteBatch spriteBatch);
-
-    // Light
-    public delegate void DxLightUpdateSystem(InputState lastInputState, InputState inputState);
-    public delegate void DxLightDrawSystem(SpriteBatch spriteBatch);
-
-    // UI
-    public delegate void DxUiUpdateSystem(InputState lastInputState, InputState inputState);
-    public delegate void DxUiDrawSystem(SpriteBatch spriteBatch);
+    public delegate void DxUpdateSystem(InputState lastInputState, InputState inputState);
+    public delegate void DxDrawSystem(SpriteBatch spriteBatch);
 }

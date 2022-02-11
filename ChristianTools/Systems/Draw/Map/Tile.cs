@@ -16,9 +16,9 @@ namespace ChristianTools.Systems
 					return;
 
 
-				if (tile.dxTileDrawSystem != null)
+				if (tile.dxDrawSystem != null)
                 {
-					tile.dxTileDrawSystem(spriteBatch);
+					tile.dxDrawSystem(spriteBatch);
 				}
                 else
                 {

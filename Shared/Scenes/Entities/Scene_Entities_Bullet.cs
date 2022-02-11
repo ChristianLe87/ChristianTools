@@ -22,8 +22,8 @@ namespace Shared
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; private set; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         Vector2 centerPosition = new Point(ChristianGame.Default.canvasWidth / 2, ChristianGame.Default.canvasHeight / 2).ToVector2();
 
@@ -50,7 +50,7 @@ namespace Shared
             };
 
             this.entities = new List<IEntity>();
-            this.dxSceneUpdateSystem = (InputState lastInputState, InputState inputState) => SceneUpdateSystem(lastInputState, inputState);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => SceneUpdateSystem(lastInputState, inputState);
         }
 
         public void SceneUpdateSystem(InputState lastInputState, InputState inputState)

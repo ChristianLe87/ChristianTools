@@ -13,8 +13,8 @@ namespace ChristianTools.Systems
 				if (tile.isActive == false)
 					return;
 
-				if (tile.dxTileUpdateSystem != null)
-					tile.dxTileUpdateSystem(lastInputState, inputState);
+				if (tile.dxUpdateSystem != null)
+					tile.dxUpdateSystem(lastInputState, inputState);
 			}
 		}
 	}

@@ -14,8 +14,8 @@ namespace ChristianTools.UI
         public Texture2D texture { get; }
         public bool isActive { get; set; }
 
-        public DxUiUpdateSystem dxUiUpdateSystem { get; }
-        public DxUiDrawSystem dxUiDrawSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
 
         public Image(Texture2D texture, Vector2 centerPosition, string tag = "")
         {
@@ -23,7 +23,7 @@ namespace ChristianTools.UI
             this.texture = texture;
             this.tag = tag;
 
-            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
             this.isActive = true;
         }
 
@@ -33,7 +33,7 @@ namespace ChristianTools.UI
             this.texture = texture;
             this.tag = tag;
 
-            this.dxUiDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
             this.isActive = true;
         }
 

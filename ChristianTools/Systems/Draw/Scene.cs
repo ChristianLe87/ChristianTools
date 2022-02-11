@@ -43,8 +43,8 @@ namespace ChristianTools.Systems
 
 
                 // dx
-                if (scene.dxSceneDrawSystem != null)
-                    scene.dxSceneDrawSystem(spriteBatch);
+                if (scene.dxDrawSystem != null)
+                    scene.dxDrawSystem(spriteBatch);
             }
         }
     }
