@@ -20,10 +20,6 @@ namespace ChristianTools.Components
         public string tag { get; }
         public bool isActive { get; set; }
 
-
-
-        public byte Al { get; set; }
-
         public DxUpdateSystem dxUpdateSystem { get; }
         public DxDrawSystem dxDrawSystem { get; }
 
