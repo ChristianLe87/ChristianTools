@@ -70,7 +70,7 @@ namespace ChristianTools.Helpers
     {
         public GameState gameState { get; }
         public List<IEntity> entities { get; set; }
-        public List<Light> lights { get; set; }
+        //public List<Light> lights { get; set; }
         public List<IUI> UIs { get; set; }
         public List<SoundEffect> soundEffects { get; }
         public Camera camera { get; }
@@ -97,8 +97,17 @@ namespace ChristianTools.Helpers
         public bool isActive { get; set; }
         public DxTileUpdateSystem dxTileUpdateSystem { get; }
         public DxTileDrawSystem dxTileDrawSystem { get; }
+    }
 
-        public Color GetShadow(List<Light> lights);
+    public interface IShadow
+    {
+        public Texture2D texture { get; }
+        public Rigidbody rigidbody { get; }
+        public bool isActive { get; set; }
+        public DxShadowUpdateSystem dxShadowUpdateSystem { get; }
+        public DxShadowDrawSystem dxShadowDrawSystem { get; }
+
+        public Color shadowColor { get; }
     }
 
     public interface ILanguage
@@ -135,6 +144,14 @@ namespace ChristianTools.Helpers
     // Tile
     public delegate void DxTileUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxTileDrawSystem(SpriteBatch spriteBatch);
+
+    // Shadow
+    public delegate void DxShadowUpdateSystem(InputState lastInputState, InputState inputState);
+    public delegate void DxShadowDrawSystem(SpriteBatch spriteBatch);
+
+    // Light
+    public delegate void DxLightUpdateSystem(InputState lastInputState, InputState inputState);
+    public delegate void DxLightDrawSystem(SpriteBatch spriteBatch);
 
     // UI
     public delegate void DxUiUpdateSystem(InputState lastInputState, InputState inputState);

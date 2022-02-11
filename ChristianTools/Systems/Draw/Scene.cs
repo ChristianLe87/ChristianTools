@@ -10,10 +10,7 @@ namespace ChristianTools.Systems
         {
             public static void Scene(SpriteBatch spriteBatch, IScene scene)
             {
-                // Tiles
-                if (scene.map != null)
-                    foreach (ITile tile in scene.map.tiles)
-                        Systems.Draw.Tile(spriteBatch, tile);
+
 
 
                 // Entities
@@ -27,11 +24,25 @@ namespace ChristianTools.Systems
                     foreach (IUI ui in scene.UIs)
                         Systems.Draw.UI(spriteBatch, ui);
 
-                // Light
-                if (scene.lights != null)
-                    foreach (Light light in scene.lights)
-                        Systems.Draw.Light(spriteBatch, light);
+                // Map
+                if (scene.map != null)
+                {
+                    // Tiles
+                    foreach (ITile tile in scene.map.tiles)
+                        Systems.Draw.Tile(spriteBatch, tile);
 
+                    // Lights
+                    if (scene.map.lights != null)
+                        foreach (Light light in scene.map.lights)
+                            Systems.Draw.Light(spriteBatch, light);
+
+                    // Shadow
+                    foreach (IShadow shadow in scene.map.shadows)
+                        Systems.Draw.Shadow(spriteBatch, shadow);
+                }
+
+
+                // dx
                 if (scene.dxSceneDrawSystem != null)
                     scene.dxSceneDrawSystem(spriteBatch);
             }

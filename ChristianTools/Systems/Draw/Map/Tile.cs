@@ -22,11 +22,7 @@ namespace ChristianTools.Systems
 				}
                 else
                 {
-					// Tile texture
 					spriteBatch.Draw(tile.texture, tile.rigidbody.rectangle, Color.White);
-
-					// Shadow
-					spriteBatch.Draw(tile.texture, tile.rigidbody.rectangle, tile.GetShadow(ChristianTools.Helpers.ChristianGame.GetScene.lights));
 				}
 			}
 		}

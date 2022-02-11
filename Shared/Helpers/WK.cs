@@ -76,6 +76,9 @@ namespace Shared
             public static readonly Texture2D DarkRed = Tools.Texture.CreateColorTexture(Color.DarkRed);
 
 
+            public static readonly Texture2D Tree = Tools.Texture.GetTexture("Tree", ChristianGame.Default.ScaleFactor);
+
+
             public class Player
             {
                 private static readonly string AtlasPlayer_10x40_PNG = "AtlasPlayer_10x40_PNG";

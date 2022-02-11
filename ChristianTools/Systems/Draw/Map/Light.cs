@@ -10,10 +10,12 @@ namespace ChristianTools.Systems
         {
             public static void Light(SpriteBatch spriteBatch, Light light)
             {
+                if (light.isActive != true)
+                    return;
+
                 if(light.texture != null)
                     spriteBatch.Draw(light.texture, light.centerPosition.ToVector2(), Color.White);
             }
         }
     }
-
 }

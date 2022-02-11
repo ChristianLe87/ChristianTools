@@ -15,9 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Animation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Components.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Map.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Bullet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ChristianGame.cs" />
@@ -41,9 +39,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Factory\Factory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Image.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Transition.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\UI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Minimap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\ToDo\Popup.cs" />
@@ -74,9 +70,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\GetCharacterAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\Other.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\GetMGFX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Light.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Shadow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Light.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Map.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Shadow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Light.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Shadow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Light.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Shadow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />
@@ -94,5 +96,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools\Texture\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools\Other\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Components\Map\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Systems\Update\Map\" />
   </ItemGroup>
 </Project>

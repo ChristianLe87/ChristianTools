@@ -31,8 +31,18 @@ namespace ChristianTools.Systems
 
 
                 if (scene.map != null)
+                {
                     foreach (ITile tile in scene.map.tiles)
                         Systems.Update.Tile(lastInputState, inputState, tile);
+
+                    foreach (IShadow shadow in scene.map.shadows)
+                        Systems.Update.Shadow(lastInputState, inputState, shadow);
+
+                }
+
+
+
+
 
 
                 if (scene.dxSceneUpdateSystem != null)
