@@ -79,6 +79,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Light.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Shadow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Light.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />

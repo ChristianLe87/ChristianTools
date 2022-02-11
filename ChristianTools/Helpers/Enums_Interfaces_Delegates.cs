@@ -108,6 +108,15 @@ namespace ChristianTools.Helpers
         public Color shadowColor { get; }
     }
 
+    public interface ILight
+    {
+        public Point centerPosition { get; }
+        public Texture2D texture { get; }
+        public bool isActive { get; set; }
+        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxDrawSystem dxDrawSystem { get; }
+    }
+
     public interface ILanguage
     {
         public string GameWindowTitle { get; }

@@ -49,7 +49,7 @@ namespace ChristianTools.Components
         private void UpdateSystem()
         {
 
-            List<Light> lights = ChristianGame.GetScene.map.lights;
+            List<ILight> lights = ChristianGame.GetScene.map.lights;
 
             if (lights == null)
             {

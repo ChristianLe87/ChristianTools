@@ -9,17 +9,17 @@ namespace ChristianTools.Components
     public class Map
     {
         public List<ITile> tiles;
-        public List<Light> lights;
+        public List<ILight> lights;
         public List<IShadow> shadows;
 
         public Map()
         {
             this.tiles = new List<ITile>();
-            this.lights = new List<Light>();
+            this.lights = new List<ILight>();
             this.shadows = new List<IShadow>();
         }
 
-        public Map(Dictionary<int, Texture2D> textures, int[,] map, List<Light> lights = null)
+        public Map(Dictionary<int, Texture2D> textures, int[,] map, List<ILight> lights = null)
         {
             this.tiles = PopulateTiles(textures, map);
             this.lights = lights;

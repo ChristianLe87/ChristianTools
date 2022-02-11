@@ -18,7 +18,7 @@ namespace Shared
         public List<SoundEffect> soundEffects { get; }
         public Camera camera { get; private set; }
         public Map map { get; }
-        public List<Light> lights { get; set; }
+        public List<ILight> lights { get; set; }
 
         public DxUpdateSystem dxUpdateSystem { get; }
         public DxDrawSystem dxDrawSystem { get; }

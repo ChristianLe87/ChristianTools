@@ -22,7 +22,7 @@ namespace Shared
 
         public void Initialize(Vector2? playerPosition = null)
         {
-            List<Light> lights = new List<Light>()
+            List<ILight> lights = new List<ILight>()
             {
                 new Light(new Point(50, 100), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
                 new Light(new Point(300, 100), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),

@@ -33,7 +33,7 @@ namespace ChristianTools.Systems
 
                     // Lights
                     if (scene.map.lights != null)
-                        foreach (Light light in scene.map.lights)
+                        foreach (ILight light in scene.map.lights)
                             Systems.Draw.Light(spriteBatch, light);
 
                     // Shadow

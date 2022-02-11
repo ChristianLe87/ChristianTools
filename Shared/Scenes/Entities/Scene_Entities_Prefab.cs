@@ -12,7 +12,7 @@ namespace Shared
     {
         public GameState gameState { get; private set; }
         public List<IEntity> entities { get; set; }
-        public List<Light> lights { get; set; }
+        public List<ILight> lights { get; set; }
         public List<IUI> UIs { get; set; }
         public List<SoundEffect> soundEffects { get; private set; }
         public Camera camera { get; private set; }
