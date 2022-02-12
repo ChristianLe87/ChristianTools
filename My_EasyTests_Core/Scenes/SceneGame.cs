@@ -18,28 +18,16 @@ namespace My_EasyTests_Core
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; private set; }
+        public DxDrawSystem dxDrawSystem { get; private set; }
 
         public void Initialize(Vector2? playerPosition = null)
         {
-            playerPosition = new Vector2(200, 200);
+            Tiled tiled_JSON = Tiled_JsonSerialization.Read<Tiled>("Map1");
+            int[] map1 = tiled_JSON.layers[0].chunks[0].data;
 
-            this.entities = new List<IEntity>()
-            {
-                //new Tree(new Vector2(200, 200)),
-                new Player(playerPosition.Value),
-                //new Thing1(new Vector2(500, 200))
-            };
-
-            this.map = new Map(WK.Texture.Tiles.tileTextures, WK.Map.map0);
-
-
-            this.lights = new List<Light>()
-            {
-                new Light(new Point(50, 100), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
-                new Light(new Point(600, 100), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3))
-            };
+            int[,] chunk1 = Tools.Other.ToMultidimentional(map1, tiled_JSON.layers[0].chunks[0].width, tiled_JSON.layers[0].chunks[0].height);
+            this.map = new Map(WK.Texture.Tiles.tileTextures, chunk1);
         }
     }
 }

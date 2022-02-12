@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace My_EasyTests_Core
 {
-    public class Thing1 : IEntity
+    /*public class Thing1 : IEntity
     {
         public Animation animation { get; private set; }
         public Rigidbody rigidbody { get; private set; }
@@ -30,5 +30,5 @@ namespace My_EasyTests_Core
         {
             spriteBatch.Draw(animation.GetTexture(this.characterState), rigidbody.centerPosition, Color.White);
         }
-    }
+    }*/
 }

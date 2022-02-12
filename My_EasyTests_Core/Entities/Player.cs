@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace My_EasyTests_Core
 {
-    public class Player : IEntity
+    /*public class Player : IEntity
     {
         public Animation animation { get; private set; }
         public Rigidbody rigidbody { get; private set; }
@@ -26,5 +26,5 @@ namespace My_EasyTests_Core
 
             this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState) => Systems.Update.Player.Basic_XY_Movement(inputState, this);
         }
-    }
+    }*/
 }

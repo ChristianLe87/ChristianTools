@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace My_EasyTests_Core
 {
-    public class Tree : IEntity
+    /*public class Tree : IEntity
     {
         public Animation animation { get; private set; }
         public Rigidbody rigidbody { get; private set; }
@@ -21,5 +21,5 @@ namespace My_EasyTests_Core
             this.rigidbody = new Rigidbody(centerPosition, this);
             this.isActive = true;
         }
-    }
+    }*/
 }

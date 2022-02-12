@@ -48,6 +48,10 @@
       <Link>Content\AtlasTiles_15x25_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\Content\Maps\Map1\Map1.json">
+      <Link>Content\Map1.json</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
