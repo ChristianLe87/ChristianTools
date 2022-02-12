@@ -38,11 +38,9 @@ namespace ChristianTools.Systems
                     foreach (IShadow shadow in scene.map.shadows)
                         Systems.Update.Shadow(lastInputState, inputState, shadow);
 
-                    foreach (var light in scene.map.lights)
-                    {
-                        Systems.Update.Light(lastInputState, inputState, light);
-                    }
-
+                    if (scene.map.lights != null)
+                        foreach (var light in scene.map.lights)
+                            Systems.Update.Light(lastInputState, inputState, light);
                 }
 
 

@@ -17,7 +17,7 @@ namespace ChristianTools.Systems
                     light.dxDrawSystem(spriteBatch);
 
                 if(light.texture != null)
-                    spriteBatch.Draw(light.texture, light.centerPosition.ToVector2(), Color.White);
+                    spriteBatch.Draw(light.texture, light.rigidbody.rectangle, Color.White);
             }
         }
     }

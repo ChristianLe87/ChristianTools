@@ -45,7 +45,7 @@ namespace ChristianTools.Components
         private void UpdateSystem()
         {
 
-            List<ILight> lights = ChristianGame.GetScene.map.lights;
+            List<ILight> lights = ChristianGame.GetScene.map?.lights;
 
             if (lights == null)
             {
@@ -68,7 +68,7 @@ namespace ChristianTools.Components
                 .Where(x => x.isActive == true)
                 .Select(x =>
                 {
-                    return (int)Vector2.Distance(x.centerPosition.ToVector2(), rigidbody.centerPosition);
+                    return (int)Vector2.Distance(x.rigidbody.centerPosition, rigidbody.centerPosition);
                 })
                 .Min();
 

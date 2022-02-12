@@ -110,17 +110,35 @@ namespace Shared
 
             public class Tiles
             {
-                private static readonly string AtlasTiles_15x25_PNG = "AtlasTiles_15x25_PNG";
-                private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Tiles.AtlasTiles_15x25_PNG);
+                public class Tiles1
+                {
+                    private static readonly string AtlasTiles_15x25_PNG = "AtlasTiles_15x25_PNG";
+                    private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Tiles.Tiles1.AtlasTiles_15x25_PNG);
 
-                public static Dictionary<int, Texture2D> tileTextures = Tools.Texture.GetTileTextures(
-                    atlasTexture: atlasTexture,
-                    pixelsPerTile_Height: 5,
-                    pixelsPerTile_Width: 5,
-                    units_Height: 5,
-                    units_Width: 3,
-                    scaleFactor: ChristianGame.Default.ScaleFactor * 3
-                );
+                    public static Dictionary<int, Texture2D> tileTextures = Tools.Texture.GetTileTextures(
+                        atlasTexture: atlasTexture,
+                        pixelsPerTile_Height: 5,
+                        pixelsPerTile_Width: 5,
+                        units_Height: 5,
+                        units_Width: 3,
+                        scaleFactor: ChristianGame.Default.ScaleFactor * 3
+                    );
+                }
+
+                public class Tiles2
+                {
+                    private static readonly string AtlasTiles2_48x80_PNG = "AtlasTiles2_48x80_PNG";
+                    private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Tiles.Tiles2.AtlasTiles2_48x80_PNG);
+
+                    public static Dictionary<int, Texture2D> tileTextures = Tools.Texture.GetTileTextures(
+                        atlasTexture: atlasTexture,
+                        pixelsPerTile_Height: 16,
+                        pixelsPerTile_Width: 16,
+                        units_Height: 5,
+                        units_Width: 3,
+                        scaleFactor: ChristianGame.Default.ScaleFactor
+                    );
+                }
             }
         }
 
@@ -188,21 +206,21 @@ namespace Shared
 
             public static readonly int[,] lights = new int[,]
             {
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5 },
+                { 5, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 5 },
+                { 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5 },
+                { 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 14 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
             };
         }
     }

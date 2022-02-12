@@ -23,7 +23,7 @@ namespace Shared
 
         public void Initialize(Vector2? playerPosition = null)
         {
-            Dictionary<int, Texture2D> tileTextures = WK.Texture.Tiles.tileTextures;
+            Dictionary<int, Texture2D> tileTextures = WK.Texture.Tiles.Tiles2.tileTextures;
             this.map = new Map(tileTextures, WK.Map.map0);
 
             this.UIs = new List<IUI>()

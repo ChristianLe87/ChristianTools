@@ -46,7 +46,7 @@ namespace Shared
                 { WK.Scene.Scene_Others_Lights, new Scene_Others_Lights() },
             };
 
-            base.SetupScenes(scenes, WK.Scene.Scene_Others_Lights);
+            base.SetupScenes(scenes, WK.Scene.Menu);
         }
     }
 }

@@ -110,7 +110,7 @@ namespace ChristianTools.Helpers
 
     public interface ILight
     {
-        public Point centerPosition { get; }
+        public Rigidbody rigidbody { get; }
         public Texture2D texture { get; }
         public bool isActive { get; set; }
         public DxUpdateSystem dxUpdateSystem { get; }
