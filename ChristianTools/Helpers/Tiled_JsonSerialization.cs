@@ -1,9 +1,7 @@
 ﻿using System;
-using ChristianTools.Helpers;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace My_EasyTests_Core
+namespace ChristianTools.Helpers
 {
     public class Tiled
     {
@@ -54,8 +52,8 @@ namespace My_EasyTests_Core
             public string source { get; set; }
         }
     }
-    
-    
+
+
     public class Tiled_JsonSerialization
     {
         /// <summary>

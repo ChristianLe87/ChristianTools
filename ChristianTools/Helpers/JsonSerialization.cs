@@ -3,7 +3,6 @@ using System.IO;
 
 namespace ChristianTools.Helpers
 {
-
     public class GameData
     {
         public int score { get; set; } = 0;

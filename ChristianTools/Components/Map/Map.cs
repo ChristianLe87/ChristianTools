@@ -2,7 +2,6 @@
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using My_EasyTests_Core;
 
 namespace ChristianTools.Components
 {
@@ -23,7 +22,14 @@ namespace ChristianTools.Components
         {
             this.tiles = GetTiles(textures, tiled);
             this.lights = lights;
-            this.shadows = PopulateShadows(tiled);
+            this.shadows = GetShadows(tiled);
+        }
+
+        public Map(Dictionary<int, Texture2D> textures, int[,] map, List<ILight> lights = null)
+        {
+            this.tiles = GetTiles(textures, map, new Point());
+            this.lights = lights;
+            this.shadows = GetShadows(map);
         }
 
         private List<ITile> GetTiles(Dictionary<int, Texture2D> textures, Tiled tiled)
@@ -36,28 +42,37 @@ namespace ChristianTools.Components
                 {
                     int[,] map = Tools.Tools.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
 
-                    for (int row = 0; row < map.GetLength(0); row++)
+                    tiles.AddRange(GetTiles(textures, map, new Point(chunk.x, chunk.y)));
+                }
+            }
+
+            return tiles;
+        }
+
+        private List<ITile> GetTiles(Dictionary<int, Texture2D> textures, int[,] map, Point mapTopLeftCorner)
+        {
+            List<ITile> tiles = new List<ITile>();
+
+            for (int row = 0; row < map.GetLength(0); row++)
+            {
+                for (int element = 0; element < map.GetLength(1); element++)
+                {
+                    if (textures[map[row, element]] != null)
                     {
-                        for (int element = 0; element < map.GetLength(1); element++)
-                        {
-                            if (textures[map[row, element]] != null)
-                            {
-                                int AssetSize_x_ScaleFactor = ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor;
+                        int AssetSize_x_ScaleFactor = ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor;
 
-                                Tile tile = new Tile(
-                                    texture: textures[map[row, element]],
-                                    rectangle: new Rectangle(
-                                        x: (element * textures[map[row, element]].Width) + (chunk.x * AssetSize_x_ScaleFactor),
-                                        y: (row * textures[map[row, element]].Height) + (chunk.y * AssetSize_x_ScaleFactor),
-                                        width: textures[map[row, element]].Width,
-                                        height: textures[map[row, element]].Height
-                                    ),
-                                    tag: ""
-                                );
+                        Tile tile = new Tile(
+                            texture: textures[map[row, element]],
+                            rectangle: new Rectangle(
+                                x: (element * textures[map[row, element]].Width) + (mapTopLeftCorner.X * AssetSize_x_ScaleFactor),
+                                y: (row * textures[map[row, element]].Height) + (mapTopLeftCorner.Y * AssetSize_x_ScaleFactor),
+                                width: textures[map[row, element]].Width,
+                                height: textures[map[row, element]].Height
+                            ),
+                            tag: ""
+                        );
 
-                                tiles.Add(tile);
-                            }
-                        }
+                        tiles.Add(tile);
                     }
                 }
             }
@@ -65,9 +80,34 @@ namespace ChristianTools.Components
             return tiles;
         }
 
+        private List<IShadow> GetShadows(int[,] map)
+        {
+            List<IShadow> shadows = new List<IShadow>();
 
+            for (int row = 0; row < map.GetLength(0); row++)
+            {
+                for (int element = 0; element < map.GetLength(1); element++)
+                {
+                    int AssetSize_x_ScaleFactor = ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor;
 
-        private List<IShadow> PopulateShadows(Tiled tiled)
+                    Shadow shadow = new Shadow(
+                        rectangle: new Rectangle(
+                            x: element * AssetSize_x_ScaleFactor,
+                            y: row * AssetSize_x_ScaleFactor,
+                            width: AssetSize_x_ScaleFactor,
+                            height: AssetSize_x_ScaleFactor
+                        ),
+                        tag: ""
+                    );
+
+                    shadows.Add(shadow);
+                }
+            }
+
+            return shadows;
+        }
+
+        private List<IShadow> GetShadows(Tiled tiled)
         {
             List<IShadow> shadows = new List<IShadow>();
 
@@ -77,25 +117,7 @@ namespace ChristianTools.Components
                 {
                     int[,] map = Tools.Tools.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
 
-                    for (int row = 0; row < map.GetLength(0); row++)
-                    {
-                        for (int element = 0; element < map.GetLength(1); element++)
-                        {
-                            int AssetSize_x_ScaleFactor = ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor;
-
-                            Shadow shadow = new Shadow(
-                                rectangle: new Rectangle(
-                                    x: element * AssetSize_x_ScaleFactor,
-                                    y: row * AssetSize_x_ScaleFactor,
-                                    width: AssetSize_x_ScaleFactor,
-                                    height: AssetSize_x_ScaleFactor
-                                ),
-                                tag: ""
-                            );
-
-                            shadows.Add(shadow);
-                        }
-                    }
+                    shadows.AddRange(GetShadows(map));
                 }
             }
 

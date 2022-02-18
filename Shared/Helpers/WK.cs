@@ -61,6 +61,7 @@ namespace Shared
             public static readonly string Others = "Others";
             public static readonly string Others_PunchHole = "Scene_Others_PunchHole";
             public static readonly string Scene_Others_Lights = "Scene_Others_Lights";
+            public static readonly string Scene_Others_Tiled = "Scene_Others_Tiled";
         }
 
         public class Texture

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Audio;
 namespace Shared
 {
     public class Scene_Others : IScene
-	{
+    {
         public GameState gameState { get; private set; }
         public List<IEntity> entities { get; set; }
         public List<ILight> lights { get; set; }
@@ -45,7 +45,7 @@ namespace Shared
                     tag: "goToPunchHole",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Others_PunchHole)
                 ),
-                 new Button(
+                new Button(
                     rectangle: new Rectangle(10, 50, 230, 30),
                     text: "Lights",
                     defaultTexture: WK.Texture.LightGray,
@@ -53,6 +53,15 @@ namespace Shared
                     spriteFont: WK.Font.font_7,
                     tag: "goToLights",
                     OnClickAction: () => Game1.ChangeToScene(WK.Scene.Scene_Others_Lights)
+                ),
+                new Button(
+                    rectangle: new Rectangle(10, 90, 230, 30),
+                    text: "Tiled",
+                    defaultTexture: WK.Texture.LightGray,
+                    mouseOverTexture: WK.Texture.Gray,
+                    spriteFont: WK.Font.font_7,
+                    tag: "goToTiled",
+                    OnClickAction: () => Game1.ChangeToScene(WK.Scene.Scene_Others_Tiled)
                 ),
                 new Button(
                     rectangle: new Rectangle (0, 470, 230, 30),

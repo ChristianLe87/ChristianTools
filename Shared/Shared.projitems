@@ -31,6 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_PunchHole.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_Lights.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_Tiled.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />

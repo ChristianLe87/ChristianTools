@@ -80,6 +80,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Shadow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Light.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Tiled_JsonSerialization.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Tools\" />
