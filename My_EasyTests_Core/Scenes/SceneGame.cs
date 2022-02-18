@@ -5,6 +5,7 @@ using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using ChristianTools.Tools;
+using System.Linq;
 
 namespace My_EasyTests_Core
 {
@@ -24,10 +25,8 @@ namespace My_EasyTests_Core
         public void Initialize(Vector2? playerPosition = null)
         {
             Tiled tiled_JSON = Tiled_JsonSerialization.Read<Tiled>("Map1");
-            int[] map1 = tiled_JSON.layers[0].chunks[0].data;
 
-            int[,] chunk1 = Tools.Other.ToMultidimentional(map1, tiled_JSON.layers[0].chunks[0].width, tiled_JSON.layers[0].chunks[0].height);
-            this.map = new Map(WK.Texture.Tiles.tileTextures, chunk1);
+            this.map = new Map(WK.Texture.Tiles.tileTextures, tiled_JSON);
         }
     }
 }
