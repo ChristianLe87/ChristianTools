@@ -36,7 +36,7 @@ namespace Shared
 
             this.entities = new List<IEntity>()
             {
-                new Entity(WK.Texture.Tree,new Vector2(100, 100))
+                new Entity(WK.Texture.Tree,new Vector2(100, 100)),
             };
         }
     }
