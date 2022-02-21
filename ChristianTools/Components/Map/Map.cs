@@ -29,7 +29,7 @@ namespace ChristianTools.Components
         {
             this.tiles = GetTiles(textures, map, new Point());
             this.lights = lights;
-            this.shadows = GetShadows(map);
+            this.shadows = GetShadows(map, new Point(0, 0));
         }
 
         private List<ITile> GetTiles(Dictionary<int, Texture2D> textures, Tiled tiled)
@@ -80,7 +80,7 @@ namespace ChristianTools.Components
             return tiles;
         }
 
-        private List<IShadow> GetShadows(int[,] map)
+        private List<IShadow> GetShadows(int[,] map, Point mapTopLeftCorner)
         {
             List<IShadow> shadows = new List<IShadow>();
 
@@ -92,8 +92,10 @@ namespace ChristianTools.Components
 
                     Shadow shadow = new Shadow(
                         rectangle: new Rectangle(
-                            x: element * AssetSize_x_ScaleFactor,
-                            y: row * AssetSize_x_ScaleFactor,
+                            //x: element * AssetSize_x_ScaleFactor,
+                            //y: row * AssetSize_x_ScaleFactor,
+                            x: (element * AssetSize_x_ScaleFactor) + (mapTopLeftCorner.X * AssetSize_x_ScaleFactor),
+                            y: (row * AssetSize_x_ScaleFactor) + (mapTopLeftCorner.Y * AssetSize_x_ScaleFactor),
                             width: AssetSize_x_ScaleFactor,
                             height: AssetSize_x_ScaleFactor
                         ),
@@ -117,7 +119,7 @@ namespace ChristianTools.Components
                 {
                     int[,] map = Tools.Tools.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
 
-                    shadows.AddRange(GetShadows(map));
+                    shadows.AddRange(GetShadows(map, new Point(chunk.x, chunk.y)));
                 }
             }
 

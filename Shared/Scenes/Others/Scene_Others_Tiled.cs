@@ -24,8 +24,6 @@ namespace Shared
         {
             Tiled tiled_JSON = Tiled_JsonSerialization.Read<Tiled>("Map1");
 
-
-
             List<ILight> lights = new List<ILight>()
             {
                 new Light(new Point(50, 100), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
@@ -35,8 +33,16 @@ namespace Shared
                 new Light(new Point(300, 500), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
             };
 
-            this.map = new Map(WK.Texture.Tiles.Tiles1.tileTextures, tiled_JSON, lights);
+            this.map = new Map(WK.Texture.Tiles.Tiles2.tileTextures, tiled_JSON, lights);
 
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
+            this.camera = new Camera();
+        }
+
+        private void UpdateSystem()
+        {
+            LightPlayer lightPlayer = map.lights.OfType<LightPlayer>().First();
+            ChristianTools.Systems.Systems.Update.Camera(this.camera, lightPlayer.rigidbody.centerPosition);
         }
     }
 }

@@ -18,16 +18,10 @@ namespace ChristianTools.Components
             rectangle = new Rectangle(0, 0, viewport.Width, viewport.Height);
         }
 
-        /*public void Update(Vector2 targetPosition)
+        [Obsolete("-> Use ChristianTools.Systems.Systems.Update.Camera", true)]
+        public void Update(Vector2 targetPosition)
         {
-            rectangle = new Rectangle(
-                x: (int)(targetPosition.X - viewport.Width / 2),
-                y: (int)targetPosition.Y - viewport.Height / 2,
-                width: viewport.Width,
-                height: viewport.Height
-            );
-
-            transform = Matrix.CreateTranslation(new Vector3(-rectangle.X, -rectangle.Y, 0));
-        }*/
+            throw new Exception("-> Use ChristianTools.Systems.Systems.Update.Camera");
+        }
     }
 }
