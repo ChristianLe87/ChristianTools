@@ -29,18 +29,7 @@ namespace ChristianTools.Tools
                 return textures;
             }
 
-            /// <summary>
-            /// Automatic get a list of tiles based on a tilemap
-            /// </summary>
-            /// <param name="graphicsDevice"></param>
-            /// <param name="atlasTexture"></param>
-            /// <param name="pixelsPerTile_Width"></param>
-            /// <param name="pixelsPerTile_Height"></param>
-            /// <param name="units_Width"></param>
-            /// <param name="units_Height"></param>
-            /// <param name="scaleFactor"></param>
-            /// <returns></returns>
-            public static Dictionary<int, Texture2D> GetTileTextures(Texture2D atlasTexture, int pixelsPerTile_Width, int pixelsPerTile_Height, int units_Width, int units_Height, int scaleFactor)
+            private static Dictionary<int, Texture2D> GetTileTextures(Texture2D atlasTexture, int pixelsPerTile_Width, int pixelsPerTile_Height, int units_Width, int units_Height, int scaleFactor)
             {
                 Dictionary<int, Texture2D> tileTextures = new Dictionary<int, Texture2D>();
                 tileTextures.Add(0, null);
@@ -62,6 +51,23 @@ namespace ChristianTools.Tools
                         count++;
                     }
                 }
+
+                return tileTextures;
+            }
+
+            /// <summary>
+            /// Automatic get a list of tiles based on a tilemap
+            /// </summary>
+            public static Dictionary<int, Texture2D> GetTileTextures(Texture2D atlasTexture)
+            {
+                Dictionary<int, Texture2D> tileTextures = GetTileTextures(
+                    atlasTexture: atlasTexture,
+                    pixelsPerTile_Height: ChristianGame.Default.AssetSize,
+                    pixelsPerTile_Width: ChristianGame.Default.AssetSize,
+                    units_Height: atlasTexture.Height / ChristianGame.Default.AssetSize,
+                    units_Width: atlasTexture.Width / ChristianGame.Default.AssetSize,
+                    scaleFactor: ChristianGame.Default.ScaleFactor
+                );
 
                 return tileTextures;
             }
