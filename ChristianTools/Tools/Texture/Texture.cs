@@ -139,6 +139,30 @@ namespace ChristianTools.Tools
                 return subtexture;
             }
 
+            public static Texture2D GetUnitTileFromAtlasTexture(Texture2D atlasTexture, int unit_X, int unit_Y, int scaleFactor = 1)
+            {
+                GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
+
+                Rectangle rectangle = new Rectangle(
+                    unit_X * ChristianGame.Default.AssetSize,
+                    unit_Y * ChristianGame.Default.AssetSize,
+                    ChristianGame.Default.AssetSize,
+                    ChristianGame.Default.AssetSize
+                );
+
+                Texture2D subtexture = new Texture2D(graphicsDevice, rectangle.Width, rectangle.Height);
+                int count = rectangle.Width * rectangle.Height;
+                Color[] data = new Color[count];
+
+                atlasTexture.GetData(0, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height), data, 0, count);
+                subtexture.SetData(data);
+
+                if (scaleFactor > 1)
+                    subtexture = Tools.Texture.ScaleTexture(subtexture, scaleFactor);
+
+                return subtexture;
+            }
+
             /// <summary>
             /// Just combine CropTexture() and ScaleTexture()
             /// </summary>

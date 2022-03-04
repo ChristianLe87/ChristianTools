@@ -150,7 +150,7 @@ namespace ChristianTools.Helpers
             base.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(
-                sortMode: SpriteSortMode.Deferred,
+                sortMode: SpriteSortMode.FrontToBack,
                 blendState: BlendState.AlphaBlend,
                 transformMatrix: scenes[actualScene].camera?.transform,
                 effect: effect

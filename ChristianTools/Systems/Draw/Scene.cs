@@ -11,8 +11,6 @@ namespace ChristianTools.Systems
             public static void Scene(SpriteBatch spriteBatch, IScene scene)
             {
 
-
-
                 // Entities
                 if (scene.entities != null)
                     foreach (IEntity entity in scene.entities)
@@ -28,9 +26,25 @@ namespace ChristianTools.Systems
                 if (scene.map != null)
                 {
                     // Tiles
-                    foreach (ITile tile in scene.map.tiles)
-                        Systems.Draw.Tile(spriteBatch, tile);
+                    if (true)
+                    {
+                        foreach (ITile tile in scene.map.tiles)
+                            Systems.Draw.Tile(spriteBatch, tile);
+                    }
+                    else
+                    {
+                        foreach (ITile tile in scene.map.tiles.Where(x => x.layerID == Tiled.LayerId.Background).ToList())
+                            Systems.Draw.Tile(spriteBatch, tile);
 
+                        foreach (ITile tile in scene.map.tiles.Where(x => x.layerID == Tiled.LayerId.Main).ToList())
+                            Systems.Draw.Tile(spriteBatch, tile);
+
+                        foreach (ITile tile in scene.map.tiles.Where(x => x.layerID == Tiled.LayerId.Front).ToList())
+                            Systems.Draw.Tile(spriteBatch, tile);
+
+                        foreach (ITile tile in scene.map.tiles.Where(x => x.layerID == Tiled.LayerId.Entities).ToList())
+                            Systems.Draw.Tile(spriteBatch, tile);
+                    }
                     // Lights
                     if (scene.map.lights != null)
                         foreach (ILight light in scene.map.lights)

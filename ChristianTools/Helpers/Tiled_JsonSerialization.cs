@@ -34,7 +34,7 @@ namespace ChristianTools.Helpers
         {
             public Chunks[] chunks { get; set; }
             public int height { get; set; }
-            public int id { get; set; }
+            public LayerId id { get; set; }
             public string name { get; set; }
             public int opacity { get; set; }
             public int startx { get; set; }
@@ -50,6 +50,14 @@ namespace ChristianTools.Helpers
         {
             public int firstgid { get; set; }
             public string source { get; set; }
+        }
+
+        public enum LayerId
+        {
+            Background = 1,
+            Main = 2,
+            Front = 3,
+            Entities = 4
         }
     }
 

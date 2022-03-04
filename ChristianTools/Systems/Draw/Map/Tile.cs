@@ -17,12 +17,28 @@ namespace ChristianTools.Systems
 
 
 				if (tile.dxDrawSystem != null)
-                {
+				{
 					tile.dxDrawSystem(spriteBatch);
 				}
-                else
-                {
-					spriteBatch.Draw(tile.texture, tile.rigidbody.rectangle, Color.White);
+				else
+				{
+					if (!true)
+					{
+						spriteBatch.Draw(texture: tile.texture, destinationRectangle: tile.rigidbody.rectangle, Color.White);
+					}
+					else
+					{
+						spriteBatch.Draw(
+							texture: tile.texture,
+							destinationRectangle: tile.rigidbody.rectangle,
+							sourceRectangle: null,
+							color: Color.White,
+							rotation: 0f,
+							origin: new Vector2(),
+							effects: SpriteEffects.None,
+							layerDepth: (float)tile.layerID / 10f
+						);
+					}
 				}
 			}
 		}

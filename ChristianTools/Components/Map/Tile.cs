@@ -19,7 +19,9 @@ namespace ChristianTools.Components
 
         public byte Al { get; set; }
 
-        public Tile(Texture2D texture, Rectangle rectangle, bool isActive = true, string tag = "")
+        public Tiled.LayerId layerID { get; private set; }
+
+        public Tile(Texture2D texture, Rectangle rectangle, Tiled.LayerId layerId, bool isActive = true, string tag = "")
         {
             this.texture = texture;
             this.rigidbody = new Rigidbody(
@@ -27,6 +29,7 @@ namespace ChristianTools.Components
             );
             this.tag = tag;
             this.isActive = isActive;
+            this.layerID = layerId;
         }
     }
 }

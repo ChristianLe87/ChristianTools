@@ -67,7 +67,7 @@ namespace ChristianTools.Components
         /// <param name="X"></param>
         public void Move_X(float X)
         {
-            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.isActive == true).ToList();
+            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.layerID == Tiled.LayerId.Main && x.isActive == true).ToList();
             
             int scFct = (int)Math.Abs(X);
 
@@ -111,7 +111,7 @@ namespace ChristianTools.Components
         /// <param name="Y"></param>
         public void Move_Y(float Y)
         {
-            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.isActive == true).ToList();
+            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.layerID == Tiled.LayerId.Main && x.isActive == true).ToList();
             
             int scFct = (int)Math.Abs(Y);
 
@@ -151,7 +151,7 @@ namespace ChristianTools.Components
 
         public bool CanMoveRight(int scaleFactor)
         {
-            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.isActive == true).ToList();
+            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.layerID == Tiled.LayerId.Main && x.isActive == true).ToList();
 
             if (tiles == null)
                 return true;
@@ -162,7 +162,7 @@ namespace ChristianTools.Components
 
         public bool CanMoveLeft(int scaleFactor)
         {
-            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.isActive == true).ToList();
+            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.layerID == Tiled.LayerId.Main && x.isActive == true).ToList();
 
             if (tiles == null)
                 return true;
@@ -174,7 +174,7 @@ namespace ChristianTools.Components
 
         public bool CanMoveDown(int scaleFactor)
         {
-            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.isActive == true).ToList();
+            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.layerID == Tiled.LayerId.Main && x.isActive == true).ToList();
 
             if (tiles == null)
                 return true;
@@ -185,7 +185,7 @@ namespace ChristianTools.Components
 
         public bool CanMoveUp(int scaleFactor)
         {
-            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.isActive == true).ToList();
+            List<ITile> tiles = ChristianGame.GetScene.map?.tiles.Where(x => x.layerID == Tiled.LayerId.Main && x.isActive == true).ToList();
 
             if (tiles == null)
                 return true;

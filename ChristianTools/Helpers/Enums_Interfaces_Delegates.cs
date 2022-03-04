@@ -93,6 +93,7 @@ namespace ChristianTools.Helpers
     {
         public Texture2D texture { get; }
         public Rigidbody rigidbody { get; }
+        public Tiled.LayerId layerID { get; }
         public bool isActive { get; set; }
         public DxUpdateSystem dxUpdateSystem { get; }
         public DxDrawSystem dxDrawSystem { get; }

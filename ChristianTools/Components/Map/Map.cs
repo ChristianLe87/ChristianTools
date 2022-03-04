@@ -27,7 +27,7 @@ namespace ChristianTools.Components
 
         public Map(Dictionary<int, Texture2D> textures, int[,] map, List<ILight> lights = null)
         {
-            this.tiles = GetTiles(textures, map, new Point());
+            this.tiles = GetTiles(textures, map, Tiled.LayerId.Front, new Point());
             this.lights = lights;
             this.shadows = GetShadows(map, new Point(0, 0));
         }
@@ -36,20 +36,22 @@ namespace ChristianTools.Components
         {
             List<ITile> tiles = new List<ITile>();
 
-            foreach (var layer in tiled.layers)
+
+            foreach (Tiled.Layers layer in tiled.layers.Where(x => x.visible == true).ToList())
             {
-                foreach (var chunk in layer.chunks)
+                foreach (Tiled.Chunks chunk in layer.chunks)
                 {
                     int[,] map = Tools.Tools.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
 
-                    tiles.AddRange(GetTiles(textures, map, new Point(chunk.x, chunk.y)));
+                    tiles.AddRange(GetTiles(textures, map, layer.id, new Point(chunk.x, chunk.y)));
                 }
+
             }
 
             return tiles;
         }
 
-        private List<ITile> GetTiles(Dictionary<int, Texture2D> textures, int[,] map, Point mapTopLeftCorner)
+        private List<ITile> GetTiles(Dictionary<int, Texture2D> textures, int[,] map, Tiled.LayerId layerId, Point mapTopLeftCorner)
         {
             List<ITile> tiles = new List<ITile>();
 
@@ -69,6 +71,7 @@ namespace ChristianTools.Components
                                 width: textures[map[row, element]].Width,
                                 height: textures[map[row, element]].Height
                             ),
+                            layerId: layerId,
                             tag: ""
                         );
 
@@ -92,8 +95,6 @@ namespace ChristianTools.Components
 
                     Shadow shadow = new Shadow(
                         rectangle: new Rectangle(
-                            //x: element * AssetSize_x_ScaleFactor,
-                            //y: row * AssetSize_x_ScaleFactor,
                             x: (element * AssetSize_x_ScaleFactor) + (mapTopLeftCorner.X * AssetSize_x_ScaleFactor),
                             y: (row * AssetSize_x_ScaleFactor) + (mapTopLeftCorner.Y * AssetSize_x_ScaleFactor),
                             width: AssetSize_x_ScaleFactor,
