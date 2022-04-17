@@ -56,8 +56,8 @@ namespace ChristianTools.Helpers
         {
             Background = 1,
             Main = 2,
-            Front = 3,
-            Entities = 4
+            Entities = 3,
+            Front = 4,
         }
     }
 

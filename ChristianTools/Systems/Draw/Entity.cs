@@ -32,7 +32,7 @@ namespace ChristianTools.Systems
                         rotation: (float)Tools.Tools.MyMath.DegreeToRadian(entity.rigidbody.rotationDegree),// always value radians
                         origin: new Vector2(rectangle.Width / 2, rectangle.Height / 2),
                         effects: SpriteEffects.None,
-                        layerDepth: 1f
+                        layerDepth: (float)Tiled.LayerId.Entities/10f
                     );
                 }
 
