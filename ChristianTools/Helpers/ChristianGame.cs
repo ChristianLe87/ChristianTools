@@ -63,12 +63,11 @@ namespace ChristianTools.Helpers
             base.Content.RootDirectory = absolutePath;
             ChristianGame.contentManager = base.Content;
 
-
             // GameData
             ChristianGame.gameDataFileName = Default.GameDataFileName;
 
             // Create folder
-            if(JsonSerialization.FolderExist() == false)
+            if (JsonSerialization.FolderExist() == false)
             {
                 JsonSerialization.CreateFolder();
             }
@@ -110,12 +109,18 @@ namespace ChristianTools.Helpers
             base.Initialize();
         }
 
-        public void SetupScenes(Dictionary<string, IScene> scenes, string startScene, Vector2? playerPosition = null)
+        public void SetupScenes(Dictionary<string, IScene> scenes, string? startScene = null, Vector2? playerPosition = null)
         {
             ChristianGame.scenes = scenes;
-            ChristianGame.actualScene = startScene;
 
-            if(playerPosition != null)
+
+            if (startScene == null)
+                ChristianGame.actualScene = scenes.First().Key;
+            else
+                ChristianGame.actualScene = startScene;
+
+
+            if (playerPosition != null)
                 scenes[actualScene].Initialize(playerPosition.Value);
             else
                 scenes[actualScene].Initialize();
