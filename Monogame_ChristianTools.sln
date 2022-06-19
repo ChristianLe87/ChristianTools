@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showroom_macOS", "Showroom_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showroom_Core", "Showroom_Core\Showroom_Core.csproj", "{B9B446B0-A876-4952-806E-B924288840FC}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{F5F95732-8049-455E-8C64-A492809A988F}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools", "ChristianTools\ChristianTools.shproj", "{859C4805-7FB8-4BF8-82A3-8523829756FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "Template\Template.csproj", "{BF38D661-813C-4A78-9064-D91BDEE03C83}"
@@ -20,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChristianTools_Core", "ChristianTools_Core\ChristianTools_Core.csproj", "{3A18485B-0C68-4B50-A277-E3164D2D51FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChristianTools_Standard", "ChristianTools_Standard\ChristianTools_Standard.csproj", "{A154CE40-7D97-4EE8-97D3-C0EF76CFF33B}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Showroom_Shared", "Showroom_Shared\Showroom_Shared.shproj", "{F5F95732-8049-455E-8C64-A492809A988F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

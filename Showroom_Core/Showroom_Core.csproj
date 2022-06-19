@@ -60,5 +60,5 @@
   <ItemGroup>
     <ProjectReference Include="..\ChristianTools_Core\ChristianTools_Core.csproj" />
   </ItemGroup>
-  <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
+  <Import Project="..\Showroom_Shared\Showroom_Shared.projitems" Label="Shared" Condition="Exists('..\Showroom_Shared\Showroom_Shared.projitems')" />
 </Project>

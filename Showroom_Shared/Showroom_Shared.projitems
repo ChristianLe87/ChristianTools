@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{F5F95732-8049-455E-8C64-A492809A988F}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Showroom_Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\WK.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components_Animation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components_Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components_Map.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components_Rigidbody.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Tools\Scene_Tools.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Menu\Scene_Menu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Entities\Scene_Entities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Entities\Scene_Entities_Bullet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Entities\Scene_Entities_Line.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Entities\Scene_Entities_Prefab.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Helpers\Scene_Helpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\UI\Scene_UI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Helpers\Scene_Helpers_InputState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Helpers\Scene_Helpers_JsonSerialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Systems\Scene_Systems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Systems\Scene_Systems_DrawSystems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_PunchHole.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_Lights.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_Tiled.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\Components\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\Tools\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\Menu\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\Entities\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\UI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\Systems\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scenes\Others\" />
+  </ItemGroup>
+</Project>

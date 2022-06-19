@@ -1,4 +1,4 @@
-﻿using Shared;
+﻿using Showroom_Shared;
 
 namespace Showroom_Core
 {
