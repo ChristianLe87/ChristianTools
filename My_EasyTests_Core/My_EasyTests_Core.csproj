@@ -8,55 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Newtonsoft.Json" />
-    <None Remove="MonoGame.Framework.DesktopGL" />
-    <None Remove="Entities\" />
-    <None Remove="Scenes\" />
-    <None Remove="Helpers\" />
+    <ProjectReference Include="..\ChristianTools_Core_v8\ChristianTools_Core_v8.csproj" />
+    <ProjectReference Include="..\ChristianTools_Core\ChristianTools_Core.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Content\Tree.png">
-      <Link>Content\Tree.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Content\MyFont_130x28_PNG.png">
-      <Link>Content\MyFont_130x28_PNG.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\.editorconfig" />
-    <None Include="..\Content\GrayScale_1_FX.fx">
-      <Link>Content\GrayScale_1_FX.fx</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Content\LightEffect_1_FX.fx">
-      <Link>Content\LightEffect_1_FX.fx</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Content\lightmask.png">
-      <Link>Content\lightmask.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Content\lighteffect2.mgfx">
-      <Link>Content\lighteffect2.mgfx</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Content\AtlasTiles_15x25_PNG.png">
-      <Link>Content\AtlasTiles_15x25_PNG.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Content\Maps\Map1\Map1.json">
-      <Link>Content\Map1.json</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Scenes\" />
-    <Folder Include="Helpers\" />
-  </ItemGroup>
-  <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" Condition="Exists('..\ChristianTools\ChristianTools.projitems')" />
 </Project>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F080F81E-1D36-4D7F-9C54-C4155E22A57A}</ProjectGuid>
+    <ProjectGuid>{87A18C88-9658-4070-A2F5-AA367304F3AF}</ProjectGuid>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>Showroom_macOS</RootNamespace>
@@ -27,10 +27,10 @@
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>true</UseSGen>
     <UseRefCounting>true</UseRefCounting>
-    <HttpClientHandler></HttpClientHandler>
+    <HttpClientHandler>HttpClientHandler</HttpClientHandler>
     <LinkMode>None</LinkMode>
     <AOTMode>None</AOTMode>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -47,17 +47,14 @@
     <UseRefCounting>true</UseRefCounting>
     <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
     <LinkMode>SdkOnly</LinkMode>
-    <HttpClientHandler></HttpClientHandler>
+    <HttpClientHandler>HttpClientHandler</HttpClientHandler>
     <AOTMode>None</AOTMode>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Mac" />
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\lib\netstandard2.0\MonoGame.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -96,34 +93,59 @@
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\runtimes\osx\native\libopenal.1.dylib">
-      <Kind>Dynamic</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\runtimes\osx\native\libSDL2-2.0.0.dylib">
-      <Kind>Dynamic</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="..\Content\MyFont_130x28_PNG.png">
-      <Link>Resources\Content\MyFont_130x28_PNG.png</Link>
+    <BundleResource Include="..\Content\MyAtlasTexture.png">
+      <Link>Resources\Content\MyAtlasTexture.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="..\Content\AtlasTiles_15x25_PNG.png">
       <Link>Resources\Content\AtlasTiles_15x25_PNG.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
-    <BundleResource Include="..\Content\MyAtlasTexture.png">
-      <Link>Resources\Content\MyAtlasTexture.png</Link>
+    <BundleResource Include="..\Content\RGB_3x2_PNG.png">
+      <Link>Resources\Content\RGB_3x2_PNG.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="..\Content\lightmask.png">
+      <Link>Resources\Content\lightmask.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="..\Content\AtlasPlayer_10x40_PNG.png">
+      <Link>Resources\Content\AtlasPlayer_10x40_PNG.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="..\Content\AtlasTiles2_48x80_PNG.png">
+      <Link>Resources\Content\AtlasTiles2_48x80_PNG.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="..\Content\MyFont_130x28_PNG.png">
+      <Link>Resources\Content\MyFont_130x28_PNG.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="..\Content\Tree.png">
+      <Link>Resources\Content\Tree.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="..\Content\Sounds\EatingSound_WAV.wav">
       <Link>Resources\Content\Sounds\EatingSound_WAV.wav</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="..\Content\Maps\Map1\Map1.json">
+      <Link>Resources\Content\Maps\Map1\Map1.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\Maps\Map1\Tileset\AtlasTiles2_48x80_PNG.tsx">
+      <Link>Resources\Content\Maps\Map1\Tileset\AtlasTiles2_48x80_PNG.tsx</Link>
+    </BundleResource>
   </ItemGroup>
-  <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" Condition="Exists('..\ChristianTools\ChristianTools.projitems')" />
+  <ItemGroup>
+    <ProjectReference Include="..\ChristianTools_Standard_v8\ChristianTools_Standard_v8.csproj">
+      <Project>{9BB88473-3511-4359-BCBC-72D95195D76C}</Project>
+      <Name>ChristianTools_Standard_v8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChristianTools_Standard\ChristianTools_Standard.csproj">
+      <Project>{A154CE40-7D97-4EE8-97D3-C0EF76CFF33B}</Project>
+      <Name>ChristianTools_Standard</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
-  <Import Project="..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\build\MonoGame.Framework.DesktopGL.targets')" />
 </Project>

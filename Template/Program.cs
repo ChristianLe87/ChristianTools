@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Template
 {
     /*
+    ToDo: Actualizar
     === Pasos ===
     1) Crear "Aplicacion de consola .Net Core 6"
     2) Agregar NuGet: "MonoGame.Framework.DesktopGL"
@@ -113,8 +114,8 @@ namespace Template
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; private set; }
+        public DxDrawSystem dxDrawSystem { get; private set; }
 
         public void Initialize(Vector2? playerPosition = null)
         {
@@ -131,8 +132,8 @@ namespace Template
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; private set; }
+        public DxDrawSystem dxDrawSystem { get; private set; }
 
         public void Initialize(Vector2? playerPosition = null)
         {
@@ -149,8 +150,8 @@ namespace Template
         public Camera camera { get; private set; }
         public Map map { get; private set; }
 
-        public DxSceneUpdateSystem dxSceneUpdateSystem { get; private set; }
-        public DxSceneDrawSystem dxSceneDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; private set; }
+        public DxDrawSystem dxDrawSystem { get; private set; }
 
         public void Initialize(Vector2? playerPosition = null)
         {
@@ -176,8 +177,8 @@ namespace Template
         public string tag { get; private set; }
         public int health { get; private set; }
 
-        public DxEntityUpdateSystem dxEntityUpdateSystem { get; private set; }
-        public DxEntityDrawSystem dxEntityDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; private set; }
+        public DxDrawSystem dxDrawSystem { get; private set; }
 
         public Player()
         {
@@ -185,7 +186,7 @@ namespace Template
             this.animation = new Animation(texture2D);
             this.rigidbody = new Rigidbody(new Vector2(200, 200), this);
             this.isActive = true;
-            this.dxEntityUpdateSystem = (InputState lastInputState, InputState inputState) => Systems.Update.Player.Basic_XY_Movement(inputState, this);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => Systems.Update.Player.Basic_XY_Movement(inputState, this);
         }
     }
 
@@ -198,8 +199,8 @@ namespace Template
         public string tag { get; private set; }
         public int health { get; private set; }
 
-        public DxEntityUpdateSystem dxEntityUpdateSystem { get; private set; }
-        public DxEntityDrawSystem dxEntityDrawSystem { get; private set; }
+        public DxUpdateSystem dxUpdateSystem { get; private set; }
+        public DxDrawSystem dxDrawSystem { get; private set; }
 
         public Tree()
         {

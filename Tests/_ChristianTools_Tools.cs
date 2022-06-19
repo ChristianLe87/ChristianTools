@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using ChristianTools.Helpers;
-using ChristianTools.Tools;
+﻿using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NUnit.Framework;

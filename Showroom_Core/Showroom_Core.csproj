@@ -8,55 +8,57 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Newtonsoft.Json" />
     <None Remove="MonoGame.Framework.DesktopGL" />
+    <None Remove="Newtonsoft.Json" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Content\MyFont_130x28_PNG.png">
-      <Link>Content\MyFont_130x28_PNG.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Content\Sounds\EatingSound_WAV.wav">
-      <Link>Content\Sounds\EatingSound_WAV.wav</Link>
+    <None Include="..\Content\MyAtlasTexture.png">
+      <Link>Content\MyAtlasTexture.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\Content\AtlasTiles_15x25_PNG.png">
       <Link>Content\AtlasTiles_15x25_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\Content\MyAtlasTexture.png">
-      <Link>Content\MyAtlasTexture.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="..\Content\RGB_3x2_PNG.png">
       <Link>Content\RGB_3x2_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\Content\Tree.png">
-      <Link>Content\Tree.png</Link>
+    <None Include="..\Content\lightmask.png">
+      <Link>Content\lightmask.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\Content\AtlasPlayer_10x40_PNG.png">
       <Link>Content\AtlasPlayer_10x40_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\Content\lighteffect2.mgfx">
-      <Link>Content\lighteffect2.mgfx</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="..\Content\AtlasTiles2_48x80_PNG.png">
       <Link>Content\AtlasTiles2_48x80_PNG.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\Content\MyFont_130x28_PNG.png">
+      <Link>Content\MyFont_130x28_PNG.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\Tree.png">
+      <Link>Content\Tree.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\Sounds\EatingSound_WAV.wav">
+      <Link>Content\Sounds\EatingSound_WAV.wav</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\Content\Maps\Map1\Map1.json">
-      <Link>Content\Map1.json</Link>
+      <Link>Content\Maps\Map1\Map1.json</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\Maps\Map1\Tileset\AtlasTiles2_48x80_PNG.tsx">
+      <Link>Content\Maps\Map1\Tileset\AtlasTiles2_48x80_PNG.tsx</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChristianTools_Core\ChristianTools_Core.csproj" />
+  </ItemGroup>
   <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
-  <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" Condition="Exists('..\ChristianTools\ChristianTools.projitems')" />
 </Project>

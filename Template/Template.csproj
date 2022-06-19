@@ -8,12 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Newtonsoft.Json" />
-    <None Remove="MonoGame.Framework.DesktopGL" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
+    <ProjectReference Include="..\ChristianTools_Core\ChristianTools_Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Content\MyFont_130x28_PNG.png">
@@ -25,5 +20,4 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" Condition="Exists('..\ChristianTools\ChristianTools.projitems')" />
 </Project>
