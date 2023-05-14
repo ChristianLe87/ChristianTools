@@ -19,19 +19,19 @@ namespace ChristianTools.Components
 
         public Rectangle rectangle
         {
-            get => Tools.Tools.GetRectangle.Rectangle(
+            get => Helpers.GetRectangle.Rectangle(
                 centerPosition: centerPosition,
                 Width: (entity?.animation.GetTexture(entity.characterState).Width ?? baseRectangle.Width),
                 Height: (entity?.animation.GetTexture(entity.characterState).Height ?? baseRectangle.Height)
             );
         }
 
-        public Rectangle rectangleUp(int scaleFactor) => Tools.Tools.GetRectangle.Up(rectangle, scaleFactor);
-        public Rectangle rectangleDown(int scaleFactor) => Tools.Tools.GetRectangle.Down(rectangle, scaleFactor);
-        public Rectangle rectangleLeft(int scaleFactor) => Tools.Tools.GetRectangle.Left(rectangle, scaleFactor);
-        public Rectangle rectangleRight(int scaleFactor) => Tools.Tools.GetRectangle.Right(rectangle, scaleFactor);
+        public Rectangle rectangleUp(int scaleFactor) => Helpers.GetRectangle.Up(rectangle, scaleFactor);
+        public Rectangle rectangleDown(int scaleFactor) => Helpers.GetRectangle.Down(rectangle, scaleFactor);
+        public Rectangle rectangleLeft(int scaleFactor) => Helpers.GetRectangle.Left(rectangle, scaleFactor);
+        public Rectangle rectangleRight(int scaleFactor) => Helpers.GetRectangle.Right(rectangle, scaleFactor);
 
-        public Rectangle rectangleScaled(int scaleFactor) => Tools.Tools.GetRectangle.ScaleSides(rectangle, scaleFactor);
+        public Rectangle rectangleScaled(int scaleFactor) => Helpers.GetRectangle.ScaleSides(rectangle, scaleFactor);
 
         public bool isGrounded(int scaleFactor) => (CanMoveDown(scaleFactor) == false);
 

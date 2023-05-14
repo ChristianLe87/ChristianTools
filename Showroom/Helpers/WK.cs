@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
-using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -69,21 +68,21 @@ namespace Showroom_Shared
             public static readonly string Background = "Cuadricula_500x500_PNG";
             public static readonly string RunLeft_64x450_PNG = "RunLeft_64x450_PNG";
 
-            public static readonly Texture2D Green = Tools.Texture.CreateColorTexture(Color.Green);
-            public static readonly Texture2D Gray = Tools.Texture.CreateColorTexture(Color.Gray);
-            public static readonly Texture2D LightGray = Tools.Texture.CreateColorTexture(Color.LightGray);
-            public static readonly Texture2D Blue = Tools.Texture.CreateColorTexture(Color.Blue);
-            public static readonly Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red);
-            public static readonly Texture2D DarkRed = Tools.Texture.CreateColorTexture(Color.DarkRed);
+            public static readonly Texture2D Green = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green);
+            public static readonly Texture2D Gray = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray);
+            public static readonly Texture2D LightGray = ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray);
+            public static readonly Texture2D Blue = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Blue);
+            public static readonly Texture2D Red = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red);
+            public static readonly Texture2D DarkRed = ChristianTools.Helpers.Texture.CreateColorTexture(Color.DarkRed);
 
 
-            public static readonly Texture2D Tree = Tools.Texture.GetTexture("Tree", ChristianGame.Default.ScaleFactor);
+            public static readonly Texture2D Tree = ChristianTools.Helpers.Texture.GetTexture("Tree", ChristianGame.Default.ScaleFactor);
 
 
             public class Player
             {
                 private static readonly string AtlasPlayer_10x40_PNG = "AtlasPlayer_10x40_PNG";
-                private static readonly Texture2D atlasAnimation = Tools.Texture.GetTexture(WK.Texture.Player.AtlasPlayer_10x40_PNG, ChristianGame.Default.ScaleFactor);
+                private static readonly Texture2D atlasAnimation = ChristianTools.Helpers.Texture.GetTexture(WK.Texture.Player.AtlasPlayer_10x40_PNG, ChristianGame.Default.ScaleFactor);
 
                 // Right
                 private static readonly (CharacterState, int)[] characterState_tilesRight = new (CharacterState, int)[]
@@ -94,7 +93,7 @@ namespace Showroom_Shared
                     (CharacterState.HangRight, 1)
                 };
 
-                public static Dictionary<CharacterState, Texture2D[]> animationsRight = Tools.Other.GetCharacterAnimation(atlasAnimation, characterState_tilesRight);
+                public static Dictionary<CharacterState, Texture2D[]> animationsRight = ChristianTools.Helpers.Other.GetCharacterAnimation(atlasAnimation, characterState_tilesRight);
 
 
                 // Left
@@ -106,7 +105,7 @@ namespace Showroom_Shared
                     (CharacterState.HangLeft, 1)
                 };
 
-                public static Dictionary<CharacterState, Texture2D[]> animationsLeft = Tools.Other.GetCharacterAnimation(atlasAnimation, characterState_tilesLeft, true);
+                public static Dictionary<CharacterState, Texture2D[]> animationsLeft = ChristianTools.Helpers.Other.GetCharacterAnimation(atlasAnimation, characterState_tilesLeft, true);
             }
 
             public class Tiles
@@ -114,17 +113,17 @@ namespace Showroom_Shared
                 public class Tiles1
                 {
                     private static readonly string AtlasTiles_15x25_PNG = "AtlasTiles_15x25_PNG";
-                    private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Tiles.Tiles1.AtlasTiles_15x25_PNG);
+                    private static readonly Texture2D atlasTexture = ChristianTools.Helpers.Texture.GetTexture(WK.Texture.Tiles.Tiles1.AtlasTiles_15x25_PNG);
 
-                    public static Dictionary<int, Texture2D> tileTextures = Tools.Texture.GetTileTextures(atlasTexture: atlasTexture);
+                    public static Dictionary<int, Texture2D> tileTextures = ChristianTools.Helpers.Texture.GetTileTextures(atlasTexture: atlasTexture);
                 }
 
                 public class Tiles2
                 {
                     private static readonly string AtlasTiles2_48x80_PNG = "AtlasTiles2_48x80_PNG";
-                    private static readonly Texture2D atlasTexture = Tools.Texture.GetTexture(WK.Texture.Tiles.Tiles2.AtlasTiles2_48x80_PNG);
+                    private static readonly Texture2D atlasTexture = ChristianTools.Helpers.Texture.GetTexture(WK.Texture.Tiles.Tiles2.AtlasTiles2_48x80_PNG);
 
-                    public static Dictionary<int, Texture2D> tileTextures = Tools.Texture.GetTileTextures(atlasTexture: atlasTexture);
+                    public static Dictionary<int, Texture2D> tileTextures = ChristianTools.Helpers.Texture.GetTileTextures(atlasTexture: atlasTexture);
                 }
             }
         }
@@ -140,7 +139,7 @@ namespace Showroom_Shared
                 { ',', ':', ';', '?', '.', '!', ' ','\'','(',')','_','\"','<','>','-','+','\\','\0','\0','\0','\0','\0','\0','\0','\0','\0' }
             };
 
-            public static readonly SpriteFont font_7 = Tools.Font.GenerateFont(Tools.Texture.GetTexture(WK.Font.MyFont_130x28_PNG), WK.Font.chars);
+            public static readonly SpriteFont font_7 = ChristianTools.Helpers.Font.GenerateFont(ChristianTools.Helpers.Texture.GetTexture(WK.Font.MyFont_130x28_PNG), WK.Font.chars);
         }
 
         public class Map

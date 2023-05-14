@@ -17,7 +17,7 @@ namespace ChristianTools.Components
         public Light(Point centerPosition, Texture2D texture = null, bool isActive = true)
         {
             this.texture = texture;
-            this.rigidbody = new Rigidbody(Tools.Tools.GetRectangle.Rectangle(centerPosition.ToVector2(),texture));
+            this.rigidbody = new Rigidbody(ChristianTools.Helpers.GetRectangle.Rectangle(centerPosition.ToVector2(),texture));
             this.isActive = isActive;
         }
     }

@@ -2,7 +2,6 @@
 using ChristianTools.Components;
 using ChristianTools.Entities;
 using ChristianTools.Helpers;
-using ChristianTools.Tools;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -44,11 +43,11 @@ namespace Showroom_Shared
 
             Entity entity = new Entity(null, new Vector2());
             entity = new Entity(
-                texture2D: Tools.Texture.CreateTriangle(Color.Pink, 100, 100, Tools.Texture.PointDirection.Right),
+                texture2D: ChristianTools.Helpers.Texture.CreateTriangle(Color.Pink, 100, 100, ChristianTools.Helpers.Texture.PointDirection.Right),
                 centerPosition: new Vector2(ChristianGame.Default.canvasWidth / 2, ChristianGame.Default.canvasHeight / 2),
                 dxUpdateSystem: (InputState lastInputState, InputState inputState) => {
                     // Set rotation
-                    double angleInDegrees = Tools.MyMath.GetAngleInDegree(entity.rigidbody.centerPosition, inputState.Mouse_Position().ToVector2());
+                    double angleInDegrees = ChristianTools.Helpers.MyMath.GetAngleInDegree(entity.rigidbody.centerPosition, inputState.Mouse_Position().ToVector2());
 
                     entity.rigidbody.rotationDegree = (float)angleInDegrees;
 

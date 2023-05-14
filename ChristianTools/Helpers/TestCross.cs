@@ -15,8 +15,8 @@ namespace ChristianTools.Helpers
         {
             this.center = center;
 
-            this.ver = Tools.Tools.GetRectangle.Rectangle(center, 3, 100);
-            this.hor = Tools.Tools.GetRectangle.Rectangle(center, 100, 3);
+            this.ver = Helpers.GetRectangle.Rectangle(center, 3, 100);
+            this.hor = Helpers.GetRectangle.Rectangle(center, 100, 3);
 
             this.pixelTexture2D = pixelTexture2D;
         }
@@ -24,8 +24,8 @@ namespace ChristianTools.Helpers
         public void Update(Vector2 newCenter)
         {
             this.center = newCenter;
-            this.ver = Tools.Tools.GetRectangle.Rectangle(center, 3, 100);
-            this.hor = Tools.Tools.GetRectangle.Rectangle(center, 100, 3);
+            this.ver = Helpers.GetRectangle.Rectangle(center, 3, 100);
+            this.hor = Helpers.GetRectangle.Rectangle(center, 100, 3);
         }
 
         public void Draw(SpriteBatch spriteBatch)

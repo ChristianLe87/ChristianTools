@@ -29,7 +29,7 @@ namespace ChristianTools.Entities
             this.isActive = true;
             this.FPS = FPS;
 
-            double radAngle = Tools.Tools.MyMath.GetAngleInRadians(centerPosition, direction);
+            double radAngle = Helpers.MyMath.GetAngleInRadians(centerPosition, direction);
             float x = (float)(steps * Math.Cos(radAngle));
             float y = (float)(steps * Math.Sin(radAngle));
 

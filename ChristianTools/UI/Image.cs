@@ -19,7 +19,7 @@ namespace ChristianTools.UI
 
         public Image(Texture2D texture, Vector2 centerPosition, string tag = "")
         {
-            this.rectangle = Tools.Tools.GetRectangle.Rectangle(centerPosition, texture);
+            this.rectangle = Helpers.GetRectangle.Rectangle(centerPosition, texture);
             this.texture = texture;
             this.tag = tag;
 

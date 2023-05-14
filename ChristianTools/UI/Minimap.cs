@@ -30,15 +30,15 @@ namespace ChristianTools.UI
 
                 Texture2D mapTexture = CreateTexture(colors, map.GetLength(1), map.GetLength(0));
 
-                this.texture = Tools.Tools.Texture.ScaleTexture(mapTexture, scaleFactor);
-                this.rectangle = Tools.Tools.GetRectangle.Rectangle(centerPosition, texture);
+                this.texture = Helpers.Texture.ScaleTexture(mapTexture, scaleFactor);
+                this.rectangle = Helpers.GetRectangle.Rectangle(centerPosition, texture);
 
                 this.tag = "";
                 this.isActive = true;
 
                 this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
                 this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
-                this.miniPlayerTexture = Tools.Tools.Texture.CreateColorTexture(Color.Red, scaleFactor, scaleFactor);
+                this.miniPlayerTexture = Helpers.Texture.CreateColorTexture(Color.Red, scaleFactor, scaleFactor);
             }
 
             // Helpers

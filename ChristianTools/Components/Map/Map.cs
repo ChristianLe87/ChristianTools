@@ -42,7 +42,7 @@ namespace ChristianTools.Components
             {
                 foreach (Tiled.Chunks chunk in layer.chunks)
                 {
-                    int[,] map = Tools.Tools.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
+                    int[,] map = Helpers.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
 
                     tiles.AddRange(GetTiles(textures, map, layer.id, new Point(chunk.x, chunk.y)));
                 }
@@ -119,7 +119,7 @@ namespace ChristianTools.Components
             {
                 foreach (var chunk in layer.chunks)
                 {
-                    int[,] map = Tools.Tools.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
+                    int[,] map = Helpers.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
 
                     shadows.AddRange(GetShadows(map, new Point(chunk.x, chunk.y)));
                 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using ChristianTools.Components;
 using ChristianTools.Entities;
 using ChristianTools.Helpers;
-using ChristianTools.Tools;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -56,7 +55,7 @@ namespace Showroom_Shared
                 new Label(new Rectangle(10, 10, 200, 30), WK.Font.font_7, "Use \"Up\", \"Down\", \"Right\", \"Left\"\nto move camera", Label.TextAlignment.Midle_Left, "", WK.Texture.LightGray),
             };
 
-            Texture2D Red = Tools.Texture.CreateColorTexture(Color.Red, Width: 50, Height: 50);
+            Texture2D Red = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red, Width: 50, Height: 50);
             this.entities = new List<IEntity>()
             {
                 new Entity(Red, new Vector2(ChristianGame.Default.canvasWidth / 2, ChristianGame.Default.canvasHeight / 2),tag: "player", dxUpdateSystem: (InputState lastInputState, InputState inputState)=>UpdateSystem(lastInputState, inputState)),

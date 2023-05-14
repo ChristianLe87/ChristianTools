@@ -32,7 +32,7 @@ namespace ChristianTools.UI
 
                 this.color = Color.Black;
 
-                this.texture = ChristianTools.Tools.Tools.Texture.CreateColorTexture(color);
+                this.texture = ChristianTools.Helpers.Texture.CreateColorTexture(color);
 
                 this.fadeFinish = false;
 
@@ -49,7 +49,7 @@ namespace ChristianTools.UI
 
 
                 color.A -= fadeSpeed;
-                texture = ChristianTools.Tools.Tools.Texture.CreateColorTexture(color);
+                texture = ChristianTools.Helpers.Texture.CreateColorTexture(color);
 
                 if (color.A <= fadeSpeed)
                     fadeFinish = true;
@@ -105,7 +105,7 @@ namespace ChristianTools.UI
                 this.color = Color.Black;
                 this.color.A = 0;
 
-                this.texture = ChristianTools.Tools.Tools.Texture.CreateColorTexture(color);
+                this.texture = ChristianTools.Helpers.Texture.CreateColorTexture(color);
 
                 this.fadeFinish = false;
 
@@ -122,7 +122,7 @@ namespace ChristianTools.UI
 
 
                 color.A += fadeSpeed;
-                texture = ChristianTools.Tools.Tools.Texture.CreateColorTexture(color);
+                texture = ChristianTools.Helpers.Texture.CreateColorTexture(color);
 
                 if (color.A > (byte.MaxValue - fadeSpeed))
                     fadeFinish = true;

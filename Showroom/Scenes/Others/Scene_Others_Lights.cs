@@ -2,7 +2,6 @@
 using ChristianTools.Components;
 using ChristianTools.Entities;
 using ChristianTools.Helpers;
-using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -25,11 +24,11 @@ namespace Showroom_Shared
         {
             List<ILight> lights = new List<ILight>()
             {
-                new Light(new Point(50, 100), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
-                new LightPlayer(new Point(200, 150), Tools.Texture.CreateCircleTexture(Color.LightYellow, (ChristianGame.Default.ScaleFactor*ChristianGame.Default.AssetSize)/2)),
+                new Light(new Point(50, 100), ChristianTools.Helpers.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
+                new LightPlayer(new Point(200, 150), ChristianTools.Helpers.Texture.CreateCircleTexture(Color.LightYellow, (ChristianGame.Default.ScaleFactor*ChristianGame.Default.AssetSize)/2)),
                 //new Light(new Point(300, 100), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
                 //new Light(new Point(600, 100), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
-                new Light(new Point(300, 500), Tools.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
+                new Light(new Point(300, 500), ChristianTools.Helpers.Texture.CreateCircleTexture(Color.LightYellow, ChristianGame.Default.ScaleFactor*3)),
             };
 
             this.map = new Map(WK.Texture.Tiles.Tiles2.tileTextures, WK.Map.lights, lights);
@@ -54,7 +53,7 @@ namespace Showroom_Shared
         public LightPlayer(Point centerPosition, Texture2D texture = null, bool isActive = true)
         {
             this.texture = texture;
-            this.rigidbody = new Rigidbody(Tools.GetRectangle.Rectangle(centerPosition.ToVector2(), texture));
+            this.rigidbody = new Rigidbody(ChristianTools.Helpers.GetRectangle.Rectangle(centerPosition.ToVector2(), texture));
             this.isActive = isActive;
 
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(inputState);

@@ -30,7 +30,7 @@ namespace ChristianTools.Components
         public Shadow(Rectangle rectangle, bool isActive = true, string tag = "")
         {
             int AssetSize_x_ScaleFactor = ChristianGame.Default.AssetSize * ChristianGame.Default.ScaleFactor;
-            Texture2D transparent = Tools.Tools.Texture.CreateColorTexture(Color.Black, AssetSize_x_ScaleFactor, AssetSize_x_ScaleFactor);
+            Texture2D transparent = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Black, AssetSize_x_ScaleFactor, AssetSize_x_ScaleFactor);
 
             this.texture = transparent;
             this.rigidbody = new Rigidbody(

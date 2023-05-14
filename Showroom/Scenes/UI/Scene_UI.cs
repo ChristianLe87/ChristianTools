@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
-using ChristianTools.Tools;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -62,11 +61,11 @@ namespace Showroom_Shared
                 new Label(new Rectangle(230, 90, 100, 30), WK.Font.font_7, "My Text", Label.TextAlignment.Down_Right, tag: "", WK.Texture.Green),
 
 
-                new HealthBar(Tools.Texture.CreateColorTexture(Color.Green), Tools.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 130, 50, 10), HealthBar.Direction.Right),
-                new HealthBar(Tools.Texture.CreateColorTexture(Color.Green), Tools.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 150, 50, 10), HealthBar.Direction.Left),
+                new HealthBar(ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green), ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 130, 50, 10), HealthBar.Direction.Right),
+                new HealthBar(ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green), ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 150, 50, 10), HealthBar.Direction.Left),
 
-                new HealthBar(Tools.Texture.CreateColorTexture(Color.Green), Tools.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 175, 10, 50), HealthBar.Direction.Up),
-                new HealthBar(Tools.Texture.CreateColorTexture(Color.Green), Tools.Texture.CreateColorTexture(Color.Red), new Rectangle(30, 175, 10, 50), HealthBar.Direction.Down),
+                new HealthBar(ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green), ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red), new Rectangle(10, 175, 10, 50), HealthBar.Direction.Up),
+                new HealthBar(ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green), ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red), new Rectangle(30, 175, 10, 50), HealthBar.Direction.Down),
 
                 new Label(
                     rectangle: new Rectangle(100, 150, 100, 30),
@@ -90,8 +89,8 @@ namespace Showroom_Shared
                 new Button(
                     rectangle: new Rectangle(360, 100, 100, 50),
                     text: "Play sound",
-                    defaultTexture: Tools.Texture.CreateColorTexture(Color.Green),
-                    mouseOverTexture: Tools.Texture.CreateColorTexture(Color.Red),
+                    defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green),
+                    mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red),
                     spriteFont:WK.Font.font_7,
                     tag: "SoundButton",
                     OnClickAction: () => soundEffects.First().Play()
@@ -110,7 +109,7 @@ namespace Showroom_Shared
 
             this.soundEffects = new List<SoundEffect>()
             {
-                Tools.Sound.GetSoundEffect(Path.Combine("Sounds", "EatingSound_WAV"))
+                ChristianTools.Helpers.Sound.GetSoundEffect(Path.Combine("Sounds", "EatingSound_WAV"))
             };
 
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);

@@ -1,7 +1,6 @@
 ﻿using System;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
-using ChristianTools.Tools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -80,7 +79,7 @@ namespace Showroom_Shared
             {
                 this.isActive = true;
                 this.rigidbody = new Rigidbody(point.ToVector2(), this);
-                this.animation = new Animation(Tools.Texture.ScaleTexture(WK.Texture.Red, 50));
+                this.animation = new Animation(ChristianTools.Helpers.Texture.ScaleTexture(WK.Texture.Red, 50));
                 this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
             }
 
@@ -132,9 +131,9 @@ namespace Showroom_Shared
 
                 Color color = Color.Black;
                 color.A = 150;
-                this.originalTexture = Tools.Texture.CreateColorTexture(color, rectangle.Width, rectangle.Height);
+                this.originalTexture = ChristianTools.Helpers.Texture.CreateColorTexture(color, rectangle.Width, rectangle.Height);
 
-                this.texture = Tools.Texture.PunchHole(originalTexture, lights, 40, 20);
+                this.texture = ChristianTools.Helpers.Texture.PunchHole(originalTexture, lights, 40, 20);
             }
         }
     }

@@ -22,6 +22,24 @@
         <None Update="Content\bin\DesktopGL\Content\Sounds\EatingSound_WAV.wav">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="Content\bin\DesktopGL\Content\AtlasPlayer_10x40_PNG.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Content\bin\DesktopGL\Content\AtlasTiles2_48x80_PNG.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Content\bin\DesktopGL\Content\AtlasTiles_15x25_PNG.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Content\bin\DesktopGL\Content\MyAtlasTexture.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Content\bin\DesktopGL\Content\RGB_3x2_PNG.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Content\bin\DesktopGL\Content\Maps\Map1\Map1.json">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Icon.ico" />

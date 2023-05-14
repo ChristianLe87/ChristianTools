@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using ChristianTools.Components;
 using ChristianTools.Entities;
 using ChristianTools.Helpers;
-using ChristianTools.Tools;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -58,7 +57,7 @@ namespace Showroom_Shared
             if (lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
             {
                 Bullet bullet = new Bullet(
-                    texture2D: Tools.Texture.CreateCircleTexture(Color.White, 10),
+                    texture2D: ChristianTools.Helpers.Texture.CreateCircleTexture(Color.White, 10),
                     centerPosition: centerPosition,
                     direction: inputState.Mouse_Position().ToVector2(),
                     steps: 3,
