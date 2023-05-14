@@ -3,103 +3,61 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>{859C4805-7FB8-4BF8-82A3-8523829756FE}</SharedGUID>
+    <SharedGUID>6efba8a9-a407-4029-bdd0-651d22a87386</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>ChristianTools</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Font.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\MyMath.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Sound.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ChristianGame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Animation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Components.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Light.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Map.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Shadow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Bullet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ChristianGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Console.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Font.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GetRectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\JsonSerialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\MyMath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Other\GetCharacterAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Other\GetMGFX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Other\Other.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Sound.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TestCross.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Texture\FlipHorizontal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Texture\PunchHole.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Texture\Texture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Tiled_JsonSerialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Light.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Shadow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Scene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\UI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Light.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Shadow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Player.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\PlayerPlatformer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Scene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\UI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Dialogue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\HealthBar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Entity.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Console.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Scene.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Scene.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\PlayerPlatformer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\UI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Entity.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Player.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Factory\Factory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Image.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\Transition.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\UI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Minimap.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\ToDo\Popup.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\ToDo\Panel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\ToDo\RadioButton.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UI\ToDo\CheckBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\Circle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Elevator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\Elements\InteractablePlatform.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\Inputs\InteractableButton.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\Inputs\InteractableSwitch.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\IWorldElement.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Ladder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\PushableBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Rope.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slope.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Spike.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Swing.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Trampolin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\WorldBlock.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slopes\Slope_60d.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slopes\Slope_45d.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)APF\WorldElements\Slopes\Slope_30d.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture\Texture.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\GetRectangle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture\PunchHole.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Texture\FlipHorizontal.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\GetCharacterAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\Other.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Other\GetMGFX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Map.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Shadow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Light.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Map\Tile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Shadow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Tile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Light.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Shadow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Tile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Map\Light.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Tiled_JsonSerialization.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Tools\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Components\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Entities\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
-    <Folder Include="$(MSBuildThisFileDirectory)UI\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Systems\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Systems\Update\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Systems\Draw\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Factory\" />
-    <Folder Include="$(MSBuildThisFileDirectory)UI\ToDo\" />
-    <Folder Include="$(MSBuildThisFileDirectory)APF\" />
-    <Folder Include="$(MSBuildThisFileDirectory)APF\WorldElements\" />
-    <Folder Include="$(MSBuildThisFileDirectory)APF\WorldElements\Interactable\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Tools\Texture\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Tools\Other\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Components\Map\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Systems\Update\Map\" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Transition.cs" />
   </ItemGroup>
 </Project>
