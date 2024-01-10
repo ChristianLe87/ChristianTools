@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Helpers
@@ -83,8 +83,8 @@ namespace ChristianTools.Helpers
 
         public static double GetAngleInRadians(Vector2 main, Vector2 target)
         {
-            double angleInDegrees = ChristianTools.Helpers.MyMath.GetAngleInDegree(main, target);
-            double angleInRadians = ChristianTools.Helpers.MyMath.DegreeToRadian(angleInDegrees);
+            double angleInDegrees = MyMath.GetAngleInDegree(main, target);
+            double angleInRadians = MyMath.DegreeToRadian(angleInDegrees);
 
             return angleInRadians;
         }

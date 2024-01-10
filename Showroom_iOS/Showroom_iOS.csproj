@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0-ios</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <SupportedOSPlatformVersion>11.2</SupportedOSPlatformVersion>
+        <CodesignKey>iPhone Developer</CodesignKey>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+        <PackageReference Include="MonoGame.Framework.iOS" Version="3.8.1.303" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Update="Content\Content.mgcb">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\bin\iOS\Content\Tree.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\bin\iOS\Content\Atlas_PNG.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\bin\iOS\Content\MyFont_130x28_PNG.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+    <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
+        <Message Text="Restoring dotnet tools" Importance="High" />
+        <Exec Command="dotnet tool restore" />
+    </Target>
+    <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" />
+    <Import Project="..\Showroom_Shared\Showroom_Shared.projitems" Label="Shared" />
+</Project>

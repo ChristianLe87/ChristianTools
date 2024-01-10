@@ -1,234 +1,136 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ChristianTools.Helpers;
+using ChristianTools.Helpers.Enums_Interfaces_Delegates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ChristianTools.Helpers
+namespace Showroom_CrossPlatform
 {
     public class ChristianGame : Game
     {
-        Effect effect;
+        public static Texture2D atlasTexture2D;
+        public static SpriteFont spriteFont;
 
-        // a way to access the graphics devices (iPhone, Mac, Pc, PS4, etc)
-        static GraphicsDeviceManager graphicsDeviceManager;
-        public static GraphicsDevice graphicsDevice => graphicsDeviceManager.GraphicsDevice;
+        public static GraphicsDeviceManager graphicsDeviceManager;
+    
+        private SpriteBatch spriteBatch;
 
-        // Is used to draw sprites (a 2D or 3D images)
-        static SpriteBatch spriteBatch;
-        public static Viewport viewport => spriteBatch.GraphicsDevice.Viewport;
+        public static IDefault WK;
 
-        public static ContentManager contentManager;
+        public static Dictionary<string, IScene> scenes { get; set; }
+        public static string actualScene { get; private set; }
 
-        // Input
-        static InputState lastInputState;
+        private InputState lastInputState;
 
-        // Scenes
-        static Dictionary<string, IScene> scenes;
-        static string actualScene;
-
-        public static IScene GetScene
+        public ChristianGame(string startScene, IDefault WK)
         {
-            get => scenes[actualScene];
-        }
-
-        // GameData
-        static string gameDataFileName;
-        public static GameData gameData;
-
-        public static IDefault Default { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="gameDataFileName">File name of the GameData -> without the extension</param>
-        public ChristianGame(IDefault Default)
-        {
-            ChristianGame.Default = Default;
-
-            // Window
+            ChristianGame.WK = WK;
+            actualScene = startScene;
+            
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = Default.canvasWidth;
-            graphicsDeviceManager.PreferredBackBufferHeight = Default.canvasHeight;
-            graphicsDeviceManager.IsFullScreen = Default.IsFullScreen;
-            //graphicsDeviceManager.ToggleFullScreen();
-            graphicsDeviceManager.ApplyChanges();
-            //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
-
-
-            // FPS
-            base.IsFixedTimeStep = true;
-            base.TargetElapsedTime = TimeSpan.FromSeconds(1d / 60);
-            //base.TargetElapsedTime = new TimeSpan(days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 50); // Every frame is render each 50 milliseconds
-
-
-            // Content
-            string absolutePath = Path.Combine(Environment.CurrentDirectory, "Content");
-            base.Content.RootDirectory = absolutePath;
-            ChristianGame.contentManager = base.Content;
-
-            // GameData
-            ChristianGame.gameDataFileName = Default.GameDataFileName;
-
-            // Create folder
-            if (JsonSerialization.FolderExist() == false)
-            {
-                JsonSerialization.CreateFolder();
-            }
-
-
-            if (JsonSerialization.FileExist(gameDataFileName) == false)
-            {
-                ChristianGame.gameData = new GameData();
-                JsonSerialization.Create<GameData>(gameData, gameDataFileName);
-            }
-            else
-            {
-                GameData gameData = JsonSerialization.Read<GameData>(gameDataFileName);
-                ChristianGame.gameData = gameData;
-            }
-
-
-            // others
-            base.Window.Title = Default.WindowTitle;
-            base.IsMouseVisible = Default.isMouseVisible;
-            Window.AllowUserResizing = Default.AllowUserResizing;
-            game = this;
-
-
-            // use with GameWindowSizeChangeEvent()
-            if (Default.AllowUserResizing == true)
-            {
-                Window.AllowUserResizing = Default.AllowUserResizing;
-                Window.ClientSizeChanged += GameWindowSizeChangeEvent;
-
-                gameWindow = Window;
-                myDisplay = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
-            }
-
-
-            ChristianGame.lastInputState = new InputState();
-
-            // Initialize objects (scores, values, items, etc)
-            base.Initialize();
+            Content.RootDirectory = "Content";
+            IsMouseVisible = true;
         }
 
-        public void SetupScenes(Dictionary<string, IScene> scenes, string? startScene = null, Vector2? playerPosition = null)
+        protected override void Initialize()
         {
-            ChristianGame.scenes = scenes;
+            // TODO: Add your initialization logic here
 
-
-            if (startScene == null)
-                ChristianGame.actualScene = scenes.First().Key;
-            else
-                ChristianGame.actualScene = startScene;
-
-
-            if (playerPosition != null)
-                scenes[actualScene].Initialize(playerPosition.Value);
-            else
-                scenes[actualScene].Initialize();
+            base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            scenes[actualScene].Initialize(spriteBatch.GraphicsDevice.Viewport);
 
-            //effect = Tools.Tools.Other.GetMGFX("lighteffect2");
-            // TODO: Code
-        }
+            // TODO: use this.Content to load your game content here
+            atlasTexture2D = ChristianTools.Helpers.Texture.GetTexture(graphicsDeviceManager.GraphicsDevice,  ChristianGame.WK.AtlasTextureFileName);
 
-        protected override void UnloadContent()
-        {
-            // TODO: Code
+            spriteFont = ChristianTools.Helpers.Font.GenerateFont(
+                texture2D: ChristianTools.Helpers.Texture.GetTexture(graphicsDeviceManager.GraphicsDevice, "MyFont_130x28_PNG")
+            );
         }
 
         protected override void Update(GameTime gameTime)
         {
             InputState inputState = new InputState();
 
-            Systems.Systems.Update.Scene(lastInputState, inputState, scenes[actualScene]);
-
-            ChristianGame.lastInputState = inputState;
-
+            ChristianTools.Systems.Update.Scene(graphicsDeviceManager.GraphicsDevice.Viewport, lastInputState, inputState, scenes[actualScene]);
+            
+            lastInputState = new InputState();
+            
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            base.GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            // TODO: Add your drawing code here
+            //_spriteBatch.Begin();
 
             spriteBatch.Begin(
-                sortMode: SpriteSortMode.FrontToBack,
+                sortMode: SpriteSortMode.Immediate,
                 blendState: BlendState.AlphaBlend,
                 transformMatrix: scenes[actualScene].camera?.transform,
-                effect: effect
+                effect: null
             );
 
-            Systems.Systems.Draw.Scene(spriteBatch, scenes[actualScene]);
-
-            spriteBatch.End();
-            base.Draw(gameTime);
-        }
-
-
-        GameWindow gameWindow;
-        DisplayMode myDisplay;
-
-        private void GameWindowSizeChangeEvent(object sender, System.EventArgs e)
-        {
-            // thanks to: https://stackoverflow.com/questions/45396416/how-can-i-detect-window-clientsizechanged-end#45403843
-
-
-            // Unsubscribe
-            Window.ClientSizeChanged -= GameWindowSizeChangeEvent;
-
+            // Scene
+            if (scenes[actualScene].dxDrawSystem != null)
             {
-                // Good to know
-                float aspectRatio = myDisplay.AspectRatio;
-                int displayWidth = myDisplay.Width;
-                int displayHeight = myDisplay.Height;
-
-                var gameWindowWidth = gameWindow.ClientBounds.Width;
-                var gameWindowHeight = gameWindow.ClientBounds.Height;
-
-                // Code
-
-                //ChristianGame.graphicsDeviceManager.PreferredBackBufferWidth = 700;
-                //ChristianGame.graphicsDeviceManager.PreferredBackBufferHeight = 700;
-                //ChristianGame.graphicsDeviceManager.ApplyChanges();
-
-                gameWindow = Window;
+                scenes[actualScene].dxDrawSystem(spriteBatch, scenes[actualScene]);
             }
 
-            // Subscribe
-            Window.ClientSizeChanged += GameWindowSizeChangeEvent;
+            // Entity
+            if (scenes[actualScene].entities != null)
+            {
+                foreach (var entity in scenes[actualScene].entities)
+                {
+
+                    ChristianTools.Systems.Draw.Entity(spriteBatch, scenes[actualScene], entity);
+
+                }
+            }
+
+
+            // UIs
+            if (scenes[actualScene].UIs != null)
+            {
+                foreach (IUI ui in scenes[actualScene].UIs)
+                {
+                    if (ui.dxDrawSystem != null)
+                    {
+                        ui.dxDrawSystem(spriteBatch, scenes[actualScene]);
+                    }
+                }
+            }
+
+
+            spriteBatch.End();
+
+            base.Draw(gameTime);
         }
-
-
-        public static void ToggleFullScreen()
-        {
-            graphicsDeviceManager.ToggleFullScreen();
-        }
-
+        
+        
         public static void ChangeToScene(string scene, Vector2? playerPosition = null)
         {
-            JsonSerialization.Update(ChristianGame.gameData, ChristianGame.gameDataFileName);
+            //JsonSerialization.Update(ChristianGame.gameData, ChristianGame.gameDataFileName);
             actualScene = scene;
 
+            scenes[actualScene].Initialize(graphicsDeviceManager.GraphicsDevice.Viewport);
+
+            /*
             if (playerPosition != null)
                 scenes[actualScene].Initialize(playerPosition);
             else
-                scenes[actualScene].Initialize();
-        }
-
-        private static ChristianGame game;
-
-        public static void MouseVisible(bool IsMouseVisible)
-        {
-            game.IsMouseVisible = IsMouseVisible;
+                scenes[actualScene].Initialize(graphicsDeviceManager.GraphicsDevice.Viewport);
+            */
         }
     }
-}
+} 

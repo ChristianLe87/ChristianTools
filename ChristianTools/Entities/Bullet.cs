@@ -1,68 +1,68 @@
-﻿using System;
+
+using System;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
+using ChristianTools.Helpers.Enums_Interfaces_Delegates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Showroom_CrossPlatform;
 
 namespace ChristianTools.Entities
 {
-    public class Bullet : IEntity
-    {
-        TimeSpan timeToDeactivate;
-        int FPS;
+	public class Bullet : IEntity
+	{
+		public Rigidbody rigidbody { get; }
+		public Animation animation { get; }
+		public bool isActive { get; set; }
 
-        public Rigidbody rigidbody { get; }
-        public bool isActive { get; set; }
-        public string tag { get; }
-        public int health { get; }
+		private TimeSpan timeToDeactivate;
+		
+		public DxUpdateSystem dxUpdateSystem { get; }
+		public DxDrawSystem dxDrawSystem { get; set; }
+		public string tag { get; }
 
-        public Animation animation { get; }
-        public CharacterState characterState { get; set; }
+		public Bullet(Vector2 direction, int steps, Rectangle imageFromAtlas, TimeSpan timeToDeactivate)
+		{
+			this.animation = new Animation(imageFromAtlas);
+			this.timeToDeactivate = timeToDeactivate;
+			this.isActive = true;
+			
 
-        public DxUpdateSystem dxUpdateSystem { get; }
-        public DxDrawSystem dxDrawSystem { get; }
+			double radAngle = Helpers.MyMath.GetAngleInRadians(imageFromAtlas.Center.ToVector2(), direction);
+			float x = (float)(steps * Math.Cos(radAngle));
+			float y = (float)(steps * Math.Sin(radAngle));
 
-        public Bullet(Texture2D texture2D, Vector2 centerPosition, Vector2 direction, int steps, TimeSpan timeToDeactivate = new TimeSpan(), int FPS = 60)
-        {
-            this.animation = new Animation(texture2D);
-            this.timeToDeactivate = timeToDeactivate;
-            this.isActive = true;
-            this.FPS = FPS;
+			this.rigidbody = new Rigidbody(
+				rectangle:imageFromAtlas,
+				force: new Vector2(x, y)
+			);
 
-            double radAngle = Helpers.MyMath.GetAngleInRadians(centerPosition, direction);
-            float x = (float)(steps * Math.Cos(radAngle));
-            float y = (float)(steps * Math.Sin(radAngle));
+			this.dxUpdateSystem = (Viewport viewport, InputState lastInputState, InputState inputState, IScene scene) => BulletUpdateSystem();
 
-            this.rigidbody = new Rigidbody(
-                centerPosition: centerPosition,
-                entity: this,
-                force: new Vector2(x, y)
-            );
+		}
+		
+		
+		public void BulletUpdateSystem()
+		{
+			// Implementation
+			if (isActive == true)
+			{
+				TimeToDestroy();
+				rigidbody.Update();
+			}
 
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => BulletUpdateSystem();
-        }
+			// Helpers
+			void TimeToDestroy()
+			{
+				if (timeToDeactivate.TotalMilliseconds != 0)
+				{
+					TimeSpan timeSpan = new TimeSpan(0, 0, 0, 0, (int)((1f / ChristianGame.WK.FPS) * 1000));
+					timeToDeactivate = timeToDeactivate.Subtract(timeSpan);
 
-        public void BulletUpdateSystem()
-        {
-            // Implementation
-            if (isActive == true)
-            {
-                TimeToDestroy();
-                rigidbody.Update();
-            }
-
-            // Helpers
-            void TimeToDestroy()
-            {
-                if (timeToDeactivate.TotalMilliseconds != 0)
-                {
-                    TimeSpan timeSpan = new TimeSpan(0, 0, 0, 0, (int)((1f / FPS) * 1000));
-                    timeToDeactivate = timeToDeactivate.Subtract(timeSpan);
-
-                    if (timeToDeactivate.TotalMilliseconds <= 0)
-                        isActive = false;
-                }
-            }
-        }
-    }
+					if (timeToDeactivate.TotalMilliseconds <= 0)
+						isActive = false;
+				}
+			}
+		}
+	}
 }
