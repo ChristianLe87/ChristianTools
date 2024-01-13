@@ -88,7 +88,7 @@ namespace Showroom.Scenes
 
             this.entities = new List<IEntity>()
             {
-                //new Tree(new Point(100, 100), new Rectangle(64, 32, 16, 16), true),
+                new Tree(new Point(400, 50), new Rectangle(64, 32, 16, 16)),
             };
 
             this.dxUpdateSystem = (Viewport viewport, InputState lastInputState, InputState inputState, IScene scene) => UpdateSystem(viewport, lastInputState, inputState);
