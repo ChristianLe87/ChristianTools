@@ -1,2 +1,2 @@
-﻿using var game = new Showroom_Shared.Game1();
+﻿using var game = new Showroom.Game1();
 game.Run();

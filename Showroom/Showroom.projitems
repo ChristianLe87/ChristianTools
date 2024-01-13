@@ -11,29 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WK.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components_Animation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components_Camera.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components_Map.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Components\Scene_Components_Rigidbody.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Entities\Scene_Entities.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Entities\Scene_Entities_Bullet.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Entities\Scene_Entities_Line.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Entities\Scene_Entities_Prefab.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Helpers\Scene_Helpers.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Helpers\Scene_Helpers_InputState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Helpers\Scene_Helpers_JsonSerialization.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Menu\Scene_Menu.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_Lights.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_PunchHole.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Others\Scene_Others_Tiled.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Systems\Scene_Systems.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Systems\Scene_Systems_DrawSystems.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Tools\Scene_Tools.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\UI\Scene_UI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Menu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_UI.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Scenes\.DS_Store" />
-  </ItemGroup>
-</Project>
+ </Project>

@@ -1,14 +1,15 @@
-﻿using ChristianTools.Components;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 
 namespace ChristianTools.Helpers
 {
     public class InputState
     {
-        KeyboardState keyboardState = Keyboard.GetState();
-        GamePadState gamePadState = GamePad.GetState(PlayerIndex.One); // Check the device for Player One: GamePadCapabilities gamePadCapabilities = GamePad.GetCapabilities(PlayerIndex.One);
-        MouseState mouseState = Mouse.GetState();
+        private KeyboardState keyboardState = Keyboard.GetState();
+        private GamePadState gamePadState = (OperatingSystem.IsIOS()|| OperatingSystem.IsAndroid()) ? new GamePadState() : GamePad.GetState(PlayerIndex.One); // Check the device for Player One: GamePadCapabilities gamePadCapabilities = GamePad.GetCapabilities(PlayerIndex.One);
+        private MouseState mouseState = Mouse.GetState();
 
         // General
         public bool Right => keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right) || (gamePadState.ThumbSticks.Left.X > 0);
@@ -92,18 +93,45 @@ namespace ChristianTools.Helpers
         //public Point Mouse_Position => mouseState.Position;
         public Point Mouse_Position()
         {
-            if (ChristianGame.GetScene.camera != null)
+            /*if (ChristianGame.GetScene.camera != null)
             {
                 Point point = mouseState.Position;
                 point += new Point(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y);
                 return point;
             }
-            else
+            else*/
             {
                 return mouseState.Position;
             }
         }
 
         public ButtonState Mouse_LeftButton => mouseState.LeftButton;
+
+        // Touch
+        private static Point lastTouch = new Point();
+        public Point GetTouch()
+        {
+            // Thanks to: https://stackoverflow.com/a/38471621
+            {
+                TouchCollection touchCollection = TouchPanel.GetState();
+
+                if (touchCollection.Count > 0)
+                {
+                    //Only Fire Select Once it's been released
+                    if (touchCollection[0].State == TouchLocationState.Moved || touchCollection[0].State == TouchLocationState.Pressed)
+                    {
+                        lastTouch = touchCollection[0].Position.ToPoint();
+                        return lastTouch;
+                    }
+                }
+
+                return lastTouch;
+            }
+        }
+
+        public bool IsTouchDown()
+        {
+            return TouchPanel.GetState().Count > 0;
+        }
     }
 }

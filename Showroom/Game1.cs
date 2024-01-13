@@ -1,53 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using ChristianTools;
 using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Showroom.Scenes;
 
-namespace Showroom_Shared
+namespace Showroom
 {
     public class Game1 : ChristianGame
     {
-        public Game1() : base(Default: new WK.Default())
+        public Game1() : base(GetScenes(), startScene: "Menu", new WK())
         {
+        }
+        
+        private static Dictionary<string, IScene> GetScenes(){
             Dictionary<string, IScene> scenes = new Dictionary<string, IScene>()
             {
-                { WK.Scene.Menu, new Scene_Menu() },
-
-                // Components
-                { WK.Scene.Components, new Scene_Components() },
-                { WK.Scene.Components_Animation, new Scene_Components_Animation() },
-                { WK.Scene.Components_Camera, new Scene_Components_Camera() },
-                { WK.Scene.Components_Map, new Scene_Components_Map() },
-                { WK.Scene.Components_Rigidbody, new Scene_Components_Rigidbody() },
-
-                // Entities
-                { WK.Scene.Entities, new Scene_Entities() },
-                { WK.Scene.Entities_Bullet, new Scene_Entities_Bullet() },
-                { WK.Scene.Entities_Prefab, new Scene_Entities_Prefab() },
-                { WK.Scene.Entities_Line, new Scene_Entities_Line() },
-
-                // Helpers
-                { WK.Scene.Helpers, new Scene_Helpers() },
-                { WK.Scene.Helpers_InputState, new Scene_Helpers_InputState() },
-                { WK.Scene.Helpers_JsonSerialization, new Scene_Helpers_JsonSerialization() },
-
-                // Tools
-                { WK.Scene.Tools, new Scene_Tools() },
-
-                // UI
-                { WK.Scene.UI, new Scene_UI() },
-
-                // Systems
-                { WK.Scene.Systems, new Scene_Systems() },
-                { WK.Scene.Systems_DrawSystems, new Scene_Systems_DrawSystems() },
-
-                // Others
-                { WK.Scene.Others, new Scene_Others() },
-                { WK.Scene.Others_PunchHole, new Scene_Others_PunchHole() },
-                { WK.Scene.Scene_Others_Lights, new Scene_Others_Lights() },
-                { WK.Scene.Scene_Others_Tiled, new Scene_Others_Tiled() },
+                { "Menu", new Scene_Menu() },
+                { "UIs", new Scene_UI() },
+                //{ "SceneEntitiesBullet", new Scene_Entities_Bullet() }
             };
-
-            base.SetupScenes(scenes, WK.Scene.Menu);
+            
+            return scenes;
         }
     }
 }

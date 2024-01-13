@@ -1,24 +1,20 @@
-﻿using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
+using ChristianTools.Helpers;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Systems
 {
-    public partial class Systems
+    public partial class Update
     {
-        public partial class Update
+        public static void Entity(Viewport viewport, InputState lastInputState, InputState inputState, IScene scene, IEntity entity)
         {
-            public static void Entity(InputState lastInputState, InputState inputState, IEntity entity)
-            {
-                if (entity.isActive != true)
-                    return;
+            if (entity.isActive != true)
+                return;
+			
+            if (entity.dxUpdateSystem != null)
+                entity.dxUpdateSystem(viewport, lastInputState, inputState, scene);
 
-
-                if (entity.dxUpdateSystem != null)
-                    entity.dxUpdateSystem(lastInputState, inputState);
-
-                entity.animation?.Update();
-                entity.rigidbody?.Update();
-            }
+            entity.animation?.Update();
+            entity.rigidbody?.Update();
         }
     }
 }
