@@ -22,7 +22,7 @@ namespace Showroom
 		{
 			this.animation = new Animation(rectangleStripeFromAtlas);
 			this.rigidbody = new Rigidbody(rectangle: new Rectangle(position.X, position.Y, rectangleStripeFromAtlas.Width, rectangleStripeFromAtlas.Height));
-			this.dxUpdateSystem = (Viewport viewport, InputState lastInputState, InputState inputState, IScene scene) => Update();
+			this.dxUpdateSystem = (InputState lastInputState, InputState inputState, IScene scene) => Update();
 			this.dxDrawSystem = (SpriteBatch spriteBatch, IScene scene) => DrawSystem(spriteBatch, scene);
 		}
 

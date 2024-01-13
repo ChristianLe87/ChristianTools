@@ -91,7 +91,7 @@ namespace Showroom.Scenes
                 new Tree(new Point(400, 50), new Rectangle(64, 32, 16, 16)),
             };
 
-            this.dxUpdateSystem = (Viewport viewport, InputState lastInputState, InputState inputState, IScene scene) => UpdateSystem(viewport, lastInputState, inputState);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState, IScene scene) => UpdateSystem(viewport, lastInputState, inputState);
             //this.dxDrawSceneSystem = (SpriteBatch spriteBatch, IScene scene, SpriteFont spriteFont) => DrawSystem(spriteBatch, scene, spriteFont);
 
         }

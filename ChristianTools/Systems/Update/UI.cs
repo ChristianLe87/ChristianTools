@@ -5,13 +5,13 @@ namespace ChristianTools.Systems
 {
     public partial class Update
     {
-        public static void UI(Viewport viewport, InputState lastInputState, InputState inputState, IScene scene, IUI ui)
+        public static void UI(InputState lastInputState, InputState inputState, IScene scene, IUI ui)
         {
             if (ui.isActive == false)
                 return;
 
             if (ui.dxUpdateSystem != null)
-                ui.dxUpdateSystem(viewport, lastInputState, inputState, scene);
+                ui.dxUpdateSystem(lastInputState, inputState, scene);
         }
     }
 }

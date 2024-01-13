@@ -11,12 +11,12 @@ namespace ChristianTools.Systems
             // UIs
             if (scene.UIs != null)
                 foreach (var ui in scene.UIs)
-                    Systems.Update.UI(viewport, lastInputState, inputState, scene, ui);
+                    Systems.Update.UI(lastInputState, inputState, scene, ui);
 
             // Entities
             if (scene.entities != null)
                 for (int i = 0; i < scene.entities.Count; i++)
-                    Systems.Update.Entity(viewport, lastInputState, inputState, scene, scene.entities[i]);
+                    Systems.Update.Entity(lastInputState, inputState, scene, scene.entities[i]);
 
             // Camera
             if (scene.camera != null)
@@ -46,7 +46,7 @@ namespace ChristianTools.Systems
 
             // Scene delegate
             if (scene.dxUpdateSystem != null)
-                scene.dxUpdateSystem(viewport, lastInputState, inputState, scene);
+                scene.dxUpdateSystem(lastInputState, inputState, scene);
 
         }
     }

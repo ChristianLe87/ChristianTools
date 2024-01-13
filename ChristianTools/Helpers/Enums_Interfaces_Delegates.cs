@@ -48,6 +48,6 @@ namespace ChristianTools.Helpers
     }
 
     // === Delegates ===
-    public delegate void DxUpdateSystem(Viewport viewport, InputState lastInputState, InputState inputState, IScene scene);
+    public delegate void DxUpdateSystem(InputState lastInputState, InputState inputState, IScene scene);
     public delegate void DxDrawSystem(SpriteBatch spriteBatch, IScene scene);
 }

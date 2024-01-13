@@ -40,7 +40,7 @@ namespace ChristianTools.UI
             this.OnClickAction = OnClickAction;
 
 
-            this.dxUpdateSystem = (Viewport viewport, InputState lastInputState, InputState inputState, IScene scene) => UpdateSystem(lastInputState, inputState, scene);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState, IScene scene) => UpdateSystem(lastInputState, inputState, scene);
             this.dxDrawSystem = (SpriteBatch spriteBatch, IScene scene) => DrawSystem(spriteBatch, scene);
             this.isActive = true;
         }
