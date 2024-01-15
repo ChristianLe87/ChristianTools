@@ -5,7 +5,7 @@ namespace Showroom
     public class WK : IDefault
     {
         public string WindowTitle { get; }
-        public double FPS { get; }
+        public double FPS { get; } = 60;
         public bool IsFullScreen { get; set; }
         public bool AllowUserResizing { get; }
         public int ScaleFactor { get; set; }

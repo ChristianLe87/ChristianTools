@@ -6,7 +6,7 @@ namespace ChristianTools.UI
 {
 	public class Label : IUI
 	{
-		string text;
+		public string text;
 		TextAlignment textAlignment;
 		public Rectangle rectangle { get; }
 		public DxUpdateSystem dxUpdateSystem { get; set; }
