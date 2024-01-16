@@ -33,7 +33,6 @@ namespace Showroom.Scenes
                     text: "Components",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    tag: "goToComponents",
                     OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Components)
                 ),
                 new Button(
@@ -41,7 +40,6 @@ namespace Showroom.Scenes
                     text: "Entities",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    tag: "goToEntities",
                     OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Entities)
                 ),
                 new Button(
@@ -49,7 +47,6 @@ namespace Showroom.Scenes
                     text: "Helpers",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    tag: "goToHelpers",
                     OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Helpers)
                 ),
                 new Button(
@@ -57,7 +54,6 @@ namespace Showroom.Scenes
                     text: "Tools",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    tag: "goToTools",
                     OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Tools)
                 ),
                 new Button(
@@ -65,7 +61,6 @@ namespace Showroom.Scenes
                     text: "UI",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    tag: "goToUI",
                     OnClickAction: () => Game1.ChangeToScene("UIs")
                 ),
                 new Button(
@@ -73,15 +68,20 @@ namespace Showroom.Scenes
                     text: "Systems",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    tag: "goToSystems",
                     OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Systems)
+                ),
+                new Button(
+                    rectangle: new Rectangle(250, 170, 230, 30),
+                    text: "Camera",
+                    defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
+                    mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
+                    OnClickAction: () => Game1.ChangeToScene("Scene_Camera")
                 ),
                 new Button(
                     rectangle: new Rectangle(250, 210, 230, 30),
                     text: "Others",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    tag: "goToOthers",
                     OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Others)
                 ),
             };

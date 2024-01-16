@@ -1,4 +1,5 @@
 using System.Linq;
+using ChristianTools.Components;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -19,15 +20,16 @@ namespace ChristianTools.Systems
                     Systems.Update.Entity(lastInputState, inputState, scene, scene.entities[i]);
 
             // Camera
-            if (scene.camera != null)
+            /*if (scene.camera != null)
             {
                 if (scene.entities != null)
                 {
                     IEntity player = scene.entities.Where(x => x.tag == "player")?.FirstOrDefault();
                     if (player != null)
-                        Systems.Update.Camera(scene.camera, player.rigidbody.rectangle.Center.ToVector2());
+                        ChristianGame.scenes[ChristianGame.actualScene].camera.UpdateCamera(ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport);
                 }
-            }
+            }*/
+
 
             // Map
             /*if (scene.map != null)

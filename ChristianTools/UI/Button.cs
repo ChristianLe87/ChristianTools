@@ -26,7 +26,7 @@ namespace ChristianTools.UI
 
         DxOnClickAction OnClickAction;
 
-        public Button(Rectangle rectangle, string text, DxOnClickAction OnClickAction, string tag, Texture2D defaultTexture = null, Texture2D mouseOverTexture = null)
+        public Button(Rectangle rectangle, string text, DxOnClickAction OnClickAction, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null)
         {
             this.rectangle = rectangle;
             this.defaultTexture = defaultTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray);

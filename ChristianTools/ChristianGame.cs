@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
@@ -24,13 +26,47 @@ namespace ChristianTools
 
         public ChristianGame(Dictionary<string, IScene> scenes, string startScene, IDefault WK)
         {
+            // WK
             ChristianGame.WK = WK;
             ChristianGame.scenes = scenes;
             ChristianGame.actualScene = startScene;
+         
             
+            
+            // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
+            graphicsDeviceManager.PreferredBackBufferWidth = WK.canvasWidth;
+            graphicsDeviceManager.PreferredBackBufferHeight = WK.canvasHeight;
+            graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
+            //graphicsDeviceManager.ToggleFullScreen();
+            //graphicsDeviceManager.ApplyChanges();
+            //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+
+            
+            // FPS
+            base.IsFixedTimeStep = true;
+            base.TargetElapsedTime = TimeSpan.FromSeconds(1d / WK.FPS);
+            //base.TargetElapsedTime = new TimeSpan(days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 50); // Every frame is render each 50 milliseconds
+
+            
+            // others
+            base.Window.Title = WK.WindowTitle;
+            base.IsMouseVisible = WK.isMouseVisible;
+            //Window.AllowUserResizing = WK.AllowUserResizing;
+            //game = this;
+            
+            
+            
+            
+            
+            
+            // Content
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            //string absolutePath = Path.Combine(Environment.CurrentDirectory, "Content");
+            //base.Content.RootDirectory = absolutePath;
+            //ChristianGame.contentManager = base.Content;
+
+            lastInputState = new InputState();
         }
 
         protected override void Initialize()
@@ -56,8 +92,6 @@ namespace ChristianTools
             InputState inputState = new InputState();
 
             ChristianTools.Systems.Update.Scene(graphicsDeviceManager.GraphicsDevice.Viewport, lastInputState, inputState, scenes[actualScene]);
-           
-            
             
             lastInputState = new InputState();
             
@@ -71,11 +105,17 @@ namespace ChristianTools
             // TODO: Add your drawing code here
             //_spriteBatch.Begin();
 
+            
+            // Original
+            //spriteBatch.Begin(sortMode: SpriteSortMode.Immediate, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform, effect: null);
+
+            
+            //https://community.monogame.net/t/fitting-pixel-art-game-to-screen/17043
             spriteBatch.Begin(
                 sortMode: SpriteSortMode.Immediate,
-                blendState: BlendState.AlphaBlend,
+                samplerState: SamplerState.PointClamp,
                 transformMatrix: scenes[actualScene].camera?.transform,
-                effect: null
+                blendState: BlendState.AlphaBlend
             );
 
             // Scene
@@ -89,9 +129,7 @@ namespace ChristianTools
             {
                 foreach (var entity in scenes[actualScene].entities)
                 {
-
                     ChristianTools.Systems.Draw.Entity(spriteBatch, scenes[actualScene], entity);
-
                 }
             }
 

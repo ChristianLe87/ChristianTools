@@ -14,15 +14,17 @@ namespace Showroom
         public Game1() : base(GetScenes(), startScene: "Menu", new WK())
         {
         }
-        
-        private static Dictionary<string, IScene> GetScenes(){
+
+        private static Dictionary<string, IScene> GetScenes()
+        {
             Dictionary<string, IScene> scenes = new Dictionary<string, IScene>()
             {
                 { "Menu", new Scene_Menu() },
                 { "UIs", new Scene_UI() },
+                { "Scene_Camera", new Scene_Camera() }
                 //{ "SceneEntitiesBullet", new Scene_Entities_Bullet() }
             };
-            
+
             return scenes;
         }
     }

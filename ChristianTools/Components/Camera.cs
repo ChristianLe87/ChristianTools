@@ -1,40 +1,86 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace ChristianTools.Components
 {
     public class Camera
     {
-        public Rectangle rectangle { get; set; }
-        public Matrix transform { get; set; }
-        public Viewport viewport { get; }
-        int zoom = 1;
+         public float Zoom { get; set; }
+        public Vector2 Position { get; set; }
+        public Rectangle Bounds { get; protected set; }
+        
+        public Rectangle VisibleArea { get; protected set; }
+        public Rectangle viewport
+        {
+            get { return VisibleArea; }
+        }
+        public Matrix Transform { get; protected set; }
 
+        private float currentMouseWheelValue, previousMouseWheelValue, zoom, previousZoom;
+
+        
+        
+        public Rectangle rectangle
+        {
+            get { return Bounds; }
+        }
+        
+        public Matrix transform
+        {
+            get { return Transform; }
+        }
+        
+        
         public Camera(Viewport viewport)
         {
-            this.viewport = viewport;
-            transform = Matrix.CreateScale(new Vector3(zoom, zoom, 0)) *
-                        Matrix.CreateTranslation(Vector3.Zero); //-center.X, -center.Y, 0);
-            rectangle = new Rectangle(0, 0, viewport.Width, viewport.Height);
+            Bounds = viewport.Bounds;
+            Zoom = 1f;
+            Position = Vector2.Zero;
         }
 
-        [Obsolete("-> Use ChristianTools.Systems.Systems.Update.Camera", true)]
-        public void UpdateOld(Vector2 targetPosition)
+
+        private void UpdateVisibleArea()
         {
-            throw new Exception("-> Use ChristianTools.Systems.Systems.Update.Camera");
+            var inverseViewMatrix = Matrix.Invert(Transform);
+
+            var tl = Vector2.Transform(Vector2.Zero, inverseViewMatrix);
+            var tr = Vector2.Transform(new Vector2(Bounds.X, 0), inverseViewMatrix);
+            var bl = Vector2.Transform(new Vector2(0, Bounds.Y), inverseViewMatrix);
+            var br = Vector2.Transform(new Vector2(Bounds.Width, Bounds.Height), inverseViewMatrix);
+
+            var min = new Vector2(
+                MathHelper.Min(tl.X, MathHelper.Min(tr.X, MathHelper.Min(bl.X, br.X))),
+                MathHelper.Min(tl.Y, MathHelper.Min(tr.Y, MathHelper.Min(bl.Y, br.Y))));
+            var max = new Vector2(
+                MathHelper.Max(tl.X, MathHelper.Max(tr.X, MathHelper.Max(bl.X, br.X))),
+                MathHelper.Max(tl.Y, MathHelper.Max(tr.Y, MathHelper.Max(bl.Y, br.Y))));
+            VisibleArea = new Rectangle((int)min.X, (int)min.Y, (int)(max.X - min.X), (int)(max.Y - min.Y));
         }
 
-        public void Update(Vector2 targetPosition)
+        private void UpdateMatrix()
         {
-            this.rectangle = new Rectangle(
-                x: (int)(targetPosition.X - this.viewport.Width / 2),
-                y: (int)targetPosition.Y - this.viewport.Height / 2,
-                width: this.viewport.Width,
-                height: this.viewport.Height
-            );
+            Transform = Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) *
+                        Matrix.CreateScale(Zoom) *
+                        Matrix.CreateTranslation(new Vector3(Bounds.Width * 0.5f, Bounds.Height * 0.5f, 0));
+            UpdateVisibleArea();
+        }
 
-            this.transform = Matrix.CreateTranslation(new Vector3(-this.rectangle.X, -this.rectangle.Y, 0));
+        public void MoveCamera(Vector2 newPosition)
+        {
+            Position = newPosition;
+        }
+
+        public void AdjustZoom(float zoomAmount)
+        {
+            Zoom += zoomAmount;
+        }
+
+        public void UpdateCamera(Viewport bounds)
+        {
+            Bounds = bounds.Bounds;
+            UpdateMatrix();
         }
     }
 }

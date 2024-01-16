@@ -5,7 +5,7 @@ namespace ChristianTools.Systems
 {
     public partial class Update
     {
-        public static void Camera(Camera camera, Vector2 targetPosition)
+        /*public static void Camera(Camera camera, Vector2 targetPosition)
         {
             camera.rectangle = new Rectangle(
                 x: (int)(targetPosition.X - camera.viewport.Width / 2),
@@ -15,6 +15,6 @@ namespace ChristianTools.Systems
             );
 
             camera.transform = Matrix.CreateTranslation(new Vector3(-camera.rectangle.X, -camera.rectangle.Y, 0));
-        }
+        }*/
     }
 }
