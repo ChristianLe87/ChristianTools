@@ -91,19 +91,25 @@ namespace ChristianTools.Helpers
 
         // Mouse
         //public Point Mouse_Position => mouseState.Position;
-        public Point Mouse_Position()
+        public Point Mouse_OnWorldPosition()
         {
-            /*if (ChristianGame.GetScene.camera != null)
+            if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
             {
                 Point point = mouseState.Position;
-                point += new Point(ChristianGame.GetScene.camera.rectangle.X, ChristianGame.GetScene.camera.rectangle.Y);
+                point += new Point((int)ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.X, (int)ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.Y);
                 return point;
             }
-            else*/
+            else
             {
                 return mouseState.Position;
             }
         }
+        
+        public Point Mouse_OnWindowPosition()
+        {
+            return mouseState.Position;
+        }
+        
 
         public ButtonState Mouse_LeftButton => mouseState.LeftButton;
 

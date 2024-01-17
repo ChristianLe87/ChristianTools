@@ -31,9 +31,9 @@ namespace ChristianTools.UI
 			Point p;
 			if (scene.camera != null)
 			{
-				rec = new Rectangle(rectangle.Location + new Point(scene.camera.rectangle.X, scene.camera.rectangle.Y),
+				rec = new Rectangle(rectangle.Location,
 					rectangle.Size);
-				p = new Point(scene.camera.rectangle.X, scene.camera.rectangle.Y);
+				p = new Point();
 			}
 			else
 			{

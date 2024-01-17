@@ -35,7 +35,7 @@ namespace Showroom.Scenes
 				),
 
 				// Left
-				new Label(new Rectangle(10, 10, 100, 30), "My Text", textAlignment: Label.TextAlignment.Top_Left, ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray)),
+				new Label(new Rectangle(10, 10, 100, 30), "My Text", Label.TextAlignment.Top_Left, ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray)),
 				new Label(new Rectangle(10, 50, 100, 30), "My Text", Label.TextAlignment.Midle_Left, ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray)),
 				new Label(new Rectangle(10, 90, 100, 30), "My Text", Label.TextAlignment.Down_Left, ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray)),
 

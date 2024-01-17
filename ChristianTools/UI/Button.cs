@@ -49,12 +49,12 @@ namespace ChristianTools.UI
         {
             Rectangle tempRectangle;
             if (scene.camera != null)
-                tempRectangle = new Rectangle((int)(rectangle.X + scene.camera.rectangle.X),
-                    (int)(rectangle.Y + scene.camera.rectangle.Y), rectangle.Width, rectangle.Height);
+                tempRectangle = new Rectangle((int)(rectangle.X),
+                    (int)(rectangle.Y), rectangle.Width, rectangle.Height);
             else
                 tempRectangle = rectangle;
 
-            if (tempRectangle.Contains(inputState.Mouse_Position()))
+            if (tempRectangle.Contains(inputState.Mouse_OnWindowPosition()))
             {
                 isMouseOver = true;
                 if (lastInputState.Mouse_LeftButton == ButtonState.Released &&
@@ -73,9 +73,8 @@ namespace ChristianTools.UI
         private void DrawSystem(SpriteBatch spriteBatch, IScene scene)
         {
             Rectangle tempRectangle;
-            if (scene.camera != null)
-                tempRectangle = new Rectangle((int)(rectangle.X + scene.camera.rectangle.X),
-                    (int)(rectangle.Y + scene.camera.rectangle.Y), rectangle.Width, rectangle.Height);
+            if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
+                tempRectangle = new Rectangle((int)(rectangle.X + ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.X), (int)(rectangle.Y + ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.Y), rectangle.Width, rectangle.Height);
             else
                 tempRectangle = rectangle;
 

@@ -11,7 +11,7 @@ namespace Showroom
 {
     public class Game1 : ChristianGame
     {
-        public Game1() : base(GetScenes(), startScene: "Menu", new WK())
+        public Game1() : base(GetScenes(), startScene: "Scene_Camera", new WK())
         {
         }
 
@@ -19,8 +19,8 @@ namespace Showroom
         {
             Dictionary<string, IScene> scenes = new Dictionary<string, IScene>()
             {
-                { "Menu", new Scene_Menu() },
-                { "UIs", new Scene_UI() },
+                { "Scene_Menu", new Scene_Menu() },
+                { "Scene_UI", new Scene_UI() },
                 { "Scene_Camera", new Scene_Camera() }
                 //{ "SceneEntitiesBullet", new Scene_Entities_Bullet() }
             };
