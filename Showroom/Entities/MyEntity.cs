@@ -1,36 +1,42 @@
 using System.Collections.Generic;
 using ChristianTools;
 using ChristianTools.Components;
+using ChristianTools.Entities;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Showroom
 {
-    public class MyEntity : IEntity
+    public class MyEntity : Entity
     {
-        public Rigidbody rigidbody { get; }
-        public Animation animation { get; }
-        public bool isActive { get; set; } = true;
-        public DxUpdateSystem dxUpdateSystem { get; }
-        public DxDrawSystem dxDrawSystem { get; set; }
-        public string tag { get; }
 
-        public MyEntity(Point position, Rectangle rectangleStripeFromAtlas)
+        public MyEntity(Point position, Rectangle rectangleStripeFromAtlas, string tag= "", bool isActive= true) : base(position, rectangleStripeFromAtlas, tag, isActive)
         {
-            this.animation = new Animation(rectangleStripeFromAtlas);
-            this.rigidbody = new Rigidbody(rectangle: new Rectangle(position.X, position.Y, rectangleStripeFromAtlas.Width, rectangleStripeFromAtlas.Height));
-            //this.dxUpdateSystem = (InputState lastInputState, InputState inputState, IScene scene) => UpdateSystem();
-            this.dxDrawSystem = (SpriteBatch spriteBatch, IScene scene) => DrawSystem(spriteBatch, scene);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(inputState: inputState);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
         
         
-        private void UpdateSystem()
+        private void UpdateSystem(InputState inputState)
         {
+            if (inputState.Up)
+                rigidbody.Move_Y(-5);
+			
+            if (inputState.Down)
+                rigidbody.Move_Y(5);
+			
+			
+            if (inputState.Right)
+                rigidbody.Move_X(5);
+			
+            if (inputState.Left)
+                rigidbody.Move_X(-5);
+            
         }
 
 
-        private void DrawSystem(SpriteBatch spriteBatch, IScene scene)
+        private void DrawSystem(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
                 texture: ChristianGame.atlasTexture2D,// atlas texture

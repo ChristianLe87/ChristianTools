@@ -27,7 +27,7 @@ namespace ChristianTools.Helpers
         Camera camera { get; set; }
         public DxUpdateSystem dxUpdateSystem { get; set; }
         public DxDrawSystem dxDrawSystem { get; set; }
-        public void Initialize(Viewport viewport);
+        public void Initialize();
     }
 
     public interface IUI
@@ -42,12 +42,12 @@ namespace ChristianTools.Helpers
         public Rigidbody rigidbody { get; }
         public Animation animation { get; }
         public bool isActive { get; set; }
-        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; set; }
         public DxDrawSystem dxDrawSystem { get; set; }
         public string tag { get; }
     }
 
     // === Delegates ===
-    public delegate void DxUpdateSystem(InputState lastInputState, InputState inputState, IScene scene);
-    public delegate void DxDrawSystem(SpriteBatch spriteBatch, IScene scene);
+    public delegate void DxUpdateSystem(InputState lastInputState, InputState inputState);
+    public delegate void DxDrawSystem(SpriteBatch spriteBatch);
 }

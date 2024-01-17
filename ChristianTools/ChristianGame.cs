@@ -30,7 +30,7 @@ namespace ChristianTools
             ChristianGame.WK = WK;
             ChristianGame.scenes = scenes;
             ChristianGame.actualScene = startScene;
-         
+
             
             
             // Window
@@ -79,22 +79,24 @@ namespace ChristianTools
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            scenes[actualScene].Initialize(spriteBatch.GraphicsDevice.Viewport);
-
+            scenes[actualScene].Initialize();
+            
             // TODO: use this.Content to load your game content here
             atlasTexture2D = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.AtlasTextureFileName);
 
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName/*MyFont_130x28_PNG*/));
+
         }
 
         protected override void Update(GameTime gameTime)
         {
             InputState inputState = new InputState();
 
-            ChristianTools.Systems.Update.Scene(graphicsDeviceManager.GraphicsDevice.Viewport, lastInputState, inputState, scenes[actualScene]);
-            
+            if (scenes[actualScene].dxUpdateSystem != null)
+                scenes[actualScene].dxUpdateSystem(lastInputState: lastInputState, inputState: inputState);
+
             lastInputState = new InputState();
-            
+
             base.Update(gameTime);
         }
 
@@ -121,30 +123,10 @@ namespace ChristianTools
             // Scene
             if (scenes[actualScene].dxDrawSystem != null)
             {
-                scenes[actualScene].dxDrawSystem(spriteBatch, scenes[actualScene]);
+                scenes[actualScene].dxDrawSystem(spriteBatch: spriteBatch);
             }
 
-            // Entity
-            if (scenes[actualScene].entities != null)
-            {
-                foreach (var entity in scenes[actualScene].entities)
-                {
-                    ChristianTools.Systems.Draw.Entity(spriteBatch, scenes[actualScene], entity);
-                }
-            }
-
-
-            // UIs
-            if (scenes[actualScene].UIs != null)
-            {
-                foreach (IUI ui in scenes[actualScene].UIs)
-                {
-                    if (ui.dxDrawSystem != null)
-                    {
-                        ui.dxDrawSystem(spriteBatch, scenes[actualScene]);
-                    }
-                }
-            }
+  
 
 
             spriteBatch.End();
@@ -158,7 +140,7 @@ namespace ChristianTools
             //JsonSerialization.Update(ChristianGame.gameData, ChristianGame.gameDataFileName);
             actualScene = scene;
 
-            scenes[actualScene].Initialize(graphicsDeviceManager.GraphicsDevice.Viewport);
+            scenes[actualScene].Initialize();
 
             /*
             if (playerPosition != null)

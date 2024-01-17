@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ChristianTools.Components;
+using ChristianTools.Entities;
 using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
@@ -8,19 +9,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Showroom.Scenes
 {
-    public class Scene_Menu : IScene
+    public class Scene_Menu : Scene
     {
-        public List<IEntity> entities { get; set; }
-        public List<IUI> UIs { get; set; }
-        public Camera camera { get; set; }
-
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
-
-        public void Initialize(Viewport viewport)
+        public override void Initialize()
         {
-            //this.camera = new Camera(viewport);
-
             this.UIs = new List<IUI>()
             {
                 new Label(
@@ -33,28 +25,28 @@ namespace Showroom.Scenes
                     text: "Components",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Components)
+                    OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Components)
                 ),
                 new Button(
                     rectangle: new Rectangle(10, 50, 230, 30),
                     text: "Entities",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Entities)
+                    OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Entities)
                 ),
                 new Button(
                     rectangle: new Rectangle(10, 90, 230, 30),
                     text: "Helpers",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Helpers)
+                    OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Helpers)
                 ),
                 new Button(
                     rectangle: new Rectangle(10, 130, 230, 30),
                     text: "Tools",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Tools)
+                    OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Tools)
                 ),
                 new Button(
                     rectangle: new Rectangle(10, 170, 230, 30),
@@ -68,7 +60,7 @@ namespace Showroom.Scenes
                     text: "Systems",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Systems)
+                    OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Systems)
                 ),
                 new Button(
                     rectangle: new Rectangle(250, 170, 230, 30),
@@ -82,23 +74,17 @@ namespace Showroom.Scenes
                     text: "Others",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    OnClickAction: () => Console.WriteLine("---")//Game1.ChangeToScene(WK.Scene.Others)
+                    OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Others)
                 ),
             };
 
             this.entities = new List<IEntity>()
             {
-                new Tree(new Point(400, 50), new Rectangle(64, 32, 16, 16)),
+                new MyEntity(new Point(400, 50), new Rectangle(64, 32, 16, 16), tag: "player"),
             };
-
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState, IScene scene) => UpdateSystem(viewport, lastInputState, inputState);
-            //this.dxDrawSceneSystem = (SpriteBatch spriteBatch, IScene scene, SpriteFont spriteFont) => DrawSystem(spriteBatch, scene, spriteFont);
-
-        }
-
-        public void UpdateSystem(Viewport viewport, InputState lastInputState, InputState inputState)
-        {
-            //if(camera != null) camera.Update(new Point().ToVector2());
+            
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
     }
 }

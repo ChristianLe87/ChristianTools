@@ -10,7 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Entities\MyEntity.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Tree.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WK.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Camera.cs" />

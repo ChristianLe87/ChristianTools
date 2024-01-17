@@ -40,15 +40,15 @@ namespace ChristianTools.UI
             this.OnClickAction = OnClickAction;
 
 
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState, IScene scene) => UpdateSystem(lastInputState, inputState, scene);
-            this.dxDrawSystem = (SpriteBatch spriteBatch, IScene scene) => DrawSystem(spriteBatch, scene);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
             this.isActive = true;
         }
 
-        private void UpdateSystem(InputState lastInputState, InputState inputState, IScene scene)
+        private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
             Rectangle tempRectangle;
-            if (scene.camera != null)
+            if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
                 tempRectangle = new Rectangle((int)(rectangle.X),
                     (int)(rectangle.Y), rectangle.Width, rectangle.Height);
             else
@@ -70,7 +70,7 @@ namespace ChristianTools.UI
             }
         }
 
-        private void DrawSystem(SpriteBatch spriteBatch, IScene scene)
+        private void DrawSystem(SpriteBatch spriteBatch)
         {
             Rectangle tempRectangle;
             if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
@@ -84,7 +84,7 @@ namespace ChristianTools.UI
                 spriteBatch.Draw(defaultTexture, tempRectangle, Color.White);
 
 
-            label.dxDrawSystem(spriteBatch, scene);
+            label.dxDrawSystem(spriteBatch);
         }
     }
 }

@@ -19,17 +19,23 @@ namespace ChristianTools.UI
 		{
 			this.rectangle = rectangle;
 			this.text = text;
-			this.dxDrawSystem = (SpriteBatch spriteBatch, IScene scene) => DrawSystem(spriteBatch, scene);
+			this.dxUpdateSystem = (state, inputState) => UpdateSystem();
+			this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
 			this.textAlignment = textAlignment;
 
 			this.texture2D = texture;
 		}
 
-		public void DrawSystem(SpriteBatch spriteBatch, IScene scene)
+		private void UpdateSystem()
+		{
+			if (this.isActive == false)
+				return;
+		}
+		private void DrawSystem(SpriteBatch spriteBatch)
 		{
 			Rectangle rec;
 			Point p;
-			if (scene.camera != null)
+			if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
 			{
 				rec = new Rectangle(rectangle.Location,
 					rectangle.Size);
