@@ -34,24 +34,24 @@ namespace ChristianTools.UI
 		private void DrawSystem(SpriteBatch spriteBatch)
 		{
 			Rectangle rec;
-			Point p;
+			Vector2 vec;
 			if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
 			{
-				rec = new Rectangle(rectangle.Location,
-					rectangle.Size);
-				p = new Point();
+				rec = new Rectangle(rectangle.Location + new Point(ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.X, ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.Y), rectangle.Size);
+				vec = new Vector2(ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.X, ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.Y);
 			}
 			else
 			{
 				rec = rectangle;
-				p = new Point();
+				vec = new Vector2();
 			}
+                
 
 			if (texture2D != null)
 				spriteBatch.Draw(texture2D, rec, Color.White);
 
-			spriteBatch.DrawString(ChristianGame.spriteFont, text,
-				(GetTextPosition(ChristianGame.spriteFont) + p).ToVector2(), Color.White);
+
+			spriteBatch.DrawString(ChristianGame.spriteFont, text, GetTextPosition(ChristianGame.spriteFont).ToVector2() + vec, Color.White);
 		}
 
 		private Point GetTextPosition(SpriteFont spriteFont)
