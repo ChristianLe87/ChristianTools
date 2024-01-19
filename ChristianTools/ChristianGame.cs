@@ -28,6 +28,9 @@ namespace ChristianTools
         {
             // WK
             ChristianGame.WK = WK;
+            
+            
+            // Scene
             ChristianGame.scenes = scenes;
             ChristianGame.actualScene = startScene;
 

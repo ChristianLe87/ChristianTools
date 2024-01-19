@@ -23,8 +23,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MyRectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Other.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Texture.cs" />
-    <Folder Include="$(MSBuildThisFileDirectory)Systems\Draw\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Systems\Update\" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
   </ItemGroup>

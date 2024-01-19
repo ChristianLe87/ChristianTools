@@ -20,38 +20,10 @@ namespace ChristianTools.Entities
         {
             this.animation = new Animation(rectangleStripeFromAtlas);
             this.rigidbody = new Rigidbody(rectangle: new Rectangle(position.X, position.Y, rectangleStripeFromAtlas.Width, rectangleStripeFromAtlas.Height));
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Entity.UpdateSystem(this);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Entity.DrawSystem(spriteBatch, this);
             this.tag = tag;
             this.isActive = isActive;
-        }
-        
-        
-        private void UpdateSystem()
-        {
-            if (this.isActive != true)
-                return;
-            
-            this.animation?.Update();
-            this.rigidbody?.Update();
-        }
-
-
-        private void DrawSystem(SpriteBatch spriteBatch)
-        {
-            if (this.isActive != true)
-                return;
-
-            spriteBatch.Draw(
-                texture: ChristianGame.atlasTexture2D,// atlas texture
-                destinationRectangle: rigidbody.rectangle,
-                sourceRectangle: animation.imageFromAtlas,
-                color: Color.White,
-                rotation: (float)ChristianTools.Helpers.MyMath.DegreeToRadian(rigidbody.rotationDegree), // always value radians
-                origin: new Vector2(rigidbody.rectangle.Width / 2, rigidbody.rectangle.Height / 2),
-                effects: SpriteEffects.None,
-                layerDepth: 1 / 10f 
-            );
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Showroom
         public double FPS { get; } = 60;
         public bool IsFullScreen { get; set; } = false;
         public bool AllowUserResizing { get; }
-        public int ScaleFactor { get; set; }
+        public int ScaleFactor { get; set; } = 1;
         public int canvasWidth { get; } = 500;
         public int canvasHeight { get; } = 500;
         public int AssetSize { get; }

@@ -37,10 +37,10 @@ namespace Showroom.Scenes
                 new MyEntity(position: new Point(8, 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16), tag: "player"),
 
                 new Entity(position: new Point(8, 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16)),
-                new Entity(position: new Point(ChristianGame.WK.canvasWidth - 8, 8), rectangleStripeFromAtlas: new Rectangle(80, 32, 16, 16)),
-                new Entity(position: new Point(8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas: new Rectangle(80, 32, 16, 16)),
-                new Entity(position: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas: new Rectangle(80, 32, 16, 16)),
-                new Entity(position: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), rectangleStripeFromAtlas: new Rectangle(80, 32, 16, 16))
+                new Entity(position: new Point(ChristianGame.WK.canvasWidth - 8, 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16)),
+                new Entity(position: new Point(8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16)),
+                new Entity(position: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16)),
+                new Entity(position: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16))
             };
 
             this.camera = new Camera();
