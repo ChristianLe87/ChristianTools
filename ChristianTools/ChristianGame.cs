@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -86,9 +84,7 @@ namespace ChristianTools
             
             // TODO: use this.Content to load your game content here
             atlasTexture2D = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.AtlasTextureFileName);
-
-            spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName/*MyFont_130x28_PNG*/));
-
+            spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
         }
 
         protected override void Update(GameTime gameTime)
@@ -106,14 +102,7 @@ namespace ChristianTools
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-            //_spriteBatch.Begin();
-
             
-            // Original
-            //spriteBatch.Begin(sortMode: SpriteSortMode.Immediate, blendState: BlendState.AlphaBlend, transformMatrix: scenes[actualScene].camera?.transform, effect: null);
-
             
             //https://community.monogame.net/t/fitting-pixel-art-game-to-screen/17043
             spriteBatch.Begin(
@@ -125,12 +114,8 @@ namespace ChristianTools
 
             // Scene
             if (scenes[actualScene].dxDrawSystem != null)
-            {
                 scenes[actualScene].dxDrawSystem(spriteBatch: spriteBatch);
-            }
-
-  
-
+            
 
             spriteBatch.End();
 

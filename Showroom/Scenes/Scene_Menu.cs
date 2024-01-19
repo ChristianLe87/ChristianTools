@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using ChristianTools.Components;
-using ChristianTools.Entities;
 using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
@@ -9,9 +8,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Showroom.Scenes
 {
-    public class Scene_Menu : Scene
+    public class Scene_Menu : IScene
     {
-        public override void Initialize()
+        public List<IEntity> entities { get; set; }
+        public List<IUI> UIs { get; set; }
+        public Camera camera { get; set; }
+        public DxUpdateSystem dxUpdateSystem { get; set; }
+        public DxDrawSystem dxDrawSystem { get; set; }
+
+        public void Initialize()
         {
             this.UIs = new List<IUI>()
             {
@@ -78,11 +83,14 @@ namespace Showroom.Scenes
                 ),
             };
 
+
+
+            Rectangle _2B = new Rectangle(32, 32, 16, 16);
             this.entities = new List<IEntity>()
             {
-                new MyEntity(new Point(400, 50), new Rectangle(64, 32, 16, 16), tag: "player"),
+                new Entity_WASD(new Point(400, 50), _2B, tag: "player"),
             };
-            
+
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
             this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
         }

@@ -24,7 +24,6 @@ namespace ChristianTools.Systems.Update
             if (inputState.Down)
                 entity.rigidbody.Move_Y(5);
 			
-			
             if (inputState.Right)
                 entity.rigidbody.Move_X(5);
 			

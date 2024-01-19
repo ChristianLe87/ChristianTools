@@ -30,14 +30,14 @@ namespace ChristianTools.Systems.Draw
                 // new
                 spriteBatch.Draw(
                     texture: ChristianGame.atlasTexture2D, // atlas texture 
-                    position: entity.rigidbody.rectangle.Center.ToVector2(), // new Vector2(200,200), //The drawing location on screen.
+                    position: new Vector2(entity.rigidbody.rectangle.X,entity.rigidbody.rectangle.Y),// entity.rigidbody.rectangle.Center.ToVector2(), // new Vector2(200,200), //The drawing location on screen.
                     sourceRectangle: entity.animation.imageFromAtlas, //animation.imageFromAtlas // "El pedazo que quiero sacar del atlasTexture" An optional region on the texture which will be rendered. If null - draws full texture.
                     color: Color.White,
                     rotation: (float)ChristianTools.Helpers.MyMath.DegreeToRadian(entity.rigidbody.rotationDegree), // A rotation of this sprite (always value radians)
                     origin: new Vector2(entity.rigidbody.rectangle.Width / 2, entity.rigidbody.rectangle.Height / 2), // Center of the rotation. 0,0 by default.
                     scale: new Vector2(1, 1), //A scaling of this sprite. 
                     effects: SpriteEffects.None, //Modificators for drawing. Can be combined.
-                    layerDepth: 1 / 10f
+                    layerDepth: 1f//1 / 10f
                 );
             }
         }

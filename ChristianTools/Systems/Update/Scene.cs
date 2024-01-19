@@ -29,13 +29,20 @@ namespace ChristianTools.Systems.Update
 
             // Camera
             {
+                
                 if (scene.camera != null)
                     if (scene.entities != null)
                         if (scene.entities.Where(x => x.tag == "player").Count() > 0)
-                            scene.camera.MoveCamera(scene.entities.Where(x => x.tag == "player").FirstOrDefault().rigidbody.rectangle.Center);
+                        {
+                            scene.camera.UpdateCamera(scene.entities.Where(x => x.tag == "player").FirstOrDefault().rigidbody.rectangle.Center);
+                        }
+                        else
+                        {
+                            scene.camera.UpdateCamera();
+                        }
+                
             
-                if (scene.camera != null)
-                    scene.camera.UpdateCamera();
+                //if (scene.camera != null) scene.camera.UpdateCamera(scene.entities.Where(x => x.tag == "player").FirstOrDefault().rigidbody.rectangle.Center);
             }
         }
     }    

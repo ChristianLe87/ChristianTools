@@ -1,17 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using ChristianTools;
 using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Showroom.Scenes;
 
 namespace Showroom
 {
     public class Game1 : ChristianGame
     {
-        public Game1() : base(GetScenes(), startScene: "Scene_Camera", new WK())
+        public Game1() : base(GetScenes(), startScene: "Scene_Menu", new WK())
         {
         }
 

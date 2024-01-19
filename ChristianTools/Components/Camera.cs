@@ -1,48 +1,39 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace ChristianTools.Components
 {
     public class Camera
     {
-        public float Zoom { get; private set; }
-        private Point position { get; set; }
+        private float zoom = 1;
+        private Vector2 position { get; set; }
 
         public Rectangle cameraView
         {
-            get { return ChristianTools.Helpers.MyRectangle.CreateRectangle(position, ChristianGame.WK.canvasWidth, ChristianGame.WK.canvasHeight); }
+            get { return ChristianTools.Helpers.MyRectangle.CreateRectangle(new Point((int)position.X, (int)position.Y), ChristianGame.WK.canvasWidth, ChristianGame.WK.canvasHeight); }
         }
 
         public Matrix transform { get; private set; }
 
-        public Camera()
+        public Camera(Point position = new Point())
         {
-            Zoom = 1f;
-            position = Point.Zero;// Vector2.Zero;
+            this.position = new Vector2(position.X, position.Y);
         }
 
 
         private void UpdateMatrix()
         {
-            transform = Matrix.CreateTranslation(new Vector3(-position.X, -position.Y, 0)) *
-                        Matrix.CreateScale(Zoom) *
-                        Matrix.CreateTranslation(new Vector3(ChristianGame.WK.canvasWidth * 0.5f, ChristianGame.WK.canvasWidth * 0.5f, 0));
-        }
-
-        public void MoveCamera(Point newPosition)
-        {
-            position = newPosition;
-        }
-
-        public void AdjustZoom(float zoomAmount)
-        {
-            Zoom += zoomAmount;
+            transform = Matrix.CreateTranslation(new Vector3((ChristianGame.WK.canvasWidth * 0.5f) - position.X, (ChristianGame.WK.canvasWidth * 0.5f) - position.Y, 0)) *
+                        Matrix.CreateScale(this.zoom);
         }
 
         public void UpdateCamera()
         {
+            UpdateMatrix();
+        }
+        
+        public void UpdateCamera(Point setCenter)
+        {
+            this.position = new Vector2(setCenter.X, setCenter.Y);
             UpdateMatrix();
         }
     }
