@@ -24,7 +24,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Other.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Texture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Scene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Scene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
   </ItemGroup>

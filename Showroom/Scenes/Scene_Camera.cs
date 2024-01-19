@@ -32,21 +32,38 @@ namespace Showroom.Scenes
                 )
             };
 
+            Rectangle _1R = new Rectangle(16, 16, 16, 16);
+            Rectangle _2R = new Rectangle(32, 16, 16, 16);
+            Rectangle _3R = new Rectangle(64, 16, 16, 16);
+            
+            Rectangle _1B = new Rectangle(16, 32, 16, 16);
+            Rectangle _2B = new Rectangle(32, 32, 16, 16);
+            Rectangle _3B = new Rectangle(64, 32, 16, 16);
+            
+            Rectangle _1G = new Rectangle(16, 48, 16, 16);
+            Rectangle _2G = new Rectangle(32, 48, 16, 16);
+            Rectangle _3G = new Rectangle(64, 48, 16, 16);
+
             this.entities = new List<IEntity>()
             {
-                new MyEntity(position: new Point(8, 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16), tag: "player"),
+                new MyEntity(position: new Point(8, 8), rectangleStripeFromAtlas: _2B, tag: "player"),
 
-                new Entity(position: new Point(8, 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16)),
-                new Entity(position: new Point(ChristianGame.WK.canvasWidth - 8, 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16)),
-                new Entity(position: new Point(8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16)),
-                new Entity(position: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16)),
-                new Entity(position: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), rectangleStripeFromAtlas: new Rectangle(64, 32, 16, 16))
+                // TL
+                new Entity(position: new Point(8, 8), rectangleStripeFromAtlas: _1R),
+                // TR
+                new Entity(position: new Point(ChristianGame.WK.canvasWidth - 8, 8), rectangleStripeFromAtlas: _3R),
+                // DL
+                new Entity(position: new Point(8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas:_1G),
+                // DR
+                new Entity(position: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas: _3G),
+                // center
+                new Entity(position: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), rectangleStripeFromAtlas: new Rectangle(32, 32, 16, 16))
             };
 
             this.camera = new Camera();
 
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState: lastInputState, inputState: inputState);
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
         }
     }
 }

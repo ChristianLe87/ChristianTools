@@ -18,7 +18,7 @@ namespace Showroom.Scenes
 		{
 		}
 
-		public void Initialize()
+		public override void Initialize()
 		{
 			this.UIs = new List<IUI>()
 			{
@@ -47,7 +47,11 @@ namespace Showroom.Scenes
 				//new HealthBar(ChristianTools.Helpers.MyColors.CreateColorTexture(Color.Green), ChristianTools.Helpers.MyColors.CreateColorTexture(Color.Red), new Rectangle(30, 175, 10, 50), HealthBar.Direction.Down),
 
 				new Label(rectangle: new Rectangle(100, 150, 100, 30), text: textOfChars, textAlignment: Label.TextAlignment.Top_Left, tag: "")
+				
 			};
+			
+			this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+			this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
 		}
 	}
 }

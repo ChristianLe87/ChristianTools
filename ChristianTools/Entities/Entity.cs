@@ -11,7 +11,7 @@ namespace ChristianTools.Entities
     {
         public Rigidbody rigidbody { get; }
         public Animation animation { get; }
-        public bool isActive { get; set; } = true;
+        public bool isActive { get; set; }
         public DxUpdateSystem dxUpdateSystem { get; set; }
         public DxDrawSystem dxDrawSystem { get; set; }
         public string tag { get; }

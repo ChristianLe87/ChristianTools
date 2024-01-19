@@ -53,7 +53,7 @@ namespace Showroom.Scenes
                     text: "UI",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    OnClickAction: () => Game1.ChangeToScene("UIs")
+                    OnClickAction: () => Game1.ChangeToScene("Scene_UI")
                 ),
                 new Button(
                     rectangle: new Rectangle(10, 210, 230, 30),
@@ -83,8 +83,8 @@ namespace Showroom.Scenes
                 new MyEntity(new Point(400, 50), new Rectangle(64, 32, 16, 16), tag: "player"),
             };
             
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState: lastInputState, inputState: inputState);
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
         }
     }
 }

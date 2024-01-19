@@ -24,7 +24,7 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="..\Content\Atlas_PNG.png">
-        <Link>Content/Atlas_PNG.png</Link>
+        <Link>Content\Atlas_PNG.png</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\Content\MyFont_130x28_PNG.png">
