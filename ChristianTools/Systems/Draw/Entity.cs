@@ -15,7 +15,7 @@ namespace ChristianTools.Systems.Draw
             {
                 // old
                 spriteBatch.Draw(
-                    texture: ChristianGame.atlasTexture2D, // atlas texture
+                    texture: ChristianGame.atlasEntities, // atlas texture
                     destinationRectangle: entity.rigidbody.rectangle,
                     sourceRectangle: entity.animation.imageFromAtlas,
                     color: Color.White,
@@ -29,7 +29,7 @@ namespace ChristianTools.Systems.Draw
             {
                 // new
                 spriteBatch.Draw(
-                    texture: ChristianGame.atlasTexture2D, // atlas texture 
+                    texture: ChristianGame.atlasEntities, // atlas texture 
                     position: new Vector2(entity.rigidbody.rectangle.X,entity.rigidbody.rectangle.Y),// entity.rigidbody.rectangle.Center.ToVector2(), // new Vector2(200,200), //The drawing location on screen.
                     sourceRectangle: entity.animation.imageFromAtlas, //animation.imageFromAtlas // "El pedazo que quiero sacar del atlasTexture" An optional region on the texture which will be rendered. If null - draws full texture.
                     color: Color.White,

@@ -49,6 +49,9 @@ namespace Showroom.Scenes
 
 			};
 
+			this.camera = new Camera(new Point(250,250));
+			Console.WriteLine(this.camera.cameraView);
+			
 			this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
 			this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
 		}

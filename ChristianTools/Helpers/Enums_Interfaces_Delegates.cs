@@ -17,7 +17,8 @@ namespace ChristianTools.Helpers
         public string GameDataFileName { get; }
         public bool isMouseVisible { get; set; }
         public string FontFileName { get; }
-        public string AtlasTextureFileName { get; }
+        public string Atlas_Tiles { get; }
+        public string Atlas_Entities { get; }
     }
 
     public interface IScene

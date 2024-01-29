@@ -66,7 +66,7 @@ namespace Showroom.Scenes
                 new Entity_Numbers(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), rectangleStripeFromAtlas: new Rectangle(32, 32, 16, 16))
             };
 
-            this.camera = new Camera();
+            this.camera = new Camera(new Point(250,250));
 
             this.testTexture1 = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Black, 500, 500);
             this.testTexture2 = ChristianTools.Helpers.Texture.CreateColorTexture(Color.White, 490, 490);

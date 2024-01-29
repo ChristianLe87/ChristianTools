@@ -26,7 +26,7 @@ namespace ChristianTools.UI
 
         DxOnClickAction OnClickAction;
 
-        public Button(Rectangle rectangle, string text, DxOnClickAction OnClickAction, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null)
+        public Button(Rectangle rectangle, string text, DxOnClickAction OnClickAction, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null, bool isActive = true)
         {
             this.rectangle = rectangle;
             this.defaultTexture = defaultTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray);
@@ -42,7 +42,7 @@ namespace ChristianTools.UI
 
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
             this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
-            this.isActive = true;
+            this.isActive = isActive;
         }
 
         private void UpdateSystem(InputState lastInputState, InputState inputState)

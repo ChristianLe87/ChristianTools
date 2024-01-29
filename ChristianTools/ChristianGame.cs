@@ -8,7 +8,8 @@ namespace ChristianTools
 {
     public class ChristianGame : Game
     {
-        public static Texture2D atlasTexture2D;
+        public static Texture2D atlasTiles;
+        public static Texture2D atlasEntities;
         public static SpriteFont spriteFont;
 
         public static GraphicsDeviceManager graphicsDeviceManager;
@@ -83,7 +84,8 @@ namespace ChristianTools
             scenes[actualScene].Initialize();
             
             // TODO: use this.Content to load your game content here
-            atlasTexture2D = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.AtlasTextureFileName);
+            atlasTiles = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tiles);
+            atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
         }
 

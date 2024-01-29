@@ -15,6 +15,7 @@ namespace Showroom
         public string GameDataFileName { get; }
         public bool isMouseVisible { get; set; } = true;
         public string FontFileName { get; } = "MyFont_130x28_PNG";
-        public string AtlasTextureFileName { get; } = "Atlas_PNG";
+        public string Atlas_Tiles { get; } = "Atlas_PNG";
+        public string Atlas_Entities { get; } = "Atlas_PNG";
     }
 }
