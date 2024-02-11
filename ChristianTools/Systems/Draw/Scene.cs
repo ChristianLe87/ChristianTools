@@ -16,9 +16,15 @@ namespace ChristianTools.Systems.Draw
 
             // Entities
             if (scene.entities != null)
+            {
                 for (int i = 0; i < scene.entities.Count; i++)
-                    if (scene.entities[i].dxDrawSystem != null)
+                {
+                    if (scene.entities[i].dxDrawSystem == null)
+                        ChristianTools.Systems.Draw.Entity.DrawSystem(spriteBatch, scene.entities[i]);
+                    else
                         scene.entities[i].dxDrawSystem(spriteBatch: spriteBatch);
+                }
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ChristianTools.UI
 		public bool isActive { get; }
 		private Texture2D texture2D;
 
-		public Label(Rectangle rectangle, string text, TextAlignment textAlignment, Texture2D texture = null, string tag = "", bool isActive = true)
+		public Label(Rectangle rectangle, string text, TextAlignment textAlignment = TextAlignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
 		{
 			this.rectangle = rectangle;
 			this.text = text;

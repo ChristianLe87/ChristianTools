@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WK.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Menu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Test.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_UI.cs" />
   </ItemGroup>
  </Project>

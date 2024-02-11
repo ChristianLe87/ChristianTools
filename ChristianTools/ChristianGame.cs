@@ -93,7 +93,9 @@ namespace ChristianTools
         {
             InputState inputState = new InputState();
 
-            if (scenes[actualScene].dxUpdateSystem != null)
+            if (scenes[actualScene].dxUpdateSystem == null)
+                ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+            else
                 scenes[actualScene].dxUpdateSystem(lastInputState: lastInputState, inputState: inputState);
 
             lastInputState = new InputState();
@@ -115,9 +117,10 @@ namespace ChristianTools
             );
 
             // Scene
-            if (scenes[actualScene].dxDrawSystem != null)
+            if (scenes[actualScene].dxDrawSystem == null)
+                ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch: spriteBatch);
+            else
                 scenes[actualScene].dxDrawSystem(spriteBatch: spriteBatch);
-            
 
             spriteBatch.End();
 

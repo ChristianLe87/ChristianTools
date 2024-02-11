@@ -15,6 +15,10 @@ namespace Showroom.Scenes
 		public Camera camera { get; set; }
 		public DxUpdateSystem dxUpdateSystem { get; set; }
 		public DxDrawSystem dxDrawSystem { get; set; }
+		
+		private Texture2D testTexture1;
+		private Texture2D testTexture2;
+		private Texture2D testTexture3;
 
 		public void Initialize()
 		{
@@ -49,11 +53,10 @@ namespace Showroom.Scenes
 
 			};
 
-			this.camera = new Camera(new Point(250,250));
-			Console.WriteLine(this.camera.cameraView);
+			//this.entities = new List<IEntity>();
 			
-			this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
-			this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
+			
+			this.camera = new Camera(new Point(0,0));
 		}
 	}
 }

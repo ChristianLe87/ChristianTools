@@ -15,6 +15,7 @@ namespace Showroom
         {
             Dictionary<string, IScene> scenes = new Dictionary<string, IScene>()
             {
+                { "Scene_Test", new Scene_Test() },
                 { "Scene_Menu", new Scene_Menu() },
                 { "Scene_UI", new Scene_UI() },
                 { "Scene_Camera", new Scene_Camera() }
