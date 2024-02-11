@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace ChristianTools
 {
@@ -28,22 +29,20 @@ namespace ChristianTools
             // WK
             ChristianGame.WK = WK;
             
-            
             // Scene
             ChristianGame.scenes = scenes;
             ChristianGame.actualScene = startScene;
-
             
             
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = WK.canvasWidth;
-            graphicsDeviceManager.PreferredBackBufferHeight = WK.canvasHeight;
+            //graphicsDeviceManager.PreferredBackBufferWidth = WK.canvasWidth;
+            //graphicsDeviceManager.PreferredBackBufferHeight = WK.canvasHeight;
             graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
             //graphicsDeviceManager.ToggleFullScreen();
             //graphicsDeviceManager.ApplyChanges();
             //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
-
+            //var bla = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
             
             // FPS
             base.IsFixedTimeStep = true;
@@ -92,7 +91,9 @@ namespace ChristianTools
         protected override void Update(GameTime gameTime)
         {
             InputState inputState = new InputState();
-
+            
+            if (inputState.IsKeyboardKeyDown(Keys.Escape)) Exit();
+            
             if (scenes[actualScene].dxUpdateSystem == null)
                 ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
             else

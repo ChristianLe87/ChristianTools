@@ -19,6 +19,7 @@ namespace ChristianTools.Helpers
         public string FontFileName { get; }
         public string Atlas_Tiles { get; }
         public string Atlas_Entities { get; }
+        public int TileSize { get; set; }
     }
 
     public interface IScene

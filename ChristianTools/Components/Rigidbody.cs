@@ -9,11 +9,11 @@ namespace ChristianTools.Components
 
         public Rectangle rectangle;
 
-        public Rectangle GetRectangleUp(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleUp(rectangle, scaleFactor);
-        public Rectangle GetRectangleDown(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleDown(rectangle, scaleFactor);
-        public Rectangle GetRectangleLeft(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleLeft(rectangle, scaleFactor);
-        public Rectangle GetRectangleRight(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleRight(rectangle, scaleFactor);
-        public Rectangle GetRectangleScaled(int scaleFactor) => ChristianTools.Helpers.MyRectangle.ScaleRectangleSides(rectangle, scaleFactor);
+        public Rectangle GetRectangleUp(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleUp(rectangle);
+        public Rectangle GetRectangleDown(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleDown(rectangle);
+        public Rectangle GetRectangleLeft(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleLeft(rectangle);
+        public Rectangle GetRectangleRight(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleRight(rectangle);
+        public Rectangle GetRectangleScaled(int scaleFactor) => ChristianTools.Helpers.MyRectangle.ScaleRectangleSides(rectangle);
         //public bool isGrounded(int scaleFactor) => (CanMoveDown(scaleFactor) == false);
         //Enums_Interfaces_Delegates.IEntity entity;
         

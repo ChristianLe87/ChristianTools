@@ -22,60 +22,60 @@ namespace ChristianTools.Helpers
             return CreateRectangle(centerPosition, texture2D.Width, texture2D.Height);
         }
 
-        public static Rectangle ScaleRectangleSides(Rectangle originalRectangle, int scaleFactor)
+        public static Rectangle ScaleRectangleSides(Rectangle originalRectangle)
         {
             Rectangle rectangle = new Rectangle(
-                x: (int)(originalRectangle.X - scaleFactor),
-                y: (int)(originalRectangle.Y - scaleFactor),
-                width: originalRectangle.Width + (scaleFactor * 2),
-                height: originalRectangle.Height + (scaleFactor * 2)
+                x: (int)(originalRectangle.X - ChristianGame.WK.ScaleFactor),
+                y: (int)(originalRectangle.Y - ChristianGame.WK.ScaleFactor),
+                width: originalRectangle.Width + (ChristianGame.WK.ScaleFactor * 2),
+                height: originalRectangle.Height + (ChristianGame.WK.ScaleFactor * 2)
             );
 
             return rectangle;
         }
 
-        public static Rectangle GetRectangleUp(Rectangle mainRectangle, int scaleFactor)
+        public static Rectangle GetRectangleUp(Rectangle mainRectangle)
         {
             Rectangle rectangleUp = new Rectangle(
                 x: mainRectangle.X,
-                y: mainRectangle.Y - scaleFactor,
+                y: mainRectangle.Y - ChristianGame.WK.ScaleFactor,
                 width: mainRectangle.Width,
-                height: scaleFactor
+                height: ChristianGame.WK.ScaleFactor
             );
 
             return rectangleUp;
         }
 
-        public static Rectangle GetRectangleDown(Rectangle mainRectangle, int scaleFactor)
+        public static Rectangle GetRectangleDown(Rectangle mainRectangle)
         {
             Rectangle rectangleDown = new Rectangle(
                 x: mainRectangle.X,
                 y: mainRectangle.Bottom,
                 width: mainRectangle.Width,
-                height: scaleFactor
+                height: ChristianGame.WK.ScaleFactor
             );
 
             return rectangleDown;
         }
 
-        public static Rectangle GetRectangleLeft(Rectangle mainRectangle, int scaleFactor)
+        public static Rectangle GetRectangleLeft(Rectangle mainRectangle)
         {
             Rectangle rectangleLeft = new Rectangle(
-                x: mainRectangle.X - scaleFactor,
+                x: mainRectangle.X - ChristianGame.WK.ScaleFactor,
                 y: mainRectangle.Y,
-                width: scaleFactor,
+                width: ChristianGame.WK.ScaleFactor,
                 height: mainRectangle.Height
             );
 
             return rectangleLeft;
         }
 
-        public static Rectangle GetRectangleRight(Rectangle mainRectangle, int scaleFactor)
+        public static Rectangle GetRectangleRight(Rectangle mainRectangle)
         {
             Rectangle rectangleRight = new Rectangle(
                 x: mainRectangle.Right,
                 y: mainRectangle.Y,
-                width: scaleFactor,
+                width: ChristianGame.WK.ScaleFactor,
                 height: mainRectangle.Height
             );
 
