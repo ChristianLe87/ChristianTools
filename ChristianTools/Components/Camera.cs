@@ -14,9 +14,9 @@ namespace ChristianTools.Components
 
         public Matrix transform { get; private set; }
 
-        public Camera(Point position)
+        public Camera()
         {
-            this.position = new Vector2(position.X, position.Y);
+            this.position = new Vector2();
         }
 
 

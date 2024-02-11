@@ -56,7 +56,7 @@ namespace Showroom.Scenes
 			//this.entities = new List<IEntity>();
 			
 			
-			this.camera = new Camera(new Point(0,0));
+			this.camera = new Camera();
 		}
 	}
 }
