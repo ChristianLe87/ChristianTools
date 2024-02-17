@@ -13,7 +13,7 @@ namespace Showroom_Shared
     public class Game1 : ChristianGame
     {
         //private List<IScene> scenes = GetScenes();
-        public Game1() : base("SceneEntitiesBullet", new WK())
+        public Game1() : base("UIs", new WK())
         {
             ChristianGame.scenes = new Dictionary<string, IScene>()
             {
