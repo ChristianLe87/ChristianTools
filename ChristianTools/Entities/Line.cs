@@ -6,13 +6,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Entities
 {
-    /*public class Line : IEntity
+    public class Line : IEntity
     {
         Rectangle[] rectangles;
 
         Point start;
         Point end;
         int thickness;
+        private Texture2D texture2D;
 
         public Rigidbody rigidbody { get; }
         public bool isActive { get; set; }
@@ -22,23 +23,23 @@ namespace ChristianTools.Entities
         public Animation animation { get; }
         //public CharacterState characterState { get; set; }
 
-        public DxUpdateSystem dxUpdateSystem { get; }
+        public DxUpdateSystem dxUpdateSystem { get; set; }
         public DxDrawSystem dxDrawSystem { get; set; }
 
-        public Line(Point start, Point end, int thickness, Rectangle texture2D, string tag)
+        public Line(Point start, Point end, Color color, int thickness = 5, string tag = "")
         {
             this.start = start;
             this.end = end;
             this.thickness = thickness;
-            this.animation = new Animation(texture2D);
+            this.texture2D = ChristianTools.Helpers.Texture.CreateColorTexture(color, thickness, thickness);
             this.tag = tag;
             this.isActive = true;
             CreateLine();
 
-            this.dxDrawSystem = (SpriteBatch spriteBatch, IScene scene) => DrawSystem(spriteBatch);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
-        public void UpdatePoints(Point? start, Point? end)
+        public void UpdatePoints(Point? start= null, Point? end= null)
         {
             if (start != null)
                 this.start = new Point(start.Value.X, start.Value.Y);
@@ -53,7 +54,7 @@ namespace ChristianTools.Entities
         {
             foreach (var rectangle in rectangles)
             {
-                spriteBatch.Draw(animation.imageFromAtlas, Color.White);
+                spriteBatch.Draw(texture2D, rectangle, Color.White);
             }
         }
 
@@ -180,5 +181,5 @@ namespace ChristianTools.Entities
                 }
             }
         }
-    }*/
+    }
 }

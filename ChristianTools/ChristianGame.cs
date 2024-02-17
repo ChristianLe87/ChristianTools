@@ -36,8 +36,8 @@ namespace ChristianTools
             
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            //graphicsDeviceManager.PreferredBackBufferWidth = WK.canvasWidth;
-            //graphicsDeviceManager.PreferredBackBufferHeight = WK.canvasHeight;
+            graphicsDeviceManager.PreferredBackBufferWidth = WK.canvasWidth;
+            graphicsDeviceManager.PreferredBackBufferHeight = WK.canvasHeight;
             graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
             //graphicsDeviceManager.ToggleFullScreen();
             //graphicsDeviceManager.ApplyChanges();

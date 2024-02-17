@@ -37,7 +37,7 @@ namespace Showroom.Scenes
                     text: "Entities",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Entities)
+                    OnClickAction: () => Game1.ChangeToScene("Scene_Entities")
                 ),
                 new Button(
                     rectangle: new Rectangle(10, 90, 230, 30),

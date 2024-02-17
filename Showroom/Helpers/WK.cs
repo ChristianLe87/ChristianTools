@@ -7,7 +7,7 @@ namespace Showroom
         
         public string WindowTitle { get; } = "Showroom";
         public double FPS { get; } = 60;
-        public bool IsFullScreen { get; set; } = !false;
+        public bool IsFullScreen { get; set; } = false;
         public bool AllowUserResizing { get; }
         public int ScaleFactor { get; set; } = 2;
         public int canvasWidth { get; } = 500;

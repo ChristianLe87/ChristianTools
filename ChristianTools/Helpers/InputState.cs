@@ -110,8 +110,11 @@ namespace ChristianTools.Helpers
             return mouseState.Position;
         }
         
-
         public ButtonState Mouse_LeftButton => mouseState.LeftButton;
+        public ButtonState Mouse_RightButton => mouseState.RightButton;
+        public bool Mouse_LeftButton_Click =>(Mouse_LeftButton == ButtonState.Pressed) ? true : false;
+        public bool Mouse_RightButton_Click =>(Mouse_RightButton == ButtonState.Pressed) ? true : false;
+
 
         // Touch
         private static Point lastTouch = new Point();
