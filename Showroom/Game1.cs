@@ -20,6 +20,7 @@ namespace Showroom
                 { "Scene_UI", new Scene_UI() },
                 { "Scene_Camera", new Scene_Camera() },
                 { "Scene_Entities", new Scene_Entities() },
+                { "Scene_Tiles", new Scene_Tiles() },
                 //{ "SceneEntitiesBullet", new Scene_Entities_Bullet() }
             };
 

@@ -68,6 +68,13 @@ namespace Showroom.Scenes
                     OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Systems)
                 ),
                 new Button(
+                    rectangle: new Rectangle(250, 130, 230, 30),
+                    text: "Tiles",
+                    defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
+                    mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
+                    OnClickAction: () => Game1.ChangeToScene("Scene_Tiles")
+                ),
+                new Button(
                     rectangle: new Rectangle(250, 170, 230, 30),
                     text: "Camera",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
