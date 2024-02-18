@@ -51,13 +51,14 @@ namespace Showroom.Scenes
 				// Back to menu
 				new Button(rectangle: new Rectangle(10, 400, 100, 50), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
 
-				new LineUI(start: new Point(0, 0), end: new Point(500, 500), color: Color.Red),
+				new LineUI(start: new Point(400, 100), end: new Point(350, 150), color: Color.Red),
+				new LineUI(start: new Point(350, 100), end: new Point(400, 150), color: Color.Green),
 			};
 
 			//this.entities = new List<IEntity>();
 			
 			
-			this.camera = new Camera();
+			//this.camera = new Camera();
 			
 			this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
 			this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
