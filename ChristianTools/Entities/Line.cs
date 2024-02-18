@@ -10,8 +10,8 @@ namespace ChristianTools.Entities
     {
         Rectangle[] rectangles;
 
-        Point start;
-        Point end;
+        public Point start { get; private set; }
+        public Point end { get; private set; }
         int thickness;
         private Texture2D texture2D;
 

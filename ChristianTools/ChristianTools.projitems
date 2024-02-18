@@ -29,5 +29,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Scene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\LineUI.cs" />
   </ItemGroup>
  </Project>

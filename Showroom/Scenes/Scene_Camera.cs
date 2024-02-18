@@ -35,7 +35,9 @@ namespace Showroom.Scenes
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                     OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
-                )
+                ),
+                
+                new LineUI(start: new Point(0, 0), end: new Point(500, 500), color: Color.Red),
             };
 
             Rectangle _1R = new Rectangle(16, 16, 16, 16);

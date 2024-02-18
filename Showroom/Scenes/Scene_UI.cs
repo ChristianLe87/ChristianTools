@@ -44,13 +44,14 @@ namespace Showroom.Scenes
 				new Label(new Rectangle(230, 10, 100, 30), "My Text", Label.TextAlignment.Top_Right, ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray)),
 				new Label(new Rectangle(230, 50, 100, 30), "My Text", Label.TextAlignment.Midle_Right, ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray)),
 				new Label(new Rectangle(230, 90, 100, 30), "My Text", Label.TextAlignment.Down_Right, ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray)),
-				
+
 				// textOfChars 
 				new Label(rectangle: new Rectangle(100, 150, 100, 30), text: textOfChars, textAlignment: Label.TextAlignment.Top_Left, tag: ""),
 
 				// Back to menu
 				new Button(rectangle: new Rectangle(10, 400, 100, 50), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
 
+				new LineUI(start: new Point(0, 0), end: new Point(500, 500), color: Color.Red),
 			};
 
 			//this.entities = new List<IEntity>();

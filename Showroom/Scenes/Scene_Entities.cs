@@ -42,7 +42,7 @@ namespace Showroom.Scenes
 
             this.entities = new List<IEntity>()
             {
-                new Line(new Point(100, 100), new Point(500, 500), Color.Red, tag:"RedLine"),
+                new ChristianTools.Entities.Line(new Point(100, 100), new Point(500, 500), Color.Red, tag:"RedLine"),
                 new Entity_WASD(centerPosition: new Point(250, 250), rectangleStripeFromAtlas: _2B, tag: "player"),
                 
                 // TL
@@ -67,7 +67,7 @@ namespace Showroom.Scenes
 
         private void UpdateLine(InputState lastInputState, InputState inputState)
         {
-            Line line = entities.Where(x => x.tag == "RedLine").FirstOrDefault() as Line;
+            ChristianTools.Entities.Line line = entities.Where(x => x.tag == "RedLine").FirstOrDefault() as ChristianTools.Entities.Line;
             
             if (lastInputState.Mouse_LeftButton_Click)
             {

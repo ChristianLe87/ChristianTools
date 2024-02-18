@@ -14,7 +14,7 @@ namespace ChristianTools.Systems.Update
             {
                 if (scene.UIs != null)
                     foreach (var ui in scene.UIs)
-                        ui.dxUpdateSystem(lastInputState: lastInputState, inputState: inputState);
+                        ui.dxUpdateSystem?.Invoke(lastInputState: lastInputState, inputState: inputState);
             }
          
 
