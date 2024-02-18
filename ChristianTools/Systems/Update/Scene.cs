@@ -24,36 +24,28 @@ namespace ChristianTools.Systems.Update
                 {
                     for (int i = 0; i < scene.entities.Count; i++)
                     {
-                        if (scene.entities[i].dxUpdateSystem == null)
-                            ChristianTools.Systems.Update.Entity.UpdateSystem(scene.entities[i]);
-                        else
-                            scene.entities[i].dxUpdateSystem(lastInputState: lastInputState, inputState: inputState);
+                        ChristianTools.Systems.Update.Entity.UpdateSystem(scene.entities[i]);
+                        scene.entities[i].dxUpdateSystem?.Invoke(lastInputState, inputState);
                     }
                 }
             }
-          
+
 
             // Camera
             {
                 if (scene.camera != null)
                 {
+                    scene.camera.UpdateCamera();
+
                     if (scene.entities != null)
                     {
                         if (scene.entities.Where(x => x.tag == "player").Count() > 0)
                         {
-                            scene.camera.UpdateCamera(scene.entities.Where(x => x.tag == "player").FirstOrDefault().rigidbody.rectangle.Center);
+                            IEntity player = scene.entities.Where(x => x.tag == "player").FirstOrDefault();
+                            scene.camera.UpdateCamera(player.rigidbody.rectangle.Center);
                         }
-                        else
-                        {
-                            scene.camera.UpdateCamera();
-                        }
-                    }
-                    else
-                    {
-                        scene.camera.UpdateCamera();
                     }
                 }
-                //if (scene.camera != null) scene.camera.UpdateCamera(scene.entities.Where(x => x.tag == "player").FirstOrDefault().rigidbody.rectangle.Center);
             }
         }
     }    

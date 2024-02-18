@@ -8,6 +8,7 @@ using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Showroom.Scenes
 {
@@ -26,10 +27,6 @@ namespace Showroom.Scenes
                 // Back to menu
                 new Button(rectangle: new Rectangle(10, 400, 100, 50), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
             };
-
- 
-
-            
             
             Rectangle _1R = new Rectangle(16, 16, 16, 16);
             Rectangle _2R = new Rectangle(32, 16, 16, 16);
@@ -46,7 +43,7 @@ namespace Showroom.Scenes
             this.entities = new List<IEntity>()
             {
                 new Line(new Point(100, 100), new Point(500, 500), Color.Red, tag:"RedLine"),
-
+                new Entity_WASD(centerPosition: new Point(250, 250), rectangleStripeFromAtlas: _2B, tag: "player"),
                 
                 // TL
                 new Entity_Numbers(centerPosition: new Point(8, 8), rectangleStripeFromAtlas: _1R, tag: "TL"),
@@ -61,31 +58,31 @@ namespace Showroom.Scenes
             };
 
 
-            // ToDo: Si hay camara, no hay update, si hay update no hay camara, (Averiguar por que no funciona con camara)
-            //this.camera = new Camera();
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateLine(lastInputState: lastInputState);
+            this.camera = new Camera();
+            
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateLine(lastInputState: lastInputState, inputState: inputState);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
         }
 
 
-        private void UpdateLine(InputState lastInputState)
+        private void UpdateLine(InputState lastInputState, InputState inputState)
         {
+            Line line = entities.Where(x => x.tag == "RedLine").FirstOrDefault() as Line;
+            
             if (lastInputState.Mouse_LeftButton_Click)
             {
-                Line line = entities.Where(x => x.tag == "RedLine").FirstOrDefault() as Line;
-            
-                Point? point = lastInputState.Mouse_OnWindowPosition();
-                line.UpdatePoints(end: point);    
+                Point? point = lastInputState.Mouse_OnWorldPosition();
+                line.UpdatePoints(end: point); 
+                Console.WriteLine(lastInputState.Mouse_OnWorldPosition());
             }
             
             if (lastInputState.Mouse_RightButton_Click)
             {
-                Line line = entities.Where(x => x.tag == "RedLine").FirstOrDefault() as Line;
-            
-                Point? point = lastInputState.Mouse_OnWindowPosition();
+                Point? point = lastInputState.Mouse_OnWorldPosition();
                 line.UpdatePoints(start: point);    
             }
             
-            Console.WriteLine(lastInputState.Mouse_OnWorldPosition());
+            ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
         }
 
     }

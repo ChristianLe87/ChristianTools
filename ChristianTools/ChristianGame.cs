@@ -94,10 +94,15 @@ namespace ChristianTools
             
             if (inputState.IsKeyboardKeyDown(Keys.Escape)) Exit();
             
-            if (scenes[actualScene].dxUpdateSystem == null)
+            
+            // Scene
+            {
                 ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
-            else
-                scenes[actualScene].dxUpdateSystem(lastInputState: lastInputState, inputState: inputState);
+                
+                scenes[actualScene].dxUpdateSystem?.Invoke(lastInputState: lastInputState, inputState: inputState);
+            }
+
+
 
             lastInputState = new InputState();
 
@@ -107,8 +112,8 @@ namespace ChristianTools
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
-            
+
+
             //https://community.monogame.net/t/fitting-pixel-art-game-to-screen/17043
             spriteBatch.Begin(
                 sortMode: SpriteSortMode.Immediate,
@@ -118,17 +123,17 @@ namespace ChristianTools
             );
 
             // Scene
-            if (scenes[actualScene].dxDrawSystem == null)
-                ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch: spriteBatch);
-            else
-                scenes[actualScene].dxDrawSystem(spriteBatch: spriteBatch);
+            scenes[actualScene].dxDrawSystem?.Invoke(spriteBatch: spriteBatch);
+
+
+
 
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
-        
-        
+
+
         public static void ChangeToScene(string scene, Vector2? playerPosition = null)
         {
             //JsonSerialization.Update(ChristianGame.gameData, ChristianGame.gameDataFileName);

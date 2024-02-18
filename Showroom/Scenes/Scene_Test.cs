@@ -31,6 +31,9 @@ namespace Showroom.Scenes
             {
                 new Label(new Rectangle(0, 0, 100, 50), "Hello")
             };
+            
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
         }
     }
 

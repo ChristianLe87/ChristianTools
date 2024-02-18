@@ -19,10 +19,7 @@ namespace ChristianTools.Systems.Draw
             {
                 for (int i = 0; i < scene.entities.Count; i++)
                 {
-                    if (scene.entities[i].dxDrawSystem == null)
-                        ChristianTools.Systems.Draw.Entity.DrawSystem(spriteBatch, scene.entities[i]);
-                    else
-                        scene.entities[i].dxDrawSystem(spriteBatch: spriteBatch);
+                    scene.entities[i].dxDrawSystem?.Invoke(spriteBatch: spriteBatch);
                 }
             }
         }

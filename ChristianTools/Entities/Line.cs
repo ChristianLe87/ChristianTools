@@ -58,7 +58,7 @@ namespace ChristianTools.Entities
             }
         }
 
-        void CreateLine()
+        private void CreateLine()
         {
             int amountOn_X = Math.Abs(start.X - end.X) / thickness;
             int amountOn_Y = Math.Abs(start.Y - end.Y) / thickness;

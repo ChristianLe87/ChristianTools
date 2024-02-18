@@ -72,7 +72,7 @@ namespace Showroom.Scenes
             this.testTexture2 = ChristianTools.Helpers.Texture.CreateColorTexture(Color.White, 490, 490);
             this.testTexture3 = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green, 50, 50);
 
-            //this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
             this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem_Test(spriteBatch);
         }
 
