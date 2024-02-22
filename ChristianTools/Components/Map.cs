@@ -4,40 +4,24 @@ using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Components
 {
-    //public interface ITile{}
-
-    public class MyTile
-    {
-        public Rectangle worldRectangle { get; private set; }
-        public int image { get; private set; }
-        public Tiled.LayerId layerId { get; private set; }
-
-        public MyTile(Rectangle worldRectangle, int image, Tiled.LayerId layerId)
-        {
-            this.worldRectangle = worldRectangle;
-            this.image = image;
-            this.layerId = layerId;
-        }
-    }
-
     public class Map
     {
-        //public List<MyTile> backgroundLayer;
-        public List<MyTile> mainLayer { get; private set; }
-        //public List<MyTile> collidersLayer;
-        //public List<MyTile> frontLayer;
+        //public List<Tile> backgroundLayer;
+        public List<Tile> mainLayer { get; private set; }
+        //public List<Tile> collidersLayer;
+        //public List<Tile> frontLayer;
 
-        //public List<MyTile> shadowsLayer;
-        //public List<MyTile> lightsLayer;
+        //public List<Tile> shadowsLayer;
+        //public List<Tile> lightsLayer;
 
         public Map(Tiled tiled)
         {
             this.mainLayer = GetTiles(Tiled.LayerId.Main, tiled);
         }
 
-        private List<MyTile> GetTiles(Components.Tiled.LayerId layerId, Tiled tiled)
+        private List<Tile> GetTiles(Components.Tiled.LayerId layerId, Tiled tiled)
         {
-            List<MyTile> result = new List<MyTile>();
+            List<Tile> result = new List<Tile>();
 
             List<Tiled.Layers> tiledLayer = tiled.layers.Where(x => x.id == layerId && x.visible == true).ToList();
             List<Tiled.Chunks> tiledChunks = tiledLayer.Select(x => x.chunks).FirstOrDefault().ToList();
@@ -52,9 +36,9 @@ namespace ChristianTools.Components
             return result;
         }
 
-        private List<MyTile> GetTilesFromChunks(int[,] map, Tiled.LayerId layerId, Point mapTopLeftCorner)
+        private List<Tile> GetTilesFromChunks(int[,] map, Tiled.LayerId layerId, Point mapTopLeftCorner)
         {
-            List<MyTile> tiles = new List<MyTile>();
+            List<Tile> tiles = new List<Tile>();
 
             for (int row = 0; row < map.GetLength(0); row++)
             {
@@ -68,7 +52,7 @@ namespace ChristianTools.Components
                         height: ChristianGame.WK.TileSize
                     );
 
-                    MyTile tile = new MyTile(
+                    Tile tile = new Tile(
                         worldRectangle: rectangle,
                         image: map[row, element],
                         layerId: layerId

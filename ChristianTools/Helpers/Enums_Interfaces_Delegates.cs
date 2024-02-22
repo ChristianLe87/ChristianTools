@@ -26,6 +26,7 @@ namespace ChristianTools.Helpers
     {
         List<IEntity> entities { get; set; }
         List<IUI> UIs { get; set; }
+        Map map { get; set; }
         Camera camera { get; set; }
         public DxUpdateSystem dxUpdateSystem { get; set; }
         public DxDrawSystem dxDrawSystem { get; set; }

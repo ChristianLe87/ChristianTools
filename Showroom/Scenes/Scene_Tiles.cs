@@ -12,6 +12,7 @@ namespace Showroom.Scenes
     {
         public List<IEntity> entities { get; set; }
         public List<IUI> UIs { get; set; }
+        public Map map { get; set; }
         public Camera camera { get; set; }
         public DxUpdateSystem dxUpdateSystem { get; set; }
         public DxDrawSystem dxDrawSystem { get; set; }
@@ -26,7 +27,7 @@ namespace Showroom.Scenes
             //string absolutePath = Path.Combine("Content" /*contentManager.RootDirectory*/, $"{tiledMapName}.json");
 
             Tiled tiled = Tiled.Read_Tiled_JsonSerialization<Tiled>(Path.Combine("MyMap", "MyMap_1"));
-            Map map = new Map(tiled);
+            this.map = new Map(tiled);
 
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
             this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);

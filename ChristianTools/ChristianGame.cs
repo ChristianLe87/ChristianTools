@@ -72,8 +72,7 @@ namespace ChristianTools
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
+            // Code
             base.Initialize();
         }
 
@@ -82,7 +81,7 @@ namespace ChristianTools
             spriteBatch = new SpriteBatch(GraphicsDevice);
             scenes[actualScene].Initialize();
             
-            // TODO: use this.Content to load your game content here
+            // Code
             atlasTiles = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tiles);
             atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));

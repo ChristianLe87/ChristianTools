@@ -1,3 +1,4 @@
+using ChristianTools.Components;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -9,6 +10,16 @@ namespace ChristianTools.Systems.Draw
         {
             IScene scene = ChristianGame.scenes[ChristianGame.actualScene];
             
+            // Map
+            if (scene.map != null)
+            {
+                //mainLayer
+                foreach (Tile myTile in scene.map.mainLayer)
+                {
+                    Systems.Draw.Map.Tile.DrawSystem(spriteBatch, myTile);
+                }
+            }
+
             // UIs
             if (scene.UIs != null)
                 foreach (var ui in scene.UIs)

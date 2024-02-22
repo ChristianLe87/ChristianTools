@@ -76,7 +76,6 @@ namespace ChristianTools.Helpers
 
         public static T[,] RotateArray_180_AntiClockwise<T>(T[,] array)
         {
-            // todo: Do this better
             array = RotateArray_90_AntiClockwise(array);
             array = RotateArray_90_AntiClockwise(array);
             return array;
