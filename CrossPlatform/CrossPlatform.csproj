@@ -21,6 +21,7 @@
     <ItemGroup>
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303"/>
         <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
     <ItemGroup>
       <Content Include="..\Content\Atlas_PNG.png">
@@ -29,6 +30,10 @@
       </Content>
       <Content Include="..\Content\MyFont_130x28_PNG.png">
         <Link>Content/MyFont_130x28_PNG.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="..\Content\MyMap\MyMap_1.json">
+        <Link>Content\MyMap\MyMap_1.json</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\Content\Tree.png">

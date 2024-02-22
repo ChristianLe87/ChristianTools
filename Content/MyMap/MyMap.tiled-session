@@ -8,11 +8,11 @@
     ],
     "fileStates": {
         "MyMap_1.json": {
-            "scale": 1.2028,
-            "selectedLayer": 0,
+            "scale": 2.1247,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 7.89823744595941,
-                "y": -149.23511805786495
+                "x": 138.6078034546054,
+                "y": 8.707111592224777
             }
         },
         "MyTileset.json": {
@@ -35,8 +35,8 @@
     ],
     "project": "MyMap.tiled-project",
     "recentFiles": [
-        "MyTileset.json",
-        "MyMap_1.json"
+        "MyMap_1.json",
+        "MyTileset.json"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.tileSize": {

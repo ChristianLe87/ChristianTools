@@ -13,8 +13,8 @@ namespace ChristianTools.Helpers
         public int ScaleFactor { get; set; }
         public int canvasWidth { get; }
         public int canvasHeight { get; }
-        public int AssetSize { get; }
-        public string GameDataFileName { get; }
+        //public int AssetSize { get; }
+        //public string GameDataFileName { get; }
         public bool isMouseVisible { get; set; }
         public string FontFileName { get; }
         public string Atlas_Tiles { get; }
