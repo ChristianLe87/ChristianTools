@@ -19,11 +19,11 @@ namespace ChristianTools.Components
         {
             Tilemap tilemap = ChristianTools.Components.Tiled.Helpers.Read_Tiled_JsonSerialization<Tilemap>(tilemapFile);
             Tileset tileset = ChristianTools.Components.Tiled.Helpers.Read_Tiled_JsonSerialization<Tileset>(tilesetFile);
-
-            this.mainLayer = GetTiles(Tilemap.LayerId.Main, tilemap);
+            
+            this.mainLayer = GetTiles(Tilemap.LayerId.Main, tilemap, tileset);
         }
 
-        private List<Tile> GetTiles(Components.Tiled.Tilemap.LayerId layerId, Tilemap tilemap)
+        private List<Tile> GetTiles(Components.Tiled.Tilemap.LayerId layerId, Tilemap tilemap, Tileset tileset)
         {
             List<Tile> result = new List<Tile>();
 
@@ -33,15 +33,29 @@ namespace ChristianTools.Components
             foreach (Tilemap.Chunks chunk in tiledChunks)
             {
                 int[,] map = Helpers.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
-                
-                result = GetTilesFromChunks(map, layerId, new Point(chunk.x, chunk.y));
+                result = GetTilesFromChunks(map, layerId, new Point(chunk.x, chunk.y), tileset);
             }
             
             return result;
         }
 
-        private List<Tile> GetTilesFromChunks(int[,] map, Tilemap.LayerId layerId, Point mapTopLeftCorner)
+        private List<Tile> GetTilesFromChunks(int[,] map, Tilemap.LayerId layerId, Point mapTopLeftCorner, Tileset tileset)
         {
+            // Tileset
+            int[,] tilesetMultidimentional;
+            {
+                int[] tilesetFlat = new int[tileset.tilecount];
+                for (int i = 0; i < tileset.tilecount; i++)
+                {
+                    tilesetFlat[i] = i + 1;
+                }
+
+                tilesetMultidimentional = ChristianTools.Helpers.Other.ToMultidimentional(tilesetFlat, tileset.columns, tileset.tilecount / tileset.columns);
+            }
+
+
+
+            // Tilemap
             List<Tile> tiles = new List<Tile>();
 
             for (int row = 0; row < map.GetLength(0); row++)
@@ -58,7 +72,7 @@ namespace ChristianTools.Components
 
                     Tile tile = new Tile(
                         worldRectangle: rectangle,
-                        image: map[row, element],
+                        imageFromAtlas: GetImageFromAtrlasBasedOnImageCode(tilesetMultidimentional, map[row, element]),
                         layerId: layerId
                     );
 
@@ -67,6 +81,26 @@ namespace ChristianTools.Components
             }
 
             return tiles;
+
+            // Helpers
+            Rectangle GetImageFromAtrlasBasedOnImageCode(int[,] tilesetMultidimentional, int imageCode)
+            {
+                int filas = tilesetMultidimentional.GetLength(0);
+                int columnas = tilesetMultidimentional.GetLength(1);
+
+                for (int i = 0; i < filas; i++)
+                {
+                    for (int j = 0; j < columnas; j++)
+                    {
+                        if (tilesetMultidimentional[i, j] == imageCode)
+                        {
+                            return new Rectangle(i * tileset.tilewidth, j * tileset.tileheight, tileset.tilewidth, tileset.tileheight);
+                        }
+                    }
+                }
+                
+                return new Rectangle();
+            }
         }
 
         /*private List<IShadow> GetShadows(int[,] map, Point mapTopLeftCorner)
