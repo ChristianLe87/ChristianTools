@@ -3,16 +3,16 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "MyMap_1.json",
+    "activeFile": "MyTileset.json",
     "expandedProjectPaths": [
     ],
     "fileStates": {
         "MyMap_1.json": {
-            "scale": 2.1247,
+            "scale": 2.1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 139.0784581352662,
-                "y": 8.707111592224777
+                "x": 128.09523809523807,
+                "y": 128.0952380952381
             }
         },
         "MyTileset.json": {

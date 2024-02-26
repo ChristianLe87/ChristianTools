@@ -1,3 +1,4 @@
+using ChristianTools.Components.Tiled;
 using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Components
@@ -6,9 +7,9 @@ namespace ChristianTools.Components
     {
         public Rectangle worldRectangle { get; private set; }
         public int image { get; private set; }
-        public Tiled.LayerId layerId { get; private set; }
+        public Tilemap.LayerId layerId { get; private set; }
 
-        public Tile(Rectangle worldRectangle, int image, Tiled.LayerId layerId)
+        public Tile(Rectangle worldRectangle, int image, Tilemap.LayerId layerId)
         {
             this.worldRectangle = worldRectangle;
             this.image = image;

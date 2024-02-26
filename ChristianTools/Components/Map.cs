@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using ChristianTools.Components.Tiled;
 
 namespace ChristianTools.Components
 {
@@ -14,19 +15,22 @@ namespace ChristianTools.Components
         //public List<Tile> shadowsLayer;
         //public List<Tile> lightsLayer;
 
-        public Map(Tiled tiled)
+        public Map(string tilemapFile, string tilesetFile)
         {
-            this.mainLayer = GetTiles(Tiled.LayerId.Main, tiled);
+            Tilemap tilemap = ChristianTools.Components.Tiled.Helpers.Read_Tiled_JsonSerialization<Tilemap>(tilemapFile);
+            Tileset tileset = ChristianTools.Components.Tiled.Helpers.Read_Tiled_JsonSerialization<Tileset>(tilesetFile);
+
+            this.mainLayer = GetTiles(Tilemap.LayerId.Main, tilemap);
         }
 
-        private List<Tile> GetTiles(Components.Tiled.LayerId layerId, Tiled tiled)
+        private List<Tile> GetTiles(Components.Tiled.Tilemap.LayerId layerId, Tilemap tilemap)
         {
             List<Tile> result = new List<Tile>();
 
-            List<Tiled.Layers> tiledLayer = tiled.layers.Where(x => x.id == layerId && x.visible == true).ToList();
-            List<Tiled.Chunks> tiledChunks = tiledLayer.Select(x => x.chunks).FirstOrDefault().ToList();
+            List<Tilemap.Layers> tiledLayer = tilemap.layers.Where(x => x.id == layerId && x.visible == true).ToList();
+            List<Tilemap.Chunks> tiledChunks = tiledLayer.Select(x => x.chunks).FirstOrDefault().ToList();
             
-            foreach (Tiled.Chunks chunk in tiledChunks)
+            foreach (Tilemap.Chunks chunk in tiledChunks)
             {
                 int[,] map = Helpers.Other.ToMultidimentional(chunk.data, chunk.width, chunk.height);
                 
@@ -36,7 +40,7 @@ namespace ChristianTools.Components
             return result;
         }
 
-        private List<Tile> GetTilesFromChunks(int[,] map, Tiled.LayerId layerId, Point mapTopLeftCorner)
+        private List<Tile> GetTilesFromChunks(int[,] map, Tilemap.LayerId layerId, Point mapTopLeftCorner)
         {
             List<Tile> tiles = new List<Tile>();
 

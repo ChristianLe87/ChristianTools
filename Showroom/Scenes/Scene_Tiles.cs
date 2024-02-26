@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using ChristianTools.Components;
+using ChristianTools.Components.Tiled;
 using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
@@ -24,10 +25,8 @@ namespace Showroom.Scenes
                 // Back to menu
                 new Button(rectangle: new Rectangle(10, 400, 100, 50), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
             };
-            //string absolutePath = Path.Combine("Content" /*contentManager.RootDirectory*/, $"{tiledMapName}.json");
-
-            Tiled tiled = Tiled.Read_Tiled_JsonSerialization<Tiled>(Path.Combine("MyMap", "MyMap_1"));
-            this.map = new Map(tiled);
+            
+            this.map = new Map("MyMap/MyMap_1","MyMap/MyTileset");
 
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
             this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);

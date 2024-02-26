@@ -36,6 +36,10 @@
         <Link>Content\MyMap\MyMap_1.json</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <Content Include="..\Content\MyMap\MyTileset.json">
+        <Link>Content\MyMap\MyTileset.json</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <Content Include="..\Content\Tree.png">
         <Link>Content/Tree.png</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
