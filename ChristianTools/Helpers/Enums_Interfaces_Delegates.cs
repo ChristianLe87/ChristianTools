@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ChristianTools.Components;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,7 +18,8 @@ namespace ChristianTools.Helpers
         //public string GameDataFileName { get; }
         public bool isMouseVisible { get; set; }
         public string FontFileName { get; }
-        public string Atlas_Tiles { get; }
+        public Dictionary<string, string> Atlas_Tilemap { get; }
+        public string Atlas_Tileset { get; }
         public string Atlas_Entities { get; }
         public int TileSize { get; set; }
     }
