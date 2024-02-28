@@ -14,7 +14,7 @@ namespace ChristianTools.Systems.Draw
             if (scene.map != null)
             {
                 //mainLayer
-                foreach (Tile myTile in scene.map.mainLayer)
+                foreach (Tile myTile in scene.map.mainTiles)
                 {
                     Systems.Draw.Map.Tile.DrawSystem(spriteBatch, myTile);
                 }

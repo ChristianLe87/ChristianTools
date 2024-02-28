@@ -84,10 +84,10 @@ namespace Showroom.Scenes
                 ),
                 new Button(
                     rectangle: new Rectangle(250, 210, 230, 30),
-                    text: "Others",
+                    text: "Scene_Test",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
-                    OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Others)
+                    OnClickAction: () => Game1.ChangeToScene("Scene_Test")
                 ),
             };
 

@@ -1,7 +1,7 @@
 
 namespace ChristianTools.Components.Tiled
 {
-    public class Tileset
+    /*public class Tileset
     {
         public int columns { get; set; }
         public string image { get; set; }
@@ -16,5 +16,5 @@ namespace ChristianTools.Components.Tiled
         public int tilewidth { get; set; }
         public string type { get; set; }
         public string version { get; set; }
-    }
+    }*/
 }

@@ -15,7 +15,7 @@ namespace ChristianTools.Entities
         int thickness;
         private Texture2D texture2D;
 
-        public Rigidbody rigidbody { get; }
+        public IRigidbody rigidbody { get; }
         public bool isActive { get; set; }
         public string tag { get; }
         public int health { get; }

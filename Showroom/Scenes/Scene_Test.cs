@@ -25,37 +25,16 @@ namespace Showroom.Scenes
             Rectangle _2B = new Rectangle(32, 32, 16, 16);
             this.entities = new List<IEntity>()
             {
-                new MyBlaEntity(new Point(100, 100), _2B)
+                new Entity_WASD(new Point(100, 100), _2B, tag: "player"),
+                new Entity_Numbers(new Point(100, 300), new Rectangle(0,0,16,16), tag:"Entity_Numbers")
             };
+            this.map = new Map(mainTiles: new List<Tile>(){new Tile(new Rectangle(), new Rectangle(),1)} );
 
-            this.UIs = new List<IUI>()
-            {
-                new Label(new Rectangle(0, 0, 100, 50), "Hello")
-            };
+
+            this.camera = new Camera();
             
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
             this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
-        }
-    }
-
-    public class MyBlaEntity : IEntity
-    {
-        public Rigidbody rigidbody { get; }
-        public Animation animation { get; }
-        public bool isActive { get; set; }
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
-        public string tag { get; }
-     
-
-        public MyBlaEntity(Point centerPosition, Rectangle rectangleStripeFromAtlas, string tag = "")
-        {
-            this.rigidbody = new Rigidbody(new Rectangle(centerPosition.X, centerPosition.Y, rectangleStripeFromAtlas.Width, rectangleStripeFromAtlas.Height));
-            this.animation = new Animation(rectangleStripeFromAtlas);
-            this.isActive = true;
-            //this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Entity.UpdateSystem(this);
-            //this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Entity.DrawSystem(spriteBatch, this);
-            this.tag = tag;
         }
     }
 }

@@ -7,9 +7,9 @@ namespace ChristianTools.Components
     {
         public Rectangle worldRectangle { get; private set; }
         public Rectangle imageFromAtlas { get; private set; }
-        public Tilemap.LayerId layerId { get; private set; }
+        public int layerId { get; private set; } 
 
-        public Tile(Rectangle worldRectangle,Rectangle imageFromAtlas, Tilemap.LayerId layerId)
+        public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, int layerId)
         {
             this.worldRectangle = worldRectangle;
             this.layerId = layerId;

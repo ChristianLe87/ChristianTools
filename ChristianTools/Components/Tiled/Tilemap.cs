@@ -1,7 +1,7 @@
 
 namespace ChristianTools.Components.Tiled
 {
-    public class Tilemap
+    /*public class Tilemap
     {
         public int compressionlevel { get; set; }
         public int height { get; set; }
@@ -56,6 +56,7 @@ namespace ChristianTools.Components.Tiled
             Main = 2,
             Colliders = 3,
             Front = 4,
+            Entities = 5,
         }
-    }
+    }*/
 }

@@ -1,28 +1,34 @@
+using System.Collections.Generic;
+using System.Linq;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Components
 {
-    public class Rigidbody
+    public class Rigidbody : IRigidbody
     {
-        public double rotationDegree;
-        public Vector2 force;
+        public double rotationDegree { get; set; }
+        public Vector2 force { get; set; }
+        public Rectangle rectangle { get; set; }
+        public Rectangle GetRectangleUp => ChristianTools.Helpers.MyRectangle.GetRectangleUp(rectangle);
+        public Rectangle GetRectangleDown => ChristianTools.Helpers.MyRectangle.GetRectangleDown(rectangle);
+        public Rectangle GetRectangleLeft => ChristianTools.Helpers.MyRectangle.GetRectangleLeft(rectangle);
+        public Rectangle GetRectangleRight => ChristianTools.Helpers.MyRectangle.GetRectangleRight(rectangle);
+        public Rectangle GetRectangleScaled => ChristianTools.Helpers.MyRectangle.ScaleRectangleSides(rectangle);
 
-        public Rectangle rectangle;
-
-        public Rectangle GetRectangleUp(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleUp(rectangle);
-        public Rectangle GetRectangleDown(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleDown(rectangle);
-        public Rectangle GetRectangleLeft(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleLeft(rectangle);
-        public Rectangle GetRectangleRight(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleRight(rectangle);
-        public Rectangle GetRectangleScaled(int scaleFactor) => ChristianTools.Helpers.MyRectangle.ScaleRectangleSides(rectangle);
-        //public bool isGrounded(int scaleFactor) => (CanMoveDown(scaleFactor) == false);
-        //Enums_Interfaces_Delegates.IEntity entity;
-        
-
-        public Rigidbody(Rectangle rectangle, Vector2 force = new Vector2())
+        public void InitializeRigidbody(Rectangle rectangle, Vector2 force = new Vector2())
         {
             this.rotationDegree = 0;
             this.force = force;
             this.rectangle = rectangle;
+        }
+        //public bool isGrounded(int scaleFactor) => (CanMoveDown(scaleFactor) == false);
+        //Enums_Interfaces_Delegates.IEntity entity;
+
+
+        public Rigidbody(Rectangle rectangle, Vector2 force = new Vector2())
+        {
+            InitializeRigidbody(rectangle, force);
         }
 
         public void Update()
@@ -38,7 +44,12 @@ namespace ChristianTools.Components
         /// <param name="X"></param>
         public void Move_X(int X)
         {
-            rectangle.X += X;
+            int rX = rectangle.X + X;
+            int rY = rectangle.Y;
+            int rW = rectangle.Width;
+            int rH = rectangle.Height;
+
+            rectangle = new Rectangle(rX, rY, rW, rH);
         }
 
 
@@ -48,7 +59,12 @@ namespace ChristianTools.Components
         /// <param name="Y"></param>
         public void Move_Y(int Y)
         {
-            rectangle.Y += Y;
+            int rX = rectangle.X;
+            int rY = rectangle.Y + Y;
+            int rW = rectangle.Width;
+            int rH = rectangle.Height;
+
+            rectangle = new Rectangle(rX, rY, rW, rH);
         }
 
 

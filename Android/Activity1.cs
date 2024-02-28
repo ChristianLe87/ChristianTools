@@ -26,7 +26,7 @@ namespace Android
         {
             base.OnCreate(bundle);
 
-            _game = new Game1();
+            _game = new Game1(new WK());
             _view = _game.Services.GetService(typeof(View)) as View;
 
             SetContentView(_view);

@@ -20,13 +20,18 @@ namespace Showroom.Scenes
 
         public void Initialize()
         {
+            this.entities = new List<IEntity>()
+            {
+                //new Entity_Platformer_Player(new Point(24, 128)),
+            };
+
             this.UIs = new List<IUI>()
             {
                 // Back to menu
                 new Button(rectangle: new Rectangle(10, 400, 100, 50), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
             };
-            
-            this.map = new Map("MyMap/MyMap_1","MyMap/MyTileset");
+
+            this.map = new Map(mainTiles: new List<Tile>() );
 
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
             this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);

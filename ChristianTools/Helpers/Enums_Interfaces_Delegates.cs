@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ChristianTools.Components;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Helpers
@@ -44,12 +45,33 @@ namespace ChristianTools.Helpers
 
     public interface IEntity
     {
-        public Rigidbody rigidbody { get; }
+        public IRigidbody rigidbody { get; }
         public Animation animation { get; }
         public bool isActive { get; set; }
         public DxUpdateSystem dxUpdateSystem { get; set; }
         public DxDrawSystem dxDrawSystem { get; set; }
         public string tag { get; }
+    }
+
+
+    public interface IRigidbody
+    {
+        public double rotationDegree { get; set; }
+        public Vector2 force { get; set; }
+
+        public Rectangle rectangle { get; set; }
+
+        public Rectangle GetRectangleUp { get; }
+        public Rectangle GetRectangleDown { get; }
+        public Rectangle GetRectangleLeft { get; }
+        public Rectangle GetRectangleRight { get; }
+
+        public Rectangle GetRectangleScaled { get; }
+        public void InitializeRigidbody(Rectangle rectangle, Vector2 force = new Vector2());
+        public void Update();
+        public void Move_X(int X);
+        public void Move_Y(int Y);
+        public void SetCenterPosition(Point newCenterPosition);
     }
 
     // === Delegates ===

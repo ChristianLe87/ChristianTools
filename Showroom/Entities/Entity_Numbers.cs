@@ -7,7 +7,7 @@ namespace Showroom
 {
     public class Entity_Numbers : IEntity
     {
-        public Rigidbody rigidbody { get; }
+        public IRigidbody rigidbody { get; }
         public Animation animation { get; }
         public bool isActive { get; set; }
         public DxUpdateSystem dxUpdateSystem { get; set; }

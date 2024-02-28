@@ -29,15 +29,5 @@ namespace Showroom
         {
             public static string MyMap_1 { get; } = "MyMap_1";
         }
-
-        public static class Scenes
-        {
-            public static string Scene_Test { get; } = "Scene_Test";
-            public static string Scene_Menu { get; } = "Scene_Menu";
-            public static string Scene_UI { get; } = "Scene_UI";
-            public static string Scene_Camera { get; } = "Scene_Camera";
-            public static string Scene_Entities { get; } = "Scene_Entities";
-            public static string Scene_Tiles { get; } = "Scene_Tiles";
-        }
     }
 }
