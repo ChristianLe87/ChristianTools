@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using ChristianTools;
 using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Showroom.Scenes;
 
 namespace Showroom
 {
     public class Game1 : ChristianGame
     {
-        public Game1(WK wk) : base(GetScenes(), startScene: "Scene_Menu", wk)
+        public Game1(WK wk) : base(GetScenes(), startScene: "Scene_Test", wk)
         {
         }
 

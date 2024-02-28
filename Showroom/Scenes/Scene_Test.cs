@@ -21,15 +21,29 @@ namespace Showroom.Scenes
         
         public void Initialize()
         {
-            //this.camera = new Camera(new Point(0,0));
+
+            int[,] mainTilesArray = new int[,]
+            {
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            };
+
+            var mainTiles = ChristianTools.Components.Tile.FromMultidimentionalArrayToList(mainTilesArray);
+            
+            this.map = new Map(mainTiles: mainTiles );
+
             Rectangle _2B = new Rectangle(32, 32, 16, 16);
             this.entities = new List<IEntity>()
             {
-                new Entity_WASD(new Point(100, 100), _2B, tag: "player"),
-                new Entity_Numbers(new Point(100, 300), new Rectangle(0,0,16,16), tag:"Entity_Numbers")
+                new Entity_WASD(new Point(8, 8), _2B, tag: "player"),
+                
+                new Entity_Numbers(new Point(5*16, 7*16), new Rectangle(0,0,16,16), tag:"Entity_Numbers")
             };
-            this.map = new Map(mainTiles: new List<Tile>(){new Tile(new Rectangle(), new Rectangle(),1)} );
-
 
             this.camera = new Camera();
             

@@ -16,7 +16,7 @@ namespace Showroom
 
         public Entity_WASD(Point centerPosition, Rectangle rectangleStripeFromAtlas, string tag = "")
         {
-            this.rigidbody = new Rigidbody(new Rectangle(centerPosition.X, centerPosition.Y, rectangleStripeFromAtlas.Width, rectangleStripeFromAtlas.Height));
+            this.rigidbody = new Rigidbody_Test(new Rectangle(centerPosition.X, centerPosition.Y, rectangleStripeFromAtlas.Width, rectangleStripeFromAtlas.Height));
             this.animation = new Animation(rectangleStripeFromAtlas);
             this.isActive = true;
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Entity.UpdateSystem_WASD(inputState: inputState, this);

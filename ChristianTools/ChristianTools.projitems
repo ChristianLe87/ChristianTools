@@ -14,6 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Map.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody_Test.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tiled\Helpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tiled\Tilemap.cs" />

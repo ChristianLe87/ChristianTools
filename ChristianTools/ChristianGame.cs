@@ -9,6 +9,11 @@ namespace ChristianTools
 {
     public class ChristianGame : Game
     {
+        private Texture2D texture2D_X;
+        private Texture2D texture2D_Y;
+
+
+        
         public static Texture2D atlasTiles;
         public static Texture2D atlasEntities;
         public static SpriteFont spriteFont;
@@ -85,6 +90,9 @@ namespace ChristianTools
             atlasTiles = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tileset);
             atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
+            
+            texture2D_X = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red, 2, 200); 
+            texture2D_Y = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green, 200, 2);
         }
 
         protected override void Update(GameTime gameTime)
@@ -120,7 +128,11 @@ namespace ChristianTools
                 transformMatrix: scenes[actualScene].camera?.transform,
                 blendState: BlendState.AlphaBlend
             );
-
+            
+            
+            // Debug X Y
+            spriteBatch.Draw(texture2D_X, new Rectangle(-texture2D_X.Width/2, -texture2D_X.Height/2, texture2D_X.Width, texture2D_X.Height), Color.White);
+            spriteBatch.Draw(texture2D_Y, new Rectangle(-texture2D_Y.Width/2, -texture2D_Y.Height/2, texture2D_Y.Width, texture2D_Y.Height), Color.White);
             // Scene
             scenes[actualScene].dxDrawSystem?.Invoke(spriteBatch: spriteBatch);
 
