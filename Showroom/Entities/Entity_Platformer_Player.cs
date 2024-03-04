@@ -1,27 +1,22 @@
+using System;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
+using ChristianTools.Prefabs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Showroom
 {
-    public class Entity_Platformer_Player : IEntity
+    public class Entity_Platformer_Player : BaseEntity
     {
-        public IRigidbody rigidbody { get; }
-        public Animation animation { get; }
-        public bool isActive { get; set; }
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
-        public string tag { get; }
-
-        public Entity_Platformer_Player(Point centerPosition, Rectangle rectangleStripeFromAtlas, string tag = "")
+        public Entity_Platformer_Player(Rectangle rigidbodyRectangle, Rectangle imageFromAtlas, string tag = "", bool isActive = true) : base(rigidbodyRectangle, imageFromAtlas, tag, isActive)
         {
-            this.rigidbody = new Rigidbody_Test(new Rectangle(centerPosition.X, centerPosition.Y, rectangleStripeFromAtlas.Width, rectangleStripeFromAtlas.Height), new Vector2(0, 1));
-            this.animation = new Animation(rectangleStripeFromAtlas);
-            this.isActive = true;
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Entity.UpdateSystem(this);
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Entity.DrawSystem(spriteBatch, this);
-            this.tag = tag;
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);
+        }
+
+        private void Update(InputState lastInputState, InputState inputState)
+        {
+            // Code
         }
     }
 }

@@ -35,10 +35,10 @@ namespace ChristianTools.UI
 		{
 			Rectangle rec;
 			Vector2 vec;
-			if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
+			if (ChristianGame.GetScene.camera != null)
 			{
-				rec = new Rectangle(rectangle.Location + new Point(ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.X, ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.Y), rectangle.Size);
-				vec = new Vector2(ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.X, ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.Y);
+				rec = new Rectangle(rectangle.Location + new Point(ChristianGame.GetScene.camera.cameraView.X, ChristianGame.GetScene.camera.cameraView.Y), rectangle.Size);
+				vec = new Vector2(ChristianGame.GetScene.camera.cameraView.X, ChristianGame.GetScene.camera.cameraView.Y);
 			}
 			else
 			{

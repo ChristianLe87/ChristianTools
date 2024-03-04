@@ -8,27 +8,13 @@ namespace ChristianTools.Components
         public double rotationDegree { get; set; }
         public Vector2 force { get; set; }
         public Rectangle rectangle { get; set; }
-        public Rectangle GetRectangleUp => ChristianTools.Helpers.MyRectangle.GetRectangleUp(rectangle);
-        public Rectangle GetRectangleDown => ChristianTools.Helpers.MyRectangle.GetRectangleDown(rectangle);
-        public Rectangle GetRectangleLeft => ChristianTools.Helpers.MyRectangle.GetRectangleLeft(rectangle);
-        public Rectangle GetRectangleRight => ChristianTools.Helpers.MyRectangle.GetRectangleRight(rectangle);
-        public Rectangle GetRectangleScaled => ChristianTools.Helpers.MyRectangle.ScaleRectangleSides(rectangle);
-
-        public void InitializeRigidbody(Rectangle rectangle, Vector2 force = new Vector2())
+        public Rigidbody(Rectangle rectangle)
         {
             this.rotationDegree = 0;
-            this.force = force;
+            this.force = new Vector2();
             this.rectangle = rectangle;
         }
-        //public bool isGrounded(int scaleFactor) => (CanMoveDown(scaleFactor) == false);
-        //Enums_Interfaces_Delegates.IEntity entity;
-
-
-        public Rigidbody(Rectangle rectangle, Vector2 force = new Vector2())
-        {
-            InitializeRigidbody(rectangle, force);
-        }
-
+        
         public void Update()
         {
             // Force
@@ -36,10 +22,6 @@ namespace ChristianTools.Components
             Move_Y((int)force.Y);
         }
 
-        /// <summary>
-        /// Move on X, if tiles, dont move
-        /// </summary>
-        /// <param name="X"></param>
         public void Move_X(int X)
         {
             int rX = rectangle.X + X;
@@ -50,11 +32,6 @@ namespace ChristianTools.Components
             rectangle = new Rectangle(rX, rY, rW, rH);
         }
 
-
-        /// <summary>
-        /// Move on Y, if tiles, dont move
-        /// </summary>
-        /// <param name="Y"></param>
         public void Move_Y(int Y)
         {
             int rX = rectangle.X;
@@ -65,10 +42,8 @@ namespace ChristianTools.Components
             rectangle = new Rectangle(rX, rY, rW, rH);
         }
 
-
         public void SetCenterPosition(Point newCenterPosition)
         {
-            rectangle = ChristianTools.Helpers.MyRectangle.CreateRectangle(newCenterPosition, rectangle.Width, rectangle.Height);
         }
     }
 }

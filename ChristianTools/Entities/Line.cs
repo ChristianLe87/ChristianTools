@@ -15,9 +15,10 @@ namespace ChristianTools.Entities
         int thickness;
         private Texture2D texture2D;
 
-        public IRigidbody rigidbody { get; }
+        public IRigidbody rigidbody { get; set; }
         public bool isActive { get; set; }
         public string tag { get; }
+        public Guid guid { get; }
         public int health { get; }
 
         public Animation animation { get; }
@@ -28,6 +29,9 @@ namespace ChristianTools.Entities
 
         public Line(Point start, Point end, Color color, int thickness = 5, string tag = "")
         {
+            this.rigidbody = new Rigidbody(new Rectangle());
+            this.animation = new Animation(new Rectangle());
+            this.guid = Guid.NewGuid();
             this.start = start;
             this.end = end;
             this.thickness = thickness;

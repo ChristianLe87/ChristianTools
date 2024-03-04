@@ -33,8 +33,8 @@ namespace ChristianTools.UI
             Rectangle viewport = new Rectangle();
             
             
-            if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
-                viewport = ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView;
+            if (ChristianGame.GetScene.camera != null)
+                viewport = ChristianGame.GetScene.camera.cameraView;
             else
                 viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport.Bounds;
 

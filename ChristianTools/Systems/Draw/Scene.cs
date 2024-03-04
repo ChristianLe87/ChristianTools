@@ -8,7 +8,7 @@ namespace ChristianTools.Systems.Draw
     {
         public static void DrawSystem(SpriteBatch spriteBatch)
         {
-            IScene scene = ChristianGame.scenes[ChristianGame.actualScene];
+            IScene scene = ChristianGame.GetScene;
             
             // Map
             if (scene.map != null)
@@ -30,6 +30,7 @@ namespace ChristianTools.Systems.Draw
             {
                 for (int i = 0; i < scene.entities.Count; i++)
                 {
+                    ChristianTools.Systems.Draw.Entity.DrawSystem(spriteBatch, scene.entities[i]);
                     scene.entities[i].dxDrawSystem?.Invoke(spriteBatch: spriteBatch);
                 }
             }

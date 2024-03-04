@@ -93,10 +93,10 @@ namespace ChristianTools.Helpers
         //public Point Mouse_Position => mouseState.Position;
         public Point Mouse_OnWorldPosition()
         {
-            if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
+            if (ChristianGame.GetScene.camera != null)
             {
                 Point point = mouseState.Position;
-                point += new Point((int)ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.X, (int)ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.Y);
+                point += new Point((int)ChristianGame.GetScene.camera.cameraView.X, (int)ChristianGame.GetScene.camera.cameraView.Y);
                 return point;
             }
             else

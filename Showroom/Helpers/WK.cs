@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 
 namespace Showroom
 {
@@ -10,7 +11,7 @@ namespace Showroom
         public double FPS { get; } = 60;
         public bool IsFullScreen { get; set; } = false;
         public bool AllowUserResizing { get; } = false;
-        public int ScaleFactor { get; set; } = 2;
+        //public int ScaleFactor { get; set; } = 2;
         public int canvasWidth { get; } = 500;
         public int canvasHeight { get; } = 500;
         public bool isMouseVisible { get; set; } = true;
@@ -28,6 +29,21 @@ namespace Showroom
         public static class AtlasTilemaps
         {
             public static string MyMap_1 { get; } = "MyMap_1";
+        }
+        
+        public static class AtlasReferences
+        {
+            public static Rectangle _1 { get; } = new Rectangle(16, 16, 16, 16);
+            public static Rectangle _2 { get; } = new Rectangle(32, 16, 16, 16);
+            public static Rectangle _3 { get; } = new Rectangle(48, 16, 16, 16);
+
+            public static Rectangle _4 { get; } = new Rectangle(16, 32, 16, 16);
+            public static Rectangle _5 { get; } = new Rectangle(32, 32, 16, 16);
+            public static Rectangle _6 { get; } = new Rectangle(48, 32, 16, 16);
+
+            public static Rectangle _7 { get; } = new Rectangle(16, 48, 16, 16);
+            public static Rectangle _8 { get; } = new Rectangle(32, 48, 16, 16);
+            public static Rectangle _9 { get; } = new Rectangle(48, 48, 16, 16);
         }
     }
 }

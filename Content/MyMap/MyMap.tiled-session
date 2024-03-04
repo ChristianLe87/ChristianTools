@@ -30,13 +30,13 @@
     "map.tileWidth": 16,
     "map.width": 130,
     "openFiles": [
-        "MyTileset.json",
-        "MyMap_1.json"
+        "MyTileset.json"
     ],
     "project": "MyMap.tiled-project",
     "recentFiles": [
+        "MyTileset.json",
         "MyMap_1.json",
-        "MyTileset.json"
+        "MyMap_2.json"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.tileSize": {

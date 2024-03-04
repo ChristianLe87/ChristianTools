@@ -12,7 +12,7 @@ namespace ChristianTools.Helpers
         public double FPS { get; }
         public bool IsFullScreen { get; set; }
         public bool AllowUserResizing { get; }
-        public int ScaleFactor { get; set; }
+        //public int ScaleFactor { get; set; }
         public int canvasWidth { get; }
         public int canvasHeight { get; }
         //public int AssetSize { get; }
@@ -45,29 +45,35 @@ namespace ChristianTools.Helpers
 
     public interface IEntity
     {
-        public IRigidbody rigidbody { get; }
+        public IRigidbody rigidbody { get; set; }
         public Animation animation { get; }
         public bool isActive { get; set; }
         public DxUpdateSystem dxUpdateSystem { get; set; }
         public DxDrawSystem dxDrawSystem { get; set; }
         public string tag { get; }
+        public Guid guid { get; }
     }
-
+    
 
     public interface IRigidbody
     {
+        //public Vector2 velocity { get; set; }
+        //public float mass { get; set; }
+        //public float friction { get; set; }
+
+
         public double rotationDegree { get; set; }
-        public Vector2 force { get; set; }
+        //public Vector2 force { get; set; }
 
         public Rectangle rectangle { get; set; }
 
-        public Rectangle GetRectangleUp { get; }
-        public Rectangle GetRectangleDown { get; }
-        public Rectangle GetRectangleLeft { get; }
-        public Rectangle GetRectangleRight { get; }
+        //public Rectangle GetRectangleUp { get; }
+        //public Rectangle GetRectangleDown { get; }
+        //public Rectangle GetRectangleLeft { get; }
+        //public Rectangle GetRectangleRight { get; }
 
-        public Rectangle GetRectangleScaled { get; }
-        public void InitializeRigidbody(Rectangle rectangle, Vector2 force = new Vector2());
+        //public Rectangle GetRectangleScaled { get; }
+        //public void InitializeRigidbody(Rectangle rectangle, Vector2 force = new Vector2());
         public void Update();
         public void Move_X(int X);
         public void Move_Y(int Y);

@@ -4,6 +4,7 @@ using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Showroom;
 
 namespace ChristianTools
 {
@@ -12,8 +13,7 @@ namespace ChristianTools
         private Texture2D texture2D_X;
         private Texture2D texture2D_Y;
 
-
-        
+     
         public static Texture2D atlasTiles;
         public static Texture2D atlasEntities;
         public static SpriteFont spriteFont;
@@ -24,12 +24,14 @@ namespace ChristianTools
 
         public static IDefault WK;
 
-        public static Dictionary<string, IScene> scenes { get; set; }
-        public static string actualScene { get; private set; }
+        private static Dictionary<string, IScene> scenes { get; set; }
+        private static string actualScene { get; set; }
+
+        public static IScene GetScene => scenes[actualScene];
 
         private InputState lastInputState;
 
-        public ChristianGame(Dictionary<string, IScene> scenes, string startScene, IDefault WK)
+            public ChristianGame(Dictionary<string, IScene> scenes, string startScene, IDefault WK)
         {
             // WK
             ChristianGame.WK = WK;
@@ -85,16 +87,18 @@ namespace ChristianTools
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             scenes[actualScene].Initialize();
-            
+
             // Code
             atlasTiles = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tileset);
             atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
-            
-            texture2D_X = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red, 2, 200); 
+
+            // test
+            texture2D_X = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red, 2, 200);
             texture2D_Y = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green, 200, 2);
         }
 
+        private int yeahCount = 0;
         protected override void Update(GameTime gameTime)
         {
             InputState inputState = new InputState();
@@ -105,12 +109,9 @@ namespace ChristianTools
             // Scene
             {
                 ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
-                
                 scenes[actualScene].dxUpdateSystem?.Invoke(lastInputState: lastInputState, inputState: inputState);
             }
-
-
-
+            
             lastInputState = new InputState();
 
             base.Update(gameTime);
@@ -128,16 +129,18 @@ namespace ChristianTools
                 transformMatrix: scenes[actualScene].camera?.transform,
                 blendState: BlendState.AlphaBlend
             );
+
+            {
+                // Debug X Y
+                spriteBatch.Draw(texture2D_X, new Rectangle(-texture2D_X.Width / 2, -texture2D_X.Height / 2, texture2D_X.Width, texture2D_X.Height), Color.White);
+                spriteBatch.Draw(texture2D_Y, new Rectangle(-texture2D_Y.Width / 2, -texture2D_Y.Height / 2, texture2D_Y.Width, texture2D_Y.Height), Color.White);
+            }
             
-            
-            // Debug X Y
-            spriteBatch.Draw(texture2D_X, new Rectangle(-texture2D_X.Width/2, -texture2D_X.Height/2, texture2D_X.Width, texture2D_X.Height), Color.White);
-            spriteBatch.Draw(texture2D_Y, new Rectangle(-texture2D_Y.Width/2, -texture2D_Y.Height/2, texture2D_Y.Width, texture2D_Y.Height), Color.White);
             // Scene
-            scenes[actualScene].dxDrawSystem?.Invoke(spriteBatch: spriteBatch);
-
-
-
+            {
+                ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch: spriteBatch);
+                scenes[actualScene].dxDrawSystem?.Invoke(spriteBatch: spriteBatch);
+            }
 
             spriteBatch.End();
 

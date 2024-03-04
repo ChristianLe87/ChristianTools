@@ -1,3 +1,5 @@
+using System.Linq;
+using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Components
@@ -35,6 +37,12 @@ namespace ChristianTools.Components
         {
             this.position = new Vector2(setCenter.X, setCenter.Y);
             UpdateMatrix();
+        }
+
+        public void FollowEntity(IEntity entity)
+        {
+            if (entity != null)
+                UpdateCamera(entity.rigidbody?.rectangle.Center ?? new Point(0, 0));
         }
     }
 }

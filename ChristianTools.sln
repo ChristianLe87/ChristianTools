@@ -8,6 +8,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools", "Christian
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Android", "Android\Android.csproj", "{96DF8855-21E6-4A91-9179-89CBE78D310B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ChristianTools", "Test_ChristianTools\Test_ChristianTools.csproj", "{C80E2C34-3221-4E46-AE1A-F5073A464C47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,5 +24,9 @@ Global
 		{96DF8855-21E6-4A91-9179-89CBE78D310B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96DF8855-21E6-4A91-9179-89CBE78D310B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96DF8855-21E6-4A91-9179-89CBE78D310B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80E2C34-3221-4E46-AE1A-F5073A464C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80E2C34-3221-4E46-AE1A-F5073A464C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80E2C34-3221-4E46-AE1A-F5073A464C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80E2C34-3221-4E46-AE1A-F5073A464C47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

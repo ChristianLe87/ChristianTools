@@ -28,46 +28,33 @@ namespace Showroom.Scenes
                 // Back to menu
                 new Button(rectangle: new Rectangle(10, 400, 100, 50), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
             };
-            
-            Rectangle _1R = new Rectangle(16, 16, 16, 16);
-            Rectangle _2R = new Rectangle(32, 16, 16, 16);
-            Rectangle _3R = new Rectangle(48, 16, 16, 16);
-
-            Rectangle _1B = new Rectangle(16, 32, 16, 16);
-            Rectangle _2B = new Rectangle(32, 32, 16, 16);
-            Rectangle _3B = new Rectangle(48, 32, 16, 16);
-
-            Rectangle _1G = new Rectangle(16, 48, 16, 16);
-            Rectangle _2G = new Rectangle(32, 48, 16, 16);
-            Rectangle _3G = new Rectangle(48, 48, 16, 16);
 
             this.entities = new List<IEntity>()
             {
-                new ChristianTools.Entities.Line(new Point(100, 100), new Point(500, 500), Color.Red, tag:"RedLine"),
-                new Entity_WASD(centerPosition: new Point(250, 250), rectangleStripeFromAtlas: _2B, tag: "player"),
-                
+                new ChristianTools.Entities.Line(new Point(100, 100), new Point(500, 500), Color.Red, tag: "RedLine"),
+                new Entity_WASD(rectangle: new Rectangle(250, 250, 16, 16), imageFromAtlas: WK.AtlasReferences._2, tag: "player"),
+
                 // TL
-                new Entity_Numbers(centerPosition: new Point(8, 8), rectangleStripeFromAtlas: _1R, tag: "TL"),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, 8), 16, 16), animationRectangle: WK.AtlasReferences._1, tag: "TL"),
                 // TR
-                new Entity_Numbers(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, 8), rectangleStripeFromAtlas: _3R),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, 8), 16, 16), animationRectangle: WK.AtlasReferences._3),
                 // DL
-                new Entity_Numbers(centerPosition: new Point(8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas: _1G),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, ChristianGame.WK.canvasHeight - 8), 16, 16), animationRectangle: WK.AtlasReferences._7),
                 // DR
-                new Entity_Numbers(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), rectangleStripeFromAtlas: _3G),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), 16, 16), animationRectangle: WK.AtlasReferences._9),
                 // center
-                new Entity_Numbers(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), rectangleStripeFromAtlas: new Rectangle(32, 32, 16, 16))
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), 16, 16), animationRectangle: WK.AtlasReferences._5)
             };
-
-
+            
             this.camera = new Camera();
             
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateLine(lastInputState: lastInputState, inputState: inputState);
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
         }
 
 
         private void UpdateLine(InputState lastInputState, InputState inputState)
         {
+            
             ChristianTools.Entities.Line line = entities.Where(x => x.tag == "RedLine").FirstOrDefault() as ChristianTools.Entities.Line;
             
             if (lastInputState.Mouse_LeftButton_Click)
@@ -83,7 +70,18 @@ namespace Showroom.Scenes
                 line.UpdatePoints(start: point);    
             }
             
-            ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+            //ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+            
+            IScene scene = ChristianGame.GetScene;
+            if (scene.entities != null)
+            {
+                if (scene.entities.Where(x => x.tag == "player").Count() > 0)
+                {
+                    IEntity player = scene.entities.Where(x => x.tag == "player").FirstOrDefault();
+                    scene.camera.UpdateCamera(player.rigidbody?.rectangle.Center ?? new Point(0, 0));
+                }
+            }
+            
         }
 
     }

@@ -96,11 +96,11 @@ namespace Showroom.Scenes
             Rectangle _2B = new Rectangle(32, 32, 16, 16);
             this.entities = new List<IEntity>()
             {
-                new Entity_WASD(new Point(400, 50), _2B, tag: "player"),
+                new Entity_WASD(new Rectangle(400, 50, 16, 16), _2B, tag: "player"),
             };
-            
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
+
+            //this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
+            //this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
         }
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using ChristianTools;
 using ChristianTools.Components;
+using ChristianTools.Entities;
 using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
@@ -12,6 +14,7 @@ namespace Showroom.Scenes
     public class Scene_Test : IScene
     {
         public List<IEntity> entities { get; set; }
+        
         public List<IUI> UIs { get; set; }
         public Map map { get; set; }
         public Camera camera { get; set; }
@@ -21,34 +24,72 @@ namespace Showroom.Scenes
         
         public void Initialize()
         {
-
-            int[,] mainTilesArray = new int[,]
+            // entities
             {
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            };
+                this.entities = new List<IEntity>()
+                {
+                    //new Entity_Numbers(new Point(40, 40), WK.AtlasReferences._1),
+                    new Entity_WASD(MyRectangle.CreateRectangle(new Point(40, 40), 16, 16), WK.AtlasReferences._1, "player"),
+                    new Entity_Numbers(new Rectangle(16, 16, 16, 16), WK.AtlasReferences._2),
 
-            var mainTiles = ChristianTools.Components.Tile.FromMultidimentionalArrayToList(mainTilesArray);
-            
-            this.map = new Map(mainTiles: mainTiles );
+                    
+                    // TL
+                    new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, 8),16,16),animationRectangle: WK.AtlasReferences._1, tag: "TL"),
+                    // TR
+                    new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, 8),16,16), animationRectangle: WK.AtlasReferences._3),
+                    // DL
+                    new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, ChristianGame.WK.canvasHeight - 8),16,16), animationRectangle: WK.AtlasReferences._7),
+                    // DR
+                    new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8),16,16), animationRectangle: WK.AtlasReferences._9),
+                    // center
+                    new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2),16,16), animationRectangle: WK.AtlasReferences._5)
 
-            Rectangle _2B = new Rectangle(32, 32, 16, 16);
-            this.entities = new List<IEntity>()
+                };
+            }
+
+            // UI
             {
-                new Entity_WASD(new Point(8, 8), _2B, tag: "player"),
+                this.UIs = new List<IUI>()
+                {
+                    new Button(
+                        rectangle: new Rectangle(10, 460, 230, 30),
+                        text: "Go to menu",
+                        defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
+                        mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
+                        OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
+                    ),
+                };
+            }
+
+
+            // Map
+            {
+                int[,] mainTilesArray = new int[,]
+                {
+                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                    //{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                    //{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                    //{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                    //{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                    //{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                    //{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                };
                 
-                new Entity_Numbers(new Point(5*16, 7*16), new Rectangle(0,0,16,16), tag:"Entity_Numbers")
-            };
+                var mainTiles = ChristianTools.Components.Tile.FromMultidimentionalArrayToList(mainTilesArray);
 
-            this.camera = new Camera();
+                var MyBlaTile = new Tile(new Rectangle(0, 0, 16, 16), WK.AtlasReferences._9, 1);
+                mainTiles.Add(MyBlaTile);
+                
+                
+                this.map = new Map(mainTiles: mainTiles);
+            }
             
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
+  
+            // Camera
+            {
+                //this.camera = new Camera();
+            }
+            
         }
     }
 }

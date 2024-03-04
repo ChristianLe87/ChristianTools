@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using ChristianTools;
 using ChristianTools.Components;
 using ChristianTools.Components.Tiled;
 using ChristianTools.Helpers;
@@ -22,7 +24,7 @@ namespace Showroom.Scenes
         {
             this.entities = new List<IEntity>()
             {
-                //new Entity_Platformer_Player(new Point(24, 128)),
+                new Entity_Platformer_Player(new Rectangle(24, 128, 16, 16), WK.AtlasReferences._2, "player"),
             };
 
             this.UIs = new List<IUI>()
@@ -31,10 +33,31 @@ namespace Showroom.Scenes
                 new Button(rectangle: new Rectangle(10, 400, 100, 50), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
             };
 
-            this.map = new Map(mainTiles: new List<Tile>() );
+            
+            int[,] mainTilesArray = new int[,]
+            {
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            };
+                
+            List<Tile> mainTiles = Tile.FromMultidimentionalArrayToList(mainTilesArray);
+                
+                
+            this.map = new Map(mainTiles: mainTiles);
+            
+            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
 
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
+        }
+
+        private void UpdateSystem()
+        {
+            IEntity player = ChristianGame.GetScene.entities?.FirstOrDefault(x => x.tag == "player");
+            camera?.FollowEntity(player);
         }
     }
 }

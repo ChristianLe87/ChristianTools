@@ -47,7 +47,7 @@ namespace ChristianTools.UI
         private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
             Rectangle tempRectangle;
-            if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
+            if (ChristianGame.GetScene.camera != null)
                 tempRectangle = new Rectangle((int)(rectangle.X),
                     (int)(rectangle.Y), rectangle.Width, rectangle.Height);
             else
@@ -72,8 +72,8 @@ namespace ChristianTools.UI
         private void DrawSystem(SpriteBatch spriteBatch)
         {
             Rectangle tempRectangle;
-            if (ChristianGame.scenes[ChristianGame.actualScene].camera != null)
-                tempRectangle = new Rectangle((int)(rectangle.X + ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.X), (int)(rectangle.Y + ChristianGame.scenes[ChristianGame.actualScene].camera.cameraView.Y), rectangle.Width, rectangle.Height);
+            if (ChristianGame.GetScene.camera != null)
+                tempRectangle = new Rectangle((int)(rectangle.X + ChristianGame.GetScene.camera.cameraView.X), (int)(rectangle.Y + ChristianGame.GetScene.camera.cameraView.Y), rectangle.Width, rectangle.Height);
             else
                 tempRectangle = rectangle;
 

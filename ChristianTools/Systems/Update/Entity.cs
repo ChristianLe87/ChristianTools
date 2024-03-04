@@ -9,7 +9,7 @@ namespace ChristianTools.Systems.Update
             if (entity.isActive != true)
                 return;
 
-            entity.animation?.Update();
+            //entity.animation?.Update();
             entity.rigidbody?.Update();
         }
 
@@ -19,18 +19,18 @@ namespace ChristianTools.Systems.Update
                 return;
 
             if (inputState.Up)
-                entity.rigidbody.Move_Y(-steps);
+                entity.rigidbody?.Move_Y(-steps);
 
             if (inputState.Down)
-                entity.rigidbody.Move_Y(steps);
+                entity.rigidbody?.Move_Y(steps);
 
             if (inputState.Right)
-                entity.rigidbody.Move_X(steps);
+                entity.rigidbody?.Move_X(steps);
 
             if (inputState.Left)
-                entity.rigidbody.Move_X(-steps);
+                entity.rigidbody?.Move_X(-steps);
 
-            entity.animation?.Update();
+            //entity.animation?.Update();
             entity.rigidbody?.Update();
         }
     }

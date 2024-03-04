@@ -1,5 +1,6 @@
 using System.Linq;
 using ChristianTools.Helpers;
+using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Systems.Update
 {
@@ -8,7 +9,7 @@ namespace ChristianTools.Systems.Update
     {
         public static void UpdateSystem(InputState lastInputState, InputState inputState)
         {
-            IScene scene = ChristianGame.scenes[ChristianGame.actualScene];
+            IScene scene = ChristianGame.GetScene;
 
             // UIs
             {
@@ -36,15 +37,6 @@ namespace ChristianTools.Systems.Update
                 if (scene.camera != null)
                 {
                     scene.camera.UpdateCamera();
-
-                    if (scene.entities != null)
-                    {
-                        if (scene.entities.Where(x => x.tag == "player").Count() > 0)
-                        {
-                            IEntity player = scene.entities.Where(x => x.tag == "player").FirstOrDefault();
-                            scene.camera.UpdateCamera(player.rigidbody.rectangle.Center);
-                        }
-                    }
                 }
             }
         }
