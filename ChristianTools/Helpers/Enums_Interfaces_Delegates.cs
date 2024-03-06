@@ -63,14 +63,14 @@ namespace ChristianTools.Helpers
 
 
         public double rotationDegree { get; set; }
-        //public Vector2 force { get; set; }
+        public Vector2 force { get; set; }
 
         public Rectangle rectangle { get; set; }
 
-        //public Rectangle GetRectangleUp { get; }
-        //public Rectangle GetRectangleDown { get; }
-        //public Rectangle GetRectangleLeft { get; }
-        //public Rectangle GetRectangleRight { get; }
+        public Rectangle GetRectangleUp { get; }
+        public Rectangle GetRectangleDown { get; }
+        public Rectangle GetRectangleLeft { get; }
+        public Rectangle GetRectangleRight { get; }
 
         //public Rectangle GetRectangleScaled { get; }
         //public void InitializeRigidbody(Rectangle rectangle, Vector2 force = new Vector2());

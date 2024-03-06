@@ -17,24 +17,34 @@ namespace ChristianTools.Helpers
             return rectangle;
         }
 
-        public static Rectangle MoveRectangleDown(Rectangle rectangle, int steps= 1)
+
+        public static Rectangle MoveRectangle_X(Rectangle rectangle, int steps = 1)
+        {
+            return new Rectangle(x: rectangle.X + steps, y: rectangle.Y, width: rectangle.Width, height: rectangle.Height);
+        }
+        /*public static Rectangle MoveRectangleDown(Rectangle rectangle, int steps= 1)
         {
             return new Rectangle(x: rectangle.X, y: rectangle.Y + steps, width: rectangle.Width, height: rectangle.Height);
         }
         public static Rectangle MoveRectangleUp(Rectangle rectangle, int steps= 1)
         {
             return MoveRectangleDown(rectangle, steps * -1);
+        }*/
+
+        public static Rectangle MoveRectangle_Y(Rectangle rectangle, int steps = 1)
+        {
+            return new Rectangle(x: rectangle.X, y: rectangle.Y + steps, width: rectangle.Width, height: rectangle.Height);
         }
-        
-        public static Rectangle MoveRectangleRight(Rectangle rectangle, int steps = 1)
+
+        /*public static Rectangle MoveRectangleRight(Rectangle rectangle, int steps = 1)
         {
             return MoveRectangleLeft(rectangle, steps * -1);
         }
-        
+
         public static Rectangle MoveRectangleLeft(Rectangle rectangle, int steps = 1)
         {
             return new Rectangle(x: rectangle.X - steps, y: rectangle.Y, width: rectangle.Width, height: rectangle.Height);
-        }
+        }*/
 
 
         /*public static Rectangle CreateRectangle(Point centerPosition, Texture2D texture2D)

@@ -59,15 +59,15 @@ namespace Showroom.Scenes
                 new Entity_WASD(rectangle: new Rectangle(8, 8, 16, 16), imageFromAtlas: _2B, tag: "player"),
 
                 // TL
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, 8), 16, 16), animationRectangle: _1R, tag: "TL"),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, 8), 16, 16), imageFromAtlas: _1R, tag: "TL"),
                 // TR
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, 8), 16, 16), animationRectangle: _3R),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, 8), 16, 16), imageFromAtlas: _3R),
                 // DL
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, ChristianGame.WK.canvasHeight - 8), 16, 16), animationRectangle: _1G),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, ChristianGame.WK.canvasHeight - 8), 16, 16), imageFromAtlas: _1G),
                 // DR
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), 16, 16), animationRectangle: _3G),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), 16, 16), imageFromAtlas: _3G),
                 // center
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), 16, 16), animationRectangle: new Rectangle(32, 32, 16, 16))
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), 16, 16), imageFromAtlas: new Rectangle(32, 32, 16, 16))
             };
 
             this.camera = new Camera();

@@ -10,12 +10,14 @@ namespace ChristianTools.Components
         public Rectangle worldRectangle { get; private set; }
         public Rectangle imageFromAtlas { get; private set; }
         public int layerId { get; private set; } 
+        public string tag { get; private set; }
 
-        public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, int layerId)
+        public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, int layerId, string tag ="")
         {
             this.worldRectangle = worldRectangle;
             this.layerId = layerId;
             this.imageFromAtlas = imageFromAtlas;
+            this.tag = tag;
         }
 
         public static List<Tile> FromMultidimentionalArrayToList(int[,] multidimentionalMap)

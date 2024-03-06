@@ -35,15 +35,15 @@ namespace Showroom.Scenes
                 new Entity_WASD(rectangle: new Rectangle(250, 250, 16, 16), imageFromAtlas: WK.AtlasReferences._2, tag: "player"),
 
                 // TL
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, 8), 16, 16), animationRectangle: WK.AtlasReferences._1, tag: "TL"),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, 8), 16, 16), imageFromAtlas: WK.AtlasReferences._1, tag: "TL"),
                 // TR
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, 8), 16, 16), animationRectangle: WK.AtlasReferences._3),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, 8), 16, 16), imageFromAtlas: WK.AtlasReferences._3),
                 // DL
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, ChristianGame.WK.canvasHeight - 8), 16, 16), animationRectangle: WK.AtlasReferences._7),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, ChristianGame.WK.canvasHeight - 8), 16, 16), imageFromAtlas: WK.AtlasReferences._7),
                 // DR
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), 16, 16), animationRectangle: WK.AtlasReferences._9),
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), 16, 16), imageFromAtlas: WK.AtlasReferences._9),
                 // center
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), 16, 16), animationRectangle: WK.AtlasReferences._5)
+                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), 16, 16), imageFromAtlas: WK.AtlasReferences._5)
             };
             
             this.camera = new Camera();
