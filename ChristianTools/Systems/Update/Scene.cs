@@ -1,10 +1,7 @@
-using System.Linq;
 using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
 
 namespace ChristianTools.Systems.Update
 {
-
     public class Scene
     {
         public static void UpdateSystem(InputState lastInputState, InputState inputState)

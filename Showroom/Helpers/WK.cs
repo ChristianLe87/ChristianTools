@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;

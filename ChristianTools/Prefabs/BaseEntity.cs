@@ -1,12 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Vector2 = System.Numerics.Vector2;
-
 
 namespace ChristianTools.Prefabs
 {

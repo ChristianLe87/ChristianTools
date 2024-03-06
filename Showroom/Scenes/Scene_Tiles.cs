@@ -1,13 +1,10 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using ChristianTools;
 using ChristianTools.Components;
-using ChristianTools.Components.Tiled;
 using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Showroom.Scenes
 {

@@ -1,9 +1,5 @@
-using ChristianTools.Components;
-using ChristianTools.Helpers;
 using ChristianTools.Prefabs;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Showroom
 {

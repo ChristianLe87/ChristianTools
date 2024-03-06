@@ -1,13 +1,8 @@
-using System;
 using System.Collections.Generic;
-using ChristianTools;
 using ChristianTools.Components;
-using ChristianTools.Entities;
 using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Showroom;
 using Vector2 = System.Numerics.Vector2;
 
 namespace Showroom.Scenes

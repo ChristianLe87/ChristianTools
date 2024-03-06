@@ -4,7 +4,6 @@ using ChristianTools.Components;
 using ChristianTools.Helpers;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Showroom.Scenes
 {

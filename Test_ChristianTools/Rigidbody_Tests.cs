@@ -1,8 +1,3 @@
-using ChristianTools.Components;
-using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-using NUnit.Framework;
-
 namespace Test_ChristianTools
 {
     /*public class Rigidbody_Tests
