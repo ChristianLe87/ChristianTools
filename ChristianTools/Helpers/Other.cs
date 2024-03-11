@@ -38,6 +38,9 @@ namespace ChristianTools.Helpers
         // thanks to: https://stackoverflow.com/questions/27427527/how-to-get-a-complete-row-or-column-from-2d-array-in-c-sharp
         public static T[] GetColumn<T>(T[,] array, int columnNumber)
         {
+            if (columnNumber < 0 || columnNumber >= array.GetLength(1))
+                return null;
+
             return Enumerable.Range(0, array.GetLength(0))
                 .Select(x => array[x, columnNumber])
                 .ToArray();
@@ -49,6 +52,40 @@ namespace ChristianTools.Helpers
             return Enumerable.Range(0, array.GetLength(1))
                 .Select(x => array[rowNumber, x])
                 .ToArray();
+        }
+
+        /// <summary>
+        /// Where first element is Point(0,0)
+        /// </summary>
+        /// <param name="multiArray"></param>
+        /// <param name="point"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T[,] GetSurroundingElements<T>(T[,] multiArray, Point point)
+        {
+            T[,] result = new T[3, 3];
+            int rowLength = multiArray.GetLength(0);
+            int colLength = multiArray.GetLength(1);
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    int x = point.X - 1 + i;
+                    int y = point.Y - 1 + j;
+
+                    if (x >= 0 && x < rowLength && y >= 0 && y < colLength)
+                    {
+                        result[i, j] = multiArray[x, y];
+                    }
+                    else
+                    {
+                        //result[i, j] = null;
+                    }
+                }
+            }
+
+            return result;
         }
 
 

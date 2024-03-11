@@ -31,7 +31,7 @@ namespace Showroom.Scenes
             };
 
             
-            int[,] mainTilesArray = new int[,]
+            int[,] mainIntTiles = new int[,]
             {
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                 { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
@@ -41,11 +41,10 @@ namespace Showroom.Scenes
                 { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
             };
-                
-            List<Tile> mainTiles = Tile.FromMultidimentionalArrayToList(mainTilesArray);
-                
-                
-            this.map = new Map(mainTiles: mainTiles);
+
+            Tile[,] mainTileTiles = Tile.FromInt_ToTile(mainIntTiles);
+
+            this.map = new Map(mainTiles: mainTileTiles);
             
             this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
 

@@ -25,7 +25,7 @@ namespace Showroom.Scenes
                 this.entities = new List<IEntity>()
                 {
                     //new Entity_Numbers(new Point(40, 40), WK.AtlasReferences._1),
-                    new Entity_Platformer_Player(new Rectangle(40, 40, 16, 16), WK.AtlasReferences._1, "player", force: new Vector2(0, 0)),
+                    new Entity_Platformer_Player(new Rectangle(40, 40, 16, 16), WK.AtlasReferences._1, "player", force: new Vector2(0, 1)),
                 };
             }
 
@@ -46,7 +46,7 @@ namespace Showroom.Scenes
 
             // Map
             {
-                int[,] mainTilesArray = new int[,]
+                int[,] mainIntTiles = new int[,]
                 {
                     { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                     { 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
@@ -64,14 +64,10 @@ namespace Showroom.Scenes
                     { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                     { 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
                 };
-                
-                var mainTiles = ChristianTools.Components.Tile.FromMultidimentionalArrayToList(mainTilesArray);
 
-                var MyBlaTile = new Tile(new Rectangle(40, 200, 16, 16), WK.AtlasReferences._9, 1, tag: "tileCool");
-                //mainTiles.Add(MyBlaTile);
-                
-                
-                this.map = new Map(mainTiles: mainTiles);
+                Tile[,] mainTileTiles = Tile.FromInt_ToTile(mainIntTiles);
+
+                this.map = new Map(mainTiles: mainTileTiles);
             }
             
   

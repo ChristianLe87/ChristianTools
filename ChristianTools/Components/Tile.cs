@@ -7,10 +7,10 @@ namespace ChristianTools.Components
     {
         public Rectangle worldRectangle { get; private set; }
         public Rectangle imageFromAtlas { get; private set; }
-        public int layerId { get; private set; } 
+        public int layerId { get; private set; }
         public string tag { get; private set; }
 
-        public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, int layerId, string tag ="")
+        public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, int layerId, string tag = "")
         {
             this.worldRectangle = worldRectangle;
             this.layerId = layerId;
@@ -18,23 +18,23 @@ namespace ChristianTools.Components
             this.tag = tag;
         }
 
-        public static List<Tile> FromMultidimentionalArrayToList(int[,] multidimentionalMap)
+        public static Tile[,] FromInt_ToTile(int[,] intMap)
         {
-            List<Tile> result = new List<Tile>();
-            
-            for (int row = 0; row < multidimentionalMap.GetLength(0); row++)
+            Tile[,] result = new Tile[intMap.GetLength(0), intMap.GetLength(1)];
+
+            for (int row = 0; row < intMap.GetLength(0); row++)
             {
-                for (int col = 0; col < multidimentionalMap.GetLength(1); col++)
+                for (int col = 0; col < intMap.GetLength(1); col++)
                 {
-                    int layerId = multidimentionalMap[row, col];
+                    int layerId = intMap[row, col];
                     if (layerId != 0)
                     {
                         Tile tile = new Tile(worldRectangle: new Rectangle(col * 16, row * 16, 16, 16), imageFromAtlas: new Rectangle(0, 0, 16, 16), layerId: layerId);
-                        result.Add(tile);
+                        result[row, col] = tile;
                     }
                 }
             }
-            
+
             return result;
         }
     }
