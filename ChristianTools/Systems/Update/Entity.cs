@@ -14,7 +14,7 @@ namespace ChristianTools.Systems.Update
             entity.rigidbody?.Update();
         }
 
-        public static void Move_WASD(InputState inputState, IEntity entity, int steps = 1)
+        public static void Move_WASD(InputState inputState, IEntity entity, int steps)
         {
             if (entity.isActive != true)
                 return;

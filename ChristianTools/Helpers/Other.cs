@@ -1,6 +1,7 @@
 using System.Linq;
 using ChristianTools.Components;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace ChristianTools.Helpers
 {
@@ -63,31 +64,27 @@ namespace ChristianTools.Helpers
         /// <returns></returns>
         public static T[,] GetSurroundingElements<T>(T[,] multiArray, Point point)
         {
-            T[,] result = new T[3, 3];
-            int rowLength = multiArray.GetLength(0);
-            int colLength = multiArray.GetLength(1);
-
-            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 3; j++)
+                T[,] result = new T[3, 3]
                 {
-                    int x = point.X - 1 + i;
-                    int y = point.Y - 1 + j;
-
-                    if (x >= 0 && x < rowLength && y >= 0 && y < colLength)
-                    {
-                        result[i, j] = multiArray[x, y];
-                    }
-                    else
-                    {
-                        //result[i, j] = null;
-                    }
-                }
+                    { GetElementOrDefault(point.Y - 1, point.X - 1), GetElementOrDefault(point.Y - 1, point.X), GetElementOrDefault(point.Y - 1, point.X + 1) },
+                    { GetElementOrDefault(point.Y, point.X - 1), GetElementOrDefault(point.Y, point.X), GetElementOrDefault(point.Y, point.X + 1) },
+                    { GetElementOrDefault(point.Y + 1, point.X - 1), GetElementOrDefault(point.Y + 1, point.X), GetElementOrDefault(point.Y + 1, point.X + 1) },
+                };
+                
+                return result;
             }
 
-            return result;
-        }
+            // Helpers
+            T GetElementOrDefault(int y, int x)
+            {
+                if (multiArray == null || y < 0 || y >= multiArray.GetLength(0) || x < 0 || x >= multiArray.GetLength(1))
+                    return default(T);
 
+                return multiArray[y, x];
+            }
+        }
+        
 
         public static T[,] RotateArray_90_AntiClockwise<T>(T[,] array)
         {
@@ -147,7 +144,6 @@ namespace ChristianTools.Helpers
 
         public static void MoveTowards(IRigidbody main, Point target, int maxAproximation, float steps)
         {
-
             if (Vector2.Distance(main.rectangle.Center.ToVector2(), target.ToVector2()) == 0)
                 return;
 

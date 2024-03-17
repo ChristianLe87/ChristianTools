@@ -25,7 +25,7 @@ namespace Showroom.Scenes
                 this.entities = new List<IEntity>()
                 {
                     //new Entity_Numbers(new Point(40, 40), WK.AtlasReferences._1),
-                    new Entity_Platformer_Player(new Rectangle(40, 40, 16, 16), WK.AtlasReferences._1, "player", force: new Vector2(0, 1)),
+                    new Entity_Platformer_Player(new Rectangle(1 * 16, 1 * 16, 16, 16), WK.AtlasReferences._1, "player", force: new Vector2(0, 1)),
                 };
             }
 
@@ -57,7 +57,7 @@ namespace Showroom.Scenes
                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                    { 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                     { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                     { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
