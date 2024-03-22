@@ -100,7 +100,6 @@ namespace ChristianTools
                 Exit();
 
             Systems.Update.Scene.Update(lastInputState: lastInputState, inputState: inputState);
-            //scenes[actualScene].dxUpdateSystem?.Invoke(lastInputState: lastInputState, inputState: inputState);
 
             lastInputState = new InputState();
 
@@ -130,7 +129,10 @@ namespace ChristianTools
         {
             //https://community.monogame.net/t/fitting-pixel-art-game-to-screen/17043
             spriteBatch.Begin(sortMode: SpriteSortMode.Immediate, blendState: BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: scenes[actualScene].camera?.transform);
+            //spriteBatch.Begin(sortMode: SpriteSortMode.Immediate, blendState: BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: null);
+            //spriteBatch.Begin();
             {
+                //var bla = graphicsDeviceManager.GraphicsDevice.Viewport.;
                 Systems.Draw.Scene.DrawWorld(spriteBatch,GetScene);
             }
             spriteBatch.End();

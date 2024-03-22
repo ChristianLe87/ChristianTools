@@ -41,7 +41,7 @@ namespace Showroom.Scenes
                 new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), 16, 16), imageFromAtlas: WK.AtlasReferences._5)
             };
             
-            this.camera = new Camera();
+            //this.camera = new Camera();
             
             //this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateLine(lastInputState: lastInputState, inputState: inputState);
         }

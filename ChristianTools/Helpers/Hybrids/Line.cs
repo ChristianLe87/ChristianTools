@@ -1,12 +1,11 @@
 using System;
 using ChristianTools.Components;
-using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ChristianTools.Entities
+namespace ChristianTools.Helpers.Hybrids
 {
-    public class Line : IEntity, IUI
+    public class Line
     {
         private Rectangle[] rectangles;
 
@@ -42,7 +41,7 @@ namespace ChristianTools.Entities
             this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
-        public void UpdatePoints(Point? start= null, Point? end= null)
+        public void UpdatePoints(Point? start = null, Point? end = null)
         {
             if (start != null)
                 this.start = new Point(start.Value.X, start.Value.Y);

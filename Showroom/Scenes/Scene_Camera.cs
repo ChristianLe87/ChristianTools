@@ -37,12 +37,12 @@ namespace Showroom.Scenes
 
                 new LineUI(start: new Point(0, 0), end: new Point(500, 500), color: Color.Red),
                 
-                new ZeroZeroPoint()
+                //new ZeroZeroPoint_UI()
             };
             
             this.entities = new List<IEntity>()
             {
-                new Entity_WASD(),
+                new Entity_WASD(new Rectangle(0, 0, 16, 16), new Rectangle(32, 32, 16, 16)),
 
                 // TL
                 new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, 8), 16, 16), imageFromAtlas: WK.AtlasReferences._1, tag: "TL"),
@@ -55,8 +55,7 @@ namespace Showroom.Scenes
                 // center
                 new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), 16, 16), imageFromAtlas: WK.AtlasReferences._5),
                 
-                new ZeroZeroPoint(),
-                
+                new ZeroZeroPoint_Entity(),
             };
 
             //this.camera = new Camera(entities.Find(x => x.tag == "player"));

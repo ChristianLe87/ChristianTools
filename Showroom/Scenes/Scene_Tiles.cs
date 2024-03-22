@@ -44,7 +44,7 @@ namespace Showroom.Scenes
 
             this.map = new Map(mainTiles: mainTileTiles);
 
-            this.camera = new Camera(entities.FirstOrDefault(x => x.tag == "player"));
+            //this.camera = new Camera(entities.FirstOrDefault(x => x.tag == "player"));
         }
     }
 }

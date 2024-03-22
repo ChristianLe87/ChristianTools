@@ -17,20 +17,20 @@ namespace ChristianTools.Systems.Draw
         {
             // Map
             {
-                if (scene.map == null)
-                    return;
+                if (scene.map != null)
+                {
+                    foreach (var tile in scene.map.backgroundTiles)
+                        if (tile != null && tile.isActive)
+                            Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
 
-                foreach (var tile in scene.map.backgroundTiles)
-                    if (tile != null && tile.isActive)
-                        Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
+                    foreach (var tile in scene.map.mainTiles)
+                        if (tile != null && tile.isActive)
+                            Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
 
-                foreach (var tile in scene.map.mainTiles)
-                    if (tile != null && tile.isActive)
-                        Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
-
-                foreach (var tile in scene.map.frontTiles)
-                    if (tile != null && tile.isActive)
-                        Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
+                    foreach (var tile in scene.map.frontTiles)
+                        if (tile != null && tile.isActive)
+                            Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
+                }
             }
 
             // Entity

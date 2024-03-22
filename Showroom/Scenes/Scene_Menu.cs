@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using ChristianTools.Components;
 using ChristianTools.Entities;
 using ChristianTools.Helpers;
+using ChristianTools.Prefabs;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Showroom.Scenes
 {
-    public class Scene_Menu : IScene
+    public class Scene_Menu : BaseScene
     {
-        public List<IEntity> entities { get; set; }
-        public List<IUI> UIs { get; set; }
-        public Map map { get; set; }
-        public Camera camera { get; set; }
-
-        public void Initialize()
+        public override void Initialize()
         {
             this.UIs = new List<IUI>()
             {
@@ -88,20 +84,31 @@ namespace Showroom.Scenes
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                     OnClickAction: () => Game1.ChangeToScene("Scene_Test")
                 ),
+
+                new ZeroZeroPoint_UI()
             };
 
-
-
-            Rectangle _2B = new Rectangle(32, 32, 16, 16);
             this.entities = new List<IEntity>()
             {
-                new ZeroZeroPoint(),
-                //new Entity_WASD(new Rectangle(400, 50, 16, 16), _2B, tag: "player"),
-                new Line(new Point(0,0), new Point(500,500), Color.Red, tag:"mylinecool")
+                new ZeroZeroPoint_Entity(),
+
+                // TL
+                new Entity_Numbers(new Rectangle(0, 0, 16, 16), WK.AtlasReferences._1),
+
+                // TR
+                new Entity_Numbers(new Rectangle(484, 0, 16, 16), WK.AtlasReferences._3),
+
+                // Center
+                new Entity_WASD(ChristianTools.Helpers.MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasReferences._5, tag: "player"),
+
+                // DL
+                new Entity_Numbers(new Rectangle(0, 484, 16, 16), WK.AtlasReferences._7),
+
+                // DR
+                new Entity_Numbers(new Rectangle(484, 484, 16, 16), WK.AtlasReferences._9),
             };
 
-            IEntity entity = entities.Find(x => x.tag == "player");
-            this.camera = new Camera(entity);
+            this.camera = new Camera(entities.Find(x => x.tag == "player"));
         }
     }
 }

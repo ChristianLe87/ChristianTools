@@ -21,7 +21,6 @@ namespace Showroom.Scenes
 
 		public void Initialize()
 		{
-
 			string textOfChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nabcdefghijklmnopqrstuvwxyz\n0123456789Ññß\n,:;?.! \'()_\"<>-+\\";
 			//public List<SoundEffect> soundEffects { get; private set; }
 
@@ -57,7 +56,7 @@ namespace Showroom.Scenes
 			//this.entities = new List<IEntity>();
 			
 			
-			this.camera = new Camera();
+			//this.camera = new Camera();
 			
 			//this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
 			//this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);
