@@ -28,8 +28,8 @@ namespace Showroom.Scenes
                     textAlignment: Label.TextAlignment.Midle_Center
                 ),
                 new Button(
-                    rectangle: new Rectangle(10, 10, 230, 30),
-                    text: "Go to menu",
+                    rectangle: new Rectangle(10, 460, 230, 30),
+                    text: "<-- Back to menu",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                     OnClickAction: () => Game1.ChangeToScene("Scene_Menu")

@@ -32,7 +32,7 @@ namespace Showroom.Scenes
                 {
                     new Button(
                         rectangle: new Rectangle(10, 460, 230, 30),
-                        text: "Go to menu",
+                        text: "<-- Back to menu",
                         defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                         mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                         OnClickAction: () => Game1.ChangeToScene("Scene_Menu")

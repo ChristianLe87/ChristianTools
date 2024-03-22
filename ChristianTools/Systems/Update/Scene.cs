@@ -19,7 +19,8 @@ namespace ChristianTools.Systems.Update
             {
                 if (scene.entities != null)
                     for (int i = 0; i < scene.entities.Count; i++)
-                        scene.entities[i].dxCustomUpdateSystem?.Invoke(lastInputState: lastInputState, inputState: inputState);
+                        if(scene.entities[i] != null)
+                            scene.entities[i].dxCustomUpdateSystem?.Invoke(lastInputState: lastInputState, inputState: inputState);
             }
             
             // Camera

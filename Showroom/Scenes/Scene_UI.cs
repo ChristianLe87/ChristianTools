@@ -40,7 +40,7 @@ namespace Showroom.Scenes
 				new Label(rectangle: new Rectangle(100, 150, 100, 30), text: textOfChars, textAlignment: Label.TextAlignment.Top_Left, tag: ""),
 
 				// Back to menu
-				new Button(rectangle: new Rectangle(10, 400, 100, 50), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
+				new Button(rectangle: new Rectangle(10, 460, 230, 30), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
 
 				new LineUI(start: new Point(400, 100), end: new Point(350, 150), color: Color.Red),
 				new LineUI(start: new Point(350, 100), end: new Point(400, 150), color: Color.Green),

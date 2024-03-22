@@ -16,7 +16,7 @@ namespace ChristianTools.Components
         public Camera(IEntity entityToFollow = null)
         {
             this.entityToFollow = entityToFollow;
-            this.transform = new Matrix();
+            this.transform = Matrix.CreateTranslation(Vector3.Zero);    
         }
 
         public void Update()
