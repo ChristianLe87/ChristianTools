@@ -84,31 +84,7 @@ namespace Showroom.Scenes
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                     OnClickAction: () => Game1.ChangeToScene("Scene_Test")
                 ),
-
-                new ZeroZeroPoint_UI()
             };
-
-            this.entities = new List<IEntity>()
-            {
-                new ZeroZeroPoint_Entity(),
-
-                // TL
-                new Entity_Numbers(new Rectangle(0, 0, 16, 16), WK.AtlasReferences._1),
-
-                // TR
-                new Entity_Numbers(new Rectangle(484, 0, 16, 16), WK.AtlasReferences._3),
-
-                // Center
-                new Entity_WASD(ChristianTools.Helpers.MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasReferences._5, tag: "player"),
-
-                // DL
-                new Entity_Numbers(new Rectangle(0, 484, 16, 16), WK.AtlasReferences._7),
-
-                // DR
-                new Entity_Numbers(new Rectangle(484, 484, 16, 16), WK.AtlasReferences._9),
-            };
-
-            this.camera = new Camera(entities.Find(x => x.tag == "player"));
         }
     }
 }

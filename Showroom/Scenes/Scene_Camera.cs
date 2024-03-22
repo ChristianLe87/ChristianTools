@@ -1,24 +1,16 @@
 using System.Collections.Generic;
-using System.Linq;
-using ChristianTools;
 using ChristianTools.Components;
 using ChristianTools.Entities;
 using ChristianTools.Helpers;
 using ChristianTools.Prefabs;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Showroom.Scenes
 {
-    public class Scene_Camera : IScene
+    public class Scene_Camera : BaseScene
     {
-        public List<IEntity> entities { get; set; }
-        public List<IUI> UIs { get; set; }
-        public Map map { get; set; }
-        public Camera camera { get; set; }
-
-        public void Initialize()
+        public override void Initialize()
         {
             this.UIs = new List<IUI>()
             {
@@ -35,30 +27,30 @@ namespace Showroom.Scenes
                     OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
                 ),
 
-                new LineUI(start: new Point(0, 0), end: new Point(500, 500), color: Color.Red),
-                
-                //new ZeroZeroPoint_UI()
+                new ZeroZeroPoint_UI()
             };
-            
+
             this.entities = new List<IEntity>()
             {
-                new Entity_WASD(new Rectangle(0, 0, 16, 16), new Rectangle(32, 32, 16, 16)),
+                new ZeroZeroPoint_Entity(),
 
                 // TL
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, 8), 16, 16), imageFromAtlas: WK.AtlasReferences._1, tag: "TL"),
+                new Entity_Numbers(new Rectangle(0, 0, 16, 16), WK.AtlasReferences._1),
+
                 // TR
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, 8), 16, 16), imageFromAtlas: WK.AtlasReferences._3),
+                new Entity_Numbers(new Rectangle(484, 0, 16, 16), WK.AtlasReferences._3),
+
+                // Center
+                new Entity_WASD(ChristianTools.Helpers.MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasReferences._5, tag: "player"),
+
                 // DL
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, ChristianGame.WK.canvasHeight - 8), 16, 16), imageFromAtlas: WK.AtlasReferences._7),
+                new Entity_Numbers(new Rectangle(0, 484, 16, 16), WK.AtlasReferences._7),
+
                 // DR
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth - 8, ChristianGame.WK.canvasHeight - 8), 16, 16), imageFromAtlas: WK.AtlasReferences._9),
-                // center
-                new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(ChristianGame.WK.canvasWidth / 2, ChristianGame.WK.canvasHeight / 2), 16, 16), imageFromAtlas: WK.AtlasReferences._5),
-                
-                new ZeroZeroPoint_Entity(),
+                new Entity_Numbers(new Rectangle(484, 484, 16, 16), WK.AtlasReferences._9),
             };
 
-            //this.camera = new Camera(entities.Find(x => x.tag == "player"));
+            this.camera = new Camera(entities.Find(x => x.tag == "player"));
         }
     }
 }
