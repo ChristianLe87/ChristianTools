@@ -9,13 +9,15 @@ namespace ChristianTools.Components
         public Rectangle imageFromAtlas { get; private set; }
         public int layerId { get; private set; }
         public string tag { get; private set; }
+        public bool isActive { get; set; }
 
-        public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, int layerId, string tag = "")
+        public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, int layerId, string tag = "", bool isActive = true)
         {
             this.worldRectangle = worldRectangle;
             this.layerId = layerId;
             this.imageFromAtlas = imageFromAtlas;
             this.tag = tag;
+            this.isActive = isActive;
         }
 
         public static Tile[,] FromInt_ToTile(int[,] intMap)

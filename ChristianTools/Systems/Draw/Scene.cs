@@ -6,33 +6,38 @@ namespace ChristianTools.Systems.Draw
 {
     public class Scene
     {
-        public static void DrawSystem(SpriteBatch spriteBatch)
+        public static void DrawUI(SpriteBatch spriteBatch, IScene scene)
         {
-            IScene scene = ChristianGame.GetScene;
-            
+            foreach (var ui in scene.UIs)
+                if (ui.isActive)
+                    ui.dxCustomDrawSystem?.Invoke(spriteBatch);
+        }
+
+        public static void DrawWorld(SpriteBatch spriteBatch, IScene scene)
+        {
             // Map
-            if (scene.map != null)
             {
-                //mainLayer
-                foreach (Tile myTile in scene.map.mainTiles)
-                {
-                    Systems.Draw.Map.Tile.DrawSystem(spriteBatch, myTile);
-                }
+                if (scene.map == null)
+                    return;
+
+                foreach (var tile in scene.map.backgroundTiles)
+                    if (tile != null && tile.isActive)
+                        Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
+
+                foreach (var tile in scene.map.mainTiles)
+                    if (tile != null && tile.isActive)
+                        Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
+
+                foreach (var tile in scene.map.frontTiles)
+                    if (tile != null && tile.isActive)
+                        Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
             }
 
-            // UIs
-            if (scene.UIs != null)
-                foreach (var ui in scene.UIs)
-                    ui.dxDrawSystem(spriteBatch: spriteBatch);
-
-            // Entities
-            if (scene.entities != null)
+            // Entity
             {
-                for (int i = 0; i < scene.entities.Count; i++)
-                {
-                    ChristianTools.Systems.Draw.Entity.DrawSystem(spriteBatch, scene.entities[i]);
-                    scene.entities[i].dxDrawSystem?.Invoke(spriteBatch: spriteBatch);
-                }
+                foreach (var entity in scene.entities)
+                    if (entity.isActive)
+                        entity.dxCustomDrawSystem?.Invoke(spriteBatch);
             }
         }
     }

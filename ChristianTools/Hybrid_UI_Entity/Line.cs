@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Entities
 {
-    public class Line : IEntity
+    public class Line : IEntity, IUI
     {
-        Rectangle[] rectangles;
+        private Rectangle[] rectangles;
 
         public Point start { get; private set; }
         public Point end { get; private set; }
@@ -19,13 +19,12 @@ namespace ChristianTools.Entities
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
+        public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+        public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public int health { get; }
 
         public Animation animation { get; }
-        //public CharacterState characterState { get; set; }
 
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
 
         public Line(Point start, Point end, Color color, int thickness = 5, string tag = "")
         {
@@ -40,7 +39,7 @@ namespace ChristianTools.Entities
             this.isActive = true;
             CreateLine();
 
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
         public void UpdatePoints(Point? start= null, Point? end= null)

@@ -6,8 +6,8 @@ namespace ChristianTools.UI
 {
     public class LineUI : IUI
     {
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
+        public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+        public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public bool isActive { get; }
 
         private ChristianTools.Entities.Line line;
@@ -22,30 +22,22 @@ namespace ChristianTools.UI
             this.originalStart = start;
             this.originalEnd = end;
 
-            this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
         }
 
         private void DrawSystem(SpriteBatch spriteBatch)
         {
+            // ToDo: research this
             Point newStart = new Point();
             Point newEnd = new Point();
 
-            Rectangle viewport = new Rectangle();
-            
-            
-            if (ChristianGame.GetScene.camera != null)
-                viewport = ChristianGame.GetScene.camera.cameraView;
-            else
-                viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport.Bounds;
+            newStart = new Point(originalStart.X , originalStart.Y );
+            newEnd = new Point(originalEnd.X , originalEnd.Y );
 
-            
-            newStart = new Point(originalStart.X + viewport.X, originalStart.Y + viewport.Y);
-            newEnd = new Point(originalEnd.X + viewport.X, originalEnd.Y + viewport.Y);
-            
-            
+
+            // ToDo: reserch why this update on a Draw function
             this.line.UpdatePoints(start: newStart, end: newEnd);
-            this.line.dxDrawSystem(spriteBatch);
+            this.line.dxCustomDrawSystem(spriteBatch);
         }
-
     }
 }

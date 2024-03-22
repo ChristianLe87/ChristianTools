@@ -18,7 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tiled\Helpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tiled\Tilemap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tiled\Tileset.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hybrid_UI_Entity\Line.cs" />
+    <Folder Include="$(MSBuildThisFileDirectory)Entities\" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Font.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState.cs" />
@@ -26,6 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MyRectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Other.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Texture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hybrid_UI_Entity\ZeroZeroPoint.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Prefabs\BaseEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\MyBlaTile.cs" />

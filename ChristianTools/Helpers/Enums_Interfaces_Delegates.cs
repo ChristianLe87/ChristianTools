@@ -11,10 +11,14 @@ namespace ChristianTools.Helpers
         public string WindowTitle { get; }
         public double FPS { get; }
         public bool IsFullScreen { get; set; }
+
         public bool AllowUserResizing { get; }
+
         //public int ScaleFactor { get; set; }
         public int canvasWidth { get; }
+
         public int canvasHeight { get; }
+
         //public int AssetSize { get; }
         //public string GameDataFileName { get; }
         public bool isMouseVisible { get; set; }
@@ -31,15 +35,15 @@ namespace ChristianTools.Helpers
         List<IUI> UIs { get; set; }
         Map map { get; set; }
         Camera camera { get; set; }
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
+        //public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+        //public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public void Initialize();
     }
 
     public interface IUI
     {
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
+        public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+        public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public bool isActive { get; }
     }
 
@@ -48,12 +52,12 @@ namespace ChristianTools.Helpers
         public IRigidbody rigidbody { get; set; }
         public Animation animation { get; }
         public bool isActive { get; set; }
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
         public string tag { get; }
         public Guid guid { get; }
+        public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+        public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
     }
-    
+
 
     public interface IRigidbody
     {
@@ -81,6 +85,6 @@ namespace ChristianTools.Helpers
     }
 
     // === Delegates ===
-    public delegate void DxUpdateSystem(InputState lastInputState, InputState inputState);
-    public delegate void DxDrawSystem(SpriteBatch spriteBatch);
+    public delegate void DxCustomUpdateSystem(InputState lastInputState, InputState inputState);
+    public delegate void DxCustomDrawSystem(SpriteBatch spriteBatch);
 }

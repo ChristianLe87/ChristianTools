@@ -9,8 +9,8 @@ namespace ChristianTools.UI
 		public string text;
 		TextAlignment textAlignment;
 		public Rectangle rectangle { get; }
-		public DxUpdateSystem dxUpdateSystem { get; set; }
-		public DxDrawSystem dxDrawSystem { get; set; }
+		public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+		public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
 		public bool isActive { get; }
 		private Texture2D texture2D;
 
@@ -18,8 +18,8 @@ namespace ChristianTools.UI
 		{
 			this.rectangle = rectangle;
 			this.text = text;
-			this.dxUpdateSystem = (state, inputState) => UpdateSystem();
-			this.dxDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+			this.dxCustomUpdateSystem = (state, inputState) => UpdateSystem();
+			this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
 			this.textAlignment = textAlignment;
 
 			this.texture2D = texture;
@@ -31,27 +31,14 @@ namespace ChristianTools.UI
 			if (this.isActive == false)
 				return;
 		}
+
 		private void DrawSystem(SpriteBatch spriteBatch)
 		{
-			Rectangle rec;
-			Vector2 vec;
-			if (ChristianGame.GetScene.camera != null)
-			{
-				rec = new Rectangle(rectangle.Location + new Point(ChristianGame.GetScene.camera.cameraView.X, ChristianGame.GetScene.camera.cameraView.Y), rectangle.Size);
-				vec = new Vector2(ChristianGame.GetScene.camera.cameraView.X, ChristianGame.GetScene.camera.cameraView.Y);
-			}
-			else
-			{
-				rec = rectangle;
-				vec = new Vector2();
-			}
-                
-
 			if (texture2D != null)
-				spriteBatch.Draw(texture2D, rec, Color.White);
+				spriteBatch.Draw(texture2D, rectangle, Color.White);
 
 
-			spriteBatch.DrawString(ChristianGame.spriteFont, text, GetTextPosition(ChristianGame.spriteFont).ToVector2() + vec, Color.White);
+			spriteBatch.DrawString(ChristianGame.spriteFont, text, GetTextPosition(ChristianGame.spriteFont).ToVector2() + new Vector2(), Color.White);
 		}
 
 		private Point GetTextPosition(SpriteFont spriteFont)

@@ -2,6 +2,7 @@ using System;
 using ChristianTools.Components;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Prefabs
 {
@@ -10,10 +11,10 @@ namespace ChristianTools.Prefabs
         public IRigidbody rigidbody { get; set; }
         public Animation animation { get; }
         public bool isActive { get; set; }
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
         public string tag { get; }
         public Guid guid { get; }
+        public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+        public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
 
         public BaseEntity(Rectangle rectangle, Rectangle imageFromAtlas, string tag = "", Vector2 force = new Vector2(), bool isActive = true)
         {
@@ -22,6 +23,8 @@ namespace ChristianTools.Prefabs
             this.isActive = isActive;
             this.tag = tag;
             this.guid = Guid.NewGuid();
+            this.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => Systems.Update.Entity.UpdateSystem(lastInputState, inputState, this);
+            this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => Systems.Draw.Entity.Draw(spriteBatch, this);
         }
     }
 }

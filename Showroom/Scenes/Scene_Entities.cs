@@ -15,8 +15,6 @@ namespace Showroom.Scenes
         public List<IUI> UIs { get; set; }
         public Map map { get; set; }
         public Camera camera { get; set; }
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
 
         public void Initialize()
         {
@@ -29,7 +27,7 @@ namespace Showroom.Scenes
             this.entities = new List<IEntity>()
             {
                 new ChristianTools.Entities.Line(new Point(100, 100), new Point(500, 500), Color.Red, tag: "RedLine"),
-                new Entity_WASD(rectangle: new Rectangle(250, 250, 16, 16), imageFromAtlas: WK.AtlasReferences._2, tag: "player"),
+                //new Entity_WASD(rectangle: new Rectangle(250, 250, 16, 16), imageFromAtlas: WK.AtlasReferences._2, tag: "player"),
 
                 // TL
                 new Entity_Numbers(MyRectangle.CreateRectangle(centerPosition: new Point(8, 8), 16, 16), imageFromAtlas: WK.AtlasReferences._1, tag: "TL"),
@@ -45,11 +43,11 @@ namespace Showroom.Scenes
             
             this.camera = new Camera();
             
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateLine(lastInputState: lastInputState, inputState: inputState);
+            //this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateLine(lastInputState: lastInputState, inputState: inputState);
         }
 
-
-        private void UpdateLine(InputState lastInputState, InputState inputState)
+        // ToDo: Think about how to implement this
+        /*private void UpdateLine(InputState lastInputState, InputState inputState)
         {
             
             ChristianTools.Entities.Line line = entities.Where(x => x.tag == "RedLine").FirstOrDefault() as ChristianTools.Entities.Line;
@@ -67,19 +65,15 @@ namespace Showroom.Scenes
                 line.UpdatePoints(start: point);    
             }
             
-            //ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
-            
             IScene scene = ChristianGame.GetScene;
             if (scene.entities != null)
             {
                 if (scene.entities.Where(x => x.tag == "player").Count() > 0)
                 {
                     IEntity player = scene.entities.Where(x => x.tag == "player").FirstOrDefault();
-                    scene.camera.UpdateCamera(player.rigidbody?.rectangle.Center ?? new Point(0, 0));
+                    scene.camera.Update(player.rigidbody?.rectangle.Center.ToVector2() ?? new Vector2(0, 0));
                 }
             }
-            
-        }
-
+        }*/
     }
 }

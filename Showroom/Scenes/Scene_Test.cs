@@ -14,9 +14,6 @@ namespace Showroom.Scenes
         public List<IUI> UIs { get; set; }
         public Map map { get; set; }
         public Camera camera { get; set; }
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
-        
         
         public void Initialize()
         {

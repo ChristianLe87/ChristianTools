@@ -14,8 +14,6 @@ namespace Showroom.Scenes
 		public List<IUI> UIs { get; set; }
 		public Map map { get; set; }
 		public Camera camera { get; set; }
-		public DxUpdateSystem dxUpdateSystem { get; set; }
-		public DxDrawSystem dxDrawSystem { get; set; }
 		
 		private Texture2D testTexture1;
 		private Texture2D testTexture2;
@@ -59,7 +57,7 @@ namespace Showroom.Scenes
 			//this.entities = new List<IEntity>();
 			
 			
-			//this.camera = new Camera();
+			this.camera = new Camera();
 			
 			//this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Scene.UpdateSystem(lastInputState: lastInputState, inputState: inputState);
 			//this.dxDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Scene.DrawSystem(spriteBatch);

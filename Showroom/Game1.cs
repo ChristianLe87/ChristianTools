@@ -7,7 +7,7 @@ namespace Showroom
 {
     public class Game1 : ChristianGame
     {
-        public Game1(WK wk) : base(GetScenes(), startScene: "Scene_Test", wk)
+        public Game1(WK wk) : base(GetScenes(), startScene: "Scene_Camera", wk)
         {
         }
 

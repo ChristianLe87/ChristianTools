@@ -14,8 +14,6 @@ namespace Showroom.Scenes
         public List<IUI> UIs { get; set; }
         public Map map { get; set; }
         public Camera camera { get; set; }
-        public DxUpdateSystem dxUpdateSystem { get; set; }
-        public DxDrawSystem dxDrawSystem { get; set; }
 
         public void Initialize()
         {
@@ -30,7 +28,7 @@ namespace Showroom.Scenes
                 new Button(rectangle: new Rectangle(10, 400, 100, 50), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
             };
 
-            
+
             int[,] mainIntTiles = new int[,]
             {
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
@@ -45,15 +43,8 @@ namespace Showroom.Scenes
             Tile[,] mainTileTiles = Tile.FromInt_ToTile(mainIntTiles);
 
             this.map = new Map(mainTiles: mainTileTiles);
-            
-            this.dxUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem();
 
-        }
-
-        private void UpdateSystem()
-        {
-            IEntity player = ChristianGame.GetScene.entities?.FirstOrDefault(x => x.tag == "player");
-            camera?.FollowEntity(player);
+            this.camera = new Camera(entities.FirstOrDefault(x => x.tag == "player"));
         }
     }
 }

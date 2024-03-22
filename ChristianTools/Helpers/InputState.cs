@@ -96,7 +96,7 @@ namespace ChristianTools.Helpers
             if (ChristianGame.GetScene.camera != null)
             {
                 Point point = mouseState.Position;
-                point += new Point((int)ChristianGame.GetScene.camera.cameraView.X, (int)ChristianGame.GetScene.camera.cameraView.Y);
+                point += new Point((int)ChristianGame.GetScene.camera.cameraCenterPosition.X, (int)ChristianGame.GetScene.camera.cameraCenterPosition.Y);
                 return point;
             }
             else

@@ -1,47 +1,32 @@
 using ChristianTools.Helpers;
+using ChristianTools.Systems.Update;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Components
 {
     public class Camera
     {
-        private float zoom = 1;
-        private Vector2 position { get; set; }
+        //private Viewport viewport; // Es el rectangulo por donde la camara ve
+        public Matrix transform;
+        public Vector3 cameraCenterPosition => transform.Translation;
 
-        public Rectangle cameraView
+        private IEntity entityToFollow;
+
+        public Camera(IEntity entityToFollow = null)
         {
-            get { return ChristianTools.Helpers.MyRectangle.CreateRectangle(new Point((int)position.X, (int)position.Y), ChristianGame.WK.canvasWidth, ChristianGame.WK.canvasHeight); }
+            this.entityToFollow = entityToFollow;
+            this.transform = new Matrix();
         }
 
-        public Matrix transform { get; private set; }
-
-        public Camera()
+        public void Update()
         {
-            this.position = new Vector2();
-        }
-
-
-        private void UpdateMatrix()
-        {
-            transform = Matrix.CreateTranslation(new Vector3((ChristianGame.WK.canvasWidth * 0.5f) - position.X, (ChristianGame.WK.canvasWidth * 0.5f) - position.Y, 0)) *
-                        Matrix.CreateScale(this.zoom);
-        }
-
-        public void UpdateCamera()
-        {
-            UpdateMatrix();
-        }
-        
-        public void UpdateCamera(Point setCenter)
-        {
-            this.position = new Vector2(setCenter.X, setCenter.Y);
-            UpdateMatrix();
-        }
-
-        public void FollowEntity(IEntity entity)
-        {
-            if (entity != null)
-                UpdateCamera(entity.rigidbody?.rectangle.Center ?? new Point(0, 0));
+            if (entityToFollow != null)
+            {
+                Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;
+                Vector3 cameraPosition = new Vector3((viewport.Width / 2) - entityToFollow.rigidbody.rectangle.X, (viewport.Height / 2) - entityToFollow.rigidbody.rectangle.Y, 0);
+                transform = Matrix.CreateTranslation(cameraPosition);
+            }
         }
     }
 }

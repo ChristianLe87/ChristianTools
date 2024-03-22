@@ -5,11 +5,10 @@ namespace ChristianTools.Systems.Draw.Map
 {
     public class Tile
     {
-        public static void DrawSystem(SpriteBatch spriteBatch, Components.Tile tile)
+        public static void Draw(SpriteBatch spriteBatch, Components.Tile tile)
         {
             if (tile != null)
             {
-                // new
                 spriteBatch.Draw(
                     texture: ChristianGame.atlasEntities, // atlas texture 
                     position: tile.worldRectangle.Center.ToVector2(), //The drawing location on screen.
