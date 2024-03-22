@@ -24,9 +24,8 @@ namespace ChristianTools.Systems.Update
             
             // Camera
             {
-                if (scene.camera != null) scene.camera.Update();
+                scene.camera?.Update();
             }
-
         }
     }
 }

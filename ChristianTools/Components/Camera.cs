@@ -21,9 +21,12 @@ namespace ChristianTools.Components
 
         public void Update()
         {
-            Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;
-            Vector3 cameraPosition = new Vector3((viewport.Width / 2) - entityToFollow.rigidbody.rectangle.Center.X, (viewport.Height / 2) - entityToFollow.rigidbody.rectangle.Center.Y, 0);
-            transform = Matrix.CreateTranslation(cameraPosition);
+            if (entityToFollow != null)
+            {
+                Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;
+                Vector3 cameraPosition = new Vector3((viewport.Width / 2) - entityToFollow.rigidbody.rectangle.Center.X, (viewport.Height / 2) - entityToFollow.rigidbody.rectangle.Center.Y, 0);
+                transform = Matrix.CreateTranslation(cameraPosition);    
+            }
         }
     }
 }
