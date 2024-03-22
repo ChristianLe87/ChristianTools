@@ -1,28 +1,20 @@
 using System.Collections.Generic;
-using ChristianTools.Components;
 using ChristianTools.Helpers;
+using ChristianTools.Prefabs;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Showroom.Scenes
 {
-    public class Scene_Test : IScene
+    public class Scene_Test : BaseScene
     {
-        public List<IEntity> entities { get; set; }
-        
-        public List<IUI> UIs { get; set; }
-        public Map map { get; set; }
-        public Camera camera { get; set; }
-        
-        public void Initialize()
+        public override void Initialize()
         {
             // entities
             {
                 this.entities = new List<IEntity>()
                 {
-                    //new Entity_Numbers(new Point(40, 40), WK.AtlasReferences._1),
-                    new Entity_Platformer_Player(new Rectangle(1 * 16, 1 * 16, 16, 16), WK.AtlasReferences._1, "player", force: new Vector2(0, 1)),
+                    new Entity_WASD(MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasReferences._5, "player"),
                 };
             }
 
@@ -40,38 +32,6 @@ namespace Showroom.Scenes
                 };
             }
 
-
-            // Map
-            {
-                int[,] mainIntTiles = new int[,]
-                {
-                    { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                    { 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                };
-
-                Tile[,] mainTileTiles = Tile.FromInt_ToTile(mainIntTiles);
-
-                this.map = new Map(mainTiles: mainTileTiles);
-            }
-            
-  
-            // Camera
-            {
-                //this.camera = new Camera();
-            }
         }
     }
 }
