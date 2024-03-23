@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using ChristianTools.Components;
+using ChristianTools.Entities;
 using ChristianTools.Helpers;
 using ChristianTools.Prefabs;
 using ChristianTools.UI;
@@ -15,6 +17,7 @@ namespace Showroom.Scenes
                 this.entities = new List<IEntity>()
                 {
                     new Entity_Touch(MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasReferences._5, "player"),
+                    new ZeroZeroPoint_Entity(),
                 };
             }
 
@@ -29,8 +32,12 @@ namespace Showroom.Scenes
                         mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                         OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
                     ),
+                    new ZeroZeroPoint_UI(),
+                    new Button(rectangle: new Rectangle(10, 460, 230, 30), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
                 };
             }
+            
+            this.camera = new Camera(entities.Find(x => x.tag == "player"));
         }
     }
 }

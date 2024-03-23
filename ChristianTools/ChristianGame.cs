@@ -91,7 +91,7 @@ namespace ChristianTools
         {
             InputState inputState = new InputState();
 
-            if (inputState.IsKeyboardKeyDown(Keys.Escape))
+            if (inputState.Escape)
                 Exit();
 
             Systems.Update.Scene.Update(lastInputState: lastInputState, inputState: inputState);

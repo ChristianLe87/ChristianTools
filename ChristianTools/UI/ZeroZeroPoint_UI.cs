@@ -14,9 +14,9 @@ namespace ChristianTools.UI
 
         private void Update(InputState lastInputState, InputState inputState)
         {
-            if (inputState.Mouse_LeftButton_Click)
+            if (inputState.Action == true && lastInputState.Action == false)
             {
-                System.Console.WriteLine("Mouse World (UI): " + inputState.Mouse_OnWindowPosition());
+                System.Console.WriteLine("Mouse World (UI): " + inputState.mouse.GetOnWindowPosition());
             }
         }
     }

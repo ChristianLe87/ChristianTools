@@ -24,7 +24,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Font.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Hybrids\Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Hybrids\ZeroZeroPoint.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState\InputState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState\MyGamePad.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState\MyKeyboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState\MyMouse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState\MyPS4.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState\MyTouch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MyMath.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MyRectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Other.cs" />

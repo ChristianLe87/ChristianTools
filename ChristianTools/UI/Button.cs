@@ -1,3 +1,4 @@
+using System;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -46,15 +47,12 @@ namespace ChristianTools.UI
 
         private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
-         
-            if (rectangle.Contains(inputState.Mouse_OnWindowPosition()))
+            if (rectangle.Contains(inputState.GetActionOnWindowPosition()))
             {
                 isMouseOver = true;
-                if (lastInputState.Mouse_LeftButton == ButtonState.Released && inputState.Mouse_LeftButton == ButtonState.Pressed)
-                {
-                    if (OnClickAction != null)
-                        OnClickAction();
-                }
+
+                if ((inputState.Action == true && lastInputState.Action == false) || inputState.touch.IsTouchDown())
+                    OnClickAction?.Invoke();
             }
             else
             {
