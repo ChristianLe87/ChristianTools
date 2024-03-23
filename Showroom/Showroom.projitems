@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Entity_Numbers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Entity_Platformer_Player.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Entity_Touch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Entity_WASD.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WK.cs" />
