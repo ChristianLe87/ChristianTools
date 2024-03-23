@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using ChristianTools.Components;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -47,6 +46,7 @@ namespace ChristianTools
             //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
             //var bla = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
 
+            
             // FPS
             base.IsFixedTimeStep = true;
             base.TargetElapsedTime = TimeSpan.FromSeconds(1d / WK.FPS);
@@ -58,11 +58,7 @@ namespace ChristianTools
             base.IsMouseVisible = WK.isMouseVisible;
             //Window.AllowUserResizing = WK.AllowUserResizing;
             //game = this;
-
-
-
-
-
+            
 
             // Content
             Content.RootDirectory = "Content";
@@ -89,9 +85,8 @@ namespace ChristianTools
             atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
         }
-
-        private int yeahCount = 0;
-
+        
+        
         protected override void Update(GameTime gameTime)
         {
             InputState inputState = new InputState();
@@ -129,10 +124,7 @@ namespace ChristianTools
         {
             //https://community.monogame.net/t/fitting-pixel-art-game-to-screen/17043
             spriteBatch.Begin(sortMode: SpriteSortMode.Immediate, blendState: BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: scenes[actualScene].camera?.transform);
-            //spriteBatch.Begin(sortMode: SpriteSortMode.Immediate, blendState: BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: null);
-            //spriteBatch.Begin();
             {
-                //var bla = graphicsDeviceManager.GraphicsDevice.Viewport.;
                 Systems.Draw.Scene.DrawWorld(spriteBatch,GetScene);
             }
             spriteBatch.End();

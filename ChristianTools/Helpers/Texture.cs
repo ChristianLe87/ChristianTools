@@ -1,7 +1,6 @@
 using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ChristianTools.Helpers
@@ -10,32 +9,20 @@ namespace ChristianTools.Helpers
 	{
 		public static Texture2D GetTextureFromFile(GraphicsDevice graphicsDevice, string imageName, int scaleFactor = 1)
 		{
-			// New
+			///Remember: First compile project, it will generate a "bin" folder inside default "Content" folder, then, manualy add the files (Just copy and paste)
+			/// Will not be necessary to change properties of each file
+			/// /Users/christianlehnhoff/Repositories/GitHub/ChristianLe87/MonoGame/MyCoolGame/CrossPlatform/Content/bin/Android/Content/Tree.png
+			/// --> Remember to add the file to not ignore on Git
+
+
+			// For iOS, always set Poroperties to "always copy" and use this
+			if (System.OperatingSystem.IsIOS()) imageName = Path.Combine("bin", "iOS", "Content", imageName);
+
+			string absolutePath = Path.Combine("Content" /*Helpers.ChristianGame.contentManager.RootDirectory*/, $"{imageName}.png");
+			using (var stream = TitleContainer.OpenStream(absolutePath))
 			{
-				///Remember: First compile project, it will generate a "bin" folder inside default "Content" folder, then, manualy add the files (Just copy and paste)
-				/// Will not be necessary to change properties of each file
-				/// /Users/christianlehnhoff/Repositories/GitHub/ChristianLe87/MonoGame/MyCoolGame/CrossPlatform/Content/bin/Android/Content/Tree.png
-				/// --> Remember to add the file to not ignore on Git
-
-
-				// For iOS, always set Poroperties to "always copy" and use this
-				if (System.OperatingSystem.IsIOS()) imageName = Path.Combine("bin", "iOS", "Content", imageName);
-
-				string absolutePath = Path.Combine("Content" /*Helpers.ChristianGame.contentManager.RootDirectory*/, $"{imageName}.png");
-				using (var stream = TitleContainer.OpenStream(absolutePath))
-				{
-					Texture2D result = Texture2D.FromStream(graphicsDevice, stream);
-					return ScaleTexture(graphicsDevice, result, scaleFactor);
-				}
-			}
-			// Old
-			{
-				//GraphicsDevice graphicsDevice = ChristianGame.graphicsDevice;
-				ContentManager contentManager = null; // ChristianGame.contentManager;
-
-				string absolutePath = Path.Combine(contentManager.RootDirectory, $"{imageName}.png");
-				Texture2D result = Texture2D.FromFile(graphicsDevice, absolutePath);
-				return result;
+				Texture2D result = Texture2D.FromStream(graphicsDevice, stream);
+				return ScaleTexture(graphicsDevice, result, scaleFactor);
 			}
 		}
 
