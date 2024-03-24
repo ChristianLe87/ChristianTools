@@ -18,7 +18,7 @@ namespace ChristianTools.Components
         public Rectangle GetRectangleRight(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleRight(rectangle, scaleFactor);
 
         private List<Tile> tiles;
-        private Tile[,] surroundingElements;
+        //private Tile[,] surroundingElements;
         private int scaleFactor = 2;
         //public bool isGrounded => Other.GetRow(surroundingElements, 2).Where(x => x != null).Where(x => x.rigidbody.rectangle.Intersects(GetRectangleDown)).Count() > 0;
 
@@ -31,9 +31,9 @@ namespace ChristianTools.Components
 
         public void Update()
         {
-            //Point pointInMap = new Point(rectangle.Center.X / 16, rectangle.Center.Y / 16);
-            //this.surroundingElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
-            this.tiles = ChristianTools.Helpers.Other.FlattenArray(ChristianGame.GetScene.map.mainTiles).Where(x => x != null).ToList();
+            Point pointInMap = new Point(rectangle.Center.X / 16, rectangle.Center.Y / 16);
+            Tile[,] surroundingElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
+            this.tiles = ChristianTools.Helpers.Other.FlattenArray(surroundingElements).Where(x => x != null).ToList();
 
             Move_Y((int)force.Y);
             Move_X((int)force.X);
