@@ -15,7 +15,7 @@ namespace Showroom
 
         private void Update(InputState lastInputState, InputState inputState)
         {
-            ChristianTools.Systems.Update.Entity.Move_WASD(lastInputState, inputState, this, 3);
+            ChristianTools.Systems.Update.Entity.Move_WASD(lastInputState, inputState, this, 1);
             //ChristianTools.Systems.Update.Entity.SetForce(lastInputState, inputState, this, 1);
         }
     }

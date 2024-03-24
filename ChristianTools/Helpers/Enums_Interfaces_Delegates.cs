@@ -71,10 +71,10 @@ namespace ChristianTools.Helpers
 
         public Rectangle rectangle { get; set; }
 
-        public Rectangle GetRectangleUp { get; }
-        public Rectangle GetRectangleDown { get; }
-        public Rectangle GetRectangleLeft { get; }
-        public Rectangle GetRectangleRight { get; }
+        public Rectangle GetRectangleUp(int scaleFactor);
+        public Rectangle GetRectangleDown(int scaleFactor);
+        public Rectangle GetRectangleLeft(int scaleFactor);
+        public Rectangle GetRectangleRight(int scaleFactor);
 
         //public Rectangle GetRectangleScaled { get; }
         //public void InitializeRigidbody(Rectangle rectangle, Vector2 force = new Vector2());

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ChristianTools.Helpers;
@@ -10,14 +11,16 @@ namespace ChristianTools.Components
         public double rotationDegree { get; set; }
         public Vector2 force { get; set; }
         public Rectangle rectangle { get; set; }
-        public Rectangle GetRectangleUp => MyRectangle.GetRectangleUp(rectangle, scaleFactor);
-        public Rectangle GetRectangleDown => MyRectangle.GetRectangleDown(rectangle, scaleFactor);
-        public Rectangle GetRectangleLeft => MyRectangle.GetRectangleLeft(rectangle, scaleFactor);
-        public Rectangle GetRectangleRight => MyRectangle.GetRectangleRight(rectangle, scaleFactor);
 
+        public Rectangle GetRectangleUp(int scaleFactor) =>ChristianTools.Helpers.MyRectangle.GetRectangleUp(rectangle, scaleFactor);
+        public Rectangle GetRectangleDown(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleDown(rectangle, scaleFactor);
+        public Rectangle GetRectangleLeft(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleLeft(rectangle, scaleFactor);
+        public Rectangle GetRectangleRight(int scaleFactor) => ChristianTools.Helpers.MyRectangle.GetRectangleRight(rectangle, scaleFactor);
+
+        private List<Tile> tiles;
         private Tile[,] surroundingElements;
         private int scaleFactor = 2;
-        public bool isGrounded => Other.GetRow(surroundingElements, 2).Where(x => x != null).Where(x => x.worldRectangle.Intersects(GetRectangleDown)).Count() > 0;
+        //public bool isGrounded => Other.GetRow(surroundingElements, 2).Where(x => x != null).Where(x => x.rigidbody.rectangle.Intersects(GetRectangleDown)).Count() > 0;
 
         public Rigidbody(Rectangle rectangle, Vector2 force = new Vector2())
         {
@@ -28,51 +31,94 @@ namespace ChristianTools.Components
 
         public void Update()
         {
-            Point pointInMap = new Point(rectangle.Center.X / 16, rectangle.Center.Y / 16);
-            this.surroundingElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
+            //Point pointInMap = new Point(rectangle.Center.X / 16, rectangle.Center.Y / 16);
+            //this.surroundingElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
+            this.tiles = ChristianTools.Helpers.Other.FlattenArray(ChristianGame.GetScene.map.mainTiles).Where(x => x != null).ToList();
 
-            UpdateForce();
-            UpdateClamp();
-        }
-
-        private void UpdateForce()
-        {
             Move_Y((int)force.Y);
             Move_X((int)force.X);
         }
 
-        private void UpdateClamp()
-        {
-            if (CanMoveDown() == false)
-                ClampDown();
-
-            if (CanMoveUp() == false)
-                ClampUp();
-
-            if (CanMoveRight() == false)
-                ClampRight();
-
-            if (CanMoveLeft() == false)
-                ClampLeft();
-        }
 
 
+        /// <summary>
+        /// Move on X, if tiles, dont move
+        /// </summary>
+        /// <param name="X"></param>
         public void Move_X(int X)
         {
-            if (CanMoveRight() && X > 0)
-                rectangle = ChristianTools.Helpers.MyRectangle.MoveRectangle_X(rectangle, X);
+            int scFct = (int)Math.Abs(X);
 
-            if (CanMoveLeft() && X < 0)
-                rectangle = ChristianTools.Helpers.MyRectangle.MoveRectangle_X(rectangle, X);
+            if (X > 0) // Right
+            {
+                if (CanMoveRight(scFct) == true)
+                {
+                    SetCenterPosition(new Point( rectangle.Center.X + X, rectangle.Center.Y));
+                }
+                else if (CanMoveRight(scFct) == false)
+                {
+                    Tile tileRight = tiles.FirstOrDefault(x => x.rigidbody.GetRectangleLeft(scFct).Intersects(rectangle));
+                    int dif = rectangle.Right - tileRight.rigidbody.rectangle.X;
+
+                    dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
+                    SetCenterPosition(new Point(rectangle.Center.X - dif, rectangle.Center.Y));
+                }
+            }
+            else if (X < 0)
+            {
+                if (CanMoveLeft(scFct) == true)
+                {
+                    SetCenterPosition(new Point(rectangle.Center.X + X, rectangle.Center.Y));
+                }
+                else if (CanMoveLeft(scFct) == false)
+                {
+                    Tile tileLeft = tiles.FirstOrDefault(x => x.rigidbody.GetRectangleRight(scFct).Intersects(rectangle));
+                    int dif = tileLeft.rigidbody.rectangle.Right - rectangle.X;
+
+                    dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
+                    SetCenterPosition(new Point(rectangle.Center.X + dif, rectangle.Center.Y));
+                }
+            }
         }
 
+        /// <summary>
+        /// Move on Y, if tiles, dont move
+        /// </summary>
+        /// <param name="Y"></param>
         public void Move_Y(int Y)
         {
-            if (CanMoveDown() && Y > 0)
-                rectangle = ChristianTools.Helpers.MyRectangle.MoveRectangle_Y(rectangle, Y);
+            int scFct = (int)Math.Abs(Y);
 
-            if (CanMoveUp() && Y < 0)
-                rectangle = ChristianTools.Helpers.MyRectangle.MoveRectangle_Y(rectangle, Y);
+            if (Y > 0) // down
+            {
+                if (CanMoveDown(scFct) == true)
+                {
+                    SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + Y));
+                }
+                else if (CanMoveDown(scFct) == false)
+                {
+                    Tile tileDown = tiles.FirstOrDefault(x => x.rigidbody.GetRectangleUp(scFct).Intersects(rectangle));
+                    int dif = rectangle.Bottom - tileDown.rigidbody.rectangle.Y;
+
+                    dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
+                    SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y - dif));
+                }
+            }
+            else if (Y < 0)
+            {
+                if (CanMoveUp(scFct) == true)
+                {
+                    SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + Y));
+                }
+                else if (CanMoveUp(scFct) == false)
+                {
+                    Tile tileUp = tiles.FirstOrDefault(x => x.rigidbody.GetRectangleDown(scFct).Intersects(rectangle));
+                    int dif = tileUp.rigidbody.rectangle.Bottom - rectangle.Y;
+
+                    dif = Math.Clamp(dif, 0, scFct); // fix a problem that jump on corners
+                    SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + dif));
+                }
+            }
         }
 
         public void SetCenterPosition(Point newCenterPosition)
@@ -80,80 +126,42 @@ namespace ChristianTools.Components
             rectangle = ChristianTools.Helpers.MyRectangle.CreateRectangle(newCenterPosition, rectangle.Width, rectangle.Height);
         }
 
-        private bool CanMoveDown()
+
+        public bool CanMoveRight(int scaleFactor)
         {
-            int rowNumber = 2;
-            if (Other.GetRow(surroundingElements, rowNumber).Where(x => x != null).Where(x => x.worldRectangle.Intersects(GetRectangleDown)).Count() > 0)
-                return false;
-            else
+            if (tiles == null)
                 return true;
+
+            int tilesRight = tiles.Count(x => x.rigidbody.GetRectangleLeft(scaleFactor).Intersects(rectangle));
+            return tilesRight == 0 ? true : false;
         }
 
-        private bool CanMoveUp()
+        public bool CanMoveLeft(int scaleFactor)
         {
-            int rowNumber = 0;
-            if (Other.GetRow(surroundingElements, rowNumber).Where(x => x != null).Where(x => x.worldRectangle.Intersects(GetRectangleUp)).Count() > 0)
-                return false;
-            else
+            if (tiles == null)
                 return true;
+
+            int tilesLeft = tiles.Count(x => x.rigidbody.GetRectangleRight(scaleFactor).Intersects(rectangle));
+            return tilesLeft == 0 ? true : false;
         }
 
-        private bool CanMoveRight()
+
+        public bool CanMoveDown(int scaleFactor)
         {
-            int columnNumber = 2;
-            if (Other.GetColumn(surroundingElements, columnNumber).Where(x => x != null).Where(x => x.worldRectangle.Intersects(GetRectangleRight)).Count() > 0)
-                return false;
-            else
+            if (tiles == null)
                 return true;
+
+            int tilesDown = tiles.Count(x => x.rigidbody.GetRectangleUp(scaleFactor).Intersects(rectangle));
+            return tilesDown == 0 ? true : false;
         }
 
-        private bool CanMoveLeft()
+        public bool CanMoveUp(int scaleFactor)
         {
-            int columnNumber = 0;
-            if (Other.GetColumn(surroundingElements, columnNumber).Where(x => x != null).Where(x => x.worldRectangle.Intersects(GetRectangleLeft)).Count() > 0)
-                return false;
-            else
+            if (tiles == null)
                 return true;
-        }
 
-        private void ClampDown()
-        {
-            Tile tile = ChristianTools.Helpers.Other.FlattenArray(ChristianGame.GetScene.map?.mainTiles).Where(x => x != null).FirstOrDefault(x => x.worldRectangle.Intersects(GetRectangleDown));
-            if (tile != null)
-            {
-                int dif = tile.worldRectangle.Y - rectangle.Bottom;
-                if (dif != 0) rectangle = MyRectangle.MoveRectangle_Y(rectangle, dif);
-            }
-        }
-
-        private void ClampUp()
-        {
-            Tile tile = ChristianTools.Helpers.Other.FlattenArray(ChristianGame.GetScene.map?.mainTiles).Where(x => x != null).FirstOrDefault(x => x.worldRectangle.Intersects(GetRectangleUp));
-            if (tile != null)
-            {
-                int dif = tile.worldRectangle.Bottom - rectangle.Y;
-                if (dif != 0) rectangle = MyRectangle.MoveRectangle_Y(rectangle, dif);
-            }
-        }
-
-        private void ClampRight()
-        {
-            Tile tile = ChristianTools.Helpers.Other.FlattenArray(ChristianGame.GetScene.map?.mainTiles).Where(x => x != null).FirstOrDefault(x => x.worldRectangle.Intersects(GetRectangleRight));
-            if (tile != null)
-            {
-                int dif = tile.worldRectangle.X - rectangle.Right;
-                if (dif != 0) rectangle = MyRectangle.MoveRectangle_X(rectangle, dif);
-            }
-        }
-
-        private void ClampLeft()
-        {
-            Tile tile = ChristianTools.Helpers.Other.FlattenArray(ChristianGame.GetScene.map?.mainTiles).Where(x => x != null).FirstOrDefault(x => x.worldRectangle.Intersects(GetRectangleRight));
-            if (tile != null)
-            {
-                int dif = tile.worldRectangle.Left - rectangle.X;
-                if (dif != 0) rectangle = MyRectangle.MoveRectangle_X(rectangle, dif);
-            }
+            int tilesUp = tiles.Count(x => x.rigidbody.GetRectangleDown(scaleFactor).Intersects(rectangle));
+            return tilesUp == 0 ? true : false;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace ChristianTools.Helpers
                 width: Width,
                 height: Height
             );
-            
+
             return rectangle;
         }
 
@@ -66,9 +66,9 @@ namespace ChristianTools.Helpers
         public static Rectangle GetRectangleUp(Rectangle mainRectangle, int scaleFactor = 1)
         {
             Rectangle rectangleUp = new Rectangle(
-                x: mainRectangle.X,
+                x: mainRectangle.X + 1,
                 y: mainRectangle.Y - scaleFactor,
-                width: mainRectangle.Width,
+                width: mainRectangle.Width - 2,
                 height: scaleFactor
             );
 
@@ -78,9 +78,9 @@ namespace ChristianTools.Helpers
         public static Rectangle GetRectangleDown(Rectangle mainRectangle, int scaleFactor = 1)
         {
             Rectangle rectangleDown = new Rectangle(
-                x: mainRectangle.X,
+                x: mainRectangle.X + 1,
                 y: mainRectangle.Bottom,
-                width: mainRectangle.Width,
+                width: mainRectangle.Width - 2,
                 height: scaleFactor
             );
 
@@ -91,9 +91,9 @@ namespace ChristianTools.Helpers
         {
             Rectangle rectangleLeft = new Rectangle(
                 x: mainRectangle.X - scaleFactor,
-                y: mainRectangle.Y,
+                y: mainRectangle.Y + 1,
                 width: scaleFactor,
-                height: mainRectangle.Height
+                height: mainRectangle.Height - 2
             );
 
             return rectangleLeft;
@@ -103,9 +103,9 @@ namespace ChristianTools.Helpers
         {
             Rectangle rectangleRight = new Rectangle(
                 x: mainRectangle.Right,
-                y: mainRectangle.Y,
+                y: mainRectangle.Y + 1,
                 width: scaleFactor,
-                height: mainRectangle.Height
+                height: mainRectangle.Height - 2
             );
 
             return rectangleRight;
