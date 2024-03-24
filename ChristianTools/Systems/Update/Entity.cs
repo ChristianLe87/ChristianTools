@@ -30,6 +30,7 @@ namespace ChristianTools.Systems.Update
                 entity.rigidbody?.Move_X(-steps);
             
             //entity.animation?.Update();
+            entity.rigidbody?.Update();
         }
 
         public static void SetForce(InputState lastInputState, InputState inputState, IEntity entity, int steps = 1)
