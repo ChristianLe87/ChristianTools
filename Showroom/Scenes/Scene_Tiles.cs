@@ -15,7 +15,12 @@ namespace Showroom.Scenes
         {
             this.entities = new List<IEntity>()
             {
-                new Entity_Platformer_Player(new Rectangle(4*16, 3*16+1, 16, 16), WK.AtlasReferences._2, "player"),
+                new Entity_Platformer_Player(
+                    rectangle: new Rectangle(4 * 16, 3 * 16 + 1, 16, 16),
+                    imageFromAtlas: WK.AtlasReferences._2,
+                    steps: 1,
+                    tag: "player"
+                ),
             };
 
             this.UIs = new List<IUI>()
@@ -48,7 +53,7 @@ namespace Showroom.Scenes
 
             this.map = new Map(mainTiles: mainTileTiles);
 
-            this.camera = new Camera(entities.FirstOrDefault(x => x.tag == "player"));
+            this.camera = new Camera(zoom: 1, entityToFollow: entities.Find(x => x.tag == "player"));
         }
     }
 }

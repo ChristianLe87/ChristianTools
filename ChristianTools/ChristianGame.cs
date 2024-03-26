@@ -41,6 +41,7 @@ namespace ChristianTools
             graphicsDeviceManager.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
             graphicsDeviceManager.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
             graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
+            
             //graphicsDeviceManager.ToggleFullScreen();
             //graphicsDeviceManager.ApplyChanges();
             //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
@@ -85,14 +86,27 @@ namespace ChristianTools
             atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
         }
-        
-        
+
+
+        private int count = 0;
         protected override void Update(GameTime gameTime)
         {
             InputState inputState = new InputState();
 
             if (inputState.Escape)
                 Exit();
+
+
+            // FPS
+            {
+                count++;
+                if (count > WK.FPS/5)
+                {
+                    System.Console.WriteLine($"=== FPS: {(int)(1/gameTime.ElapsedGameTime.TotalSeconds)} ===");
+                    count = 0;
+                }
+                    
+            }
 
             Systems.Update.Scene.Update(lastInputState: lastInputState, inputState: inputState);
 

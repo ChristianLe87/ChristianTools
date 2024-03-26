@@ -44,11 +44,11 @@ namespace Showroom.Scenes
 
 				new LineUI(start: new Point(400, 100), end: new Point(350, 150), color: Color.Red),
 				new LineUI(start: new Point(350, 100), end: new Point(400, 150), color: Color.Green),
-				
+
 				new ZeroZeroPoint_UI()
 			};
-			
-			
+
+
 			this.entities = new List<IEntity>()
 			{
 				new ZeroZeroPoint_Entity(),
@@ -60,7 +60,12 @@ namespace Showroom.Scenes
 				new Entity_Numbers(new Rectangle(484, 0, 16, 16), WK.AtlasReferences._3),
 
 				// Center
-				new Entity_WASD(ChristianTools.Helpers.MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasReferences._5, tag: "player"),
+				new Entity_WASD(
+					rectangle: MyRectangle.CreateRectangle(new Point(250, 250), 16, 16),
+					imageFromAtlas: WK.AtlasReferences._5,
+					steps: 10,
+					tag: "player"
+				),
 
 				// DL
 				new Entity_Numbers(new Rectangle(0, 484, 16, 16), WK.AtlasReferences._7),
@@ -69,7 +74,7 @@ namespace Showroom.Scenes
 				new Entity_Numbers(new Rectangle(484, 484, 16, 16), WK.AtlasReferences._9),
 			};
 
-			this.camera = new Camera(entities.Find(x => x.tag == "player"));
+			this.camera = new Camera(zoom: 1, entityToFollow: entities.Find(x => x.tag == "player"));
 		}
 	}
 }
