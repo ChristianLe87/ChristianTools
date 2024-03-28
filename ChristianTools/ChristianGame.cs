@@ -42,8 +42,13 @@ namespace ChristianTools
             graphicsDeviceManager.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
             graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
             
+            // Set up multisampling and take off VSync to help with the camera efficiency
+            graphicsDeviceManager.PreferMultiSampling = true;
+            graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
+
+            
             //graphicsDeviceManager.ToggleFullScreen();
-            //graphicsDeviceManager.ApplyChanges();
+            graphicsDeviceManager.ApplyChanges();
             //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
             //var bla = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
 
@@ -98,6 +103,7 @@ namespace ChristianTools
 
 
             // FPS
+            if(false)
             {
                 count++;
                 if (count > WK.FPS/5)
@@ -105,7 +111,6 @@ namespace ChristianTools
                     System.Console.WriteLine($"=== FPS: {(int)(1/gameTime.ElapsedGameTime.TotalSeconds)} ===");
                     count = 0;
                 }
-                    
             }
 
             Systems.Update.Scene.Update(lastInputState: lastInputState, inputState: inputState);
