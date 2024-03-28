@@ -145,7 +145,7 @@ namespace ChristianTools.Helpers
             return result;
         }
 
-        public static void MoveTowards(IRigidbody main, Point target, int maxAproximation, float steps)
+        public static void MoveTowards(Rigidbody main, Point target, int maxAproximation, float steps)
         {
             if (Vector2.Distance(main.rectangle.Center.ToVector2(), target.ToVector2()) == 0)
                 return;

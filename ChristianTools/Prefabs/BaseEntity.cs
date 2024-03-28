@@ -8,7 +8,7 @@ namespace ChristianTools.Prefabs
 {
     public abstract class BaseEntity : IEntity
     {
-        public IRigidbody rigidbody { get; set; }
+        public Rigidbody rigidbody { get; set; }
         public Animation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }

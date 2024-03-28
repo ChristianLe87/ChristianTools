@@ -17,7 +17,7 @@ namespace ChristianTools.Helpers
         }
 
 
-        public static Rectangle MoveRectangle_X(Rectangle rectangle, int steps = 1)
+        public static Rectangle MoveRectangle_X(Rectangle rectangle, int steps)
         {
             return new Rectangle(x: rectangle.X + steps, y: rectangle.Y, width: rectangle.Width, height: rectangle.Height);
         }
@@ -30,7 +30,7 @@ namespace ChristianTools.Helpers
             return MoveRectangleDown(rectangle, steps * -1);
         }*/
 
-        public static Rectangle MoveRectangle_Y(Rectangle rectangle, int steps = 1)
+        public static Rectangle MoveRectangle_Y(Rectangle rectangle, int steps)
         {
             return new Rectangle(x: rectangle.X, y: rectangle.Y + steps, width: rectangle.Width, height: rectangle.Height);
         }
@@ -63,49 +63,49 @@ namespace ChristianTools.Helpers
             return rectangle;
         }*/
 
-        public static Rectangle GetRectangleUp(Rectangle mainRectangle, int scaleFactor = 1)
+        public static Rectangle GetRectangleUp(Rectangle mainRectangle, int height)
         {
             Rectangle rectangleUp = new Rectangle(
-                x: mainRectangle.X + 1,
-                y: mainRectangle.Y - scaleFactor,
-                width: mainRectangle.Width - 2,
-                height: scaleFactor
+                x: mainRectangle.X,
+                y: mainRectangle.Y - height,
+                width: mainRectangle.Width,
+                height: height
             );
 
             return rectangleUp;
         }
 
-        public static Rectangle GetRectangleDown(Rectangle mainRectangle, int scaleFactor = 1)
+        public static Rectangle GetRectangleDown(Rectangle mainRectangle, int height)
         {
             Rectangle rectangleDown = new Rectangle(
-                x: mainRectangle.X + 1,
+                x: mainRectangle.X,
                 y: mainRectangle.Bottom,
-                width: mainRectangle.Width - 2,
-                height: scaleFactor
+                width: mainRectangle.Width,
+                height: height
             );
 
             return rectangleDown;
         }
 
-        public static Rectangle GetRectangleLeft(Rectangle mainRectangle, int scaleFactor = 1)
+        public static Rectangle GetRectangleLeft(Rectangle mainRectangle, int width)
         {
             Rectangle rectangleLeft = new Rectangle(
-                x: mainRectangle.X - scaleFactor,
-                y: mainRectangle.Y + 1,
-                width: scaleFactor,
-                height: mainRectangle.Height - 2
+                x: mainRectangle.X - width,
+                y: mainRectangle.Y,
+                width: width,
+                height: mainRectangle.Height
             );
 
             return rectangleLeft;
         }
 
-        public static Rectangle GetRectangleRight(Rectangle mainRectangle, int scaleFactor = 1)
+        public static Rectangle GetRectangleRight(Rectangle mainRectangle, int width)
         {
             Rectangle rectangleRight = new Rectangle(
                 x: mainRectangle.Right,
-                y: mainRectangle.Y + 1,
-                width: scaleFactor,
-                height: mainRectangle.Height - 2
+                y: mainRectangle.Y,
+                width: width,
+                height: mainRectangle.Height
             );
 
             return rectangleRight;

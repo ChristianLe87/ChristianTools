@@ -14,7 +14,7 @@ namespace ChristianTools.Helpers.Hybrids
         int thickness;
         private Texture2D texture2D;
 
-        public IRigidbody rigidbody { get; set; }
+        public Rigidbody rigidbody { get; set; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }

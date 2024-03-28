@@ -7,7 +7,7 @@ namespace ChristianTools.Helpers.Hybrids
 {
     public class ZeroZeroPoint
     {
-        public IRigidbody rigidbody { get; set; }
+        public Rigidbody rigidbody { get; set; }
         public Animation animation { get; }
         public bool isActive { get; set; }
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }

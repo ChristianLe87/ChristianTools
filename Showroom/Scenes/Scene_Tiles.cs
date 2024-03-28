@@ -16,7 +16,7 @@ namespace Showroom.Scenes
             this.entities = new List<IEntity>()
             {
                 new Entity_Platformer_Player(
-                    rectangle: new Rectangle(4 * 16, 3 * 16 + 1, 16, 16),
+                    rectangle: new Rectangle(4 * 16, 2 * 16 + 1, 16, 16),
                     imageFromAtlas: WK.AtlasReferences._2,
                     steps: 1,
                     tag: "player"

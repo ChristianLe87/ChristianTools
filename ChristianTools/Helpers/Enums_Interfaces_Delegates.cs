@@ -49,7 +49,7 @@ namespace ChristianTools.Helpers
 
     public interface IEntity
     {
-        public IRigidbody rigidbody { get; set; }
+        public Rigidbody rigidbody { get; set; }
         public Animation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
@@ -59,30 +59,25 @@ namespace ChristianTools.Helpers
     }
 
 
-    public interface IRigidbody
+    /*public interface IRigidbody
     {
         //public Vector2 velocity { get; set; }
         //public float mass { get; set; }
         //public float friction { get; set; }
-
-
-        public double rotationDegree { get; set; }
+        //public double rotationDegree { get; set; }
         public Vector2 force { get; set; }
 
         public Rectangle rectangle { get; set; }
 
-        public Rectangle GetRectangleUp(int scaleFactor);
-        public Rectangle GetRectangleDown(int scaleFactor);
-        public Rectangle GetRectangleLeft(int scaleFactor);
-        public Rectangle GetRectangleRight(int scaleFactor);
-
-        //public Rectangle GetRectangleScaled { get; }
-        //public void InitializeRigidbody(Rectangle rectangle, Vector2 force = new Vector2());
+        public Rectangle GetRectangleUp { get; }
+        public Rectangle GetRectangleDown { get; }
+        public Rectangle GetRectangleLeft { get; }
+        public Rectangle GetRectangleRight { get; }
         public void Update();
         public void Move_X(int X);
         public void Move_Y(int Y);
-        public void SetCenterPosition(Point newCenterPosition);
-    }
+        public void SetCenterPosition(Point newCenterPosition); 
+    }*/
 
     // === Delegates ===
     public delegate void DxCustomUpdateSystem(InputState lastInputState, InputState inputState);

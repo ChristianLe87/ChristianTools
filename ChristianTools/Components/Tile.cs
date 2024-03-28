@@ -5,7 +5,7 @@ namespace ChristianTools.Components
 {
     public class Tile
     {
-        public Rigidbody rigidbody { get; private set; }
+        public Rectangle rectangle { get; private set; }
         public Rectangle imageFromAtlas { get; private set; }
         public int layerId { get; private set; }
         public string tag { get; private set; }
@@ -13,7 +13,7 @@ namespace ChristianTools.Components
 
         public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, int layerId, string tag = "", bool isActive = true)
         {
-            this.rigidbody= new Rigidbody(worldRectangle);
+            this.rectangle = worldRectangle;
             this.layerId = layerId;
             this.imageFromAtlas = imageFromAtlas;
             this.tag = tag;

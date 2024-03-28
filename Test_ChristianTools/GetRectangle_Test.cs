@@ -9,7 +9,6 @@ namespace Test_ChristianTools
         [Test]
         public void Test_Rectangle1()
         {
-            
             Rectangle rectangle = ChristianTools.Helpers.MyRectangle.CreateRectangle(new Point(100, 120), 80, 70);
 
             if (rectangle.X == 60 && rectangle.Y == 85)
@@ -28,28 +27,52 @@ namespace Test_ChristianTools
             Assert.Fail();
         }
 
-        //[Test]
+        [Test]
         public void Test_RectangleUp()
         {
-            Assert.Fail();
+            Rectangle rectangle = new Rectangle(-25, -25, 50, 50);
+            int height = 1;
+            Rectangle result = ChristianTools.Helpers.MyRectangle.GetRectangleUp(rectangle, height);
+
+            Rectangle expectedResult = new Rectangle(rectangle.X, rectangle.Y-height, rectangle.Width, height);
+            
+            Assert.AreEqual(result, expectedResult);
         }
 
-        //[Test]
+        [Test]
         public void Test_RectangleDown()
         {
-            Assert.Fail();
+            Rectangle rectangle = new Rectangle(-25, -25, 50, 50);
+            int height = 1;
+            Rectangle result = ChristianTools.Helpers.MyRectangle.GetRectangleDown(rectangle, height);
+
+            Rectangle expectedResult = new Rectangle(rectangle.X, rectangle.Bottom, rectangle.Width, height);
+            
+            Assert.AreEqual(result, expectedResult);
         }
 
-        //[Test]
+        [Test]
         public void Test_RectangleRight()
         {
-            Assert.Fail();
+            Rectangle rectangle = new Rectangle(-25, -25, 50, 50);
+            int width = 1;
+            Rectangle result = ChristianTools.Helpers.MyRectangle.GetRectangleRight(rectangle, width);
+
+            Rectangle expectedResult = new Rectangle(rectangle.Right, rectangle.Top, width, rectangle.Width);
+            
+            Assert.AreEqual(result, expectedResult);
         }
 
-        //[Test]
+        [Test]
         public void Test_RectangleLeft()
         {
-            Assert.Fail();
+            Rectangle rectangle = new Rectangle(-25, -25, 50, 50);
+            int width = 1;
+            Rectangle result = ChristianTools.Helpers.MyRectangle.GetRectangleLeft(rectangle, width);
+
+            Rectangle expectedResult = new Rectangle(rectangle.X-width, rectangle.Y, width, rectangle.Width);
+            
+            Assert.AreEqual(result, expectedResult);
         }
 
         //[Test]
