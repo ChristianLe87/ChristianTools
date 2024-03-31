@@ -16,9 +16,9 @@ namespace ChristianTools.Prefabs
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
 
-        public BaseEntity(Rectangle rectangle, Rectangle imageFromAtlas, string tag = "", Vector2 force = new Vector2(), bool isActive = true)
+        public BaseEntity(Rectangle rectangle, Rectangle imageFromAtlas, string tag = "", bool isActive = true)
         {
-            this.rigidbody = new Rigidbody(rectangle, force);
+            this.rigidbody = new Rigidbody(rectangle);
             this.animation = new Animation(imageFromAtlas);
             this.isActive = isActive;
             this.tag = tag;

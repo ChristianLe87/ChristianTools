@@ -15,38 +15,55 @@ namespace ChristianTools.Systems.Update
         }
 
 
-        public static void PlatformerPlayer(InputState lastInputState, InputState inputState, IEntity entity, int steps)
+        private static int jumpCount = 0;
+        private static bool isJumping = false;
+        public static void PlatformerPlayer(InputState lastInputState, InputState inputState, IEntity entity)
         {
-            if (entity.isActive != true)
-                return;
+            // Always a number factor by the tile width (16: 2,4,8)
+            int moveForce = 4;
+            int jumpForce = 4;
+            int gravity = 4;
 
-            if (inputState.Right)
-                entity.rigidbody?.Move_X(steps);
-            else if (inputState.Left)
-                entity.rigidbody?.Move_X(-steps);
+            if (inputState.Left)
+                entity.rigidbody.force = new Vector2(-moveForce, entity.rigidbody.force.Y);
+            else if (inputState.Right)
+                entity.rigidbody.force = new Vector2(moveForce, entity.rigidbody.force.Y);
+            else
+                entity.rigidbody.force = new Vector2(0, entity.rigidbody.force.Y);
 
 
-            if (inputState.Jump == true && lastInputState.Jump == false && entity.rigidbody.isGrounded)
+            // Jump
+            if (inputState.Jump && !lastInputState.Jump && entity.rigidbody.CanMoveDown(moveForce) == false)
             {
-                entity.rigidbody.force = new Vector2(0, -7);
+                isJumping = true;
             }
 
-            if (-entity.rigidbody.force.Y > entity.rigidbody.gravity)
+
+            // Move jump
+            if (isJumping == true && jumpCount < (ChristianGame.WK.FPS / 4))
             {
-                entity.rigidbody.force -= new Vector2(0, -0.1f);
+                entity.rigidbody.force = new Vector2(entity.rigidbody.force.X, -jumpForce);
+                jumpCount++;
             }
             else
             {
-                entity.rigidbody.force = new Vector2(0, 0);
+                jumpCount = 0;
+                isJumping = false;
             }
 
-            if (!entity.rigidbody.CanMoveUp(steps))
+
+            if (isJumping == false)
             {
-                entity.rigidbody.force = new Vector2(0, 0);
+                entity.rigidbody.force = new Vector2(entity.rigidbody.force.X, gravity);
             }
 
+            if (entity.rigidbody.CanMoveUp(moveForce) == false)
+            {
+                isJumping = false;
+            }
 
-            entity.rigidbody?.Update();
+            
+            entity.rigidbody.Update();
         }
 
 

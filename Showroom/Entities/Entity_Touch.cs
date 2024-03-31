@@ -6,7 +6,7 @@ namespace Showroom
 {
     public class Entity_Touch : BaseEntity
     {
-        public Entity_Touch(Rectangle rectangle, Rectangle imageFromAtlas, string tag = "", Vector2 force = new Vector2(), bool isActive = true) : base(rectangle, imageFromAtlas, tag, force, isActive)
+        public Entity_Touch(Rectangle rectangle, Rectangle imageFromAtlas, string tag = "", bool isActive = true) : base(rectangle, imageFromAtlas, tag, isActive)
         {
             this.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);
         }
