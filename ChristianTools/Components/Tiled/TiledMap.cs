@@ -1,7 +1,6 @@
-
 namespace ChristianTools.Components.Tiled
 {
-    /*public class Tilemap
+    public class TiledMap
     {
         public int compressionlevel { get; set; }
         public int height { get; set; }
@@ -19,27 +18,16 @@ namespace ChristianTools.Components.Tiled
         public string version { get; set; }
         public int width { get; set; }
 
-        public class Chunks
+        public class Layers
         {
             public int[] data { get; set; }
             public int height { get; set; }
             public int width { get; set; }
-            public int x { get; set; }
-            public int y { get; set; }
-        }
-
-        public class Layers
-        {
-            public Chunks[] chunks { get; set; }
-            public int height { get; set; }
             public LayerId id { get; set; }
             public string name { get; set; }
             public int opacity { get; set; }
-            public int startx { get; set; }
-            public int starty { get; set; }
             public string type { get; set; }
             public bool visible { get; set; }
-            public int width { get; set; }
             public int x { get; set; }
             public int y { get; set; }
         }
@@ -58,5 +46,5 @@ namespace ChristianTools.Components.Tiled
             Front = 4,
             Entities = 5,
         }
-    }*/
+    }
 }

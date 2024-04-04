@@ -16,7 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tiled\Helpers.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Tiled\Tilemap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Tiled\TiledMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tiled\Tileset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ZeroZeroPoint_Entity.cs" />
@@ -46,5 +46,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\LineUI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\ZeroZeroPoint_UI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Components\Tiled\Templates\Map_0.json" />
+    <Content Include="$(MSBuildThisFileDirectory)Components\Tiled\Templates\MyTileset.json" />
   </ItemGroup>
  </Project>

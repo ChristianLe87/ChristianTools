@@ -1,6 +1,9 @@
+using System.IO;
+using System.Text.Json;
+
 namespace ChristianTools.Components.Tiled
 {
-    /*public class Helpers
+    public class Helpers
     {
         /// <summary>
         /// Read Map JSON file
@@ -22,10 +25,10 @@ namespace ChristianTools.Components.Tiled
             TextReader textWriter = new StreamReader(absolutePath);
             string fileContents = textWriter.ReadToEnd();
             textWriter.Close();
-
-            T gameData = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(fileContents);
+            
+            T gameData = JsonSerializer.Deserialize<T>(fileContents);
 
             return gameData;
         }
-    }*/
+    }
 }
