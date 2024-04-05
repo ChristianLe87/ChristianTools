@@ -1,15 +1,14 @@
-{
-  "columns": 10,
-  "image": "../AtlasTileset_PNG.png",
-  "imageheight": 160,
-  "imagewidth": 160,
-  "margin": 0,
-  "name": "MyTileset",
-  "spacing": 0,
-  "tilecount": 100,
-  "tiledversion": "1.10.2",
-  "tileheight": 16,
-  "tilewidth": 16,
-  "type": "tileset",
-  "version": "1.10"
+{ "columns":15,
+ "image":"..\/AtlasTileset_PNG.png",
+ "imageheight":240,
+ "imagewidth":240,
+ "margin":0,
+ "name":"MyTileset",
+ "spacing":0,
+ "tilecount":225,
+ "tiledversion":"1.10.2",
+ "tileheight":16,
+ "tilewidth":16,
+ "type":"tileset",
+ "version":"1.10"
 }
