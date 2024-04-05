@@ -31,10 +31,9 @@ namespace ChristianTools.Components
                     int tileValue = intMap[row, col];
                     if (tileValue != 0)
                     {
-                        System.Console.WriteLine($"==={tileValue}===");
                         Tile tile = new Tile(
                             worldRectangle: new Rectangle(col * 16, row * 16, 16, 16),
-                            imageFromAtlas: GetRectangleFromTileValue(tileValue), // new Rectangle(0, 0, 16, 16),
+                            imageFromAtlas: GetRectangleBaseOnTileValue(tileValue), // new Rectangle(0, 0, 16, 16),
                             layerDepth: layerDepth
                         );
 
@@ -47,14 +46,14 @@ namespace ChristianTools.Components
         }
 
 
-        public static Rectangle GetRectangleFromTileValue(int tileValue)
+        public static Rectangle GetRectangleBaseOnTileValue(int tileValue)
         {
             Rectangle atlasTilesetRectangle = ChristianGame.atlasTileset.Bounds;
 
             int width = atlasTilesetRectangle.Width / ChristianGame.WK.TileSize;
             int height = atlasTilesetRectangle.Height / ChristianGame.WK.TileSize;
 
-            
+
             // populate array from 1 to ... 100?
             int[,] atlasTilesetMap = new int[width, height];
             int count = 1;
@@ -67,7 +66,7 @@ namespace ChristianTools.Components
                 }
             }
 
-            
+
             // Get coordinate of number on array
             for (int i = 0; i < atlasTilesetMap.GetLength(0); i++)
             {
