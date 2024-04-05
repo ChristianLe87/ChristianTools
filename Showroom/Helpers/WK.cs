@@ -45,7 +45,7 @@ namespace Showroom
             public static Rectangle _9 { get; } = new Rectangle(48, 48, 16, 16);
         }
         
-        public static class AtlasTilesetReferences
+        /*public static class AtlasTilesetReferences
         {
             public static Rectangle _1 { get; } = new Rectangle(16, 16, 16, 16);
             public static Rectangle _2 { get; } = new Rectangle(32, 16, 16, 16);
@@ -58,6 +58,6 @@ namespace Showroom
             public static Rectangle _7 { get; } = new Rectangle(16, 48, 16, 16);
             public static Rectangle _8 { get; } = new Rectangle(32, 48, 16, 16);
             public static Rectangle _9 { get; } = new Rectangle(48, 48, 16, 16);
-        }
+        }*/
     }
 }

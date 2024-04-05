@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using ChristianTools.Helpers;
 using Microsoft.Xna.Framework;
 
@@ -29,16 +28,60 @@ namespace ChristianTools.Components
             {
                 for (int col = 0; col < intMap.GetLength(1); col++)
                 {
-                    int layerId = intMap[row, col];
-                    if (layerId != 0)
+                    int tileValue = intMap[row, col];
+                    if (tileValue != 0)
                     {
-                        Tile tile = new Tile(worldRectangle: new Rectangle(col * 16, row * 16, 16, 16), imageFromAtlas: new Rectangle(0, 0, 16, 16), layerDepth: layerDepth);
+                        System.Console.WriteLine($"==={tileValue}===");
+                        Tile tile = new Tile(
+                            worldRectangle: new Rectangle(col * 16, row * 16, 16, 16),
+                            imageFromAtlas: GetRectangleFromTileValue(tileValue), // new Rectangle(0, 0, 16, 16),
+                            layerDepth: layerDepth
+                        );
+
                         result[row, col] = tile;
                     }
                 }
             }
 
             return result;
+        }
+
+
+        public static Rectangle GetRectangleFromTileValue(int tileValue)
+        {
+            Rectangle atlasTilesetRectangle = ChristianGame.atlasTileset.Bounds;
+
+            int width = atlasTilesetRectangle.Width / ChristianGame.WK.TileSize;
+            int height = atlasTilesetRectangle.Height / ChristianGame.WK.TileSize;
+
+            
+            // populate array from 1 to ... 100?
+            int[,] atlasTilesetMap = new int[width, height];
+            int count = 1;
+            for (int row = 0; row < height; row++)
+            {
+                for (int col = 0; col < width; col++)
+                {
+                    atlasTilesetMap[row, col] = count;
+                    count++;
+                }
+            }
+
+            
+            // Get coordinate of number on array
+            for (int i = 0; i < atlasTilesetMap.GetLength(0); i++)
+            {
+                for (int j = 0; j < atlasTilesetMap.GetLength(1); j++)
+                {
+                    if (atlasTilesetMap[i, j] == tileValue)
+                    {
+                        return new Rectangle(j * 16, i * 16, 16, 16);
+                    }
+                }
+            }
+
+            // default return
+            return Rectangle.Empty;
         }
     }
 }

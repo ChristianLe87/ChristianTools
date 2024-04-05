@@ -84,16 +84,18 @@ namespace ChristianTools
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            scenes[actualScene].Initialize();
 
             // Code
             atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
             atlasTileset = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tileset);
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
+
+            scenes[actualScene].Initialize();
         }
 
 
         private int count = 0;
+
         protected override void Update(GameTime gameTime)
         {
             InputState inputState = new InputState();
@@ -103,12 +105,12 @@ namespace ChristianTools
 
 
             // FPS
-            if(false)
+            if (false)
             {
                 count++;
-                if (count > WK.FPS/5)
+                if (count > WK.FPS / 5)
                 {
-                    System.Console.WriteLine($"=== FPS: {(int)(1/gameTime.ElapsedGameTime.TotalSeconds)} ===");
+                    System.Console.WriteLine($"=== FPS: {(int)(1 / gameTime.ElapsedGameTime.TotalSeconds)} ===");
                     count = 0;
                 }
             }
@@ -142,9 +144,9 @@ namespace ChristianTools
         private void DrawWorld()
         {
             //https://community.monogame.net/t/fitting-pixel-art-game-to-screen/17043
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack/*.Immediate*/, blendState: BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: scenes[actualScene].camera?.transform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack /*.Immediate*/, blendState: BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: scenes[actualScene].camera?.transform);
             {
-                Systems.Draw.Scene.DrawWorld(spriteBatch,GetScene);
+                Systems.Draw.Scene.DrawWorld(spriteBatch, GetScene);
             }
             spriteBatch.End();
         }
