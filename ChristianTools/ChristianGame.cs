@@ -142,7 +142,7 @@ namespace ChristianTools
         private void DrawWorld()
         {
             //https://community.monogame.net/t/fitting-pixel-art-game-to-screen/17043
-            spriteBatch.Begin(sortMode: SpriteSortMode.Immediate, blendState: BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: scenes[actualScene].camera?.transform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack/*.Immediate*/, blendState: BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: scenes[actualScene].camera?.transform);
             {
                 Systems.Draw.Scene.DrawWorld(spriteBatch,GetScene);
             }

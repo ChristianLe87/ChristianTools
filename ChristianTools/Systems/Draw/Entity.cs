@@ -20,7 +20,7 @@ namespace ChristianTools.Systems.Draw
                 origin: new Vector2(entity.rigidbody.rectangle.Width / 2, entity.rigidbody.rectangle.Height / 2), // Center of the rotation. 0,0 by default.
                 scale: new Vector2(1, 1), //A scaling of this sprite. 
                 effects: SpriteEffects.None, //Modificators for drawing. Can be combined.
-                layerDepth: 1 / 10f
+                layerDepth: (float)LayerDepth.Main / 10f
             );
         }
     }

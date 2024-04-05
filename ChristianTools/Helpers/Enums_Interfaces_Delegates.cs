@@ -79,6 +79,17 @@ namespace ChristianTools.Helpers
         public void SetCenterPosition(Point newCenterPosition); 
     }*/
 
+    // === Enums ===
+    public enum LayerDepth
+    {
+        Background = 1,
+        Main = 2,
+        Colliders = 3,
+        Front = 4,
+        Entities = 5,
+    }
+    
+    
     // === Delegates ===
     public delegate void DxCustomUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxCustomDrawSystem(SpriteBatch spriteBatch);

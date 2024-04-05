@@ -23,7 +23,7 @@ namespace ChristianTools.Helpers.Tiled
             public int[] data { get; set; }
             public int height { get; set; }
             public int width { get; set; }
-            public LayerId id { get; set; }
+            public LayerDepth id { get; set; }
             public string name { get; set; }
             public int opacity { get; set; }
             public string type { get; set; }
@@ -36,15 +36,6 @@ namespace ChristianTools.Helpers.Tiled
         {
             public int firstgid { get; set; }
             public string source { get; set; }
-        }
-
-        public enum LayerId
-        {
-            Background = 1,
-            Main = 2,
-            Colliders = 3,
-            Front = 4,
-            Entities = 5,
         }
     }
 }
