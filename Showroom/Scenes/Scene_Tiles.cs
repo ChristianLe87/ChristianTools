@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using ChristianTools.Components;
-using ChristianTools.Components.Tiled;
 using ChristianTools.Helpers;
+using ChristianTools.Helpers.Tiled;
 using ChristianTools.Prefabs;
 using ChristianTools.UI;
 using Microsoft.Xna.Framework;
@@ -26,7 +26,7 @@ namespace Showroom.Scenes
             };
             
 
-            TiledMap tiledMap = ChristianTools.Components.Tiled.Helpers.Read_Tiled_JsonSerialization<TiledMap>("MyMap/MyMap_1");
+            TiledMap tiledMap = ChristianTools.Helpers.Tiled.Helpers.Read_Tiled_JsonSerialization<TiledMap>("MyMap/MyMap_1");
             this.map = new ChristianTools.Components.Map(tiledMap);
 
             

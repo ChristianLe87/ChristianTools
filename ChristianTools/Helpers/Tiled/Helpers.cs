@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace ChristianTools.Components.Tiled
+namespace ChristianTools.Helpers.Tiled
 {
     public class Helpers
     {
@@ -25,7 +25,7 @@ namespace ChristianTools.Components.Tiled
             TextReader textWriter = new StreamReader(absolutePath);
             string fileContents = textWriter.ReadToEnd();
             textWriter.Close();
-            
+
             T gameData = JsonSerializer.Deserialize<T>(fileContents);
 
             return gameData;

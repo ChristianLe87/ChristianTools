@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using ChristianTools.Components.Tiled;
+using ChristianTools.Helpers.Tiled;
 
 namespace ChristianTools.Components
 {

@@ -1,4 +1,4 @@
-namespace ChristianTools.Components.Tiled
+namespace ChristianTools.Helpers.Tiled
 {
     public class TiledMap
     {
