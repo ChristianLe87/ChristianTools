@@ -25,16 +25,16 @@ namespace ChristianTools.Components
         public Map(TiledMap tiledMap)
         {
             int[,] backgroundTilesData = tiledMap.layers.Where(x => x.id == LayerDepth.Background).Select(x => ChristianTools.Helpers.Other.ToMultidimentional(x.data, x.width, x.height)).First();
-            this.backgroundTiles = Tile.FromInt_ToTile(backgroundTilesData);
+            this.backgroundTiles = Tile.FromInt_ToTile(backgroundTilesData, LayerDepth.Background);
 
             int[,] mainData = tiledMap.layers.Where(x => x.id == LayerDepth.Main).Select(x => ChristianTools.Helpers.Other.ToMultidimentional(x.data, x.width, x.height)).First();
-            this.mainTiles = Tile.FromInt_ToTile(mainData);
+            this.mainTiles = Tile.FromInt_ToTile(mainData, LayerDepth.Main);
 
             int[,] collidersTilesData = tiledMap.layers.Where(x => x.id == LayerDepth.Colliders).Select(x => ChristianTools.Helpers.Other.ToMultidimentional(x.data, x.width, x.height)).First();
-            this.collidersTiles = Tile.FromInt_ToTile(collidersTilesData);
+            this.collidersTiles = Tile.FromInt_ToTile(collidersTilesData, LayerDepth.Colliders);
 
             int[,] frontTilesData = tiledMap.layers.Where(x => x.id == LayerDepth.Front).Select(x => ChristianTools.Helpers.Other.ToMultidimentional(x.data, x.width, x.height)).First();
-            this.frontTiles = Tile.FromInt_ToTile(frontTilesData);
+            this.frontTiles = Tile.FromInt_ToTile(frontTilesData, LayerDepth.Front);
         }
     }
 }

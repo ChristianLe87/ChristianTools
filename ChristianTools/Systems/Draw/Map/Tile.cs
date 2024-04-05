@@ -18,7 +18,7 @@ namespace ChristianTools.Systems.Draw.Map
                     origin: new Vector2(tile.imageFromAtlas.Width / 2, tile.imageFromAtlas.Height / 2), // Center of the rotation. 0,0 by default.
                     scale: new Vector2(1, 1), //A scaling of this sprite. 
                     effects: SpriteEffects.None, //Modificators for drawing. Can be combined.
-                    layerDepth: (int)tile.layerId / 10f // 1f//1 / 10f
+                    layerDepth: (int)tile.layerDepth / 10f // 1f//1 / 10f
                 );
             }
         }
