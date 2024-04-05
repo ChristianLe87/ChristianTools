@@ -16,7 +16,7 @@ namespace Showroom.Scenes
             {
                 this.entities = new List<IEntity>()
                 {
-                    new Entity_Touch(MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasReferences._5, "player"),
+                    new Entity_Touch(MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasEntitiesReferences._5, "player"),
                     new ZeroZeroPoint_Entity(),
                 };
             }

@@ -9,7 +9,7 @@ namespace ChristianTools
 {
     public class ChristianGame : Game
     {
-        public static Texture2D atlasTiles;
+        public static Texture2D atlasTileset;
         public static Texture2D atlasEntities;
         public static SpriteFont spriteFont;
 
@@ -87,8 +87,8 @@ namespace ChristianTools
             scenes[actualScene].Initialize();
 
             // Code
-            atlasTiles = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tileset);
             atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
+            atlasTileset = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tileset);
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
         }
 

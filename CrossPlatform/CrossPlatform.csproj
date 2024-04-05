@@ -23,6 +23,14 @@
         <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303"/>
     </ItemGroup>
     <ItemGroup>
+      <Content Include="..\Content\AtlasEntities_PNG.png">
+        <Link>Content\AtlasEntities_PNG.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="..\Content\AtlasTileset_PNG.png">
+        <Link>Content\AtlasTileset_PNG.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <Content Include="..\Content\Atlas_PNG.png">
         <Link>Content\Atlas_PNG.png</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -23,7 +23,7 @@ namespace ChristianTools.Helpers
         //public string GameDataFileName { get; }
         public bool isMouseVisible { get; set; }
         public string FontFileName { get; }
-        public Dictionary<string, string> Atlas_Tilemap { get; }
+        public Dictionary<string, string> Maps { get; }
         public string Atlas_Tileset { get; }
         public string Atlas_Entities { get; }
         public int TileSize { get; set; }
