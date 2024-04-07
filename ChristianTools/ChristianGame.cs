@@ -105,7 +105,7 @@ namespace ChristianTools
 
 
             // FPS
-            if (!false)
+            if (false)
             {
                 count++;
                 if (count > WK.FPS / 5)

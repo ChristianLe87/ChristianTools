@@ -23,14 +23,12 @@ namespace ChristianTools.Systems.Update
             int moveForce = 4;
             int jumpForce = 4;
             int gravity = 4;
-
-            if (inputState.Left)
-                entity.rigidbody.force = new Vector2(-moveForce, entity.rigidbody.force.Y);
-            else if (inputState.Right)
-                entity.rigidbody.force = new Vector2(moveForce, entity.rigidbody.force.Y);
-            else
-                entity.rigidbody.force = new Vector2(0, entity.rigidbody.force.Y);
-
+            
+            if (inputState.Right)
+                entity.rigidbody?.Move_X(moveForce);
+            else if (inputState.Left)
+                entity.rigidbody?.Move_X(-moveForce);
+            
 
             // Jump
             if (inputState.Jump && !lastInputState.Jump && entity.rigidbody.CanMoveDown(moveForce) == false)
@@ -42,7 +40,7 @@ namespace ChristianTools.Systems.Update
             // Move jump
             if (isJumping == true && jumpCount < (ChristianGame.WK.FPS / 4))
             {
-                entity.rigidbody.force = new Vector2(entity.rigidbody.force.X, -jumpForce);
+                entity.rigidbody.force = new Vector2(0, -jumpForce);
                 jumpCount++;
             }
             else
