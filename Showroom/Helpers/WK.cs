@@ -18,7 +18,7 @@ namespace Showroom
 
         public Dictionary<string, string> Maps { get; } = new Dictionary<string, string>()
         {
-            { Map.MyMap_1, "MyMap/MyMap_1" }
+            { Map.Zeldamon_1, "MyMap/Zeldamon_1" }
         };
 
         public string Atlas_Tileset { get; } = "AtlasTileset_PNG";
@@ -27,7 +27,7 @@ namespace Showroom
 
         public static class Map
         {
-            public static string MyMap_1 { get; } = "MyMap_1";
+            public static string Zeldamon_1 { get; } = "Zeldamon_1";
         }
         
         public static class AtlasEntitiesReferences
@@ -44,20 +44,5 @@ namespace Showroom
             public static Rectangle _8 { get; } = new Rectangle(32, 48, 16, 16);
             public static Rectangle _9 { get; } = new Rectangle(48, 48, 16, 16);
         }
-        
-        /*public static class AtlasTilesetReferences
-        {
-            public static Rectangle _1 { get; } = new Rectangle(16, 16, 16, 16);
-            public static Rectangle _2 { get; } = new Rectangle(32, 16, 16, 16);
-            public static Rectangle _3 { get; } = new Rectangle(48, 16, 16, 16);
-
-            public static Rectangle _4 { get; } = new Rectangle(16, 32, 16, 16);
-            public static Rectangle _5 { get; } = new Rectangle(32, 32, 16, 16);
-            public static Rectangle _6 { get; } = new Rectangle(48, 32, 16, 16);
-
-            public static Rectangle _7 { get; } = new Rectangle(16, 48, 16, 16);
-            public static Rectangle _8 { get; } = new Rectangle(32, 48, 16, 16);
-            public static Rectangle _9 { get; } = new Rectangle(48, 48, 16, 16);
-        }*/
     }
 }

@@ -21,6 +21,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Test.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Tiles.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_UI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Zeldamon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Zeldamon\Scene_Zeldamon.cs" />
   </ItemGroup>
  </Project>

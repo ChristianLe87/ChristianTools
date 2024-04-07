@@ -39,12 +39,16 @@
         <Link>Content/MyFont_130x28_PNG.png</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="..\Content\MyMap\MyMap_1.json">
-        <Link>Content\MyMap\MyMap_1.json</Link>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
       <Content Include="..\Content\MyMap\MyTileset.json">
         <Link>Content\MyMap\MyTileset.json</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="..\Content\MyMap\Platformer_1.json">
+        <Link>Content\MyMap\Platformer_1.json</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="..\Content\MyMap\Zeldamon_1.json">
+        <Link>Content\MyMap\Zeldamon_1.json</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\Content\Tree.png">
