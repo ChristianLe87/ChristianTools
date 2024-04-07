@@ -16,7 +16,7 @@ namespace Showroom.Scenes
         {
             this.entities = new List<IEntity>()
             {
-                new Entity_Numbers(rectangle: new Rectangle(4 * 16, 2 * 16, 16, 16), imageFromAtlas: WK.AtlasEntitiesReferences._2, tag: "player"),
+                new Entity_Numbers(rectangle: new Rectangle(4 * 16, 2 * 16, 16, 16), imageFromAtlas: WK.AtlasEntitiesReferences.Idel_Down, tag: "player"),
                 new ChristianTools.Entities.ZeroZeroPoint_Entity()
             };
 

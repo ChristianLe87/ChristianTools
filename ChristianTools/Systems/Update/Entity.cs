@@ -69,7 +69,7 @@ namespace ChristianTools.Systems.Update
         {
             if (entity.isActive != true)
                 return;
-
+            
             if (inputState.Up)
                 entity.rigidbody?.Move_Y(-steps);
             else if (inputState.Down)

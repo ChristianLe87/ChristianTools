@@ -15,7 +15,7 @@ namespace Showroom.Scenes
         {
             this.entities = new List<IEntity>()
             {
-                new Entity_WASD(rectangle: new Rectangle(10 * 16, 16 * 16, 16, 16), imageFromAtlas: WK.AtlasEntitiesReferences._2, steps: 4, tag: "player"),
+                new Entity_WASD(rectangle: new Rectangle(10 * 16, 16 * 16, 16, 16), imageFromAtlas: WK.AtlasEntitiesReferences.Idel_Down, steps: 4, tag: "player"),
                 new ChristianTools.Entities.ZeroZeroPoint_Entity()
             };
 

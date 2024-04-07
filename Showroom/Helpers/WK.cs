@@ -9,7 +9,9 @@ namespace Showroom
         public string WindowTitle { get; } = "Showroom";
         public double FPS { get; } = 60;
         public bool IsFullScreen { get; set; } = false;
+
         public bool AllowUserResizing { get; } = false;
+
         //public int ScaleFactor { get; set; } = 2;
         public int canvasWidth { get; } = 500;
         public int canvasHeight { get; } = 500;
@@ -31,20 +33,20 @@ namespace Showroom
             public static string Zeldamon_1 { get; } = "Zeldamon_1";
             public static string Platformer_1 { get; } = "Platformer_1";
         }
-        
+
         public static class AtlasEntitiesReferences
         {
-            public static Rectangle _1 { get; } = new Rectangle(16, 16, 16, 16);
-            public static Rectangle _2 { get; } = new Rectangle(32, 16, 16, 16);
-            public static Rectangle _3 { get; } = new Rectangle(48, 16, 16, 16);
+            public static Rectangle Idle_Up { get; } = new Rectangle(0 * 16, 0 * 16, 16, 16);
+            public static Rectangle Idel_Down { get; } = new Rectangle(0 * 16, 1 * 16, 16, 16);
+            public static Rectangle Idl_Right { get; } = new Rectangle(0 * 16, 2 * 16, 16, 16);
 
-            public static Rectangle _4 { get; } = new Rectangle(16, 32, 16, 16);
-            public static Rectangle _5 { get; } = new Rectangle(32, 32, 16, 16);
-            public static Rectangle _6 { get; } = new Rectangle(48, 32, 16, 16);
-
-            public static Rectangle _7 { get; } = new Rectangle(16, 48, 16, 16);
-            public static Rectangle _8 { get; } = new Rectangle(32, 48, 16, 16);
-            public static Rectangle _9 { get; } = new Rectangle(48, 48, 16, 16);
+            public static Rectangle Idle_Left { get; } = new Rectangle(0 * 16, 3 * 16, 16, 16);
+            //     public static Rectangle _5 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
+            //     public static Rectangle _6 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
+            //
+            //     public static Rectangle _7 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
+            //     public static Rectangle _8 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
+            //     public static Rectangle _9 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
         }
     }
 }
