@@ -18,7 +18,8 @@ namespace Showroom
 
         public Dictionary<string, string> Maps { get; } = new Dictionary<string, string>()
         {
-            { Map.Zeldamon_1, "MyMap/Zeldamon_1" }
+            { Map.Zeldamon_1, "MyMap/Zeldamon_1" },
+            { Map.Platformer_1, "MyMap/Platformer_1" },
         };
 
         public string Atlas_Tileset { get; } = "AtlasTileset_PNG";
@@ -28,6 +29,7 @@ namespace Showroom
         public static class Map
         {
             public static string Zeldamon_1 { get; } = "Zeldamon_1";
+            public static string Platformer_1 { get; } = "Platformer_1";
         }
         
         public static class AtlasEntitiesReferences

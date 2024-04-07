@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Entity_WASD.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WK.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\Platformer\Scene_Platformer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Entities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_Menu.cs" />

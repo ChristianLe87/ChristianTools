@@ -64,6 +64,13 @@ namespace Showroom.Scenes
                     OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Systems)
                 ),
                 new Button(
+                    rectangle: new Rectangle(250, 50, 230, 30),
+                    text: "Platformer",
+                    defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
+                    mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
+                    OnClickAction: () => Game1.ChangeToScene("Scene_Platformer")
+                ),
+                new Button(
                     rectangle: new Rectangle(250, 90, 230, 30),
                     text: "Zeldamon",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),

@@ -22,6 +22,7 @@ namespace Showroom
                 { "Scene_Entities", new Scene_Entities() },
                 { "Scene_Tiles", new Scene_Tiles() },
                 { "Scene_Zeldamon", new Scene_Zeldamon() },
+                { "Scene_Platformer", new Scene_Platformer() },
             };
 
             return scenes;
