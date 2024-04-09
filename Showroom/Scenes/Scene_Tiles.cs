@@ -1,13 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using ChristianTools.Components;
-using ChristianTools.Helpers;
-using ChristianTools.Helpers.Tiled;
-using ChristianTools.Prefabs;
-using ChristianTools.UI;
-using Microsoft.Xna.Framework;
-
 namespace Showroom.Scenes
 {
     public class Scene_Tiles : BaseScene

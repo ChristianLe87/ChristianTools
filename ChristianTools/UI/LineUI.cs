@@ -1,6 +1,3 @@
-using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-
 namespace ChristianTools.UI
 {
     public class LineUI : ChristianTools.Helpers.Hybrids.Line, IUI

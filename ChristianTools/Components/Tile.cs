@@ -1,6 +1,3 @@
-using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-
 namespace ChristianTools.Components
 {
     public class Tile

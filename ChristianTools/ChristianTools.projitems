@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ZeroZeroPoint_Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalUsings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Font.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Hybrids\Line.cs" />

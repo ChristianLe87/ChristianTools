@@ -1,8 +1,3 @@
-using ChristianTools.Helpers;
-using ChristianTools.Helpers.Hybrids;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace ChristianTools.Entities
 {
     public class ZeroZeroPoint_Entity : ZeroZeroPoint, IEntity

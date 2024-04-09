@@ -1,0 +1,12 @@
+global using ChristianTools;
+global using ChristianTools.Components;
+global using ChristianTools.Entities;
+global using ChristianTools.Helpers;
+global using ChristianTools.Prefabs;
+global using ChristianTools.UI;
+global using Microsoft.Xna.Framework;
+global using Microsoft.Xna.Framework.Graphics;
+global using Showroom.Scenes;
+global using System;
+global using System.Collections.Generic;
+global using ChristianTools.Helpers.Tiled;

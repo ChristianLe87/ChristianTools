@@ -1,11 +1,3 @@
-using System.Collections.Generic;
-using ChristianTools.Components;
-using ChristianTools.Entities;
-using ChristianTools.Helpers;
-using ChristianTools.Prefabs;
-using ChristianTools.UI;
-using Microsoft.Xna.Framework;
-
 namespace Showroom.Scenes
 {
     public class Scene_Test : BaseScene

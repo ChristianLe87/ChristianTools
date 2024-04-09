@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-using ChristianTools.Components;
-using ChristianTools.Entities;
-using ChristianTools.Helpers;
-using ChristianTools.Prefabs;
-using ChristianTools.UI;
-using Microsoft.Xna.Framework;
 
 namespace Showroom.Scenes
 {
@@ -22,7 +14,7 @@ namespace Showroom.Scenes
 
             this.entities = new List<IEntity>()
             {
-                new Line(new Point(100, 100), new Point(500, 500), Color.Red, tag: "RedLine")
+                new ChristianTools.Entities.Line(new Point(100, 100), new Point(500, 500), Color.Red, tag: "RedLine")
                 {
                     dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateLine(lastInputState, inputState)
                 },

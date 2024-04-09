@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using ChristianTools.Components;
-using ChristianTools.Helpers;
-
 namespace ChristianTools.Prefabs
 {
     public abstract class BaseScene : IScene

@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using ChristianTools.Helpers;
-using ChristianTools.Prefabs;
-using Microsoft.Xna.Framework;
-using Showroom;
-
 namespace ChristianTools.Components
 {
     public class Rigidbody

@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
 namespace ChristianTools
 {
     public class ChristianGame : Game

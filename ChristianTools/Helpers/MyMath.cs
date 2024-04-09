@@ -1,6 +1,3 @@
-using System;
-using Microsoft.Xna.Framework;
-
 namespace ChristianTools.Helpers
 {
     public class MyMath

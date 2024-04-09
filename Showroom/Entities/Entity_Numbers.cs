@@ -1,6 +1,3 @@
-using ChristianTools.Prefabs;
-using Microsoft.Xna.Framework;
-
 namespace Showroom
 {
     public class Entity_Numbers : BaseEntity

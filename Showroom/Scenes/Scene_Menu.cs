@@ -1,13 +1,3 @@
-using System;
-using System.Collections.Generic;
-using ChristianTools.Components;
-using ChristianTools.Entities;
-using ChristianTools.Helpers;
-using ChristianTools.Prefabs;
-using ChristianTools.UI;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace Showroom.Scenes
 {
     public class Scene_Menu : BaseScene

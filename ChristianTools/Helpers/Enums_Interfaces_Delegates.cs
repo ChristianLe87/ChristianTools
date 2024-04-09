@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using ChristianTools.Components;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace ChristianTools.Helpers
 {
     public interface IDefault

@@ -1,6 +1,3 @@
-using System;
-using Microsoft.Xna.Framework.Input;
-
 namespace ChristianTools.Helpers
 {
     public class MyKeyboard

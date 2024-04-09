@@ -1,16 +1,7 @@
-using System.Collections.Generic;
-using ChristianTools;
-using ChristianTools.Components;
-using ChristianTools.Helpers;
-using ChristianTools.Helpers.Tiled;
-using ChristianTools.Prefabs;
-using ChristianTools.UI;
-using Microsoft.Xna.Framework;
-
 namespace Showroom.Scenes
 {
     public class Scene_Platformer : BaseScene
-   {
+    {
         public override void Initialize()
         {
             this.entities = new List<IEntity>()

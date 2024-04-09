@@ -1,7 +1,3 @@
-using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace ChristianTools.Components
 {
     public class Camera

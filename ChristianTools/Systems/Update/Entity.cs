@@ -1,6 +1,3 @@
-using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-
 namespace ChristianTools.Systems.Update
 {
     public class Entity

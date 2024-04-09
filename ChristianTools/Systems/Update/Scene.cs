@@ -1,5 +1,3 @@
-using ChristianTools.Helpers;
-
 namespace ChristianTools.Systems.Update
 {
     public class Scene

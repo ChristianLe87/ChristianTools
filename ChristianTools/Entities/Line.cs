@@ -1,6 +1,3 @@
-using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-
 namespace ChristianTools.Entities
 {
     public class Line : ChristianTools.Helpers.Hybrids.Line, IEntity

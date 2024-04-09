@@ -1,8 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using ChristianTools.Helpers;
-using ChristianTools.Helpers.Tiled;
-
 namespace ChristianTools.Components
 {
     public class Map

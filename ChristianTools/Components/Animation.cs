@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-
 namespace ChristianTools.Components
 {
     public class Animation

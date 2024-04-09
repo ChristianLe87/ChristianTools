@@ -1,8 +1,3 @@
-using System;
-using ChristianTools.Components;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace ChristianTools.Helpers.Hybrids
 {
     public class ZeroZeroPoint

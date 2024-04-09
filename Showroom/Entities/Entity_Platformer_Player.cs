@@ -1,8 +1,3 @@
-using ChristianTools.Components;
-using ChristianTools.Helpers;
-using ChristianTools.Prefabs;
-using Microsoft.Xna.Framework;
-
 namespace Showroom
 {
     public class Entity_Platformer_Player : BaseEntity

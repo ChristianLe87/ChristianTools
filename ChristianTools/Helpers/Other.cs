@@ -1,8 +1,3 @@
-using System.Linq;
-using ChristianTools.Components;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-
 namespace ChristianTools.Helpers
 {
     public partial class Other

@@ -1,11 +1,4 @@
-using System.Collections.Generic;
-using ChristianTools;
-using ChristianTools.Components;
-using ChristianTools.Helpers;
-using ChristianTools.Helpers.Tiled;
-using ChristianTools.Prefabs;
-using ChristianTools.UI;
-using Microsoft.Xna.Framework;
+
 
 namespace Showroom.Scenes
 {

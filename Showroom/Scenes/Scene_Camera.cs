@@ -1,11 +1,3 @@
-using System.Collections.Generic;
-using ChristianTools.Components;
-using ChristianTools.Entities;
-using ChristianTools.Helpers;
-using ChristianTools.Prefabs;
-using ChristianTools.UI;
-using Microsoft.Xna.Framework;
-
 namespace Showroom.Scenes
 {
     public class Scene_Camera : BaseScene
@@ -42,7 +34,7 @@ namespace Showroom.Scenes
 
                 // Center
                 new Entity_WASD(
-                    rectangle:MyRectangle.CreateRectangle(new Point(250, 250), 16, 16),
+                    rectangle: MyRectangle.CreateRectangle(new Point(250, 250), 16, 16),
                     imageFromAtlas: WK.AtlasEntitiesReferences.Idel_Down,
                     steps: 10,
                     tag: "player"

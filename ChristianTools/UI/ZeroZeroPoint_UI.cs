@@ -1,8 +1,3 @@
-using ChristianTools.Helpers;
-using ChristianTools.Helpers.Hybrids;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace ChristianTools.UI
 {
     public class ZeroZeroPoint_UI: ZeroZeroPoint, IUI

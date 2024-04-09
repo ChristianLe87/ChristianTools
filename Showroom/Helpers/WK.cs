@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-
 namespace Showroom
 {
     public class WK : IDefault

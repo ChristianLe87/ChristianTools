@@ -1,9 +1,3 @@
-using System;
-using ChristianTools.Components;
-using ChristianTools.Helpers;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace ChristianTools.Prefabs
 {
     public abstract class BaseEntity : IEntity

@@ -1,0 +1,13 @@
+global using System;
+global using System.Collections.Generic;
+global using System.IO;
+global using System.Linq;
+global using System.Text.Json;
+global using Microsoft.Xna.Framework;
+global using Microsoft.Xna.Framework.Graphics;
+global using Microsoft.Xna.Framework.Input;
+global using Microsoft.Xna.Framework.Input.Touch;
+global using ChristianTools.Components;
+global using ChristianTools.Helpers;
+global using ChristianTools.Helpers.Hybrids;
+global using ChristianTools.Helpers.Tiled;
