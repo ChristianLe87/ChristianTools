@@ -2,7 +2,7 @@
 
 public class Game1 : ChristianGame
 {
-    public Game1(WK wk) : base(scenes, startScene: "Scene_Menu", wk)
+    public Game1(WK wk) : base(scenes, startScene: "Scene_Test", wk)
     {
     }
 

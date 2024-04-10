@@ -83,6 +83,18 @@ namespace ChristianTools.Helpers
         Entities = 5,
     }
     
+    public enum CharacterState
+    {
+        IdleUp,
+        IdleDown,
+        IdleRight,
+        IdleLeft,
+        MoveUp,
+        MoveDown,
+        MoveRight,
+        MoveLeft,
+    }
+    
     
     // === Delegates ===
     public delegate void DxCustomUpdateSystem(InputState lastInputState, InputState inputState);

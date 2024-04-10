@@ -7,7 +7,7 @@ namespace ChristianTools.Systems.Update
             if (entity.isActive != true)
                 return;
 
-            //entity.animation?.Update();
+            entity.animation?.Update();
             entity.rigidbody?.Update();
         }
 
@@ -59,6 +59,7 @@ namespace ChristianTools.Systems.Update
 
             
             entity.rigidbody.Update();
+            entity.animation?.Update();
         }
 
 
@@ -66,19 +67,47 @@ namespace ChristianTools.Systems.Update
         {
             if (entity.isActive != true)
                 return;
+
+
+            CharacterState lastCharacterState = entity.animation.characterState;
+
+ 
             
             if (inputState.Up)
+            {
                 entity.rigidbody?.Move_Y(-steps);
+                entity.animation.characterState = CharacterState.MoveUp;
+            }
             else if (inputState.Down)
+            {
                 entity.rigidbody?.Move_Y(steps);
+                entity.animation.characterState = CharacterState.MoveDown;
 
-            if (inputState.Right)
+            }
+            else if (inputState.Right)
+            {
                 entity.rigidbody?.Move_X(steps);
+                entity.animation.characterState = CharacterState.MoveRight;
+            }
             else if (inputState.Left)
+            {
                 entity.rigidbody?.Move_X(-steps);
-            
-            //entity.animation?.Update();
+                entity.animation.characterState = CharacterState.MoveLeft;
+            }
+            else
+            {
+                if (lastCharacterState == CharacterState.MoveUp)
+                    entity.animation.characterState = CharacterState.IdleUp;
+                else if (lastCharacterState == CharacterState.MoveDown)
+                    entity.animation.characterState = CharacterState.IdleDown;
+                else if (lastCharacterState == CharacterState.MoveRight)
+                    entity.animation.characterState = CharacterState.IdleRight;
+                else if (lastCharacterState == CharacterState.MoveLeft)
+                    entity.animation.characterState = CharacterState.IdleLeft;
+            }
+
             entity.rigidbody?.Update();
+            entity.animation?.Update();
         }
 
         public static void SetForce(InputState lastInputState, InputState inputState, IEntity entity, int steps = 1)
@@ -95,9 +124,10 @@ namespace ChristianTools.Systems.Update
                 entity.rigidbody.force = new Vector2(steps, entity.rigidbody.force.Y);
             else if (inputState.Left)
                 entity.rigidbody.force = new Vector2(-steps, entity.rigidbody.force.Y);
-
-            //entity.animation?.Update();
+            
+            
             entity.rigidbody?.Update();
+            entity.animation?.Update();
         }
     }
 }
