@@ -69,7 +69,7 @@ namespace Showroom.Scenes
         private void SetPlayerSystem_Move_WASD()
         {
             IEntity entity = this.entities.Find(x => x.tag == "player");
-            entity.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Entity.Move_WASD(lastInputState, inputState, entity, 4);
+            entity.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Entity.Move_WASD(lastInputState, inputState, entity);
             entity.rigidbody.force = new Vector2();
         }
 

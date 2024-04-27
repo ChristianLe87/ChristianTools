@@ -8,7 +8,7 @@ namespace Showroom.Scenes
             {
                 this.entities = new List<IEntity>()
                 {
-                    new Entity_WASD(MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasEntitiesReferences.Idel_Down,1, "player"),
+                    new Entity_WASD(MyRectangle.CreateRectangle(new Point(250, 250), 16, 16), WK.AtlasEntitiesReferences.Idel_Down, tag: "player"),
                     new ZeroZeroPoint_Entity(),
                 };
             }

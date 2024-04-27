@@ -36,7 +36,6 @@ namespace Showroom.Scenes
                 new Entity_WASD(
                     rectangle: MyRectangle.CreateRectangle(new Point(250, 250), 16, 16),
                     imageFromAtlas: WK.AtlasEntitiesReferences.Idel_Down,
-                    steps: 10,
                     tag: "player"
                 ),
 

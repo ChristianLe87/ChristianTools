@@ -17,9 +17,9 @@ namespace ChristianTools.Systems.Update
         public static void PlatformerPlayer(InputState lastInputState, InputState inputState, IEntity entity)
         {
             // Always a number factor by the tile width (16: 2,4,8)
-            int moveForce = 4;
-            int jumpForce = 4;
-            int gravity = 4;
+            int moveForce = 2;
+            int jumpForce = 2;
+            int gravity = 2;
             
             if (inputState.Right)
                 entity.rigidbody?.Move_X(moveForce);
@@ -63,7 +63,7 @@ namespace ChristianTools.Systems.Update
         }
 
 
-        public static void Move_WASD(InputState lastInputState, InputState inputState, IEntity entity, int steps)
+        public static void Move_WASD(InputState lastInputState, InputState inputState, IEntity entity, int steps = 1)
         {
             if (entity.isActive != true)
                 return;
@@ -71,8 +71,8 @@ namespace ChristianTools.Systems.Update
 
             CharacterState lastCharacterState = entity.animation.characterState;
 
- 
-            
+
+
             if (inputState.Up)
             {
                 entity.rigidbody?.Move_Y(-steps);
