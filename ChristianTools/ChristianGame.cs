@@ -31,8 +31,8 @@ namespace ChristianTools
 
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
-            graphicsDeviceManager.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
+            graphicsDeviceManager.PreferredBackBufferWidth = (int)AspectRatio_16_9.Width_2; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
+            graphicsDeviceManager.PreferredBackBufferHeight = (int)AspectRatio_16_9.Height_2; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
             graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
             
             // Set up multisampling and take off VSync to help with the camera efficiency

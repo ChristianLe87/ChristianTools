@@ -94,8 +94,26 @@ namespace ChristianTools.Helpers
         MoveRight,
         MoveLeft,
     }
-    
-    
+
+    public enum AspectRatio_16_9 : int
+    {
+        Width_1 = 640,
+        Height_1 = 360,
+
+        Width_2 = 1280,
+        Height_2 = 720
+    }
+
+    public enum AspectRatio_4_3 : int
+    {
+        Width_1 = 640,
+        Height_1 = 480,
+
+        Width_2 = 1024,
+        Height_2 = 768
+
+    }
+
     // === Delegates ===
     public delegate void DxCustomUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxCustomDrawSystem(SpriteBatch spriteBatch);
