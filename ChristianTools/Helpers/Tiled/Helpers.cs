@@ -15,15 +15,17 @@ namespace ChristianTools.Helpers.Tiled
 
 
             // For iOS, always set Poroperties to "always copy" and use this
-            if (System.OperatingSystem.IsIOS()) tiledMapName = Path.Combine("bin", "iOS", "Content", tiledMapName);
+            if (System.OperatingSystem.IsIOS())
+                tiledMapName = Path.Combine("bin", "iOS", "Content", tiledMapName);
 
             string absolutePath = Path.Combine("Content", $"{tiledMapName}.json");
+            T gameData;
 
-            TextReader textWriter = new StreamReader(absolutePath);
-            string fileContents = textWriter.ReadToEnd();
-            textWriter.Close();
-
-            T gameData = JsonSerializer.Deserialize<T>(fileContents);
+            using (TextReader textWriter = new StreamReader(absolutePath))
+            {
+                string fileContents = textWriter.ReadToEnd();
+                gameData = JsonSerializer.Deserialize<T>(fileContents);
+            }
 
             return gameData;
         }
