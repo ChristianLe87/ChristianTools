@@ -30,117 +30,118 @@ namespace ChristianTools.Components
 
 
         /// <summary>
-        /// Move on X, if tiles, dont move
+        /// positive move right, negative move left
         /// </summary>
         /// <param name="X"></param>
         public void Move_X(int X)
         {
             if (X > 0) // Right
-                MoveRight(X);
+                MoveRight((uint)Math.Abs(X));
             else if (X < 0) // Left
-                MoveLeft(X);
+                MoveLeft((uint)Math.Abs(X));
         }
 
         /// <summary>
-        /// Move on Y, if tiles, dont move
+        /// positive move right, negative move left
         /// </summary>
         /// <param name="Y"></param>
         public void Move_Y(int Y)
         {
             if (Y < 0) // Up
-                MoveUp(Y);
+                MoveUp((uint)Math.Abs(Y));
             else if (Y > 0) // Down
-                MoveDown(Y);
+                MoveDown((uint)Math.Abs(Y));
         }
 
-
-        public void MoveUp(int Y)
+        // Private because if public, will be confusing with Move_X() and Move_Y() -> Just, keep private
+        public void MoveUp(uint steps)
         {
-            if (CanMoveUp(Math.Abs(Y)))
+            if (CanMoveUp(steps))
             {
-                SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + Y));
+                SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y - (int)steps));
             }
             else
             {
                 // clamp
-                Tile tileUp = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleUp(Math.Abs(Y))));
+                Tile tileUp = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleUp((int)steps)));
                 int dif = tileUp.rectangle.Bottom - rectangle.Y;
 
                 SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + dif));
             }
         }
 
-        public void MoveDown(int Y)
+        // Private because if public, will be confusing with Move_X() and Move_Y() -> Just, keep private
+        public void MoveDown(uint steps)
         {
-            if (CanMoveDown(Math.Abs(Y)))
+            if (CanMoveDown(steps))
             {
-                SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + Y));
+                SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + (int)steps));
             }
             else
             {
                 // clamp
-                Tile tileDown = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleDown(Math.Abs(Y))));
+                Tile tileDown = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleDown((int)steps)));
                 int dif = rectangle.Bottom - tileDown.rectangle.Y;
                 SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + dif));
             }
         }
 
-
-        void MoveRight(int X)
+        // Private because if public, will be confusing with Move_X() and Move_Y() -> Just, keep private
+        public void MoveRight(uint steps)
         {
-            if (CanMoveRight(X) == true)
+            if (CanMoveRight(steps) == true)
             {
-                SetCenterPosition(new Point(rectangle.Center.X + X, rectangle.Center.Y));
+                SetCenterPosition(new Point(rectangle.Center.X + (int)steps, rectangle.Center.Y));
             }
             else
             {
                 // clamp    
-                Tile tileRight = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleRight(Math.Abs(X))));
+                Tile tileRight = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleRight((int)steps)));
                 int dif = rectangle.Right - tileRight.rectangle.X;
 
                 SetCenterPosition(new Point(rectangle.Center.X - dif, rectangle.Center.Y));
-
             }
         }
 
-        void MoveLeft(int X)
+        // Private because if public, will be confusing with Move_X() and Move_Y() -> Just, keep private
+        public void MoveLeft(uint steps)
         {
-            if (CanMoveLeft(X) == true)
+            if (CanMoveLeft(steps) == true)
             {
-                SetCenterPosition(new Point(rectangle.Center.X + X, rectangle.Center.Y));
+                SetCenterPosition(new Point(rectangle.Center.X - (int)steps, rectangle.Center.Y));
             }
             else
             {
                 // clamp    
-                Tile tileLeft = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleLeft(Math.Abs(X))));
+                Tile tileLeft = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleLeft((int)steps)));
                 int dif = tileLeft.rectangle.Right - rectangle.X;
 
                 SetCenterPosition(new Point(rectangle.Center.X - dif, rectangle.Center.Y));
             }
         }
 
-        public bool CanMoveUp(int Y)
+        public bool CanMoveUp(uint Y)
         {
             if (tiles == null) return true;
-            return !tiles.Any(x => x.rectangle.Intersects(GetRectangleUp(Math.Abs(Y))));
+            return !tiles.Any(x => x.rectangle.Intersects(GetRectangleUp((int)Y)));
         }
 
-        public bool CanMoveDown(int Y)
+        public bool CanMoveDown(uint Y)
         {
             if (tiles == null) return true;
-            return !tiles.Any(x => x.rectangle.Intersects(GetRectangleDown(Math.Abs(Y))));
+            return !tiles.Any(x => x.rectangle.Intersects(GetRectangleDown((int)Y)));
         }
 
-        public bool CanMoveRight(int X)
+        public bool CanMoveRight(uint X)
         {
             if (tiles == null) return true;
-            return !tiles.Any(x => x.rectangle.Intersects(GetRectangleRight(Math.Abs(X))));
+            return !tiles.Any(x => x.rectangle.Intersects(GetRectangleRight((int)X)));
         }
 
-        public bool CanMoveLeft(int X)
+        public bool CanMoveLeft(uint X)
         {
             if (tiles == null) return true;
-            return !tiles.Any(x => x.rectangle.Intersects(GetRectangleLeft(Math.Abs(X))));
+            return !tiles.Any(x => x.rectangle.Intersects(GetRectangleLeft((int)X)));
         }
 
 

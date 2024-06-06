@@ -17,15 +17,15 @@ namespace ChristianTools.Systems.Update
         public static void PlatformerPlayer(InputState lastInputState, InputState inputState, IEntity entity)
         {
             // Always a number factor by the tile width (16: 2,4,8)
-            int moveForce = 2;
+            uint moveForce = 2;
             int jumpForce = 2;
             int gravity = 2;
             
             if (inputState.Right)
-                entity.rigidbody?.Move_X(moveForce);
+                entity.rigidbody?.Move_X((int)moveForce);
             else if (inputState.Left)
-                entity.rigidbody?.Move_X(-moveForce);
-            
+                entity.rigidbody?.Move_X(-(int)moveForce);
+
 
             // Jump
             if (inputState.Jump && !lastInputState.Jump && entity.rigidbody.CanMoveDown(moveForce) == false)
@@ -63,47 +63,89 @@ namespace ChristianTools.Systems.Update
         }
 
 
-        public static void Move_WASD(InputState lastInputState, InputState inputState, IEntity entity, int steps = 1)
+        public static void Move_WASD(InputState lastInputState, InputState inputState, IEntity entity)
         {
             if (entity.isActive != true)
                 return;
 
 
-            CharacterState lastCharacterState = entity.animation.characterState;
 
+            // --- Up ---
+            if (inputState.Up || entity.animation.characterState == CharacterState.MoveUp)
+            {
+                entity.rigidbody.MoveUp(1);
 
+                // move until player until alligne with tile
+                if (entity.rigidbody.rectangle.Y % ChristianGame.WK.TileSize != 0)
+                {
+                    entity.animation.characterState = CharacterState.MoveUp;
+                }
+                else
+                {
+                    if (inputState.Up == false || entity.rigidbody.CanMoveUp(1) == false)
+                    {
+                        entity.animation.characterState = CharacterState.IdleUp;
+                    }
+                }
+            }
 
-            if (inputState.Up)
+            // --- Down ---
+            else if (inputState.Down || entity.animation.characterState == CharacterState.MoveDown)
             {
-                entity.rigidbody?.Move_Y(-steps);
-                entity.animation.characterState = CharacterState.MoveUp;
-            }
-            else if (inputState.Down)
-            {
-                entity.rigidbody?.Move_Y(steps);
-                entity.animation.characterState = CharacterState.MoveDown;
+                entity.rigidbody.MoveDown(1);
+
+                // move until player until alligne with tile
+                if (entity.rigidbody.rectangle.Y % ChristianGame.WK.TileSize != 0)
+                {
+                    entity.animation.characterState = CharacterState.MoveDown;
+                }
+                else
+                {
+                    if (inputState.Down == false || entity.rigidbody.CanMoveDown(1) == false)
+                    {
+                        entity.animation.characterState = CharacterState.IdleDown;
+                    }
+                }
 
             }
-            else if (inputState.Right)
+
+            // --- Right ---
+            else if (inputState.Right || entity.animation.characterState == CharacterState.MoveRight)
             {
-                entity.rigidbody?.Move_X(steps);
-                entity.animation.characterState = CharacterState.MoveRight;
+                entity.rigidbody.MoveRight(1);
+
+                // move until player until alligne with tile
+                if (entity.rigidbody.rectangle.X % ChristianGame.WK.TileSize != 0)
+                {
+                    entity.animation.characterState = CharacterState.MoveRight;
+                }
+                else
+                {
+                    if (inputState.Right == false || entity.rigidbody.CanMoveRight(1) == false)
+                    {
+                        entity.animation.characterState = CharacterState.IdleRight;
+                    }
+                }
+
             }
-            else if (inputState.Left)
+
+            // --- Left ---
+            else if (inputState.Left || entity.animation.characterState == CharacterState.MoveLeft)
             {
-                entity.rigidbody?.Move_X(-steps);
-                entity.animation.characterState = CharacterState.MoveLeft;
-            }
-            else
-            {
-                if (lastCharacterState == CharacterState.MoveUp)
-                    entity.animation.characterState = CharacterState.IdleUp;
-                else if (lastCharacterState == CharacterState.MoveDown)
-                    entity.animation.characterState = CharacterState.IdleDown;
-                else if (lastCharacterState == CharacterState.MoveRight)
-                    entity.animation.characterState = CharacterState.IdleRight;
-                else if (lastCharacterState == CharacterState.MoveLeft)
-                    entity.animation.characterState = CharacterState.IdleLeft;
+                entity.rigidbody.MoveLeft(1);
+
+                // move until player until alligne with tile
+                if (entity.rigidbody.rectangle.X % ChristianGame.WK.TileSize != 0)
+                {
+                    entity.animation.characterState = CharacterState.MoveLeft;
+                }
+                else
+                {
+                    if (inputState.Left == false || entity.rigidbody.CanMoveLeft(1) == false)
+                    {
+                        entity.animation.characterState = CharacterState.IdleLeft;
+                    }
+                }
             }
 
             entity.rigidbody?.Update();
