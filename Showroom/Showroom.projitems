@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>695b1922-fd12-4fd9-aa47-b7cd463771af</SharedGUID>
+    <SharedGUID>1A0891D4-BD24-41E9-ACFD-8FAD330AC104</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Showroom</Import_RootNamespace>
@@ -25,4 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_UI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Zeldamon\Scene_Zeldamon.cs" />
   </ItemGroup>
- </Project>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Scenes\.DS_Store" />
+  </ItemGroup>
+</Project>

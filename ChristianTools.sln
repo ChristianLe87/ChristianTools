@@ -1,11 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPlatform", "CrossPlatform\CrossPlatform.csproj", "{C9B7BA11-A2E0-4C2F-BF6B-C5FE16FCFCC6}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools", "ChristianTools\ChristianTools.shproj", "{26A22D1F-C112-47FD-B86E-AD89A5B71068}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Showroom", "Showroom\Showroom.shproj", "{695B1922-FD12-4FD9-AA47-B7CD463771AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossPlatform", "CrossPlatform\CrossPlatform.csproj", "{60A6AFDB-6109-4C62-8AB8-BC5B510AD6B1}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChristianTools", "ChristianTools\ChristianTools.shproj", "{54441340-4D7A-4D78-AE85-677EACA99FF4}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Showroom", "Showroom\Showroom.shproj", "{FEF65956-6423-4F2C-9059-4572D2F1D6C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,9 +12,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C9B7BA11-A2E0-4C2F-BF6B-C5FE16FCFCC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9B7BA11-A2E0-4C2F-BF6B-C5FE16FCFCC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9B7BA11-A2E0-4C2F-BF6B-C5FE16FCFCC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9B7BA11-A2E0-4C2F-BF6B-C5FE16FCFCC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60A6AFDB-6109-4C62-8AB8-BC5B510AD6B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60A6AFDB-6109-4C62-8AB8-BC5B510AD6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60A6AFDB-6109-4C62-8AB8-BC5B510AD6B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60A6AFDB-6109-4C62-8AB8-BC5B510AD6B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

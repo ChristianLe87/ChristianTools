@@ -1,27 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
+        <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
-        <RollForward>Major</RollForward>
-        <PublishReadyToRun>false</PublishReadyToRun>
-        <TieredCompilation>false</TieredCompilation>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
-    <PropertyGroup>
-        <ApplicationManifest>app.manifest</ApplicationManifest>
-        <ApplicationIcon>Icon.ico</ApplicationIcon>
-    </PropertyGroup>
+
     <ItemGroup>
-        <None Remove="Icon.ico" />
-        <None Remove="Icon.bmp" />
+      <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     </ItemGroup>
-    <ItemGroup>
-        <EmbeddedResource Include="Icon.ico" />
-        <EmbeddedResource Include="Icon.bmp" />
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
-        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
-    </ItemGroup>
+
     <ItemGroup>
       <Content Include="..\Content\AtlasEntities_PNG.png">
         <Link>Content\AtlasEntities_PNG.png</Link>
@@ -32,12 +21,15 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\Content\MyFont_130x28_PNG.png">
-        <Link>Content/MyFont_130x28_PNG.png</Link>
+        <Link>Content\MyFont_130x28_PNG.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="..\Content\MyMap\MyMap.tiled-session">
+        <Link>Content\MyMap\MyMap.tiled-session</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\Content\MyMap\MyTileset.json">
         <Link>Content\MyMap\MyTileset.json</Link>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\Content\MyMap\Platformer_1.json">
         <Link>Content\MyMap\Platformer_1.json</Link>
@@ -48,14 +40,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\Content\Tree.png">
-        <Link>Content/Tree.png</Link>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Link>Content\Tree.png</Link>
       </Content>
     </ItemGroup>
-    <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
-        <Message Text="Restoring dotnet tools" Importance="High" />
-        <Exec Command="dotnet tool restore" />
-    </Target>
-    <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" Condition="Exists('..\ChristianTools\ChristianTools.projitems')" />
+
     <Import Project="..\Showroom\Showroom.projitems" Label="Shared" />
+
+    <Import Project="..\ChristianTools\ChristianTools.projitems" Label="Shared" />
+
 </Project>
