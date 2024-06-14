@@ -21,6 +21,7 @@ namespace Showroom
 
         public Dictionary<string, IScene> Scenes { get; set; } = new Dictionary<string, IScene>()
         {
+            { "Scene_Test", new Scene_Test() },
             { "Scene_Menu", new Scene_Menu() },
             { "Scene_UI", new Scene_UI() },
             { "Scene_Camera", new Scene_Camera() },
@@ -28,7 +29,7 @@ namespace Showroom
             { "Scene_Tiles", new Scene_Tiles() },
             { "Scene_Zeldamon", new Scene_Zeldamon() },
             { "Scene_Platformer", new Scene_Platformer() },
-            { "Scene_Test", new Scene_Test() },
+            
         };
         
         public static class AtlasEntitiesReferences

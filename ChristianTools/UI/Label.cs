@@ -4,10 +4,10 @@ namespace ChristianTools.UI
 	{
 		public string text;
 		Alignment textAlignment;
-		public Rectangle rectangle { get; }
+		public Rectangle rectangle { get; private set; }
 		public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
 		public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
-		public bool isActive { get; }
+		public bool isActive { get; private set; }
 		private Texture2D texture2D;
 
 		public Label(Alignment UI_Position, int W, int H, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
@@ -59,17 +59,15 @@ namespace ChristianTools.UI
 					break;
 			}
 
-			this.rectangle = _rectangle;
-			this.text = text;
-			this.dxCustomUpdateSystem = (state, inputState) => UpdateSystem();
-			this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
-			this.textAlignment = textAlignment;
-
-			this.texture2D = texture;
-			this.isActive = isActive;
+			Init(_rectangle, text, textAlignment, texture, tag, isActive);
 		}
 		
 		public Label(Rectangle rectangle, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
+		{
+			Init(rectangle, text, textAlignment, texture, tag, isActive);
+		}
+
+		private void Init(Rectangle rectangle, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
 		{
 			this.rectangle = rectangle;
 			this.text = text;
