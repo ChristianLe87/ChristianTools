@@ -1,26 +1,22 @@
+using System.Collections;
+
 namespace ChristianTools.Helpers
 {
     public interface IDefault
     {
-        public string WindowTitle { get; }
+        public int TileSize { get; }
         public double FPS { get; }
-        public bool IsFullScreen { get; set; }
-
-        public bool AllowUserResizing { get; }
-
-        //public int ScaleFactor { get; set; }
-        public int canvasWidth { get; }
-
-        public int canvasHeight { get; }
-
-        //public int AssetSize { get; }
-        //public string GameDataFileName { get; }
-        public bool isMouseVisible { get; set; }
-        public string FontFileName { get; }
-        public Dictionary<string, string> Maps { get; }
+        public int CanvasWidth { get; }
+        public int CanvasHeight { get; }
         public string Atlas_Tileset { get; }
         public string Atlas_Entities { get; }
-        public int TileSize { get; set; }
+        public string WindowTitle { get; }
+        public string FontFileName { get; }
+        public bool IsFullScreen { get; }
+        public bool AllowUserResizing { get; }
+        public bool IsMouseVisible { get; }
+        public Dictionary<string, string> Maps { get; }
+        public Dictionary<string, IScene> Scenes { get; }
     }
 
     public interface IScene
@@ -28,7 +24,9 @@ namespace ChristianTools.Helpers
         List<IEntity> entities { get; set; }
         List<IUI> UIs { get; set; }
         Map map { get; set; }
+
         Camera camera { get; set; }
+
         //public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         //public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public void Initialize();
@@ -70,7 +68,7 @@ namespace ChristianTools.Helpers
         public void Update();
         public void Move_X(int X);
         public void Move_Y(int Y);
-        public void SetCenterPosition(Point newCenterPosition); 
+        public void SetCenterPosition(Point newCenterPosition);
     }*/
 
     // === Enums ===
@@ -82,7 +80,7 @@ namespace ChristianTools.Helpers
         Front = 4,
         Entities = 5,
     }
-    
+
     public enum CharacterState
     {
         IdleUp,
@@ -97,21 +95,29 @@ namespace ChristianTools.Helpers
 
     public enum AspectRatio_16_9 : int
     {
-        Width_1 = 640,
-        Height_1 = 360,
-
-        Width_2 = 1280,
-        Height_2 = 720
+        Width = 640,
+        Height = 360,
     }
 
     public enum AspectRatio_4_3 : int
     {
-        Width_1 = 640,
-        Height_1 = 480,
+        Width = 640,
+        Height = 480,
+    }
+    
+    public enum Alignment
+    {
+        Top_Center,
+        Midle_Center,
+        Down_Center,
 
-        Width_2 = 1024,
-        Height_2 = 768
+        Top_Left,
+        Midle_Left,
+        Down_Left,
 
+        Top_Right,
+        Midle_Right,
+        Down_Right,
     }
 
     // === Delegates ===

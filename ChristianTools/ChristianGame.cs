@@ -19,20 +19,20 @@ namespace ChristianTools
 
         private InputState lastInputState;
 
-        public ChristianGame(Dictionary<string, IScene> scenes, string startScene, IDefault WK)
+        public ChristianGame(IDefault WK)
         {
             // WK
             ChristianGame.WK = WK;
 
             // Scene
-            ChristianGame.scenes = scenes;
-            ChristianGame.actualScene = startScene;
+            ChristianGame.scenes = WK.Scenes;
+            ChristianGame.actualScene =  WK.Scenes.FirstOrDefault().Key;
 
 
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = (int)AspectRatio_16_9.Width_2; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
-            graphicsDeviceManager.PreferredBackBufferHeight = (int)AspectRatio_16_9.Height_2; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
+            graphicsDeviceManager.PreferredBackBufferWidth = WK.CanvasWidth; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
+            graphicsDeviceManager.PreferredBackBufferHeight = WK.CanvasHeight; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
             graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
             
             // Set up multisampling and take off VSync to help with the camera efficiency
@@ -54,7 +54,7 @@ namespace ChristianTools
 
             // others
             base.Window.Title = WK.WindowTitle;
-            base.IsMouseVisible = WK.isMouseVisible;
+            base.IsMouseVisible = WK.IsMouseVisible;
             //Window.AllowUserResizing = WK.AllowUserResizing;
             //game = this;
             

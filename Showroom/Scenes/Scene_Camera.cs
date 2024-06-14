@@ -9,7 +9,7 @@ namespace Showroom.Scenes
                 new Label(
                     rectangle: new Rectangle(260, 10, 230, 30),
                     "Camera",
-                    textAlignment: Label.TextAlignment.Midle_Center
+                    textAlignment: Alignment.Midle_Center
                 ),
                 new Button(
                     rectangle: new Rectangle(10, 460, 230, 30),

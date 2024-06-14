@@ -3,14 +3,14 @@ namespace ChristianTools.UI
 	public class Label : IUI
 	{
 		public string text;
-		TextAlignment textAlignment;
+		Alignment textAlignment;
 		public Rectangle rectangle { get; }
 		public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
 		public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
 		public bool isActive { get; }
 		private Texture2D texture2D;
 
-		public Label(Rectangle rectangle, string text, TextAlignment textAlignment = TextAlignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
+		public Label(Rectangle rectangle, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
 		{
 			this.rectangle = rectangle;
 			this.text = text;
@@ -50,37 +50,21 @@ namespace ChristianTools.UI
 			return textAlignment switch
 			{
 				// Left
-				TextAlignment.Top_Left => new Point(PosLeft_X, PosTop_Y),
-				TextAlignment.Midle_Left => new Point(PosLeft_X, PosMiddle_Y),
-				TextAlignment.Down_Left => new Point(PosLeft_X, PosDown_Y),
+				Alignment.Top_Left => new Point(PosLeft_X, PosTop_Y),
+				Alignment.Midle_Left => new Point(PosLeft_X, PosMiddle_Y),
+				Alignment.Down_Left => new Point(PosLeft_X, PosDown_Y),
 
 				// Center
-				TextAlignment.Top_Center => new Point(PosCenter_X, PosTop_Y),
-				TextAlignment.Midle_Center => new Point(PosCenter_X, PosMiddle_Y),
-				TextAlignment.Down_Center => new Point(PosCenter_X, PosDown_Y),
+				Alignment.Top_Center => new Point(PosCenter_X, PosTop_Y),
+				Alignment.Midle_Center => new Point(PosCenter_X, PosMiddle_Y),
+				Alignment.Down_Center => new Point(PosCenter_X, PosDown_Y),
 
 				// Right
-				TextAlignment.Top_Right => new Point(PosRight_X, PosTop_Y),
-				TextAlignment.Midle_Right => new Point(PosRight_X, PosMiddle_Y),
-				TextAlignment.Down_Right => new Point(PosRight_X, PosDown_Y),
+				Alignment.Top_Right => new Point(PosRight_X, PosTop_Y),
+				Alignment.Midle_Right => new Point(PosRight_X, PosMiddle_Y),
+				Alignment.Down_Right => new Point(PosRight_X, PosDown_Y),
 				_ => new Point(),
 			};
-		}
-
-
-		public enum TextAlignment
-		{
-			Top_Center,
-			Midle_Center,
-			Down_Center,
-
-			Top_Left,
-			Midle_Left,
-			Down_Left,
-
-			Top_Right,
-			Midle_Right,
-			Down_Right,
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace ChristianTools.UI
             this.mouseOverTexture = mouseOverTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray);
             this.isMouseOver = false;
 
-            this.label = new Label(rectangle, text, Label.TextAlignment.Midle_Center, tag: "");
+            this.label = new Label(rectangle, text, Alignment.Midle_Center, tag: "");
 
             this.tag = tag;
 
