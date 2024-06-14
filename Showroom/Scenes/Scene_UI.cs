@@ -32,19 +32,19 @@ namespace Showroom.Scenes
 
 				
 				// Position Alignment Left
-				new Label(UI_Position: Alignment.Top_Left, text: "Top_Left", W: 80, H: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Midle_Left, text: "Midle_Left", W: 80, H: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Down_Left, text: "Down_Left", W: 80, H: 10, texture: lightSlateGray),
+				new Label(UI_Position: Alignment.Top_Left, text: "Top_Left", width: 80, height: 10, texture: lightSlateGray),
+				new Label(UI_Position: Alignment.Midle_Left, text: "Midle_Left", width: 80, height: 10, texture: lightSlateGray),
+				new Label(UI_Position: Alignment.Down_Left, text: "Down_Left", width: 80, height: 10, texture: lightSlateGray),
 				
 				// Position Alignment Center
-				new Label(UI_Position: Alignment.Top_Center, text: "Top_Center", W: 80, H: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Midle_Center, text: "Midle_Center", W: 80, H: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Down_Center, text: "Down_Center", W: 80, H: 10, texture: lightSlateGray),
+				new Label(UI_Position: Alignment.Top_Center, text: "Top_Center", width: 80, height: 10, texture: lightSlateGray),
+				new Label(UI_Position: Alignment.Midle_Center, text: "Midle_Center", width: 80, height: 10, texture: lightSlateGray),
+				new Label(UI_Position: Alignment.Down_Center, text: "Down_Center", width: 80, height: 10, texture: lightSlateGray),
 				
 				// Position Alignment Righr
-				new Label(UI_Position: Alignment.Top_Right, text: "Top_Right", W: 80, H: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Midle_Right, text: "Midle_Right", W: 80, H: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Down_Right, text: "Down_Right", W: 80, H: 10, texture: lightSlateGray),
+				new Label(UI_Position: Alignment.Top_Right, text: "Top_Right", width: 80, height: 10, texture: lightSlateGray),
+				new Label(UI_Position: Alignment.Midle_Right, text: "Midle_Right", width: 80, height: 10, texture: lightSlateGray),
+				new Label(UI_Position: Alignment.Down_Right, text: "Down_Right", width: 80, height: 10, texture: lightSlateGray),
 
 				// textOfChars 
 				new Label(rectangle: new Rectangle(100, 150, 100, 30), text: textOfChars, textAlignment: Alignment.Top_Left, tag: ""),

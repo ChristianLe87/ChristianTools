@@ -20,56 +20,10 @@ namespace ChristianTools.UI
 
         DxOnClickAction OnClickAction;
 
-        public Button(Alignment UI_Position, int W, int H, string text, DxOnClickAction OnClickAction, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null, bool isActive = true)
+        public Button(Alignment UI_Position, int width, int height, string text, DxOnClickAction OnClickAction, int margin = 0, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null, bool isActive = true)
         {
-            Rectangle _rectangle = new Rectangle(0, 0, W, H);
-
-            switch (UI_Position)
-            {
-                case Alignment.Top_Center:
-                    _rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (_rectangle.Width / 2);
-                    _rectangle.Y = 0;
-                    break;
-                case Alignment.Midle_Center:
-                    _rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (_rectangle.Width / 2);
-                    _rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (_rectangle.Height / 2);
-                    break;
-                case Alignment.Down_Center:
-                    _rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (_rectangle.Width / 2);
-                    _rectangle.Y = ChristianGame.WK.CanvasHeight - _rectangle.Height;
-                    break;
-
-                case Alignment.Top_Left:
-                    _rectangle.X = 0;
-                    _rectangle.Y = 0;
-                    break;
-                case Alignment.Midle_Left:
-                    _rectangle.X = 0;
-                    _rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (_rectangle.Height / 2);
-                    break;
-                case Alignment.Down_Left:
-                    _rectangle.X = 0;
-                    _rectangle.Y = ChristianGame.WK.CanvasHeight - _rectangle.Height;
-                    break;
-
-                case Alignment.Top_Right:
-                    _rectangle.X = ChristianGame.WK.CanvasWidth - _rectangle.Width;
-                    _rectangle.Y = 0;
-                    break;
-                case Alignment.Midle_Right:
-                    _rectangle.X = ChristianGame.WK.CanvasWidth - _rectangle.Width;
-                    _rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (_rectangle.Height / 2);
-                    break;
-                case Alignment.Down_Right:
-                    _rectangle.X = ChristianGame.WK.CanvasWidth - _rectangle.Width;
-                    _rectangle.Y = ChristianGame.WK.CanvasHeight - _rectangle.Height;
-                    break;
-
-                default:
-                    break;
-            }
-
-            Init(_rectangle, text, OnClickAction, tag, defaultTexture, mouseOverTexture, isActive);
+            Rectangle rectangle = Helpers.MyRectangle.Get_Rectangle_Base_On_UI_Alignment(UI_Position, width, height, margin);
+            Init(rectangle, text, OnClickAction, tag, defaultTexture, mouseOverTexture, isActive);
         }
 
 

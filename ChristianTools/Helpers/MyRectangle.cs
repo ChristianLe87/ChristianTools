@@ -19,6 +19,56 @@ namespace ChristianTools.Helpers
         {
             return new Rectangle(x: rectangle.X + steps, y: rectangle.Y, width: rectangle.Width, height: rectangle.Height);
         }
+
+        public static Rectangle Get_Rectangle_Base_On_UI_Alignment(Alignment UI_Position, int width, int height, int margin)
+        {
+            Rectangle rectangle = new Rectangle(0, 0, width, height);
+
+            switch (UI_Position)
+            {
+                case Alignment.Top_Center:
+                    rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (rectangle.Width / 2);
+                    rectangle.Y = 0 + margin;
+                    break;
+                case Alignment.Midle_Center:
+                    rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (rectangle.Width / 2);
+                    rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (rectangle.Height / 2);
+                    break;
+                case Alignment.Down_Center:
+                    rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (rectangle.Width / 2);
+                    rectangle.Y = ChristianGame.WK.CanvasHeight - rectangle.Height - margin;
+                    break;
+
+                case Alignment.Top_Left:
+                    rectangle.X = margin;
+                    rectangle.Y = margin;
+                    break;
+                case Alignment.Midle_Left:
+                    rectangle.X = margin;
+                    rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (rectangle.Height / 2);
+                    break;
+                case Alignment.Down_Left:
+                    rectangle.X = margin;
+                    rectangle.Y = ChristianGame.WK.CanvasHeight - rectangle.Height - margin;
+                    break;
+
+                case Alignment.Top_Right:
+                    rectangle.X = ChristianGame.WK.CanvasWidth - rectangle.Width - margin;
+                    rectangle.Y = margin;
+                    break;
+                case Alignment.Midle_Right:
+                    rectangle.X = ChristianGame.WK.CanvasWidth - rectangle.Width - margin;
+                    rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (rectangle.Height / 2);
+                    break;
+                case Alignment.Down_Right:
+                    rectangle.X = ChristianGame.WK.CanvasWidth - rectangle.Width - margin;
+                    rectangle.Y = ChristianGame.WK.CanvasHeight - rectangle.Height - margin;
+                    break;
+            }
+
+            return rectangle;
+        }
+
         /*public static Rectangle MoveRectangleDown(Rectangle rectangle, int steps= 1)
         {
             return new Rectangle(x: rectangle.X, y: rectangle.Y + steps, width: rectangle.Width, height: rectangle.Height);
