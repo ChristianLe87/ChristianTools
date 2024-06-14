@@ -10,6 +10,65 @@ namespace ChristianTools.UI
 		public bool isActive { get; }
 		private Texture2D texture2D;
 
+		public Label(Alignment UI_Position, int W, int H, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
+		{
+			Rectangle _rectangle = new Rectangle(0, 0, W, H);
+			
+			switch (UI_Position)
+			{
+				case Alignment.Top_Center:
+					_rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (_rectangle.Width / 2);
+					_rectangle.Y = 0;
+					break;
+				case Alignment.Midle_Center:
+					_rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (_rectangle.Width / 2);
+					_rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (_rectangle.Height / 2);
+					break;
+				case Alignment.Down_Center:
+					_rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (_rectangle.Width / 2);
+					_rectangle.Y = ChristianGame.WK.CanvasHeight - _rectangle.Height;
+					break;
+
+				case Alignment.Top_Left:
+					_rectangle.X = 0;
+					_rectangle.Y = 0;
+					break;
+				case Alignment.Midle_Left:
+					_rectangle.X = 0;
+					_rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (_rectangle.Height / 2);
+					break;
+				case Alignment.Down_Left:
+					_rectangle.X = 0;
+					_rectangle.Y = ChristianGame.WK.CanvasHeight - _rectangle.Height;
+					break;
+
+				case Alignment.Top_Right:
+					_rectangle.X = ChristianGame.WK.CanvasWidth - _rectangle.Width;
+					_rectangle.Y = 0;
+					break;
+				case Alignment.Midle_Right:
+					_rectangle.X = ChristianGame.WK.CanvasWidth - _rectangle.Width;
+					_rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (_rectangle.Height / 2);
+					break;
+				case Alignment.Down_Right:
+					_rectangle.X = ChristianGame.WK.CanvasWidth - _rectangle.Width;
+					_rectangle.Y = ChristianGame.WK.CanvasHeight - _rectangle.Height;
+					break;
+				
+				default:
+					break;
+			}
+
+			this.rectangle = _rectangle;
+			this.text = text;
+			this.dxCustomUpdateSystem = (state, inputState) => UpdateSystem();
+			this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+			this.textAlignment = textAlignment;
+
+			this.texture2D = texture;
+			this.isActive = isActive;
+		}
+		
 		public Label(Rectangle rectangle, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
 		{
 			this.rectangle = rectangle;
