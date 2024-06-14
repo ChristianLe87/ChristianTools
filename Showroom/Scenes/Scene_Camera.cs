@@ -12,10 +12,14 @@ namespace Showroom.Scenes
                     textAlignment: Alignment.Midle_Center
                 ),
                 new Button(
-                    rectangle: new Rectangle(10, 460, 230, 30),
+                    UI_Position: Alignment.Down_Left,
+                    width: 230,
+                    height: 30,
+                    margin: 10,
                     text: "<-- Back to menu",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
+                    tag: "",
                     OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
                 ),
 

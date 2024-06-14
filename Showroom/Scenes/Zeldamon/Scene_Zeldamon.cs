@@ -15,8 +15,17 @@ namespace Showroom.Scenes
             this.UIs = new List<IUI>()
             {
                 // Back to menu
-                new Button(rectangle: new Rectangle(10, 460, 230, 30), text: "<-- Back to menu", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
-            };
+                new Button(
+                    UI_Position: Alignment.Down_Left,
+                    width: 230,
+                    height: 30,
+                    margin: 10,
+                    text: "<-- Back to menu",
+                    defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
+                    mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
+                    tag: "",
+                    OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
+                ),            };
 
             TiledMap tiledMap = ChristianTools.Helpers.Tiled.Helpers.Read_Tiled_JsonSerialization<TiledMap>(ChristianGame.WK.Maps["Zeldamon_1"]);
             this.map = new ChristianTools.Components.Map(tiledMap);
