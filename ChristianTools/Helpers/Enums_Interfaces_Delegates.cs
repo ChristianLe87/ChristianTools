@@ -6,8 +6,8 @@ namespace ChristianTools.Helpers
     {
         public int TileSize { get; }
         public double FPS { get; }
-        public int CanvasWidth { get; }
-        public int CanvasHeight { get; }
+        public int CanvasWidth { get; set; }
+        public int CanvasHeight { get; set; }
         public string Atlas_Tileset { get; }
         public string Atlas_Entities { get; }
         public string WindowTitle { get; }

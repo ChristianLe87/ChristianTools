@@ -4,13 +4,13 @@ namespace Showroom
     {
         public int TileSize { get; } = 16;
         public double FPS { get; } = 60;
-        public int CanvasWidth { get; } = (int)AspectRatio_16_9.Width*2;
-        public int CanvasHeight { get; } = (int)AspectRatio_16_9.Height*2;
+        public int CanvasWidth { get; set; } = (int)AspectRatio_16_9.Width;
+        public int CanvasHeight { get; set; } = (int)AspectRatio_16_9.Height;
         public string Atlas_Tileset { get; } = "AtlasTileset_PNG";
         public string Atlas_Entities { get; } = "AtlasEntities_PNG";
         public string WindowTitle { get; } = "Showroom";
         public string FontFileName { get; } = "MyFont_130x28_PNG";
-        public bool IsFullScreen { get; } = false;
+        public bool IsFullScreen { get; } = !false;
         public bool AllowUserResizing { get; } = false;
         public bool IsMouseVisible { get; } = true;
         public Dictionary<string, string> Maps { get; } = new Dictionary<string, string>()

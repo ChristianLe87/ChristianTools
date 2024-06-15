@@ -19,10 +19,16 @@ namespace ChristianTools
 
         private InputState lastInputState;
 
-        public ChristianGame(IDefault WK)
+        public ChristianGame(IDefault _WK)
         {
+            if (_WK.IsFullScreen == true)
+            {
+                _WK.CanvasWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                _WK.CanvasHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            }
+
             // WK
-            ChristianGame.WK = WK;
+            ChristianGame.WK = _WK;
 
             // Scene
             ChristianGame.scenes = WK.Scenes;
