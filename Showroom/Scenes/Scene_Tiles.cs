@@ -66,7 +66,7 @@ namespace Showroom.Scenes
             Tile[,] mainTileTiles = Tile.FromInt_ToTile(mainIntTiles, LayerDepth.Main);
             this.map = new Map(mainTiles: mainTileTiles);
 
-            this.camera = new Camera(zoom: 1, entityToFollow: entities.Find(x => x.tag == "player"));
+            this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
         }
 
         private void SetPlayerSystem_Move_WASD()

@@ -50,7 +50,7 @@ namespace Showroom.Scenes
                 new Entity_Numbers(new Rectangle(484, 484, 16, 16), WK.AtlasEntitiesReferences.Idl_Right),
             };
 
-            this.camera = new Camera(zoom: 1, entityToFollow: entities.Find(x => x.tag == "player"));
+            this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
         }
     }
 }

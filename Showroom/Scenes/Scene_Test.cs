@@ -54,7 +54,7 @@ namespace Showroom.Scenes
                 };
             }
 
-            this.camera = new Camera(zoom: 1, entityToFollow: entities.Find(x => x.tag == "player"));
+            this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
         }
     }
 }

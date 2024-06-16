@@ -30,7 +30,7 @@ namespace Showroom.Scenes
             TiledMap tiledMap = ChristianTools.Helpers.Tiled.Helpers.Read_Tiled_JsonSerialization<TiledMap>(ChristianGame.WK.Maps["Zeldamon_1"]);
             this.map = new ChristianTools.Components.Map(tiledMap);
             
-            this.camera = new Camera(zoom: 1, entityToFollow: entities.Find(x => x.tag == "player"));
+            this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
         }
     }
 }

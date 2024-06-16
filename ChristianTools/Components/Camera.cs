@@ -9,15 +9,17 @@ namespace ChristianTools.Components
         private IEntity entityToFollow;
         private float zoom { get; set; }
 
-        public Camera(int zoom = 1, IEntity entityToFollow = null)
+        public Camera(IEntity entityToFollow = null)
         {
             this.entityToFollow = entityToFollow;
             this.transform = Matrix.CreateTranslation(Vector3.Zero);
-            this.zoom = zoom;
+            this.zoom = 1;
         }
 
         public void Update()
         {
+            this.zoom = ChristianGame.WK.ScaleFactor;
+            
             if (entityToFollow != null)
             {
                 Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;

@@ -23,8 +23,11 @@ namespace ChristianTools
         {
             if (_WK.IsFullScreen == true)
             {
+                _WK.ScaleFactor = (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / _WK.CanvasHeight);
+
                 _WK.CanvasWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
                 _WK.CanvasHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
             }
 
             // WK
@@ -32,7 +35,7 @@ namespace ChristianTools
 
             // Scene
             ChristianGame.scenes = WK.Scenes;
-            ChristianGame.actualScene =  WK.Scenes.FirstOrDefault().Key;
+            ChristianGame.actualScene = WK.Scenes.FirstOrDefault().Key;
 
 
             // Window
@@ -40,18 +43,18 @@ namespace ChristianTools
             graphicsDeviceManager.PreferredBackBufferWidth = WK.CanvasWidth; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
             graphicsDeviceManager.PreferredBackBufferHeight = WK.CanvasHeight; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
             graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
-            
+
             // Set up multisampling and take off VSync to help with the camera efficiency
             graphicsDeviceManager.PreferMultiSampling = true;
             graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
 
-            
+
             //graphicsDeviceManager.ToggleFullScreen();
             graphicsDeviceManager.ApplyChanges();
             //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
             //var bla = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
 
-            
+
             // FPS
             base.IsFixedTimeStep = true;
             base.TargetElapsedTime = TimeSpan.FromSeconds(1d / WK.FPS);
@@ -63,13 +66,23 @@ namespace ChristianTools
             base.IsMouseVisible = WK.IsMouseVisible;
             //Window.AllowUserResizing = WK.AllowUserResizing;
             //game = this;
-            
+
 
             // Content
             Content.RootDirectory = "Content";
             //string absolutePath = Path.Combine(Environment.CurrentDirectory, "Content");
             //base.Content.RootDirectory = absolutePath;
             //ChristianGame.contentManager = base.Content;
+
+
+
+            // use with GameWindowSizeChangeEvent()
+            if (WK.AllowUserResizing == true)
+            {
+                Window.AllowUserResizing = WK.AllowUserResizing;
+                Window.ClientSizeChanged += GameWindowSizeChangeEvent;
+            }
+
 
             lastInputState = new InputState();
         }
@@ -155,6 +168,35 @@ namespace ChristianTools
         {
             actualScene = sceneName;
             scenes[actualScene].Initialize();
+        }
+
+
+
+
+
+        private void GameWindowSizeChangeEvent(object sender, System.EventArgs e)
+        {
+            // thanks to: https://stackoverflow.com/questions/45396416/how-can-i-detect-window-clientsizechanged-end#45403843
+
+            GameWindow gameWindow = Window;
+            DisplayMode myDisplay = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+
+            // Unsubscribe
+            Window.ClientSizeChanged -= GameWindowSizeChangeEvent;
+
+            // ToDo: code
+            {
+                // Good to know
+                float aspectRatio = myDisplay.AspectRatio;
+                int displayWidth = myDisplay.Width;
+                int displayHeight = myDisplay.Height;
+
+                int gameWindowWidth = gameWindow.ClientBounds.Width;
+                int gameWindowHeight = gameWindow.ClientBounds.Height;
+            }
+
+            // Subscribe
+            Window.ClientSizeChanged += GameWindowSizeChangeEvent;
         }
     }
 }

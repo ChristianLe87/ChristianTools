@@ -6,13 +6,15 @@ namespace Showroom
         public double FPS { get; } = 60;
         public int CanvasWidth { get; set; } = (int)AspectRatio_16_9.Width;
         public int CanvasHeight { get; set; } = (int)AspectRatio_16_9.Height;
+        public int ScaleFactor { get; set; } = 2;
         public string Atlas_Tileset { get; } = "AtlasTileset_PNG";
         public string Atlas_Entities { get; } = "AtlasEntities_PNG";
         public string WindowTitle { get; } = "Showroom";
         public string FontFileName { get; } = "MyFont_130x28_PNG";
-        public bool IsFullScreen { get; } = !false;
+        public bool IsFullScreen { get; } = false;
         public bool AllowUserResizing { get; } = false;
         public bool IsMouseVisible { get; } = true;
+
         public Dictionary<string, string> Maps { get; } = new Dictionary<string, string>()
         {
             { "Zeldamon_1", "MyMap/Zeldamon_1" },
@@ -29,9 +31,8 @@ namespace Showroom
             { "Scene_Tiles", new Scene_Tiles() },
             { "Scene_Zeldamon", new Scene_Zeldamon() },
             { "Scene_Platformer", new Scene_Platformer() },
-            
         };
-        
+
         public static class AtlasEntitiesReferences
         {
             public static Rectangle Idle_Up { get; } = new Rectangle(0 * 16, 0 * 16, 16, 16);
@@ -46,7 +47,5 @@ namespace Showroom
             //     public static Rectangle _8 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
             //     public static Rectangle _9 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
         }
-
-
     }
 }
