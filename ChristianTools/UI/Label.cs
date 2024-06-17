@@ -12,7 +12,7 @@ namespace ChristianTools.UI
 
 		public Label(Alignment UI_Position, int width, int height, string text, int margin = 0, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
 		{
-			Rectangle rectangle = Helpers.MyRectangle.Get_Rectangle_Base_On_UI_Alignment(UI_Position, width, height, margin);
+			Rectangle rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, width, height, margin);
 			Init(rectangle, text, textAlignment, texture, tag, isActive);
 		}
 

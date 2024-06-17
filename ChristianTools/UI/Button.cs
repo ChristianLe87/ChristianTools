@@ -22,7 +22,7 @@ namespace ChristianTools.UI
 
         public Button(Alignment UI_Position, int width, int height, string text, DxOnClickAction OnClickAction, int margin = 0, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null, bool isActive = true)
         {
-            Rectangle rectangle = Helpers.MyRectangle.Get_Rectangle_Base_On_UI_Alignment(UI_Position, width, height, margin);
+            Rectangle rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, width, height, margin);
             Init(rectangle, text, OnClickAction, tag, defaultTexture, mouseOverTexture, isActive);
         }
 

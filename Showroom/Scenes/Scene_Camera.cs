@@ -31,22 +31,22 @@ namespace Showroom.Scenes
                 new ZeroZeroPoint_Entity(),
 
                 // TL
-                new Entity_Numbers(new Rectangle(0, 0, 16, 16)),
+                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Top_Left, 16, 16)),
 
                 // TR
-                new Entity_Numbers(new Rectangle(484, 0, 16, 16)),
+                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Top_Right, 16, 16)),
 
                 // Center
                 new Entity_WASD(
-                    rectangle: MyRectangle.CreateRectangle(new Point(250, 250), 16, 16),
+                    rectangle: MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Midle_Center, 16, 16),
                     tag: "player"
                 ),
 
                 // DL
-                new Entity_Numbers(new Rectangle(0, 484, 16, 16)),
+                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Down_Left, 16, 16)),
 
                 // DR
-                new Entity_Numbers(new Rectangle(484, 484, 16, 16)),
+                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Down_Right, 16, 16)),
             };
 
             this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
