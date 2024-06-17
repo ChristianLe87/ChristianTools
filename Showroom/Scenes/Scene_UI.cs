@@ -73,23 +73,22 @@ namespace Showroom.Scenes
 				new ZeroZeroPoint_Entity(),
 
 				// TL
-				new Entity_Numbers(new Rectangle(0, 0, 16, 16), WK.AtlasEntitiesReferences.Idle_Left),
+				new Entity_Numbers(new Rectangle(0, 0, 16, 16)),
 
 				// TR
-				new Entity_Numbers(new Rectangle(484, 0, 16, 16), WK.AtlasEntitiesReferences.Idl_Right),
+				new Entity_Numbers(new Rectangle(484, 0, 16, 16)),
 
 				// Center
 				new Entity_WASD(
 					rectangle: MyRectangle.CreateRectangle(new Point(250, 250), 16, 16),
-					imageFromAtlas: WK.AtlasEntitiesReferences.Idel_Down,
 					tag: "player"
 				),
 
 				// DL
-				new Entity_Numbers(new Rectangle(0, 484, 16, 16), WK.AtlasEntitiesReferences.Idle_Left),
+				new Entity_Numbers(new Rectangle(0, 484, 16, 16)),
 
 				// DR
-				new Entity_Numbers(new Rectangle(484, 484, 16, 16), WK.AtlasEntitiesReferences.Idl_Right),
+				new Entity_Numbers(new Rectangle(484, 484, 16, 16)),
 			};
 
 			this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));

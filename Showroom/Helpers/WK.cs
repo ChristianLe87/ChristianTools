@@ -6,7 +6,7 @@ namespace Showroom
         public double FPS { get; } = 60;
         public int CanvasWidth { get; set; } = (int)AspectRatio_16_9.Width;
         public int CanvasHeight { get; set; } = (int)AspectRatio_16_9.Height;
-        public int ScaleFactor { get; set; } = 2;
+        public int ScaleFactor { get; set; } = 1;
         public string Atlas_Tileset { get; } = "AtlasTileset_PNG";
         public string Atlas_Entities { get; } = "AtlasEntities_PNG";
         public string WindowTitle { get; } = "Showroom";
@@ -32,20 +32,5 @@ namespace Showroom
             { "Scene_Zeldamon", new Scene_Zeldamon() },
             { "Scene_Platformer", new Scene_Platformer() },
         };
-
-        public static class AtlasEntitiesReferences
-        {
-            public static Rectangle Idle_Up { get; } = new Rectangle(0 * 16, 0 * 16, 16, 16);
-            public static Rectangle Idel_Down { get; } = new Rectangle(0 * 16, 1 * 16, 16, 16);
-            public static Rectangle Idl_Right { get; } = new Rectangle(0 * 16, 2 * 16, 16, 16);
-
-            public static Rectangle Idle_Left { get; } = new Rectangle(0 * 16, 3 * 16, 16, 16);
-            //     public static Rectangle _5 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
-            //     public static Rectangle _6 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
-            //
-            //     public static Rectangle _7 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
-            //     public static Rectangle _8 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
-            //     public static Rectangle _9 { get; } = new Rectangle(1 * 16, 1 * 16, 16, 16);
-        }
     }
 }

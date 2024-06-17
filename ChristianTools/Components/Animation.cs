@@ -7,7 +7,7 @@ namespace ChristianTools.Components
         private int frame;
         private Dictionary<CharacterState, Rectangle[]> animation { get; set; }
 
-        public Animation(Rectangle imageFromAtlas)
+        public Animation()
         {
             characterState = CharacterState.IdleDown;
 

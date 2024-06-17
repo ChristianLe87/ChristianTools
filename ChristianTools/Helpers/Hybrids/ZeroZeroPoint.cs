@@ -16,7 +16,7 @@ namespace ChristianTools.Helpers.Hybrids
         public ZeroZeroPoint()
         {
             this.rigidbody = new Rigidbody(new Rectangle(-100, -100, 200, 200));
-            this.animation = new Animation(new Rectangle());
+            this.animation = new Animation();
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();

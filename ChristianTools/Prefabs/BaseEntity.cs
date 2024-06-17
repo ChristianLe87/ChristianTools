@@ -10,10 +10,10 @@ namespace ChristianTools.Prefabs
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
 
-        public BaseEntity(Rectangle rectangle, Rectangle imageFromAtlas, string tag = "", bool isActive = true)
+        public BaseEntity(Rectangle rectangle, string tag = "", bool isActive = true)
         {
             this.rigidbody = new Rigidbody(rectangle);
-            this.animation = new Animation(imageFromAtlas);
+            this.animation = new Animation();
             this.isActive = isActive;
             this.tag = tag;
             this.guid = Guid.NewGuid();

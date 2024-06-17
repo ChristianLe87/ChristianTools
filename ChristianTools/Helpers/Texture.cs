@@ -10,6 +10,10 @@ namespace ChristianTools.Helpers
 			/// --> Remember to add the file to not ignore on Git
 
 
+			// Try later (save and read data)
+			// string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+
+			
 			// For iOS, always set Poroperties to "always copy" and use this
 			if (System.OperatingSystem.IsIOS()) imageName = Path.Combine("bin", "iOS", "Content", imageName);
 
