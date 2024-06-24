@@ -12,6 +12,7 @@ namespace ChristianTools.Helpers
         public string Atlas_Tileset { get; }
         public string Atlas_Entities { get; }
         public string WindowTitle { get; }
+        public string GameDataFileName { get; }
         public string FontFileName { get; }
         public bool IsFullScreen { get; }
         public bool AllowUserResizing { get; }

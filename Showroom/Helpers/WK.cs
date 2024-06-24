@@ -10,6 +10,7 @@ namespace Showroom
         public string Atlas_Tileset { get; } = "AtlasTileset_PNG";
         public string Atlas_Entities { get; } = "AtlasEntities_PNG";
         public string WindowTitle { get; } = "Showroom";
+        public string GameDataFileName { get; } = "MyTestData";
         public string FontFileName { get; } = "MyFont_130x28_PNG";
         public bool IsFullScreen { get; } = false;
         public bool AllowUserResizing { get; } = false;

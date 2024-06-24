@@ -19,6 +19,11 @@ namespace ChristianTools
 
         private InputState lastInputState;
 
+
+        public static Dictionary<string, object> gameData;
+
+        
+        
         public ChristianGame(IDefault _WK)
         {
             if (_WK.IsFullScreen == true)
@@ -73,6 +78,38 @@ namespace ChristianTools
             //string absolutePath = Path.Combine(Environment.CurrentDirectory, "Content");
             //base.Content.RootDirectory = absolutePath;
             //ChristianGame.contentManager = base.Content;
+
+            
+            // GameData File
+            {
+                // new
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    if (GameDataHelpers._Folder.Exist() == true)
+                    {
+                        if (GameDataHelpers._File.Exist(WK.GameDataFileName) == false)
+                        {
+                            GameDataHelpers._File.Create(new Dictionary<string, object>(), "MyTestData");
+                        }
+                    }
+                    else
+                    {
+                        GameDataHelpers._Folder.Create();
+                        GameDataHelpers._File.Create(new Dictionary<string, object>(), WK.GameDataFileName);
+                    }
+                    
+                    gameData = GameDataHelpers._File.Read(WK.GameDataFileName);
+                }
+                else
+                {
+                    gameData = new Dictionary<string, object>();
+                }
+            }
+
+
+            
+            
+
 
 
 

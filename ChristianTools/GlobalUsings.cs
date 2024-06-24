@@ -11,3 +11,4 @@ global using ChristianTools.Components;
 global using ChristianTools.Helpers;
 global using ChristianTools.Helpers.Hybrids;
 global using ChristianTools.Helpers.Tiled;
+global using System.Runtime.InteropServices;

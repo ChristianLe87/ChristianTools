@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GlobalUsings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Font.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GameDataHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Hybrids\Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Hybrids\ZeroZeroPoint.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState\InputState.cs" />
@@ -43,6 +44,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Scene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Dialogue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Label.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\LineUI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\ZeroZeroPoint_UI.cs" />
