@@ -3,7 +3,7 @@ namespace ChristianTools.Helpers;
 public static class GameDataHelpers
 {
     private static Environment.SpecialFolder specialFolder = Environment.SpecialFolder.InternetCache;
-    
+
     public static class _Folder
     {
         public static bool Exist(string FolderName = "ChristianGames")
@@ -59,4 +59,23 @@ public static class GameDataHelpers
             return gameData;
         }
     }
+
+    /*public static class _Android
+    {
+        public static string ReadData(string key)
+        {
+            string value;
+            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(base.ApplicationContext);
+            value = prefs.GetString(key, null);
+            return value;
+        }
+
+        public static void SaveData(string key, string value)
+        {
+            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(base.ApplicationContext);
+            ISharedPreferencesEditor editor = prefs.Edit();
+            editor.PutString(key, value);
+            editor.Apply();
+        }
+    }*/
 }
