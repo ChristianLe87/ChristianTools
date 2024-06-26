@@ -41,7 +41,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Scene.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity\BaseUpdateSystem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity\Move_WASD.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity\PlatformerPlayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Entity\SetForce.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Update\Scene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Dialogue.cs" />
