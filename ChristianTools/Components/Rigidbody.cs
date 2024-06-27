@@ -11,10 +11,13 @@ namespace ChristianTools.Components
 
         public List<Tile> tiles;
 
+        public uint gravity;
+
         public Rigidbody(Rectangle rectangle)
         {
             this.force = Vector2.Zero;
             this.rectangle = rectangle;
+            this.gravity = 0;
         }
 
         public void Update()
@@ -25,6 +28,8 @@ namespace ChristianTools.Components
 
             Move_Y((int)force.Y);
             Move_X((int)force.X);
+
+            MoveGravity();
         }
 
 
@@ -122,25 +127,33 @@ namespace ChristianTools.Components
 
         public bool CanMoveUp(uint Y)
         {
-            if (tiles == null) return true;
+            if (tiles == null)
+                return true;
+            
             return !tiles.Any(x => x.rectangle.Intersects(GetRectangleUp((int)Y)));
         }
 
         public bool CanMoveDown(uint Y)
         {
-            if (tiles == null) return true;
+            if (tiles == null)
+                return true;
+            
             return !tiles.Any(x => x.rectangle.Intersects(GetRectangleDown((int)Y)));
         }
 
         public bool CanMoveRight(uint X)
         {
-            if (tiles == null) return true;
+            if (tiles == null)
+                return true;
+            
             return !tiles.Any(x => x.rectangle.Intersects(GetRectangleRight((int)X)));
         }
 
         public bool CanMoveLeft(uint X)
         {
-            if (tiles == null) return true;
+            if (tiles == null)
+                return true;
+            
             return !tiles.Any(x => x.rectangle.Intersects(GetRectangleLeft((int)X)));
         }
 
@@ -148,6 +161,11 @@ namespace ChristianTools.Components
         public void SetCenterPosition(Point newCenterPosition)
         {
             rectangle = ChristianTools.Helpers.MyRectangle.CreateRectangle(newCenterPosition, rectangle.Width, rectangle.Height);
+        }
+
+        private void MoveGravity()
+        {
+            MoveDown(gravity);
         }
     }
 }

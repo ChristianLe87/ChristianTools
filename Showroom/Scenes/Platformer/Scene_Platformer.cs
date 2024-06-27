@@ -6,7 +6,7 @@ namespace Showroom.Scenes
         {
             this.entities = new List<IEntity>()
             {
-                new Entity_Platformer_Player(rectangle: new Rectangle(4 * 16, 12 * 16, 16, 16), 1, tag: "player"),
+                new Entity_Platformer_Player(rectangle: new Rectangle(4 * 16, 11 * 16, 16, 16), 1, tag: "player"),
                 new ChristianTools.Entities.ZeroZeroPoint_Entity()
             };
 
@@ -29,7 +29,7 @@ namespace Showroom.Scenes
             TiledMap tiledMap = ChristianTools.Helpers.Tiled.Helpers.Read_Tiled_JsonSerialization<TiledMap>(ChristianGame.WK.Maps["Platformer_1"]);
             this.map = new ChristianTools.Components.Map(tiledMap);
 
-            this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
+            this.camera = new Camera();// new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
         }
     }
 }
