@@ -140,6 +140,16 @@ namespace ChristianTools
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
 
             scenes[actualScene].Initialize();
+
+
+            // Setup Viewport
+            if (false)
+            {
+                Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;
+                viewport.Bounds = new Rectangle(WK.CanvasWidth / 2, WK.CanvasHeight / 2, 100, 100);
+                ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport = viewport;
+            }
+
         }
 
 
@@ -246,6 +256,32 @@ namespace ChristianTools
 
             // Subscribe
             Window.ClientSizeChanged += GameWindowSizeChangeEvent;
+        }
+
+        private void SetupViewport()
+        {
+            // Play with Viewport
+
+            // This will crate a rec
+            if (false)
+            {
+                Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;
+
+
+                if (false)
+                {
+                    viewport.Width = 100;
+                    viewport.Height = 100;
+                    viewport.X = WK.CanvasWidth / 2;
+                    viewport.Y = WK.CanvasHeight / 2;
+                }
+                else
+                {
+                    viewport.Bounds = new Rectangle(WK.CanvasWidth / 2, WK.CanvasHeight / 2, 100, 100);
+                }
+
+                ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport = viewport;
+            }
         }
     }
 }
