@@ -2,65 +2,26 @@ namespace ChristianTools.Systems.Update
 {
     public partial class Entity
     {
-        private static int jumpCount = 0;
-        private static bool isJumping = false;
+        // Always a number factor by the tile width (16: 2,4,8)
+        //private static uint gravity = entity.rigidbody.gravity; // 4
+        private static uint steps = 1;
+        private static uint jumpForce = 12;// gravity * 3;
 
         public static void PlatformerPlayer(InputState lastInputState, InputState inputState, IEntity entity)
         {
             if (entity.isActive != true)
                 return;
-            
-            
-            // Always a number factor by the tile width (16: 2,4,8)
-            int gravity = (int)entity.rigidbody.gravity;
-            int jumpForce = gravity*3;
-            
-            uint steps = 1;
 
+            MyDebugThing(inputState, lastInputState);
 
             MoveRL(entity, inputState, steps);
+            JumpSystem(entity, inputState, lastInputState, steps, jumpForce);
             
-            
-            
-            // Jump
-            if (inputState.Jump && !lastInputState.Jump && entity.rigidbody.CanMoveDown(steps) == false)
-            { 
-                isJumping = true;
-                entity.rigidbody.force = new Vector2(0, -jumpForce);
-            }
-
-
-            if (entity.rigidbody.force.Y != 0)
-            {
-                entity.rigidbody.force += new Vector2(0, 1);
-            }
-            
-            
-            
-            // Move jump
-            if (isJumping == true)
-            {
-                entity.rigidbody.force += new Vector2(0, -1);
-            }
-            else
-            {
-                //isJumping = false;
-            }
-            
-            
-
-            // If touch up or right, stop jumping
-            if (entity.rigidbody.CanMoveUp(steps) == false || entity.rigidbody.CanMoveDown(steps))
-            {
-                isJumping = false;
-            }
-
             BaseUpdateSystem(lastInputState, inputState, entity);
         }
 
         private static void MoveRL(IEntity entity, InputState inputState, uint steps)
         {
-             
             if (inputState.Right)
             {
                 if (entity.rigidbody.CanMoveRight(steps))
@@ -90,6 +51,40 @@ namespace ChristianTools.Systems.Update
             else
             {
                 entity.animation.characterState = CharacterState.IdleDown;
+            }
+        }
+
+
+        private static void JumpSystem(IEntity entity, InputState inputState, InputState lastInputState, uint steps, uint jumpForce)
+        {
+            if (inputState.Jump && !lastInputState.Jump && entity.rigidbody.CanMoveDown(steps) == false)
+            {
+                entity.rigidbody.force = new Vector2(0, -jumpForce);
+            }
+
+            if (entity.rigidbody.force.Y <= 0)
+            {
+                entity.rigidbody.force += new Vector2(0, 0.65f);
+            }
+        }
+
+        private static void MyDebugThing(InputState inputState, InputState lastInputState)
+        {
+            if (inputState.keyboard.IsKeyboardKeyDown(Keys.O)&& !lastInputState.keyboard.IsKeyboardKeyDown(Keys.O))
+            {
+                jumpForce = Math.Clamp(++jumpForce, 0, 30);
+                Console.WriteLine($"=== {jumpForce} ===");
+            }
+            
+            if (inputState.keyboard.IsKeyboardKeyDown(Keys.P)&& !lastInputState.keyboard.IsKeyboardKeyDown(Keys.P))
+            {
+                jumpForce = Math.Clamp(--jumpForce, 0, 30);
+                Console.WriteLine($"=== {jumpForce} ===");
+            }
+            
+            if (inputState.keyboard.IsKeyboardKeyDown(Keys.L)&& !lastInputState.keyboard.IsKeyboardKeyDown(Keys.L))
+            {
+                Console.WriteLine($"=== {jumpForce} ===");
             }
         }
     }

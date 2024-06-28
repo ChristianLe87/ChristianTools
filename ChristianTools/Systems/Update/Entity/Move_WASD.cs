@@ -8,7 +8,7 @@ namespace ChristianTools.Systems.Update
         {
             if (entity.isActive != true)
                 return;
-            
+
 
             // --- Up ---
             if (inputState.Up || entity.animation.characterState == CharacterState.MoveUp)
