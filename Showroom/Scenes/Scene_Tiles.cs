@@ -72,14 +72,17 @@ namespace Showroom.Scenes
         private void SetPlayerSystem_Move_WASD()
         {
             IEntity entity = this.entities.Find(x => x.tag == "player");
-            entity.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Entity.Move_WASD(lastInputState, inputState, entity);
+            entity.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Entity.Move_WASD_Clamp(lastInputState, inputState, entity);
             entity.rigidbody.force = new Vector2();
+            entity.rigidbody.gravity = 0;
         }
 
         private void SetPlayerSystem_Move_PlatformerPlayer()
         {
             IEntity entity = this.entities.Find(x => x.tag == "player");
             entity.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => ChristianTools.Systems.Update.Entity.PlatformerPlayer(lastInputState, inputState, entity);
+            entity.rigidbody.gravity = 4;
+
         }
     }
 }

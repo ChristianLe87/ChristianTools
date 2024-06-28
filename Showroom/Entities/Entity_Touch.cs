@@ -9,7 +9,7 @@ namespace Showroom
 
         private void Update(InputState lastInputState, InputState inputState)
         {
-            ChristianTools.Systems.Update.Entity.Move_WASD(lastInputState, inputState, this);
+            ChristianTools.Systems.Update.Entity.Move_WASD_Clamp(lastInputState, inputState, this);
             if (inputState.Action || inputState.touch.IsTouchDown())
             {
                 rigidbody.rectangle = ChristianTools.Helpers.MyRectangle.CreateRectangle(inputState.GetActionOnWorldPosition(), 16, 16);
