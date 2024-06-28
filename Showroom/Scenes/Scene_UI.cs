@@ -13,41 +13,27 @@ namespace Showroom.Scenes
 
 			this.UIs = new List<IUI>()
 			{
-				new Button(rectangle: new Rectangle(360, 10, 100, 50), text: "Hello World", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Console.WriteLine("User click button!")),
-
-				// Text Alignment Left
-				new Label(new Rectangle(10, 10, 100, 30), "My Text", Alignment.Top_Left, lightGray),
-				new Label(new Rectangle(10, 50, 100, 30), "My Text", Alignment.Midle_Left, lightGray),
-				new Label(new Rectangle(10, 90, 100, 30), "My Text", Alignment.Down_Left, lightGray),
-
-				// Text Alignment Center
-				new Label(new Rectangle(120, 10, 100, 30), "My Text", Alignment.Top_Center, lightGray),
-				new Label(new Rectangle(120, 50, 100, 30), "My Text", Alignment.Midle_Center, lightGray),
-				new Label(new Rectangle(120, 90, 100, 30), "My Text", Alignment.Down_Center, lightGray),
-
-				// Text Alignment Right
-				new Label(new Rectangle(230, 10, 100, 30), "My Text", Alignment.Top_Right, lightGray),
-				new Label(new Rectangle(230, 50, 100, 30), "My Text", Alignment.Midle_Right, lightGray),
-				new Label(new Rectangle(230, 90, 100, 30), "My Text", Alignment.Down_Right, lightGray),
-
+				//new Button(UI_Position:Alignment.Top_Left, width:100, height:50, text: "Hello World", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Console.WriteLine("User click button!")),
 				
 				// Position Alignment Left
-				new Label(UI_Position: Alignment.Top_Left, text: "Top_Left", width: 80, height: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Midle_Left, text: "Midle_Left", width: 80, height: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Down_Left, text: "Down_Left", width: 80, height: 10, texture: lightSlateGray),
+				new Label(text:"Top_Left", textAlignment: Alignment.Top_Left, UI_Position: Alignment.Top_Left),
+				new Label(text:"Midle_Left", textAlignment: Alignment.Midle_Left, UI_Position: Alignment.Midle_Left),
+				new Label(text:"Down_Left", textAlignment: Alignment.Down_Left, UI_Position: Alignment.Down_Left),
+				
 				
 				// Position Alignment Center
-				new Label(UI_Position: Alignment.Top_Center, text: "Top_Center", width: 80, height: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Midle_Center, text: "Midle_Center", width: 80, height: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Down_Center, text: "Down_Center", width: 80, height: 10, texture: lightSlateGray),
+				new Label(text:"Top_Center", textAlignment: Alignment.Top_Center, UI_Position: Alignment.Top_Center),
+				new Label(text:"Midle_Center", textAlignment: Alignment.Midle_Center, UI_Position: Alignment.Midle_Center),
+				new Label(text:"Down_Center", textAlignment: Alignment.Down_Center, UI_Position: Alignment.Down_Center),
 				
 				// Position Alignment Righr
-				new Label(UI_Position: Alignment.Top_Right, text: "Top_Right", width: 80, height: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Midle_Right, text: "Midle_Right", width: 80, height: 10, texture: lightSlateGray),
-				new Label(UI_Position: Alignment.Down_Right, text: "Down_Right", width: 80, height: 10, texture: lightSlateGray),
+				new Label(text:"Top_Right", textAlignment: Alignment.Top_Right, UI_Position: Alignment.Top_Right),
+				new Label(text:"Midle_Right", textAlignment: Alignment.Midle_Right, UI_Position: Alignment.Midle_Right),
+				new Label(text:"Down_Right", textAlignment: Alignment.Down_Center, UI_Position: Alignment.Down_Right),
+				
 
 				// textOfChars 
-				new Label(rectangle: new Rectangle(100, 150, 100, 30), text: textOfChars, textAlignment: Alignment.Top_Left, tag: ""),
+				//new Label(rectangle: new Rectangle(100, 150, 100, 30), text: textOfChars, textAlignment: Alignment.Top_Left, tag: ""),
 
 				// Back to menu
 				new Button(
@@ -61,6 +47,7 @@ namespace Showroom.Scenes
 					tag: "",
 					OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
 				),
+				
 				new LineUI(start: new Point(400, 100), end: new Point(350, 150), color: Color.Red),
 				new LineUI(start: new Point(350, 100), end: new Point(400, 150), color: Color.Green),
 

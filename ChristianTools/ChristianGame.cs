@@ -215,21 +215,33 @@ namespace ChristianTools
         {
             // thanks to: https://stackoverflow.com/questions/45396416/how-can-i-detect-window-clientsizechanged-end#45403843
 
-            GameWindow gameWindow = Window;
-            DisplayMode myDisplay = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+ 
 
             // Unsubscribe
             Window.ClientSizeChanged -= GameWindowSizeChangeEvent;
 
+            // Update WK
+            WK.CanvasWidth = Window.ClientBounds.Width;
+            WK.CanvasHeight = Window.ClientBounds.Height;
+            
+            // Update UIs
+            foreach (var ui in scenes[actualScene].UIs)
+            {
+                ui.UpdateOnGameWindowSizeChangeEvent();
+            }
+            
             // ToDo: code
             {
-                // Good to know
-                float aspectRatio = myDisplay.AspectRatio;
-                int displayWidth = myDisplay.Width;
-                int displayHeight = myDisplay.Height;
+                // Good to know:
+                //GameWindow gameWindow = Window;
+                //DisplayMode myDisplay = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+                
+                //float aspectRatio = myDisplay.AspectRatio;
+                //int displayWidth = myDisplay.Width;
+                //int displayHeight = myDisplay.Height;
 
-                int gameWindowWidth = gameWindow.ClientBounds.Width;
-                int gameWindowHeight = gameWindow.ClientBounds.Height;
+                //int gameWindowWidth = gameWindow.ClientBounds.Width;
+                //int gameWindowHeight = gameWindow.ClientBounds.Height;
             }
 
             // Subscribe

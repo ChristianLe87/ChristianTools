@@ -13,7 +13,7 @@ namespace Showroom
         public string GameDataFileName { get; } = "MyTestData";
         public string FontFileName { get; } = "MyFont_130x28_PNG";
         public bool IsFullScreen { get; } = false;
-        public bool AllowUserResizing { get; } = false;
+        public bool AllowUserResizing { get; } = !false;
         public bool IsMouseVisible { get; } = true;
 
         public Dictionary<string, string> Maps { get; } = new Dictionary<string, string>()
@@ -25,9 +25,10 @@ namespace Showroom
         public Dictionary<string, IScene> Scenes { get; set; } = new Dictionary<string, IScene>()
         {
             //{ "Scene_Test", new Scene_Test() },
+            { "Scene_UI", new Scene_UI() },
             { "Scene_Platformer", new Scene_Platformer() },
             { "Scene_Menu", new Scene_Menu() },
-            { "Scene_UI", new Scene_UI() },
+            
             { "Scene_Camera", new Scene_Camera() },
             { "Scene_Entities", new Scene_Entities() },
             { "Scene_Tiles", new Scene_Tiles() },

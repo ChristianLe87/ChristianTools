@@ -24,7 +24,7 @@ namespace Showroom.Scenes
                     tag: "",
                     OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
                 ),
-                new Button(
+                /*new Button(
                     rectangle: new Rectangle(260, 10, 230, 30),
                     text: "SetPlayerSystem_Move_WASD",
                     defaultTexture: null,
@@ -40,7 +40,7 @@ namespace Showroom.Scenes
                     mouseOverTexture: null,
                     tag: "",
                     OnClickAction: () => SetPlayerSystem_Move_PlatformerPlayer()
-                ),
+                ),*/
             };
 
 

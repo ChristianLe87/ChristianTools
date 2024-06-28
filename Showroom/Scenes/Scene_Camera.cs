@@ -6,11 +6,11 @@ namespace Showroom.Scenes
         {
             this.UIs = new List<IUI>()
             {
-                new Label(
+                /*new Label(
                     rectangle: new Rectangle(260, 10, 230, 30),
                     "Camera",
                     textAlignment: Alignment.Midle_Center
-                ),
+                ),*/
                 new Button(
                     UI_Position: Alignment.Down_Left,
                     width: 230,

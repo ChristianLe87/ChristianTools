@@ -2,6 +2,83 @@ namespace ChristianTools.UI
 {
 	public class Label : IUI
 	{
+		public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+		public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
+		public bool isActive { get; }
+
+
+		private Texture2D defaultTexture;
+		private Rectangle rectangle;
+
+		private string text;
+		private Point textPosition;
+
+		private Alignment textAlignment;
+		private Alignment UI_Position;
+
+		public Label(string text, Alignment textAlignment, Alignment UI_Position)
+		{
+			this.text = text;
+			this.textAlignment = textAlignment;
+			this.UI_Position = UI_Position;
+
+			this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, 100, 50, 10);
+			this.defaultTexture = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red);
+			this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+
+			this.isActive = true;
+			this.textPosition = GetTextPosition(ChristianGame.spriteFont);
+		}
+
+		private void DrawSystem(SpriteBatch spriteBatch)
+		{
+			spriteBatch.Draw(defaultTexture, rectangle, Color.White);
+			spriteBatch.DrawString(ChristianGame.spriteFont, text, textPosition.ToVector2(), Color.White);
+		}
+
+		public void UpdateOnGameWindowSizeChangeEvent()
+		{
+			this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(this.UI_Position, 100, 50, 10);
+			this.textPosition = GetTextPosition(ChristianGame.spriteFont);
+		}
+
+
+
+		private Point GetTextPosition(SpriteFont spriteFont)
+		{
+			int PosLeft_X = rectangle.X;
+			int PosCenter_X = (rectangle.Width / 2) + (rectangle.X) - ((int)spriteFont.MeasureString(text).X / 2);
+			int PosRight_X = rectangle.X + rectangle.Width - (int)spriteFont.MeasureString(text).X;
+
+			int PosTop_Y = rectangle.Y;
+			int PosMiddle_Y = rectangle.Center.Y - (((int)spriteFont.MeasureString(text).Y) / 2);
+			int PosDown_Y = rectangle.Y + rectangle.Height - ((int)spriteFont.MeasureString(text).Y);
+
+			return textAlignment switch
+			{
+				// Left
+				Alignment.Top_Left => new Point(PosLeft_X, PosTop_Y),
+				Alignment.Midle_Left => new Point(PosLeft_X, PosMiddle_Y),
+				Alignment.Down_Left => new Point(PosLeft_X, PosDown_Y),
+
+				// Center
+				Alignment.Top_Center => new Point(PosCenter_X, PosTop_Y),
+				Alignment.Midle_Center => new Point(PosCenter_X, PosMiddle_Y),
+				Alignment.Down_Center => new Point(PosCenter_X, PosDown_Y),
+
+				// Right
+				Alignment.Top_Right => new Point(PosRight_X, PosTop_Y),
+				Alignment.Midle_Right => new Point(PosRight_X, PosMiddle_Y),
+				Alignment.Down_Right => new Point(PosRight_X, PosDown_Y),
+				_ => new Point(),
+			};
+		}
+	}
+
+
+
+	public class _Label : IUI
+	{
 		public string text;
 		Alignment textAlignment;
 		public Rectangle rectangle { get; private set; }
@@ -10,18 +87,35 @@ namespace ChristianTools.UI
 		public bool isActive { get; private set; }
 		private Texture2D texture2D;
 
-		public Label(Alignment UI_Position, int width, int height, string text, int margin = 0, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
+		private Alignment UI_Position;
+		private int margin;
+
+		public _Label(Alignment UI_Position, int width, int height, string text, int margin = 0, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
 		{
-			Rectangle rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, width, height, margin);
-			Init(rectangle, text, textAlignment, texture, tag, isActive);
+			this.UI_Position = this.UI_Position;
+			this.margin = margin;
+
+			this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, width, height, margin);
+			//Init(rectangle, text, textAlignment, texture, tag, isActive);
+
+
+			this.rectangle = rectangle;
+			this.text = text;
+			this.dxCustomUpdateSystem = (state, inputState) => UpdateSystem();
+			this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+			this.textAlignment = textAlignment;
+
+			this.texture2D = texture;
+
+			this.isActive = isActive;
 		}
 
-		public Label(Rectangle rectangle, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
+		/*public Label(Rectangle rectangle, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
 		{
 			Init(rectangle, text, textAlignment, texture, tag, isActive);
-		}
+		}*/
 
-		private void Init(Rectangle rectangle, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
+		/*private void Init(Rectangle rectangle, string text, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
 		{
 			this.rectangle = rectangle;
 			this.text = text;
@@ -31,7 +125,7 @@ namespace ChristianTools.UI
 
 			this.texture2D = texture;
 			this.isActive = isActive;
-		}
+		}*/
 
 		private void UpdateSystem()
 		{
@@ -46,6 +140,13 @@ namespace ChristianTools.UI
 
 
 			spriteBatch.DrawString(ChristianGame.spriteFont, text, GetTextPosition(ChristianGame.spriteFont).ToVector2() + new Vector2(), Color.White);
+		}
+
+
+
+		public void UpdateOnGameWindowSizeChangeEvent()
+		{
+			this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, this.rectangle.Width, this.rectangle.Height);
 		}
 
 		private Point GetTextPosition(SpriteFont spriteFont)

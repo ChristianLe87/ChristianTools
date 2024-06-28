@@ -39,6 +39,8 @@ namespace ChristianTools.Helpers
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public bool isActive { get; }
+
+        public void UpdateOnGameWindowSizeChangeEvent();
     }
 
     public interface IEntity

@@ -6,7 +6,7 @@ namespace Showroom.Scenes
         {
             this.UIs = new List<IUI>()
             {
-                new Label(
+                /*new Label(
                     rectangle: new Rectangle(260, 10, 230, 30),
                     "Menu",
                     textAlignment: Alignment.Midle_Center
@@ -38,15 +38,19 @@ namespace Showroom.Scenes
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                     OnClickAction: () => Console.WriteLine("---") //Game1.ChangeToScene(WK.Scene.Tools)
-                ),
+                ),*/
                 new Button(
-                    rectangle: new Rectangle(10, 170, 230, 30),
+                    Alignment.Midle_Left,
+                    230, 30,
                     text: "UI",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                     OnClickAction: () => Game1.ChangeToScene("Scene_UI")
                 ),
-                new Button(
+                
+                
+                
+                /*new Button(
                     rectangle: new Rectangle(10, 210, 230, 30),
                     text: "Systems",
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
@@ -87,7 +91,7 @@ namespace Showroom.Scenes
                     defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
                     mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                     OnClickAction: () => Game1.ChangeToScene("Scene_Test")
-                ),
+                ),*/
             };
         }
     }

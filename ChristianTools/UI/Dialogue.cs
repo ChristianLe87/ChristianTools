@@ -10,7 +10,10 @@ namespace ChristianTools.UI
 
         public Dialogue(Alignment UI_Position, int width, int height, List<List<TextSet>> branches, int margin = 0, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)
         {
-            
+        }
+        
+        public void UpdateOnGameWindowSizeChangeEvent()
+        {
         }
     }
 

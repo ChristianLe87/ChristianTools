@@ -14,5 +14,9 @@ namespace ChristianTools.UI
                 System.Console.WriteLine("Mouse World (UI): " + inputState.mouse.GetOnWindowPosition());
             }
         }
+        
+        public void UpdateOnGameWindowSizeChangeEvent()
+        {
+        }
     }
 }
