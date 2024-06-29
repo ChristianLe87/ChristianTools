@@ -13,7 +13,7 @@ namespace Showroom
         public string GameDataFileName { get; } = "MyTestData";
         public string FontFileName { get; } = "MyFont_130x28_PNG";
         public bool IsFullScreen { get; } = false;
-        public bool AllowUserResizing { get; } = false;
+        public bool AllowUserResizing { get; } = !false;
         public bool IsMouseVisible { get; } = true;
 
         public Dictionary<string, string> Maps { get; } = new Dictionary<string, string>()

@@ -111,6 +111,8 @@ namespace ChristianTools.Helpers
     
     public enum Alignment
     {
+        Null,
+        
         Top_Center,
         Midle_Center,
         Down_Center,
