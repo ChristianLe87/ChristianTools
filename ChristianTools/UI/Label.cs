@@ -55,6 +55,7 @@ namespace ChristianTools.UI
 		public void UpdateRectangle(Rectangle rectangle)
 		{
 			this.rectangle = rectangle;
+			this.textPosition = GetTextPosition(ChristianGame.spriteFont);
 		}
 		
 		

@@ -5,7 +5,7 @@ namespace ChristianTools.UI
         Texture2D defaultTexture;
         Texture2D mouseOverTexture;
         bool isMouseOver;
-        //Label label;
+        Label label;
 
         public Rectangle rectangle { get; private set; }
         public string tag { get; private set; }
@@ -19,7 +19,8 @@ namespace ChristianTools.UI
 
         private Alignment UI_Position;
         private int margin;
-
+        
+        
         public Button(Alignment UI_Position, int width, int height, string text, DxOnClickAction OnClickAction, int margin = 0, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null, bool isActive = true)
         {
             this.UI_Position = UI_Position;
@@ -33,7 +34,7 @@ namespace ChristianTools.UI
             this.mouseOverTexture = mouseOverTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray);
             this.isMouseOver = false;
 
-            //this.label = new Label(UI_Position, rectangle.Width, rectangle.Height, text, margin: 0, textAlignment: Alignment.Midle_Center, tag: "");
+            this.label = new Label(rectangle: rectangle, text: text, textAlignment: Alignment.Midle_Center);
 
             this.tag = tag;
 
@@ -44,26 +45,23 @@ namespace ChristianTools.UI
             this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
             
             this.isActive = isActive;
-            
-            
-            
-            //Init(rectangle, text, OnClickAction, tag, defaultTexture, mouseOverTexture, isActive);
         }
 
 
-        /*public Button(Rectangle rectangle, string text, DxOnClickAction OnClickAction, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null, bool isActive = true)
+        public Button(Rectangle rectangle, string text, DxOnClickAction OnClickAction, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null, bool isActive = true)
         {
-            Init(rectangle, text, OnClickAction, tag, defaultTexture, mouseOverTexture, isActive);
-        }*/
+            this.UI_Position = Alignment.Null;
+            this.margin = 0;
 
-        /*private void Init(Rectangle rectangle, string text, DxOnClickAction OnClickAction, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null, bool isActive = true)
-        {
-            //this.rectangle = rectangle;
+            this.rectangle = rectangle;
+            
+            
+            
             this.defaultTexture = defaultTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray);
             this.mouseOverTexture = mouseOverTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray);
             this.isMouseOver = false;
 
-            this.label = new Label(UI_Position, rectangle.Width, rectangle.Height, text, margin: 0, textAlignment: Alignment.Midle_Center, tag: "");
+            this.label = new Label(rectangle: rectangle, text: text, textAlignment: Alignment.Midle_Center);
 
             this.tag = tag;
 
@@ -72,15 +70,18 @@ namespace ChristianTools.UI
 
             this.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
             this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
+            
             this.isActive = isActive;
-        }*/
+        }
         
         public void UpdateOnGameWindowSizeChangeEvent()
         {
-            this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, this.rectangle.Width, this.rectangle.Height, margin);
-            //this.label.UpdateOnGameWindowSizeChangeEvent();
+            if (UI_Position != Alignment.Null) 
+                this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, this.rectangle.Width, this.rectangle.Height, margin);
+            
+            this.label.UpdateRectangle(rectangle);
         }
-
+        
         private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
             if (rectangle.Contains(inputState.GetActionOnWindowPosition()))
@@ -104,7 +105,7 @@ namespace ChristianTools.UI
                 spriteBatch.Draw(defaultTexture, rectangle, Color.White);
 
 
-            //label.dxCustomDrawSystem(spriteBatch);
+            label.dxCustomDrawSystem(spriteBatch);
         }
     }
 }
