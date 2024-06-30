@@ -5,7 +5,7 @@ namespace ChristianTools.UI
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public bool isActive { get; }
-
+        public string tag { get; }
         private List<TextSet> branches;
 
         public Dialogue(Alignment UI_Position, int width, int height, List<List<TextSet>> branches, int margin = 0, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "", bool isActive = true)

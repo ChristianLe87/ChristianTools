@@ -25,7 +25,7 @@ namespace Showroom
 
         public Dictionary<string, IScene> Scenes { get; set; } = new Dictionary<string, IScene>()
         {
-            //{ "Scene_Test", new Scene_Test() },
+            { "Scene_Test", new Scene_Test() },
             { "Scene_UI", new Scene_UI() },
             { "Scene_Platformer", new Scene_Platformer() },
             { "Scene_Menu", new Scene_Menu() },

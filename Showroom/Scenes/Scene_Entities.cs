@@ -57,15 +57,16 @@ namespace Showroom.Scenes
 
             ChristianTools.Entities.Line line = entities.Find(x => x.tag == "RedLine") as ChristianTools.Entities.Line;
 
-            if (lastInputState.Action)
+            if (inputState.Action)
             {
-                Point? point = lastInputState.mouse.GetOnWorldPosition();//.GetActionOnWorldPosition();
+                Point? point = inputState.mouse.GetOnWorldPosition();//.GetActionOnWorldPosition();
+                
                 line.UpdatePoints(end: point);
             }
 
-            if (lastInputState.mouse.IsRightButton_Click)
+            if (inputState.mouse.IsRightButton_Click)
             {
-                Point? point = lastInputState.mouse.GetOnWorldPosition();
+                Point? point = inputState.mouse.GetOnWorldPosition();
                 line.UpdatePoints(start: point);
             }
         }

@@ -40,7 +40,7 @@ namespace ChristianTools.Helpers
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public bool isActive { get; }
-
+        public string tag { get; }
         public void UpdateOnGameWindowSizeChangeEvent();
     }
 

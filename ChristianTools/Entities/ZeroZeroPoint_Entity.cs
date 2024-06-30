@@ -9,10 +9,6 @@ namespace ChristianTools.Entities
 
         private void Update(InputState lastInputState, InputState inputState)
         {
-            if (inputState.Action == true && lastInputState.Action == false)
-            {
-                System.Console.WriteLine("Mouse World (Entity): " + inputState.mouse.GetOnWorldPosition());
-            }
         }
     }
 }

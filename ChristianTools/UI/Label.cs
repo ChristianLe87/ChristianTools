@@ -5,32 +5,33 @@ namespace ChristianTools.UI
 		public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
 		public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
 		public bool isActive { get; set; }
-
+		public string tag { get; private set; }
 
 		private Texture2D defaultTexture;
 		private Rectangle rectangle;
 
-		private string text;
+		public string text;
 		private Point textPosition;
 
 		private Alignment textAlignment = Alignment.Null;
 		private Alignment UI_Position = Alignment.Null;
 		private int margin;
 
-		public Label(string text, Alignment textAlignment, Alignment UI_Position, int Width, int Height, int margin = 0, Texture2D texture = null)
+		public Label(string text, Alignment textAlignment, Alignment UI_Position, int Width, int Height, int margin = 0, Texture2D texture = null, string tag = "")
 		{
 			Rectangle rec = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, Width, Height, margin);
 
-			Init(text: text, textAlignment: textAlignment, texture: texture, rectangle: rec, margin: margin, UI_Position: UI_Position);
+			Init(text: text, textAlignment: textAlignment, texture: texture, rectangle: rec, margin: margin, UI_Position: UI_Position, tag: tag);
 		}
 
-		public Label(string text, Alignment textAlignment, Rectangle rectangle, Texture2D texture = null)
+		public Label(string text, Alignment textAlignment, Rectangle rectangle, Texture2D texture = null, string tag = "")
 		{
-			Init(text: text, textAlignment: textAlignment,texture: texture, rectangle: rectangle, margin);
+			Init(text: text, textAlignment: textAlignment, texture: texture, rectangle: rectangle, margin: margin, tag: tag);
 		}
 
-		private void Init(string text, Alignment textAlignment, Texture2D texture, Rectangle rectangle, int margin = 0, Alignment UI_Position = Alignment.Null)
+		private void Init(string text, Alignment textAlignment, Texture2D texture, Rectangle rectangle, string tag, int margin = 0, Alignment UI_Position = Alignment.Null)
 		{
+			this.tag = tag;
 			this.text = text;
 			this.textAlignment = textAlignment;
 			this.UI_Position = UI_Position;

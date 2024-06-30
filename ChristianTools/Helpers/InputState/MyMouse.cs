@@ -17,15 +17,9 @@ namespace ChristianTools.Helpers
         {
             if (ChristianGame.GetScene.camera != null)
             {
-                
                 Point point = mouseState.Position;
                 point -= new Point((int)ChristianGame.GetScene.camera.cameraCenterPosition.X, (int)ChristianGame.GetScene.camera.cameraCenterPosition.Y);
                 point -= new Point(ChristianGame.WK.Viewport.X, ChristianGame.WK.Viewport.Y);
-
-                if (ChristianGame.WK.IsFullScreen == true)
-                {
-                    throw new Exception("Fix this");
-                }
                 
                 return point;
             }

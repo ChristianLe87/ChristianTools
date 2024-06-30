@@ -11,7 +11,7 @@ namespace ChristianTools.UI
         {
             if (inputState.Action == true && lastInputState.Action == false)
             {
-                System.Console.WriteLine("Mouse World (UI): " + inputState.mouse.GetOnWindowPosition());
+                //System.Console.WriteLine("Mouse World (UI): " + inputState.mouse.GetOnWindowPosition());
             }
         }
         

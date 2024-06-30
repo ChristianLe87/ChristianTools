@@ -38,11 +38,13 @@ namespace ChristianTools.Helpers.Hybrids
 
         public void UpdatePoints(Point? start = null, Point? end = null)
         {
+            int sf = ChristianGame.WK.ScaleFactor;
+
             if (start != null)
-                this.start = new Point(start.Value.X, start.Value.Y);
+                this.start = new Point(start.Value.X / sf, start.Value.Y / sf);
 
             if (end != null)
-                this.end = new Point(end.Value.X, end.Value.Y);
+                this.end = new Point(end.Value.X / sf, end.Value.Y / sf);
 
             CreateLine();
         }
