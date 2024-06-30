@@ -1,3 +1,5 @@
+using Showroom;
+
 namespace ChristianTools.Helpers
 {
     public class MyMouse
@@ -15,8 +17,16 @@ namespace ChristianTools.Helpers
         {
             if (ChristianGame.GetScene.camera != null)
             {
+                
                 Point point = mouseState.Position;
                 point -= new Point((int)ChristianGame.GetScene.camera.cameraCenterPosition.X, (int)ChristianGame.GetScene.camera.cameraCenterPosition.Y);
+                point -= new Point(ChristianGame.WK.Viewport.X, ChristianGame.WK.Viewport.Y);
+
+                if (ChristianGame.WK.IsFullScreen == true)
+                {
+                    throw new Exception("Fix this");
+                }
+                
                 return point;
             }
             else
@@ -27,7 +37,7 @@ namespace ChristianTools.Helpers
         
         public Point GetOnWindowPosition()
         {
-            return mouseState.Position;
+            return mouseState.Position - new Point((int)ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport.X, (int)ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport.Y);
         }
         
         //public ButtonState Mouse_LeftButton => mouseState.LeftButton;

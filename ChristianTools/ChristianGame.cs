@@ -22,21 +22,13 @@ namespace ChristianTools
 
         public static Dictionary<string, object> gameData;
 
-        
-        
+
+        // Order: 1
         public ChristianGame(IDefault _WK)
         {
-            if (_WK.IsFullScreen == true)
-            {
-                _WK.ScaleFactor = (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / _WK.CanvasHeight);
-
-                _WK.CanvasWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-                _WK.CanvasHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-
-            }
-
             // WK
             ChristianGame.WK = _WK;
+
 
             // Scene
             ChristianGame.scenes = WK.Scenes;
@@ -45,19 +37,27 @@ namespace ChristianTools
 
             // Window
             graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.PreferredBackBufferWidth = WK.CanvasWidth; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
-            graphicsDeviceManager.PreferredBackBufferHeight = WK.CanvasHeight; // GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
+            if (WK.IsFullScreen == true)
+            {
+                WK.ScaleFactor = (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / WK.CanvasHeight);
+
+                WK.CanvasWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                WK.CanvasHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            }
+            else
+            {
+                graphicsDeviceManager.PreferredBackBufferWidth = WK.CanvasWidth;
+                graphicsDeviceManager.PreferredBackBufferHeight = WK.CanvasHeight;
+            }
+
             graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
+            //graphicsDeviceManager.ToggleFullScreen();
 
             // Set up multisampling and take off VSync to help with the camera efficiency
             graphicsDeviceManager.PreferMultiSampling = true;
             graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
 
-
-            //graphicsDeviceManager.ToggleFullScreen();
             graphicsDeviceManager.ApplyChanges();
-            //Actual monitor size: GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
-            //var bla = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
 
 
             // FPS
@@ -69,7 +69,6 @@ namespace ChristianTools
             // others
             base.Window.Title = WK.WindowTitle;
             base.IsMouseVisible = WK.IsMouseVisible;
-            //Window.AllowUserResizing = WK.AllowUserResizing;
             //game = this;
 
 
@@ -79,38 +78,29 @@ namespace ChristianTools
             //base.Content.RootDirectory = absolutePath;
             //ChristianGame.contentManager = base.Content;
 
-            
+
             // GameData File
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                // new
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                if (GameDataHelpers._Folder.Exist() == true)
                 {
-                    if (GameDataHelpers._Folder.Exist() == true)
+                    if (GameDataHelpers._File.Exist(WK.GameDataFileName) == false)
                     {
-                        if (GameDataHelpers._File.Exist(WK.GameDataFileName) == false)
-                        {
-                            GameDataHelpers._File.Create(new Dictionary<string, object>(), "MyTestData");
-                        }
+                        GameDataHelpers._File.Create(new Dictionary<string, object>(), "MyTestData");
                     }
-                    else
-                    {
-                        GameDataHelpers._Folder.Create();
-                        GameDataHelpers._File.Create(new Dictionary<string, object>(), WK.GameDataFileName);
-                    }
-                    
-                    gameData = GameDataHelpers._File.Read(WK.GameDataFileName);
                 }
                 else
                 {
-                    gameData = new Dictionary<string, object>();
+                    GameDataHelpers._Folder.Create();
+                    GameDataHelpers._File.Create(new Dictionary<string, object>(), WK.GameDataFileName);
                 }
+
+                gameData = GameDataHelpers._File.Read(WK.GameDataFileName);
             }
-
-
-            
-            
-
-
+            else
+            {
+                gameData = new Dictionary<string, object>();
+            }
 
 
             // use with GameWindowSizeChangeEvent()
@@ -120,16 +110,22 @@ namespace ChristianTools
                 Window.ClientSizeChanged += GameWindowSizeChangeEvent;
             }
 
-
             lastInputState = new InputState();
+
+
+
+            ChristianTools.Helpers.GraphicTools.ChangeGameWindow(WK.CanvasWidth, WK.CanvasHeight);
+            ChristianTools.Helpers.GraphicTools.ChangeViewport(new Rectangle(0, 0, WK.CanvasWidth, WK.CanvasHeight));
         }
 
+        // Order: 2
         protected override void Initialize()
         {
             // Code
             base.Initialize();
         }
 
+        // Order: 3
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -140,21 +136,12 @@ namespace ChristianTools
             spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
 
             scenes[actualScene].Initialize();
-
-
-            // Setup Viewport
-            if (false)
-            {
-                Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;
-                viewport.Bounds = new Rectangle(WK.CanvasWidth / 2, WK.CanvasHeight / 2, 100, 100);
-                ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport = viewport;
-            }
-
         }
 
 
         private int count = 0;
 
+        // Order: 4
         protected override void Update(GameTime gameTime)
         {
             InputState inputState = new InputState();
@@ -181,6 +168,7 @@ namespace ChristianTools
             base.Update(gameTime);
         }
 
+        // Order: 5
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -224,64 +212,48 @@ namespace ChristianTools
         private void GameWindowSizeChangeEvent(object sender, System.EventArgs e)
         {
             // thanks to: https://stackoverflow.com/questions/45396416/how-can-i-detect-window-clientsizechanged-end#45403843
-
- 
-
             // Unsubscribe
             Window.ClientSizeChanged -= GameWindowSizeChangeEvent;
 
-            // Update WK
-            WK.CanvasWidth = Window.ClientBounds.Width;
-            WK.CanvasHeight = Window.ClientBounds.Height;
-            
-            // Update UIs
-            foreach (var ui in scenes[actualScene].UIs)
-            {
-                ui.UpdateOnGameWindowSizeChangeEvent();
-            }
-            
+
             // ToDo: code
             {
-                // Good to know:
-                //GameWindow gameWindow = Window;
-                //DisplayMode myDisplay = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
-                
-                //float aspectRatio = myDisplay.AspectRatio;
-                //int displayWidth = myDisplay.Width;
-                //int displayHeight = myDisplay.Height;
+                // --Good to know--
+                //DisplayMode displayMode = graphicsDeviceManager.GraphicsDevice.Adapter.CurrentDisplayMode; // Detalles sobre la pantalla donde esta gameWindow
+                // displayMode.TitleSafeArea -> Rectangle of W,H,X,Y
 
-                //int gameWindowWidth = gameWindow.ClientBounds.Width;
-                //int gameWindowHeight = gameWindow.ClientBounds.Height;
+                //GameWindow gameWindow = Window; // representa la ventana del juego en la que se presenta el contenido renderizado.
+                // gameWindow.ClientBounds -> Rectangle of W,H,X,Y
+
+                //Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport; // el área dentro de gameWindow donde se renderiza una escena
+                // viewport.Bounds -> Rectangle of W,H,X,Y
+
+
+
+
+
+                ChristianTools.Helpers.GraphicTools.ChangeGameWindow(WK.CanvasWidth, WK.CanvasHeight);
+                ChristianTools.Helpers.GraphicTools.ChangeViewport(new Rectangle(0, 0, WK.CanvasWidth, WK.CanvasHeight));
+            
+                // update vp
+                /*Viewport newViewport = new Viewport();
+                newViewport.Bounds = new Rectangle(50, 50, 500, 500);
+                ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport = newViewport;*/
+
+                // Update WK
+                //ChristianGame.WK.Viewport = newViewport.Bounds;
+                
+                
+                // Update all my UIs
+                foreach (var ui in scenes[actualScene].UIs)
+                {
+                    ui.UpdateOnGameWindowSizeChangeEvent();
+                }
             }
+
 
             // Subscribe
             Window.ClientSizeChanged += GameWindowSizeChangeEvent;
-        }
-
-        private void SetupViewport()
-        {
-            // Play with Viewport
-
-            // This will crate a rec
-            if (false)
-            {
-                Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;
-
-
-                if (false)
-                {
-                    viewport.Width = 100;
-                    viewport.Height = 100;
-                    viewport.X = WK.CanvasWidth / 2;
-                    viewport.Y = WK.CanvasHeight / 2;
-                }
-                else
-                {
-                    viewport.Bounds = new Rectangle(WK.CanvasWidth / 2, WK.CanvasHeight / 2, 100, 100);
-                }
-
-                ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport = viewport;
-            }
         }
     }
 }

@@ -59,13 +59,13 @@ namespace Showroom.Scenes
 
             if (lastInputState.Action)
             {
-                Point? point = lastInputState.GetActionOnWorldPosition();
+                Point? point = lastInputState.mouse.GetOnWorldPosition();//.GetActionOnWorldPosition();
                 line.UpdatePoints(end: point);
             }
 
             if (lastInputState.mouse.IsRightButton_Click)
             {
-                Point? point = lastInputState.GetActionOnWorldPosition();
+                Point? point = lastInputState.mouse.GetOnWorldPosition();
                 line.UpdatePoints(start: point);
             }
         }

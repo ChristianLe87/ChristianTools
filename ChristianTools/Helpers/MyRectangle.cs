@@ -23,20 +23,20 @@ namespace ChristianTools.Helpers
         public static Rectangle GetRectangleBaseOnCanvasPosition(Alignment UI_Position, int width, int height, int margin = 0)
         {
             Rectangle rectangle = new Rectangle(0, 0, width, height);
-
+            
             switch (UI_Position)
             {
                 case Alignment.Top_Center:
-                    rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (rectangle.Width / 2);
+                    rectangle.X = (ChristianGame.WK.Viewport.Width / 2) - (rectangle.Width / 2);
                     rectangle.Y = 0 + margin;
                     break;
                 case Alignment.Midle_Center:
-                    rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (rectangle.Width / 2);
-                    rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (rectangle.Height / 2);
+                    rectangle.X = (ChristianGame.WK.Viewport.Width / 2) - (rectangle.Width / 2);
+                    rectangle.Y = (ChristianGame.WK.Viewport.Height / 2) - (rectangle.Height / 2);
                     break;
                 case Alignment.Down_Center:
-                    rectangle.X = (ChristianGame.WK.CanvasWidth / 2) - (rectangle.Width / 2);
-                    rectangle.Y = ChristianGame.WK.CanvasHeight - rectangle.Height - margin;
+                    rectangle.X = (ChristianGame.WK.Viewport.Width / 2) - (rectangle.Width / 2);
+                    rectangle.Y = ChristianGame.WK.Viewport.Height - rectangle.Height - margin;
                     break;
 
                 case Alignment.Top_Left:
@@ -45,24 +45,24 @@ namespace ChristianTools.Helpers
                     break;
                 case Alignment.Midle_Left:
                     rectangle.X = margin;
-                    rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (rectangle.Height / 2);
+                    rectangle.Y = (ChristianGame.WK.Viewport.Height / 2) - (rectangle.Height / 2);
                     break;
                 case Alignment.Down_Left:
                     rectangle.X = margin;
-                    rectangle.Y = ChristianGame.WK.CanvasHeight - rectangle.Height - margin;
+                    rectangle.Y = ChristianGame.WK.Viewport.Height - rectangle.Height - margin;
                     break;
 
                 case Alignment.Top_Right:
-                    rectangle.X = ChristianGame.WK.CanvasWidth - rectangle.Width - margin;
+                    rectangle.X = ChristianGame.WK.Viewport.Width - rectangle.Width - margin;
                     rectangle.Y = margin;
                     break;
                 case Alignment.Midle_Right:
-                    rectangle.X = ChristianGame.WK.CanvasWidth - rectangle.Width - margin;
-                    rectangle.Y = (ChristianGame.WK.CanvasHeight / 2) - (rectangle.Height / 2);
+                    rectangle.X = ChristianGame.WK.Viewport.Width - rectangle.Width - margin;
+                    rectangle.Y = (ChristianGame.WK.Viewport.Height / 2) - (rectangle.Height / 2);
                     break;
                 case Alignment.Down_Right:
-                    rectangle.X = ChristianGame.WK.CanvasWidth - rectangle.Width - margin;
-                    rectangle.Y = ChristianGame.WK.CanvasHeight - rectangle.Height - margin;
+                    rectangle.X = ChristianGame.WK.Viewport.Width - rectangle.Width - margin;
+                    rectangle.Y = ChristianGame.WK.Viewport.Height - rectangle.Height - margin;
                     break;
             }
 

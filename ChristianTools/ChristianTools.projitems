@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Font.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GameDataHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GraphicTools.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Hybrids\Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Hybrids\ZeroZeroPoint.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputState\InputState.cs" />
