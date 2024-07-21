@@ -78,29 +78,8 @@ namespace ChristianTools
             //base.Content.RootDirectory = absolutePath;
             //ChristianGame.contentManager = base.Content;
 
-
-            // GameData File
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                if (GameDataHelpers._Folder.Exist() == true)
-                {
-                    if (GameDataHelpers._File.Exist(WK.GameDataFileName) == false)
-                    {
-                        GameDataHelpers._File.Create(new Dictionary<string, object>(), "MyTestData");
-                    }
-                }
-                else
-                {
-                    GameDataHelpers._Folder.Create();
-                    GameDataHelpers._File.Create(new Dictionary<string, object>(), WK.GameDataFileName);
-                }
-
-                gameData = GameDataHelpers._File.Read(WK.GameDataFileName);
-            }
-            else
-            {
-                gameData = new Dictionary<string, object>();
-            }
+            // Game data
+            gameData = GameDataHelpers.GetGameData();
 
 
             // use with GameWindowSizeChangeEvent()
@@ -140,6 +119,7 @@ namespace ChristianTools
 
 
         private int count = 0;
+        private TimeSpan lastAutosavedTime = new TimeSpan();
 
         // Order: 4
         protected override void Update(GameTime gameTime)
@@ -148,6 +128,15 @@ namespace ChristianTools
 
             if (inputState.Escape)
                 Exit();
+
+
+            // Autosave
+            lastAutosavedTime += gameTime.ElapsedGameTime;
+            if (lastAutosavedTime.Seconds > 10)
+            {
+                GameDataHelpers.SetGameData(gameData);
+                lastAutosavedTime = new TimeSpan();
+            }
 
 
             // FPS

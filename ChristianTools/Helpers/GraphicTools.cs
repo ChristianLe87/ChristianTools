@@ -6,7 +6,9 @@ public static class GraphicTools
     {
         Viewport newViewport = new Viewport();
         newViewport.Bounds = newViewportRectangle;
-        ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport = newViewport;
+        
+        if(ChristianGame.graphicsDeviceManager.GraphicsDevice != null)
+            ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport = newViewport;
 
         // Update WK
         ChristianGame.WK.Viewport = newViewport.Bounds;

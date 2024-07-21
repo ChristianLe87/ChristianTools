@@ -1,8 +1,89 @@
+
+#if ANDROID
+using Android.App;
+using Android.Content;
+#endif
+
 namespace ChristianTools.Helpers;
 
 public static class GameDataHelpers
 {
     private static Environment.SpecialFolder specialFolder = Environment.SpecialFolder.InternetCache;
+
+
+    public static void SetGameData(Dictionary<string, object> data)
+    {
+#if ANDROID
+            {
+                // Guardar datos en SharedPreferences
+                ISharedPreferences sharedPreferences = Application.Context.GetSharedPreferences(ChristianGame.WK.GameDataFileName, FileCreationMode.Private);
+                ISharedPreferencesEditor editor = sharedPreferences.Edit();
+
+                foreach (KeyValuePair<string, object> keyValue in data)
+                {
+                    string typeString = keyValue.Value.GetType().ToString();
+
+                    switch (typeString)
+                    {
+                        case "System.String":
+                            editor.PutString(keyValue.Key, (string)keyValue.Value);
+                            break;
+                        case "System.Int32":
+                            editor.PutInt(keyValue.Key, (int)keyValue.Value);
+                            break;
+                        case "System.Boolean":
+                            editor.PutBoolean(keyValue.Key, (bool)keyValue.Value);
+                            break;
+                        case "System.Single":
+                            editor.PutFloat(keyValue.Key, (float)keyValue.Value);
+                            break;
+                        case "System.Double":
+                            editor.PutFloat(keyValue.Key, (float)(double)keyValue.Value);
+                            break;
+                        case "System.DateTime":
+                            editor.PutLong(keyValue.Key, ((DateTime)keyValue.Value).Ticks);
+                            break;
+                        default:
+                            // Handle other data types here
+                            break;
+                    }
+                }
+
+                editor.Apply();
+            }
+#else
+        {
+            if (GameDataHelpers._Folder.Exist() == true)
+            {
+                if (GameDataHelpers._File.Exist(ChristianGame.WK.GameDataFileName) == false)
+                {
+                    GameDataHelpers._File.Create(data, "MyTestData");
+                }
+            }
+            else
+            {
+                GameDataHelpers._Folder.Create();
+                GameDataHelpers._File.Create(data, ChristianGame.WK.GameDataFileName);
+            }
+        }
+#endif
+    }
+
+
+    public static Dictionary<string, object> GetGameData()
+    {
+#if ANDROID
+            {
+                ISharedPreferences sharedPreferences = Application.Context.GetSharedPreferences(ChristianGame.WK.GameDataFileName, FileCreationMode.Private);
+                return sharedPreferences.All.ToDictionary();
+            }
+#else
+        {
+            return GameDataHelpers._File.Read(ChristianGame.WK.GameDataFileName);
+        }
+#endif
+    }
+
 
     public static class _Folder
     {
@@ -59,23 +140,4 @@ public static class GameDataHelpers
             return gameData;
         }
     }
-
-    /*public static class _Android
-    {
-        public static string ReadData(string key)
-        {
-            string value;
-            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(base.ApplicationContext);
-            value = prefs.GetString(key, null);
-            return value;
-        }
-
-        public static void SaveData(string key, string value)
-        {
-            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(base.ApplicationContext);
-            ISharedPreferencesEditor editor = prefs.Edit();
-            editor.PutString(key, value);
-            editor.Apply();
-        }
-    }*/
 }

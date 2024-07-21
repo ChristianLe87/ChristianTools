@@ -46,7 +46,7 @@ namespace Showroom.Scenes
           
                 Point? mouseLabel_point = inputState.mouse.GetOnWindowPosition();
                 
-                lineRed.UpdatePoints(end: mouseLabel_point);
+                lineRed?.UpdatePoints(end: mouseLabel_point);
             }
         }
     }
