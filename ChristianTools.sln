@@ -8,6 +8,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Showroom", "Showroom\Showro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Android", "Android\Android.csproj", "{AABD508C-DC4F-49CA-BB87-3A7E72D75926}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOS", "iOS\iOS.csproj", "{B9A3BF41-B292-4CFB-A656-75F080451D9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,5 +24,9 @@ Global
 		{AABD508C-DC4F-49CA-BB87-3A7E72D75926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AABD508C-DC4F-49CA-BB87-3A7E72D75926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AABD508C-DC4F-49CA-BB87-3A7E72D75926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9A3BF41-B292-4CFB-A656-75F080451D9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A3BF41-B292-4CFB-A656-75F080451D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A3BF41-B292-4CFB-A656-75F080451D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A3BF41-B292-4CFB-A656-75F080451D9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
