@@ -1,6 +1,7 @@
 ﻿using System;
 using Foundation;
 using UIKit;
+using Showroom;
 
 namespace iOS
 {
@@ -11,7 +12,7 @@ namespace iOS
 
         internal static void RunGame()
         {
-            game = new Game1();
+            game = new Game1(new WK());
             game.Run();
         }
 

@@ -57,9 +57,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\ZeroZeroPoint_UI.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Helpers\.DS_Store" />
     <Content Include="$(MSBuildThisFileDirectory)Helpers\Tiled\Templates\Map_0.json" />
     <Content Include="$(MSBuildThisFileDirectory)Helpers\Tiled\Templates\MyTileset.json" />
-    <Content Include="$(MSBuildThisFileDirectory)Systems\.DS_Store" />
   </ItemGroup>
 </Project>

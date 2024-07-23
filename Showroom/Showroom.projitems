@@ -25,7 +25,4 @@
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene_UI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Zeldamon\Scene_Zeldamon.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Scenes\.DS_Store" />
-  </ItemGroup>
 </Project>

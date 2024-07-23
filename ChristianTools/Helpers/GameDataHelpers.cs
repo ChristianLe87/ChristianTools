@@ -4,6 +4,10 @@ using Android.App;
 using Android.Content;
 #endif
 
+#if __IOS__
+using Foundation;
+#endif
+
 namespace ChristianTools.Helpers;
 
 public static class GameDataHelpers
@@ -14,43 +18,83 @@ public static class GameDataHelpers
     public static void SetGameData(Dictionary<string, object> data)
     {
 #if ANDROID
+        {
+            // Guardar datos en SharedPreferences
+            ISharedPreferences sharedPreferences = Application.Context.GetSharedPreferences(ChristianGame.WK.GameDataFileName, FileCreationMode.Private);
+            ISharedPreferencesEditor editor = sharedPreferences.Edit();
+
+            foreach (KeyValuePair<string, object> keyValue in data)
             {
-                // Guardar datos en SharedPreferences
-                ISharedPreferences sharedPreferences = Application.Context.GetSharedPreferences(ChristianGame.WK.GameDataFileName, FileCreationMode.Private);
-                ISharedPreferencesEditor editor = sharedPreferences.Edit();
+                string typeString = keyValue.Value.GetType().ToString();
 
-                foreach (KeyValuePair<string, object> keyValue in data)
+                switch (typeString)
                 {
-                    string typeString = keyValue.Value.GetType().ToString();
-
-                    switch (typeString)
-                    {
-                        case "System.String":
-                            editor.PutString(keyValue.Key, (string)keyValue.Value);
-                            break;
-                        case "System.Int32":
-                            editor.PutInt(keyValue.Key, (int)keyValue.Value);
-                            break;
-                        case "System.Boolean":
-                            editor.PutBoolean(keyValue.Key, (bool)keyValue.Value);
-                            break;
-                        case "System.Single":
-                            editor.PutFloat(keyValue.Key, (float)keyValue.Value);
-                            break;
-                        case "System.Double":
-                            editor.PutFloat(keyValue.Key, (float)(double)keyValue.Value);
-                            break;
-                        case "System.DateTime":
-                            editor.PutLong(keyValue.Key, ((DateTime)keyValue.Value).Ticks);
-                            break;
-                        default:
-                            // Handle other data types here
-                            break;
-                    }
+                    case "System.String":
+                        editor.PutString(keyValue.Key, (string)keyValue.Value);
+                        break;
+                    case "System.Int32":
+                        editor.PutInt(keyValue.Key, (int)keyValue.Value);
+                        break;
+                    case "System.Boolean":
+                        editor.PutBoolean(keyValue.Key, (bool)keyValue.Value);
+                        break;
+                    case "System.Single":
+                        editor.PutFloat(keyValue.Key, (float)keyValue.Value);
+                        break;
+                    case "System.Double":
+                        editor.PutFloat(keyValue.Key, (float)(double)keyValue.Value);
+                        break;
+                    case "System.DateTime":
+                        editor.PutLong(keyValue.Key, ((DateTime)keyValue.Value).Ticks);
+                        break;
+                    default:
+                        throw new Exception($"Type: '{typeString}' not supported by ChristianTools");
+                        break;
                 }
-
-                editor.Apply();
             }
+
+            editor.Apply();
+        }
+#elif __IOS__
+        {
+            NSUserDefaults userDefaults = Foundation.NSUserDefaults.StandardUserDefaults;
+            
+            foreach (KeyValuePair<string, object> keyValue in data)
+            {
+                string typeString = keyValue.Value.GetType().ToString();
+
+                switch (typeString)
+                {
+                    case "System.String":
+                        userDefaults.SetString((string)keyValue.Value, keyValue.Key);
+                        break;
+                    case "System.Int64":
+                        userDefaults.SetDouble((long)keyValue.Value, keyValue.Key);
+                        break;
+                    case "System.Int32":
+                        userDefaults.SetInt((int)keyValue.Value, keyValue.Key);
+                        break;
+                    case "System.Int16":
+                        userDefaults.SetInt((short)keyValue.Value, keyValue.Key);
+                        break;
+                    case "System.Boolean":
+                        userDefaults.SetBool((bool)keyValue.Value, keyValue.Key);
+                        break;
+                    case "System.Single":
+                        userDefaults.SetFloat((float)keyValue.Value, keyValue.Key);
+                        break;
+                    case "System.Double":
+                        userDefaults.SetDouble((double)keyValue.Value, keyValue.Key);
+                        break;
+                    default:
+                        userDefaults.SetString(keyValue.Value.ToString(), keyValue.Key);
+                        //throw new Exception($"Type: '{typeString}' not supported by ChristianTools");
+                        break;
+                }
+            }
+            
+            userDefaults.Synchronize();
+        }
 #else
         {
             if (GameDataHelpers._Folder.Exist() == true)
@@ -73,10 +117,23 @@ public static class GameDataHelpers
     public static Dictionary<string, object> GetGameData()
     {
 #if ANDROID
+        {
+            ISharedPreferences sharedPreferences = Application.Context.GetSharedPreferences(ChristianGame.WK.GameDataFileName, FileCreationMode.Private);
+            return sharedPreferences.All.ToDictionary();
+        }
+#elif __IOS__
+        {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            NSUserDefaults userDefaults = NSUserDefaults.StandardUserDefaults;
+
+            foreach (var key in userDefaults.ToDictionary())
             {
-                ISharedPreferences sharedPreferences = Application.Context.GetSharedPreferences(ChristianGame.WK.GameDataFileName, FileCreationMode.Private);
-                return sharedPreferences.All.ToDictionary();
+                result.Add(key.Key.ToString(), key.Value);
             }
+
+            return result;
+        }
 #else
         {
             return GameDataHelpers._File.Read(ChristianGame.WK.GameDataFileName);

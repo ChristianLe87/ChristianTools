@@ -126,9 +126,10 @@ namespace ChristianTools
         {
             InputState inputState = new InputState();
 
+#if !__MOBILE__
             if (inputState.Escape)
                 Exit();
-
+#endif
 
             // Autosave
             lastAutosavedTime += gameTime.ElapsedGameTime;
