@@ -20,12 +20,15 @@ namespace ChristianTools
         private InputState lastInputState;
 
 
-        public static Dictionary<string, object> gameData;
+        public IGameDataSystem GameDataSystem;
+        public static GameData gameData;
 
 
         // Order: 1
-        public ChristianGame(IDefault _WK)
+        public ChristianGame(IDefault _WK, IGameDataSystem _GameDataSystem)
         {
+            this.GameDataSystem = _GameDataSystem;
+
             // WK
             ChristianGame.WK = _WK;
 
@@ -79,7 +82,7 @@ namespace ChristianTools
             //ChristianGame.contentManager = base.Content;
 
             // Game data
-            gameData = GameDataHelpers.GetGameData();
+            gameData = GameDataSystem.GetFromDevice();
 
 
             // use with GameWindowSizeChangeEvent()
@@ -133,9 +136,10 @@ namespace ChristianTools
 
             // Autosave
             lastAutosavedTime += gameTime.ElapsedGameTime;
+
             if (lastAutosavedTime.Seconds > 10)
             {
-                GameDataHelpers.SetGameData(gameData);
+                GameDataSystem.SaveInDevice(gameData);
                 lastAutosavedTime = new TimeSpan();
             }
 
@@ -224,7 +228,7 @@ namespace ChristianTools
 
                 ChristianTools.Helpers.GraphicTools.ChangeGameWindow(WK.CanvasWidth, WK.CanvasHeight);
                 ChristianTools.Helpers.GraphicTools.ChangeViewport(new Rectangle(0, 0, WK.CanvasWidth, WK.CanvasHeight));
-            
+
                 // update vp
                 /*Viewport newViewport = new Viewport();
                 newViewport.Bounds = new Rectangle(50, 50, 500, 500);
@@ -232,8 +236,8 @@ namespace ChristianTools
 
                 // Update WK
                 //ChristianGame.WK.Viewport = newViewport.Bounds;
-                
-                
+
+
                 // Update all my UIs
                 foreach (var ui in scenes[actualScene].UIs)
                 {

@@ -20,7 +20,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)GlobalUsings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Enums_Interfaces_Delegates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Font.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GameDataHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GameData\GameData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GameData\GameDataHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GraphicTools.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Hybrids\Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Hybrids\ZeroZeroPoint.cs" />

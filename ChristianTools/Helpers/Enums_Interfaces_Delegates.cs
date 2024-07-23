@@ -126,6 +126,12 @@ namespace ChristianTools.Helpers
         Midle_Right,
         Down_Right,
     }
+    
+    public interface IGameDataSystem
+    {
+        public GameData GetFromDevice();
+        public void SaveInDevice(GameData gameData);
+    }
 
     // === Delegates ===
     public delegate void DxCustomUpdateSystem(InputState lastInputState, InputState inputState);
