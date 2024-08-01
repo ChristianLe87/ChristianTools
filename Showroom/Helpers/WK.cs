@@ -13,7 +13,11 @@ namespace Showroom
         public string WindowTitle { get; } = "Showroom";
         public string GameDataFileName { get; } = "MyTestData";
         public string FontFileName { get; } = "MyFont_130x28_PNG";
+#if __ANDROID__ || __IOS__
+        public bool IsFullScreen { get; } = true;
+#else
         public bool IsFullScreen { get; } = false;
+#endif
         public bool AllowUserResizing { get; } = !false;
         public bool IsMouseVisible { get; } = true;
 
