@@ -11,7 +11,7 @@ namespace Showroom.Scenes
                 this.entities = new List<IEntity>()
                 {
                     new ZeroZeroPoint_Entity(),
-                    new Something(new Rectangle(), tag: ""),
+                    new Something(new Rectangle(0,0,0,0), tag: ""),
                 };
             }
 
@@ -34,20 +34,22 @@ namespace Showroom.Scenes
     {
         public Something(Rectangle rectangle, string tag) : base(rectangle, tag)
         {
-            base.dxCustomUpdateSystem = (lastInputState, inputState) => Update(lastInputState, inputState);
+            base.dxCustomUpdateSystem = (lastInputState, inputState) => MyUpdate(lastInputState, inputState);
         }
 
-        private void Update(InputState lastInputState, InputState inputState)
+        private void MyUpdate(InputState lastInputState, InputState inputState)
         {
+            //TODO: fix why is not updating (also in iOS)
 
             if (inputState.touch.IsTouchDown() || inputState.mouse.IsLeftButton_Click)
             {
                 Console.WriteLine("========================");
                 Console.WriteLine($"=== touch: {inputState.touch.GetOnWorldTouch()} ===");
                 Console.WriteLine($"=== mouse: {inputState.mouse.GetOnWorldPosition()} ===");
+                Console.WriteLine($"=== action: {inputState.GetActionOnWorldPosition()} ===");
 
 
-                base.rigidbody.SetCenterPosition(inputState.touch.GetOnWorldTouch());
+                base.rigidbody.SetCenterPosition(inputState.GetActionOnWorldPosition());
             }
             
         }

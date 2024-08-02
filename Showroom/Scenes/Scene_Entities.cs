@@ -59,7 +59,7 @@ namespace Showroom.Scenes
 
             if (inputState.Action)
             {
-                Point? point = inputState.mouse.GetOnWorldPosition();//.GetActionOnWorldPosition();
+                Point? point = inputState.GetActionOnWorldPosition();//.GetActionOnWorldPosition();
                 
                 line.UpdatePoints(end: point);
             }
