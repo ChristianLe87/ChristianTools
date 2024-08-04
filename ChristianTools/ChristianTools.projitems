@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Map.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\Bullet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ZeroZeroPoint_Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GlobalUsings.cs" />

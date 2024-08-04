@@ -29,7 +29,7 @@ namespace Showroom
 
         public Dictionary<string, IScene> Scenes { get; set; } = new Dictionary<string, IScene>()
         {
-            //{ "Scene_Test", new Scene_Test() },
+            { "Scene_Test", new Scene_Test() },
             { "Scene_Menu", new Scene_Menu() },
             { "Scene_Entities", new Scene_Entities() },
             { "Scene_UI", new Scene_UI() },

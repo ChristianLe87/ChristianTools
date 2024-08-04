@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Line = ChristianTools.Entities.Line;
 
 namespace Showroom.Scenes
@@ -11,7 +12,7 @@ namespace Showroom.Scenes
                 this.entities = new List<IEntity>()
                 {
                     new ZeroZeroPoint_Entity(),
-                    new Something(new Rectangle(0,0,0,0), tag: ""),
+                    new MyShooter()
                 };
             }
 
@@ -19,39 +20,36 @@ namespace Showroom.Scenes
             {
                 this.UIs = new List<IUI>()
                 {
-                    //new Button(UI_Position: Alignment.Down_Left, width: 230, height: 30, margin: 10, text: "<-- Back to menu", defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray), mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray), tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
-                    //new ZeroZeroPoint_UI(),
-
-                    //new LineUI(new Point(0,0), new Point(250,250), Color.Red, tag: "LineRed"),
                 };
             }
-
-            //this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
-        }
-    }
-
-    public class Something : BaseEntity
-    {
-        public Something(Rectangle rectangle, string tag) : base(rectangle, tag)
-        {
-            base.dxCustomUpdateSystem = (lastInputState, inputState) => MyUpdate(lastInputState, inputState);
         }
 
-        private void MyUpdate(InputState lastInputState, InputState inputState)
-        {
-            //TODO: fix why is not updating (also in iOS)
 
-            if (inputState.touch.IsTouchDown() || inputState.mouse.IsLeftButton_Click)
+        public class MyShooter : BaseEntity
+        {
+            public MyShooter() : base(new Rectangle(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2, 0, 0))
             {
-                Console.WriteLine("========================");
-                Console.WriteLine($"=== touch: {inputState.touch.GetOnWorldTouch()} ===");
-                Console.WriteLine($"=== mouse: {inputState.mouse.GetOnWorldPosition()} ===");
-                Console.WriteLine($"=== action: {inputState.GetActionOnWorldPosition()} ===");
-
-
-                base.rigidbody.SetCenterPosition(inputState.GetActionOnWorldPosition());
+                base.dxCustomUpdateSystem = (lastInputState, inputState) => MyUpdate(lastInputState, inputState);
             }
-            
+
+
+            public void MyUpdate(InputState lastInputState, InputState inputState)
+            {
+                if (inputState.Action == true && lastInputState.Action == false)
+                {
+                    Vector2 centerPosition = this.rigidbody.rectangle.Center.ToVector2();
+                    Vector2 direction = inputState.GetActionOnWorldPosition().ToVector2();
+                    
+                    ChristianGame.GetScene.entities.Add(
+                        new Bullet(
+                            centerPosition: centerPosition,
+                            direction: direction
+                        )
+                    );
+                }
+
+                ChristianTools.Systems.Update.Entity.Move_WASD_Clamp(lastInputState, inputState, this);
+            }
         }
     }
 }

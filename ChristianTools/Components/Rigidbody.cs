@@ -13,9 +13,9 @@ namespace ChristianTools.Components
 
         public uint gravity;
 
-        public Rigidbody(Rectangle rectangle)
+        public Rigidbody(Rectangle rectangle, Vector2 force = new Vector2())
         {
-            this.force = Vector2.Zero;
+            this.force = force;
             this.rectangle = rectangle;
             this.gravity = 0;
         }
