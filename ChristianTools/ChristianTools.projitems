@@ -13,7 +13,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Animation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Map.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody\ClassicRigidbody.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Rigidbody\Rigidbody2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Bullet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Line.cs" />

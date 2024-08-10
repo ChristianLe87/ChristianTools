@@ -11,7 +11,7 @@ namespace ChristianTools.Systems.Update
                 {
                     if (entity.rigidbody.CanMoveRight(steps))
                     {
-                        entity.rigidbody?.MoveRight(steps);
+                        entity.rigidbody?.Move_X(steps);
                         entity.animation.characterState = CharacterState.MoveRight;
                     }
                     else
@@ -23,7 +23,7 @@ namespace ChristianTools.Systems.Update
                 {
                     if (entity.rigidbody.CanMoveLeft(steps))
                     {
-                        entity.rigidbody?.MoveLeft(steps);
+                        entity.rigidbody?.Move_X(-steps);
                         entity.animation.characterState = CharacterState.MoveLeft;
                     }
                     else

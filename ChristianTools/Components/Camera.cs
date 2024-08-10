@@ -27,7 +27,7 @@ namespace ChristianTools.Components
                 //Vector3 cameraPosition = new Vector3((viewport.Width / 2) - entityToFollow.rigidbody.rectangle.Center.X, (viewport.Height / 2) - entityToFollow.rigidbody.rectangle.Center.Y, 0);
                 //transform = Matrix.CreateTranslation(cameraPosition);
 
-                transform = Matrix.CreateTranslation(new Vector3(-entityToFollow.rigidbody.rectangle.Center.X, -entityToFollow.rigidbody.rectangle.Center.Y, 0)) *
+                transform = Matrix.CreateTranslation(new Vector3(-entityToFollow.rigidbody.centerPosition.X, -entityToFollow.rigidbody.centerPosition.Y, 0)) *
                             Matrix.CreateScale(new Vector3(zoom, zoom, 0)) *
                             Matrix.CreateTranslation(new Vector3(viewport.Width / 2, viewport.Height / 2, 0));
             }

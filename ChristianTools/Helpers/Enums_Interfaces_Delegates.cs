@@ -46,7 +46,7 @@ namespace ChristianTools.Helpers
 
     public interface IEntity
     {
-        public Rigidbody rigidbody { get; set; }
+        public IRigidbody rigidbody { get; set; }
         public Animation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
@@ -131,6 +131,23 @@ namespace ChristianTools.Helpers
     {
         public GameData GetFromDevice();
         public void SaveInDevice(GameData gameData);
+    }
+    
+    public interface IRigidbody
+    {
+        Vector2 force { get; set; }
+        Vector2 centerPosition { get; set; }
+        Point size { get; }
+        List<Tile> tiles { get; }
+        float gravity { get; set; }
+        void Update();
+        void Move_X(float X);
+        void Move_Y(float Y);
+        bool CanMoveUp(uint Y);
+        bool CanMoveDown(uint Y);
+        bool CanMoveRight(uint X);
+        bool CanMoveLeft(uint X);
+        Rectangle GetRectangle { get; }
     }
 
     // === Delegates ===

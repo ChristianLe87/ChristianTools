@@ -37,7 +37,7 @@ namespace Showroom.Scenes
             {
                 if (inputState.Action == true && lastInputState.Action == false)
                 {
-                    Vector2 centerPosition = this.rigidbody.rectangle.Center.ToVector2();
+                    Vector2 centerPosition = this.rigidbody.centerPosition;
                     Vector2 direction = inputState.GetActionOnWorldPosition().ToVector2();
                     
                     ChristianGame.GetScene.entities.Add(

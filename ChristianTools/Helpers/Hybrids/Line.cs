@@ -9,7 +9,7 @@ namespace ChristianTools.Helpers.Hybrids
         int thickness;
         private Texture2D texture2D;
 
-        public Rigidbody rigidbody { get; set; }
+        public IRigidbody rigidbody { get; set; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
@@ -22,7 +22,7 @@ namespace ChristianTools.Helpers.Hybrids
 
         public Line(Point start, Point end, Color color, int thickness = 5, string tag = "")
         {
-            this.rigidbody = new Rigidbody(new Rectangle());
+            this.rigidbody = new ClassicRigidbody(new Rectangle());
             this.animation = new Animation();
             this.guid = Guid.NewGuid();
             this.start = start;

@@ -2,7 +2,7 @@ namespace ChristianTools.Helpers.Hybrids
 {
     public class ZeroZeroPoint
     {
-        public Rigidbody rigidbody { get; set; }
+        public IRigidbody rigidbody { get; set; }
         public Animation animation { get; }
         public bool isActive { get; set; }
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
@@ -15,14 +15,14 @@ namespace ChristianTools.Helpers.Hybrids
 
         public ZeroZeroPoint()
         {
-            this.rigidbody = new Rigidbody(new Rectangle(-100, -100, 200, 200));
+            this.rigidbody = new ClassicRigidbody(new Rectangle(-100, -100, 200, 200));
             this.animation = new Animation();
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();
 
-            texture2D_X = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red, 2, rigidbody.rectangle.Height);
-            texture2D_Y = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green, rigidbody.rectangle.Width, 2);
+            texture2D_X = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red, 2, rigidbody.size.Y);
+            texture2D_Y = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green, rigidbody.size.X, 2);
 
             this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => Draw(spriteBatch);
         }

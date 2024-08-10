@@ -1,28 +1,32 @@
 namespace ChristianTools.Components
 {
-    public class Rigidbody
+    public class ClassicRigidbody : IRigidbody
     {
         public Vector2 force { get; set; }
-        public Rectangle rectangle { get; set; }
-        public Rectangle GetRectangleUp(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleUp(rectangle, steps);
-        public Rectangle GetRectangleDown(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleDown(rectangle, steps);
-        public Rectangle GetRectangleLeft(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleLeft(rectangle, steps);
-        public Rectangle GetRectangleRight(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleRight(rectangle, steps);
+        public Rectangle GetRectangle => ChristianTools.Helpers.MyRectangle.CreateRectangle(centerPosition.ToPoint(), size.X, size.Y);
+        private Rectangle GetRectangleUp(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleUp(MyRectangle.CreateRectangle(centerPosition.ToPoint(), size.X, size.Y), steps);
+        private Rectangle GetRectangleDown(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleDown(MyRectangle.CreateRectangle(centerPosition.ToPoint(), size.X, size.Y), steps);
+        private Rectangle GetRectangleLeft(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleLeft(MyRectangle.CreateRectangle(centerPosition.ToPoint(), size.X, size.Y), steps);
+        private Rectangle GetRectangleRight(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleRight(MyRectangle.CreateRectangle(centerPosition.ToPoint(), size.X, size.Y), steps);
+        public List<Tile> tiles { get; private set; }
 
-        public List<Tile> tiles;
+        public float gravity { get; set; }
 
-        public uint gravity;
+        public Vector2 centerPosition { get; set; }
+        public Point size { get; }
 
-        public Rigidbody(Rectangle rectangle, Vector2 force = new Vector2())
+
+        public ClassicRigidbody(Rectangle rectangle, Vector2 force = new Vector2())
         {
             this.force = force;
-            this.rectangle = rectangle;
+            this.centerPosition = rectangle.Center.ToVector2();
+            this.size = rectangle.Size;
             this.gravity = 0;
         }
 
         public void Update()
         {
-            Point pointInMap = new Point(rectangle.Center.X / 16, rectangle.Center.Y / 16);
+            Point pointInMap = new Point((int)centerPosition.X / 16, (int)centerPosition.Y / 16);
             Tile[,] surroundingElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
             this.tiles = ChristianTools.Helpers.Other.FlattenArray(surroundingElements).Where(x => x != null).ToList();
 
@@ -38,7 +42,7 @@ namespace ChristianTools.Components
         /// positive move right, negative move left
         /// </summary>
         /// <param name="X"></param>
-        public void Move_X(int X)
+        public void Move_X(float X)
         {
             if (X > 0) // Right
                 MoveRight((uint)Math.Abs(X));
@@ -50,7 +54,7 @@ namespace ChristianTools.Components
         /// positive move right, negative move left
         /// </summary>
         /// <param name="Y"></param>
-        public void Move_Y(int Y)
+        public void Move_Y(float Y)
         {
             if (Y < 0) // Up
                 MoveUp((uint)Math.Abs(Y));
@@ -63,15 +67,15 @@ namespace ChristianTools.Components
         {
             if (CanMoveUp(steps))
             {
-                SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y - (int)steps));
+                centerPosition = new Vector2(centerPosition.X, centerPosition.Y - steps);
             }
             else
             {
                 // clamp
                 Tile tileUp = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleUp((int)steps)));
-                int dif = tileUp.rectangle.Bottom - rectangle.Y;
+                float dif = tileUp.rectangle.Bottom - (centerPosition.Y - (size.Y / 2));
 
-                SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + dif));
+                centerPosition = new Vector2(centerPosition.X, centerPosition.Y + dif);
             }
         }
 
@@ -80,14 +84,14 @@ namespace ChristianTools.Components
         {
             if (CanMoveDown(steps))
             {
-                SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + (int)steps));
+                this.centerPosition = new Vector2(centerPosition.X, centerPosition.Y + steps);
             }
             else
             {
                 // clamp
                 Tile tileDown = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleDown((int)steps)));
-                int dif = rectangle.Bottom - tileDown.rectangle.Y;
-                SetCenterPosition(new Point(rectangle.Center.X, rectangle.Center.Y + dif));
+                float dif = (centerPosition.Y + (size.Y / 2)) - tileDown.rectangle.Y;
+                centerPosition = new Vector2(centerPosition.X, centerPosition.Y + dif);
             }
         }
 
@@ -96,15 +100,15 @@ namespace ChristianTools.Components
         {
             if (CanMoveRight(steps) == true)
             {
-                SetCenterPosition(new Point(rectangle.Center.X + (int)steps, rectangle.Center.Y));
+                this.centerPosition = new Vector2(centerPosition.X + steps, centerPosition.Y);
             }
             else
             {
                 // clamp    
                 Tile tileRight = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleRight((int)steps)));
-                int dif = rectangle.Right - tileRight.rectangle.X;
+                float dif = (centerPosition.X + (size.X / 2)) - tileRight.rectangle.X;
 
-                SetCenterPosition(new Point(rectangle.Center.X - dif, rectangle.Center.Y));
+                centerPosition = new Vector2(centerPosition.X - dif, centerPosition.Y);
             }
         }
 
@@ -113,15 +117,15 @@ namespace ChristianTools.Components
         {
             if (CanMoveLeft(steps) == true)
             {
-                SetCenterPosition(new Point(rectangle.Center.X - (int)steps, rectangle.Center.Y));
+                centerPosition = new Vector2(centerPosition.X - steps, centerPosition.Y);
             }
             else
             {
                 // clamp    
                 Tile tileLeft = tiles.FirstOrDefault(x => x.rectangle.Intersects(GetRectangleLeft((int)steps)));
-                int dif = tileLeft.rectangle.Right - rectangle.X;
+                int dif = tileLeft.rectangle.Right - size.X;
 
-                SetCenterPosition(new Point(rectangle.Center.X - dif, rectangle.Center.Y));
+                centerPosition = new Vector2(centerPosition.X - dif, centerPosition.Y);
             }
         }
 
@@ -129,7 +133,7 @@ namespace ChristianTools.Components
         {
             if (tiles == null)
                 return true;
-            
+
             return !tiles.Any(x => x.rectangle.Intersects(GetRectangleUp((int)Y)));
         }
 
@@ -137,7 +141,7 @@ namespace ChristianTools.Components
         {
             if (tiles == null)
                 return true;
-            
+
             return !tiles.Any(x => x.rectangle.Intersects(GetRectangleDown((int)Y)));
         }
 
@@ -145,7 +149,7 @@ namespace ChristianTools.Components
         {
             if (tiles == null)
                 return true;
-            
+
             return !tiles.Any(x => x.rectangle.Intersects(GetRectangleRight((int)X)));
         }
 
@@ -153,19 +157,13 @@ namespace ChristianTools.Components
         {
             if (tiles == null)
                 return true;
-            
+
             return !tiles.Any(x => x.rectangle.Intersects(GetRectangleLeft((int)X)));
-        }
-
-
-        public void SetCenterPosition(Point newCenterPosition)
-        {
-            rectangle = ChristianTools.Helpers.MyRectangle.CreateRectangle(newCenterPosition, rectangle.Width, rectangle.Height);
         }
 
         private void MoveGravity()
         {
-            MoveDown(gravity);
+            MoveDown((uint)gravity);
         }
     }
 }

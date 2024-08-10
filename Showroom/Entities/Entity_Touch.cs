@@ -12,7 +12,7 @@ namespace Showroom
             ChristianTools.Systems.Update.Entity.Move_WASD_Clamp(lastInputState, inputState, this);
             if (inputState.Action || inputState.touch.IsTouchDown())
             {
-                rigidbody.rectangle = ChristianTools.Helpers.MyRectangle.CreateRectangle(inputState.GetActionOnWorldPosition(), 16, 16);
+                rigidbody.centerPosition = inputState.GetActionOnWorldPosition().ToVector2();
             }
         }
     }

@@ -10,10 +10,11 @@ namespace ChristianTools.Systems.Update
                 // --- Right ---
                 if (inputState.Right || entity.animation.characterState == CharacterState.MoveRight)
                 {
-                    entity.rigidbody.MoveRight(steps);
+                    entity.rigidbody.Move_X(steps);
 
                     // move until player until alligne with tile
-                    if (entity.rigidbody.rectangle.X % ChristianGame.WK.TileSize != 0)
+                    
+                    if (entity.rigidbody.GetRectangle.X % ChristianGame.WK.TileSize != 0)
                     {
                         entity.animation.characterState = CharacterState.MoveRight;
                     }
@@ -30,10 +31,10 @@ namespace ChristianTools.Systems.Update
                 // --- Left ---
                 else if (inputState.Left || entity.animation.characterState == CharacterState.MoveLeft)
                 {
-                    entity.rigidbody.MoveLeft(steps);
+                    entity.rigidbody.Move_X(-steps);
 
                     // move until player until alligne with tile
-                    if (entity.rigidbody.rectangle.X % ChristianGame.WK.TileSize != 0)
+                    if (entity.rigidbody.GetRectangle.X % ChristianGame.WK.TileSize != 0)
                     {
                         entity.animation.characterState = CharacterState.MoveLeft;
                     }

@@ -140,16 +140,16 @@ namespace ChristianTools.Helpers
             return result;
         }
 
-        public static void MoveTowards(Rigidbody main, Point target, int maxAproximation, float steps)
+        public static void MoveTowards(IRigidbody main, Point target, int maxAproximation, float steps)
         {
-            if (Vector2.Distance(main.rectangle.Center.ToVector2(), target.ToVector2()) == 0)
+            if (Vector2.Distance(main.centerPosition, target.ToVector2()) == 0)
                 return;
 
-            if (Vector2.Distance(main.rectangle.Center.ToVector2(), target.ToVector2()) < maxAproximation)
-                main.SetCenterPosition(target);
+            if (Vector2.Distance(main.centerPosition, target.ToVector2()) < maxAproximation)
+                main.centerPosition = target.ToVector2();
 
 
-            double angleInRadians = Helpers.MyMath.GetAngleInRadians(main.rectangle.Center.ToVector2(), target.ToVector2());
+            double angleInRadians = Helpers.MyMath.GetAngleInRadians(main.centerPosition, target.ToVector2());
 
             Vector2 result = Helpers.MyMath.Get_X_and_Y_BasedOnAngle_Radians(steps, angleInRadians);
 
