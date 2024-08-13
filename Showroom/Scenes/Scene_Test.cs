@@ -1,5 +1,3 @@
-using System.ComponentModel;
-using Line = ChristianTools.Entities.Line;
 
 namespace Showroom.Scenes
 {
@@ -12,7 +10,9 @@ namespace Showroom.Scenes
                 this.entities = new List<IEntity>()
                 {
                     new ZeroZeroPoint_Entity(),
-                    new MyShooter()
+                    new ChristianTools.Entities.Line(new Point(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2), new Point(0, 0), Color.Red),
+                    new Entity_Shooter(),
+                    new ChristianTools.Entities.Line(new Point((ChristianGame.WK.CanvasWidth / 2) - 50, ChristianGame.WK.CanvasHeight / 2), new Point((ChristianGame.WK.CanvasWidth / 2) + 50, ChristianGame.WK.CanvasHeight / 2), Color.Red),
                 };
             }
 
@@ -20,35 +20,9 @@ namespace Showroom.Scenes
             {
                 this.UIs = new List<IUI>()
                 {
+                    // Back to menu
+                    new Button(UI_Position: Alignment.Down_Left, width: 230, height: 30, margin: 10, text: "<-- Back to menu", defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray), mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray), tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
                 };
-            }
-        }
-
-
-        public class MyShooter : BaseEntity
-        {
-            public MyShooter() : base(new Rectangle(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2, 0, 0))
-            {
-                base.dxCustomUpdateSystem = (lastInputState, inputState) => MyUpdate(lastInputState, inputState);
-            }
-
-
-            public void MyUpdate(InputState lastInputState, InputState inputState)
-            {
-                if (inputState.Action == true && lastInputState.Action == false)
-                {
-                    Vector2 centerPosition = this.rigidbody.centerPosition;
-                    Vector2 direction = inputState.GetActionOnWorldPosition().ToVector2();
-                    
-                    ChristianGame.GetScene.entities.Add(
-                        new Bullet(
-                            centerPosition: centerPosition,
-                            direction: direction
-                        )
-                    );
-                }
-
-                ChristianTools.Systems.Update.Entity.Move_WASD_Clamp(lastInputState, inputState, this);
             }
         }
     }

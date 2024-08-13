@@ -9,7 +9,7 @@ namespace ChristianTools.Prefabs
         public Guid guid { get; }
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
-
+        
         public BaseEntity(Rectangle rectangle, string tag = "", bool isActive = true)
         {
             this.rigidbody = new ClassicRigidbody(rectangle);

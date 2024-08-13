@@ -7,11 +7,17 @@ namespace ChristianTools.Components
         public Point size { get; }
         public List<Tile> tiles { get; }
         public float gravity { get; set; }
-        public Rectangle GetRectangle { get; }
+        public Rectangle GetRectangle => ChristianTools.Helpers.MyRectangle.CreateRectangle(centerPosition.ToPoint(), size.X, size.Y);
+
+        public Rigidbody2(Vector2 centerPosition, Point size)
+        {
+            this.centerPosition = centerPosition;
+            this.size = size;
+        }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            this.centerPosition += force;
         }
 
         public void Move_X(float X)
