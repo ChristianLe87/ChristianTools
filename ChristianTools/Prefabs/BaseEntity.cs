@@ -12,7 +12,7 @@ namespace ChristianTools.Prefabs
         
         public BaseEntity(Rectangle rectangle, string tag = "", bool isActive = true)
         {
-            this.rigidbody = new ClassicRigidbody(rectangle);
+            this.rigidbody = new Rigidbody2(rectangle.Center.ToVector2(), new Point(16, 16));
             this.animation = new Animation();
             this.isActive = isActive;
             this.tag = tag;

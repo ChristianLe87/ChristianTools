@@ -24,14 +24,14 @@ namespace Showroom
 
         public void Update(InputState lastInputState, InputState inputState)
         {
-            ChristianTools.Entities.Line line = ChristianGame.GetScene.entities.OfType<ChristianTools.Entities.Line>().First();
+            ChristianTools.Entities.Line line = ChristianGame.GetScene.entities.OfType<ChristianTools.Entities.Line>().FirstOrDefault();
 
             if (inputState.Action && !lastInputState.Action)
             {
-                    
+
                 Vector2 direction = inputState.GetActionOnWorldPosition().ToVector2();
-                line.UpdatePoints(end: direction.ToPoint());
-                    
+                line?.UpdatePoints(end: direction.ToPoint());
+
                 Entity_Bullet bulletEntity = new Entity_Bullet(direction, 5, 1);
                 ChristianGame.GetScene.entities.Add(bulletEntity);
             }

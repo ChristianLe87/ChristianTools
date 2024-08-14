@@ -1,6 +1,6 @@
 namespace ChristianTools.Components
 {
-    public class ClassicRigidbody : IRigidbody
+    public class ClassicRigidbody1 : IRigidbody
     {
         public Vector2 force { get; set; }
         public Rectangle GetRectangle => ChristianTools.Helpers.MyRectangle.CreateRectangle(centerPosition.ToPoint(), size.X, size.Y);
@@ -14,9 +14,9 @@ namespace ChristianTools.Components
 
         public Vector2 centerPosition { get; set; }
         public Point size { get; }
-
-
-        public ClassicRigidbody(Rectangle rectangle, Vector2 force = new Vector2())
+        
+        
+        public ClassicRigidbody1(Rectangle rectangle, Vector2 force = new Vector2())
         {
             this.force = force;
             this.centerPosition = rectangle.Center.ToVector2();
