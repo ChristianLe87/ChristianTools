@@ -13,26 +13,25 @@ namespace Showroom
 
         public Entity_Shooter()
         {
-            this.rigidbody = new Rigidbody2(new Vector2(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2), new Point(16, 16));
+            this.rigidbody = new ClassicRigidbody(new Vector2(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2), new Point(16, 16));
             this.animation = new Animation();
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();
-            this.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => Update(lastInputState, inputState);
+            this.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateShooter(lastInputState, inputState);
             this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => ChristianTools.Systems.Draw.Entity.Draw(spriteBatch, this);
         }
 
-        public void Update(InputState lastInputState, InputState inputState)
+        public void UpdateShooter(InputState lastInputState, InputState inputState)
         {
             ChristianTools.Entities.Line line = ChristianGame.GetScene.entities.OfType<ChristianTools.Entities.Line>().FirstOrDefault();
 
             if (inputState.Action && !lastInputState.Action)
             {
-
                 Vector2 direction = inputState.GetActionOnWorldPosition().ToVector2();
                 line?.UpdatePoints(end: direction.ToPoint());
 
-                Entity_Bullet bulletEntity = new Entity_Bullet(direction, 5, 1);
+                Bullet bulletEntity = new Bullet(rigidbody.centerPosition, direction, 5, 2);
                 ChristianGame.GetScene.entities.Add(bulletEntity);
             }
         }

@@ -6,7 +6,7 @@ namespace Showroom.Scenes
         {
             this.entities = new List<IEntity>()
             {
-                new Entity_Platformer_Player(rectangle: new Rectangle(4 * 16, 11 * 16, 16, 16), 1, tag: "player"),
+                new Entity_Platformer_Player( new Vector2(4 * 16, 11 * 16)),
                 new ChristianTools.Entities.ZeroZeroPoint_Entity()
             };
 

@@ -1,4 +1,6 @@
 
+using Line = ChristianTools.Entities.Line;
+
 namespace Showroom.Scenes
 {
     public class Scene_Entities : BaseScene
@@ -23,11 +25,6 @@ namespace Showroom.Scenes
 
             this.entities = new List<IEntity>()
             {
-                new ChristianTools.Entities.Line(new Point(100, 100), new Point(500, 500), Color.Red, tag: "RedLine")
-                {
-                    dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateLine(lastInputState, inputState)
-                },
-
                 new ZeroZeroPoint_Entity(),
 
                 // TL
@@ -42,6 +39,16 @@ namespace Showroom.Scenes
                     tag: "player"
                 ),
 
+                new Entity_Shooter()
+                {
+                    //dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateShooter(lastInputState, inputState)
+                },
+                
+                new Line(new Point(ChristianGame.WK.CanvasWidth/2, ChristianGame.WK.CanvasHeight/2),new Point(), Color.Red, tag:"RedLine")
+                {
+                    dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateLine(lastInputState, inputState)
+                },
+                
                 // DL
                 new Entity_Numbers(new Rectangle(0, 484, 16, 16)),
 

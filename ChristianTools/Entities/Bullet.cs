@@ -1,11 +1,27 @@
 namespace ChristianTools.Entities
 {
-    public class Bullet : BaseEntity
+    public class Bullet : IEntity
     {
+        
+        public IRigidbody rigidbody { get; set; }
+        public Animation animation { get; }
+        public bool isActive { get; set; }
+        public string tag { get; }
+        public Guid guid { get; }
+        public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+        public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
+        
+        
         TimeSpan timeToDeactivate;
 
-        public Bullet(Vector2 centerPosition, Vector2 direction, int steps = 3, uint secondsToDeactivate = 5) : base(ChristianTools.Helpers.MyRectangle.CreateRectangle(centerPosition.ToPoint(), 16, 16))
+        public Bullet(Vector2 centerPosition, Vector2 direction, int steps = 3, uint secondsToDeactivate = 5)
         {
+            this.rigidbody = new BulletRigidbody(centerPosition, new Point(16, 16));
+            this.animation = new Animation();
+            this.isActive = true;
+            this.tag = "";
+            this.guid = Guid.NewGuid();
+            
             this.timeToDeactivate = new TimeSpan(0, 0, (int)secondsToDeactivate);
 
             double radAngle = Helpers.MyMath.GetAngleInRadians(centerPosition, direction);
@@ -23,7 +39,14 @@ namespace ChristianTools.Entities
             if (isActive == true)
             {
                 TimeToDestroy();
-                rigidbody.Update();
+                //CheckCollision();
+                /*rigidbody.Update();
+
+                if (rigidbody.CanMoveLeft(16) == false)
+                {
+                    int bla = 0;
+                }
+                */
             }
 
             // Helpers
@@ -37,6 +60,12 @@ namespace ChristianTools.Entities
                     if (timeToDeactivate.TotalMilliseconds <= 0)
                         isActive = false;
                 }
+            }
+
+            void CheckCollision()
+            {
+                if (rigidbody.CanMoveUp(1) == false || rigidbody.CanMoveDown(1) == false || rigidbody.CanMoveRight(1) == false || rigidbody.CanMoveLeft(1))
+                    isActive = false;
             }
         }
     }
