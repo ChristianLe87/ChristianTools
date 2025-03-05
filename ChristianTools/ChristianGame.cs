@@ -89,7 +89,7 @@ namespace ChristianTools
             if (WK.AllowUserResizing == true)
             {
                 Window.AllowUserResizing = WK.AllowUserResizing;
-                Window.ClientSizeChanged += GameWindowSizeChangeEvent;
+                //Window.ClientSizeChanged += GameWindowSizeChangeEvent;
             }
 
             lastInputState = new InputState();
