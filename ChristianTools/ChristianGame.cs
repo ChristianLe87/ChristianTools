@@ -237,6 +237,9 @@ namespace ChristianTools
                 //ChristianGame.WK.Viewport = newViewport.Bounds;
 
 
+                // Update ScaleFactor
+                ChristianGame.WK.ScaleFactor = Window.ClientBounds.Width / (int)AspectRatio_16_9.Width;
+
 
 
 
