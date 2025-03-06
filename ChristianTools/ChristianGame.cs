@@ -238,7 +238,7 @@ namespace ChristianTools
 
 
                 // Update ScaleFactor
-                ChristianGame.WK.ScaleFactor = Window.ClientBounds.Width / (int)AspectRatio_16_9.Width;
+                ChristianGame.WK.ScaleFactor = Math.Clamp(Window.ClientBounds.Width / (int)AspectRatio_16_9.Width, 1, 100);
 
 
 
