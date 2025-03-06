@@ -89,7 +89,7 @@ namespace ChristianTools
             if (WK.AllowUserResizing == true)
             {
                 Window.AllowUserResizing = WK.AllowUserResizing;
-                //Window.ClientSizeChanged += GameWindowSizeChangeEvent;
+                Window.ClientSizeChanged += GameWindowSizeChangeEvent;
             }
 
             lastInputState = new InputState();
@@ -225,17 +225,19 @@ namespace ChristianTools
 
 
 
-
-                ChristianTools.Helpers.GraphicTools.ChangeGameWindow(WK.CanvasWidth, WK.CanvasHeight);
-                ChristianTools.Helpers.GraphicTools.ChangeViewport(new Rectangle(0, 0, WK.CanvasWidth, WK.CanvasHeight));
+                ChristianTools.Helpers.GraphicTools.ChangeGameWindow(Window.ClientBounds.Width, Window.ClientBounds.Height);
+                ChristianTools.Helpers.GraphicTools.ChangeViewport(new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height));
 
                 // update vp
-                /*Viewport newViewport = new Viewport();
-                newViewport.Bounds = new Rectangle(50, 50, 500, 500);
-                ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport = newViewport;*/
+                //Viewport newViewport = new Viewport();
+                //newViewport.Bounds = new Rectangle(50, 50, 500, 500);
+                //ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport = newViewport;
 
                 // Update WK
                 //ChristianGame.WK.Viewport = newViewport.Bounds;
+
+
+
 
 
                 // Update all my UIs
