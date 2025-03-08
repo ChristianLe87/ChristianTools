@@ -9,7 +9,7 @@ namespace Showroom.Scenes
             this.entities = new List<IEntity>()
             {
                 new Entity_WASD(rectangle: new Rectangle(10 * 16, 16 * 16, 16, 16), tag: "player"),
-                new ChristianTools.Entities.ZeroZeroPoint_Entity()
+                //new ChristianTools.Entities.ZeroZeroPoint_Entity()
             };
 
             this.UIs = new List<IUI>()
