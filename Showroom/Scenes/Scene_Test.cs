@@ -5,7 +5,7 @@ namespace Showroom.Scenes
     {
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
-        public bool isActive { get; }
+        public bool isActive { get; set; }
         public string tag { get; }
 
 

@@ -18,7 +18,7 @@ namespace Showroom
 #else
         public bool IsFullScreen { get; } = false;
 #endif
-        public bool AllowUserResizing { get; } = !false;
+        public bool AllowUserResizing { get; } = true;
         public bool IsMouseVisible { get; } = true;
 
         public Dictionary<string, string> Maps { get; } = new Dictionary<string, string>()

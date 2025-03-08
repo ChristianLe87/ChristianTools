@@ -27,6 +27,15 @@ namespace ChristianTools.Components
             this.tiles = ChristianTools.Helpers.Other.FlattenArray(surroundingElements).Where(x => x != null).ToList();
 
 
+            // Add NPCs
+            foreach (var entity in ChristianGame.GetScene.entities)
+            {
+                if (entity.rigidbody.centerPosition != centerPosition)
+                {
+                    this.tiles.Add(new Tile(entity.rigidbody.GetRectangle, new Rectangle(), LayerDepth.Colliders));
+                }
+            }
+
             this.centerPosition += force;
             this.centerPosition += new Vector2(0, gravity);
         }
