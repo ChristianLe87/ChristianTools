@@ -17,8 +17,8 @@ namespace Showroom
             IEntity player = ChristianGame.GetScene.entities.Where(x => x.tag == "player").FirstOrDefault();
             IUI label = ChristianGame.GetScene.UIs.Where(x => x.tag == "npc2").FirstOrDefault();
 
-            RotateBaseOnPlayerPosition(player);
-            ActivateLabel(player, label);
+            if (player != null) RotateBaseOnPlayerPosition(player);
+            if (label != null) ActivateLabel(player, label);
         }
 
         private void RotateBaseOnPlayerPosition(IEntity player)

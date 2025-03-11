@@ -4,7 +4,7 @@ namespace ChristianTools
     {
         public static Texture2D atlasTileset;
         public static Texture2D atlasEntities;
-        public static SpriteFont spriteFont;
+        public static SpriteFont[] spriteFonts;
 
         public static GraphicsDeviceManager graphicsDeviceManager;
 
@@ -42,7 +42,7 @@ namespace ChristianTools
             graphicsDeviceManager = new GraphicsDeviceManager(this);
             if (WK.IsFullScreen == true)
             {
-                WK.ScaleFactor = (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / WK.CanvasHeight);
+                WK.ScaleFactor = (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / WK.CanvasWidth);
 
                 WK.CanvasWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
                 WK.CanvasHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
@@ -52,6 +52,11 @@ namespace ChristianTools
                 graphicsDeviceManager.PreferredBackBufferWidth = WK.CanvasWidth;
                 graphicsDeviceManager.PreferredBackBufferHeight = WK.CanvasHeight;
             }
+
+
+            // Setup MaxScaleFactor
+            WK.MaxScaleFactor = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / WK.CanvasWidth;
+
 
             graphicsDeviceManager.IsFullScreen = WK.IsFullScreen;
             //graphicsDeviceManager.ToggleFullScreen();
@@ -115,7 +120,14 @@ namespace ChristianTools
             // Code
             atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
             atlasTileset = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tileset);
-            spriteFont = ChristianTools.Helpers.Font.GenerateFont(texture2D: ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName));
+
+            // Generate spriteFonts
+            spriteFonts = new SpriteFont[WK.MaxScaleFactor];
+            for (int i = 0; i < WK.MaxScaleFactor; i++)
+            {
+                Texture2D texture2D = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName, scaleFactor: i + 1);
+                spriteFonts[i] = ChristianTools.Helpers.Font.GenerateFont(texture2D: texture2D);
+            }
 
             scenes[actualScene].Initialize();
         }

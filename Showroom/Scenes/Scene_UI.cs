@@ -45,7 +45,7 @@ namespace Showroom.Scenes
 				// Position Alignment Righr
 				new Label(text: "Top_Right", textAlignment: Alignment.Top_Right, UI_Position: Alignment.Top_Right, Width: 100, Height: 20, margin: 0, texture: lightSlateGray),
 				new Label(text: "Midle_Right", textAlignment: Alignment.Midle_Right, UI_Position: Alignment.Midle_Right, Width: 100, Height: 20, margin: 0, texture: lightSlateGray),
-				new Label(text: "Down_Right", textAlignment: Alignment.Down_Center, UI_Position: Alignment.Down_Right, Width: 100, Height: 20, margin: 0, texture: lightSlateGray),
+				new Label(text: "Down_Right", textAlignment: Alignment.Down_Right, UI_Position: Alignment.Down_Right, Width: 100, Height: 20, margin: 0, texture: lightSlateGray),
 				
 				// textOfChars 
 				new Label(rectangle: new Rectangle(100, 150, 100, 30), text: textOfChars, textAlignment: Alignment.Top_Left),

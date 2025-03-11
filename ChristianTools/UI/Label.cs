@@ -17,6 +17,9 @@ namespace ChristianTools.UI
 		private Alignment UI_Position = Alignment.Null;
 		private int margin;
 
+		private SpriteFont spriteFont => ChristianGame.spriteFonts[ChristianGame.WK.ScaleFactor - 1];
+		private int scaleFactor => ChristianGame.WK.ScaleFactor;
+
 		public Label(string text, Alignment textAlignment, Alignment UI_Position, int Width, int Height, int margin = 0, Texture2D texture = null, string tag = "")
 		{
 			Rectangle rec = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, Width, Height, margin);
@@ -42,7 +45,7 @@ namespace ChristianTools.UI
 			this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => DrawSystem(spriteBatch);
 
 			this.isActive = true;
-			this.textPosition = GetTextPosition(ChristianGame.spriteFont);
+			this.textPosition = GetTextPosition(spriteFont);
 		}
 
 		private void DrawSystem(SpriteBatch spriteBatch)
@@ -50,13 +53,13 @@ namespace ChristianTools.UI
 			if (defaultTexture != null)
 				spriteBatch.Draw(defaultTexture, rectangle, Color.White);
 
-			spriteBatch.DrawString(ChristianGame.spriteFont, text, textPosition.ToVector2(), Color.White);
+			spriteBatch.DrawString(this.spriteFont, text, textPosition.ToVector2(), Color.White);
 		}
 
 		public void UpdateRectangle(Rectangle rectangle)
 		{
 			this.rectangle = rectangle;
-			this.textPosition = GetTextPosition(ChristianGame.spriteFont);
+			this.textPosition = GetTextPosition(this.spriteFont);
 		}
 		
 		
@@ -65,7 +68,7 @@ namespace ChristianTools.UI
 			if (UI_Position != Alignment.Null)
 				this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(this.UI_Position, rectangle.Width, rectangle.Height, this.margin);
 
-			this.textPosition = GetTextPosition(ChristianGame.spriteFont);
+			this.textPosition = GetTextPosition(this.spriteFont);
 		}
 
 		private Point GetTextPosition(SpriteFont spriteFont)

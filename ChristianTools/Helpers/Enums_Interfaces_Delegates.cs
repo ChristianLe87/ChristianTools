@@ -10,6 +10,7 @@ namespace ChristianTools.Helpers
         public int CanvasHeight { get; set; }
         public Rectangle Viewport { get; set; }
         public int ScaleFactor { get; set; }
+        public int MaxScaleFactor { get; set; }
         public string Atlas_Tileset { get; }
         public string Atlas_Entities { get; }
         public string WindowTitle { get; }

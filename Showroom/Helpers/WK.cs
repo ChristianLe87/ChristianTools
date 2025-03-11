@@ -8,6 +8,7 @@ namespace Showroom
         public int CanvasHeight { get; set; } = (int)AspectRatio_16_9.Height;
         public Rectangle Viewport { get; set; }
         public int ScaleFactor { get; set; } = 1;
+        public int MaxScaleFactor { get; set; } = 1;
         public string Atlas_Tileset { get; } = "AtlasTileset_PNG";
         public string Atlas_Entities { get; } = "AtlasEntities_PNG";
         public string WindowTitle { get; } = "Showroom";
@@ -29,7 +30,7 @@ namespace Showroom
 
         public Dictionary<string, IScene> Scenes { get; set; } = new Dictionary<string, IScene>()
         {
-            { "Scene_Zeldamo", new Scene_Zeldamon() },
+            { "Scene_Zeldamon", new Scene_Zeldamon() },
             { "Scene_Menu", new Scene_Menu() },
             { "Scene_Test", new Scene_Test() },
             { "Scene_Entities", new Scene_Entities() },
