@@ -7,26 +7,43 @@ namespace ChristianTools.UI
         bool isMouseOver;
         Label label;
 
-        public Rectangle rectangle { get; private set; }
+        private Rectangle originalRectangle { get; }
+        //private Rectangle scaledRectangle => Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, originalRectangle.Width * scaleFactor, originalRectangle.Height * scaleFactor, margin * scaleFactor);
+        private Rectangle scaledRectangle
+        {
+            get
+            {
+                if (UI_Position == Alignment.Null)
+                {
+                    return Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, originalRectangle, margin * scaleFactor);
+                }
+                else
+                {
+                    return Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, originalRectangle.Width * scaleFactor, originalRectangle.Height * scaleFactor, margin * scaleFactor);
+                }
+
+            }
+        }
+
         public string tag { get; private set; }
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public bool isActive { get; set; }
-        public Texture2D texture { get; }
         public delegate void DxOnClickAction();
 
         DxOnClickAction OnClickAction;
 
         private Alignment UI_Position;
         private int margin;
-        
+        private int scaleFactor => ChristianGame.WK.ScaleFactor;
         
         public Button(Alignment UI_Position, int width, int height, string text, DxOnClickAction OnClickAction, int margin = 0, string tag = "", Texture2D defaultTexture = null, Texture2D mouseOverTexture = null, bool isActive = true)
         {
+
             this.UI_Position = UI_Position;
             this.margin = margin;
-            
-            this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, width, height, margin);
+
+            this.originalRectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, width, height, margin * scaleFactor);
             
             
             
@@ -34,7 +51,7 @@ namespace ChristianTools.UI
             this.mouseOverTexture = mouseOverTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray);
             this.isMouseOver = false;
 
-            this.label = new Label(rectangle: rectangle, text: text, textAlignment: Alignment.Midle_Center);
+            this.label = new Label(rectangle: scaledRectangle, text: text, textAlignment: Alignment.Midle_Center);
 
             this.tag = tag;
 
@@ -53,7 +70,7 @@ namespace ChristianTools.UI
             this.UI_Position = Alignment.Null;
             this.margin = 0;
 
-            this.rectangle = rectangle;
+            this.originalRectangle = rectangle;
             
             
             
@@ -61,7 +78,8 @@ namespace ChristianTools.UI
             this.mouseOverTexture = mouseOverTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray);
             this.isMouseOver = false;
 
-            this.label = new Label(rectangle: rectangle, text: text, textAlignment: Alignment.Midle_Center);
+            this.label = new Label(rectangle: scaledRectangle, text: text, textAlignment: Alignment.Midle_Center);
+
 
             this.tag = tag;
 
@@ -73,18 +91,24 @@ namespace ChristianTools.UI
             
             this.isActive = isActive;
         }
+
         
         public void UpdateOnGameWindowSizeChangeEvent()
         {
-            if (UI_Position != Alignment.Null) 
-                this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, this.rectangle.Width, this.rectangle.Height, margin);
+            if (UI_Position != Alignment.Null)
+            {
+                var bla = 0;
+                //var bla = scaledRectangle();
+                //this.rectangle = scaledRectangle();
+            }
+
             
-            this.label.UpdateRectangle(rectangle);
+            this.label.UpdateRectangle(scaledRectangle);
         }
         
         private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
-            if (rectangle.Contains(inputState.GetActionOnWindowPosition()))
+            if (scaledRectangle.Contains(inputState.GetActionOnWindowPosition()))
             {
                 isMouseOver = true;
 
@@ -100,9 +124,9 @@ namespace ChristianTools.UI
         private void DrawSystem(SpriteBatch spriteBatch)
         {
             if (isMouseOver)
-                spriteBatch.Draw(mouseOverTexture, rectangle, Color.White);
+                spriteBatch.Draw(mouseOverTexture, scaledRectangle, Color.White);
             else
-                spriteBatch.Draw(defaultTexture, rectangle, Color.White);
+                spriteBatch.Draw(defaultTexture, scaledRectangle, Color.White);
 
 
             label.dxCustomDrawSystem(spriteBatch);

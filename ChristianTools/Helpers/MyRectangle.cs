@@ -20,6 +20,15 @@ namespace ChristianTools.Helpers
             return new Rectangle(x: rectangle.X + steps, y: rectangle.Y, width: rectangle.Width, height: rectangle.Height);
         }
 
+
+        public static Rectangle GetRectangleBaseOnCanvasPosition(Alignment UI_Position, Rectangle rectangle, int margin = 0)
+        {
+            Rectangle result = GetRectangleBaseOnCanvasPosition(UI_Position, rectangle.Width, rectangle.Height, margin);
+            result.X = rectangle.X;
+            result.Y = rectangle.Y;
+            return result;
+        }
+
         public static Rectangle GetRectangleBaseOnCanvasPosition(Alignment UI_Position, int width, int height, int margin = 0)
         {
             Rectangle rectangle = new Rectangle(0, 0, width, height);
