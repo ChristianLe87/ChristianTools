@@ -15,7 +15,13 @@ namespace ChristianTools.UI
             {
                 if (UI_Position == Alignment.Null)
                 {
-                    return Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, originalRectangle, margin * scaleFactor);
+                    Rectangle rectangle = originalRectangle;
+                    rectangle.X *= scaleFactor;
+                    rectangle.Y *= scaleFactor;
+                    rectangle.Width *= scaleFactor;
+                    rectangle.Height *= scaleFactor;
+
+                    return Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, rectangle, margin * scaleFactor);
                 }
                 else
                 {
@@ -95,14 +101,6 @@ namespace ChristianTools.UI
         
         public void UpdateOnGameWindowSizeChangeEvent()
         {
-            if (UI_Position != Alignment.Null)
-            {
-                var bla = 0;
-                //var bla = scaledRectangle();
-                //this.rectangle = scaledRectangle();
-            }
-
-            
             this.label.UpdateRectangle(scaledRectangle);
         }
         
