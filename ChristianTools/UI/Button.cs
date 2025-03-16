@@ -8,7 +8,6 @@ namespace ChristianTools.UI
         Label label;
 
         private Rectangle originalRectangle { get; }
-        //private Rectangle scaledRectangle => Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, originalRectangle.Width * scaleFactor, originalRectangle.Height * scaleFactor, margin * scaleFactor);
         private Rectangle scaledRectangle
         {
             get
@@ -84,7 +83,7 @@ namespace ChristianTools.UI
             this.mouseOverTexture = mouseOverTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray);
             this.isMouseOver = false;
 
-            this.label = new Label(rectangle: scaledRectangle, text: text, textAlignment: Alignment.Midle_Center);
+            this.label = new Label(rectangle: originalRectangle, text: text, textAlignment: Alignment.Midle_Center);
 
 
             this.tag = tag;
@@ -101,7 +100,7 @@ namespace ChristianTools.UI
         
         public void UpdateOnGameWindowSizeChangeEvent()
         {
-            this.label.UpdateRectangle(scaledRectangle);
+            //this.label.UpdateRectangle(scaledRectangle);
         }
         
         private void UpdateSystem(InputState lastInputState, InputState inputState)
