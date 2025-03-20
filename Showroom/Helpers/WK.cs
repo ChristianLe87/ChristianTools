@@ -30,7 +30,7 @@ namespace Showroom
 
         public Dictionary<string, IScene> Scenes { get; set; } = new Dictionary<string, IScene>()
         {
-            { "Scene_Zeldamon", new Scene_Zeldamon() },
+            //{ "Scene_Test", new Scene_Test() },
             { "Scene_Menu", new Scene_Menu() },
             { "Scene_Test", new Scene_Test() },
             { "Scene_Entities", new Scene_Entities() },
@@ -38,7 +38,7 @@ namespace Showroom
             { "Scene_Platformer", new Scene_Platformer() },
             { "Scene_Camera", new Scene_Camera() },
             { "Scene_Tiles", new Scene_Tiles() },
-            //{ "Scene_Zeldamon", new Scene_Zeldamon() },
+            { "Scene_Zeldamon", new Scene_Zeldamon() },
         };
     }
 }

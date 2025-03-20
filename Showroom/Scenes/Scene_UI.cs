@@ -11,14 +11,12 @@ namespace Showroom.Scenes
 			Texture2D lightGray = ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray);
 
 
+			int buttonMargin = 20;
+
 			this.UIs = new List<IUI>()
 			{
-				//new Button(UI_Position: Alignment.Top_Left, width: 100, height: 50, text: "Hello World", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Console.WriteLine("User click button!")),
-
-				
 				new Button(rectangle: new Rectangle(360, 10, 100, 50), text: "Hello World", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Console.WriteLine("User click button!")),
 
-				
 				// === Rectangle ===
 				// Text Alignment Left
 				new Label(rectangle: new Rectangle(10, 10, 100, 30), text: "My Text", textAlignment: Alignment.Top_Left, texture: lightGray),
@@ -32,7 +30,8 @@ namespace Showroom.Scenes
 				new Label(rectangle: new Rectangle(230, 10, 100, 30), text: "My Text", textAlignment: Alignment.Top_Right, texture: lightGray),
 				new Label(rectangle: new Rectangle(230, 50, 100, 30), text: "My Text", textAlignment: Alignment.Midle_Right, texture: lightGray),
 				new Label(rectangle: new Rectangle(230, 90, 100, 30), text: "My Text", textAlignment: Alignment.Down_Right, texture: lightGray),
-				
+
+
 				// === Alignment ===
 				// Position Alignment Left
 				new Label(text: "Top_Left", textAlignment: Alignment.Top_Left, UI_Position: Alignment.Top_Left, Width: 100, Height: 20, margin: 0, texture: lightSlateGray),
@@ -46,15 +45,31 @@ namespace Showroom.Scenes
 				new Label(text: "Top_Right", textAlignment: Alignment.Top_Right, UI_Position: Alignment.Top_Right, Width: 100, Height: 20, margin: 0, texture: lightSlateGray),
 				new Label(text: "Midle_Right", textAlignment: Alignment.Midle_Right, UI_Position: Alignment.Midle_Right, Width: 100, Height: 20, margin: 0, texture: lightSlateGray),
 				new Label(text: "Down_Right", textAlignment: Alignment.Down_Right, UI_Position: Alignment.Down_Right, Width: 100, Height: 20, margin: 0, texture: lightSlateGray),
-				
+
 				// textOfChars 
 				new Label(rectangle: new Rectangle(100, 150, 100, 30), text: textOfChars, textAlignment: Alignment.Top_Left),
 
-				// Back to menu
-				new Button(UI_Position: Alignment.Down_Left, width: 230, height: 30, margin: 10, text: "<-- Back to menu", defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray), mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray), tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
 
-				new LineUI(start: new Point(400, 100), end: new Point(350, 150), color: Color.Red),
-				new LineUI(start: new Point(350, 100), end: new Point(400, 150), color: Color.Green),
+				// Button
+				// Position Alignment Left
+				new Button(text: "Top_Left", tag: "Top_Left", UI_Position: Alignment.Top_Left, width: 100, height: 20, margin: buttonMargin, OnClickAction: () => { }),
+				new Button(text: "Midle_Left", tag: "Midle_Left", UI_Position: Alignment.Midle_Left, width: 100, height: 20, margin: buttonMargin, OnClickAction: () => { }),
+				new Button(text: "<-- Back to menu", tag: "Down_Left", UI_Position: Alignment.Down_Left, width: 100, height: 20, margin: buttonMargin, OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
+				// Position Alignment Center
+				new Button(text: "Top_Center", tag: "Top_Center", UI_Position: Alignment.Top_Center, width: 100, height: 20, margin: buttonMargin, OnClickAction: () => { }),
+				new Button(text: "Midle_Center", tag: "Midle_Center", UI_Position: Alignment.Midle_Center, width: 100, height: 20, margin: buttonMargin, OnClickAction: () => { }),
+				new Button(text: "Down_Center", tag: "Down_Center", UI_Position: Alignment.Down_Center, width: 100, height: 20, margin: buttonMargin, OnClickAction: () => { }),
+				// Position Alignment Righr
+				new Button(text: "Top_Right", tag: "Top_Right", UI_Position: Alignment.Top_Right, width: 100, height: 20, margin: buttonMargin, OnClickAction: () => { }),
+				new Button(text: "Midle_Right", tag: "Midle_Right", UI_Position: Alignment.Midle_Right, width: 100, height: 20, margin: buttonMargin, OnClickAction: () => { }),
+				new Button(text: "Down_Right", tag: "Down_Right", UI_Position: Alignment.Down_Right, width: 100, height: 20, margin: buttonMargin, OnClickAction: () => { }),
+
+
+				// Back to menu
+				//new Button(UI_Position: Alignment.Down_Left, width: 230, height: 30, margin: 10, text: "<-- Back to menu", defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray), mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray), tag: "", OnClickAction: () => Game1.ChangeToScene("Scene_Menu")),
+
+				//new LineUI(start: new Point(400, 100), end: new Point(350, 150), color: Color.Red),
+				//new LineUI(start: new Point(350, 100), end: new Point(400, 150), color: Color.Green),
 
 				new ZeroZeroPoint_UI()
 			};
@@ -72,7 +87,7 @@ namespace Showroom.Scenes
 
 				// Center
 				new Entity_WASD(
-					rectangle: MyRectangle.CreateRectangle(new Point(250, 250), 16, 16),
+					rectangle: new Rectangle(10 * 16, 16 * 16, 16, 16),
 					tag: "player"
 				),
 

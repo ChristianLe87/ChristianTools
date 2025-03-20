@@ -5,7 +5,7 @@ namespace ChristianTools.UI
 		public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
 		public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
 
-		private Rectangle originalRectangle { get; }
+		private readonly Rectangle originalRectangle;
 		private Rectangle scaledRectangle
 		{
 			get
@@ -42,12 +42,31 @@ namespace ChristianTools.UI
 		private SpriteFont spriteFont => ChristianGame.spriteFonts[ChristianGame.WK.ScaleFactor - 1];
 		private int scaleFactor => ChristianGame.WK.ScaleFactor;
 
+		/// <summary>
+		/// Create Label base on UI_Position
+		/// </summary>
+		/// <param name="text"></param>
+		/// <param name="textAlignment"></param>
+		/// <param name="UI_Position"></param>
+		/// <param name="Width"></param>
+		/// <param name="Height"></param>
+		/// <param name="margin"></param>
+		/// <param name="texture"></param>
+		/// <param name="tag"></param>
 		public Label(string text, Alignment textAlignment, Alignment UI_Position, int Width, int Height, int margin = 0, Texture2D texture = null, string tag = "")
 		{
 			this.originalRectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, Width, Height, margin);
 			Init(text: text, textAlignment: textAlignment, texture: texture, margin: margin, UI_Position: UI_Position, tag: tag);
 		}
 
+		/// <summary>
+		/// Create Label base on Rectangle
+		/// </summary>
+		/// <param name="text"></param>
+		/// <param name="textAlignment"></param>
+		/// <param name="rectangle"></param>
+		/// <param name="texture"></param>
+		/// <param name="tag"></param>
 		public Label(string text, Alignment textAlignment, Rectangle rectangle, Texture2D texture = null, string tag = "")
 		{
 			this.originalRectangle = rectangle;
