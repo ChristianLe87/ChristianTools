@@ -19,6 +19,8 @@ namespace ChristianTools.Components
 
         public static Tile[,] FromInt_ToTile(int[,] intMap, LayerDepth layerDepth)
         {
+            int ts = ChristianGame.WK.TileSize;
+
             Tile[,] result = new Tile[intMap.GetLength(0), intMap.GetLength(1)];
 
             for (int row = 0; row < intMap.GetLength(0); row++)
@@ -29,7 +31,7 @@ namespace ChristianTools.Components
                     if (tileValue != 0)
                     {
                         Tile tile = new Tile(
-                            worldRectangle: new Rectangle(col * 16, row * 16, 16, 16),
+                            worldRectangle: new Rectangle(col * ts, row * ts, ts, ts),
                             imageFromAtlas: GetRectangleBaseOnTileValue(tileValue), // new Rectangle(0, 0, 16, 16),
                             layerDepth: layerDepth
                         );
@@ -45,6 +47,7 @@ namespace ChristianTools.Components
 
         public static Rectangle GetRectangleBaseOnTileValue(int tileValue)
         {
+            int ts = ChristianGame.WK.TileSize;
             Rectangle atlasTilesetRectangle = ChristianGame.atlasTileset.Bounds;
 
             int width = atlasTilesetRectangle.Width / ChristianGame.WK.TileSize;
@@ -71,7 +74,7 @@ namespace ChristianTools.Components
                 {
                     if (atlasTilesetMap[i, j] == tileValue)
                     {
-                        return new Rectangle(j * 16, i * 16, 16, 16);
+                        return new Rectangle(j * ts, i * ts, ts, ts);
                     }
                 }
             }

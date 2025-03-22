@@ -5,6 +5,8 @@ namespace Showroom.Scenes
     {
         public override void Initialize()
         {
+            int ts = ChristianGame.WK.TileSize;
+
             this.UIs = new List<IUI>()
             {
                 new Button(
@@ -34,7 +36,7 @@ namespace Showroom.Scenes
                     rectangle: new Rectangle(100,100, 16,16),
                     tag: "player"
                 ),*/
-                new Entity_WASD(rectangle: new Rectangle(10 * 16, 16 * 16, 16, 16), tag: "player"),
+                new Entity_WASD(rectangle: new Rectangle(10 * ts, 16 * ts, ts, ts), tag: "player"),
 
             };
 

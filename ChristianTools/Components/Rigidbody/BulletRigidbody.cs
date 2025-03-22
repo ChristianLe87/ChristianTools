@@ -21,8 +21,10 @@ namespace ChristianTools.Components
 
         public void Update()
         {
+            int ts = ChristianGame.WK.TileSize;
+
             // Get surrounding tiles
-            Point pointInMap = new Point((int)centerPosition.X / 16, (int)centerPosition.Y / 16);
+            Point pointInMap = new Point((int)centerPosition.X / ts, (int)centerPosition.Y / ts);
             Tile[,] surroundingElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
             this.tiles = ChristianTools.Helpers.Other.FlattenArray(surroundingElements).Where(x => x != null).ToList();
             

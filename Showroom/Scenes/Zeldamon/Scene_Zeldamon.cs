@@ -6,11 +6,13 @@ namespace Showroom.Scenes
     {
         public override void Initialize()
         {
+            int ts = ChristianGame.WK.TileSize;
+
             this.entities = new List<IEntity>()
             {
-                new Entity_WASD(rectangle: new Rectangle(10 * 16, 16 * 16, 16, 16), tag: "player"),
+                new Entity_WASD(rectangle: new Rectangle(10 * ts, 16 * ts, ts, ts), tag: "player"),
                 //new ChristianTools.Entities.ZeroZeroPoint_Entity()
-                new NPC_1(rectangle: new Rectangle(10 * 16, 20 * 16, 16, 16), tag: "npc1")
+                new NPC_1(rectangle: new Rectangle(10 * ts, 20 * ts, ts, ts), tag: "npc1")
             };
 
             this.UIs = new List<IUI>()
@@ -22,8 +24,8 @@ namespace Showroom.Scenes
                     height: 30,
                     margin: 10,
                     text: "<-- Back to menu",
-                    defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
-                    mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
+                    //defaultTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray),
+                    //mouseOverTexture: ChristianTools.Helpers.Texture.CreateColorTexture(Color.Gray),
                     tag: "",
                     OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
                 ),

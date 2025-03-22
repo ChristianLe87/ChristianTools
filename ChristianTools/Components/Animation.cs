@@ -9,36 +9,38 @@ namespace ChristianTools.Components
 
         public Animation()
         {
+            int ts = ChristianGame.WK.TileSize;
+
             characterState = CharacterState.IdleDown;
 
-            Rectangle Idle_Up = new Rectangle(0 * 16, 0 * 16, 16, 16);
-            Rectangle Idel_Down = new Rectangle(0 * 16, 1 * 16, 16, 16);
-            Rectangle Idl_Right = new Rectangle(0 * 16, 2 * 16, 16, 16);
-            Rectangle Idle_Left = new Rectangle(0 * 16, 3 * 16, 16, 16);
+            Rectangle Idle_Up = new Rectangle(0 * ts, 0 * ts, ts, ts);
+            Rectangle Idel_Down = new Rectangle(0 * ts, 1 * ts, ts, ts);
+            Rectangle Idl_Right = new Rectangle(0 * ts, 2 * ts, ts, ts);
+            Rectangle Idle_Left = new Rectangle(0 * ts, 3 * ts, ts, ts);
 
-            Rectangle moveRight_1 = new Rectangle(0 * 16, 2 * 16, 16, 16);
-            Rectangle moveRight_2 = new Rectangle(1 * 16, 2 * 16, 16, 16);
-            Rectangle moveRight_3 = new Rectangle(2 * 16, 2 * 16, 16, 16);
-            Rectangle moveRight_4 = new Rectangle(3 * 16, 2 * 16, 16, 16);
-            Rectangle moveRight_5 = new Rectangle(4 * 16, 2 * 16, 16, 16);
+            Rectangle moveRight_1 = new Rectangle(0 * ts, 2 * ts, ts, ts);
+            Rectangle moveRight_2 = new Rectangle(1 * ts, 2 * ts, ts, ts);
+            Rectangle moveRight_3 = new Rectangle(2 * ts, 2 * ts, ts, ts);
+            Rectangle moveRight_4 = new Rectangle(3 * ts, 2 * ts, ts, ts);
+            Rectangle moveRight_5 = new Rectangle(4 * ts, 2 * ts, ts, ts);
 
-            Rectangle moveLeft_1 = new Rectangle(0 * 16, 3 * 16, 16, 16);
-            Rectangle moveLeft_2 = new Rectangle(1 * 16, 3 * 16, 16, 16);
-            Rectangle moveLeft_3 = new Rectangle(2 * 16, 3 * 16, 16, 16);
-            Rectangle moveLeft_4 = new Rectangle(3 * 16, 3 * 16, 16, 16);
-            Rectangle moveLeft_5 = new Rectangle(4 * 16, 3 * 16, 16, 16);
+            Rectangle moveLeft_1 = new Rectangle(0 * ts, 3 * ts, ts, ts);
+            Rectangle moveLeft_2 = new Rectangle(1 * ts, 3 * ts, ts, ts);
+            Rectangle moveLeft_3 = new Rectangle(2 * ts, 3 * ts, ts, ts);
+            Rectangle moveLeft_4 = new Rectangle(3 * ts, 3 * ts, ts, ts);
+            Rectangle moveLeft_5 = new Rectangle(4 * ts, 3 * ts, ts, ts);
 
-            Rectangle moveUp_1 = new Rectangle(0 * 16, 0 * 16, 16, 16);
-            Rectangle moveUp_2 = new Rectangle(1 * 16, 0 * 16, 16, 16);
-            Rectangle moveUp_3 = new Rectangle(2 * 16, 0 * 16, 16, 16);
-            Rectangle moveUp_4 = new Rectangle(3 * 16, 0 * 16, 16, 16);
-            Rectangle moveUp_5 = new Rectangle(4 * 16, 0 * 16, 16, 16);
+            Rectangle moveUp_1 = new Rectangle(0 * ts, 0 * ts, ts, ts);
+            Rectangle moveUp_2 = new Rectangle(1 * ts, 0 * ts, ts, ts);
+            Rectangle moveUp_3 = new Rectangle(2 * ts, 0 * ts, ts, ts);
+            Rectangle moveUp_4 = new Rectangle(3 * ts, 0 * ts, ts, ts);
+            Rectangle moveUp_5 = new Rectangle(4 * ts, 0 * ts, ts, ts);
 
-            Rectangle moveDown_1 = new Rectangle(0 * 16, 1 * 16, 16, 16);
-            Rectangle moveDown_2 = new Rectangle(1 * 16, 1 * 16, 16, 16);
-            Rectangle moveDown_3 = new Rectangle(2 * 16, 1 * 16, 16, 16);
-            Rectangle moveDown_4 = new Rectangle(3 * 16, 1 * 16, 16, 16);
-            Rectangle moveDown_5 = new Rectangle(4 * 16, 1 * 16, 16, 16);
+            Rectangle moveDown_1 = new Rectangle(0 * ts, 1 * ts, ts, ts);
+            Rectangle moveDown_2 = new Rectangle(1 * ts, 1 * ts, ts, ts);
+            Rectangle moveDown_3 = new Rectangle(2 * ts, 1 * ts, ts, ts);
+            Rectangle moveDown_4 = new Rectangle(3 * ts, 1 * ts, ts, ts);
+            Rectangle moveDown_5 = new Rectangle(4 * ts, 1 * ts, ts, ts);
 
             this.animation = new Dictionary<CharacterState, Rectangle[]>()
             {

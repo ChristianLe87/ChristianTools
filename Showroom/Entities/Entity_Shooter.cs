@@ -13,7 +13,9 @@ namespace Showroom
 
         public Entity_Shooter()
         {
-            this.rigidbody = new ClassicRigidbody(new Vector2(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2), new Point(16, 16));
+            int ts = ChristianGame.WK.TileSize;
+
+            this.rigidbody = new ClassicRigidbody(new Vector2(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2), new Point(ts, ts));
             this.animation = new Animation();
             this.isActive = true;
             this.tag = "";

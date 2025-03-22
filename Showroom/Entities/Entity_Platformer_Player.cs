@@ -12,7 +12,9 @@ namespace Showroom
         
         public Entity_Platformer_Player(Vector2 centerPosition)
         {
-            this.rigidbody = new ClassicRigidbody(centerPosition, new Point(16, 16));
+            int ts = ChristianGame.WK.TileSize;
+
+            this.rigidbody = new ClassicRigidbody(centerPosition, new Point(ts, ts));
             this.rigidbody.gravity = 4;
 
             this.animation = new Animation();

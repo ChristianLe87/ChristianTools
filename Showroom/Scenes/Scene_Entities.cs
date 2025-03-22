@@ -7,6 +7,8 @@ namespace Showroom.Scenes
     {
         public override void Initialize()
         {
+            int ts = ChristianGame.WK.TileSize;
+
             this.UIs = new List<IUI>()
             {
                 // Back to menu
@@ -28,14 +30,14 @@ namespace Showroom.Scenes
                 new ZeroZeroPoint_Entity(),
 
                 // TL
-                new Entity_Numbers(new Rectangle(0, 0, 16, 16)),
+                new Entity_Numbers(new Rectangle(0, 0, ts, ts)),
 
                 // TR
-                new Entity_Numbers(new Rectangle(484, 0, 16, 16)),
+                new Entity_Numbers(new Rectangle(484, 0, ts, ts)),
 
                 // Center
                 new Entity_WASD(
-                    rectangle: MyRectangle.CreateRectangle(new Point(250, 250), 16, 16),
+                    rectangle: MyRectangle.CreateRectangle(new Point(250, 250), ts, ts),
                     tag: "player"
                 ),
 
@@ -50,10 +52,10 @@ namespace Showroom.Scenes
                 },
                 
                 // DL
-                new Entity_Numbers(new Rectangle(0, 484, 16, 16)),
+                new Entity_Numbers(new Rectangle(0, 484, ts, ts)),
 
                 // DR
-                new Entity_Numbers(new Rectangle(484, 484, 16, 16)),
+                new Entity_Numbers(new Rectangle(484, 484, ts, ts)),
             };
 
             this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));

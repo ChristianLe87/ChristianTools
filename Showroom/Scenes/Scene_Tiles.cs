@@ -4,9 +4,11 @@ namespace Showroom.Scenes
     {
         public override void Initialize()
         {
+            int ts = ChristianGame.WK.TileSize;
+
             this.entities = new List<IEntity>()
             {
-                new Entity_Numbers(rectangle: new Rectangle(4 * 16, 2 * 16, 16, 16), tag: "player"),
+                new Entity_Numbers(rectangle: new Rectangle(4 * ts, 2 * ts, ts, ts), tag: "player"),
                 new ChristianTools.Entities.ZeroZeroPoint_Entity()
             };
 

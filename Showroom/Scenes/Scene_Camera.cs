@@ -4,6 +4,8 @@ namespace Showroom.Scenes
     {
         public override void Initialize()
         {
+            int ts = ChristianGame.WK.TileSize;
+
             this.UIs = new List<IUI>()
             {
                 /*new Label(
@@ -31,22 +33,22 @@ namespace Showroom.Scenes
                 new ZeroZeroPoint_Entity(),
 
                 // TL
-                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Top_Left, 16, 16)),
+                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Top_Left, ts, ts)),
 
                 // TR
-                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Top_Right, 16, 16)),
+                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Top_Right, ts, ts)),
 
                 // Center
                 new Entity_WASD(
-                    rectangle: MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Midle_Center, 16, 16),
+                    rectangle: MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Midle_Center, ts, ts),
                     tag: "player"
                 ),
 
                 // DL
-                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Down_Left, 16, 16)),
+                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Down_Left, ts, ts)),
 
                 // DR
-                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Down_Right, 16, 16)),
+                new Entity_Numbers(MyRectangle.GetRectangleBaseOnCanvasPosition(Alignment.Down_Right, ts, ts)),
             };
 
             this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));

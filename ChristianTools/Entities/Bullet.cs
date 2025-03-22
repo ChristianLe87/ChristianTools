@@ -16,7 +16,9 @@ namespace ChristianTools.Entities
 
         public Bullet(Vector2 centerPosition, Vector2 direction, int steps = 3, uint secondsToDeactivate = 5)
         {
-            this.rigidbody = new BulletRigidbody(centerPosition, new Point(16, 16));
+            int ts = ChristianGame.WK.TileSize;
+
+            this.rigidbody = new BulletRigidbody(centerPosition, new Point(ts, ts));
             this.animation = new Animation();
             this.isActive = true;
             this.tag = "";
