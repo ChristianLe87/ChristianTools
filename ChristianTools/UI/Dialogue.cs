@@ -7,32 +7,72 @@ namespace ChristianTools.UI
         Label titleLabel;
         Label textlabel;
 
-        public Rectangle rectangle { get; private set; }
-        public string tag { get; private set; }
+        private readonly Rectangle originalRectangle;
+        private Rectangle scaledRectangle
+        {
+            get
+            {
+                if (UI_Position == Alignment.Null)
+                {
+                    Rectangle rectangle = originalRectangle;
+                    rectangle.X *= scaleFactor;
+                    rectangle.Y *= scaleFactor;
+                    rectangle.Width *= scaleFactor;
+                    rectangle.Height *= scaleFactor;
+
+                    return Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, rectangle, margin * scaleFactor);
+                }
+                else
+                {
+                    return Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, originalRectangle.Width * scaleFactor, originalRectangle.Height * scaleFactor, margin * scaleFactor);
+                }
+            }
+        }
+
+        //public readonly string tag;
+        public string tag { get; }
+
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public bool isActive { get; set; }
-        public Texture2D texture { get; }
-
         private Alignment UI_Position;
         private int margin;
 
         private string text;
-        private string title;
+        //private string title;
 
-        public Dialogue(string title, string text, int Width, int Height, Alignment textAlignment, Alignment UI_Position, int margin, string tag, Texture2D texture = null, bool isActive = true)
+        private int scaleFactor => ChristianGame.WK.ScaleFactor;
+
+
+        /// <summary>
+        /// Create Label base on UI_Position
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="text"></param>
+        /// <param name="Width"></param>
+        /// <param name="Height"></param>
+        /// <param name="textAlignment"></param>
+        /// <param name="UI_Position"></param>
+        /// <param name="margin"></param>
+        /// <param name="tag"></param>
+        /// <param name="texture"></param>
+        /// <param name="isActive"></param>
+        public Dialogue(string title, string text, int Width, int Height, /*Alignment textAlignment,*/ Alignment UI_Position, int margin, string tag, Texture2D texture = null, bool isActive = true)
         {
-            this.title = title;
             this.text = text;
             this.UI_Position = UI_Position;
             this.margin = margin;
 
-            this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, Width, Height, margin);
-
             this.defaultTexture = defaultTexture ?? ChristianTools.Helpers.Texture.CreateColorTexture(Color.LightGray);
+            Texture2D transparentTexture = ChristianTools.Helpers.Texture.CreateColorTexture(new Color(0, 0, 0, 0));
 
-            this.titleLabel = new Label(rectangle: rectangle, text: title, textAlignment: Alignment.Top_Left);
-            this.textlabel = new Label(rectangle: rectangle, text: text, textAlignment: textAlignment);
+            // titleLabel
+            this.originalRectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, Width, Height, margin * scaleFactor);
+            this.titleLabel = new Label(text: title, textAlignment: Alignment.Top_Left, UI_Position: UI_Position, Width: Width, Height: Height, margin: margin, texture: transparentTexture, tag: tag);
+
+            // textlabel
+            this.originalRectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, Width, Height, margin * scaleFactor);
+            this.textlabel = new Label(text: text, textAlignment: Alignment.Midle_Center, UI_Position: UI_Position, Width: Width, Height: Height, margin: margin, texture: transparentTexture, tag: tag);
 
             this.tag = tag;
 
@@ -44,11 +84,7 @@ namespace ChristianTools.UI
 
         public void UpdateOnGameWindowSizeChangeEvent()
         {
-            if (UI_Position != Alignment.Null)
-                this.rectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, this.rectangle.Width, this.rectangle.Height, margin);
-
-            this.textlabel.UpdateRectangle(rectangle);
-            this.titleLabel.UpdateRectangle(rectangle);
+            // Code
         }
 
 
@@ -91,7 +127,7 @@ namespace ChristianTools.UI
 
         private void DrawSystem(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(defaultTexture, rectangle, Color.White);
+            spriteBatch.Draw(defaultTexture, scaledRectangle, Color.White);
 
             titleLabel.dxCustomDrawSystem(spriteBatch);
             textlabel.dxCustomDrawSystem(spriteBatch);

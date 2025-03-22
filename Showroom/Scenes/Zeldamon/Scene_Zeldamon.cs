@@ -36,7 +36,7 @@ namespace Showroom.Scenes
                     text: "askfjlskfjsdjalafs\njasfkldjsakfjsdl\njasfkldjsakfjsdl\nfskfjlsajfjsdl\njasfkldjsakfjsdl",
                     Width: 200,
                     Height: 100,
-                    textAlignment: Alignment.Midle_Left,
+                    //textAlignment: Alignment.Midle_Left,
                     UI_Position: Alignment.Down_Center,
                     margin: 10,
                     tag: "npc2"
