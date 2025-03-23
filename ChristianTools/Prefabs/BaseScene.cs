@@ -4,6 +4,7 @@ namespace ChristianTools.Prefabs
     {
         public List<IEntity> entities { get; set; }
         public List<IUI> UIs { get; set; }
+        public List<ITrigger> triggers { get; set; }
         public Map map { get; set; }
         public Camera camera { get; set; }
         

@@ -32,6 +32,26 @@ namespace ChristianTools.Systems.Update
                     }
                 }
             }
+
+            // Triggers
+            {
+                if (scene.triggers != null)
+                {
+                    for (int i = 0; i < scene.triggers.Count; i++)
+                    {
+                        if (scene.triggers[i] != null)
+                        {
+                            if (scene.triggers[i].isActive == true)
+                            {
+                                scene.triggers[i].dxCustomUpdateSystem?.Invoke(lastInputState: lastInputState, inputState: inputState);
+
+                                scene.triggers[i].animation?.Update();
+                                scene.triggers[i].rigidbody?.Update();
+                            }
+                        }
+                    }
+                }
+            }
             
             // Camera
             {

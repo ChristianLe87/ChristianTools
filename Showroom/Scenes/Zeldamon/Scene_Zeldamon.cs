@@ -10,9 +10,14 @@ namespace Showroom.Scenes
 
             this.entities = new List<IEntity>()
             {
+                new ChristianTools.Entities.ZeroZeroPoint_Entity(),
                 new Entity_WASD(rectangle: new Rectangle(10 * ts, 16 * ts, ts, ts), tag: "player"),
-                //new ChristianTools.Entities.ZeroZeroPoint_Entity()
-                new NPC_1(rectangle: new Rectangle(10 * ts, 20 * ts, ts, ts), tag: "npc1")
+                new NPC_1(rectangle: new Rectangle(10 * ts, 20 * ts, ts, ts), tag: "npc1"),
+            };
+
+            this.triggers = new List<ITrigger>()
+            {
+                new Trigger_Teleport(new Rectangle(10 * ts, 14 * ts, ts, ts)),
             };
 
             this.UIs = new List<IUI>()

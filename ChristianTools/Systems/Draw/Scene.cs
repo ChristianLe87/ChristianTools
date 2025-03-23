@@ -35,6 +35,13 @@ namespace ChristianTools.Systems.Draw
                     if (entity != null && entity.isActive)
                         entity.dxCustomDrawSystem?.Invoke(spriteBatch);
             }
+
+            // Trigger
+            {
+                foreach (var trigger in scene.triggers)
+                    if (trigger != null && trigger.isActive)
+                        trigger.dxCustomDrawSystem?.Invoke(spriteBatch);
+            }
         }
     }
 }

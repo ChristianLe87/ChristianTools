@@ -25,11 +25,12 @@ namespace ChristianTools.Helpers
 
     public interface IScene
     {
-        List<IEntity> entities { get; set; }
-        List<IUI> UIs { get; set; }
-        Map map { get; set; }
+        public List<IEntity> entities { get; set; }
+        public List<IUI> UIs { get; set; }
+        public List<ITrigger> triggers { get; set; }
+        public Map map { get; set; }
 
-        Camera camera { get; set; }
+        public Camera camera { get; set; }
 
         //public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         //public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
@@ -56,26 +57,16 @@ namespace ChristianTools.Helpers
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
     }
 
-
-    /*public interface IRigidbody
+    public interface ITrigger
     {
-        //public Vector2 velocity { get; set; }
-        //public float mass { get; set; }
-        //public float friction { get; set; }
-        //public double rotationDegree { get; set; }
-        public Vector2 force { get; set; }
-
-        public Rectangle rectangle { get; set; }
-
-        public Rectangle GetRectangleUp { get; }
-        public Rectangle GetRectangleDown { get; }
-        public Rectangle GetRectangleLeft { get; }
-        public Rectangle GetRectangleRight { get; }
-        public void Update();
-        public void Move_X(int X);
-        public void Move_Y(int Y);
-        public void SetCenterPosition(Point newCenterPosition);
-    }*/
+        public IRigidbody rigidbody { get; set; }
+        public Animation animation { get; }
+        public bool isActive { get; set; }
+        public string tag { get; }
+        public Guid guid { get; }
+        public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
+        public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
+    }
 
     // === Enums ===
     public enum LayerDepth
