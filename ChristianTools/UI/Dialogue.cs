@@ -57,7 +57,7 @@ namespace ChristianTools.UI
         /// <param name="tag"></param>
         /// <param name="texture"></param>
         /// <param name="isActive"></param>
-        public Dialogue(string title, string text, int Width, int Height, /*Alignment textAlignment,*/ Alignment UI_Position, int margin, string tag, Texture2D texture = null, bool isActive = true)
+        public Dialogue(string title, string text, int Width, int Height, /*Alignment textAlignment,*/ Alignment UI_Position, int margin, string tag = "", Texture2D texture = null, bool isActive = true)
         {
             this.text = text;
             this.UI_Position = UI_Position;

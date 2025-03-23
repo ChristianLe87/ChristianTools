@@ -17,7 +17,10 @@ namespace Showroom.Scenes
 
 			this.UIs = new List<IUI>()
 			{
-				new Button(rectangle: new Rectangle(360, 10, 100, 50), text: "Hello World", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => Console.WriteLine("User click button!")),
+				new Button(rectangle: new Rectangle(360, 10, 100, 50), text: "Start dialogue", defaultTexture: null, mouseOverTexture: null, tag: "", OnClickAction: () => StartDialogue_OnClickAction()),
+
+				// Dialogue
+				new Dialogue("Text of chars", textOfChars, 200, 100, Alignment.Down_Center, 50, tag: "textOfCharsDialogue", isActive: false),
 
 				// === Rectangle ===
 				// Text Alignment Left
@@ -101,6 +104,12 @@ namespace Showroom.Scenes
 			};
 
 			this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
+		}
+
+		private void StartDialogue_OnClickAction()
+		{
+			IUI dialogue = UIs.FirstOrDefault(x => x.tag == "textOfCharsDialogue");
+			dialogue.isActive = !dialogue.isActive;
 		}
 	}
 }
