@@ -2,18 +2,18 @@ namespace ChristianTools.Systems.Draw
 {
     public class Trigger
     {
-        public static void Draw(SpriteBatch spriteBatch, ITrigger trigger)
+        public static void Draw(SpriteBatch spriteBatch, ITriggerPoint triggerPoint)
         {
-            if (trigger.isActive != true)
+            if (triggerPoint.isActive != true)
                 return;
 
             spriteBatch.Draw(
                 texture: ChristianGame.atlasEntities, // atlas texture
-                position: trigger.rigidbody.centerPosition, //The drawing location on screen.
-                sourceRectangle: trigger.animation.getImage, // "El pedazo que quiero sacar del atlasTexture" An optional region on the texture which will be rendered. If null - draws full texture.
+                position: triggerPoint.rigidbody.centerPosition, //The drawing location on screen.
+                sourceRectangle: triggerPoint.animation.getImage, // "El pedazo que quiero sacar del atlasTexture" An optional region on the texture which will be rendered. If null - draws full texture.
                 color: Color.White,
                 rotation: (float)ChristianTools.Helpers.MyMath.DegreeToRadian(0), // A rotation of this sprite (always value radians)
-                origin: new Vector2(trigger.rigidbody.size.X / 2, trigger.rigidbody.size.Y / 2), // Center of the rotation. 0,0 by default.
+                origin: new Vector2(triggerPoint.rigidbody.size.X / 2, triggerPoint.rigidbody.size.Y / 2), // Center of the rotation. 0,0 by default.
                 scale: new Vector2(1, 1), //A scaling of this sprite.
                 effects: SpriteEffects.None, //Modificators for drawing. Can be combined.
                 layerDepth: (float)LayerDepth.Main / 10f

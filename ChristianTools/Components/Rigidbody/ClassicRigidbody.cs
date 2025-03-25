@@ -25,10 +25,16 @@ namespace ChristianTools.Components
 
             // Get surrounding tiles
             Point pointInMap = new Point((int)centerPosition.X / ts, (int)centerPosition.Y / ts);
-            Tile[,] surroundingElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
-            this.tiles = ChristianTools.Helpers.Other.FlattenArray(surroundingElements).Where(x => x != null).ToList();
+            Tile[,] surroundingMainElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
+            Tile[,] surroundingColliderElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.collidersTiles, pointInMap);
 
+            List<Tile> mainTiles= ChristianTools.Helpers.Other.FlattenArray(surroundingMainElements).Where(x => x != null).ToList();
+            List<Tile> colliderTiles= ChristianTools.Helpers.Other.FlattenArray(surroundingColliderElements).Where(x => x != null).ToList();
 
+            // merge lists
+            mainTiles.AddRange(colliderTiles);
+            this.tiles = mainTiles;
+            
             // Add NPCs
             foreach (var entity in ChristianGame.GetScene.entities)
             {

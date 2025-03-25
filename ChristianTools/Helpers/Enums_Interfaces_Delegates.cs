@@ -27,7 +27,7 @@ namespace ChristianTools.Helpers
     {
         public List<IEntity> entities { get; set; }
         public List<IUI> UIs { get; set; }
-        public List<ITrigger> triggers { get; set; }
+        public List<ITriggerPoint> triggers { get; set; }
         public Map map { get; set; }
 
         public Camera camera { get; set; }
@@ -57,7 +57,7 @@ namespace ChristianTools.Helpers
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
     }
 
-    public interface ITrigger
+    public interface ITriggerPoint
     {
         public IRigidbody rigidbody { get; set; }
         public Animation animation { get; }
@@ -72,10 +72,11 @@ namespace ChristianTools.Helpers
     public enum LayerDepth
     {
         Background = 1,
-        Main = 2,
-        Colliders = 3,
+        Main = 2, // World
+        Colliders = 3, // Other colliders added programaticly like NPCs or other temporal barriers
         Front = 4,
-        Entities = 5,
+        //Entities = 5, // All characters
+        //Triggers = 6
     }
 
     public enum CharacterState

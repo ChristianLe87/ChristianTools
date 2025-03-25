@@ -15,9 +15,9 @@ namespace Showroom.Scenes
                 new NPC_1(rectangle: new Rectangle(10 * ts, 20 * ts, ts, ts), tag: "npc1"),
             };
 
-            this.triggers = new List<ITrigger>()
+            this.triggers = new List<ITriggerPoint>()
             {
-                new Trigger_Teleport(new Rectangle(10 * ts, 14 * ts, ts, ts)),
+                new Trigger_Teleport("House_1", new Rectangle(10 * ts, 14 * ts, ts, ts)),
             };
 
             this.UIs = new List<IUI>()

@@ -24,6 +24,10 @@
         <Link>Content\MyFont_130x28_PNG.png</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <Content Include="..\Content\MyMap\House_1.json">
+        <Link>Content\MyMap\House_1.json</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <Content Include="..\Content\MyMap\MyMap.tiled-session">
         <Link>Content\MyMap\MyMap.tiled-session</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>

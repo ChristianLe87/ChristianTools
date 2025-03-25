@@ -26,6 +26,10 @@ namespace ChristianTools.Systems.Draw
                     foreach (var tile in scene.map.frontTiles)
                         if (tile != null && tile.isActive)
                             Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
+
+                    foreach (var tile in scene.map.collidersTiles)
+                        if (tile != null && tile.isActive)
+                            Systems.Draw.Map.Tile.Draw(spriteBatch, tile);
                 }
             }
 
@@ -38,9 +42,12 @@ namespace ChristianTools.Systems.Draw
 
             // Trigger
             {
-                foreach (var trigger in scene.triggers)
-                    if (trigger != null && trigger.isActive)
-                        trigger.dxCustomDrawSystem?.Invoke(spriteBatch);
+                if (scene.triggers != null)
+                {
+                    foreach (var trigger in scene.triggers)
+                        if (trigger != null && trigger.isActive)
+                            trigger.dxCustomDrawSystem?.Invoke(spriteBatch);
+                }
             }
         }
     }
