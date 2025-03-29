@@ -13,6 +13,12 @@ namespace ChristianTools.Components
         private Rectangle GetRectangleLeft(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleLeft(MyRectangle.CreateRectangle(centerPosition.ToPoint(), size.X, size.Y), steps);
         private Rectangle GetRectangleRight(int steps) => ChristianTools.Helpers.MyRectangle.GetRectangleRight(MyRectangle.CreateRectangle(centerPosition.ToPoint(), size.X, size.Y), steps);
 
+        public ClassicRigidbody(Rectangle rectangle)
+        {
+            this.centerPosition = rectangle.Center.ToVector2();
+            this.size = new Point(rectangle.Width, rectangle.Height);
+        }
+
         public ClassicRigidbody(Vector2 centerPosition, Point size)
         {
             this.centerPosition = centerPosition;
