@@ -53,7 +53,7 @@ namespace ChristianTools.UI
 		/// <param name="margin"></param>
 		/// <param name="texture"></param>
 		/// <param name="tag"></param>
-		public Label(string text, Alignment textAlignment, Alignment UI_Position, int Width, int Height, int margin = 0, Texture2D texture = null, string tag = "")
+		public Label(string text, Alignment UI_Position, int Width = 50, int Height = 10, Alignment textAlignment = Alignment.Midle_Center, int margin = 0, Texture2D texture = null, string tag = "")
 		{
 			this.originalRectangle = Helpers.MyRectangle.GetRectangleBaseOnCanvasPosition(UI_Position, Width, Height, margin);
 			Init(text: text, textAlignment: textAlignment, texture: texture, margin: margin, UI_Position: UI_Position, tag: tag);
@@ -67,7 +67,7 @@ namespace ChristianTools.UI
 		/// <param name="rectangle"></param>
 		/// <param name="texture"></param>
 		/// <param name="tag"></param>
-		public Label(string text, Alignment textAlignment, Rectangle rectangle, Texture2D texture = null, string tag = "")
+		public Label(string text, Rectangle rectangle, Alignment textAlignment = Alignment.Midle_Center, Texture2D texture = null, string tag = "")
 		{
 			this.originalRectangle = rectangle;
 			Init(text: text, textAlignment: textAlignment, texture: texture, margin: margin, tag: tag);

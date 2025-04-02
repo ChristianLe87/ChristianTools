@@ -24,8 +24,8 @@ namespace Showroom.Scenes
                 new Button(new Rectangle(100, 100, 100, 100), "Button test 100x100", () => { }),
 
 
-                new Label("Text topCenter 100x100", textAlignment: Alignment.Midle_Center, UI_Position: Alignment.Down_Left, 300, 50 , margin: 10, tag:"textUIPosition"),
-                new Label("Text 300x100, 100x100", textAlignment: Alignment.Midle_Center, rectangle: new Rectangle(100, 100, 100, 100), tag: "textRectangle"),
+                new Label("Text topCenter 100x100", UI_Position: Alignment.Down_Left, 300, 50, margin: 10, tag: "textUIPosition"),
+                new Label("Text 300x100, 100x100", rectangle: new Rectangle(100, 100, 100, 100), tag: "textRectangle"),
                 new ZeroZeroPoint_UI()
             };
 

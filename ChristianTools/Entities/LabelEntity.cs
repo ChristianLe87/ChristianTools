@@ -9,7 +9,7 @@ namespace ChristianTools.Entities
         public Guid guid { get; }
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
-        private SpriteFont spriteFont => ChristianGame.spriteFonts[ChristianGame.WK.ScaleFactor - 1];
+        private SpriteFont spriteFont => ChristianGame.spriteFonts[0];
 
         private Texture2D texture;
         private Rectangle rectangle;
@@ -40,7 +40,7 @@ namespace ChristianTools.Entities
                 origin: new Vector2(this.rigidbody.size.X / 2, this.rigidbody.size.Y / 2), // Center of the rotation. 0,0 by default.
                 scale: new Vector2(1, 1), //A scaling of this sprite.
                 effects: SpriteEffects.None, //Modificators for drawing. Can be combined.
-                layerDepth: (float)LayerDepth.Main / 10f
+                layerDepth: ((float)LayerDepth.Front / 10f)-0.1f // Evitar el "Z-fighting" (evitar pelear por prioridad)
             );
 
 
@@ -53,7 +53,7 @@ namespace ChristianTools.Entities
                 origin: new Vector2(this.rigidbody.size.X / 2, this.rigidbody.size.Y / 2), // Center of the rotation. 0,0 by default.
                 scale: new Vector2(1, 1), //A scaling of this sprite.
                 effects: SpriteEffects.None, //Modificators for drawing. Can be combined.
-                layerDepth: (float)LayerDepth.Front / 10f); //.Draw(texture, rectangle, Color.White);
+                layerDepth: (float)LayerDepth.Front / 10f);
         }
     }
 }

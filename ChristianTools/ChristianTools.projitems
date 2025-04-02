@@ -43,6 +43,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Tiled\Tileset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Prefabs\BaseEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Prefabs\BaseScene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Prefabs\BaseTrigger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Map\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Systems\Draw\Scene.cs" />
