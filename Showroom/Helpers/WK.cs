@@ -31,16 +31,16 @@ namespace Showroom
 
         public Dictionary<string, IScene> Scenes { get; set; } = new Dictionary<string, IScene>()
         {
-            { "Scene_Zeldamon", new Scene_Zeldamon() },
-            { "Scene_Menu", new Scene_Menu() },
             { "Scene_Test", new Scene_Test() },
+            { "Scene_Menu", new Scene_Menu() },
+            //{ "Scene_Test", new Scene_Test() },
             { "Scene_Entities", new Scene_Entities() },
             { "Scene_UI", new Scene_UI() },
             { "Scene_Platformer", new Scene_Platformer() },
             { "Scene_Camera", new Scene_Camera() },
             { "Scene_Tiles", new Scene_Tiles() },
-            { "House_1", new House_1() }
-            //{ "Scene_Zeldamon", new Scene_Zeldamon() },
+            { "House_1", new House_1() },
+            { "Scene_Zeldamon", new Scene_Zeldamon() },
         };
     }
 }

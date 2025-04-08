@@ -21,11 +21,6 @@ namespace Showroom.Scenes
                     OnClickAction: () => Game1.ChangeToScene("Scene_Menu")
                 ),
 
-                new Button(new Rectangle(100, 100, 100, 100), "Button test 100x100", () => { }),
-
-
-                new Label("Text topCenter 100x100", UI_Position: Alignment.Down_Left, 300, 50, margin: 10, tag: "textUIPosition"),
-                new Label("Text 300x100, 100x100", rectangle: new Rectangle(100, 100, 100, 100), tag: "textRectangle"),
                 new ZeroZeroPoint_UI()
             };
 
@@ -36,7 +31,8 @@ namespace Showroom.Scenes
                     rectangle: new Rectangle(100,100, 16,16),
                     tag: "player"
                 ),*/
-                new Entity_WASD(rectangle: new Rectangle(10 * ts, 16 * ts, ts, ts), tag: "player"),
+                new Entity_WASD(rectangle: new Rectangle(7 * ts, 7 * ts, ts, ts), tag: "player"),
+                new LabelEntity("Hello ", new Rectangle(9 * ts, 9 * ts, 2 * ts, 1 * ts))
 
             };
 
