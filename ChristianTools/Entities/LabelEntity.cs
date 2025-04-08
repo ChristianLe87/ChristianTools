@@ -19,7 +19,7 @@ namespace ChristianTools.Entities
         {
             this.text = text;
             this.rectangle = rectangle;
-            this.rigidbody = new ClassicRigidbody(rectangle);
+            this.rigidbody = null;//new ClassicRigidbody(rectangle);
             this.animation = new Animation();
             this.isActive = isActive;
             this.tag = tag;
@@ -33,11 +33,11 @@ namespace ChristianTools.Entities
         {
             spriteBatch.Draw(
                 texture: texture, // atlas texture
-                position: this.rigidbody.centerPosition, //The drawing location on screen.
+                position: this.rectangle.Center.ToVector2(), //The drawing location on screen.
                 sourceRectangle: rectangle, // "El pedazo que quiero sacar del atlasTexture" An optional region on the texture which will be rendered. If null - draws full texture.
                 color: Color.White,
                 rotation: (float)ChristianTools.Helpers.MyMath.DegreeToRadian(0), // A rotation of this sprite (always value radians)
-                origin: new Vector2(this.rigidbody.size.X / 2, this.rigidbody.size.Y / 2), // Center of the rotation. 0,0 by default.
+                origin: new Vector2(this.rectangle.Width / 2, this.rectangle.Height / 2), // Center of the rotation. 0,0 by default.
                 scale: new Vector2(1, 1), //A scaling of this sprite.
                 effects: SpriteEffects.None, //Modificators for drawing. Can be combined.
                 layerDepth: ((float)LayerDepth.Front / 10f)-0.1f // Evitar el "Z-fighting" (evitar pelear por prioridad)
@@ -47,10 +47,10 @@ namespace ChristianTools.Entities
             spriteBatch.DrawString(
                 spriteFont: spriteFont, // atlas texture
                 text: text,
-                position: this.rigidbody.centerPosition, //The drawing location on screen.
+                position: this.rectangle.Center.ToVector2(), //The drawing location on screen.
                 color: Color.White,
                 rotation: (float)ChristianTools.Helpers.MyMath.DegreeToRadian(0), // A rotation of this sprite (always value radians)
-                origin: new Vector2(this.rigidbody.size.X / 2, this.rigidbody.size.Y / 2), // Center of the rotation. 0,0 by default.
+                origin: new Vector2(this.rectangle.Width / 2, this.rectangle.Height / 2), // Center of the rotation. 0,0 by default.
                 scale: new Vector2(1, 1), //A scaling of this sprite.
                 effects: SpriteEffects.None, //Modificators for drawing. Can be combined.
                 layerDepth: (float)LayerDepth.Front / 10f);

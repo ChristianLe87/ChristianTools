@@ -44,9 +44,12 @@ namespace ChristianTools.Components
             // Add NPCs
             foreach (var entity in ChristianGame.GetScene.entities)
             {
-                if (entity.rigidbody.centerPosition != centerPosition)
+                if (entity.rigidbody != null)
                 {
-                    this.tiles.Add(new Tile(entity.rigidbody.GetRectangle, new Rectangle(), LayerDepth.Colliders));
+                    if (entity.rigidbody.centerPosition != centerPosition)
+                    {
+                        this.tiles.Add(new Tile(entity.rigidbody.GetRectangle, new Rectangle(), LayerDepth.Colliders));
+                    }
                 }
             }
 

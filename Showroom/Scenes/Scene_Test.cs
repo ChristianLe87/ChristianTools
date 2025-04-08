@@ -32,7 +32,7 @@ namespace Showroom.Scenes
                     tag: "player"
                 ),*/
                 new Entity_WASD(rectangle: new Rectangle(7 * ts, 7 * ts, ts, ts), tag: "player"),
-                new LabelEntity("Hello ", new Rectangle(9 * ts, 9 * ts, 2 * ts, 1 * ts))
+                new LabelEntity("Hello ", new Rectangle(11 * ts,11 * ts, 2 * ts, 1 * ts))
 
             };
 
