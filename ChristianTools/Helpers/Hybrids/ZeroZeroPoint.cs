@@ -13,16 +13,16 @@ namespace ChristianTools.Helpers.Hybrids
         private Texture2D texture2D_X;
         private Texture2D texture2D_Y;
 
-        public ZeroZeroPoint()
+        public ZeroZeroPoint(int width = 160, int height = 160, int thickness = 2, string tag = "")
         {
-            this.rigidbody = new ClassicRigidbody(new Vector2(0, 0), new Point(200, 200));//new Rectangle(-100, -100, 200, 200))));
+            this.rigidbody = null;
             this.animation = new Animation();
             this.isActive = true;
-            this.tag = "";
+            this.tag = tag;
             this.guid = Guid.NewGuid();
 
-            texture2D_X = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red, 2, rigidbody.size.Y);
-            texture2D_Y = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green, rigidbody.size.X, 2);
+            texture2D_X = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Red, thickness, height);
+            texture2D_Y = ChristianTools.Helpers.Texture.CreateColorTexture(Color.Green, width, thickness);
 
             this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => Draw(spriteBatch);
         }
