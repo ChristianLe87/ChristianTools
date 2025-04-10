@@ -38,7 +38,7 @@ namespace ChristianTools.UI
         private Alignment UI_Position;
         private int margin;
 
-        private string text;
+        public string text;
         //private string title;
 
         private int scaleFactor => ChristianGame.WK.ScaleFactor;
