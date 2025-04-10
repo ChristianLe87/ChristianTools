@@ -4,7 +4,7 @@ namespace Showroom
     public class Entity_Shooter : IEntity
     {
         public IRigidbody rigidbody { get; set; }
-        public Animation animation { get; }
+        public IAnimation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
@@ -16,7 +16,7 @@ namespace Showroom
             int ts = ChristianGame.WK.TileSize;
 
             this.rigidbody = new ClassicRigidbody(new Vector2(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2), new Point(ts, ts));
-            this.animation = new Animation();
+            this.animation = new Animation("MyAtlasTexture");
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();

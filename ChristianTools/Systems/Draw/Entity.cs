@@ -8,7 +8,7 @@ namespace ChristianTools.Systems.Draw
                 return;
 
             spriteBatch.Draw(
-                texture: ChristianGame.atlasEntities, // atlas texture 
+                texture: ChristianGame.atlasEntities[entity.animation.atlasTexture], // atlas texture
                 position: entity.rigidbody.centerPosition, //The drawing location on screen.
                 sourceRectangle: entity.animation.getImage, // "El pedazo que quiero sacar del atlasTexture" An optional region on the texture which will be rendered. If null - draws full texture.
                 color: Color.White,

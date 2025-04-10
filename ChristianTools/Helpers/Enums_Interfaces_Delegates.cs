@@ -49,7 +49,7 @@ namespace ChristianTools.Helpers
     public interface IEntity
     {
         public IRigidbody rigidbody { get; set; }
-        public Animation animation { get; }
+        public IAnimation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
@@ -60,12 +60,20 @@ namespace ChristianTools.Helpers
     public interface ITriggerPoint
     {
         public IRigidbody rigidbody { get; set; }
-        public Animation animation { get; }
+        public IAnimation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
+    }
+
+    public interface IAnimation
+    {
+        public Rectangle getImage { get; }
+        public CharacterState characterState { get; set; }
+        public string atlasTexture { get; }
+        public void Update();
     }
 
     // === Enums ===

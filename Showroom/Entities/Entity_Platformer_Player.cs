@@ -3,7 +3,7 @@ namespace Showroom
     public class Entity_Platformer_Player : IEntity
     {
         public IRigidbody rigidbody { get; set; }
-        public Animation animation { get; }
+        public IAnimation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
@@ -17,7 +17,7 @@ namespace Showroom
             this.rigidbody = new ClassicRigidbody(centerPosition, new Point(ts, ts));
             this.rigidbody.gravity = 4;
 
-            this.animation = new Animation();
+            this.animation = new Animation("MyAtlasTexture");
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();

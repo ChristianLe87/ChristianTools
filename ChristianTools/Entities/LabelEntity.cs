@@ -3,7 +3,7 @@ namespace ChristianTools.Entities
     public class LabelEntity : IEntity
     {
         public IRigidbody rigidbody { get; set; }
-        public Animation animation { get; }
+        public IAnimation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
@@ -20,7 +20,7 @@ namespace ChristianTools.Entities
             this.text = text;
             this.rectangle = rectangle;
             this.rigidbody = null;//new ClassicRigidbody(rectangle);
-            this.animation = new Animation();
+            this.animation = new Animation("MyAtlasTexture");
             this.isActive = isActive;
             this.tag = tag;
             this.guid = Guid.NewGuid();

@@ -3,7 +3,7 @@ namespace Showroom
     public class Trigger_Teleport : ITriggerPoint
     {
         public IRigidbody rigidbody { get; set; }
-        public Animation animation { get; }
+        public IAnimation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
@@ -17,7 +17,7 @@ namespace Showroom
             int ts = ChristianGame.WK.TileSize;
 
             this.rigidbody = new ClassicRigidbody(rectangle.Center.ToVector2(), new Point(ts, ts));
-            this.animation = new Animation();
+            this.animation = new Animation("MyAtlasTexture");
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();

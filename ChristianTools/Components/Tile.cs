@@ -7,9 +7,11 @@ namespace ChristianTools.Components
         public ChristianTools.Helpers.LayerDepth layerDepth { get; private set; }
         public string tag { get; private set; }
         public bool isActive { get; set; }
+        public string atlasTileset { get; }
 
-        public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, Helpers.LayerDepth layerDepth, string tag = "", bool isActive = true)
+        public Tile(Rectangle worldRectangle, Rectangle imageFromAtlas, string atlasTileset, Helpers.LayerDepth layerDepth, string tag = "", bool isActive = true)
         {
+            this.atlasTileset = atlasTileset;
             this.rectangle = worldRectangle;
             this.layerDepth = layerDepth;
             this.imageFromAtlas = imageFromAtlas;
@@ -32,7 +34,8 @@ namespace ChristianTools.Components
                     {
                         Tile tile = new Tile(
                             worldRectangle: new Rectangle(col * ts, row * ts, ts, ts),
-                            imageFromAtlas: GetRectangleBaseOnTileValue(tileValue), // new Rectangle(0, 0, 16, 16),
+                            imageFromAtlas: GetRectangleBaseOnTileValue(tileValue, "MyAtlasTileset"), // new Rectangle(0, 0, 16, 16),
+                            atlasTileset: "MyAtlasTileset",
                             layerDepth: layerDepth
                         );
 
@@ -45,10 +48,10 @@ namespace ChristianTools.Components
         }
 
 
-        public static Rectangle GetRectangleBaseOnTileValue(int tileValue)
+        public static Rectangle GetRectangleBaseOnTileValue(int tileValue, string atlasTileset)
         {
             int ts = ChristianGame.WK.TileSize;
-            Rectangle atlasTilesetRectangle = ChristianGame.atlasTileset.Bounds;
+            Rectangle atlasTilesetRectangle = ChristianGame.atlasTileset[atlasTileset].Bounds;
 
             int width = atlasTilesetRectangle.Width / ChristianGame.WK.TileSize;
             int height = atlasTilesetRectangle.Height / ChristianGame.WK.TileSize;

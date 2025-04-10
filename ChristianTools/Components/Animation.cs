@@ -1,14 +1,17 @@
 namespace ChristianTools.Components
 {
-    public class Animation
+    public class Animation : IAnimation
     {
         public Rectangle getImage => animation[characterState][frame];
         public CharacterState characterState { get; set; }
+        public string atlasTexture { get; }
         private int frame;
         private Dictionary<CharacterState, Rectangle[]> animation { get; set; }
 
-        public Animation()
+        public Animation(string atlasTexture)
         {
+            this.atlasTexture = atlasTexture;
+
             int ts = ChristianGame.WK.TileSize;
 
             characterState = CharacterState.IdleDown;

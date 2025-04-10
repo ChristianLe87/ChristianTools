@@ -2,9 +2,9 @@ namespace ChristianTools
 {
     public class ChristianGame : Game
     {
-        public static Texture2D atlasTileset;
-        public static Texture2D atlasEntities;
-        public static SpriteFont[] spriteFonts;
+        public static Dictionary<string, Texture2D> atlasTileset;
+        public static Dictionary<string, Texture2D> atlasEntities;
+        public static Dictionary<int, SpriteFont> spriteFonts;
 
         public static GraphicsDeviceManager graphicsDeviceManager;
 
@@ -28,6 +28,10 @@ namespace ChristianTools
         public ChristianGame(IDefault _WK, IGameDataSystem _GameDataSystem)
         {
             this.GameDataSystem = _GameDataSystem;
+
+            atlasTileset = new Dictionary<string, Texture2D>();
+            atlasEntities = new Dictionary<string, Texture2D>();
+            spriteFonts = new Dictionary<int, SpriteFont>();
 
             // WK
             ChristianGame.WK = _WK;
@@ -118,15 +122,14 @@ namespace ChristianTools
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Code
-            atlasEntities = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities);
-            atlasTileset = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tileset);
+            atlasEntities.Add("MyAtlasTexture", ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities));
+            atlasTileset.Add("MyAtlasTileset", ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tileset));
 
             // Generate spriteFonts
-            spriteFonts = new SpriteFont[WK.MaxScaleFactor];
             for (int i = 0; i < WK.MaxScaleFactor; i++)
             {
                 Texture2D texture2D = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName, scaleFactor: i + 1);
-                spriteFonts[i] = ChristianTools.Helpers.Font.GenerateFont(texture2D: texture2D);
+                spriteFonts.Add(i, ChristianTools.Helpers.Font.GenerateFont(texture2D: texture2D));
             }
 
             scenes[actualScene].Initialize();

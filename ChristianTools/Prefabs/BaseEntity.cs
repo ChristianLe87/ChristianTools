@@ -3,7 +3,7 @@ namespace ChristianTools.Prefabs
     public abstract class BaseEntity : IEntity
     {
         public IRigidbody rigidbody { get; set; }
-        public Animation animation { get; }
+        public IAnimation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
@@ -15,7 +15,7 @@ namespace ChristianTools.Prefabs
             int ts = ChristianGame.WK.TileSize;
 
             this.rigidbody = new ClassicRigidbody(rectangle.Center.ToVector2(), new Point(ts, ts));
-            this.animation = new Animation();
+            this.animation = new Animation("MyAtlasTexture");
             this.isActive = isActive;
             this.tag = tag;
             this.guid = Guid.NewGuid();

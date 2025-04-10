@@ -4,7 +4,7 @@ namespace ChristianTools.Entities
     {
         
         public IRigidbody rigidbody { get; set; }
-        public Animation animation { get; }
+        public IAnimation animation { get; }
         public bool isActive { get; set; }
         public string tag { get; }
         public Guid guid { get; }
@@ -19,7 +19,7 @@ namespace ChristianTools.Entities
             int ts = ChristianGame.WK.TileSize;
 
             this.rigidbody = new BulletRigidbody(centerPosition, new Point(ts, ts));
-            this.animation = new Animation();
+            this.animation = new Animation("MyAtlasTexture");
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();

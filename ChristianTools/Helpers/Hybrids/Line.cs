@@ -17,13 +17,13 @@ namespace ChristianTools.Helpers.Hybrids
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
         public int health { get; }
 
-        public Animation animation { get; }
+        public IAnimation animation { get; }
 
 
         public Line(Point start, Point end, Color color, int thickness = 5, string tag = "")
         {
             this.rigidbody = new ClassicRigidbody(new Vector2(0, 0), new Point(0, 0)); //new Rectangle())));
-            this.animation = new Animation();
+            this.animation = new Animation("MyAtlasTexture");
             this.guid = Guid.NewGuid();
             this.start = start;
             this.end = end;

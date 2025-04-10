@@ -7,7 +7,7 @@ namespace ChristianTools.Systems.Draw.Map
             if (tile != null)
             {
                 spriteBatch.Draw(
-                    texture: ChristianGame.atlasTileset, // atlas texture 
+                    texture: ChristianGame.atlasTileset[tile.atlasTileset], // atlas texture
                     position: tile.rectangle.Center.ToVector2(), //The drawing location on screen.
                     sourceRectangle: tile.imageFromAtlas, // "El pedazo que quiero sacar del atlasTexture" An optional region on the texture which will be rendered. If null - draws full texture.
                     color: Color.White,
