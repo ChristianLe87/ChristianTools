@@ -39,7 +39,7 @@ namespace ChristianTools.UI
 		private Alignment UI_Position = Alignment.Null;
 		private int margin;
 
-		private SpriteFont spriteFont => ChristianGame.spriteFonts[Math.Clamp((ChristianGame.WK.ScaleFactor - 1), 0, (ChristianGame.WK.MaxScaleFactor - 1))];
+		private SpriteFont spriteFont => ChristianGame.WK.spriteFonts[Math.Clamp((ChristianGame.WK.ScaleFactor - 1), 0, (ChristianGame.WK.MaxScaleFactor - 1))];
 		private int scaleFactor => ChristianGame.WK.ScaleFactor;
 
 		/// <summary>

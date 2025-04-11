@@ -9,8 +9,22 @@ namespace Showroom
         public Rectangle Viewport { get; set; }
         public int ScaleFactor { get; set; } = 1;
         public int MaxScaleFactor { get; set; } = 1;
-        public string Atlas_Tileset { get; } = "AtlasTileset_PNG";
-        public string Atlas_Entities { get; } = "AtlasEntities_PNG";
+
+        public Dictionary<string, Texture2D> Atlas_Tileset { get; set; } = new Dictionary<string, Texture2D>()
+        {
+            { "AtlasTileset_PNG", null },
+        };
+
+        public Dictionary<string, Texture2D> Atlas_Entities { get; set; } = new Dictionary<string, Texture2D>()
+        {
+            { "AtlasEntities_PNG", null },
+        };
+
+        public Dictionary<int, SpriteFont> spriteFonts { get; set; } = new Dictionary<int, SpriteFont>()
+        {
+
+        };
+
         public string WindowTitle { get; } = "Showroom";
         public string GameDataFileName { get; } = "MyTestData";
         public string FontFileName { get; } = "MyFont_130x28_PNG";

@@ -9,7 +9,7 @@ namespace ChristianTools.Entities
         public Guid guid { get; }
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
-        private SpriteFont spriteFont => ChristianGame.spriteFonts[0];
+        private SpriteFont spriteFont => ChristianGame.WK.spriteFonts[0];
 
         private Texture2D texture;
         private Rectangle rectangle;
@@ -20,7 +20,7 @@ namespace ChristianTools.Entities
             this.text = text;
             this.rectangle = rectangle;
             this.rigidbody = null;//new ClassicRigidbody(rectangle);
-            this.animation = new Animation("MyAtlasTexture");
+            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
             this.isActive = isActive;
             this.tag = tag;
             this.guid = Guid.NewGuid();

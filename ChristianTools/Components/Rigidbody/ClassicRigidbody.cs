@@ -48,7 +48,7 @@ namespace ChristianTools.Components
                 {
                     if (entity.rigidbody.centerPosition != centerPosition)
                     {
-                        this.tiles.Add(new Tile(entity.rigidbody.GetRectangle, new Rectangle(), atlasTileset: "MyAtlasTileset", LayerDepth.Colliders));
+                        this.tiles.Add(new Tile(entity.rigidbody.GetRectangle, new Rectangle(), atlasTileset: ChristianGame.WK.Atlas_Tileset.First().Key, LayerDepth.Colliders));
                     }
                 }
             }

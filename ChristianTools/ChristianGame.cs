@@ -2,10 +2,6 @@ namespace ChristianTools
 {
     public class ChristianGame : Game
     {
-        public static Dictionary<string, Texture2D> atlasTileset;
-        public static Dictionary<string, Texture2D> atlasEntities;
-        public static Dictionary<int, SpriteFont> spriteFonts;
-
         public static GraphicsDeviceManager graphicsDeviceManager;
 
         private SpriteBatch spriteBatch;
@@ -29,12 +25,18 @@ namespace ChristianTools
         {
             this.GameDataSystem = _GameDataSystem;
 
-            atlasTileset = new Dictionary<string, Texture2D>();
-            atlasEntities = new Dictionary<string, Texture2D>();
-            spriteFonts = new Dictionary<int, SpriteFont>();
+
+
 
             // WK
             ChristianGame.WK = _WK;
+            //ChristianGame.WK.Atlas_Tileset = new Dictionary<string, Texture2D>();
+            //ChristianGame.WK.Atlas_Entities = new Dictionary<string, Texture2D>();
+            //ChristianGame.WK.spriteFonts = new Dictionary<int, SpriteFont>();
+
+
+
+
 
 
             // Scene
@@ -122,14 +124,26 @@ namespace ChristianTools
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Code
-            atlasEntities.Add("MyAtlasTexture", ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Entities));
-            atlasTileset.Add("MyAtlasTileset", ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, ChristianGame.WK.Atlas_Tileset));
 
-            // Generate spriteFonts
+            // Get Atlas_Entities
+            foreach (var element in ChristianGame.WK.Atlas_Entities)
+            {
+                Texture2D texture2D = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, element.Key);
+                ChristianGame.WK.Atlas_Entities[element.Key] = texture2D;
+            }
+
+            // Get Atlas_Tileset
+            foreach (var element in ChristianGame.WK.Atlas_Tileset)
+            {
+                Texture2D texture2D = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, element.Key);
+                ChristianGame.WK.Atlas_Tileset[element.Key] = texture2D;
+            }
+
+            // Get spriteFonts
             for (int i = 0; i < WK.MaxScaleFactor; i++)
             {
                 Texture2D texture2D = ChristianTools.Helpers.Texture.GetTextureFromFile(graphicsDeviceManager.GraphicsDevice, WK.FontFileName, scaleFactor: i + 1);
-                spriteFonts.Add(i, ChristianTools.Helpers.Font.GenerateFont(texture2D: texture2D));
+                ChristianGame.WK.spriteFonts.Add(i, ChristianTools.Helpers.Font.GenerateFont(texture2D: texture2D));
             }
 
             scenes[actualScene].Initialize();

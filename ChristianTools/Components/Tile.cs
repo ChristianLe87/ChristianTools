@@ -34,8 +34,8 @@ namespace ChristianTools.Components
                     {
                         Tile tile = new Tile(
                             worldRectangle: new Rectangle(col * ts, row * ts, ts, ts),
-                            imageFromAtlas: GetRectangleBaseOnTileValue(tileValue, "MyAtlasTileset"), // new Rectangle(0, 0, 16, 16),
-                            atlasTileset: "MyAtlasTileset",
+                            imageFromAtlas: GetRectangleBaseOnTileValue(tileValue, ChristianGame.WK.Atlas_Tileset.First().Key), // new Rectangle(0, 0, 16, 16),
+                            atlasTileset: ChristianGame.WK.Atlas_Tileset.First().Key,
                             layerDepth: layerDepth
                         );
 
@@ -51,7 +51,7 @@ namespace ChristianTools.Components
         public static Rectangle GetRectangleBaseOnTileValue(int tileValue, string atlasTileset)
         {
             int ts = ChristianGame.WK.TileSize;
-            Rectangle atlasTilesetRectangle = ChristianGame.atlasTileset[atlasTileset].Bounds;
+            Rectangle atlasTilesetRectangle = ChristianGame.WK.Atlas_Tileset[atlasTileset].Bounds;
 
             int width = atlasTilesetRectangle.Width / ChristianGame.WK.TileSize;
             int height = atlasTilesetRectangle.Height / ChristianGame.WK.TileSize;

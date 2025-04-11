@@ -11,8 +11,9 @@ namespace ChristianTools.Helpers
         public Rectangle Viewport { get; set; }
         public int ScaleFactor { get; set; }
         public int MaxScaleFactor { get; set; }
-        public string Atlas_Tileset { get; }
-        public string Atlas_Entities { get; }
+        public Dictionary<string, Texture2D> Atlas_Tileset { get; set; }
+        public Dictionary<string, Texture2D> Atlas_Entities{ get; set; }
+        public Dictionary<int, SpriteFont> spriteFonts{ get; set; }
         public string WindowTitle { get; }
         public string GameDataFileName { get; }
         public string FontFileName { get; }
