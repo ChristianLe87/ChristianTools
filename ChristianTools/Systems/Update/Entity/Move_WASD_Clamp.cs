@@ -3,6 +3,18 @@ namespace ChristianTools.Systems.Update
 {
     public partial class Entity
     {
+        private static class CharacterState
+        {
+            public static string IdleUp => "IdleUp";
+            public static string IdleDown => "IdleDown";
+            public static string IdleRight => "IdleRight";
+            public static string IdleLeft => "IdleLeft";
+            public static string MoveUp => "MoveUp";
+            public static string MoveDown => "MoveDown";
+            public static string MoveRight => "MoveRight";
+            public static string MoveLeft => "MoveLeft";
+        }
+        
         public static void Move_WASD_Clamp(InputState lastInputState, InputState inputState, IEntity entity)
         {
             int y = entity.rigidbody.GetRectangle.Y % ChristianGame.WK.TileSize;
@@ -57,7 +69,7 @@ namespace ChristianTools.Systems.Update
             // Set Idle state
             if (x == 0 && y == 0)
             {
-                CharacterState lastCharacterState = entity.animation.characterState;
+                string lastCharacterState = entity.animation.characterState;
 
                 if (lastCharacterState == CharacterState.MoveDown)
                     entity.animation.characterState = CharacterState.IdleDown;

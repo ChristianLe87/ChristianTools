@@ -2,11 +2,23 @@ namespace ChristianTools.Components
 {
     public class Animation : IAnimation
     {
+        private static class CharacterState
+        {
+            public static string IdleUp => "IdleUp";
+            public static string IdleDown => "IdleDown";
+            public static string IdleRight => "IdleRight";
+            public static string IdleLeft => "IdleLeft";
+            public static string MoveUp => "MoveUp";
+            public static string MoveDown => "MoveDown";
+            public static string MoveRight => "MoveRight";
+            public static string MoveLeft => "MoveLeft";
+        }
+
         public Rectangle getImage => animation[characterState][frame];
-        public CharacterState characterState { get; set; }
+        public string characterState { get; set; }
         public string atlasTexture { get; }
         private int frame;
-        private Dictionary<CharacterState, Rectangle[]> animation { get; set; }
+        public Dictionary<string, Rectangle[]> animation { get; set; }
 
         public Animation(string atlasTexture)
         {
@@ -45,7 +57,7 @@ namespace ChristianTools.Components
             Rectangle moveDown_4 = new Rectangle(3 * ts, 1 * ts, ts, ts);
             Rectangle moveDown_5 = new Rectangle(4 * ts, 1 * ts, ts, ts);
 
-            this.animation = new Dictionary<CharacterState, Rectangle[]>()
+            this.animation = new Dictionary<string, Rectangle[]>()
             {
                 { CharacterState.IdleUp, new[] { Idle_Up } },
                 { CharacterState.IdleDown, new[] { Idel_Down } },

@@ -4,6 +4,19 @@ namespace Showroom
 {
     public class NPC_1 : BaseEntity
     {
+
+        private static class CharacterState
+        {
+            public static string IdleUp => "IdleUp";
+            public static string IdleDown => "IdleDown";
+            public static string IdleRight => "IdleRight";
+            public static string IdleLeft => "IdleLeft";
+            public static string MoveUp => "MoveUp";
+            public static string MoveDown => "MoveDown";
+            public static string MoveRight => "MoveRight";
+            public static string MoveLeft => "MoveLeft";
+        }
+
         private string labelTag;
         //private bool activateLabel = false;
 

@@ -72,7 +72,8 @@ namespace ChristianTools.Helpers
     public interface IAnimation
     {
         public Rectangle getImage { get; }
-        public CharacterState characterState { get; set; }
+        public string characterState { get; set; }
+        public Dictionary<string, Rectangle[]> animation { get; set; }
         public string atlasTexture { get; }
         public void Update();
     }
@@ -88,17 +89,6 @@ namespace ChristianTools.Helpers
         //Triggers = 6
     }
 
-    public enum CharacterState
-    {
-        IdleUp,
-        IdleDown,
-        IdleRight,
-        IdleLeft,
-        MoveUp,
-        MoveDown,
-        MoveRight,
-        MoveLeft,
-    }
 
     public enum AspectRatio_16_9 : int
     {
