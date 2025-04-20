@@ -33,29 +33,29 @@ namespace ChristianTools.Components
             Rectangle Idl_Right = new Rectangle(0 * ts, 2 * ts, ts, ts);
             Rectangle Idle_Left = new Rectangle(0 * ts, 3 * ts, ts, ts);
 
-            Rectangle moveRight_1 = new Rectangle(0 * ts, 2 * ts, ts, ts);
-            Rectangle moveRight_2 = new Rectangle(1 * ts, 2 * ts, ts, ts);
-            Rectangle moveRight_3 = new Rectangle(2 * ts, 2 * ts, ts, ts);
-            Rectangle moveRight_4 = new Rectangle(3 * ts, 2 * ts, ts, ts);
-            Rectangle moveRight_5 = new Rectangle(4 * ts, 2 * ts, ts, ts);
+            Rectangle moveRight_1 = new Rectangle(0 * ts, 6 * ts, ts, ts);
+            Rectangle moveRight_2 = new Rectangle(1 * ts, 6 * ts, ts, ts);
+            Rectangle moveRight_3 = new Rectangle(2 * ts, 6 * ts, ts, ts);
+            Rectangle moveRight_4 = new Rectangle(3 * ts, 6 * ts, ts, ts);
+            Rectangle moveRight_5 = new Rectangle(4 * ts, 6 * ts, ts, ts);
 
-            Rectangle moveLeft_1 = new Rectangle(0 * ts, 3 * ts, ts, ts);
-            Rectangle moveLeft_2 = new Rectangle(1 * ts, 3 * ts, ts, ts);
-            Rectangle moveLeft_3 = new Rectangle(2 * ts, 3 * ts, ts, ts);
-            Rectangle moveLeft_4 = new Rectangle(3 * ts, 3 * ts, ts, ts);
-            Rectangle moveLeft_5 = new Rectangle(4 * ts, 3 * ts, ts, ts);
+            Rectangle moveLeft_1 = new Rectangle(0 * ts, 7 * ts, ts, ts);
+            Rectangle moveLeft_2 = new Rectangle(1 * ts, 7 * ts, ts, ts);
+            Rectangle moveLeft_3 = new Rectangle(2 * ts, 7 * ts, ts, ts);
+            Rectangle moveLeft_4 = new Rectangle(3 * ts, 7 * ts, ts, ts);
+            Rectangle moveLeft_5 = new Rectangle(4 * ts, 7 * ts, ts, ts);
 
-            Rectangle moveUp_1 = new Rectangle(0 * ts, 0 * ts, ts, ts);
-            Rectangle moveUp_2 = new Rectangle(1 * ts, 0 * ts, ts, ts);
-            Rectangle moveUp_3 = new Rectangle(2 * ts, 0 * ts, ts, ts);
-            Rectangle moveUp_4 = new Rectangle(3 * ts, 0 * ts, ts, ts);
-            Rectangle moveUp_5 = new Rectangle(4 * ts, 0 * ts, ts, ts);
+            Rectangle moveUp_1 = new Rectangle(0 * ts, 4 * ts, ts, ts);
+            Rectangle moveUp_2 = new Rectangle(1 * ts, 4 * ts, ts, ts);
+            Rectangle moveUp_3 = new Rectangle(2 * ts, 4 * ts, ts, ts);
+            Rectangle moveUp_4 = new Rectangle(3 * ts, 4 * ts, ts, ts);
+            Rectangle moveUp_5 = new Rectangle(4 * ts, 4 * ts, ts, ts);
 
-            Rectangle moveDown_1 = new Rectangle(0 * ts, 1 * ts, ts, ts);
-            Rectangle moveDown_2 = new Rectangle(1 * ts, 1 * ts, ts, ts);
-            Rectangle moveDown_3 = new Rectangle(2 * ts, 1 * ts, ts, ts);
-            Rectangle moveDown_4 = new Rectangle(3 * ts, 1 * ts, ts, ts);
-            Rectangle moveDown_5 = new Rectangle(4 * ts, 1 * ts, ts, ts);
+            Rectangle moveDown_1 = new Rectangle(0 * ts, 5 * ts, ts, ts);
+            Rectangle moveDown_2 = new Rectangle(1 * ts, 5 * ts, ts, ts);
+            Rectangle moveDown_3 = new Rectangle(2 * ts, 5 * ts, ts, ts);
+            Rectangle moveDown_4 = new Rectangle(3 * ts, 5 * ts, ts, ts);
+            Rectangle moveDown_5 = new Rectangle(4 * ts, 5 * ts, ts, ts);
 
             this.animation = new Dictionary<string, Rectangle[]>()
             {
