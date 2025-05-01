@@ -45,7 +45,7 @@ namespace ChristianTools.Components
             this.otherEntities = tiledMap.layers.Where(x => x.id == LayerDepth.OtherEntities).Select(x => x.objects).FirstOrDefault();
 
             // 6_Triggers_Layer
-            this.triggerTiles = tiledMap.layers.Where(x => x.id == LayerDepth.OtherEntities).Select(x => x.objects).FirstOrDefault();
+            this.triggerTiles = tiledMap.layers.Where(x => x.id == LayerDepth.Triggers).Select(x => x.objects).FirstOrDefault();
         }
     }
 }
