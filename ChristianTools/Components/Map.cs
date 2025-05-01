@@ -6,15 +6,20 @@ namespace ChristianTools.Components
         public Tile[,] mainTiles { get; private set; }
         public Tile[,] collidersTiles { get; private set; }
         public Tile[,] frontTiles { get; private set; }
-        //public Tile[,] entitieTiles { get; private set; }
+
+        public TiledMap.Objects[] otherEntities { get; private set; }
+        public TiledMap.Objects[] triggerTiles { get; private set; }
         public string tag { get; }
 
-        public Map(Tile[,] backgroundTiles = null, Tile[,] mainTiles = null, Tile[,] collidersTiles = null, Tile[,] frontTiles = null, string tag = "")
+        public Map(Tile[,] backgroundTiles = null, Tile[,] mainTiles = null, Tile[,] collidersTiles = null, Tile[,] frontTiles = null, TiledMap.Objects[] otherEntitieTiles = null, TiledMap.Objects[] triggerTiles = null, string tag = "")
         {
             this.backgroundTiles = backgroundTiles ?? new Tile[,] { };
             this.mainTiles = mainTiles ?? new Tile[,] { };
             this.collidersTiles = collidersTiles ?? new Tile[,] { };
             this.frontTiles = frontTiles ?? new Tile[,] { };
+
+            this.otherEntities = otherEntitieTiles ?? new TiledMap.Objects[] { };
+            this.triggerTiles = triggerTiles ?? new TiledMap.Objects[] { };
             this.tag = tag;
         }
 
@@ -36,9 +41,11 @@ namespace ChristianTools.Components
             int[,] frontTilesData = tiledMap.layers.Where(x => x.id == LayerDepth.Front).Select(x => ChristianTools.Helpers.Other.ToMultidimentional(x.data, x.width, x.height)).First();
             this.frontTiles = Tile.FromInt_ToTile(frontTilesData, LayerDepth.Front);
 
-            // 5_Entities
-            //int[,] entitiesTilesData = tiledMap.layers.Where(x => x.id == LayerDepth.Entities).Select(x => ChristianTools.Helpers.Other.ToMultidimentional(x.data, x.width, x.height)).First();
-            //this.entitieTiles = Tile.FromInt_ToTile(entitiesTilesData, LayerDepth.Entities);
+            // 5_OtherEntities_Layer
+            this.otherEntities = tiledMap.layers.Where(x => x.id == LayerDepth.OtherEntities).Select(x => x.objects).FirstOrDefault();
+
+            // 6_Triggers_Layer
+            this.triggerTiles = tiledMap.layers.Where(x => x.id == LayerDepth.OtherEntities).Select(x => x.objects).FirstOrDefault();
         }
     }
 }

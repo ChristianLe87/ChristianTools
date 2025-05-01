@@ -39,7 +39,7 @@ namespace ChristianTools.UI
         private int margin;
 
         public string text;
-        //private string title;
+        public string title;
 
         private int scaleFactor => ChristianGame.WK.ScaleFactor;
 
@@ -60,6 +60,7 @@ namespace ChristianTools.UI
         public Dialogue(string title, string text, int Width, int Height, /*Alignment textAlignment,*/ Alignment UI_Position, int margin, string tag = "", Texture2D texture = null, bool isActive = true)
         {
             this.text = text;
+            this.title = title;
             this.UI_Position = UI_Position;
             this.margin = margin;
 
@@ -93,6 +94,8 @@ namespace ChristianTools.UI
         private int charCount = 0;
         private void UpdateSystem(InputState lastInputState, InputState inputState)
         {
+            titleLabel.text = title;
+
             if (isActive)
             {
                 framesCount++;

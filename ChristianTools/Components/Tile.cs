@@ -1,5 +1,20 @@
 namespace ChristianTools.Components
 {
+    // ToDo: TileObject
+    /*public class TileObject
+    {
+        public int gid { get; set; }
+        public float height { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public float rotation { get; set; }
+        public string type { get; set; }
+        public bool visible { get; set; }
+        public float width { get; set; }
+        public float x { get; set; }
+        public float y { get; set; }
+    }*/
+
     public class Tile
     {
         public Rectangle rectangle { get; private set; }

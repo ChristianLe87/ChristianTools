@@ -85,8 +85,8 @@ namespace ChristianTools.Helpers
         Main = 2, // World
         Colliders = 3, // Other colliders added programaticly like NPCs or other temporal barriers
         Front = 4,
-        //Entities = 5, // All characters
-        //Triggers = 6
+        OtherEntities = 5, // Other characters
+        Triggers = 6
     }
 
 

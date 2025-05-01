@@ -30,6 +30,21 @@ namespace ChristianTools.Helpers.Tiled
             public bool visible { get; set; }
             public int x { get; set; }
             public int y { get; set; }
+            public Objects[] objects { get; set; }
+        }
+
+        public class Objects
+        {
+            public int gid { get; set; }
+            public float height { get; set; }
+            public int id { get; set; }
+            public string name { get; set; }
+            public float rotation { get; set; }
+            public string type { get; set; }
+            public bool visible { get; set; }
+            public float width { get; set; }
+            public float x { get; set; }
+            public float y { get; set; }
         }
 
         public class Tilesets
