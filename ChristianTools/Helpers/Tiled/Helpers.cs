@@ -29,5 +29,23 @@ namespace ChristianTools.Helpers.Tiled
 
             return gameData;
         }
+
+        public static Dictionary<string, TiledMap.Objects> GetFromTo_Objects()
+        {
+            Dictionary<string, TiledMap.Objects> mapsDictionary = new Dictionary<string, TiledMap.Objects>();
+
+            foreach (string eachMap in ChristianGame.WK.Maps.Values)
+            {
+                TiledMap tiledMap = ChristianTools.Helpers.Tiled.Helpers.Read_Tiled_JsonSerialization<TiledMap>(eachMap);
+                Map map = new ChristianTools.Components.Map(tiledMap);
+
+                TiledMap.Objects mapPbject = map.triggerTiles?.Where(x => x.name.Contains("From ") || x.name.Contains("To ")).FirstOrDefault();
+
+                if (mapPbject != null)
+                    mapsDictionary.Add(mapPbject.name, mapPbject);
+            }
+
+            return mapsDictionary;
+        }
     }
 }
