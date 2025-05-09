@@ -30,19 +30,29 @@ namespace ChristianTools.Helpers.Tiled
             return gameData;
         }
 
-        public static Dictionary<string, TiledMap.Objects> GetFromTo_Objects()
+        /// <summary>
+        /// From all scenes
+        /// </summary>
+        /// <returns>Key: ScenePath, Val: Object</returns>
+        public static List<KeyValuePair<string, TiledMap.Objects>> GetAll_FromTo_Objects()
         {
-            Dictionary<string, TiledMap.Objects> mapsDictionary = new Dictionary<string, TiledMap.Objects>();
+            List<KeyValuePair<string, TiledMap.Objects>> mapsDictionary = new List<KeyValuePair<string, TiledMap.Objects>>();
 
+            // For each map
             foreach (string eachMap in ChristianGame.WK.Maps.Values)
             {
                 TiledMap tiledMap = ChristianTools.Helpers.Tiled.Helpers.Read_Tiled_JsonSerialization<TiledMap>(eachMap);
                 Map map = new ChristianTools.Components.Map(tiledMap);
 
-                TiledMap.Objects mapPbject = map.triggerTiles?.Where(x => x.name.Contains("From ") || x.name.Contains("To ")).FirstOrDefault();
+                var mapObject = map.triggerTiles?.Where(x => x.name.Contains("From ") || x.name.Contains("To ")).ToList();
 
-                if (mapPbject != null)
-                    mapsDictionary.Add(mapPbject.name, mapPbject);
+                if (mapObject != null)
+                {
+                    foreach (var obj in mapObject)
+                    {
+                        mapsDictionary.Add(new KeyValuePair<string, TiledMap.Objects>(eachMap, obj));
+                    }
+                }
             }
 
             return mapsDictionary;
