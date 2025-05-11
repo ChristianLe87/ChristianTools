@@ -34,9 +34,9 @@ namespace ChristianTools.Helpers.Tiled
         /// From all scenes
         /// </summary>
         /// <returns>Key: ScenePath, Val: Object</returns>
-        public static List<KeyValuePair<string, TiledMap.Objects>> GetAll_FromTo_Objects()
+        public static List<KeyValuePair<string, TiledMap.TiledObject>> GetAll_FromTo_Objects()
         {
-            List<KeyValuePair<string, TiledMap.Objects>> mapsDictionary = new List<KeyValuePair<string, TiledMap.Objects>>();
+            List<KeyValuePair<string, TiledMap.TiledObject>> mapsDictionary = new List<KeyValuePair<string, TiledMap.TiledObject>>();
 
             // For each map
             foreach (string eachMap in ChristianGame.WK.Maps.Values)
@@ -50,7 +50,7 @@ namespace ChristianTools.Helpers.Tiled
                 {
                     foreach (var obj in mapObject)
                     {
-                        mapsDictionary.Add(new KeyValuePair<string, TiledMap.Objects>(eachMap, obj));
+                        mapsDictionary.Add(new KeyValuePair<string, TiledMap.TiledObject>(eachMap, obj));
                     }
                 }
             }

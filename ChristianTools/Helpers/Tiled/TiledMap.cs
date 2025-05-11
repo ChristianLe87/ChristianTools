@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace ChristianTools.Helpers.Tiled
 {
     public class TiledMap
@@ -30,10 +32,12 @@ namespace ChristianTools.Helpers.Tiled
             public bool visible { get; set; }
             public int x { get; set; }
             public int y { get; set; }
-            public Objects[] objects { get; set; }
+
+            [JsonPropertyName("objects")]
+            public TiledObject[] tiledObjects { get; set; }
         }
 
-        public class Objects
+        public class TiledObject
         {
             public int gid { get; set; }
             public float height { get; set; }
@@ -45,6 +49,8 @@ namespace ChristianTools.Helpers.Tiled
             public float width { get; set; }
             public float x { get; set; }
             public float y { get; set; }
+
+            public Rectangle rectangle => new Rectangle((int)x, (int)(y - height), (int)width, (int)height);
         }
 
         public class Tilesets
