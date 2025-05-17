@@ -22,6 +22,10 @@ namespace ChristianTools.Helpers
         public bool IsMouseVisible { get; }
         public Dictionary<string, string> Maps { get; }
         public Dictionary<string, IScene> Scenes { get; }
+        public string StartScene { get; }
+        public static string Folder_NPCs { get; }
+        public static string Folder_Maps{ get; }
+        public static string Folder_Content{ get; }
     }
 
     public interface IScene
