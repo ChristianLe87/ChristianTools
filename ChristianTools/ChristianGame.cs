@@ -41,7 +41,7 @@ namespace ChristianTools
 
             // Scene
             ChristianGame.scenes = WK.Scenes;
-            ChristianGame.actualScene =  WK.StartScene;// WK.Scenes.FirstOrDefault().Key;
+            ChristianGame.actualScene = (String.IsNullOrEmpty(WK.StartScene)) ? WK.Scenes.FirstOrDefault().Key : WK.StartScene;
 
 
             // Window

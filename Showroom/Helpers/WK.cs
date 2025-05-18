@@ -9,6 +9,7 @@ namespace Showroom
         public Rectangle Viewport { get; set; }
         public int ScaleFactor { get; set; } = 1;
         public int MaxScaleFactor { get; set; } = 1;
+        public string StartScene { get; } = "Scene_Menu";
 
         public Dictionary<string, Texture2D> Atlas_Tileset { get; set; } = new Dictionary<string, Texture2D>()
         {
