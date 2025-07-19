@@ -12,13 +12,25 @@ namespace ChristianTools.Components
             public static string MoveDown => "MoveDown";
             public static string MoveRight => "MoveRight";
             public static string MoveLeft => "MoveLeft";
+            public static string _Null => "Null";
         }
 
         public Rectangle getImage => animation[characterState][frame];
         public string characterState { get; set; }
         public string atlasTexture { get; }
+        public Color color { get; set; }
         private int frame;
         public Dictionary<string, Rectangle[]> animation { get; set; }
+
+        public Animation(Color color)
+        {
+            this.color = color;
+            this.characterState = CharacterState._Null;
+            this.animation = new Dictionary<string, Rectangle[]>()
+            {
+                { CharacterState._Null, new[] { new Rectangle(0, 0, ChristianGame.WK.TileSize, ChristianGame.WK.TileSize) } }
+            };
+        }
 
         public Animation(string atlasTexture)
         {

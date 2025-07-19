@@ -79,6 +79,7 @@ namespace ChristianTools.Helpers
         public string characterState { get; set; }
         public Dictionary<string, Rectangle[]> animation { get; set; }
         public string atlasTexture { get; }
+        Color color { get; set; }
         public void Update();
     }
 

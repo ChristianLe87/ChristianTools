@@ -31,12 +31,19 @@ namespace Showroom.Scenes
                     rectangle: new Rectangle(100,100, 16,16),
                     tag: "player"
                 ),*/
-                new Entity_WASD(rectangle: new Rectangle(7 * ts, 7 * ts, ts, ts), tag: "player"),
-                new LabelEntity("Hello ", new Rectangle(11 * ts,11 * ts, 2 * ts, 1 * ts))
+                new TestBla(Color.Red, new Point(10, 10)),
+                new LabelEntity("Hello ", new Rectangle(11 * ts,11 * ts, 2 * ts, 1 * ts)),
 
             };
 
             this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
+        }
+    }
+
+    public class TestBla : BaseEntity
+    {
+        public TestBla(Color color, Point centerPosition) : base(color, centerPosition)
+        {
         }
     }
 }

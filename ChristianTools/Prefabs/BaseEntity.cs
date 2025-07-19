@@ -22,5 +22,21 @@ namespace ChristianTools.Prefabs
             //this.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => Systems.Update.Entity.BaseUpdateSystem(lastInputState, inputState, this);
             this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => Systems.Draw.Entity.Draw(spriteBatch, this);
         }
+
+        public BaseEntity(Color color, Point centerPosition, string tag = "", bool isActive = true)
+        {
+            int ts = ChristianGame.WK.TileSize;
+
+            this.rigidbody = new ClassicRigidbody(
+                centerPosition.ToVector2(),
+                new Point(ChristianGame.WK.TileSize, ChristianGame.WK.TileSize)
+            );
+            this.animation = new Animation(color);
+            this.isActive = isActive;
+            this.tag = tag;
+            this.guid = Guid.NewGuid();
+            //this.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => Systems.Update.Entity.BaseUpdateSystem(lastInputState, inputState, this);
+            this.dxCustomDrawSystem = (SpriteBatch spriteBatch) => Systems.Draw.Entity.Draw(spriteBatch, this);
+        }
     }
 }

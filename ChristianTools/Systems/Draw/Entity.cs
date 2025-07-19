@@ -7,8 +7,14 @@ namespace ChristianTools.Systems.Draw
             if (entity.isActive != true)
                 return;
 
+            Texture2D texture;
+            if (entity.animation.atlasTexture != null)
+                texture = ChristianGame.WK.Atlas_Entities[entity.animation.atlasTexture];
+            else
+                texture = ChristianTools.Helpers.Texture.CreateColorTexture(entity.animation.color, ChristianGame.WK.TileSize, ChristianGame.WK.TileSize);
+
             spriteBatch.Draw(
-                texture: ChristianGame.WK.Atlas_Entities[entity.animation.atlasTexture], // atlas texture
+                texture: texture, // atlas texture
                 position: entity.rigidbody.centerPosition, //The drawing location on screen.
                 sourceRectangle: entity.animation.getImage, // "El pedazo que quiero sacar del atlasTexture" An optional region on the texture which will be rendered. If null - draws full texture.
                 color: Color.White,
