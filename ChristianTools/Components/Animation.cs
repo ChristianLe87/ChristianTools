@@ -1,5 +1,46 @@
 namespace ChristianTools.Components
 {
+    public enum AnimationCicle
+    {
+        Loop,
+        Once,
+        PingPong,
+    }
+
+    public class AnimationClip
+    {
+        private string name;
+        private Rectangle fromAtlas;
+        private int frames;
+        private int fps_perFrame;
+        AnimationCicle animationCicle;
+
+        private Dictionary<string, Rectangle[]> test;
+        public AnimationClip(string name, Rectangle fromAtlas, int frames, int fps_perFrame = 5, AnimationCicle animationCicle = AnimationCicle.Loop)
+        {
+            this.name = name;
+            this.fromAtlas = fromAtlas;
+            this.frames = frames;
+            this.fps_perFrame = fps_perFrame;
+            this.animationCicle = animationCicle;
+
+            test = GetAnimation(name, fromAtlas, frames);
+        }
+
+        public Dictionary<string, Rectangle[]> GetAnimation(string name, Rectangle rect, int fr)
+        {
+            Dictionary<string, Rectangle[]> result = new Dictionary<string, Rectangle[]>(){ { name, new Rectangle[fr] } };
+
+            for (int i = 0; i < fr; i++)
+            {
+                Rectangle atlasFramesFromAtlas = new Rectangle(rect.X + (i * rect.Width / fr), rect.Y, rect.Width / fr, rect.Height);
+                result[name][i] = atlasFramesFromAtlas;
+            }
+
+            return result;
+        }
+    }
+
     public class Animation : IAnimation
     {
         private static class CharacterState
