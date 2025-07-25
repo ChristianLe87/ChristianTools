@@ -27,10 +27,7 @@ namespace ChristianTools.Prefabs
         {
             int ts = ChristianGame.WK.TileSize;
 
-            this.rigidbody = new ClassicRigidbody(
-                centerPosition.ToVector2(),
-                new Point(ChristianGame.WK.TileSize, ChristianGame.WK.TileSize)
-            );
+            this.rigidbody = new ClassicRigidbody(centerPosition.ToVector2(), new Point(ts, ts));
             this.animation = new Animation(color);
             this.isActive = isActive;
             this.tag = tag;
