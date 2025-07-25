@@ -2,6 +2,7 @@ namespace ChristianTools.Components
 {
     public class BulletRigidbody : IRigidbody
     {
+        public bool isKinematic { get; set; }
         public Vector2 force { get; set; }
         public Vector2 centerPosition { get; set; }
         public Point size { get; }

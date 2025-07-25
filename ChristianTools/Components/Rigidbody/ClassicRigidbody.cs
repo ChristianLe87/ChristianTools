@@ -2,6 +2,7 @@ namespace ChristianTools.Components
 {
     public class ClassicRigidbody : IRigidbody
     {
+        public bool isKinematic { get; set; }
         public Vector2 force { get; set; }
         public Vector2 centerPosition { get; set; }
         public Point size { get; }
@@ -29,26 +30,29 @@ namespace ChristianTools.Components
         {
             int ts = ChristianGame.WK.TileSize;
 
-            // Get surrounding tiles
-            Point pointInMap = new Point((int)centerPosition.X / ts, (int)centerPosition.Y / ts);
-            Tile[,] surroundingMainElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
-            Tile[,] surroundingColliderElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.collidersTiles, pointInMap);
-
-            List<Tile> mainTiles= ChristianTools.Helpers.Other.FlattenArray(surroundingMainElements).Where(x => x != null).ToList();
-            List<Tile> colliderTiles= ChristianTools.Helpers.Other.FlattenArray(surroundingColliderElements).Where(x => x != null).ToList();
-
-            // merge lists
-            mainTiles.AddRange(colliderTiles);
-            this.tiles = mainTiles;
-            
-            // Add NPCs
-            foreach (var entity in ChristianGame.GetScene.entities)
+            if (isKinematic == false)
             {
-                if (entity.rigidbody != null)
+                // Get surrounding tiles
+                Point pointInMap = new Point((int)centerPosition.X / ts, (int)centerPosition.Y / ts);
+                Tile[,] surroundingMainElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.mainTiles, pointInMap);
+                Tile[,] surroundingColliderElements = Other.GetSurroundingElements(ChristianGame.GetScene?.map?.collidersTiles, pointInMap);
+
+                List<Tile> mainTiles = ChristianTools.Helpers.Other.FlattenArray(surroundingMainElements).Where(x => x != null).ToList();
+                List<Tile> colliderTiles = ChristianTools.Helpers.Other.FlattenArray(surroundingColliderElements).Where(x => x != null).ToList();
+
+                // merge lists
+                mainTiles.AddRange(colliderTiles);
+                this.tiles = mainTiles;
+
+                // Add NPCs
+                foreach (var entity in ChristianGame.GetScene.entities)
                 {
-                    if (entity.rigidbody.centerPosition != centerPosition)
+                    if (entity.rigidbody != null)
                     {
-                        this.tiles.Add(new Tile(entity.rigidbody.GetRectangle, new Rectangle(), atlasTileset: ChristianGame.WK.Atlas_Tileset.First().Key, LayerDepth.Colliders));
+                        if (entity.rigidbody.centerPosition != centerPosition)
+                        {
+                            this.tiles.Add(new Tile(entity.rigidbody.GetRectangle, new Rectangle(), atlasTileset: ChristianGame.WK.Atlas_Tileset.First().Key, LayerDepth.Colliders));
+                        }
                     }
                 }
             }

@@ -14,12 +14,12 @@ namespace ChristianTools.Entities
         
         TimeSpan timeToDeactivate;
 
-        public Bullet(Vector2 centerPosition, Vector2 direction, int steps = 3, uint secondsToDeactivate = 5)
+        public Bullet(Vector2 centerPosition, Vector2 direction, Color color, int steps = 3, uint secondsToDeactivate = 5)
         {
             int ts = ChristianGame.WK.TileSize;
 
             this.rigidbody = new BulletRigidbody(centerPosition, new Point(ts, ts));
-            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
+            this.animation = new Animation(color);
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();

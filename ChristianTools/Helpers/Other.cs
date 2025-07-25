@@ -153,8 +153,8 @@ namespace ChristianTools.Helpers
 
             Vector2 result = Helpers.MyMath.Get_X_and_Y_BasedOnAngle_Radians(steps, angleInRadians);
 
-            main.Move_X((int)result.X);
-            main.Move_Y((int)result.Y);
+            main.Move_X(result.X);
+            main.Move_Y(result.Y);
         }
     }
 }

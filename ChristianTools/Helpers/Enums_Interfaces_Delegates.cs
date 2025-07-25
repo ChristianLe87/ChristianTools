@@ -132,6 +132,7 @@ namespace ChristianTools.Helpers
     
     public interface IRigidbody
     {
+        bool isKinematic { get; set; }
         Vector2 force { get; set; }
         Vector2 centerPosition { get; set; }
         Point size { get; }
