@@ -22,6 +22,15 @@ namespace Showroom
 
         public NPC_1(Rectangle rectangle, string tag = "", bool isActive = true) : base(rectangle, tag, isActive)
         {
+            int ts = ChristianGame.WK.TileSize;
+
+            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key, new[]
+            {
+                new AnimationClip("IdleUp", new Rectangle(0 * ts, 0 * ts, ts, ts)),
+                new AnimationClip("IdleDown", new Rectangle(0 * ts, 1 * ts, ts, ts)),
+                new AnimationClip("IdleRight", new Rectangle(0 * ts, 2 * ts, ts, ts)),
+                new AnimationClip("IdleLeft", new Rectangle(0 * ts, 3 * ts, ts, ts)),
+            });
             this.dxCustomUpdateSystem = (InputState lastInputState, InputState inputState) => UpdateSystem(lastInputState, inputState);
         }
 

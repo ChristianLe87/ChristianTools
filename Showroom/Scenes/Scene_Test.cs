@@ -26,13 +26,13 @@ namespace Showroom.Scenes
 
             this.entities = new List<IEntity>()
             {
-                new ZeroZeroPoint_Entity(),
+                //new ZeroZeroPoint_Entity(),
                 /*new Entity_WASD(
                     rectangle: new Rectangle(100,100, 16,16),
                     tag: "player"
                 ),*/
                 new TestBla(Color.Red, new Point(10, 10)),
-                new LabelEntity("Hello ", new Rectangle(11 * ts,11 * ts, 2 * ts, 1 * ts)),
+                //new LabelEntity("Hello ", new Rectangle(11 * ts,11 * ts, 2 * ts, 1 * ts)),
 
             };
 
@@ -42,7 +42,7 @@ namespace Showroom.Scenes
 
     public class TestBla : BaseEntity
     {
-        public TestBla(Color color, Point centerPosition) : base(color, centerPosition)
+        public TestBla(Color color, Point centerPosition) : base(centerPosition, color)
         {
         }
     }

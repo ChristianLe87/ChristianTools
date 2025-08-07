@@ -16,7 +16,7 @@ namespace Showroom
             int ts = ChristianGame.WK.TileSize;
 
             this.rigidbody = new ClassicRigidbody(new Vector2(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2), new Point(ts, ts));
-            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
+            this.animation = new Animation(Color.Red);
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();
@@ -33,7 +33,7 @@ namespace Showroom
                 Vector2 direction = inputState.GetActionOnWorldPosition().ToVector2();
                 line?.UpdatePoints(end: direction.ToPoint());
 
-                Bullet bulletEntity = new Bullet(rigidbody.centerPosition, direction, 5, 2);
+                Bullet bulletEntity = new Bullet(rigidbody.centerPosition, direction, Color.Red, 5, 2);
                 ChristianGame.GetScene.entities.Add(bulletEntity);
             }
         }

@@ -30,14 +30,14 @@ namespace Showroom.Scenes
                 new ZeroZeroPoint_Entity(),
 
                 // TL
-                new Entity_Numbers(new Rectangle(0, 0, ts, ts)),
+                new BaseEntity(new Rectangle(0, 0, ts, ts), Color.Red),
 
                 // TR
-                new Entity_Numbers(new Rectangle(484, 0, ts, ts)),
+                new BaseEntity(new Rectangle(484, 0, ts, ts), Color.Red),
 
                 // Center
                 new Entity_WASD(
-                    rectangle: MyRectangle.CreateRectangle(new Point(250, 250), ts, ts),
+                    rectangle: MyRectangle.CreateRectangle(new Point(ChristianGame.WK.CanvasWidth / 2, ChristianGame.WK.CanvasHeight / 2), ts, ts),
                     tag: "player"
                 ),
 
@@ -52,10 +52,10 @@ namespace Showroom.Scenes
                 },
                 
                 // DL
-                new Entity_Numbers(new Rectangle(0, 484, ts, ts)),
+                new BaseEntity(new Rectangle(0, 484, ts, ts), Color.Red),
 
                 // DR
-                new Entity_Numbers(new Rectangle(484, 484, ts, ts)),
+                new BaseEntity(new Rectangle(484, 484, ts, ts), Color.Red),
             };
 
             this.camera = new Camera(entityToFollow: entities.Find(x => x.tag == "player"));
@@ -63,7 +63,6 @@ namespace Showroom.Scenes
 
         private void UpdateLine(InputState lastInputState, InputState inputState)
         {
-
             ChristianTools.Entities.Line line = entities.Find(x => x.tag == "RedLine") as ChristianTools.Entities.Line;
 
             if (inputState.Action)

@@ -17,7 +17,7 @@ namespace Showroom
             this.rigidbody = new ClassicRigidbody(centerPosition, new Point(ts, ts));
             this.rigidbody.gravity = 4;
 
-            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
+            //this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();

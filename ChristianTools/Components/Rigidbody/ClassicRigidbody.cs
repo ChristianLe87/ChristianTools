@@ -2,6 +2,7 @@ namespace ChristianTools.Components
 {
     public class ClassicRigidbody : IRigidbody
     {
+        public double rotationDegrees { get; set; }
         public bool isKinematic { get; set; }
         public Vector2 force { get; set; }
         public Vector2 centerPosition { get; set; }

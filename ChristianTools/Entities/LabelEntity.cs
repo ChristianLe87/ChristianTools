@@ -20,7 +20,7 @@ namespace ChristianTools.Entities
             this.text = text;
             this.rectangle = rectangle;
             this.rigidbody = null;//new ClassicRigidbody(rectangle);
-            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
+            //this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
             this.isActive = isActive;
             this.tag = tag;
             this.guid = Guid.NewGuid();

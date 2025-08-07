@@ -16,7 +16,7 @@ namespace ChristianTools.Helpers.Hybrids
         public ZeroZeroPoint(int width = 160, int height = 160, int thickness = 2, string tag = "")
         {
             this.rigidbody = null;
-            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
+            //this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
             this.isActive = true;
             this.tag = tag;
             this.guid = Guid.NewGuid();

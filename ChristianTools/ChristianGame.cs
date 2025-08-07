@@ -2,6 +2,7 @@ namespace ChristianTools
 {
     public class ChristianGame : Game
     {
+        private bool displayFPS { get; set; }
         public static GraphicsDeviceManager graphicsDeviceManager;
 
         private SpriteBatch spriteBatch;
@@ -78,6 +79,7 @@ namespace ChristianTools
             base.IsFixedTimeStep = true;
             base.TargetElapsedTime = TimeSpan.FromSeconds(1d / WK.FPS);
             //base.TargetElapsedTime = new TimeSpan(days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 50); // Every frame is render each 50 milliseconds
+            this.displayFPS = true;
 
 
             // others
@@ -156,6 +158,10 @@ namespace ChristianTools
         // Order: 4
         protected override void Update(GameTime gameTime)
         {
+
+            // Display FPS
+            if (displayFPS == true) base.Window.Title = WK.WindowTitle + $" | FPS: {GetFPS(gameTime)}";
+
             InputState inputState = new InputState();
 
 #if !__MOBILE__
@@ -282,6 +288,11 @@ namespace ChristianTools
 
             // Subscribe
             Window.ClientSizeChanged += GameWindowSizeChangeEvent;
+        }
+
+        private int GetFPS(GameTime gameTime)
+        {
+            return (int)(1 / gameTime.ElapsedGameTime.TotalSeconds);
         }
     }
 }

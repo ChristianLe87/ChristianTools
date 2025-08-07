@@ -19,7 +19,7 @@ namespace ChristianTools.Helpers
                 Point point = mouseState.Position;
                 point -= new Point((int)ChristianGame.GetScene.camera.cameraCenterPosition.X, (int)ChristianGame.GetScene.camera.cameraCenterPosition.Y);
                 point -= new Point(ChristianGame.WK.Viewport.X, ChristianGame.WK.Viewport.Y);
-                
+                point /= new Point(ChristianGame.WK.ScaleFactor);
                 return point;
             }
             else

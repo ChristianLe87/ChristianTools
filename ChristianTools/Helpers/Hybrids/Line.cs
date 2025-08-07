@@ -23,7 +23,7 @@ namespace ChristianTools.Helpers.Hybrids
         public Line(Point start, Point end, Color color, int thickness = 5, string tag = "")
         {
             this.rigidbody = new ClassicRigidbody(new Vector2(0, 0), new Point(0, 0)); //new Rectangle())));
-            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
+            //this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
             this.guid = Guid.NewGuid();
             this.start = start;
             this.end = end;

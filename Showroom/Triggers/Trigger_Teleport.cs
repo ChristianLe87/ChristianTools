@@ -17,7 +17,7 @@ namespace Showroom
             int ts = ChristianGame.WK.TileSize;
 
             this.rigidbody = new ClassicRigidbody(rectangle.Center.ToVector2(), new Point(ts, ts));
-            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key);
+            this.animation = new Animation(ChristianGame.WK.Atlas_Entities.First().Key, new[] { new AnimationClip("", new Rectangle(0, 0, ts, ts)) });
             this.isActive = true;
             this.tag = "";
             this.guid = Guid.NewGuid();

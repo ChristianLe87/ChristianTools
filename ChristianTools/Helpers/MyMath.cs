@@ -37,7 +37,7 @@ namespace ChristianTools.Helpers
             // Based on: tan^-1 (y/x) = angle
             double x = target.X - main.X;
             double y = target.Y - main.Y;
-            double angleRad = Math.Atan(y / x);
+            double angleRad = Math.Atan(y / x); // ToDo: research us of Math.Atan2
             double angleDeg = MyMath.RadianToDegree(angleRad);
 
 

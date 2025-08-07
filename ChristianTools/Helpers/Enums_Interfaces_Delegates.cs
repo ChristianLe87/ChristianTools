@@ -71,13 +71,14 @@ namespace ChristianTools.Helpers
         public Guid guid { get; }
         public DxCustomUpdateSystem dxCustomUpdateSystem { get; set; }
         public DxCustomDrawSystem dxCustomDrawSystem { get; set; }
+        //public DxOnGameWindowSizeChange dxOnGameWindowSizeChange { get; set; }
     }
 
     public interface IAnimation
     {
         public Rectangle getImage { get; }
         public string characterState { get; set; }
-        public Dictionary<string, Rectangle[]> animation { get; set; }
+        //public Dictionary<string, Rectangle[]> animation { get; set; }
         public string atlasTexture { get; }
         Color color { get; set; }
         public void Update();
@@ -123,6 +124,13 @@ namespace ChristianTools.Helpers
         Midle_Right,
         Down_Right,
     }
+
+    /*public enum AnimationCicle
+    {
+        Loop,
+        Once,
+        PingPong,
+    }*/
     
     public interface IGameDataSystem
     {
@@ -132,6 +140,7 @@ namespace ChristianTools.Helpers
     
     public interface IRigidbody
     {
+        double rotationDegrees { get; set; }
         bool isKinematic { get; set; }
         Vector2 force { get; set; }
         Vector2 centerPosition { get; set; }
@@ -151,4 +160,5 @@ namespace ChristianTools.Helpers
     // === Delegates ===
     public delegate void DxCustomUpdateSystem(InputState lastInputState, InputState inputState);
     public delegate void DxCustomDrawSystem(SpriteBatch spriteBatch);
+    public delegate void DxOnGameWindowSizeChange();
 }

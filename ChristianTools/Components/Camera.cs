@@ -19,16 +19,18 @@ namespace ChristianTools.Components
         public void Update()
         {
             this.zoom = ChristianGame.WK.ScaleFactor;
-            
+
+            Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;
+
             if (entityToFollow != null)
             {
-                Viewport viewport = ChristianGame.graphicsDeviceManager.GraphicsDevice.Viewport;
-                
-                //Vector3 cameraPosition = new Vector3((viewport.Width / 2) - entityToFollow.rigidbody.rectangle.Center.X, (viewport.Height / 2) - entityToFollow.rigidbody.rectangle.Center.Y, 0);
-                //transform = Matrix.CreateTranslation(cameraPosition);
-
                 transform = Matrix.CreateTranslation(new Vector3(-entityToFollow.rigidbody.centerPosition.X, -entityToFollow.rigidbody.centerPosition.Y, 0)) *
                             Matrix.CreateScale(new Vector3(zoom, zoom, 0)) *
+                            Matrix.CreateTranslation(new Vector3(viewport.Width / 2, viewport.Height / 2, 0));
+            }
+            else
+            {
+                transform = Matrix.CreateScale(new Vector3(zoom, zoom, 0)) *
                             Matrix.CreateTranslation(new Vector3(viewport.Width / 2, viewport.Height / 2, 0));
             }
         }

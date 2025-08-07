@@ -167,5 +167,32 @@ namespace ChristianTools.Helpers
 
             return rectangleRight;
         }
+
+        // Thanks ChatGPT
+        public static Rectangle[] SliceRectangle(Rectangle rectangle, int columns)
+        {
+            Rectangle[] result = new Rectangle[columns];
+
+            if (columns <= 0)
+                return new[] { rectangle };
+
+            int w = rectangle.Width / columns;
+            int extra = rectangle.Width % columns;
+
+            for (int i = 0; i < columns; i++)
+            {
+                int anchoActual = w;
+                // Distribuye el sobrante entre las primeras columnas
+                if (i < extra)
+                    anchoActual++;
+
+                int x = rectangle.X + i * w + (i < extra ? i : extra);
+
+                Rectangle parte = new Rectangle(x, rectangle.Y, anchoActual, rectangle.Height);
+                result[i] = parte;
+            }
+
+            return result;
+        }
     }
 }
